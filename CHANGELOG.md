@@ -22,6 +22,19 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning: Se
 - `python -m membench.generate` CLI; dev dataset `datasets/dev/` (seeds 1–5),
   seed 1 fully prose-realized.
 - Ledger schema: optional `distractor_kind` field (structural near-miss marker).
+- Phase 2 machinery: event renderer with marker protocol (spans computed
+  mechanically, never LLM-reported), release-blocking stream linter
+  (round-trip, verbatim-reuse, visibility, salience permutation tests, noise
+  floor, canaries), counterfactual twin builder with delta-only re-rendering,
+  and `python -m membench.realize` assembly CLI.
+- Seed-1 org fully realized: 204-event base + twin streams, lint green,
+  machine-blinded salience check 40% (below 65% bar), LLM consistency pass
+  clean. Human blinded check and seeds 2–5 rendering pending for G2.
+
+### Changed
+- Fact planner mirrors distractor placement over probed event kinds; the
+  first render pass failed the salience lint on position skew (p=0.002)
+  because probed facts concentrated in meetings and distractors in chats.
 
 ### Fixed
 - Ledger spec §5: `distributed` facts now require all evidence events witnessed

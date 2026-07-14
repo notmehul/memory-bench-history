@@ -80,6 +80,18 @@ given 20 event excerpts (10 embedding probed facts, 10 distractor-only), a human
 reviewer cannot beat 65% accuracy identifying which are probed (salience is truly
 flat); one full org read-through by a human confirms narrative coherence.
 
+> **G2 status 2026-07-14: seed 1 complete, seeds 2–5 pending; human checks pending.**
+> Seed-1 base + twin streams rendered and STREAM LINT green (salience permutation
+> tests p=0.44–0.96, noise floor 85%, round-trip/visibility/canaries clean). An
+> adversarial *machine* blinded rater scored 8/20 (40%, below the 65% bar); the
+> spec's human blinded check and full read-through remain to be run. LLM
+> consistency pass over all 204 events vs. all 120 facts: zero contradictions,
+> filler inert. First render pass FAILED salience lint (probed facts clustered
+> in meetings, distractors in chats — p=0.002 position skew); fixed structurally
+> in the planner by mirroring distractor placement over probed event kinds, then
+> re-rendered only the 103 changed events. Seeds 2–5 need canonical realization
+> + rendering via the same pipeline before G2 can close.
+
 ## Phase 3 — Probe construction + validity screening *(week 4–5)*
 
 1. Generate probe records per archetype instance (≥3 probe instances each: varied
