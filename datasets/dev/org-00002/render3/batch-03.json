@@ -1,0 +1,767 @@
+{
+ "events": [
+  {
+   "event_id": "E-0148",
+   "kind": "standup",
+   "surface": "team:growth/standup",
+   "participants": [
+    {
+     "name": "felix",
+     "role": "growth_lead",
+     "voice": "formal, precise, cites documents"
+    },
+    {
+     "name": "anouk",
+     "role": "growth_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    },
+    {
+     "name": "marco",
+     "role": "growth_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0025",
+     "statement": "Infra vendor invoices might skip finance above five thousand when finance is offline.",
+     "speaker": "felix"
+    },
+    {
+     "fact_id": "F-0066",
+     "statement": "Infra internal API paths use snake_case resource names.",
+     "speaker": "felix"
+    },
+    {
+     "fact_id": "F-0104",
+     "statement": "Sven prefers reserving fifteen percent of each infra sprint for debt.",
+     "speaker": "marco"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    60,
+    140
+   ]
+  },
+  {
+   "event_id": "E-0150",
+   "kind": "chat",
+   "surface": "chat:growth-eng",
+   "participants": [
+    {
+     "name": "felix",
+     "role": "growth_lead",
+     "voice": "formal, precise, cites documents"
+    },
+    {
+     "name": "anouk",
+     "role": "growth_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    },
+    {
+     "name": "marco",
+     "role": "growth_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0009",
+     "statement": "Growth standups might drop to ten minutes when half the squad is out.",
+     "speaker": "felix"
+    },
+    {
+     "fact_id": "F-0108",
+     "statement": "Company security review intake steps are listed under Security in the eng wiki.",
+     "speaker": "marco"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    15,
+    70
+   ]
+  },
+  {
+   "event_id": "E-0154",
+   "kind": "standup",
+   "surface": "team:infra/standup",
+   "participants": [
+    {
+     "name": "diego",
+     "role": "infra_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "priya",
+     "role": "infra_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0044",
+     "statement": "Growth switched to the new notes template after three pilot syncs.",
+     "speaker": "priya"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    60,
+    140
+   ]
+  },
+  {
+   "event_id": "E-0158",
+   "kind": "standup",
+   "surface": "team:growth/standup",
+   "participants": [
+    {
+     "name": "felix",
+     "role": "growth_lead",
+     "voice": "formal, precise, cites documents"
+    },
+    {
+     "name": "lena",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "marco",
+     "role": "growth_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    }
+   ],
+   "embed": [],
+   "canary": null,
+   "length_words": [
+    60,
+    140
+   ]
+  },
+  {
+   "event_id": "E-0161",
+   "kind": "chat",
+   "surface": "chat:growth-eng",
+   "participants": [
+    {
+     "name": "anouk",
+     "role": "growth_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    },
+    {
+     "name": "marco",
+     "role": "growth_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    },
+    {
+     "name": "lena",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    }
+   ],
+   "embed": [],
+   "canary": null,
+   "length_words": [
+    15,
+    70
+   ]
+  },
+  {
+   "event_id": "E-0162",
+   "kind": "all_hands",
+   "surface": "org/all-hands",
+   "participants": [
+    {
+     "name": "rafael",
+     "role": "exec",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "sven",
+     "role": "infra_lead",
+     "voice": "diplomatic, hedges, summarizes others"
+    },
+    {
+     "name": "diego",
+     "role": "infra_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "wren",
+     "role": "infra_engineer",
+     "voice": "diplomatic, hedges, summarizes others"
+    },
+    {
+     "name": "priya",
+     "role": "infra_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    },
+    {
+     "name": "felix",
+     "role": "growth_lead",
+     "voice": "formal, precise, cites documents"
+    },
+    {
+     "name": "anouk",
+     "role": "growth_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    },
+    {
+     "name": "lena",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "marco",
+     "role": "growth_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0018",
+     "statement": "Partner escalations must be acknowledged within ten minutes via the shared support alias.",
+     "speaker": "rafael"
+    },
+    {
+     "fact_id": "F-0036",
+     "statement": "Growth might freeze experiments only after exhausting the full team error budget.",
+     "speaker": "felix"
+    },
+    {
+     "fact_id": "F-0039",
+     "statement": "Quarterly capacity plans must include a twenty-percent contingency buffer.",
+     "speaker": "rafael"
+    },
+    {
+     "fact_id": "F-0040",
+     "statement": "Wren prefers keeping new services above eighty percent unit test coverage.",
+     "speaker": "felix"
+    },
+    {
+     "fact_id": "F-0059",
+     "statement": "Company runbooks must be reviewed every thirty days by the page owner.",
+     "speaker": "rafael"
+    },
+    {
+     "fact_id": "F-0079",
+     "statement": "Growth launches require checklist sign-off seventy-two hours before go-live.",
+     "speaker": "rafael"
+    },
+    {
+     "fact_id": "F-0080",
+     "statement": "Growth quarterly pricing sheets are stored under Pricing in the finance drive.",
+     "speaker": "sven"
+    },
+    {
+     "fact_id": "F-0099",
+     "statement": "Growth allows at most one unfinished story to roll into the next sprint.",
+     "speaker": "rafael"
+    },
+    {
+     "fact_id": "F-0100",
+     "statement": "Infra closed two vendor contracts after four redline rounds last quarter.",
+     "speaker": "rafael"
+    },
+    {
+     "fact_id": "F-0119",
+     "statement": "Growth requires a design doc for changes estimated over two engineer-days.",
+     "speaker": "rafael"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    120,
+    260
+   ]
+  },
+  {
+   "event_id": "E-0165",
+   "kind": "planning",
+   "surface": "team:infra/planning",
+   "participants": [
+    {
+     "name": "sven",
+     "role": "infra_lead",
+     "voice": "diplomatic, hedges, summarizes others"
+    },
+    {
+     "name": "diego",
+     "role": "infra_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "priya",
+     "role": "infra_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0085",
+     "statement": "Infra release windows are listed under Cadence in the deploy runbook.",
+     "speaker": "diego"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    90,
+    200
+   ]
+  },
+  {
+   "event_id": "E-0168",
+   "kind": "chat",
+   "surface": "chat:infra-eng",
+   "participants": [
+    {
+     "name": "sven",
+     "role": "infra_lead",
+     "voice": "diplomatic, hedges, summarizes others"
+    },
+    {
+     "name": "wren",
+     "role": "infra_engineer",
+     "voice": "diplomatic, hedges, summarizes others"
+    },
+    {
+     "name": "diego",
+     "role": "infra_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "priya",
+     "role": "infra_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0048",
+     "statement": "Infra code review checklist items live under Review in the engineering wiki.",
+     "speaker": "wren"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    15,
+    70
+   ]
+  },
+  {
+   "event_id": "E-0169",
+   "kind": "planning",
+   "surface": "team:growth/planning",
+   "participants": [
+    {
+     "name": "felix",
+     "role": "growth_lead",
+     "voice": "formal, precise, cites documents"
+    },
+    {
+     "name": "anouk",
+     "role": "growth_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    },
+    {
+     "name": "lena",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "marco",
+     "role": "growth_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0089",
+     "statement": "Infra on-call stipend amounts are posted under Compensation in the handbook.",
+     "speaker": "felix"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    90,
+    200
+   ]
+  },
+  {
+   "event_id": "E-0171",
+   "kind": "chat",
+   "surface": "chat:growth-eng",
+   "participants": [
+    {
+     "name": "anouk",
+     "role": "growth_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    },
+    {
+     "name": "felix",
+     "role": "growth_lead",
+     "voice": "formal, precise, cites documents"
+    },
+    {
+     "name": "lena",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "marco",
+     "role": "growth_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    }
+   ],
+   "embed": [],
+   "canary": null,
+   "length_words": [
+    15,
+    70
+   ]
+  },
+  {
+   "event_id": "E-0172",
+   "kind": "chat",
+   "surface": "chat:growth-eng",
+   "participants": [
+    {
+     "name": "marco",
+     "role": "growth_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    },
+    {
+     "name": "lena",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0109",
+     "statement": "Priya prefers starting Sunday pager handoffs with open Sev tickets first.",
+     "speaker": "marco"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    15,
+    70
+   ]
+  },
+  {
+   "event_id": "E-0174",
+   "kind": "dm",
+   "surface": "dm:diego-felix",
+   "participants": [
+    {
+     "name": "diego",
+     "role": "infra_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "felix",
+     "role": "growth_lead",
+     "voice": "formal, precise, cites documents"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0065",
+     "statement": "Anouk prefers filing expenses within three business days of the charge.",
+     "speaker": "felix"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    20,
+    80
+   ]
+  },
+  {
+   "event_id": "E-0175",
+   "kind": "standup",
+   "surface": "team:infra/standup",
+   "participants": [
+    {
+     "name": "sven",
+     "role": "infra_lead",
+     "voice": "diplomatic, hedges, summarizes others"
+    },
+    {
+     "name": "diego",
+     "role": "infra_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "wren",
+     "role": "infra_engineer",
+     "voice": "diplomatic, hedges, summarizes others"
+    },
+    {
+     "name": "priya",
+     "role": "infra_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0046",
+     "statement": "Infra locks quarterly list prices by the fifteenth of the prior quarter.",
+     "speaker": "sven"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    60,
+    140
+   ]
+  },
+  {
+   "event_id": "E-0180",
+   "kind": "chat",
+   "surface": "chat:growth-eng",
+   "participants": [
+    {
+     "name": "marco",
+     "role": "growth_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    },
+    {
+     "name": "felix",
+     "role": "growth_lead",
+     "voice": "formal, precise, cites documents"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0050",
+     "statement": "Infra production database migrations might merge with one approval when staffing is thin.",
+     "speaker": "felix"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    15,
+    70
+   ]
+  },
+  {
+   "event_id": "E-0183",
+   "kind": "dm",
+   "surface": "dm:wren-lena",
+   "participants": [
+    {
+     "name": "wren",
+     "role": "infra_engineer",
+     "voice": "diplomatic, hedges, summarizes others"
+    },
+    {
+     "name": "lena",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    }
+   ],
+   "embed": [],
+   "canary": null,
+   "length_words": [
+    20,
+    80
+   ]
+  },
+  {
+   "event_id": "E-0185",
+   "kind": "retro",
+   "surface": "team:infra/retro",
+   "participants": [
+    {
+     "name": "sven",
+     "role": "infra_lead",
+     "voice": "diplomatic, hedges, summarizes others"
+    },
+    {
+     "name": "diego",
+     "role": "infra_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "wren",
+     "role": "infra_engineer",
+     "voice": "diplomatic, hedges, summarizes others"
+    }
+   ],
+   "embed": [],
+   "canary": null,
+   "length_words": [
+    80,
+    180
+   ]
+  },
+  {
+   "event_id": "E-0189",
+   "kind": "retro",
+   "surface": "team:growth/retro",
+   "participants": [
+    {
+     "name": "felix",
+     "role": "growth_lead",
+     "voice": "formal, precise, cites documents"
+    },
+    {
+     "name": "lena",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "marco",
+     "role": "growth_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    }
+   ],
+   "embed": [],
+   "canary": null,
+   "length_words": [
+    80,
+    180
+   ]
+  },
+  {
+   "event_id": "E-0192",
+   "kind": "chat",
+   "surface": "chat:growth-eng",
+   "participants": [
+    {
+     "name": "anouk",
+     "role": "growth_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    },
+    {
+     "name": "felix",
+     "role": "growth_lead",
+     "voice": "formal, precise, cites documents"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0062",
+     "statement": "Infra wiki pages must be reviewed every forty-five days by the page owner.",
+     "speaker": "felix"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    15,
+    70
+   ]
+  },
+  {
+   "event_id": "E-0193",
+   "kind": "dm",
+   "surface": "dm:anouk-sven",
+   "participants": [
+    {
+     "name": "anouk",
+     "role": "growth_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    },
+    {
+     "name": "sven",
+     "role": "infra_lead",
+     "voice": "diplomatic, hedges, summarizes others"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0014",
+     "statement": "Felix prefers reviewing experiments only after ninety-percent statistical significance.",
+     "speaker": "sven"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    20,
+    80
+   ]
+  },
+  {
+   "event_id": "E-0195",
+   "kind": "standup",
+   "surface": "team:infra/standup",
+   "participants": [
+    {
+     "name": "sven",
+     "role": "infra_lead",
+     "voice": "diplomatic, hedges, summarizes others"
+    },
+    {
+     "name": "diego",
+     "role": "infra_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "wren",
+     "role": "infra_engineer",
+     "voice": "diplomatic, hedges, summarizes others"
+    },
+    {
+     "name": "priya",
+     "role": "infra_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0004",
+     "statement": "Infra ships production releases on Mondays only after the morning freeze clears.",
+     "speaker": "sven"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    60,
+    140
+   ]
+  },
+  {
+   "event_id": "E-0200",
+   "kind": "chat",
+   "surface": "chat:growth-eng",
+   "participants": [
+    {
+     "name": "marco",
+     "role": "growth_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    },
+    {
+     "name": "anouk",
+     "role": "growth_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    },
+    {
+     "name": "felix",
+     "role": "growth_lead",
+     "voice": "formal, precise, cites documents"
+    },
+    {
+     "name": "lena",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0068",
+     "statement": "Sven prefers paging himself at fifty percent error-budget burn.",
+     "speaker": "anouk"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    15,
+    70
+   ]
+  }
+ ]
+}

@@ -1,0 +1,142 @@
+{
+ "Growth ships production releases only once per month on the last Friday.": {
+  "base_sentence": "Growth ships production releases every Tuesday and Thursday before noon.",
+  "required_word_count": 10
+ },
+ "Company Sev-1 postmortems may skip the five-whys template when the cause is already known.": {
+  "base_sentence": "Company Sev-1 postmortems must follow the five-whys template within seventy-two hours.",
+  "required_word_count": 11
+ },
+ "Growth Sev-2 postmortems may omit the customer-impact timeline for internal-only outages.": {
+  "base_sentence": "Growth Sev-2 postmortems must include a minute-by-minute customer-impact timeline.",
+  "required_word_count": 9
+ },
+ "Marco prefers drafting postmortems as polished narratives before any outline.": {
+  "base_sentence": "Marco prefers drafting postmortems as bullet outlines before the full write-up.",
+  "required_word_count": 11
+ },
+ "Partner escalations may wait until the next business day for acknowledgment via the shared support alias.": {
+  "base_sentence": "Partner escalations must be acknowledged within thirty minutes via the shared support alias.",
+  "required_word_count": 13
+ },
+ "Partner escalations may wait two business days for acknowledgment via the shared support alias.": {
+  "base_sentence": "Partner escalations must be acknowledged within fifteen minutes via the shared support alias.",
+  "required_word_count": 13
+ },
+ "Partner escalations may wait until weekly partner sync for acknowledgment via the shared support alias.": {
+  "base_sentence": "Partner escalations must be acknowledged within ten minutes via the shared support alias.",
+  "required_word_count": 13
+ },
+ "Infra vendor invoices under fifteen thousand dollars may be paid without finance review.": {
+  "base_sentence": "Infra vendor invoices over five thousand dollars require finance approval before payment.",
+  "required_word_count": 12
+ },
+ "Company services may keep launching features after fully exhausting the monthly error budget.": {
+  "base_sentence": "Company services freeze feature launches after consuming eighty percent of the monthly error budget.",
+  "required_word_count": 14
+ },
+ "Lena prefers shipping through her full personal error budget before pausing launches.": {
+  "base_sentence": "Lena prefers pausing her launches once she has used half of her personal error budget.",
+  "required_word_count": 15
+ },
+ "Quarterly capacity plans may omit any contingency buffer when headcount is stable.": {
+  "base_sentence": "Quarterly capacity plans must include a ten-percent contingency buffer.",
+  "required_word_count": 9
+ },
+ "Quarterly capacity plans may omit contingency buffers during hiring freezes.": {
+  "base_sentence": "Quarterly capacity plans must include a fifteen-percent contingency buffer.",
+  "required_word_count": 9
+ },
+ "Quarterly capacity plans may book teams at one-hundred-percent utilization with no buffer.": {
+  "base_sentence": "Quarterly capacity plans must include a twenty-percent contingency buffer.",
+  "required_word_count": 9
+ },
+ "Company feature flags may remain temporary indefinitely without a retirement date.": {
+  "base_sentence": "Company feature flags must be retired or made permanent within ninety days of creation.",
+  "required_word_count": 14
+ },
+ "Growth experiment flags may stay active for six months after experiment end.": {
+  "base_sentence": "Growth experiment flags must be cleaned up within thirty days of experiment end.",
+  "required_word_count": 13
+ },
+ "Lena prefers keeping her personal flags live for at least sixty days after rollout.": {
+  "base_sentence": "Lena prefers deleting her personal flags within seven days of a clean rollout.",
+  "required_word_count": 13
+ },
+ "Company runbooks need review only after a related Sev-1 incident.": {
+  "base_sentence": "Company runbooks must be reviewed every ninety days by the page owner.",
+  "required_word_count": 12
+ },
+ "Company runbooks need review only during annual compliance audits.": {
+  "base_sentence": "Company runbooks must be reviewed every sixty days by the page owner.",
+  "required_word_count": 12
+ },
+ "Company runbooks need no scheduled review once published.": {
+  "base_sentence": "Company runbooks must be reviewed every thirty days by the page owner.",
+  "required_word_count": 12
+ },
+ "Infra allows unlimited sprint carryover as long as tickets stay assigned.": {
+  "base_sentence": "Infra limits sprint carryover to two unfinished tickets per engineer.",
+  "required_word_count": 10
+ },
+ "Company customer-data features may skip security review before production launch.": {
+  "base_sentence": "Company customer-data features require security review before production launch.",
+  "required_word_count": 9
+ },
+ "Growth payment changes may skip security review until after production launch.": {
+  "base_sentence": "Growth payment changes require security review two weeks before launch.",
+  "required_word_count": 10
+ },
+ "Growth launches may complete checklist sign-off after go-live without penalty.": {
+  "base_sentence": "Growth launches require checklist sign-off twenty-four hours before go-live.",
+  "required_word_count": 9
+ },
+ "Growth launches may finish checklist sign-off the morning of go-live.": {
+  "base_sentence": "Growth launches require checklist sign-off forty-eight hours before go-live.",
+  "required_word_count": 9
+ },
+ "Growth launches may skip checklist sign-off for dark flag-only ships.": {
+  "base_sentence": "Growth launches require checklist sign-off seventy-two hours before go-live.",
+  "required_word_count": 9
+ },
+ "Growth allows unlimited unfinished stories to roll into the next sprint.": {
+  "base_sentence": "Growth allows at most three unfinished stories to roll into the next sprint.",
+  "required_word_count": 13
+ },
+ "Growth allows five unfinished stories to roll into the next sprint.": {
+  "base_sentence": "Growth allows at most two unfinished stories to roll into the next sprint.",
+  "required_word_count": 13
+ },
+ "Growth allows every unfinished story to roll into the next sprint unchecked.": {
+  "base_sentence": "Growth allows at most one unfinished story to roll into the next sprint.",
+  "required_word_count": 13
+ },
+ "Infra ships production releases only on the last Friday each month.": {
+  "base_sentence": "Infra ships production releases every Wednesday before four Pacific.",
+  "required_word_count": 9
+ },
+ "Growth support must get manager approval for every refund above ten dollars.": {
+  "base_sentence": "Growth support may issue refunds up to one hundred dollars without manager approval.",
+  "required_word_count": 13
+ },
+ "Company feature flags may remain temporary with no retirement deadline after creation.": {
+  "base_sentence": "Company feature flags must be retired within sixty days of creation.",
+  "required_word_count": 11
+ },
+ "Growth experiment flags may stay active for ninety days after experiment end.": {
+  "base_sentence": "Growth experiment flags must be cleaned up within fourteen days of experiment end.",
+  "required_word_count": 13
+ },
+ "Marco prefers keeping his personal flags live for thirty days after rollout.": {
+  "base_sentence": "Marco prefers deleting his personal flags within three days of a clean rollout.",
+  "required_word_count": 13
+ },
+ "Growth may skip design docs for changes of any estimated engineer-day size.": {
+  "base_sentence": "Growth requires a design doc for changes estimated over five engineer-days.",
+  "required_word_count": 11
+ },
+ "Growth may skip design docs for all multi-service changes under a flag.": {
+  "base_sentence": "Growth requires a design doc for changes estimated over two engineer-days.",
+  "required_word_count": 11
+ }
+}

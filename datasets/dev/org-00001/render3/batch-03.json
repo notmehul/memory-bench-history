@@ -1,0 +1,399 @@
+{
+ "events": [
+  {
+   "event_id": "E-0176",
+   "kind": "chat",
+   "surface": "chat:growth-eng",
+   "participants": [
+    {
+     "name": "anouk",
+     "role": "growth_lead",
+     "voice": "terse, direct, prefers bullet points"
+    },
+    {
+     "name": "kofi",
+     "role": "growth_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    }
+   ],
+   "embed": [],
+   "canary": null,
+   "length_words": [
+    15,
+    70
+   ]
+  },
+  {
+   "event_id": "E-0179",
+   "kind": "standup",
+   "surface": "team:platform/standup",
+   "participants": [
+    {
+     "name": "diego",
+     "role": "platform_lead",
+     "voice": "terse, direct, prefers bullet points"
+    },
+    {
+     "name": "mei",
+     "role": "platform_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "yuki",
+     "role": "platform_engineer",
+     "voice": "formal, precise, cites documents"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0070",
+     "statement": "Mei prefers ticking rollback steps on the checklist before leaving approval comments.",
+     "speaker": "mei"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    60,
+    140
+   ]
+  },
+  {
+   "event_id": "E-0180",
+   "kind": "chat",
+   "surface": "chat:platform-eng",
+   "participants": [
+    {
+     "name": "yuki",
+     "role": "platform_engineer",
+     "voice": "formal, precise, cites documents"
+    },
+    {
+     "name": "diego",
+     "role": "platform_lead",
+     "voice": "terse, direct, prefers bullet points"
+    },
+    {
+     "name": "mei",
+     "role": "platform_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0084",
+     "statement": "Platform hiring loops include a system-design interview and skip the take-home.",
+     "speaker": "diego"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    15,
+    70
+   ]
+  },
+  {
+   "event_id": "E-0182",
+   "kind": "chat",
+   "surface": "chat:platform-eng",
+   "participants": [
+    {
+     "name": "yuki",
+     "role": "platform_engineer",
+     "voice": "formal, precise, cites documents"
+    },
+    {
+     "name": "diego",
+     "role": "platform_lead",
+     "voice": "terse, direct, prefers bullet points"
+    },
+    {
+     "name": "lena",
+     "role": "platform_engineer",
+     "voice": "diplomatic, hedges, summarizes others"
+    },
+    {
+     "name": "mei",
+     "role": "platform_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0042",
+     "statement": "Platform deploy-freeze dates are listed on the engineering calendar under Freezes.",
+     "speaker": "yuki"
+    },
+    {
+     "fact_id": "F-0076",
+     "statement": "Platform submitted capacity inputs with a 12% incident buffer for the Q3 plan.",
+     "speaker": "yuki"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    15,
+    70
+   ]
+  },
+  {
+   "event_id": "E-0183",
+   "kind": "dm",
+   "surface": "dm:diego-mei",
+   "participants": [
+    {
+     "name": "diego",
+     "role": "platform_lead",
+     "voice": "terse, direct, prefers bullet points"
+    },
+    {
+     "name": "mei",
+     "role": "platform_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0097",
+     "statement": "Mei prefers postmortems that open with customer impact before the timeline.",
+     "speaker": "mei"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    20,
+    80
+   ]
+  },
+  {
+   "event_id": "E-0189",
+   "kind": "retro",
+   "surface": "team:platform/retro",
+   "participants": [
+    {
+     "name": "lena",
+     "role": "platform_engineer",
+     "voice": "diplomatic, hedges, summarizes others"
+    },
+    {
+     "name": "yuki",
+     "role": "platform_engineer",
+     "voice": "formal, precise, cites documents"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0083",
+     "statement": "Platform partner-comms steps live in the ops handbook under Escalations.",
+     "speaker": "lena"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    80,
+    180
+   ]
+  },
+  {
+   "event_id": "E-0191",
+   "kind": "chat",
+   "surface": "chat:platform-eng",
+   "participants": [
+    {
+     "name": "mei",
+     "role": "platform_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "diego",
+     "role": "platform_lead",
+     "voice": "terse, direct, prefers bullet points"
+    },
+    {
+     "name": "yuki",
+     "role": "platform_engineer",
+     "voice": "formal, precise, cites documents"
+    },
+    {
+     "name": "lena",
+     "role": "platform_engineer",
+     "voice": "diplomatic, hedges, summarizes others"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0069",
+     "statement": "Diego prefers previewing vendor invoices above $4,000 before finance sees them.",
+     "speaker": "diego"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    15,
+    70
+   ]
+  },
+  {
+   "event_id": "E-0193",
+   "kind": "dm",
+   "surface": "dm:lena-anouk",
+   "participants": [
+    {
+     "name": "lena",
+     "role": "platform_engineer",
+     "voice": "diplomatic, hedges, summarizes others"
+    },
+    {
+     "name": "anouk",
+     "role": "growth_lead",
+     "voice": "terse, direct, prefers bullet points"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0126",
+     "statement": "Anouk prefers a take-home plus two live interviews for growth engineering hires.",
+     "speaker": "anouk"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    20,
+    80
+   ]
+  },
+  {
+   "event_id": "E-0195",
+   "kind": "standup",
+   "surface": "team:growth/standup",
+   "participants": [
+    {
+     "name": "anouk",
+     "role": "growth_lead",
+     "voice": "terse, direct, prefers bullet points"
+    },
+    {
+     "name": "otto",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "kofi",
+     "role": "growth_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    }
+   ],
+   "embed": [],
+   "canary": null,
+   "length_words": [
+    60,
+    140
+   ]
+  },
+  {
+   "event_id": "E-0197",
+   "kind": "chat",
+   "surface": "chat:growth-eng",
+   "participants": [
+    {
+     "name": "otto",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "celine",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "anouk",
+     "role": "growth_lead",
+     "voice": "terse, direct, prefers bullet points"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0051",
+     "statement": "Invoices near $4,500 might need a verbal OK from the team lead.",
+     "speaker": "anouk"
+    },
+    {
+     "fact_id": "F-0071",
+     "statement": "Platform retro action items might wait a week for owners when the team is understaffed.",
+     "speaker": "otto"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    15,
+    70
+   ]
+  },
+  {
+   "event_id": "E-0199",
+   "kind": "standup",
+   "surface": "team:platform/standup",
+   "participants": [
+    {
+     "name": "diego",
+     "role": "platform_lead",
+     "voice": "terse, direct, prefers bullet points"
+    },
+    {
+     "name": "lena",
+     "role": "platform_engineer",
+     "voice": "diplomatic, hedges, summarizes others"
+    },
+    {
+     "name": "mei",
+     "role": "platform_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "yuki",
+     "role": "platform_engineer",
+     "voice": "formal, precise, cites documents"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0002",
+     "statement": "Last sprint closed with two carryover tickets on the platform backlog.",
+     "speaker": "mei"
+    },
+    {
+     "fact_id": "F-0108",
+     "statement": "Platform capacity worksheets live in the quarterly planning folder under Inputs.",
+     "speaker": "yuki"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    60,
+    140
+   ]
+  },
+  {
+   "event_id": "E-0203",
+   "kind": "dm",
+   "surface": "dm:celine-noa",
+   "participants": [
+    {
+     "name": "celine",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "noa",
+     "role": "exec",
+     "voice": "casual, emoji-light, asks questions"
+    }
+   ],
+   "embed": [],
+   "canary": "mb-canary-00001-e7da77d1",
+   "length_words": [
+    20,
+    80
+   ]
+  }
+ ]
+}

@@ -1,0 +1,1310 @@
+{
+ "events": [
+  {
+   "event_id": "E-0072",
+   "kind": "dm",
+   "surface": "dm:celine-anouk",
+   "participants": [
+    {
+     "name": "celine",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "anouk",
+     "role": "growth_lead",
+     "voice": "terse, direct, prefers bullet points"
+    }
+   ],
+   "embed": [],
+   "canary": null,
+   "length_words": [
+    20,
+    80
+   ]
+  },
+  {
+   "event_id": "E-0073",
+   "kind": "standup",
+   "surface": "team:growth/standup",
+   "participants": [
+    {
+     "name": "anouk",
+     "role": "growth_lead",
+     "voice": "terse, direct, prefers bullet points"
+    },
+    {
+     "name": "celine",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "kofi",
+     "role": "growth_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0022",
+     "statement": "Growth on-call shifts earn a $250 stipend per week.",
+     "speaker": "anouk"
+    },
+    {
+     "fact_id": "F-0064",
+     "statement": "Growth runbooks must be reviewed every sixty days.",
+     "speaker": "anouk"
+    },
+    {
+     "fact_id": "F-0086",
+     "statement": "Growth sprint-carryover limits are summarized in the team planning FAQ.",
+     "speaker": "anouk"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    60,
+    140
+   ]
+  },
+  {
+   "event_id": "E-0077",
+   "kind": "standup",
+   "surface": "team:platform/standup",
+   "participants": [
+    {
+     "name": "diego",
+     "role": "platform_lead",
+     "voice": "terse, direct, prefers bullet points"
+    },
+    {
+     "name": "mei",
+     "role": "platform_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "yuki",
+     "role": "platform_engineer",
+     "voice": "formal, precise, cites documents"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0001",
+     "statement": "Platform API paths use kebab-case resource names.",
+     "speaker": "diego"
+    },
+    {
+     "fact_id": "F-0036",
+     "statement": "Mei prefers requesting production access in the morning so grants land before lunch.",
+     "speaker": "mei"
+    },
+    {
+     "fact_id": "F-0085",
+     "statement": "Platform publishes a changelog entry before every production deploy.",
+     "speaker": "diego"
+    },
+    {
+     "fact_id": "F-0107",
+     "statement": "Platform team travel must be booked through the corporate portal at least ten days ahead.",
+     "speaker": "diego"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    60,
+    140
+   ]
+  },
+  {
+   "event_id": "E-0078",
+   "kind": "chat",
+   "surface": "chat:platform-eng",
+   "participants": [
+    {
+     "name": "mei",
+     "role": "platform_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "lena",
+     "role": "platform_engineer",
+     "voice": "diplomatic, hedges, summarizes others"
+    },
+    {
+     "name": "yuki",
+     "role": "platform_engineer",
+     "voice": "formal, precise, cites documents"
+    },
+    {
+     "name": "diego",
+     "role": "platform_lead",
+     "voice": "terse, direct, prefers bullet points"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0090",
+     "statement": "Lena prefers keeping platform demos under six minutes including Q&A.",
+     "speaker": "lena"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    15,
+    70
+   ]
+  },
+  {
+   "event_id": "E-0079",
+   "kind": "chat",
+   "surface": "chat:platform-eng",
+   "participants": [
+    {
+     "name": "diego",
+     "role": "platform_lead",
+     "voice": "terse, direct, prefers bullet points"
+    },
+    {
+     "name": "yuki",
+     "role": "platform_engineer",
+     "voice": "formal, precise, cites documents"
+    },
+    {
+     "name": "lena",
+     "role": "platform_engineer",
+     "voice": "diplomatic, hedges, summarizes others"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0112",
+     "statement": "Platform carried four unfinished stories into the following sprint after the outage week.",
+     "speaker": "yuki"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    15,
+    70
+   ]
+  },
+  {
+   "event_id": "E-0081",
+   "kind": "dm",
+   "surface": "dm:yuki-mei",
+   "participants": [
+    {
+     "name": "yuki",
+     "role": "platform_engineer",
+     "voice": "formal, precise, cites documents"
+    },
+    {
+     "name": "mei",
+     "role": "platform_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0074",
+     "statement": "Mei prefers rehearsing demos once on the morning of demo day.",
+     "speaker": "mei"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    20,
+    80
+   ]
+  },
+  {
+   "event_id": "E-0083",
+   "kind": "retro",
+   "surface": "team:growth/retro",
+   "participants": [
+    {
+     "name": "celine",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "kofi",
+     "role": "growth_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    }
+   ],
+   "embed": [],
+   "canary": null,
+   "length_words": [
+    80,
+    180
+   ]
+  },
+  {
+   "event_id": "E-0087",
+   "kind": "retro",
+   "surface": "team:platform/retro",
+   "participants": [
+    {
+     "name": "diego",
+     "role": "platform_lead",
+     "voice": "terse, direct, prefers bullet points"
+    },
+    {
+     "name": "lena",
+     "role": "platform_engineer",
+     "voice": "diplomatic, hedges, summarizes others"
+    },
+    {
+     "name": "mei",
+     "role": "platform_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "yuki",
+     "role": "platform_engineer",
+     "voice": "formal, precise, cites documents"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0010",
+     "statement": "Platform roadmap reviews happen every two weeks in team planning.",
+     "speaker": "diego"
+    },
+    {
+     "fact_id": "F-0066",
+     "statement": "Platform published two postmortems with full timelines after the cache outage.",
+     "speaker": "lena"
+    },
+    {
+     "fact_id": "F-0116",
+     "statement": "Platform extends the deploy freeze through any open Sev-1 recovery window.",
+     "speaker": "diego"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    80,
+    180
+   ]
+  },
+  {
+   "event_id": "E-0091",
+   "kind": "dm",
+   "surface": "dm:kofi-anouk",
+   "participants": [
+    {
+     "name": "kofi",
+     "role": "growth_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    },
+    {
+     "name": "anouk",
+     "role": "growth_lead",
+     "voice": "terse, direct, prefers bullet points"
+    }
+   ],
+   "embed": [],
+   "canary": "mb-canary-00001-e7da77d1",
+   "length_words": [
+    20,
+    80
+   ]
+  },
+  {
+   "event_id": "E-0093",
+   "kind": "standup",
+   "surface": "team:growth/standup",
+   "participants": [
+    {
+     "name": "anouk",
+     "role": "growth_lead",
+     "voice": "terse, direct, prefers bullet points"
+    },
+    {
+     "name": "celine",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "otto",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "kofi",
+     "role": "growth_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0045",
+     "statement": "Otto prefers keeping refunds under $300 without looping in finance.",
+     "speaker": "otto"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    60,
+    140
+   ]
+  },
+  {
+   "event_id": "E-0094",
+   "kind": "chat",
+   "surface": "chat:growth-eng",
+   "participants": [
+    {
+     "name": "anouk",
+     "role": "growth_lead",
+     "voice": "terse, direct, prefers bullet points"
+    },
+    {
+     "name": "otto",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    }
+   ],
+   "embed": [],
+   "canary": null,
+   "length_words": [
+    15,
+    70
+   ]
+  },
+  {
+   "event_id": "E-0096",
+   "kind": "chat",
+   "surface": "chat:growth-eng",
+   "participants": [
+    {
+     "name": "celine",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "anouk",
+     "role": "growth_lead",
+     "voice": "terse, direct, prefers bullet points"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0068",
+     "statement": "Platform retro action items must have an owner and due date within forty-eight hours.",
+     "speaker": "anouk"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    15,
+    70
+   ]
+  },
+  {
+   "event_id": "E-0097",
+   "kind": "standup",
+   "surface": "team:platform/standup",
+   "participants": [
+    {
+     "name": "diego",
+     "role": "platform_lead",
+     "voice": "terse, direct, prefers bullet points"
+    },
+    {
+     "name": "lena",
+     "role": "platform_engineer",
+     "voice": "diplomatic, hedges, summarizes others"
+    },
+    {
+     "name": "yuki",
+     "role": "platform_engineer",
+     "voice": "formal, precise, cites documents"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0029",
+     "statement": "Diego prefers filing meeting notes in the shared Notion page before leaving the room.",
+     "speaker": "diego"
+    },
+    {
+     "fact_id": "F-0044",
+     "statement": "Growth team travel must be booked at least fourteen days in advance.",
+     "speaker": "diego"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    60,
+    140
+   ]
+  },
+  {
+   "event_id": "E-0099",
+   "kind": "chat",
+   "surface": "chat:platform-eng",
+   "participants": [
+    {
+     "name": "diego",
+     "role": "platform_lead",
+     "voice": "terse, direct, prefers bullet points"
+    },
+    {
+     "name": "lena",
+     "role": "platform_engineer",
+     "voice": "diplomatic, hedges, summarizes others"
+    },
+    {
+     "name": "yuki",
+     "role": "platform_engineer",
+     "voice": "formal, precise, cites documents"
+    },
+    {
+     "name": "mei",
+     "role": "platform_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0089",
+     "statement": "Platform customer emails lead with the outcome and avoid internal jargon.",
+     "speaker": "diego"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    15,
+    70
+   ]
+  },
+  {
+   "event_id": "E-0103",
+   "kind": "standup",
+   "surface": "team:growth/standup",
+   "participants": [
+    {
+     "name": "anouk",
+     "role": "growth_lead",
+     "voice": "terse, direct, prefers bullet points"
+    },
+    {
+     "name": "celine",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "otto",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "kofi",
+     "role": "growth_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0067",
+     "statement": "Growth runbooks might stretch to ninety days between reviews when the team is understaffed.",
+     "speaker": "kofi"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    60,
+    140
+   ]
+  },
+  {
+   "event_id": "E-0111",
+   "kind": "all_hands",
+   "surface": "org/all-hands",
+   "participants": [
+    {
+     "name": "anouk",
+     "role": "growth_lead",
+     "voice": "terse, direct, prefers bullet points"
+    },
+    {
+     "name": "celine",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "otto",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "kofi",
+     "role": "growth_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    },
+    {
+     "name": "diego",
+     "role": "platform_lead",
+     "voice": "terse, direct, prefers bullet points"
+    },
+    {
+     "name": "lena",
+     "role": "platform_engineer",
+     "voice": "diplomatic, hedges, summarizes others"
+    },
+    {
+     "name": "mei",
+     "role": "platform_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "yuki",
+     "role": "platform_engineer",
+     "voice": "formal, precise, cites documents"
+    },
+    {
+     "name": "noa",
+     "role": "exec",
+     "voice": "casual, emoji-light, asks questions"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0012",
+     "statement": "The last platform hire completed a four-interview loop in nine days.",
+     "speaker": "otto"
+    },
+    {
+     "fact_id": "F-0016",
+     "statement": "Design docs are required for changes touching five or more services.",
+     "speaker": "noa"
+    },
+    {
+     "fact_id": "F-0037",
+     "statement": "Company Slack messages in #general might stretch to a next-business-day reply when staffing is thin.",
+     "speaker": "yuki"
+    },
+    {
+     "fact_id": "F-0040",
+     "statement": "Org standups are async by default with a live sync on Wednesdays.",
+     "speaker": "noa"
+    },
+    {
+     "fact_id": "F-0060",
+     "statement": "Bug triage is shared daily with a published schedule in Slack.",
+     "speaker": "noa"
+    },
+    {
+     "fact_id": "F-0082",
+     "statement": "Finance closed ninety-four percent of expense reports within four days last cycle.",
+     "speaker": "celine"
+    },
+    {
+     "fact_id": "F-0101",
+     "statement": "Production access requires a ticket and expires after four hours.",
+     "speaker": "noa"
+    },
+    {
+     "fact_id": "F-0103",
+     "statement": "Org data-retention defaults are summarized in the privacy FAQ under Windows.",
+     "speaker": "otto"
+    },
+    {
+     "fact_id": "F-0127",
+     "statement": "Teams might drop tech-debt allocation below 10% when on-call load is elevated.",
+     "speaker": "anouk"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    120,
+    260
+   ]
+  },
+  {
+   "event_id": "E-0112",
+   "kind": "dm",
+   "surface": "dm:otto-lena",
+   "participants": [
+    {
+     "name": "otto",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "lena",
+     "role": "platform_engineer",
+     "voice": "diplomatic, hedges, summarizes others"
+    }
+   ],
+   "embed": [],
+   "canary": null,
+   "length_words": [
+    20,
+    80
+   ]
+  },
+  {
+   "event_id": "E-0114",
+   "kind": "planning",
+   "surface": "team:growth/planning",
+   "participants": [
+    {
+     "name": "anouk",
+     "role": "growth_lead",
+     "voice": "terse, direct, prefers bullet points"
+    },
+    {
+     "name": "celine",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "otto",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "kofi",
+     "role": "growth_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0013",
+     "statement": "Yuki prefers paging the secondary on-call after ten minutes of Sev-2 silence.",
+     "speaker": "otto"
+    },
+    {
+     "fact_id": "F-0053",
+     "statement": "Growth marketing copy follows the upbeat voice in the brand guide.",
+     "speaker": "anouk"
+    },
+    {
+     "fact_id": "F-0094",
+     "statement": "Platform status updates follow the concise ops tone in the brand guide.",
+     "speaker": "anouk"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    90,
+    200
+   ]
+  },
+  {
+   "event_id": "E-0123",
+   "kind": "dm",
+   "surface": "dm:yuki-noa",
+   "participants": [
+    {
+     "name": "yuki",
+     "role": "platform_engineer",
+     "voice": "formal, precise, cites documents"
+    },
+    {
+     "name": "noa",
+     "role": "exec",
+     "voice": "casual, emoji-light, asks questions"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0117",
+     "statement": "Yuki prefers cutting a release candidate the morning a freeze starts.",
+     "speaker": "yuki"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    20,
+    80
+   ]
+  },
+  {
+   "event_id": "E-0124",
+   "kind": "standup",
+   "surface": "team:growth/standup",
+   "participants": [
+    {
+     "name": "anouk",
+     "role": "growth_lead",
+     "voice": "terse, direct, prefers bullet points"
+    },
+    {
+     "name": "otto",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0110",
+     "statement": "Growth conference travel must clear finance review before any nonrefundable booking.",
+     "speaker": "anouk"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    60,
+    140
+   ]
+  },
+  {
+   "event_id": "E-0134",
+   "kind": "retro",
+   "surface": "team:growth/retro",
+   "participants": [
+    {
+     "name": "otto",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "kofi",
+     "role": "growth_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0091",
+     "statement": "Kofi prefers closing retro actions in the same sprint they were filed.",
+     "speaker": "kofi"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    80,
+    180
+   ]
+  },
+  {
+   "event_id": "E-0135",
+   "kind": "chat",
+   "surface": "chat:growth-eng",
+   "participants": [
+    {
+     "name": "kofi",
+     "role": "growth_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    },
+    {
+     "name": "anouk",
+     "role": "growth_lead",
+     "voice": "terse, direct, prefers bullet points"
+    },
+    {
+     "name": "celine",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0092",
+     "statement": "Growth customer emails lead with a playful greeting before stating the outcome.",
+     "speaker": "anouk"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    15,
+    70
+   ]
+  },
+  {
+   "event_id": "E-0138",
+   "kind": "retro",
+   "surface": "team:platform/retro",
+   "participants": [
+    {
+     "name": "diego",
+     "role": "platform_lead",
+     "voice": "terse, direct, prefers bullet points"
+    },
+    {
+     "name": "mei",
+     "role": "platform_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0056",
+     "statement": "Mei prefers retiring experiment flags within sixty days of the winning variant ship.",
+     "speaker": "mei"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    80,
+    180
+   ]
+  },
+  {
+   "event_id": "E-0147",
+   "kind": "chat",
+   "surface": "chat:growth-eng",
+   "participants": [
+    {
+     "name": "otto",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "kofi",
+     "role": "growth_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    },
+    {
+     "name": "anouk",
+     "role": "growth_lead",
+     "voice": "terse, direct, prefers bullet points"
+    },
+    {
+     "name": "celine",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    }
+   ],
+   "embed": [],
+   "canary": null,
+   "length_words": [
+    15,
+    70
+   ]
+  },
+  {
+   "event_id": "E-0148",
+   "kind": "standup",
+   "surface": "team:platform/standup",
+   "participants": [
+    {
+     "name": "diego",
+     "role": "platform_lead",
+     "voice": "terse, direct, prefers bullet points"
+    },
+    {
+     "name": "lena",
+     "role": "platform_engineer",
+     "voice": "diplomatic, hedges, summarizes others"
+    },
+    {
+     "name": "mei",
+     "role": "platform_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0047",
+     "statement": "Growth travel might be approved within seven days for conference speakers.",
+     "speaker": "diego"
+    },
+    {
+     "fact_id": "F-0065",
+     "statement": "Platform cleared a vendor MSA after a single redline round last month.",
+     "speaker": "lena"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    60,
+    140
+   ]
+  },
+  {
+   "event_id": "E-0151",
+   "kind": "chat",
+   "surface": "chat:platform-eng",
+   "participants": [
+    {
+     "name": "diego",
+     "role": "platform_lead",
+     "voice": "terse, direct, prefers bullet points"
+    },
+    {
+     "name": "lena",
+     "role": "platform_engineer",
+     "voice": "diplomatic, hedges, summarizes others"
+    },
+    {
+     "name": "yuki",
+     "role": "platform_engineer",
+     "voice": "formal, precise, cites documents"
+    },
+    {
+     "name": "mei",
+     "role": "platform_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    }
+   ],
+   "embed": [],
+   "canary": null,
+   "length_words": [
+    15,
+    70
+   ]
+  },
+  {
+   "event_id": "E-0154",
+   "kind": "standup",
+   "surface": "team:growth/standup",
+   "participants": [
+    {
+     "name": "anouk",
+     "role": "growth_lead",
+     "voice": "terse, direct, prefers bullet points"
+    },
+    {
+     "name": "celine",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "otto",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "kofi",
+     "role": "growth_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    }
+   ],
+   "embed": [],
+   "canary": null,
+   "length_words": [
+    60,
+    140
+   ]
+  },
+  {
+   "event_id": "E-0156",
+   "kind": "chat",
+   "surface": "chat:growth-eng",
+   "participants": [
+    {
+     "name": "celine",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "kofi",
+     "role": "growth_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    },
+    {
+     "name": "anouk",
+     "role": "growth_lead",
+     "voice": "terse, direct, prefers bullet points"
+    }
+   ],
+   "embed": [],
+   "canary": null,
+   "length_words": [
+    15,
+    70
+   ]
+  },
+  {
+   "event_id": "E-0158",
+   "kind": "standup",
+   "surface": "team:platform/standup",
+   "participants": [
+    {
+     "name": "mei",
+     "role": "platform_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0087",
+     "statement": "Mei prefers a three-interview platform loop with a live coding screen.",
+     "speaker": "mei"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    60,
+    140
+   ]
+  },
+  {
+   "event_id": "E-0162",
+   "kind": "all_hands",
+   "surface": "org/all-hands",
+   "participants": [
+    {
+     "name": "anouk",
+     "role": "growth_lead",
+     "voice": "terse, direct, prefers bullet points"
+    },
+    {
+     "name": "celine",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "otto",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "kofi",
+     "role": "growth_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    },
+    {
+     "name": "diego",
+     "role": "platform_lead",
+     "voice": "terse, direct, prefers bullet points"
+    },
+    {
+     "name": "mei",
+     "role": "platform_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "yuki",
+     "role": "platform_engineer",
+     "voice": "formal, precise, cites documents"
+    },
+    {
+     "name": "noa",
+     "role": "exec",
+     "voice": "casual, emoji-light, asks questions"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0017",
+     "statement": "Design docs are required for any change touching a shared library.",
+     "speaker": "noa"
+    },
+    {
+     "fact_id": "F-0078",
+     "statement": "Company demos might drop to five minutes per team when the agenda is overcrowded.",
+     "speaker": "noa"
+    },
+    {
+     "fact_id": "F-0081",
+     "statement": "Hiring loops include five interviews with a hiring-manager panel at the end.",
+     "speaker": "noa"
+    },
+    {
+     "fact_id": "F-0102",
+     "statement": "Production access requires dual approval and expires after two hours.",
+     "speaker": "noa"
+    },
+    {
+     "fact_id": "F-0124",
+     "statement": "Teams allocate at least 20% of each sprint to tech-debt paydown with a published backlog.",
+     "speaker": "noa"
+    },
+    {
+     "fact_id": "F-0125",
+     "statement": "Diego prefers paying platform on-call as a flat weekly stipend rather than hourly overtime.",
+     "speaker": "diego"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    120,
+    260
+   ]
+  },
+  {
+   "event_id": "E-0165",
+   "kind": "planning",
+   "surface": "team:growth/planning",
+   "participants": [
+    {
+     "name": "anouk",
+     "role": "growth_lead",
+     "voice": "terse, direct, prefers bullet points"
+    },
+    {
+     "name": "celine",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "otto",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "kofi",
+     "role": "growth_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0046",
+     "statement": "Growth locked capacity inputs three days before the last planning offsite.",
+     "speaker": "anouk"
+    },
+    {
+     "fact_id": "F-0104",
+     "statement": "Growth security-review triggers are listed in the launch checklist appendix.",
+     "speaker": "otto"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    90,
+    200
+   ]
+  },
+  {
+   "event_id": "E-0166",
+   "kind": "chat",
+   "surface": "chat:growth-eng",
+   "participants": [
+    {
+     "name": "otto",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "kofi",
+     "role": "growth_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    },
+    {
+     "name": "anouk",
+     "role": "growth_lead",
+     "voice": "terse, direct, prefers bullet points"
+    },
+    {
+     "name": "celine",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0043",
+     "statement": "Platform runs a twenty-minute standup on Tuesdays and Thursdays.",
+     "speaker": "anouk"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    15,
+    70
+   ]
+  },
+  {
+   "event_id": "E-0167",
+   "kind": "chat",
+   "surface": "chat:growth-eng",
+   "participants": [
+    {
+     "name": "celine",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "otto",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "anouk",
+     "role": "growth_lead",
+     "voice": "terse, direct, prefers bullet points"
+    },
+    {
+     "name": "kofi",
+     "role": "growth_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0113",
+     "statement": "Growth purged inactive analytics events past the six-month retention cutoff last week.",
+     "speaker": "otto"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    15,
+    70
+   ]
+  },
+  {
+   "event_id": "E-0169",
+   "kind": "planning",
+   "surface": "team:platform/planning",
+   "participants": [
+    {
+     "name": "lena",
+     "role": "platform_engineer",
+     "voice": "diplomatic, hedges, summarizes others"
+    },
+    {
+     "name": "yuki",
+     "role": "platform_engineer",
+     "voice": "formal, precise, cites documents"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0050",
+     "statement": "Platform finished the launch checklist an hour before the cache-patch ship.",
+     "speaker": "lena"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    90,
+    200
+   ]
+  },
+  {
+   "event_id": "E-0175",
+   "kind": "standup",
+   "surface": "team:growth/standup",
+   "participants": [
+    {
+     "name": "celine",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "otto",
+     "role": "growth_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "kofi",
+     "role": "growth_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0026",
+     "statement": "Growth on-call might earn a $100 stipend when covering solo primary shifts.",
+     "speaker": "celine"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    60,
+    140
+   ]
+  }
+ ]
+}

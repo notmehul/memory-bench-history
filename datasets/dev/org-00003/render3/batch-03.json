@@ -1,0 +1,506 @@
+{
+ "events": [
+  {
+   "event_id": "E-0158",
+   "kind": "standup",
+   "surface": "team:infra/standup",
+   "participants": [
+    {
+     "name": "bastian",
+     "role": "infra_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "tara",
+     "role": "infra_engineer",
+     "voice": "diplomatic, hedges, summarizes others"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0042",
+     "statement": "Core spent twelve points on tech debt last sprint.",
+     "speaker": "bastian"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    60,
+    140
+   ]
+  },
+  {
+   "event_id": "E-0162",
+   "kind": "all_hands",
+   "surface": "org/all-hands",
+   "participants": [
+    {
+     "name": "anouk",
+     "role": "exec",
+     "voice": "chatty, anecdotal, thinks out loud"
+    },
+    {
+     "name": "lena",
+     "role": "core_engineer",
+     "voice": "diplomatic, hedges, summarizes others"
+    },
+    {
+     "name": "otto",
+     "role": "core_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "yuki",
+     "role": "infra_lead",
+     "voice": "blunt, numbers-first, impatient with process"
+    },
+    {
+     "name": "bastian",
+     "role": "infra_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "mei",
+     "role": "infra_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "tara",
+     "role": "infra_engineer",
+     "voice": "diplomatic, hedges, summarizes others"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0018",
+     "statement": "Core freezes feature launches when monthly error budget consumption exceeds 85%.",
+     "speaker": "anouk"
+    },
+    {
+     "fact_id": "F-0040",
+     "statement": "Core API paths use kebab-case plurals versioned under /v2.",
+     "speaker": "anouk"
+    },
+    {
+     "fact_id": "F-0056",
+     "statement": "Felix prefers paging the secondary after ten minutes of Sev-2 silence.",
+     "speaker": "lena"
+    },
+    {
+     "fact_id": "F-0084",
+     "statement": "Aditi holds core office hours Monday through Thursday from 11am to 11:30am.",
+     "speaker": "anouk"
+    },
+    {
+     "fact_id": "F-0101",
+     "statement": "Core might start the freeze on Wednesday when on-call coverage is thin.",
+     "speaker": "tara"
+    },
+    {
+     "fact_id": "F-0104",
+     "statement": "Core requires a design doc for changes exceeding ten engineer-days.",
+     "speaker": "anouk"
+    },
+    {
+     "fact_id": "F-0107",
+     "statement": "Core might waive design docs under ten days when staffing is thin.",
+     "speaker": "yuki"
+    },
+    {
+     "fact_id": "F-0125",
+     "statement": "Anouk prefers emoji-free changelog lines in customer-facing release notes.",
+     "speaker": "bastian"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    120,
+    260
+   ]
+  },
+  {
+   "event_id": "E-0165",
+   "kind": "planning",
+   "surface": "team:core/planning",
+   "participants": [
+    {
+     "name": "aditi",
+     "role": "core_lead",
+     "voice": "chatty, anecdotal, thinks out loud"
+    },
+    {
+     "name": "lena",
+     "role": "core_engineer",
+     "voice": "diplomatic, hedges, summarizes others"
+    },
+    {
+     "name": "otto",
+     "role": "core_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "felix",
+     "role": "core_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0109",
+     "statement": "Enterprise contract redline guidance lives in the shared legal drive.",
+     "speaker": "lena"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    90,
+    200
+   ]
+  },
+  {
+   "event_id": "E-0166",
+   "kind": "chat",
+   "surface": "chat:core-eng",
+   "participants": [
+    {
+     "name": "felix",
+     "role": "core_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    },
+    {
+     "name": "otto",
+     "role": "core_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0115",
+     "statement": "Core might accept Slack summaries as notes when Notion is overloaded.",
+     "speaker": "felix"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    15,
+    70
+   ]
+  },
+  {
+   "event_id": "E-0169",
+   "kind": "planning",
+   "surface": "team:infra/planning",
+   "participants": [
+    {
+     "name": "bastian",
+     "role": "infra_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "tara",
+     "role": "infra_engineer",
+     "voice": "diplomatic, hedges, summarizes others"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0066",
+     "statement": "Retro action boards are linked from the core sprint dashboard.",
+     "speaker": "tara"
+    },
+    {
+     "fact_id": "F-0079",
+     "statement": "Core flagged checklist gaps on eight pull requests yesterday.",
+     "speaker": "tara"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    90,
+    200
+   ]
+  },
+  {
+   "event_id": "E-0172",
+   "kind": "chat",
+   "surface": "chat:infra-eng",
+   "participants": [
+    {
+     "name": "tara",
+     "role": "infra_engineer",
+     "voice": "diplomatic, hedges, summarizes others"
+    },
+    {
+     "name": "bastian",
+     "role": "infra_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "yuki",
+     "role": "infra_lead",
+     "voice": "blunt, numbers-first, impatient with process"
+    }
+   ],
+   "embed": [],
+   "canary": null,
+   "length_words": [
+    15,
+    70
+   ]
+  },
+  {
+   "event_id": "E-0176",
+   "kind": "chat",
+   "surface": "chat:core-eng",
+   "participants": [
+    {
+     "name": "lena",
+     "role": "core_engineer",
+     "voice": "diplomatic, hedges, summarizes others"
+    },
+    {
+     "name": "felix",
+     "role": "core_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0090",
+     "statement": "Aditi prefers tagging retro owners in Slack within one day.",
+     "speaker": "felix"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    15,
+    70
+   ]
+  },
+  {
+   "event_id": "E-0185",
+   "kind": "retro",
+   "surface": "team:core/retro",
+   "participants": [
+    {
+     "name": "lena",
+     "role": "core_engineer",
+     "voice": "diplomatic, hedges, summarizes others"
+    },
+    {
+     "name": "otto",
+     "role": "core_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "felix",
+     "role": "core_engineer",
+     "voice": "blunt, numbers-first, impatient with process"
+    }
+   ],
+   "embed": [],
+   "canary": null,
+   "length_words": [
+    80,
+    180
+   ]
+  },
+  {
+   "event_id": "E-0189",
+   "kind": "retro",
+   "surface": "team:infra/retro",
+   "participants": [
+    {
+     "name": "yuki",
+     "role": "infra_lead",
+     "voice": "blunt, numbers-first, impatient with process"
+    },
+    {
+     "name": "bastian",
+     "role": "infra_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "mei",
+     "role": "infra_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "tara",
+     "role": "infra_engineer",
+     "voice": "diplomatic, hedges, summarizes others"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0100",
+     "statement": "Core cleared two personal-data launches through security review last week.",
+     "speaker": "yuki"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    80,
+    180
+   ]
+  },
+  {
+   "event_id": "E-0190",
+   "kind": "chat",
+   "surface": "chat:infra-eng",
+   "participants": [
+    {
+     "name": "tara",
+     "role": "infra_engineer",
+     "voice": "diplomatic, hedges, summarizes others"
+    },
+    {
+     "name": "yuki",
+     "role": "infra_lead",
+     "voice": "blunt, numbers-first, impatient with process"
+    },
+    {
+     "name": "bastian",
+     "role": "infra_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0094",
+     "statement": "Feature flag retirement steps are outlined in the experiment playbook.",
+     "speaker": "tara"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    15,
+    70
+   ]
+  },
+  {
+   "event_id": "E-0192",
+   "kind": "chat",
+   "surface": "chat:infra-eng",
+   "participants": [
+    {
+     "name": "mei",
+     "role": "infra_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "yuki",
+     "role": "infra_lead",
+     "voice": "blunt, numbers-first, impatient with process"
+    },
+    {
+     "name": "tara",
+     "role": "infra_engineer",
+     "voice": "diplomatic, hedges, summarizes others"
+    }
+   ],
+   "embed": [],
+   "canary": null,
+   "length_words": [
+    15,
+    70
+   ]
+  },
+  {
+   "event_id": "E-0200",
+   "kind": "chat",
+   "surface": "chat:infra-eng",
+   "participants": [
+    {
+     "name": "bastian",
+     "role": "infra_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "tara",
+     "role": "infra_engineer",
+     "voice": "diplomatic, hedges, summarizes others"
+    },
+    {
+     "name": "yuki",
+     "role": "infra_lead",
+     "voice": "blunt, numbers-first, impatient with process"
+    }
+   ],
+   "embed": [],
+   "canary": null,
+   "length_words": [
+    15,
+    70
+   ]
+  },
+  {
+   "event_id": "E-0201",
+   "kind": "chat",
+   "surface": "chat:infra-eng",
+   "participants": [
+    {
+     "name": "tara",
+     "role": "infra_engineer",
+     "voice": "diplomatic, hedges, summarizes others"
+    },
+    {
+     "name": "mei",
+     "role": "infra_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "bastian",
+     "role": "infra_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    },
+    {
+     "name": "yuki",
+     "role": "infra_lead",
+     "voice": "blunt, numbers-first, impatient with process"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0072",
+     "statement": "Felix prefers announcing freeze extensions in the release channel.",
+     "speaker": "mei"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    15,
+    70
+   ]
+  },
+  {
+   "event_id": "E-0204",
+   "kind": "dm",
+   "surface": "dm:yuki-bastian",
+   "participants": [
+    {
+     "name": "yuki",
+     "role": "infra_lead",
+     "voice": "blunt, numbers-first, impatient with process"
+    },
+    {
+     "name": "bastian",
+     "role": "infra_engineer",
+     "voice": "casual, emoji-light, asks questions"
+    }
+   ],
+   "embed": [
+    {
+     "fact_id": "F-0030",
+     "statement": "Otto prefers running bug triage before Wednesday standup.",
+     "speaker": "bastian"
+    }
+   ],
+   "canary": null,
+   "length_words": [
+    20,
+    80
+   ]
+  }
+ ]
+}

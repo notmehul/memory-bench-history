@@ -1,0 +1,18 @@
+Checking F-0021:
+Statement: "Partner escalations might wait forty-five minutes when only juniors are staffing."
+Statement words: 11 (after removing period)
+Paraphrase: "Partner escalations might wait forty-five minutes with only junior staff on rotation"
+Paraphrase words: 12
+Difference: 1 (OK, within ±2)
+
+Pattern check: \b[A-Z]{4,}\b means 4+ consecutive uppercase letters
+"Sev-1" contains "Sev" which is only 3 letters, so it's OK
+"camelCase" is not all caps, so it's OK
+
+Let me check which paraphrases might have issues:
+
+F-0063: "Growth public API paths rely on camelCase resource names"
+- "API" is 3 letters, OK
+- "camelCase" is mixed case, OK
+
+Actually, let me write out the logic to check each one systematically.
