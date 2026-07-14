@@ -93,6 +93,7 @@ The core object. Every field is required unless marked optional.
 | `explicitness` | `stated` (verbatim in one event) \| `implied` (inferable from one event) \| `distributed` (requires composing ≥2 events, all listed in `evidence_events`) |
 | `decay_class` | `durable` (survives author departure) \| `role_bound` (decays if author leaves/changes role) \| `time_bound` (has `valid_until_event`) |
 | `distractor` | `true` for plausible facts that are never probed; fixed ratio per org (see dataset plan). Distractors still get full coordinates so near-miss distractors can be constructed by single-attribute perturbation |
+| `distractor_kind` | optional, on distractors only: `plain` \| `near_miss_expired` \| `near_miss_other_scope` \| `near_miss_lower_capacity`. Structural marker so tooling never infers distractor identity from prose |
 | `counterfactual` | present iff any probe targets this fact; the twin ledger substitutes `canonical` with this variant (see probe spec) |
 
 ### Type-specific update semantics (normative)

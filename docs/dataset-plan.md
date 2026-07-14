@@ -48,6 +48,16 @@ has ≥1 planned probe and a counterfactual; `B` computes without ambiguity warn
 every event index; archetype instances interleave (no contiguous blocks — measured by
 a dispersion statistic over evidence-event indices).
 
+> **G1 PASSED 2026-07-14.** Seeds 1–5 (`datasets/dev/`): 204 events, 120 facts
+> (48 probed / 72 distractors / 24 near-misses), 54 probe plans, 100% instance
+> interleave each. G1 also cross-checks the planner against the belief oracle
+> (probe targets ∈ B at probe time; A4 winners match `resolve_precedence`).
+> Seed-1 canonicals realized to prose by cursor agent via a template→prose map
+> (`realization-map.json`), accepted after `check_realization` (only canonicals
+> changed vs. deterministic regeneration; uniqueness; counterfactual difference).
+> Two planner bugs caught by gates: missing counterfactuals on probed chain links,
+> and shared counterfactual templates across A4/A7 facts (now variant-keyed).
+
 ## Phase 2 — Event realization *(week 2–4)*
 
 LLM-rendered naturalistic events from the fact plan.
