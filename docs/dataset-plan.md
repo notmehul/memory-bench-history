@@ -80,17 +80,20 @@ given 20 event excerpts (10 embedding probed facts, 10 distractor-only), a human
 reviewer cannot beat 65% accuracy identifying which are probed (salience is truly
 flat); one full org read-through by a human confirms narrative coherence.
 
-> **G2 status 2026-07-14: seed 1 complete, seeds 2–5 pending; human checks pending.**
-> Seed-1 base + twin streams rendered and STREAM LINT green (salience permutation
-> tests p=0.44–0.96, noise floor 85%, round-trip/visibility/canaries clean). An
-> adversarial *machine* blinded rater scored 8/20 (40%, below the 65% bar); the
-> spec's human blinded check and full read-through remain to be run. LLM
-> consistency pass over all 204 events vs. all 120 facts: zero contradictions,
-> filler inert. First render pass FAILED salience lint (probed facts clustered
-> in meetings, distractors in chats — p=0.002 position skew); fixed structurally
-> in the planner by mirroring distractor placement over probed event kinds, then
-> re-rendered only the 103 changed events. Seeds 2–5 need canonical realization
-> + rendering via the same pipeline before G2 can close.
+> **G2 status 2026-07-15: all machine checks green on 5 seeds + 5 twins; human
+> checks pending.** All ten streams (bases + counterfactual twins, 204 events
+> each) pass the release-blocking lint under the post-audit pipeline: marker
+> round-trip, visibility, noise floor 83–87%, salience permutation tests
+> non-significant on every stream. Machine blinded raters: seed 1 scored 8/20
+> (40%), seed 3 result recorded in CHANGELOG. LLM consistency pass (seed 1):
+> zero contradictions. The salience arms race yielded four structural
+> mechanisms now baked into the pipeline: distractor placement mirrors probed
+> event kinds; canonical + counterfactual prose is length-balanced
+> (counterfactuals pinned to their base's exact word count); span positions
+> are enforced mechanically to class-stratified band centers in char space
+> (extract-all-then-reinsert, class-blind ordering); paraphrases constrained
+> to ±2 words of their statement. Remaining for formal G2: the spec's HUMAN
+> blinded spot-check and one full human read-through per released org.
 
 ## Phase 3 — Probe construction + validity screening *(week 4–5)*
 
