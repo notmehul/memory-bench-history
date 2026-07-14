@@ -11,8 +11,11 @@ Semantics fixed here (normative; the spec defers these details to this module):
 - Shared-surface witnessing does not require presence at publish time: a
   principal entitled to a surface at t witnesses all prior events on it
   (channel history is readable). Direct witnessing requires participation.
-- Sealing (A9): after its owner leaves, a private personal-tier fact is
-  excluded from every other principal's B and B_hist. The owner retains it.
+- Departed principals have empty belief states: once a persona leaves, their
+  agent is decommissioned and B(pid, t) = ∅ — the benchmark never probes
+  them. Sealing (A9) governs everyone else: after the owner leaves, a
+  private personal-tier fact is excluded from every OTHER principal's B and
+  B_hist.
 """
 
 from __future__ import annotations
@@ -263,7 +266,7 @@ def resolve_precedence(
         def matches(f: Fact) -> bool:
             if f.tier != want_tier:
                 return False
-            return frame.ref is None or f.scope_ref == frame.ref or f.scope_ref == "org"
+            return frame.ref is None or f.scope_ref == frame.ref
 
         matching = [f for f in facts if matches(f)]
         if matching:

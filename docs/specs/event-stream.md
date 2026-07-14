@@ -20,11 +20,17 @@ reaches the SUT; the annotated version is private to the scoring pipeline.
     "embeds_facts": [
       { "fact_id": "F-0042", "span": [214, 388], "rendering": "paraphrase" }
     ],
-    "embeds_distractors": ["F-0091"],
     "canaries": []
   }
 }
 ```
+
+> **Spec change v0.2 (2026-07-14, G2 audit):** `embeds_facts` carries spans for
+> ALL embedded facts — probed and distractor alike. The earlier draft's
+> separate `embeds_distractors` id-list is removed: the salience lint needs
+> distractor spans (it compares probed vs. distractor span statistics), and
+> distractor status already lives in the ledger's `distractor` flag — a
+> second copy in the stream invited drift.
 
 `_annotations` is removed in the SUT-facing stream. `span` = character offsets of the
 fact's expression (for salience linting and audit, not string-match scoring).

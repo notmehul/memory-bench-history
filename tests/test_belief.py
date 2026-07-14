@@ -266,3 +266,30 @@ def test_belief_is_monotone_before_any_lifecycle_event():
         hist = belief_hist(ledger, index, "persona:jules", t)
         assert prev_hist <= hist
         prev_hist = hist
+
+
+# ---------------------------------------------------- validator hardening
+
+def test_validator_rejects_tier_scope_mismatch():
+    import json
+
+    from membench.ledger import LedgerValidationError, load_event_index, load_ledger
+    from membench.ledger import validate as validate_ledger
+    data = json.loads((FIXTURES / "supersession.json").read_text())
+    data["facts"][0]["tier"] = "team"  # scope_ref stays "org" -> mismatch
+    with pytest.raises(LedgerValidationError, match="does not match"):
+        validate_ledger(load_ledger(data), load_event_index(data))
+
+
+def test_validator_rejects_lower_tier_supersession():
+    import json
+
+    from membench.ledger import LedgerValidationError, load_event_index, load_ledger
+    from membench.ledger import validate as validate_ledger
+    data = json.loads((FIXTURES / "supersession.json").read_text())
+    # make F-302 a team-tier fact superseding org-tier F-301
+    f302 = next(f for f in data["facts"] if f["fact_id"] == "F-302")
+    f302["tier"] = "team"
+    f302["scope_ref"] = "team:ops"
+    with pytest.raises(LedgerValidationError, match="lower tier"):
+        validate_ledger(load_ledger(data), load_event_index(data))

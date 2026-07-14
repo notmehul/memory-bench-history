@@ -35,6 +35,17 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning: Se
 - Fact planner mirrors distractor placement over probed event kinds; the
   first render pass failed the salience lint on position skew (p=0.002)
   because probed facts concentrated in meetings and distractors in chats.
+- Deep-audit hardening (two independent code reviews + clean-room re-verify):
+  validator enforces tier↔scope_ref pairing and supersession tier ordering;
+  `B(departed) = ∅` documented as normative; rule-2 dead clause removed;
+  G1 gains a full belief-state sweep, a same-topic co-valid ambiguity scan,
+  and an honest interleaving statistic (adjacent-evidence mixing +
+  no-contiguous-archetype-blocks) replacing the always-passing window check;
+  expired near-misses must lapse before their topic's first real fact
+  (the old placement created unresolvable precedence ties); `topic` is now
+  an explicit ledger field; annotations carry `rendering`; `offsets_from`
+  fails loudly on collapse; Contract #2 v0.2 drops `embeds_distractors`
+  (salience lint needs distractor spans; ledger owns distractor status).
 
 ### Fixed
 - Ledger spec §5: `distributed` facts now require all evidence events witnessed

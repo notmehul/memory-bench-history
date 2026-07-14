@@ -289,18 +289,33 @@ def validate(ledger: Ledger, index: EventIndex) -> None:
                     f"{new.fact_id}.supersedes is {new.temporal.supersedes!r}"
                 )
 
-    # scope_ref must resolve
+    # scope_ref must resolve AND agree with the fact's tier
+    tier_scope_ok = {
+        "personal": lambda r: r in ledger.personas,
+        "team": lambda r: r in ledger.teams,
+        "project": lambda r: r in ledger.projects,
+        "org": lambda r: r == "org",
+        "external": lambda r: r.startswith("external:"),
+    }
     for f in ledger.facts.values():
-        ref = f.scope_ref
-        known = (
-            ref == "org"
-            or ref in ledger.personas
-            or ref in ledger.teams
-            or ref in ledger.projects
-            or ref.startswith("external:")
-        )
-        if not known:
-            errors.append(f"{f.fact_id}: unresolvable scope_ref {ref!r}")
+        check = tier_scope_ok.get(f.tier)
+        if check and not check(f.scope_ref):
+            errors.append(
+                f"{f.fact_id}: scope_ref {f.scope_ref!r} does not match "
+                f"tier {f.tier!r}"
+            )
+
+    # supersession may only act at the superseded fact's tier or above
+    # (spec §3: a decision supersedes conflicting facts at its tier and below)
+    tier_rank = {"personal": 0, "external": 1, "team": 1, "project": 2, "org": 3}
+    for f in ledger.facts.values():
+        if f.temporal.supersedes:
+            old = ledger.facts.get(f.temporal.supersedes)
+            if old and tier_rank[f.tier] < tier_rank[old.tier]:
+                errors.append(
+                    f"{f.fact_id} ({f.tier}) cannot supersede "
+                    f"{old.fact_id} ({old.tier}): lower tier"
+                )
 
     if errors:
         raise LedgerValidationError(

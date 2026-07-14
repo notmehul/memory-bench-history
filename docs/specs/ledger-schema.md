@@ -151,6 +151,19 @@ The reference implementation of `B` is pure-functional over (ledger, event index
 is the single scoring oracle. Any ambiguity discovered in `B` during dataset
 construction is a spec bug and blocks release (see dataset plan, gate G2).
 
+## 5b. Additional normative rules (added after G0/G1 audits)
+
+- **Departed principals**: `B(p, t) = ∅` once `p.leaves_at ≤ t`. A departed
+  persona's agent is decommissioned; the benchmark never probes them. Sealing
+  and decay rules exist for the *remaining* principals' belief states.
+- **Tier ↔ scope_ref pairing** (validator-enforced): `personal` → persona id,
+  `team` → team id, `project` → project id, `org` → `"org"`, `external` →
+  `external:*`. Mismatches are schema errors.
+- **Supersession tier ordering** (validator-enforced): a fact may only
+  supersede a fact at its own tier or below (`org > project > team =
+  external > personal`); a team fact silently overriding an org decision is
+  a schema error, per §3's "at its tier and below".
+
 ## 6. Design invariants
 
 - Every non-distractor fact is targeted by ≥1 probe; every probed fact has a
