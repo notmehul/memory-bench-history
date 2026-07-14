@@ -1,0 +1,211 @@
+{
+  "org_id": "fix-acl",
+  "entities": {
+    "personas": [
+      {
+        "id": "persona:omar",
+        "role": "executive",
+        "authority_level": 4,
+        "teams": [],
+        "joins_at": null,
+        "leaves_at": null,
+        "role_changes": []
+      },
+      {
+        "id": "persona:pia",
+        "role": "sales_lead",
+        "authority_level": 3,
+        "teams": ["team:sales"],
+        "joins_at": null,
+        "leaves_at": null,
+        "role_changes": []
+      },
+      {
+        "id": "persona:quinn",
+        "role": "account_executive",
+        "authority_level": 2,
+        "teams": ["team:sales"],
+        "joins_at": null,
+        "leaves_at": null,
+        "role_changes": []
+      },
+      {
+        "id": "persona:ravi",
+        "role": "legal_lead",
+        "authority_level": 3,
+        "teams": ["team:legal"],
+        "joins_at": null,
+        "leaves_at": null,
+        "role_changes": []
+      }
+    ],
+    "teams": [
+      {
+        "id": "team:sales",
+        "members": ["persona:pia", "persona:quinn"]
+      },
+      {
+        "id": "team:legal",
+        "members": ["persona:ravi"]
+      }
+    ],
+    "projects": [
+      {
+        "id": "project:renewal",
+        "teams": ["team:sales", "team:legal"]
+      }
+    ]
+  },
+  "events": [
+    {
+      "event_id": "E-001",
+      "surface": "org/all-hands",
+      "visibility": "org_public",
+      "team": null,
+      "participants": ["persona:omar", "persona:pia", "persona:quinn", "persona:ravi"]
+    },
+    {
+      "event_id": "E-002",
+      "surface": "chat:general",
+      "visibility": "org_public",
+      "team": null,
+      "participants": ["persona:pia", "persona:ravi"]
+    },
+    {
+      "event_id": "E-003",
+      "surface": "org/all-hands",
+      "visibility": "org_public",
+      "team": null,
+      "participants": ["persona:omar", "persona:pia", "persona:quinn"]
+    },
+    {
+      "event_id": "E-004",
+      "surface": "dm:omar-pia",
+      "visibility": "private",
+      "team": null,
+      "participants": ["persona:omar", "persona:pia"]
+    },
+    {
+      "event_id": "E-005",
+      "surface": "team:sales/pipeline",
+      "visibility": "team_confidential",
+      "team": "team:sales",
+      "participants": ["persona:pia", "persona:quinn"]
+    },
+    {
+      "event_id": "E-006",
+      "surface": "chat:general",
+      "visibility": "org_public",
+      "team": null,
+      "participants": ["persona:omar", "persona:ravi"]
+    },
+    {
+      "event_id": "E-007",
+      "surface": "team:legal/review",
+      "visibility": "team_confidential",
+      "team": "team:legal",
+      "participants": ["persona:ravi"]
+    },
+    {
+      "event_id": "E-008",
+      "surface": "org/all-hands",
+      "visibility": "org_public",
+      "team": null,
+      "participants": ["persona:omar", "persona:pia", "persona:quinn", "persona:ravi"]
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "F-501",
+      "canonical": "The Northwind enterprise renewal target is locked at $2.4M ACV for this quarter.",
+      "type": "commitment",
+      "tier": "org",
+      "scope_ref": "org",
+      "visibility": "need_to_know",
+      "visibility_acl": ["persona:omar", "persona:pia"],
+      "author": "persona:omar",
+      "capacity": "formal_decision",
+      "temporal": {
+        "valid_from_event": "E-001",
+        "valid_until_event": null,
+        "supersedes": null,
+        "superseded_by": null,
+        "decay_class": "durable"
+      },
+      "explicitness": "stated",
+      "evidence_events": ["E-001"],
+      "distractor": false,
+      "archetype": null,
+      "archetype_instance": null
+    },
+    {
+      "fact_id": "F-502",
+      "canonical": "Legal must redline any renewal MSA that grants perpetual data-processing rights to the customer.",
+      "type": "working_rule",
+      "tier": "org",
+      "scope_ref": "org",
+      "visibility": "need_to_know",
+      "visibility_acl": ["team:legal"],
+      "author": "persona:ravi",
+      "capacity": "directive",
+      "temporal": {
+        "valid_from_event": "E-002",
+        "valid_until_event": null,
+        "supersedes": null,
+        "superseded_by": null,
+        "decay_class": "durable"
+      },
+      "explicitness": "stated",
+      "evidence_events": ["E-002"],
+      "distractor": false,
+      "archetype": null,
+      "archetype_instance": null
+    },
+    {
+      "fact_id": "F-503",
+      "canonical": "Project Renewal will use a joint sales-legal negotiation war room for any deal above $500K.",
+      "type": "decision",
+      "tier": "project",
+      "scope_ref": "project:renewal",
+      "visibility": "team_confidential",
+      "visibility_acl": null,
+      "author": "persona:pia",
+      "capacity": "formal_decision",
+      "temporal": {
+        "valid_from_event": "E-003",
+        "valid_until_event": null,
+        "supersedes": null,
+        "superseded_by": null,
+        "decay_class": "durable"
+      },
+      "explicitness": "stated",
+      "evidence_events": ["E-003"],
+      "distractor": false,
+      "archetype": null,
+      "archetype_instance": null
+    },
+    {
+      "fact_id": "F-504",
+      "canonical": "Omar prefers to personally approve any discount beyond fifteen percent on enterprise renewals.",
+      "type": "preference",
+      "tier": "personal",
+      "scope_ref": "persona:omar",
+      "visibility": "private",
+      "visibility_acl": null,
+      "author": "persona:omar",
+      "capacity": "opinion",
+      "temporal": {
+        "valid_from_event": "E-004",
+        "valid_until_event": null,
+        "supersedes": null,
+        "superseded_by": null,
+        "decay_class": "durable"
+      },
+      "explicitness": "stated",
+      "evidence_events": ["E-004"],
+      "distractor": false,
+      "archetype": null,
+      "archetype_instance": null
+    }
+  ]
+}

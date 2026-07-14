@@ -1,0 +1,207 @@
+{
+  "org_id": "fix-lifecycle",
+  "entities": {
+    "personas": [
+      {
+        "id": "persona:liam",
+        "role": "engineering_lead",
+        "authority_level": 3,
+        "teams": ["team:infra"],
+        "joins_at": null,
+        "leaves_at": null,
+        "role_changes": [{"at_event": "E-006", "new_role": "director"}]
+      },
+      {
+        "id": "persona:mona",
+        "role": "infrastructure_engineer",
+        "authority_level": 2,
+        "teams": ["team:infra"],
+        "joins_at": null,
+        "leaves_at": "E-008",
+        "role_changes": []
+      },
+      {
+        "id": "persona:noor",
+        "role": "sre",
+        "authority_level": 2,
+        "teams": ["team:infra"],
+        "joins_at": null,
+        "leaves_at": null,
+        "role_changes": []
+      }
+    ],
+    "teams": [
+      {
+        "id": "team:infra",
+        "members": ["persona:liam", "persona:mona", "persona:noor"]
+      }
+    ],
+    "projects": []
+  },
+  "events": [
+    {
+      "event_id": "E-001",
+      "surface": "team:infra/standup",
+      "visibility": "team_confidential",
+      "team": "team:infra",
+      "participants": ["persona:liam", "persona:mona", "persona:noor"]
+    },
+    {
+      "event_id": "E-002",
+      "surface": "chat:infra-eng",
+      "visibility": "team_confidential",
+      "team": "team:infra",
+      "participants": ["persona:liam", "persona:mona", "persona:noor"]
+    },
+    {
+      "event_id": "E-003",
+      "surface": "team:infra/planning",
+      "visibility": "team_confidential",
+      "team": "team:infra",
+      "participants": ["persona:liam", "persona:mona", "persona:noor"]
+    },
+    {
+      "event_id": "E-004",
+      "surface": "team:infra/retro",
+      "visibility": "team_confidential",
+      "team": "team:infra",
+      "participants": ["persona:liam", "persona:mona", "persona:noor"]
+    },
+    {
+      "event_id": "E-005",
+      "surface": "chat:infra-eng",
+      "visibility": "team_confidential",
+      "team": "team:infra",
+      "participants": ["persona:liam", "persona:mona", "persona:noor"]
+    },
+    {
+      "event_id": "E-006",
+      "surface": "team:infra/standup",
+      "visibility": "team_confidential",
+      "team": "team:infra",
+      "participants": ["persona:liam", "persona:mona", "persona:noor"]
+    },
+    {
+      "event_id": "E-007",
+      "surface": "team:infra/planning",
+      "visibility": "team_confidential",
+      "team": "team:infra",
+      "participants": ["persona:liam", "persona:mona", "persona:noor"]
+    },
+    {
+      "event_id": "E-008",
+      "surface": "chat:infra-eng",
+      "visibility": "team_confidential",
+      "team": "team:infra",
+      "participants": ["persona:liam", "persona:noor"]
+    },
+    {
+      "event_id": "E-009",
+      "surface": "team:infra/standup",
+      "visibility": "team_confidential",
+      "team": "team:infra",
+      "participants": ["persona:liam", "persona:noor"]
+    },
+    {
+      "event_id": "E-010",
+      "surface": "team:infra/retro",
+      "visibility": "team_confidential",
+      "team": "team:infra",
+      "participants": ["persona:liam", "persona:noor"]
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "F-401",
+      "canonical": "Infra will pause all non-urgent cluster upgrades until the capacity audit completes.",
+      "type": "commitment",
+      "tier": "team",
+      "scope_ref": "team:infra",
+      "visibility": "team_confidential",
+      "visibility_acl": null,
+      "author": "persona:liam",
+      "capacity": "directive",
+      "temporal": {
+        "valid_from_event": "E-001",
+        "valid_until_event": "E-005",
+        "supersedes": null,
+        "superseded_by": null,
+        "decay_class": "time_bound"
+      },
+      "explicitness": "stated",
+      "evidence_events": ["E-001"],
+      "distractor": false,
+      "archetype": null,
+      "archetype_instance": null
+    },
+    {
+      "fact_id": "F-402",
+      "canonical": "Liam believes nightly blue-green deploys are safer than rolling updates for stateful services.",
+      "type": "preference",
+      "tier": "team",
+      "scope_ref": "team:infra",
+      "visibility": "team_confidential",
+      "visibility_acl": null,
+      "author": "persona:liam",
+      "capacity": "opinion",
+      "temporal": {
+        "valid_from_event": "E-002",
+        "valid_until_event": null,
+        "supersedes": null,
+        "superseded_by": null,
+        "decay_class": "role_bound"
+      },
+      "explicitness": "stated",
+      "evidence_events": ["E-002"],
+      "distractor": false,
+      "archetype": null,
+      "archetype_instance": null
+    },
+    {
+      "fact_id": "F-403",
+      "canonical": "Database failover drills must be run every Monday before noon Pacific.",
+      "type": "procedure",
+      "tier": "team",
+      "scope_ref": "team:infra",
+      "visibility": "team_confidential",
+      "visibility_acl": null,
+      "author": "persona:mona",
+      "capacity": "directive",
+      "temporal": {
+        "valid_from_event": "E-003",
+        "valid_until_event": null,
+        "supersedes": null,
+        "superseded_by": null,
+        "decay_class": "role_bound"
+      },
+      "explicitness": "stated",
+      "evidence_events": ["E-003"],
+      "distractor": false,
+      "archetype": null,
+      "archetype_instance": null
+    },
+    {
+      "fact_id": "F-404",
+      "canonical": "All production Terraform changes require a paired review from two infra engineers.",
+      "type": "decision",
+      "tier": "team",
+      "scope_ref": "team:infra",
+      "visibility": "team_confidential",
+      "visibility_acl": null,
+      "author": "persona:mona",
+      "capacity": "formal_decision",
+      "temporal": {
+        "valid_from_event": "E-004",
+        "valid_until_event": null,
+        "supersedes": null,
+        "superseded_by": null,
+        "decay_class": "durable"
+      },
+      "explicitness": "stated",
+      "evidence_events": ["E-004"],
+      "distractor": false,
+      "archetype": null,
+      "archetype_instance": null
+    }
+  ]
+}

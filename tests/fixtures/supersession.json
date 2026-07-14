@@ -1,0 +1,191 @@
+{
+  "org_id": "fix-supersession",
+  "entities": {
+    "personas": [
+      {
+        "id": "persona:jules",
+        "role": "ops_lead",
+        "authority_level": 3,
+        "teams": ["team:ops"],
+        "joins_at": null,
+        "leaves_at": null,
+        "role_changes": []
+      },
+      {
+        "id": "persona:kira",
+        "role": "ops_engineer",
+        "authority_level": 2,
+        "teams": ["team:ops"],
+        "joins_at": null,
+        "leaves_at": null,
+        "role_changes": []
+      }
+    ],
+    "teams": [
+      {
+        "id": "team:ops",
+        "members": ["persona:jules", "persona:kira"]
+      }
+    ],
+    "projects": []
+  },
+  "events": [
+    {
+      "event_id": "E-001",
+      "surface": "org/all-hands",
+      "visibility": "org_public",
+      "team": null,
+      "participants": ["persona:jules", "persona:kira"]
+    },
+    {
+      "event_id": "E-002",
+      "surface": "chat:general",
+      "visibility": "org_public",
+      "team": null,
+      "participants": ["persona:jules", "persona:kira"]
+    },
+    {
+      "event_id": "E-003",
+      "surface": "org/all-hands",
+      "visibility": "org_public",
+      "team": null,
+      "participants": ["persona:jules", "persona:kira"]
+    },
+    {
+      "event_id": "E-004",
+      "surface": "chat:general",
+      "visibility": "org_public",
+      "team": null,
+      "participants": ["persona:jules", "persona:kira"]
+    },
+    {
+      "event_id": "E-005",
+      "surface": "org/all-hands",
+      "visibility": "org_public",
+      "team": null,
+      "participants": ["persona:jules", "persona:kira"]
+    },
+    {
+      "event_id": "E-006",
+      "surface": "chat:general",
+      "visibility": "org_public",
+      "team": null,
+      "participants": ["persona:jules", "persona:kira"]
+    },
+    {
+      "event_id": "E-007",
+      "surface": "org/all-hands",
+      "visibility": "org_public",
+      "team": null,
+      "participants": ["persona:jules", "persona:kira"]
+    },
+    {
+      "event_id": "E-008",
+      "surface": "chat:general",
+      "visibility": "org_public",
+      "team": null,
+      "participants": ["persona:jules", "persona:kira"]
+    },
+    {
+      "event_id": "E-009",
+      "surface": "org/all-hands",
+      "visibility": "org_public",
+      "team": null,
+      "participants": ["persona:jules", "persona:kira"]
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "F-301",
+      "canonical": "Standard annual licenses are priced at $40 per seat.",
+      "type": "decision",
+      "tier": "org",
+      "scope_ref": "org",
+      "visibility": "org_public",
+      "visibility_acl": null,
+      "author": "persona:jules",
+      "capacity": "formal_decision",
+      "temporal": {
+        "valid_from_event": "E-001",
+        "valid_until_event": null,
+        "supersedes": null,
+        "superseded_by": "F-302",
+        "decay_class": "durable"
+      },
+      "explicitness": "stated",
+      "evidence_events": ["E-001"],
+      "distractor": false,
+      "archetype": null,
+      "archetype_instance": null
+    },
+    {
+      "fact_id": "F-302",
+      "canonical": "Standard annual licenses are priced at $48 per seat.",
+      "type": "decision",
+      "tier": "org",
+      "scope_ref": "org",
+      "visibility": "org_public",
+      "visibility_acl": null,
+      "author": "persona:jules",
+      "capacity": "formal_decision",
+      "temporal": {
+        "valid_from_event": "E-004",
+        "valid_until_event": null,
+        "supersedes": "F-301",
+        "superseded_by": "F-303",
+        "decay_class": "durable"
+      },
+      "explicitness": "stated",
+      "evidence_events": ["E-004"],
+      "distractor": false,
+      "archetype": null,
+      "archetype_instance": null
+    },
+    {
+      "fact_id": "F-303",
+      "canonical": "Standard annual licenses are priced at $52 per seat.",
+      "type": "decision",
+      "tier": "org",
+      "scope_ref": "org",
+      "visibility": "org_public",
+      "visibility_acl": null,
+      "author": "persona:jules",
+      "capacity": "formal_decision",
+      "temporal": {
+        "valid_from_event": "E-007",
+        "valid_until_event": null,
+        "supersedes": "F-302",
+        "superseded_by": null,
+        "decay_class": "durable"
+      },
+      "explicitness": "stated",
+      "evidence_events": ["E-007"],
+      "distractor": false,
+      "archetype": null,
+      "archetype_instance": null
+    },
+    {
+      "fact_id": "F-304",
+      "canonical": "Vendor invoice payment terms remain net-30 across all approved suppliers.",
+      "type": "reference",
+      "tier": "org",
+      "scope_ref": "org",
+      "visibility": "org_public",
+      "visibility_acl": null,
+      "author": "persona:kira",
+      "capacity": "directive",
+      "temporal": {
+        "valid_from_event": "E-002",
+        "valid_until_event": null,
+        "supersedes": null,
+        "superseded_by": null,
+        "decay_class": "durable"
+      },
+      "explicitness": "stated",
+      "evidence_events": ["E-002"],
+      "distractor": false,
+      "archetype": null,
+      "archetype_instance": null
+    }
+  ]
+}

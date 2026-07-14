@@ -1,0 +1,177 @@
+{
+  "org_id": "fix-sealing",
+  "entities": {
+    "personas": [
+      {
+        "id": "persona:sara",
+        "role": "data_lead",
+        "authority_level": 3,
+        "teams": ["team:data"],
+        "joins_at": null,
+        "leaves_at": "E-006",
+        "role_changes": []
+      },
+      {
+        "id": "persona:tom",
+        "role": "data_engineer",
+        "authority_level": 2,
+        "teams": ["team:data"],
+        "joins_at": null,
+        "leaves_at": null,
+        "role_changes": []
+      },
+      {
+        "id": "persona:uma",
+        "role": "analytics_engineer",
+        "authority_level": 2,
+        "teams": ["team:data"],
+        "joins_at": null,
+        "leaves_at": null,
+        "role_changes": []
+      }
+    ],
+    "teams": [
+      {
+        "id": "team:data",
+        "members": ["persona:sara", "persona:tom", "persona:uma"]
+      }
+    ],
+    "projects": []
+  },
+  "events": [
+    {
+      "event_id": "E-001",
+      "surface": "team:data/standup",
+      "visibility": "team_confidential",
+      "team": "team:data",
+      "participants": ["persona:sara", "persona:tom", "persona:uma"]
+    },
+    {
+      "event_id": "E-002",
+      "surface": "dm:sara-tom",
+      "visibility": "private",
+      "team": null,
+      "participants": ["persona:sara", "persona:tom"]
+    },
+    {
+      "event_id": "E-003",
+      "surface": "team:data/planning",
+      "visibility": "team_confidential",
+      "team": "team:data",
+      "participants": ["persona:sara", "persona:tom", "persona:uma"]
+    },
+    {
+      "event_id": "E-004",
+      "surface": "chat:data-eng",
+      "visibility": "team_confidential",
+      "team": "team:data",
+      "participants": ["persona:sara", "persona:tom", "persona:uma"]
+    },
+    {
+      "event_id": "E-005",
+      "surface": "team:data/retro",
+      "visibility": "team_confidential",
+      "team": "team:data",
+      "participants": ["persona:sara", "persona:tom", "persona:uma"]
+    },
+    {
+      "event_id": "E-006",
+      "surface": "team:data/standup",
+      "visibility": "team_confidential",
+      "team": "team:data",
+      "participants": ["persona:tom", "persona:uma"]
+    },
+    {
+      "event_id": "E-007",
+      "surface": "chat:data-eng",
+      "visibility": "team_confidential",
+      "team": "team:data",
+      "participants": ["persona:tom", "persona:uma"]
+    },
+    {
+      "event_id": "E-008",
+      "surface": "team:data/planning",
+      "visibility": "team_confidential",
+      "team": "team:data",
+      "participants": ["persona:tom", "persona:uma"]
+    },
+    {
+      "event_id": "E-009",
+      "surface": "team:data/retro",
+      "visibility": "team_confidential",
+      "team": "team:data",
+      "participants": ["persona:tom", "persona:uma"]
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "F-601",
+      "canonical": "Sara prefers not to share draft churn model scores outside a direct one-on-one with Tom.",
+      "type": "preference",
+      "tier": "personal",
+      "scope_ref": "persona:sara",
+      "visibility": "private",
+      "visibility_acl": null,
+      "author": "persona:sara",
+      "capacity": "opinion",
+      "temporal": {
+        "valid_from_event": "E-002",
+        "valid_until_event": null,
+        "supersedes": null,
+        "superseded_by": null,
+        "decay_class": "durable"
+      },
+      "explicitness": "stated",
+      "evidence_events": ["E-002"],
+      "distractor": false,
+      "archetype": null,
+      "archetype_instance": null
+    },
+    {
+      "fact_id": "F-602",
+      "canonical": "All warehouse schema changes must land behind feature flags for at least one full business day.",
+      "type": "decision",
+      "tier": "team",
+      "scope_ref": "team:data",
+      "visibility": "team_confidential",
+      "visibility_acl": null,
+      "author": "persona:sara",
+      "capacity": "formal_decision",
+      "temporal": {
+        "valid_from_event": "E-003",
+        "valid_until_event": null,
+        "supersedes": null,
+        "superseded_by": null,
+        "decay_class": "durable"
+      },
+      "explicitness": "stated",
+      "evidence_events": ["E-003"],
+      "distractor": false,
+      "archetype": null,
+      "archetype_instance": null
+    },
+    {
+      "fact_id": "F-603",
+      "canonical": "Sara thinks dbt tests should block merges more aggressively than lint rules for analytics PRs.",
+      "type": "preference",
+      "tier": "team",
+      "scope_ref": "team:data",
+      "visibility": "team_confidential",
+      "visibility_acl": null,
+      "author": "persona:sara",
+      "capacity": "opinion",
+      "temporal": {
+        "valid_from_event": "E-004",
+        "valid_until_event": null,
+        "supersedes": null,
+        "superseded_by": null,
+        "decay_class": "role_bound"
+      },
+      "explicitness": "stated",
+      "evidence_events": ["E-004"],
+      "distractor": false,
+      "archetype": null,
+      "archetype_instance": null
+    }
+  ]
+}

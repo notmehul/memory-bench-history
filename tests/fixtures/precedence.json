@@ -1,0 +1,331 @@
+{
+  "org_id": "fix-precedence",
+  "entities": {
+    "personas": [
+      {
+        "id": "persona:fiona",
+        "role": "cto",
+        "authority_level": 4,
+        "teams": ["team:core"],
+        "joins_at": null,
+        "leaves_at": null,
+        "role_changes": []
+      },
+      {
+        "id": "persona:greg",
+        "role": "engineering_lead",
+        "authority_level": 3,
+        "teams": ["team:core"],
+        "joins_at": null,
+        "leaves_at": null,
+        "role_changes": []
+      },
+      {
+        "id": "persona:hana",
+        "role": "software_engineer",
+        "authority_level": 2,
+        "teams": ["team:core"],
+        "joins_at": null,
+        "leaves_at": null,
+        "role_changes": []
+      },
+      {
+        "id": "persona:ivan",
+        "role": "engineering_intern",
+        "authority_level": 1,
+        "teams": ["team:core"],
+        "joins_at": null,
+        "leaves_at": null,
+        "role_changes": []
+      }
+    ],
+    "teams": [
+      {
+        "id": "team:core",
+        "members": ["persona:fiona", "persona:greg", "persona:hana", "persona:ivan"]
+      }
+    ],
+    "projects": []
+  },
+  "events": [
+    {
+      "event_id": "E-001",
+      "surface": "team:core/architecture-review",
+      "visibility": "team_confidential",
+      "team": "team:core",
+      "participants": ["persona:fiona", "persona:greg", "persona:hana", "persona:ivan"]
+    },
+    {
+      "event_id": "E-002",
+      "surface": "chat:core-eng",
+      "visibility": "team_confidential",
+      "team": "team:core",
+      "participants": ["persona:fiona", "persona:greg", "persona:hana", "persona:ivan"]
+    },
+    {
+      "event_id": "E-003",
+      "surface": "org/all-hands",
+      "visibility": "org_public",
+      "team": null,
+      "participants": ["persona:fiona", "persona:greg", "persona:hana", "persona:ivan"]
+    },
+    {
+      "event_id": "E-004",
+      "surface": "team:core/standup",
+      "visibility": "team_confidential",
+      "team": "team:core",
+      "participants": ["persona:fiona", "persona:greg", "persona:hana", "persona:ivan"]
+    },
+    {
+      "event_id": "E-005",
+      "surface": "chat:core-eng",
+      "visibility": "team_confidential",
+      "team": "team:core",
+      "participants": ["persona:fiona", "persona:greg", "persona:hana", "persona:ivan"]
+    },
+    {
+      "event_id": "E-006",
+      "surface": "team:core/planning",
+      "visibility": "team_confidential",
+      "team": "team:core",
+      "participants": ["persona:fiona", "persona:greg", "persona:hana", "persona:ivan"]
+    },
+    {
+      "event_id": "E-007",
+      "surface": "team:core/retro",
+      "visibility": "team_confidential",
+      "team": "team:core",
+      "participants": ["persona:fiona", "persona:greg", "persona:hana", "persona:ivan"]
+    },
+    {
+      "event_id": "E-008",
+      "surface": "chat:core-eng",
+      "visibility": "team_confidential",
+      "team": "team:core",
+      "participants": ["persona:fiona", "persona:greg", "persona:hana", "persona:ivan"]
+    },
+    {
+      "event_id": "E-009",
+      "surface": "org/all-hands",
+      "visibility": "org_public",
+      "team": null,
+      "participants": ["persona:fiona", "persona:greg", "persona:hana", "persona:ivan"]
+    },
+    {
+      "event_id": "E-010",
+      "surface": "team:core/standup",
+      "visibility": "team_confidential",
+      "team": "team:core",
+      "participants": ["persona:fiona", "persona:greg", "persona:hana", "persona:ivan"]
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "F-201",
+      "canonical": "All public API response payloads must use camelCase field names going forward.",
+      "type": "decision",
+      "tier": "org",
+      "scope_ref": "org",
+      "visibility": "org_public",
+      "visibility_acl": null,
+      "author": "persona:fiona",
+      "capacity": "formal_decision",
+      "temporal": {
+        "valid_from_event": "E-001",
+        "valid_until_event": null,
+        "supersedes": null,
+        "superseded_by": null,
+        "decay_class": "durable"
+      },
+      "explicitness": "stated",
+      "evidence_events": ["E-001"],
+      "distractor": false,
+      "archetype": null,
+      "archetype_instance": null
+    },
+    {
+      "fact_id": "F-202",
+      "canonical": "Core service response payloads should continue using snake_case until the Q4 migration completes.",
+      "type": "preference",
+      "tier": "team",
+      "scope_ref": "team:core",
+      "visibility": "org_public",
+      "visibility_acl": null,
+      "author": "persona:greg",
+      "capacity": "opinion",
+      "temporal": {
+        "valid_from_event": "E-002",
+        "valid_until_event": null,
+        "supersedes": null,
+        "superseded_by": null,
+        "decay_class": "durable"
+      },
+      "explicitness": "stated",
+      "evidence_events": ["E-002"],
+      "distractor": false,
+      "archetype": null,
+      "archetype_instance": null
+    },
+    {
+      "fact_id": "F-203",
+      "canonical": "Critical production incidents must be escalated to the on-call executive within fifteen minutes.",
+      "type": "working_rule",
+      "tier": "org",
+      "scope_ref": "org",
+      "visibility": "org_public",
+      "visibility_acl": null,
+      "author": "persona:fiona",
+      "capacity": "directive",
+      "temporal": {
+        "valid_from_event": "E-003",
+        "valid_until_event": null,
+        "supersedes": null,
+        "superseded_by": null,
+        "decay_class": "durable"
+      },
+      "explicitness": "stated",
+      "evidence_events": ["E-003"],
+      "distractor": false,
+      "archetype": null,
+      "archetype_instance": null
+    },
+    {
+      "fact_id": "F-204",
+      "canonical": "Critical production incidents should be fully triaged by the core team lead before any executive escalation.",
+      "type": "working_rule",
+      "tier": "team",
+      "scope_ref": "team:core",
+      "visibility": "org_public",
+      "visibility_acl": null,
+      "author": "persona:greg",
+      "capacity": "directive",
+      "temporal": {
+        "valid_from_event": "E-004",
+        "valid_until_event": null,
+        "supersedes": null,
+        "superseded_by": null,
+        "decay_class": "durable"
+      },
+      "explicitness": "stated",
+      "evidence_events": ["E-004"],
+      "distractor": false,
+      "archetype": null,
+      "archetype_instance": null
+    },
+    {
+      "fact_id": "F-205",
+      "canonical": "Critical production incidents on Hana's services should be handled privately by her before any team or exec escalation.",
+      "type": "working_rule",
+      "tier": "personal",
+      "scope_ref": "persona:hana",
+      "visibility": "org_public",
+      "visibility_acl": null,
+      "author": "persona:hana",
+      "capacity": "directive",
+      "temporal": {
+        "valid_from_event": "E-005",
+        "valid_until_event": null,
+        "supersedes": null,
+        "superseded_by": null,
+        "decay_class": "durable"
+      },
+      "explicitness": "stated",
+      "evidence_events": ["E-005"],
+      "distractor": false,
+      "archetype": null,
+      "archetype_instance": null
+    },
+    {
+      "fact_id": "F-206",
+      "canonical": "Core team standups should run at 9:30 AM Pacific on weekdays.",
+      "type": "preference",
+      "tier": "team",
+      "scope_ref": "team:core",
+      "visibility": "org_public",
+      "visibility_acl": null,
+      "author": "persona:greg",
+      "capacity": "opinion",
+      "temporal": {
+        "valid_from_event": "E-006",
+        "valid_until_event": null,
+        "supersedes": null,
+        "superseded_by": null,
+        "decay_class": "durable"
+      },
+      "explicitness": "stated",
+      "evidence_events": ["E-006"],
+      "distractor": false,
+      "archetype": null,
+      "archetype_instance": null
+    },
+    {
+      "fact_id": "F-207",
+      "canonical": "Core team standups should run at 10:00 AM Pacific on weekdays.",
+      "type": "preference",
+      "tier": "team",
+      "scope_ref": "team:core",
+      "visibility": "org_public",
+      "visibility_acl": null,
+      "author": "persona:greg",
+      "capacity": "opinion",
+      "temporal": {
+        "valid_from_event": "E-008",
+        "valid_until_event": null,
+        "supersedes": null,
+        "superseded_by": null,
+        "decay_class": "durable"
+      },
+      "explicitness": "stated",
+      "evidence_events": ["E-008"],
+      "distractor": false,
+      "archetype": null,
+      "archetype_instance": null
+    },
+    {
+      "fact_id": "F-208",
+      "canonical": "Pull requests for core services require two approvals before merge.",
+      "type": "working_rule",
+      "tier": "team",
+      "scope_ref": "team:core",
+      "visibility": "org_public",
+      "visibility_acl": null,
+      "author": "persona:greg",
+      "capacity": "directive",
+      "temporal": {
+        "valid_from_event": "E-007",
+        "valid_until_event": null,
+        "supersedes": null,
+        "superseded_by": null,
+        "decay_class": "durable"
+      },
+      "explicitness": "stated",
+      "evidence_events": ["E-007"],
+      "distractor": false,
+      "archetype": null,
+      "archetype_instance": null
+    },
+    {
+      "fact_id": "F-209",
+      "canonical": "Pull requests for core services require only one approval before merge.",
+      "type": "working_rule",
+      "tier": "team",
+      "scope_ref": "team:core",
+      "visibility": "org_public",
+      "visibility_acl": null,
+      "author": "persona:hana",
+      "capacity": "directive",
+      "temporal": {
+        "valid_from_event": "E-007",
+        "valid_until_event": null,
+        "supersedes": null,
+        "superseded_by": null,
+        "decay_class": "durable"
+      },
+      "explicitness": "stated",
+      "evidence_events": ["E-007"],
+      "distractor": false,
+      "archetype": null,
+      "archetype_instance": null
+    }
+  ]
+}

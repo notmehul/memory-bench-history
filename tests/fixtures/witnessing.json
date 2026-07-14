@@ -1,0 +1,266 @@
+{
+  "org_id": "fix-witnessing",
+  "entities": {
+    "personas": [
+      {
+        "id": "persona:alice",
+        "role": "engineering_lead",
+        "authority_level": 3,
+        "teams": ["team:platform"],
+        "joins_at": null,
+        "leaves_at": null,
+        "role_changes": []
+      },
+      {
+        "id": "persona:bob",
+        "role": "senior_engineer",
+        "authority_level": 2,
+        "teams": ["team:platform"],
+        "joins_at": null,
+        "leaves_at": null,
+        "role_changes": []
+      },
+      {
+        "id": "persona:carol",
+        "role": "growth_lead",
+        "authority_level": 3,
+        "teams": ["team:growth"],
+        "joins_at": null,
+        "leaves_at": null,
+        "role_changes": []
+      },
+      {
+        "id": "persona:dan",
+        "role": "growth_engineer",
+        "authority_level": 2,
+        "teams": ["team:growth"],
+        "joins_at": null,
+        "leaves_at": null,
+        "role_changes": []
+      },
+      {
+        "id": "persona:eve",
+        "role": "platform_engineer",
+        "authority_level": 2,
+        "teams": ["team:platform"],
+        "joins_at": null,
+        "leaves_at": null,
+        "role_changes": []
+      }
+    ],
+    "teams": [
+      {
+        "id": "team:platform",
+        "members": ["persona:alice", "persona:bob", "persona:eve"]
+      },
+      {
+        "id": "team:growth",
+        "members": ["persona:carol", "persona:dan"]
+      }
+    ],
+    "projects": []
+  },
+  "events": [
+    {
+      "event_id": "E-001",
+      "surface": "team:platform/standup",
+      "visibility": "team_confidential",
+      "team": "team:platform",
+      "participants": ["persona:alice", "persona:bob"]
+    },
+    {
+      "event_id": "E-002",
+      "surface": "dm:alice-carol",
+      "visibility": "private",
+      "team": null,
+      "participants": ["persona:alice", "persona:carol"]
+    },
+    {
+      "event_id": "E-003",
+      "surface": "org/all-hands",
+      "visibility": "org_public",
+      "team": null,
+      "participants": ["persona:alice", "persona:carol"]
+    },
+    {
+      "event_id": "E-004",
+      "surface": "chat:growth-eng",
+      "visibility": "team_confidential",
+      "team": "team:growth",
+      "participants": ["persona:carol", "persona:dan"]
+    },
+    {
+      "event_id": "E-005",
+      "surface": "chat:general",
+      "visibility": "org_public",
+      "team": null,
+      "participants": ["persona:bob", "persona:dan", "persona:eve"]
+    },
+    {
+      "event_id": "E-006",
+      "surface": "team:platform/retro",
+      "visibility": "team_confidential",
+      "team": "team:platform",
+      "participants": ["persona:alice", "persona:bob", "persona:eve"]
+    },
+    {
+      "event_id": "E-007",
+      "surface": "dm:bob-eve",
+      "visibility": "private",
+      "team": null,
+      "participants": ["persona:bob", "persona:eve"]
+    },
+    {
+      "event_id": "E-008",
+      "surface": "team:growth/planning",
+      "visibility": "team_confidential",
+      "team": "team:growth",
+      "participants": ["persona:carol", "persona:dan"]
+    },
+    {
+      "event_id": "E-009",
+      "surface": "org/all-hands",
+      "visibility": "org_public",
+      "team": null,
+      "participants": ["persona:alice", "persona:bob", "persona:carol", "persona:dan", "persona:eve"]
+    },
+    {
+      "event_id": "E-010",
+      "surface": "chat:platform-eng",
+      "visibility": "team_confidential",
+      "team": "team:platform",
+      "participants": ["persona:alice", "persona:eve"]
+    },
+    {
+      "event_id": "E-011",
+      "surface": "dm:carol-dan",
+      "visibility": "private",
+      "team": null,
+      "participants": ["persona:carol", "persona:dan"]
+    },
+    {
+      "event_id": "E-012",
+      "surface": "team:platform/standup",
+      "visibility": "team_confidential",
+      "team": "team:platform",
+      "participants": ["persona:bob", "persona:eve"]
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "F-101",
+      "canonical": "Platform on-call rotates weekly among senior engineers and pages only for Sev-1 and Sev-2 incidents.",
+      "type": "working_rule",
+      "tier": "team",
+      "scope_ref": "team:platform",
+      "visibility": "team_confidential",
+      "visibility_acl": null,
+      "author": "persona:alice",
+      "capacity": "directive",
+      "temporal": {
+        "valid_from_event": "E-001",
+        "valid_until_event": null,
+        "supersedes": null,
+        "superseded_by": null,
+        "decay_class": "durable"
+      },
+      "explicitness": "stated",
+      "evidence_events": ["E-001"],
+      "distractor": false,
+      "archetype": null,
+      "archetype_instance": null
+    },
+    {
+      "fact_id": "F-102",
+      "canonical": "Alice prefers async written updates over standups when juggling cross-team launches.",
+      "type": "preference",
+      "tier": "personal",
+      "scope_ref": "persona:alice",
+      "visibility": "private",
+      "visibility_acl": null,
+      "author": "persona:alice",
+      "capacity": "opinion",
+      "temporal": {
+        "valid_from_event": "E-002",
+        "valid_until_event": null,
+        "supersedes": null,
+        "superseded_by": null,
+        "decay_class": "durable"
+      },
+      "explicitness": "stated",
+      "evidence_events": ["E-002"],
+      "distractor": false,
+      "archetype": null,
+      "archetype_instance": null
+    },
+    {
+      "fact_id": "F-103",
+      "canonical": "The company will freeze all non-critical deploys during the final week of each fiscal quarter.",
+      "type": "decision",
+      "tier": "org",
+      "scope_ref": "org",
+      "visibility": "org_public",
+      "visibility_acl": null,
+      "author": "persona:alice",
+      "capacity": "formal_decision",
+      "temporal": {
+        "valid_from_event": "E-003",
+        "valid_until_event": null,
+        "supersedes": null,
+        "superseded_by": null,
+        "decay_class": "durable"
+      },
+      "explicitness": "stated",
+      "evidence_events": ["E-003"],
+      "distractor": false,
+      "archetype": null,
+      "archetype_instance": null
+    },
+    {
+      "fact_id": "F-104",
+      "canonical": "Growth will run a two-week trial of personalized trial-expiry emails for freemium signups.",
+      "type": "decision",
+      "tier": "team",
+      "scope_ref": "team:growth",
+      "visibility": "team_confidential",
+      "visibility_acl": null,
+      "author": "persona:carol",
+      "capacity": "formal_decision",
+      "temporal": {
+        "valid_from_event": "E-004",
+        "valid_until_event": null,
+        "supersedes": null,
+        "superseded_by": null,
+        "decay_class": "durable"
+      },
+      "explicitness": "stated",
+      "evidence_events": ["E-004"],
+      "distractor": false,
+      "archetype": null,
+      "archetype_instance": null
+    },
+    {
+      "fact_id": "F-105",
+      "canonical": "The canonical customer-success health score is defined as a weighted blend of product usage depth and support ticket severity.",
+      "type": "reference",
+      "tier": "org",
+      "scope_ref": "org",
+      "visibility": "org_public",
+      "visibility_acl": null,
+      "author": "persona:carol",
+      "capacity": "directive",
+      "temporal": {
+        "valid_from_event": "E-003",
+        "valid_until_event": null,
+        "supersedes": null,
+        "superseded_by": null,
+        "decay_class": "durable"
+      },
+      "explicitness": "distributed",
+      "evidence_events": ["E-003", "E-005"],
+      "distractor": false,
+      "archetype": null,
+      "archetype_instance": null
+    }
+  ]
+}
