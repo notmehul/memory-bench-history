@@ -6,7 +6,7 @@
 set -euo pipefail
 D="$1"
 NAME=$(basename "$D")
-PROMPT_CANON="Read ${D}/_missing.json: keys are fact templates '<<type | topic=slug | variant>>', values are context sentences (or templates when no context exists). Write ${D}/_missing_realized.json with the SAME keys mapped to realized one-sentence business statements. Rules: fit type/topic/variant; 'counterfactual-of-*' materially inverts the context sentence (same topic, opposite/different stance or value); v1/v2/v3 on one topic = ONE evolving policy, same statement shape with changing concrete values; 'near-miss-*' same topic as sibling, perturbed per variant name; 'distractor' variants are inert opinions/references/outcomes; every sentence unique; uniform business tone; concrete numbers/names where natural. Write ONLY that file — no scripts, no scratch files."
+PROMPT_CANON="Read ${D}/_missing.json: keys are fact templates '<<type | topic=slug | variant>>', values are context sentences (or templates when no context exists). Write ${D}/_missing_realized.json with the SAME keys mapped to realized one-sentence business statements. Rules: fit type/topic/variant; 'counterfactual-of-*' materially inverts the context sentence AND has exactly the same word count as it (same topic, opposite/different stance or value); v1/v2/v3 on one topic = ONE evolving policy, same statement shape with changing concrete values; 'near-miss-*' same topic as sibling, perturbed per variant name; 'distractor' variants are inert opinions/references/outcomes; every sentence unique; uniform business tone; concrete numbers/names where natural. Write ONLY that file — no scripts, no scratch files."
 
 echo "[$NAME] step 1: canonical realization"
 if [ ! -f "$D/events.jsonl" ]; then
