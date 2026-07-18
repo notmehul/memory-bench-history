@@ -1,2 +1,2 @@
 G1 PASS
-stats: {'personas': 9, 'events': 204, 'facts': 127, 'probed_facts': 48, 'distractors': 79, 'near_misses': 31, 'probe_plans': 54, 'instances': 24, 'interleave_mixing': 1.0}
+stats: {'personas': 9, 'events': 204, 'facts': 124, 'probed_facts': 48, 'distractors': 76, 'near_misses': 28, 'probe_plans': 54, 'instances': 24, 'interleave_mixing': 1.0}
