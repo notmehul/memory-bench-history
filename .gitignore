@@ -3,5 +3,16 @@ __pycache__/
 *.egg-info/
 .pytest_cache/
 .ruff_cache/
+
+# pipeline intermediates (regenerable from seeds + realization maps)
 datasets/**/render/
 datasets/**/render2/
+datasets/**/render3/
+datasets/**/org.prev.json
+datasets/**/events.prev.jsonl
+
+# agent scratch that must never land in the repo
+/_*
+/.tmp*
+*.ipynb
+/blind*.json

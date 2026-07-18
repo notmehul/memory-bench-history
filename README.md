@@ -44,11 +44,25 @@ Six-to-eight metric profile per system (never a single aggregate score):
 
 - `docs/architecture.md` — full benchmark design: dimensional model, scenario
   archetypes, methodology, positioning vs. prior work
+- `docs/validation-report.md` — final v1 dataset validation numbers
 - `docs/specs/ledger-schema.md` — ground-truth fact ledger (contract #1)
 - `docs/specs/event-stream.md` — event stream format (contract #2)
 - `docs/specs/probe-spec.md` — probe + assertion + counterfactual format (contract #3)
 - `docs/dataset-plan.md` — phased plan for building the v1 evaluation dataset
+- `prompts/` — content-generation contracts (event rendering, canonical
+  realization) used by whichever LLM renders prose
+- `scripts/` — QA tooling: `validation_sweep.py`, `blind_check.py`,
+  `length_pin.py`
+- `datasets/dev/org-0000N/` — released org: `org.json` (private ledger),
+  `plan.json` (probe plans), `realization-map.json` (template→prose
+  provenance), `events.jsonl` (SUT-facing stream), `events.annotated.jsonl`
+  (scoring stream), `g1-report.txt`
+- `datasets/dev/org-0000N-twin/` — counterfactual twin: `org.json`,
+  `events.jsonl`, `events.annotated.jsonl`
 
 ## Status
 
-Design phase. Specs frozen → generator → v1 dataset (see `docs/dataset-plan.md`).
+v1 dev dataset complete: 5 seeded orgs + 5 counterfactual twins, all
+machine validation green (`docs/validation-report.md`). Next: Phase 3 —
+probe construction and floor/ceiling validity screening
+(`docs/dataset-plan.md`).

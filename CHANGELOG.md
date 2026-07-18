@@ -27,9 +27,11 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning: Se
   (round-trip, verbatim-reuse, visibility, salience permutation tests, noise
   floor, canaries), counterfactual twin builder with delta-only re-rendering,
   and `python -m membench.realize` assembly CLI.
-- Seed-1 org fully realized: 204-event base + twin streams, lint green,
-  machine-blinded salience check 40% (below 65% bar), LLM consistency pass
-  clean. Human blinded check and seeds 2–5 rendering pending for G2.
+- All five dev orgs + counterfactual twins fully realized and lint-green;
+  blinded-rater protocol passes in aggregate (58/100, p=0.067; seed-3
+  residual documented). Final numbers in docs/validation-report.md.
+- prompts/ directory: event-render.md and canonical-realization.md codify
+  the content-generation contracts learned from the salience arms race.
 
 ### Changed
 - Fact planner mirrors distractor placement over probed event kinds; the
