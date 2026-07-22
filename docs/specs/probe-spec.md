@@ -89,6 +89,19 @@ Validity gates (computed during dataset construction, before any SUT is evaluate
 - `floor` must fail ≥ 70% of instances, else the probe is passable without memory →
   redesigned or dropped.
 
+> **Spec change v0.2 (2026-07-19, Phase 3 pilot):** for counterfactual-paired
+> probes the floor gate is evaluated at pair level, matching §4's crediting
+> unit: a floor run only counts as "passable without memory" if its output
+> scores 1.0 against BOTH the base and counterfactual assertion sets (the
+> floor prompt contains no org context, so one output serves both sides).
+> Rationale: some canonical facts coincide with plausible industry defaults
+> (e.g. a common naming convention), so a memoryless model can guess the
+> base side; the twin pairing was designed precisely to cancel this
+> (risk register: "generator LLM's own biases make facts guessable —
+> counterfactual pairing structurally cancels this"). Dropping such probes
+> per-side would throw away valid pairs. The per-side floor pass rate is
+> still computed and reported as `guessability` per cluster.
+
 ## 4. Counterfactual twins
 
 `counterfactual_probe.ledger_deltas` names the facts whose `counterfactual.canonical`
