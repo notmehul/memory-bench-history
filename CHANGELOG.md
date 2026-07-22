@@ -32,8 +32,31 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning: Se
   residual documented). Final numbers in docs/validation-report.md.
 - prompts/ directory: event-render.md and canonical-realization.md codify
   the content-generation contracts learned from the salience arms race.
+- Phase 3 machinery: probe constructor (`membench.probes`) expanding every
+  plan cluster to >=3 oracle-revalidated instances with mechanical hygiene
+  lint and pattern cross-validation of authored assertions
+  (prompts/probe-authoring.md); floor/ceiling validity screening harness
+  with prespecified small-n gates (`scripts/screen_probes.py`,
+  `scripts/author_probes.py`).
+- Probes for all 5 dev orgs: 810 oracle-validated instances
+  (`datasets/dev/org-0000N/probes.jsonl`); full seed-1 validity screening
+  (486 runs, evidence in `datasets/dev/screening/org-00001/`,
+  `g3-report.json`). Screening rejected the initial fixed-task-model
+  choice (gpt-5.4-mini: 17/54 clusters survive; ceiling-anchor failures on
+  compound facts) — task model escalated to gpt-5.4, re-screen staged
+  pending quota (see dataset-plan G3 note).
 
 ### Changed
+- Probe spec v0.2 (Phase 3 pilot): the floor validity gate is evaluated at
+  pair level for counterfactual-paired probes — a floor run only counts as
+  "passable without memory" if one memoryless output satisfies BOTH sides
+  of the twin pair. Per-side floor passes are reported as `guessability`.
+  Rationale: canonical facts that coincide with plausible industry defaults
+  are guessable per-side; twin pairing exists precisely to cancel this.
+- Probe assertion patterns: `.*`/`.+` conjunctions banned (order-brittle);
+  patterns must match digit and word number forms (enforced mechanically by
+  generated surface variants) and enumerate paraphrase alternations for
+  absence detectors.
 - Fact planner mirrors distractor placement over probed event kinds; the
   first render pass failed the salience lint on position skew (p=0.002)
   because probed facts concentrated in meetings and distractors in chats.

@@ -109,6 +109,30 @@ Expected attrition: plan for 30% probe loss; over-generate accordingly.
 n ≥ 30 across the 5-seed suite; every surviving probe discriminative per the
 floor/ceiling gates.
 
+> **G3 status 2026-07-22: construction COMPLETE, screening blocked on the
+> task-model finding.** All 5 orgs carry `probes.jsonl` — 54 clusters × 3
+> oracle-revalidated instances each (810 total), authored under
+> `prompts/probe-authoring.md` with mechanical hygiene lint and pattern
+> cross-validation (`membench.probes`). Full floor/ceiling screening ran for
+> seed 1 (486 task-model runs, `datasets/dev/screening/org-00001/`):
+> **17/54 clusters survive** under the prespecified strict gates
+> (`datasets/dev/org-00001/g3-report.json`). Failure forensics show the
+> binding constraint is the fixed task model itself: gpt-5.4-mini cannot
+> reliably anchor ceiling = 1.0 on compound facts (survivors change to only
+> 18/54 even under a primary-assertions-only gate, so this is not secondary-
+> clause noise). This is the validity screening working as designed — it
+> rejected the (task model, probe) pairing before any SUT was scored.
+> **Amended standing decision (prespecified before the next run): fixed task
+> model escalates to `gpt-5.4` (codex, effort medium); screening judge moves
+> to the Claude family (cross-provider), calibrated at Phase 4.** Codex
+> weekly quota was exhausted mid-screening (resets 2026-07-29); the re-screen
+> is staged: per seed N —
+> `python scripts/screen_probes.py manifest datasets/dev/org-0000N
+> datasets/dev/org-0000N-twin <work>/sN && … run && … judge && … report`.
+> Seed-1 judging note: 339/399 semantic verdicts by gpt-5.4, the final 60 by
+> a documented fallback judge (Claude Fable, `judgements.jsonl` rows tagged
+> `claude-fable-5-fallback`) after the quota cut off mid-pass.
+
 ## Phase 4 — Human validation + judge calibration *(week 5–6)*
 
 1. **Calibration subset**: 150 (output, criterion) pairs sampled across semantic
@@ -155,6 +179,19 @@ propagation disproportionately vs. recall-style metrics); frozen public release 
 
 - **Fixed task model**: chosen once at Phase 3 start, used for validity screening and
   all pilot conditions. Must not be the judge model.
+  > **Chosen 2026-07-19: `gpt-5.4-mini` (codex CLI, reasoning effort medium).**
+  > Screening judge for semantic assertions: `gpt-5.4` (≠ task model; cross-family
+  > human calibration happens at Phase 4). Prespecified small-n adaptation of the
+  > floor/ceiling gates for n=3 instances/cluster, recorded before any screening
+  > run: instance ceiling-pass ⇔ score = 1.0; instance floor-fail ⇔ score ≤ 0.5;
+  > cluster survives ⇔ 3/3 ceiling pass ∧ 3/3 twin-ceiling pass (both sides of
+  > every twin pair) ∧ ≥2/3 floor runs fail. See `scripts/screen_probes.py`.
+  >
+  > **Amended 2026-07-22 after seed-1 screening:** gpt-5.4-mini failed the
+  > ceiling gates on 2/3 of clusters (see the G3 note); the fixed task model
+  > escalates to **`gpt-5.4` (effort medium)** and the screening judge moves to
+  > the Claude family. Amendment made before any SUT evaluation, on screening
+  > evidence alone.
 - **Twin-org cost control**: twins re-render only delta-affected events (~5–10% of the
   stream); everything else is byte-identical to the base org.
 - **What v1 explicitly does NOT claim**: leakage/governance coverage (GateMem's

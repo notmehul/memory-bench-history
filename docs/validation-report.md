@@ -60,6 +60,41 @@ should prefer seeds 1/2/4/5 or regenerate seed 3 under a future generator
 version. The realization rules that close the tells found so far are
 codified in `prompts/canonical-realization.md`.
 
+## Phase 3: probe construction + validity screening (2026-07-22)
+
+**Construction (all 5 orgs): COMPLETE.** 54 clusters × 3 instances × 5 orgs
+= 810 probe instances in `datasets/dev/org-0000N/probes.jsonl`. Every
+instance is oracle-revalidated (targets ∈ B — or B_hist for historical —
+must_not_use ∈ B_hist, A4 winners re-derived via `resolve_precedence`).
+Task text and assertions were LLM-authored under
+`prompts/probe-authoring.md` and accepted only after mechanical
+validation: answer-token hygiene lint, 4-gram overlap lint, and pattern
+cross-validation (each pattern must match every numeral/word surface
+variant of its own side and no variant of the other side, and no sibling
+fact). The authoring loop converged in ≤3 attempts per org.
+
+**Screening (seed 1): 486/486 task-model runs complete; 17/54 clusters
+survive** the prespecified strict gates (3/3 ceiling ∧ 3/3 twin-ceiling ∧
+pair-level floor; `datasets/dev/org-00001/g3-report.json`, raw evidence in
+`datasets/dev/screening/org-00001/`). Survivors by kind: staleness 9/18,
+application 4/12, scope_resolution 2/18, historical 2/6; mean per-side
+floor guessability 0.23 (cancelled by pair crediting). Failure forensics:
+ceiling failures dominate (25 clusters) and persist under a
+primary-assertions-only gate (18/54), locating the problem in the fixed
+task model — gpt-5.4-mini does not reliably restate compound facts even
+when they are handed to it verbatim. Two protocol findings from the pilot
+are now codified: pattern checkers are restricted to invariant surface
+forms (numbers, identifiers, day names — everything else is judged
+semantically), and the floor gate is evaluated at pair level (probe-spec
+v0.2).
+
+**G3 verdict: NOT PASSED at the original task-model choice; escalation to
+gpt-5.4 prespecified** (dataset-plan standing decisions). Screening for
+seeds 2–5 and the seed-1 re-screen are staged and blocked only on codex
+quota (resets 2026-07-29). Judging provenance for seed 1: 339/399
+semantic verdicts by gpt-5.4, 60 by a documented Claude fallback judge
+after the quota cutoff (tagged in `judgements.jsonl`).
+
 ## Consistency and coherence
 
 - LLM consistency pass (seed 1, full stream vs. full ledger): zero

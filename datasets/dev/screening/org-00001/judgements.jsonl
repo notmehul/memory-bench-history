@@ -1,0 +1,519 @@
+{"run_id": "P-0003-02:twin_ceiling", "verdicts": {"casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0003-01:floor", "verdicts": {"asrt-1": false, "asrt-3": true, "casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0003-01:ceiling", "verdicts": {"asrt-1": true, "asrt-3": true}}
+{"run_id": "P-0003-03:twin_ceiling", "verdicts": {"casrt-1": true, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0003-02:ceiling", "verdicts": {"asrt-1": true, "asrt-3": true}}
+{"run_id": "P-0003-03:floor", "verdicts": {"asrt-1": false, "asrt-3": true, "casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0003-03:ceiling", "verdicts": {"asrt-1": true, "asrt-3": true}}
+{"run_id": "P-0003-01:twin_ceiling", "verdicts": {"casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0004-01:floor", "verdicts": {"asrt-2": true, "asrt-3": true, "casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0004-01:twin_ceiling", "verdicts": {"casrt-1": true, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0004-02:floor", "verdicts": {"asrt-2": true, "asrt-3": true, "casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0004-03:floor", "verdicts": {"asrt-2": true, "asrt-3": true, "casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0004-02:ceiling", "verdicts": {"asrt-2": true, "asrt-3": true}}
+{"run_id": "P-0003-02:floor", "verdicts": {"asrt-1": false, "asrt-3": true, "casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0005-03:ceiling", "verdicts": {"asrt-1": true, "asrt-2": true}}
+{"run_id": "P-0004-01:ceiling", "verdicts": {"asrt-2": true, "asrt-3": true}}
+{"run_id": "P-0004-03:twin_ceiling", "verdicts": {"casrt-1": true, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0004-02:twin_ceiling", "verdicts": {"casrt-1": true, "casrt-2": false, "casrt-3": true}}
+{"run_id": "P-0004-03:ceiling", "verdicts": {"asrt-2": true, "asrt-3": true}}
+{"run_id": "P-0005-02:ceiling", "verdicts": {"asrt-1": false, "asrt-2": true}}
+{"run_id": "P-0005-02:floor", "verdicts": {"asrt-1": false, "asrt-2": true, "casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0005-01:floor", "verdicts": {"asrt-1": false, "asrt-2": true, "casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0005-03:floor", "verdicts": {"asrt-1": false, "asrt-2": true, "casrt-1": true, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0005-01:twin_ceiling", "verdicts": {"casrt-1": true, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0005-03:twin_ceiling", "verdicts": {"casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0008-01:ceiling", "verdicts": {"asrt-1": true}}
+{"run_id": "P-0008-01:floor", "verdicts": {"asrt-1": true}}
+{"run_id": "P-0005-01:ceiling", "verdicts": {"asrt-1": true, "asrt-2": true}}
+{"run_id": "P-0005-02:twin_ceiling", "verdicts": {"casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0008-03:ceiling", "verdicts": {"asrt-1": true}}
+{"run_id": "P-0008-02:ceiling", "verdicts": {"asrt-1": true}}
+{"run_id": "P-0010-01:twin_ceiling", "verdicts": {"casrt-1": true}}
+{"run_id": "P-0008-02:floor", "verdicts": {"asrt-1": true}}
+{"run_id": "P-0010-01:floor", "verdicts": {"casrt-1": false}}
+{"run_id": "P-0008-03:floor", "verdicts": {"asrt-1": true}}
+{"run_id": "P-0010-02:floor", "verdicts": {"casrt-1": false}}
+{"run_id": "P-0011-02:twin_ceiling", "verdicts": {"casrt-1": true}}
+{"run_id": "P-0011-01:floor", "verdicts": {"casrt-1": false}}
+{"run_id": "P-0010-03:floor", "verdicts": {"casrt-1": false}}
+{"run_id": "P-0012-01:ceiling", "verdicts": {"asrt-3": true}}
+{"run_id": "P-0010-02:twin_ceiling", "verdicts": {"casrt-1": true}}
+{"run_id": "P-0010-03:twin_ceiling", "verdicts": {"casrt-1": true}}
+{"run_id": "P-0012-02:ceiling", "verdicts": {"asrt-3": true}}
+{"run_id": "P-0011-01:twin_ceiling", "verdicts": {"casrt-1": true}}
+{"run_id": "P-0012-01:twin_ceiling", "verdicts": {"casrt-1": false, "casrt-3": true}}
+{"run_id": "P-0012-02:floor", "verdicts": {"asrt-3": true, "casrt-1": false, "casrt-3": true}}
+{"run_id": "P-0011-03:floor", "verdicts": {"casrt-1": false}}
+{"run_id": "P-0011-03:twin_ceiling", "verdicts": {"casrt-1": true}}
+{"run_id": "P-0011-02:floor", "verdicts": {"casrt-1": false}}
+{"run_id": "P-0012-01:floor", "verdicts": {"asrt-3": true, "casrt-1": false, "casrt-3": true}}
+{"run_id": "P-0012-03:floor", "verdicts": {"asrt-3": true, "casrt-1": false, "casrt-3": true}}
+{"run_id": "P-0012-03:ceiling", "verdicts": {"asrt-3": true}}
+{"run_id": "P-0012-02:twin_ceiling", "verdicts": {"casrt-1": true, "casrt-3": true}}
+{"run_id": "P-0013-01:twin_ceiling", "verdicts": {"casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0013-01:floor", "verdicts": {"asrt-3": true, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0013-03:ceiling", "verdicts": {"asrt-3": true}}
+{"run_id": "P-0013-02:twin_ceiling", "verdicts": {"casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0012-03:twin_ceiling", "verdicts": {"casrt-1": false, "casrt-3": true}}
+{"run_id": "P-0013-01:ceiling", "verdicts": {"asrt-3": true}}
+{"run_id": "P-0013-03:floor", "verdicts": {"asrt-3": true, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0013-03:twin_ceiling", "verdicts": {"casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0013-02:ceiling", "verdicts": {"asrt-3": true}}
+{"run_id": "P-0014-01:ceiling", "verdicts": {"asrt-1": true}}
+{"run_id": "P-0014-01:twin_ceiling", "verdicts": {"casrt-1": false, "casrt-2": false}}
+{"run_id": "P-0014-02:twin_ceiling", "verdicts": {"casrt-1": false, "casrt-2": false}}
+{"run_id": "P-0013-02:floor", "verdicts": {"asrt-3": true, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0015-02:floor", "verdicts": {"asrt-1": true, "casrt-1": false}}
+{"run_id": "P-0014-01:floor", "verdicts": {"asrt-1": true, "casrt-1": false, "casrt-2": false}}
+{"run_id": "P-0014-02:floor", "verdicts": {"asrt-1": true, "casrt-1": false, "casrt-2": false}}
+{"run_id": "P-0015-02:ceiling", "verdicts": {"asrt-1": true}}
+{"run_id": "P-0015-01:twin_ceiling", "verdicts": {"casrt-1": true}}
+{"run_id": "P-0014-02:ceiling", "verdicts": {"asrt-1": true}}
+{"run_id": "P-0014-03:ceiling", "verdicts": {"asrt-1": true}}
+{"run_id": "P-0014-03:twin_ceiling", "verdicts": {"casrt-1": true, "casrt-2": false}}
+{"run_id": "P-0015-03:floor", "verdicts": {"asrt-1": false, "casrt-1": false}}
+{"run_id": "P-0014-03:floor", "verdicts": {"asrt-1": false, "casrt-1": false, "casrt-2": false}}
+{"run_id": "P-0015-01:ceiling", "verdicts": {"asrt-1": true}}
+{"run_id": "P-0015-02:twin_ceiling", "verdicts": {"casrt-1": true}}
+{"run_id": "P-0016-02:ceiling", "verdicts": {"asrt-1": true, "asrt-2": true}}
+{"run_id": "P-0015-01:floor", "verdicts": {"asrt-1": false, "casrt-1": false}}
+{"run_id": "P-0015-03:twin_ceiling", "verdicts": {"casrt-1": true}}
+{"run_id": "P-0015-03:ceiling", "verdicts": {"asrt-1": true}}
+{"run_id": "P-0016-02:twin_ceiling", "verdicts": {"casrt-1": true, "casrt-2": true}}
+{"run_id": "P-0016-01:ceiling", "verdicts": {"asrt-1": true, "asrt-2": true}}
+{"run_id": "P-0016-03:twin_ceiling", "verdicts": {"casrt-1": true, "casrt-2": true}}
+{"run_id": "P-0018-01:ceiling", "verdicts": {"asrt-1": true}}
+{"run_id": "P-0016-03:floor", "verdicts": {"asrt-1": false, "asrt-2": true, "casrt-1": false, "casrt-2": true}}
+{"run_id": "P-0016-01:floor", "verdicts": {"asrt-1": false, "asrt-2": true, "casrt-1": false, "casrt-2": true}}
+{"run_id": "P-0017-02:ceiling", "verdicts": {"asrt-1": true, "asrt-2": true, "asrt-3": true}}
+{"run_id": "P-0017-03:ceiling", "verdicts": {"asrt-1": true, "asrt-2": true, "asrt-3": true}}
+{"run_id": "P-0017-01:ceiling", "verdicts": {"asrt-1": true, "asrt-2": true, "asrt-3": true}}
+{"run_id": "P-0016-03:ceiling", "verdicts": {"asrt-1": true, "asrt-2": true}}
+{"run_id": "P-0016-01:twin_ceiling", "verdicts": {"casrt-1": true, "casrt-2": true}}
+{"run_id": "P-0016-02:floor", "verdicts": {"asrt-1": false, "asrt-2": false, "casrt-1": false, "casrt-2": true}}
+{"run_id": "P-0018-01:twin_ceiling", "verdicts": {"casrt-1": true}}
+{"run_id": "P-0018-01:floor", "verdicts": {"asrt-1": false, "casrt-1": false}}
+{"run_id": "P-0017-02:floor", "verdicts": {"asrt-1": false, "asrt-2": true, "asrt-3": true, "casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0018-03:twin_ceiling", "verdicts": {"casrt-1": true}}
+{"run_id": "P-0017-01:twin_ceiling", "verdicts": {"casrt-1": true, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0018-03:ceiling", "verdicts": {"asrt-1": true}}
+{"run_id": "P-0018-03:floor", "verdicts": {"asrt-1": false, "casrt-1": false}}
+{"run_id": "P-0018-02:twin_ceiling", "verdicts": {"casrt-1": true}}
+{"run_id": "P-0018-02:ceiling", "verdicts": {"asrt-1": true}}
+{"run_id": "P-0017-03:twin_ceiling", "verdicts": {"casrt-1": true, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0017-02:twin_ceiling", "verdicts": {"casrt-1": true, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0017-03:floor", "verdicts": {"asrt-1": false, "asrt-2": true, "asrt-3": true, "casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0020-01:ceiling", "verdicts": {"asrt-1": true}}
+{"run_id": "P-0018-02:floor", "verdicts": {"asrt-1": false, "casrt-1": false}}
+{"run_id": "P-0020-01:twin_ceiling", "verdicts": {"casrt-1": true}}
+{"run_id": "P-0020-02:twin_ceiling", "verdicts": {"casrt-1": true}}
+{"run_id": "P-0017-01:floor", "verdicts": {"asrt-1": false, "asrt-2": true, "asrt-3": true, "casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0020-02:floor", "verdicts": {"asrt-1": false, "casrt-1": false}}
+{"run_id": "P-0020-02:ceiling", "verdicts": {"asrt-1": true}}
+{"run_id": "P-0020-03:twin_ceiling", "verdicts": {"casrt-1": true}}
+{"run_id": "P-0020-01:floor", "verdicts": {"asrt-1": false, "casrt-1": false}}
+{"run_id": "P-0020-03:ceiling", "verdicts": {"asrt-1": true}}
+{"run_id": "P-0020-03:floor", "verdicts": {"asrt-1": true, "casrt-1": false}}
+{"run_id": "P-0021-01:floor", "verdicts": {"asrt-1": true, "asrt-2": true, "asrt-3": true, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0021-01:twin_ceiling", "verdicts": {"casrt-2": false, "casrt-3": true}}
+{"run_id": "P-0021-02:floor", "verdicts": {"asrt-1": true, "asrt-2": true, "asrt-3": true, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0021-03:ceiling", "verdicts": {"asrt-1": true, "asrt-2": true, "asrt-3": true}}
+{"run_id": "P-0021-02:ceiling", "verdicts": {"asrt-1": true, "asrt-2": true, "asrt-3": true}}
+{"run_id": "P-0021-03:floor", "verdicts": {"asrt-1": true, "asrt-2": true, "asrt-3": true, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0021-02:twin_ceiling", "verdicts": {"casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0021-03:twin_ceiling", "verdicts": {"casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0022-01:twin_ceiling", "verdicts": {"casrt-1": false, "casrt-3": true}}
+{"run_id": "P-0022-01:floor", "verdicts": {"asrt-1": false, "asrt-2": true, "asrt-3": false, "casrt-1": false, "casrt-3": true}}
+{"run_id": "P-0021-01:ceiling", "verdicts": {"asrt-1": true, "asrt-2": true, "asrt-3": true}}
+{"run_id": "P-0022-01:ceiling", "verdicts": {"asrt-1": false, "asrt-2": false, "asrt-3": false}}
+{"run_id": "P-0022-02:twin_ceiling", "verdicts": {"casrt-1": false, "casrt-3": true}}
+{"run_id": "P-0023-01:ceiling", "verdicts": {"asrt-1": true, "asrt-2": true, "asrt-3": true}}
+{"run_id": "P-0022-02:ceiling", "verdicts": {"asrt-1": false, "asrt-2": true, "asrt-3": false}}
+{"run_id": "P-0023-02:floor", "verdicts": {"asrt-1": false, "asrt-2": true, "asrt-3": true, "casrt-1": false, "casrt-3": true}}
+{"run_id": "P-0023-02:ceiling", "verdicts": {"asrt-1": true, "asrt-2": true, "asrt-3": true}}
+{"run_id": "P-0022-02:floor", "verdicts": {"asrt-1": false, "asrt-2": false, "asrt-3": false, "casrt-1": false, "casrt-3": true}}
+{"run_id": "P-0023-01:twin_ceiling", "verdicts": {"casrt-1": true, "casrt-3": false}}
+{"run_id": "P-0022-03:floor", "verdicts": {"asrt-1": false, "asrt-2": true, "asrt-3": true, "casrt-1": false, "casrt-3": true}}
+{"run_id": "P-0023-01:floor", "verdicts": {"asrt-1": true, "asrt-2": true, "asrt-3": true, "casrt-1": false, "casrt-3": true}}
+{"run_id": "P-0022-03:twin_ceiling", "verdicts": {"casrt-1": true, "casrt-3": false}}
+{"run_id": "P-0023-02:twin_ceiling", "verdicts": {"casrt-1": false, "casrt-3": true}}
+{"run_id": "P-0023-03:ceiling", "verdicts": {"asrt-1": true, "asrt-2": true, "asrt-3": true}}
+{"run_id": "P-0023-03:floor", "verdicts": {"asrt-1": true, "asrt-2": true, "asrt-3": true, "casrt-1": false, "casrt-3": true}}
+{"run_id": "P-0024-03:ceiling", "verdicts": {"asrt-1": true}}
+{"run_id": "P-0022-03:ceiling", "verdicts": {"asrt-1": false, "asrt-2": true, "asrt-3": false}}
+{"run_id": "P-0024-01:ceiling", "verdicts": {"asrt-1": true}}
+{"run_id": "P-0024-01:floor", "verdicts": {"asrt-1": true, "casrt-1": false}}
+{"run_id": "P-0023-03:twin_ceiling", "verdicts": {"casrt-1": false, "casrt-3": false}}
+{"run_id": "P-0024-02:twin_ceiling", "verdicts": {"casrt-1": true}}
+{"run_id": "P-0024-02:floor", "verdicts": {"asrt-1": true, "casrt-1": false}}
+{"run_id": "P-0024-03:floor", "verdicts": {"asrt-1": true, "casrt-1": false}}
+{"run_id": "P-0025-01:floor", "verdicts": {"asrt-2": true, "casrt-1": false, "casrt-2": true}}
+{"run_id": "P-0025-02:ceiling", "verdicts": {"asrt-2": true}}
+{"run_id": "P-0024-03:twin_ceiling", "verdicts": {"casrt-1": true}}
+{"run_id": "P-0026-01:ceiling", "verdicts": {"asrt-1": true, "asrt-2": true}}
+{"run_id": "P-0024-01:twin_ceiling", "verdicts": {"casrt-1": true}}
+{"run_id": "P-0025-01:ceiling", "verdicts": {"asrt-2": true}}
+{"run_id": "P-0024-02:ceiling", "verdicts": {"asrt-1": true}}
+{"run_id": "P-0025-02:twin_ceiling", "verdicts": {"casrt-1": false, "casrt-2": true}}
+{"run_id": "P-0026-01:floor", "verdicts": {"asrt-1": true, "asrt-2": true, "casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0025-03:twin_ceiling", "verdicts": {"casrt-1": true, "casrt-2": true}}
+{"run_id": "P-0025-01:twin_ceiling", "verdicts": {"casrt-1": true, "casrt-2": true}}
+{"run_id": "P-0025-03:ceiling", "verdicts": {"asrt-2": true}}
+{"run_id": "P-0026-02:floor", "verdicts": {"asrt-1": true, "asrt-2": true, "casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0026-02:ceiling", "verdicts": {"asrt-1": true, "asrt-2": true}}
+{"run_id": "P-0025-03:floor", "verdicts": {"asrt-2": true, "casrt-1": false, "casrt-2": true}}
+{"run_id": "P-0026-03:ceiling", "verdicts": {"asrt-1": true, "asrt-2": true}}
+{"run_id": "P-0027-01:floor", "verdicts": {"asrt-1": false, "casrt-1": false}}
+{"run_id": "P-0026-01:twin_ceiling", "verdicts": {"casrt-1": false, "casrt-2": false, "casrt-3": true}}
+{"run_id": "P-0026-03:floor", "verdicts": {"asrt-1": true, "asrt-2": true, "casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0025-02:floor", "verdicts": {"asrt-2": false, "casrt-1": false, "casrt-2": true}}
+{"run_id": "P-0027-02:twin_ceiling", "verdicts": {"casrt-1": true}}
+{"run_id": "P-0027-01:twin_ceiling", "verdicts": {"casrt-1": true}}
+{"run_id": "P-0027-02:ceiling", "verdicts": {"asrt-1": true}}
+{"run_id": "P-0027-03:ceiling", "verdicts": {"asrt-1": true}}
+{"run_id": "P-0027-02:floor", "verdicts": {"asrt-1": true, "casrt-1": false}}
+{"run_id": "P-0026-02:twin_ceiling", "verdicts": {"casrt-1": false, "casrt-2": false, "casrt-3": true}}
+{"run_id": "P-0027-03:twin_ceiling", "verdicts": {"casrt-1": true}}
+{"run_id": "P-0027-01:ceiling", "verdicts": {"asrt-1": true}}
+{"run_id": "P-0028-03:ceiling", "verdicts": {"asrt-1": true}}
+{"run_id": "P-0028-01:floor", "verdicts": {"asrt-1": false, "casrt-1": false}}
+{"run_id": "P-0028-02:ceiling", "verdicts": {"asrt-1": true}}
+{"run_id": "P-0027-03:floor", "verdicts": {"asrt-1": false, "casrt-1": false}}
+{"run_id": "P-0029-01:ceiling", "verdicts": {"asrt-1": true, "asrt-2": true}}
+{"run_id": "P-0026-03:twin_ceiling", "verdicts": {"casrt-1": false, "casrt-2": false, "casrt-3": true}}
+{"run_id": "P-0028-02:twin_ceiling", "verdicts": {"casrt-1": false}}
+{"run_id": "P-0028-03:floor", "verdicts": {"asrt-1": false, "casrt-1": false}}
+{"run_id": "P-0028-03:twin_ceiling", "verdicts": {"casrt-1": false}}
+{"run_id": "P-0028-02:floor", "verdicts": {"asrt-1": false, "casrt-1": false}}
+{"run_id": "P-0029-01:twin_ceiling", "verdicts": {"casrt-1": true, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0028-01:twin_ceiling", "verdicts": {"casrt-1": true}}
+{"run_id": "P-0028-01:ceiling", "verdicts": {"asrt-1": true}}
+{"run_id": "P-0029-01:floor", "verdicts": {"asrt-1": true, "asrt-2": true, "casrt-1": false, "casrt-2": false, "casrt-3": false}}
+{"run_id": "P-0029-03:ceiling", "verdicts": {"asrt-1": true, "asrt-2": true}}
+{"run_id": "P-0029-02:ceiling", "verdicts": {"asrt-1": true, "asrt-2": true}}
+{"run_id": "P-0029-02:floor", "verdicts": {"asrt-1": true, "asrt-2": true, "casrt-1": false, "casrt-2": false, "casrt-3": true}}
+{"run_id": "P-0030-01:twin_ceiling", "verdicts": {"casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0029-03:floor", "verdicts": {"asrt-1": true, "asrt-2": true, "casrt-1": false, "casrt-2": false, "casrt-3": false}}
+{"run_id": "P-0030-02:floor", "verdicts": {"asrt-2": true, "asrt-3": true, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0029-02:twin_ceiling", "verdicts": {"casrt-1": true, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0030-02:ceiling", "verdicts": {"asrt-2": true, "asrt-3": true}}
+{"run_id": "P-0029-03:twin_ceiling", "verdicts": {"casrt-1": true, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0030-03:floor", "verdicts": {"asrt-2": true, "asrt-3": true, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0030-01:ceiling", "verdicts": {"asrt-2": true, "asrt-3": true}}
+{"run_id": "P-0030-01:floor", "verdicts": {"asrt-2": true, "asrt-3": true, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0031-01:ceiling", "verdicts": {"asrt-1": true, "asrt-3": true}}
+{"run_id": "P-0031-01:floor", "verdicts": {"asrt-1": true, "asrt-3": true, "casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0031-01:twin_ceiling", "verdicts": {"casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0030-03:twin_ceiling", "verdicts": {"casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0030-03:ceiling", "verdicts": {"asrt-2": true, "asrt-3": true}}
+{"run_id": "P-0030-02:twin_ceiling", "verdicts": {"casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0031-03:twin_ceiling", "verdicts": {"casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0031-03:ceiling", "verdicts": {"asrt-1": true, "asrt-3": true}}
+{"run_id": "P-0031-02:ceiling", "verdicts": {"asrt-1": true, "asrt-3": true}}
+{"run_id": "P-0032-02:floor", "verdicts": {"asrt-1": false, "asrt-3": true, "casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0032-01:twin_ceiling", "verdicts": {"casrt-1": true, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0031-02:floor", "verdicts": {"asrt-1": true, "asrt-3": true, "casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0032-02:ceiling", "verdicts": {"asrt-1": true, "asrt-3": true}}
+{"run_id": "P-0031-03:floor", "verdicts": {"asrt-1": true, "asrt-3": true, "casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0032-01:floor", "verdicts": {"asrt-1": false, "asrt-3": true, "casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0031-02:twin_ceiling", "verdicts": {"casrt-1": false, "casrt-2": false, "casrt-3": true}}
+{"run_id": "P-0032-03:ceiling", "verdicts": {"asrt-1": true, "asrt-3": true}}
+{"run_id": "P-0033-01:twin_ceiling", "verdicts": {"casrt-1": true}}
+{"run_id": "P-0032-01:ceiling", "verdicts": {"asrt-1": true, "asrt-3": false}}
+{"run_id": "P-0032-02:twin_ceiling", "verdicts": {"casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0032-03:floor", "verdicts": {"asrt-1": false, "asrt-3": true, "casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0033-02:twin_ceiling", "verdicts": {"casrt-1": true}}
+{"run_id": "P-0032-03:twin_ceiling", "verdicts": {"casrt-1": true, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0034-01:twin_ceiling", "verdicts": {"casrt-2": true}}
+{"run_id": "P-0033-02:floor", "verdicts": {"casrt-1": false}}
+{"run_id": "P-0033-01:floor", "verdicts": {"casrt-1": false}}
+{"run_id": "P-0033-03:floor", "verdicts": {"casrt-1": false}}
+{"run_id": "P-0033-03:twin_ceiling", "verdicts": {"casrt-1": true}}
+{"run_id": "P-0034-03:floor", "verdicts": {"casrt-2": true}}
+{"run_id": "P-0034-02:floor", "verdicts": {"casrt-2": true}}
+{"run_id": "P-0035-01:twin_ceiling", "verdicts": {"casrt-1": true, "casrt-2": true}}
+{"run_id": "P-0034-02:twin_ceiling", "verdicts": {"casrt-2": true}}
+{"run_id": "P-0034-03:twin_ceiling", "verdicts": {"casrt-2": true}}
+{"run_id": "P-0034-01:floor", "verdicts": {"casrt-2": true}}
+{"run_id": "P-0035-03:twin_ceiling", "verdicts": {"casrt-1": true, "casrt-2": true}}
+{"run_id": "P-0035-02:ceiling", "verdicts": {"asrt-1": false}}
+{"run_id": "P-0035-01:ceiling", "verdicts": {"asrt-1": true}}
+{"run_id": "P-0036-01:twin_ceiling", "verdicts": {"casrt-1": true}}
+{"run_id": "P-0035-03:floor", "verdicts": {"asrt-1": false, "casrt-1": false, "casrt-2": true}}
+{"run_id": "P-0035-02:twin_ceiling", "verdicts": {"casrt-1": true, "casrt-2": true}}
+{"run_id": "P-0035-03:ceiling", "verdicts": {"asrt-1": true}}
+{"run_id": "P-0035-01:floor", "verdicts": {"asrt-1": false, "casrt-1": false, "casrt-2": true}}
+{"run_id": "P-0035-02:floor", "verdicts": {"asrt-1": false, "casrt-1": false, "casrt-2": true}}
+{"run_id": "P-0036-03:twin_ceiling", "verdicts": {"casrt-1": true}}
+{"run_id": "P-0036-02:twin_ceiling", "verdicts": {"casrt-1": true}}
+{"run_id": "P-0037-02:ceiling", "verdicts": {"asrt-1": true, "asrt-2": true}}
+{"run_id": "P-0036-01:floor", "verdicts": {"casrt-1": false}}
+{"run_id": "P-0036-02:floor", "verdicts": {"casrt-1": false}}
+{"run_id": "P-0037-03:ceiling", "verdicts": {"asrt-1": true, "asrt-2": true}}
+{"run_id": "P-0036-03:floor", "verdicts": {"casrt-1": false}}
+{"run_id": "P-0037-01:ceiling", "verdicts": {"asrt-1": true, "asrt-2": true}}
+{"run_id": "P-0037-01:twin_ceiling", "verdicts": {"casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0037-02:floor", "verdicts": {"asrt-1": false, "asrt-2": true, "casrt-1": false, "casrt-2": false, "casrt-3": false}}
+{"run_id": "P-0037-03:floor", "verdicts": {"asrt-1": true, "asrt-2": true, "casrt-1": false, "casrt-2": false, "casrt-3": false}}
+{"run_id": "P-0037-01:floor", "verdicts": {"asrt-1": true, "asrt-2": true, "casrt-1": false, "casrt-2": false, "casrt-3": false}}
+{"run_id": "P-0037-02:twin_ceiling", "verdicts": {"casrt-1": false, "casrt-2": true, "casrt-3": false}}
+{"run_id": "P-0039-02:twin_ceiling", "verdicts": {"casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0039-03:ceiling", "verdicts": {"asrt-1": true, "asrt-2": true}}
+{"run_id": "P-0039-01:ceiling", "verdicts": {"asrt-1": true, "asrt-2": true}}
+{"run_id": "P-0039-02:floor", "verdicts": {"asrt-1": true, "asrt-2": true, "casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0039-01:floor", "verdicts": {"asrt-1": true, "asrt-2": true, "casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0039-02:ceiling", "verdicts": {"asrt-1": true, "asrt-2": true}}
+{"run_id": "P-0039-01:twin_ceiling", "verdicts": {"casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0039-03:floor", "verdicts": {"asrt-1": true, "asrt-2": true, "casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0039-03:twin_ceiling", "verdicts": {"casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0040-02:ceiling", "verdicts": {"asrt-1": true, "asrt-2": false}}
+{"run_id": "P-0040-01:ceiling", "verdicts": {"asrt-1": true, "asrt-2": false}}
+{"run_id": "P-0040-02:twin_ceiling", "verdicts": {"casrt-1": false, "casrt-2": false, "casrt-3": true}}
+{"run_id": "P-0040-02:floor", "verdicts": {"asrt-1": true, "asrt-2": false, "casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0040-03:ceiling", "verdicts": {"asrt-1": true, "asrt-2": false}}
+{"run_id": "P-0040-01:twin_ceiling", "verdicts": {"casrt-1": true, "casrt-2": false, "casrt-3": true}}
+{"run_id": "P-0040-01:floor", "verdicts": {"asrt-1": false, "asrt-2": false, "casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0041-01:floor", "verdicts": {"asrt-2": true, "asrt-3": true, "casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0040-03:floor", "verdicts": {"asrt-1": false, "asrt-2": false, "casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0041-01:twin_ceiling", "verdicts": {"casrt-1": true, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0040-03:twin_ceiling", "verdicts": {"casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0041-01:ceiling", "verdicts": {"asrt-2": false, "asrt-3": false}}
+{"run_id": "P-0041-03:ceiling", "verdicts": {"asrt-2": true, "asrt-3": true}}
+{"run_id": "P-0042-01:ceiling", "verdicts": {"asrt-1": true}}
+{"run_id": "P-0041-02:floor", "verdicts": {"asrt-2": false, "asrt-3": true, "casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0041-02:ceiling", "verdicts": {"asrt-2": true, "asrt-3": false}}
+{"run_id": "P-0041-02:twin_ceiling", "verdicts": {"casrt-1": true, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0042-01:twin_ceiling", "verdicts": {"casrt-1": true}}
+{"run_id": "P-0042-02:ceiling", "verdicts": {"asrt-1": true}}
+{"run_id": "P-0042-02:twin_ceiling", "verdicts": {"casrt-1": true}}
+{"run_id": "P-0041-03:floor", "verdicts": {"asrt-2": false, "asrt-3": true, "casrt-1": false, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0042-02:floor", "verdicts": {"asrt-1": false, "casrt-1": false}}
+{"run_id": "P-0042-01:floor", "verdicts": {"asrt-1": false, "casrt-1": false}}
+{"run_id": "P-0042-03:floor", "verdicts": {"asrt-1": false, "casrt-1": false}}
+{"run_id": "P-0043-01:floor", "verdicts": {"asrt-2": true, "casrt-2": true}}
+{"run_id": "P-0043-03:ceiling", "verdicts": {"asrt-2": true}}
+{"run_id": "P-0043-01:ceiling", "verdicts": {"asrt-2": true}}
+{"run_id": "P-0041-03:twin_ceiling", "verdicts": {"casrt-1": true, "casrt-2": true, "casrt-3": true}}
+{"run_id": "P-0042-03:ceiling", "verdicts": {"asrt-1": true}}
+{"run_id": "P-0043-02:ceiling", "verdicts": {"asrt-2": true}}
+{"run_id": "P-0043-02:twin_ceiling", "verdicts": {"casrt-2": true}}
+{"run_id": "P-0042-03:twin_ceiling", "verdicts": {"casrt-1": true}}
+{"run_id": "P-0043-02:floor", "verdicts": {"asrt-2": true, "casrt-2": true}}
+{"run_id": "P-0043-03:twin_ceiling", "verdicts": {"casrt-2": true}}
+{"run_id": "P-0044-02:floor", "verdicts": {"asrt-2": true, "casrt-1": false, "casrt-2": true}}
+{"run_id": "P-0044-02:twin_ceiling", "verdicts": {"casrt-1": false, "casrt-2": true}}
+{"run_id": "P-0044-01:ceiling", "verdicts": {"asrt-2": true}}
+{"run_id": "P-0043-01:twin_ceiling", "verdicts": {"casrt-2": true}}
+{"run_id": "P-0044-01:floor", "verdicts": {"asrt-2": true, "casrt-1": false, "casrt-2": true}}
+{"run_id": "P-0044-03:ceiling", "verdicts": {"asrt-2": true}}
+{"run_id": "P-0044-01:twin_ceiling", "verdicts": {"casrt-1": false, "casrt-2": true}}
+{"run_id": "P-0044-03:floor", "verdicts": {"asrt-2": true, "casrt-1": false, "casrt-2": true}}
+{"run_id": "P-0045-02:twin_ceiling", "verdicts": {"casrt-1": true}}
+{"run_id": "P-0043-03:floor", "verdicts": {"asrt-2": true, "casrt-2": true}}
+{"run_id": "P-0045-01:ceiling", "verdicts": {"asrt-1": false}}
+{"run_id": "P-0044-02:ceiling", "verdicts": {"asrt-2": true}}
+{"run_id": "P-0044-03:twin_ceiling", "verdicts": {"casrt-1": false, "casrt-2": true}}
+{"run_id": "P-0045-01:floor", "verdicts": {"asrt-1": false, "casrt-1": false}}
+{"run_id": "P-0045-03:floor", "verdicts": {"asrt-1": false, "casrt-1": false}}
+{"run_id": "P-0045-02:ceiling", "verdicts": {"asrt-1": false}}
+{"run_id": "P-0045-03:twin_ceiling", "verdicts": {"casrt-1": true}}
+{"run_id": "P-0046-01:floor", "verdicts": {"casrt-1": false}}
+{"run_id": "P-0045-02:floor", "verdicts": {"asrt-1": false, "casrt-1": false}}
+{"run_id": "P-0047-01:floor", "verdicts": {"casrt-1": false}}
+{"run_id": "P-0045-03:ceiling", "verdicts": {"asrt-1": true}}
+{"run_id": "P-0047-02:floor", "verdicts": {"casrt-1": false}}
+{"run_id": "P-0045-01:twin_ceiling", "verdicts": {"casrt-1": true}}
+{"run_id": "P-0046-01:twin_ceiling", "verdicts": {"casrt-1": true}}
+{"run_id": "P-0047-01:twin_ceiling", "verdicts": {"casrt-1": false}}
+{"run_id": "P-0047-02:twin_ceiling", "verdicts": {"casrt-1": true}}
+{"run_id": "P-0047-03:floor", "verdicts": {"casrt-1": false}}
+{"run_id": "P-0046-03:twin_ceiling", "verdicts": {"casrt-1": true}}
+{"run_id": "P-0048-01:ceiling", "verdicts": {"asrt-3": true}}
+{"run_id": "P-0046-02:twin_ceiling", "verdicts": {"casrt-1": true}}
+{"run_id": "P-0048-01:floor", "verdicts": {"asrt-3": true, "casrt-1": false, "casrt-3": true}}
+{"run_id": "P-0048-02:floor", "verdicts": {"asrt-3": true, "casrt-1": false, "casrt-3": true}}
+{"run_id": "P-0048-03:twin_ceiling", "verdicts": {"casrt-1": true, "casrt-3": true}}
+{"run_id": "P-0048-02:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0046-03:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0049-01:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0048-02:twin_ceiling", "verdicts": {"casrt-1": true, "casrt-3": true}}
+{"run_id": "P-0047-03:twin_ceiling", "verdicts": {"casrt-1": true}}
+{"run_id": "P-0048-01:twin_ceiling", "verdicts": {"casrt-1": true, "casrt-3": true}}
+{"run_id": "P-0048-03:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0049-01:twin_ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0048-03:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0049-02:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0049-02:twin_ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0049-03:twin_ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0049-03:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0050-01:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0050-01:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0050-02:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0050-02:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0050-01:twin_ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0050-02:twin_ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0050-03:twin_ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0049-01:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0051-01:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0050-03:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0050-03:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0051-01:twin_ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0051-01:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0051-02:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0051-02:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0049-02:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0051-02:twin_ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0051-03:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0052-02:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0046-02:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0051-03:twin_ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0051-03:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0049-03:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0052-01:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0052-01:twin_ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0052-02:twin_ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0052-02:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0052-03:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0052-03:twin_ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0052-03:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0054-01:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0053-01:twin_ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0053-01:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0053-02:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0053-02:twin_ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0054-01:twin_ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0053-03:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0053-02:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0052-01:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0054-01:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0053-03:twin_ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0053-01:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0054-02:twin_ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0054-02:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0054-02:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0054-03:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0054-03:twin_ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0054-03:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0053-03:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0037-03:twin_ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0037-03:twin_ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0049-02:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0049-01:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0048-03:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0048-03:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0048-02:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0046-03:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0049-01:twin_ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0049-02:twin_ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0050-02:twin_ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0050-01:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0050-01:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0049-03:twin_ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0049-03:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0050-01:twin_ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0050-02:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0049-01:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0051-02:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0050-02:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0051-01:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0050-03:twin_ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0050-03:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0050-03:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0051-01:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0051-02:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0049-02:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0051-03:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0051-01:twin_ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0052-02:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0051-02:twin_ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0052-01:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0046-02:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0051-03:twin_ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0049-03:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0052-03:twin_ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0052-03:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0051-03:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0052-02:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0052-02:twin_ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0052-01:twin_ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0053-01:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0053-02:twin_ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0054-01:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0053-02:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0053-03:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0053-02:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0053-01:twin_ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0052-03:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0054-01:twin_ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0052-01:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0053-03:twin_ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0054-02:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0053-01:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0054-02:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0054-02:twin_ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0054-01:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0054-03:ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0054-03:twin_ceiling", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0054-03:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0053-03:floor", "verdicts": null, "error": "judge failed"}
+{"run_id": "P-0048-02:ceiling", "verdicts": {"asrt-3": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0046-03:floor", "verdicts": {"casrt-1": false}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0049-01:ceiling", "verdicts": {"asrt-3": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0048-03:ceiling", "verdicts": {"asrt-3": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0049-01:twin_ceiling", "verdicts": {"casrt-2": true, "casrt-3": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0048-03:floor", "verdicts": {"asrt-3": true, "casrt-1": true, "casrt-3": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0049-02:ceiling", "verdicts": {"asrt-3": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0049-02:twin_ceiling", "verdicts": {"casrt-2": true, "casrt-3": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0049-03:twin_ceiling", "verdicts": {"casrt-2": true, "casrt-3": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0049-03:ceiling", "verdicts": {"asrt-3": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0050-01:floor", "verdicts": {"asrt-1": false, "casrt-1": false, "casrt-2": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0050-01:ceiling", "verdicts": {"asrt-1": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0050-02:floor", "verdicts": {"asrt-1": true, "casrt-1": false, "casrt-2": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0050-02:ceiling", "verdicts": {"asrt-1": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0050-01:twin_ceiling", "verdicts": {"casrt-1": true, "casrt-2": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0050-02:twin_ceiling", "verdicts": {"casrt-1": true, "casrt-2": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0050-03:twin_ceiling", "verdicts": {"casrt-1": true, "casrt-2": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0049-01:floor", "verdicts": {"asrt-3": true, "casrt-2": true, "casrt-3": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0051-01:ceiling", "verdicts": {"asrt-1": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0050-03:floor", "verdicts": {"asrt-1": false, "casrt-1": false, "casrt-2": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0050-03:ceiling", "verdicts": {"asrt-1": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0051-01:twin_ceiling", "verdicts": {"casrt-1": false}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0051-01:floor", "verdicts": {"asrt-1": false, "casrt-1": false}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0051-02:floor", "verdicts": {"asrt-1": false, "casrt-1": false}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0051-02:ceiling", "verdicts": {"asrt-1": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0049-02:floor", "verdicts": {"asrt-3": true, "casrt-2": false, "casrt-3": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0051-02:twin_ceiling", "verdicts": {"casrt-1": false}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0051-03:ceiling", "verdicts": {"asrt-1": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0052-02:ceiling", "verdicts": {"asrt-1": true, "asrt-2": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0046-02:floor", "verdicts": {"casrt-1": false}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0051-03:twin_ceiling", "verdicts": {"casrt-1": false}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0051-03:floor", "verdicts": {"asrt-1": false, "casrt-1": false}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0049-03:floor", "verdicts": {"asrt-3": true, "casrt-2": false, "casrt-3": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0052-01:ceiling", "verdicts": {"asrt-1": true, "asrt-2": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0052-01:twin_ceiling", "verdicts": {"casrt-1": true, "casrt-2": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0052-02:twin_ceiling", "verdicts": {"casrt-1": true, "casrt-2": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0052-02:floor", "verdicts": {"asrt-1": false, "asrt-2": true, "casrt-1": false, "casrt-2": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0052-03:ceiling", "verdicts": {"asrt-1": true, "asrt-2": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0052-03:twin_ceiling", "verdicts": {"casrt-1": true, "casrt-2": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0052-03:floor", "verdicts": {"asrt-1": true, "asrt-2": true, "casrt-1": false, "casrt-2": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0054-01:ceiling", "verdicts": {"asrt-1": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0053-01:twin_ceiling", "verdicts": {"casrt-1": false, "casrt-2": true, "casrt-3": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0053-01:ceiling", "verdicts": {"asrt-1": true, "asrt-2": true, "asrt-3": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0053-02:ceiling", "verdicts": {"asrt-1": true, "asrt-2": true, "asrt-3": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0053-02:twin_ceiling", "verdicts": {"casrt-1": false, "casrt-2": true, "casrt-3": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0054-01:twin_ceiling", "verdicts": {"casrt-1": false}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0053-03:ceiling", "verdicts": {"asrt-1": true, "asrt-2": true, "asrt-3": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0053-02:floor", "verdicts": {"asrt-1": false, "asrt-2": true, "asrt-3": true, "casrt-1": false, "casrt-2": true, "casrt-3": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0052-01:floor", "verdicts": {"asrt-1": true, "asrt-2": true, "casrt-1": false, "casrt-2": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0054-01:floor", "verdicts": {"asrt-1": false, "casrt-1": false}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0053-03:twin_ceiling", "verdicts": {"casrt-1": false, "casrt-2": true, "casrt-3": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0053-01:floor", "verdicts": {"asrt-1": false, "asrt-2": true, "asrt-3": true, "casrt-1": false, "casrt-2": true, "casrt-3": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0054-02:twin_ceiling", "verdicts": {"casrt-1": false}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0054-02:ceiling", "verdicts": {"asrt-1": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0054-02:floor", "verdicts": {"asrt-1": false, "casrt-1": false}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0054-03:ceiling", "verdicts": {"asrt-1": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0054-03:twin_ceiling", "verdicts": {"casrt-1": false}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0054-03:floor", "verdicts": {"asrt-1": false, "casrt-1": false}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0053-03:floor", "verdicts": {"asrt-1": false, "asrt-2": true, "asrt-3": true, "casrt-1": false, "casrt-2": true, "casrt-3": true}, "judge": "claude-fable-5-fallback"}
+{"run_id": "P-0037-03:twin_ceiling", "verdicts": {"casrt-1": true, "casrt-2": true, "casrt-3": true}, "judge": "claude-fable-5-fallback"}

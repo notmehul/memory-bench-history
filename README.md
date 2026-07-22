@@ -52,7 +52,7 @@ Six-to-eight metric profile per system (never a single aggregate score):
 - `prompts/` — content-generation contracts (event rendering, canonical
   realization) used by whichever LLM renders prose
 - `scripts/` — QA tooling: `validation_sweep.py`, `blind_check.py`,
-  `length_pin.py`
+  `length_pin.py`, `author_probes.py`, `screen_probes.py`
 - `datasets/dev/org-0000N/` — released org: `org.json` (private ledger),
   `plan.json` (probe plans), `realization-map.json` (template→prose
   provenance), `events.jsonl` (SUT-facing stream), `events.annotated.jsonl`
@@ -63,6 +63,10 @@ Six-to-eight metric profile per system (never a single aggregate score):
 ## Status
 
 v1 dev dataset complete: 5 seeded orgs + 5 counterfactual twins, all
-machine validation green (`docs/validation-report.md`). Next: Phase 3 —
-probe construction and floor/ceiling validity screening
-(`docs/dataset-plan.md`).
+machine validation green (`docs/validation-report.md`). Phase 3 probe
+construction complete: 810 oracle-validated behavioral probes across the
+5 orgs (`probes.jsonl`). Validity screening ran end-to-end for seed 1 and
+rejected the initial fixed-task-model choice (a real screening outcome —
+see the G3 note in `docs/dataset-plan.md`); the re-screen under the
+escalated task model is staged. Remaining: screening seeds 2–5 + seed-1
+re-screen (G3), then Phases 4–5 (judge calibration, pilot baselines).
