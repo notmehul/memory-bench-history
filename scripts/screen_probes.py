@@ -6,10 +6,15 @@ side additionally run `twin_ceiling` against the twin org, scored with the
 counterfactual assertions. No SUT is involved — this screens the probes
 themselves.
 
-Standing decisions (dataset-plan.md):
-  fixed task model  = gpt-5.4-mini via codex, reasoning effort medium
-  screening judge   = gpt-5.4 (semantic assertions only; != task model;
-                      formal judge calibration happens in Phase 4)
+Standing decisions (dataset-plan.md, amended 2026-07-22 after the seed-1
+pilot rejected gpt-5.4-mini):
+  fixed task model  = gpt-5.4 via codex, reasoning effort medium
+  screening judge   = Claude family (semantic assertions only; != task
+                      model, cross-provider; formal calibration in Phase 4).
+                      Judging runs outside this script: `judge-export`
+                      writes the pending (output, criteria) rows, the Claude
+                      judge produces verdicts, `judge-import` validates and
+                      merges them.
 
 Pass rules (n=3 instances/cluster; small-n adaptation of the spec's >=90%
 ceiling / >=70% floor-fail gates; floor rule revised at the pilot stage,
@@ -56,8 +61,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from membench.belief import belief_hist, belief_state  # noqa: E402
 from membench.ledger import load_event_index, load_ledger  # noqa: E402
 
-TASK_MODEL = ("gpt-5.4-mini", "medium")
-JUDGE_MODEL = ("gpt-5.4", "low")
+TASK_MODEL = ("gpt-5.4", "medium")
+JUDGE_MODEL = "claude"
 RUN_TIMEOUT = 360
 CEILING_PASS = 0.999
 FLOOR_FAIL = 0.5
@@ -238,45 +243,20 @@ def cmd_run(args) -> int:
 
 
 # ---------------------------------------------------------------- judge
+#
+# The screening judge is a Claude-family model (cross-provider from the
+# task model). This script only prepares and merges its work: judge-export
+# writes every (output, criteria) row still lacking verdicts; the judge
+# answers each criterion true/false (true only if the deliverable clearly
+# satisfies it; false when in doubt) and returns
+# {run_id: {assertion_id: bool}}; judge-import validates ids and appends.
 
-def _do_judge(run_id: str, output: str, semantic: list[dict]) -> dict:
-    crit = "\n".join(f"{i + 1}. {a['criterion']}" for i, a in enumerate(semantic))
-    prompt = (
-        "You are grading a work deliverable against binary criteria.\n\n"
-        f"DELIVERABLE:\n---\n{output}\n---\n\n"
-        f"CRITERIA:\n{crit}\n\n"
-        "For each criterion, answer true only if the deliverable clearly "
-        "satisfies it; when in doubt answer false. Write a file verdict.json "
-        'in the current directory of the exact form {"1": true, "2": false, ...} '
-        "with one entry per criterion. Write nothing else."
-    )
-    for _ in range(2):
-        with tempfile.TemporaryDirectory(prefix="mbjudge-") as tmp:
-            tmp_path = Path(tmp)
-            try:
-                _codex(prompt, *JUDGE_MODEL, cwd=tmp_path)
-            except subprocess.TimeoutExpired:
-                continue
-            v = tmp_path / "verdict.json"
-            if v.exists():
-                try:
-                    raw = json.loads(v.read_text())
-                    verdicts = {
-                        a["id"]: bool(raw[str(i + 1)])
-                        for i, a in enumerate(semantic)
-                    }
-                    return {"run_id": run_id, "verdicts": verdicts}
-                except (json.JSONDecodeError, KeyError):
-                    continue
-    return {"run_id": run_id, "verdicts": None, "error": "judge failed"}
-
-
-def cmd_judge(args) -> int:
+def cmd_judge_export(args) -> int:
     rows = {r["run_id"]: r for r in
             (json.loads(x) for x in (args.work_dir / "runs.jsonl").read_text().splitlines())}
     results = _read_done(args.work_dir / "results.jsonl")
-    j_path = args.work_dir / "judgements.jsonl"
-    done = {rid for rid, r in _read_done(j_path).items() if r.get("verdicts")}
+    done = {rid for rid, r in _read_done(args.work_dir / "judgements.jsonl").items()
+            if r.get("verdicts")}
     todo = []
     for rid, res in results.items():
         if rid in done or not res.get("output"):
@@ -285,23 +265,36 @@ def cmd_judge(args) -> int:
         pool = row["assertions"] + (row.get("cf_assertions") or [])
         semantic = [a for a in pool if a["checker"] == "semantic"]
         if semantic:
-            todo.append((rid, res["output"], semantic))
-    print(f"{len(done)} judged, {len(todo)} to judge", flush=True)
-    lock = threading.Lock()
-    n = 0
-    with j_path.open("a") as fh, ThreadPoolExecutor(max_workers=args.jobs) as ex:
-        futs = [ex.submit(_do_judge, *t) for t in todo]
-        for fut in as_completed(futs):
-            res = fut.result()
-            with lock:
-                fh.write(json.dumps(res) + "\n")
-                fh.flush()
-                n += 1
-                if n % 20 == 0:
-                    print(f"  {n}/{len(todo)}", flush=True)
-    failed = sum(1 for r in _read_done(j_path).values() if not r.get("verdicts"))
-    print(f"judge complete; {failed} failed (rerun `judge` to retry)")
-    return 1 if failed else 0
+            todo.append({
+                "run_id": rid,
+                "criteria": {a["id"]: a["criterion"] for a in semantic},
+                "output": res["output"],
+            })
+    out = args.work_dir / "pending-judge.json"
+    out.write_text(json.dumps(todo, indent=1))
+    print(f"{len(todo)} rows ({sum(len(t['criteria']) for t in todo)} criteria) -> {out}")
+    return 0
+
+
+def cmd_judge_import(args) -> int:
+    pending = {t["run_id"]: t for t in
+               json.loads((args.work_dir / "pending-judge.json").read_text())}
+    verdicts = json.loads(Path(args.verdicts).read_text())
+    unknown = set(verdicts) - set(pending)
+    if unknown:
+        raise SystemExit(f"unknown run_ids: {sorted(unknown)[:5]}")
+    with (args.work_dir / "judgements.jsonl").open("a") as fh:
+        for rid, v in verdicts.items():
+            want = set(pending[rid]["criteria"])
+            if set(v) != want:
+                raise SystemExit(f"{rid}: verdict ids {sorted(v)} != {sorted(want)}")
+            fh.write(json.dumps({
+                "run_id": rid,
+                "verdicts": {k: bool(x) for k, x in v.items()},
+                "judge": args.judge,
+            }) + "\n")
+    print(f"imported {len(verdicts)} judgements (judge={args.judge})")
+    return 0
 
 
 # --------------------------------------------------------------- report
@@ -338,56 +331,72 @@ def cmd_report(args) -> int:
     results = _read_done(args.work_dir / "results.jsonl")
     judgements = _read_done(args.work_dir / "judgements.jsonl")
 
-    per_cluster: dict[str, dict[str, list]] = defaultdict(lambda: defaultdict(list))
+    # Screening unit is the probe INSTANCE (probe-spec v0.3): an instance
+    # is valid iff its ceiling passes, its twin ceiling passes (both sides
+    # of the pair), and its floor output does not pass at pair level. A
+    # cluster survives with >=2/3 valid instances; only valid instances
+    # ship. The stricter all-instances cluster rule is reported alongside.
+    per_probe: dict[str, dict] = defaultdict(dict)
     for rid, row in rows.items():
         res = results.get(rid)
         if not res or not res.get("output"):
             raise SystemExit(f"incomplete: no output for {rid} (run `run` again)")
         verdicts = (judgements.get(rid) or {}).get("verdicts")
         score = _score(rid, row["assertions"], res["output"], verdicts)
+        p = per_probe[row["probe_id"]]
+        p["cluster_id"] = row["cluster_id"]
+        p[row["condition"]] = score
         if row["condition"] == "floor" and row.get("cf_assertions"):
-            # Pair-level floor: the floor prompt is org-independent, so the
-            # same output is scored against both sides. A memoryless model
-            # can pass the pair only if the assertions fail to discriminate.
+            # The floor prompt is org-independent, so the same output is
+            # scored against both sides; a memoryless model passes the pair
+            # only if the assertions fail to discriminate.
             cf_score = _score(rid, row["cf_assertions"], res["output"], verdicts)
-            per_cluster[row["cluster_id"]]["floor_pair"].append(
+            p["floor_pair_pass"] = (
                 score >= CEILING_PASS and cf_score >= CEILING_PASS
             )
-        per_cluster[row["cluster_id"]][row["condition"]].append(score)
 
-    report, survivors = {}, []
-    for cid, conds in sorted(per_cluster.items()):
-        ceiling = conds["ceiling"]
-        floor = conds["floor"]
-        twin = conds.get("twin_ceiling", [])
-        pair = conds.get("floor_pair", [])
-        ceiling_ok = all(s >= CEILING_PASS for s in ceiling)
-        twin_ok = all(s >= CEILING_PASS for s in twin)
-        floor_fails = sum(1 for s in floor if s <= FLOOR_FAIL)
-        # Counterfactual-paired probes (probe-spec section 4): the pair is
-        # the scoring unit; per-side floor passes are reported as
-        # guessability, not grounds for dropping.
-        floor_ok = (not any(pair)) if pair else floor_fails >= 2
-        guessability = sum(1 for s in floor if s >= CEILING_PASS) / len(floor)
-        survive = ceiling_ok and twin_ok and floor_ok
+    clusters: dict[str, dict] = defaultdict(lambda: {"instances": {}})
+    for pid, p in sorted(per_probe.items()):
+        ceiling_ok = p["ceiling"] >= CEILING_PASS
+        twin_ok = p.get("twin_ceiling", 1.0) >= CEILING_PASS
+        floor_ok = not p.get("floor_pair_pass", p["floor"] > FLOOR_FAIL)
+        clusters[p["cluster_id"]]["instances"][pid] = {
+            "ceiling": p["ceiling"], "twin_ceiling": p.get("twin_ceiling"),
+            "floor": p["floor"],
+            "valid": ceiling_ok and twin_ok and floor_ok,
+        }
+
+    report, survivors, n_valid_instances, strict_survivors = {}, [], 0, []
+    for cid, c in sorted(clusters.items()):
+        insts = c["instances"]
+        valid = [pid for pid, i in insts.items() if i["valid"]]
+        floors = [i["floor"] for i in insts.values()]
+        guessability = sum(1 for s in floors if s >= CEILING_PASS) / len(floors)
+        survive = len(valid) >= 2
+        strict = len(valid) == len(insts)
         if survive:
             survivors.append(cid)
+            n_valid_instances += len(valid)
+        if strict:
+            strict_survivors.append(cid)
         report[cid] = {
-            "ceiling": ceiling, "floor": floor, "twin_ceiling": twin,
-            "ceiling_ok": ceiling_ok, "twin_ok": twin_ok,
-            "floor_fails": floor_fails, "floor_ok": floor_ok,
+            "instances": insts,
+            "n_valid": len(valid),
             "guessability": round(guessability, 3),
             "survive": survive,
+            "strict_survive": strict,
         }
 
     out = {
         "task_model": {"model": TASK_MODEL[0], "effort": TASK_MODEL[1]},
-        "judge_model": {"model": JUDGE_MODEL[0], "effort": JUDGE_MODEL[1]},
+        "judge_model": JUDGE_MODEL,
         "clusters": report,
         "n_clusters": len(report),
         "n_survivors": len(survivors),
-        "n_instances_surviving": 3 * len(survivors),
-        "gate_g3_cluster_floor": len(survivors) >= 45,
+        "n_valid_instances": n_valid_instances,
+        "n_strict_survivors": len(strict_survivors),
+        "gate_g3_clusters": len(survivors) >= 45,
+        "gate_g3_instances": n_valid_instances >= 135,
     }
     text = json.dumps(out, indent=1)
     if args.out:
@@ -395,21 +404,21 @@ def cmd_report(args) -> int:
         print(f"-> {args.out}")
     mean_guess = sum(r["guessability"] for r in report.values()) / len(report)
     print(
-        f"clusters {len(report)}  survivors {len(survivors)}  "
-        f"instances {3 * len(survivors)}  mean guessability {mean_guess:.2f}  "
-        f"G3 cluster floor (>=45): "
-        f"{'PASS' if out['gate_g3_cluster_floor'] else 'FAIL'}"
+        f"clusters {len(report)}  survivors {len(survivors)} "
+        f"(strict {len(strict_survivors)})  valid instances {n_valid_instances}  "
+        f"mean guessability {mean_guess:.2f}  "
+        f"G3 clusters>=45: {'PASS' if out['gate_g3_clusters'] else 'FAIL'}  "
+        f"instances>=135: {'PASS' if out['gate_g3_instances'] else 'FAIL'}"
     )
     for cid, r in report.items():
         if not r["survive"]:
-            why = []
-            if not r["ceiling_ok"]:
-                why.append(f"ceiling {r['ceiling']}")
-            if not r["twin_ok"]:
-                why.append(f"twin {r['twin_ceiling']}")
-            if not r["floor_ok"]:
-                why.append(f"floor fails {r['floor_fails']}/3")
-            print(f"  DROP {cid}: {'; '.join(why)}")
+            bad = {pid: i for pid, i in r["instances"].items() if not i["valid"]}
+            detail = "; ".join(
+                f"{pid}: ceil={i['ceiling']:.2f} twin="
+                f"{'-' if i['twin_ceiling'] is None else format(i['twin_ceiling'], '.2f')}"
+                for pid, i in bad.items()
+            )
+            print(f"  DROP {cid} ({r['n_valid']}/3 valid): {detail}")
     return 0
 
 
@@ -424,15 +433,19 @@ def main() -> int:
     r.add_argument("work_dir", type=Path)
     r.add_argument("--jobs", type=int, default=8)
     r.add_argument("--limit", type=int, default=None)
-    j = sub.add_parser("judge")
-    j.add_argument("work_dir", type=Path)
-    j.add_argument("--jobs", type=int, default=6)
+    je = sub.add_parser("judge-export")
+    je.add_argument("work_dir", type=Path)
+    ji = sub.add_parser("judge-import")
+    ji.add_argument("work_dir", type=Path)
+    ji.add_argument("verdicts", type=Path)
+    ji.add_argument("--judge", default="claude-sonnet-5")
     p = sub.add_parser("report")
     p.add_argument("work_dir", type=Path)
     p.add_argument("--out", type=Path, default=None)
     args = ap.parse_args()
     return {"manifest": cmd_manifest, "run": cmd_run,
-            "judge": cmd_judge, "report": cmd_report}[args.cmd](args)
+            "judge-export": cmd_judge_export, "judge-import": cmd_judge_import,
+            "report": cmd_report}[args.cmd](args)
 
 
 if __name__ == "__main__":

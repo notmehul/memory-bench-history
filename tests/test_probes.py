@@ -87,12 +87,6 @@ def _request(org, plan_doc, cluster_id):
 
 def _valid_authored(req):
     target = req["targets"][0]
-    tok = sorted(discriminative_tokens(target["canonical"], target["counterfactual"]))
-    # Under the invariance rule only identifier-like tokens qualify for
-    # pattern checkers; P-0001's fact pair (kebab-case vs camelCase) has one
-    # on each side.
-    base_tok = next(t for t in tok if "-" in t)          # kebab-case
-    twin_tok = next(t for t in tok if t.startswith("camel"))  # camelCase
     return {
         "cluster_id": req["cluster_id"],
         "task": (
@@ -103,11 +97,17 @@ def _valid_authored(req):
         "modality": "document",
         "assertions": [{
             "id": "asrt-1", "kind": "fact_applied", "fact_id": target["fact_id"],
-            "checker": "pattern", "criterion": base_tok, "weight": 1.0,
+            "checker": "semantic",
+            "criterion": "The update tells engineers to use hyphenated "
+                         "lowercase resource names in API paths.",
+            "weight": 1.0,
         }],
         "counterfactual_assertions": [{
             "id": "casrt-1", "kind": "fact_applied", "fact_id": target["fact_id"],
-            "checker": "pattern", "criterion": twin_tok, "weight": 1.0,
+            "checker": "semantic",
+            "criterion": "The update tells engineers to use camelCase "
+                         "resource identifiers in API paths.",
+            "weight": 1.0,
         }],
     }
 
@@ -128,13 +128,27 @@ def test_task_leaking_answer_token_fails(org, plan_doc):
 def test_pattern_matching_both_sides_fails(org, plan_doc):
     req = _request(org, plan_doc, "P-0001")
     authored = _valid_authored(req)
-    # A token present in both variants matches base AND twin -> rejected.
+    # A fact_absent detector whose pattern hits both twin variants is not
+    # discriminative -> rejected.
     shared = set(req["targets"][0]["canonical"].lower().split()) & set(
         req["targets"][0]["counterfactual"].lower().split()
     )
-    authored["assertions"][0]["criterion"] = sorted(shared, key=len)[-1].strip(".,")
+    authored["assertions"] = [{
+        "id": "asrt-1", "kind": "fact_absent",
+        "fact_id": req["targets"][0]["fact_id"], "checker": "pattern",
+        "criterion": sorted(shared, key=len)[-1].strip(".,"), "weight": 1.0,
+    }]
     errs = validate_authored_cluster(req, authored)
     assert any("also matches" in e for e in errs)
+
+
+def test_pattern_reserved_for_fact_absent(org, plan_doc):
+    req = _request(org, plan_doc, "P-0001")
+    authored = _valid_authored(req)
+    authored["assertions"][0]["checker"] = "pattern"
+    authored["assertions"][0]["criterion"] = "kebab[- ]?case"
+    errs = validate_authored_cluster(req, authored)
+    assert any("reserved for fact_absent" in e for e in errs)
 
 
 def test_forbidden_tokens_cover_both_directions(org, plan_doc):

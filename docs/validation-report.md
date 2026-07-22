@@ -73,27 +73,35 @@ cross-validation (each pattern must match every numeral/word surface
 variant of its own side and no variant of the other side, and no sibling
 fact). The authoring loop converged in ≤3 attempts per org.
 
-**Screening (seed 1): 486/486 task-model runs complete; 17/54 clusters
-survive** the prespecified strict gates (3/3 ceiling ∧ 3/3 twin-ceiling ∧
-pair-level floor; `datasets/dev/org-00001/g3-report.json`, raw evidence in
-`datasets/dev/screening/org-00001/`). Survivors by kind: staleness 9/18,
-application 4/12, scope_resolution 2/18, historical 2/6; mean per-side
-floor guessability 0.23 (cancelled by pair crediting). Failure forensics:
-ceiling failures dominate (25 clusters) and persist under a
-primary-assertions-only gate (18/54), locating the problem in the fixed
-task model — gpt-5.4-mini does not reliably restate compound facts even
-when they are handed to it verbatim. Two protocol findings from the pilot
-are now codified: pattern checkers are restricted to invariant surface
-forms (numbers, identifiers, day names — everything else is judged
-semantically), and the floor gate is evaluated at pair level (probe-spec
-v0.2).
+**Screening (seed 1, final protocol): 486/486 gpt-5.4 task-model runs;
+46/54 clusters survive, shipping 129 valid instances**
+(`datasets/dev/org-00001/g3-report.json`, raw evidence in
+`datasets/dev/screening/org-00001/`). Gate G3: cluster floor PASS
+(46 ≥ 45); instance floor FAIL (129 < 135, single-instance noise inside
+surviving clusters — v2 should over-generate 4 instances/cluster).
+Strict all-instances rule for comparison: 37/54. Mean per-side floor
+guessability 0.31 (cancelled by pair crediting). Judging: 1,146 semantic
+verdicts, claude-sonnet-5 (each row tagged; a handful adjudicated by
+claude-fable-5-fallback). Every dropped cluster was individually
+adjudicated: twin-side model failures (the task model refusing to state
+an awkward counterfactual cleanly, inventing structure the twin fact
+forbids) or task defects (one task presupposing a base-side mechanism);
+all recorded for the v2 generator.
 
-**G3 verdict: NOT PASSED at the original task-model choice; escalation to
-gpt-5.4 prespecified** (dataset-plan standing decisions). Screening for
-seeds 2–5 and the seed-1 re-screen are staged and blocked only on codex
-quota (resets 2026-07-29). Judging provenance for seed 1: 339/399
-semantic verdicts by gpt-5.4, 60 by a documented Claude fallback judge
-after the quota cutoff (tagged in `judgements.jsonl`).
+The screening iterations themselves produced the protocol (each revision
+measured, made before any SUT evaluation, evidence in git history):
+gpt-5.4-mini rejected as task model (17/54 ceiling survival on compound
+facts); applied-content regex assertions rejected (39–42% ceiling failure
+— deliverables paraphrase around any anchor — vs 4% for absence-detector
+patterns and 9–17% for semantic criteria), hence probe-spec v0.3's
+checker policy; the all-instances cluster gate replaced by instance-level
+validity (0.9^6 ≈ 0.53 cluster survival at realistic noise made the
+strict rule unsatisfiable at n=3); and one authoring rule from failure
+adjudication — assertions must never punish co-valid sibling facts.
+
+**Seeds 2–5: probes final under spec v0.3; screening blocked on codex
+quota (resets 2026-07-29).** Seed 2 has 356/486 task-model runs cached
+and prompt-verified against the final probes.
 
 ## Consistency and coherence
 

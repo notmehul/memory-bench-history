@@ -48,14 +48,16 @@ fences) with one object per request:
 
 ## Assertion rules
 
-0. **Checker choice is about invariance, not preference.** A deliverable
-   paraphrases policy content freely ("every two weeks" becomes "every
-   other week"; "three or more services" becomes "3 services or more").
-   Use `checker: "pattern"` ONLY when an invariant token survives any
-   paraphrase: a number (with digit+word alternation), a currency/percent
-   figure, a day name, or an identifier-like term (`kebab-case`, a tool or
-   template name). Everything else — plain-word policies, orderings,
-   qualitative rules — MUST be `checker: "semantic"`.
+0. **Checker choice (measured, final).** Screening measured applied-content
+   patterns failing 39–42% of ceiling runs — a deliverable paraphrases
+   around ANY anchor ("capped at five minutes" vs "five minutes per
+   presenter"; "14 calendar days" vs "fourteen days") — while absence
+   detectors failed only 4%. Therefore:
+   - `fact_applied` / `scope_correct` / every applied-content assertion:
+     `checker: "semantic"`, always.
+   - `fact_absent`: `checker: "pattern"` when an invariant token exists
+     (number with digit+word alternation, currency/percent, day name,
+     identifier like `kebab-case`); semantic absence statement otherwise.
 1. When a pattern IS justified, the criterion is a Python regex matched
    case-insensitively with DOTALL against the deliverable. It must NEVER
    match the counterfactual's surface form. Hard rules:

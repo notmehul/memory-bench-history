@@ -63,10 +63,11 @@ Six-to-eight metric profile per system (never a single aggregate score):
 ## Status
 
 v1 dev dataset complete: 5 seeded orgs + 5 counterfactual twins, all
-machine validation green (`docs/validation-report.md`). Phase 3 probe
-construction complete: 810 oracle-validated behavioral probes across the
-5 orgs (`probes.jsonl`). Validity screening ran end-to-end for seed 1 and
-rejected the initial fixed-task-model choice (a real screening outcome —
-see the G3 note in `docs/dataset-plan.md`); the re-screen under the
-escalated task model is staged. Remaining: screening seeds 2–5 + seed-1
-re-screen (G3), then Phases 4–5 (judge calibration, pilot baselines).
+machine validation green (`docs/validation-report.md`). Phase 3: 810
+oracle-validated behavioral probes across the 5 orgs (`probes.jsonl`,
+probe-spec v0.3); seed 1 fully screened under the final floor/ceiling
+protocol — 46/54 clusters survive with 129 valid instances (cluster gate
+PASS; see the G3 note in `docs/dataset-plan.md` for the measured protocol
+revisions the screening forced). Remaining: screening seeds 2–5 (staged,
+blocked on task-model quota), then Phases 4–5 (judge calibration, pilot
+baselines).

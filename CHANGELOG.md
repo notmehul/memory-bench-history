@@ -39,12 +39,18 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning: Se
   with prespecified small-n gates (`scripts/screen_probes.py`,
   `scripts/author_probes.py`).
 - Probes for all 5 dev orgs: 810 oracle-validated instances
-  (`datasets/dev/org-0000N/probes.jsonl`); full seed-1 validity screening
-  (486 runs, evidence in `datasets/dev/screening/org-00001/`,
-  `g3-report.json`). Screening rejected the initial fixed-task-model
-  choice (gpt-5.4-mini: 17/54 clusters survive; ceiling-anchor failures on
-  compound facts) — task model escalated to gpt-5.4, re-screen staged
-  pending quota (see dataset-plan G3 note).
+  (`datasets/dev/org-0000N/probes.jsonl`) under probe-spec v0.3. Seed-1
+  validity screening complete under the final protocol: 486 gpt-5.4 runs,
+  claude-sonnet-5 judging, 46/54 clusters survive with 129 valid
+  instances (cluster gate PASS, instance gate 129/135; evidence in
+  `datasets/dev/screening/org-00001/`). Seed-2 partial run cache staged.
+- Probe spec v0.3: applied-content assertions must be semantic (measured:
+  regex-on-paraphrase fails 39-42% of ceiling runs vs 9-17% semantic);
+  pattern reserved for fact_absent detectors; validity gates evaluated per
+  instance (cluster survives with >=2/3 valid instances); assertions may
+  never punish co-valid sibling facts. Task model escalated to gpt-5.4
+  after mini failed ceiling anchors (17/54); screening judge moved to the
+  Claude family (cross-provider).
 
 ### Changed
 - Probe spec v0.2 (Phase 3 pilot): the floor validity gate is evaluated at

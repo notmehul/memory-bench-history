@@ -290,6 +290,15 @@ def _check_assertion(
                 "as an absence statement ('does not …')"
             )
         return errs
+    # Seed-1 screening measured applied-content patterns failing 39-42% of
+    # ceiling runs (deliverables paraphrase around any anchor) vs 4% for
+    # absence detectors: patterns are for fact_absent only.
+    if a["kind"] != "fact_absent":
+        errs.append(
+            f"{a['id']}: pattern checkers are reserved for fact_absent "
+            "detectors — applied-content assertions must be semantic"
+        )
+        return errs
     try:
         re.compile(a["criterion"], re.IGNORECASE)
     except re.error as e:

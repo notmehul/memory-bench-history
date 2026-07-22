@@ -102,6 +102,25 @@ Validity gates (computed during dataset construction, before any SUT is evaluate
 > per-side would throw away valid pairs. The per-side floor pass rate is
 > still computed and reported as `guessability` per cluster.
 
+> **Spec change v0.3 (2026-07-23, Phase 3 screening):** two measured
+> revisions. (1) *Checker policy:* applied-content assertions
+> (`fact_applied`, `scope_correct`, …) must use the `semantic` checker;
+> `pattern` is reserved for `fact_absent` detectors. Seed-1 screening
+> measured applied-content regexes failing 39–42% of ceiling runs — a
+> deliverable paraphrases around any anchor — vs 4% for absence detectors
+> and 9–17% for semantic criteria. (2) *Screening unit:* validity gates are
+> evaluated per probe INSTANCE — an instance is valid iff its ceiling
+> passes, its twin ceiling passes, and its floor output does not pass at
+> pair level; a template (cluster) survives with ≥2/3 valid instances and
+> ships only its valid instances. The earlier all-instances cluster rule
+> demanded per-run reliability ≥98% (0.9^6 ≈ 0.53 cluster survival even at
+> 9% instance noise), which no realistic task-model/judge pair delivers at
+> n=3; both the strict and instance-level counts are reported. Additional
+> authoring rule from failure adjudication: an assertion must never punish
+> content from a different co-valid fact of the same cluster (complementary
+> facts legitimately co-apply; only genuine precedence losers get
+> `fact_absent` guards).
+
 ## 4. Counterfactual twins
 
 `counterfactual_probe.ledger_deltas` names the facts whose `counterfactual.canonical`

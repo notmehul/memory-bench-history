@@ -109,29 +109,37 @@ Expected attrition: plan for 30% probe loss; over-generate accordingly.
 n ≥ 30 across the 5-seed suite; every surviving probe discriminative per the
 floor/ceiling gates.
 
-> **G3 status 2026-07-22: construction COMPLETE, screening blocked on the
-> task-model finding.** All 5 orgs carry `probes.jsonl` — 54 clusters × 3
-> oracle-revalidated instances each (810 total), authored under
-> `prompts/probe-authoring.md` with mechanical hygiene lint and pattern
-> cross-validation (`membench.probes`). Full floor/ceiling screening ran for
-> seed 1 (486 task-model runs, `datasets/dev/screening/org-00001/`):
-> **17/54 clusters survive** under the prespecified strict gates
-> (`datasets/dev/org-00001/g3-report.json`). Failure forensics show the
-> binding constraint is the fixed task model itself: gpt-5.4-mini cannot
-> reliably anchor ceiling = 1.0 on compound facts (survivors change to only
-> 18/54 even under a primary-assertions-only gate, so this is not secondary-
-> clause noise). This is the validity screening working as designed — it
-> rejected the (task model, probe) pairing before any SUT was scored.
-> **Amended standing decision (prespecified before the next run): fixed task
-> model escalates to `gpt-5.4` (codex, effort medium); screening judge moves
-> to the Claude family (cross-provider), calibrated at Phase 4.** Codex
-> weekly quota was exhausted mid-screening (resets 2026-07-29); the re-screen
-> is staged: per seed N —
+> **G3 status 2026-07-23: seed 1 SCREENED under the final protocol —
+> cluster gate PASS (46/54 ≥ 45), instance gate FAIL (129/135).** All 5
+> orgs carry probes under probe-spec v0.3 (semantic applied-content
+> assertions, pattern reserved for absence detectors, instance-level
+> gates). Seed-1 evidence: 486 gpt-5.4 task-model runs
+> (`datasets/dev/screening/org-00001/`), semantic verdicts by
+> claude-sonnet-5 (tagged per row; a handful by claude-fable-5-fallback),
+> report at `datasets/dev/org-00001/g3-report.json` — 46 surviving
+> clusters shipping 129 valid instances (strict all-instances rule: 37).
+> The 8 dropped clusters were individually adjudicated: twin-side model
+> failures (e.g. refusing to state a counterfactual fact cleanly) or task
+> defects (a task presupposing a base-side mechanism), recorded for the v2
+> generator. The 6-instance shortfall vs 135 comes from single-instance
+> noise inside surviving clusters; v2 should over-generate 4 instances per
+> cluster.
+>
+> **Protocol history (all revisions made on screening evidence, before any
+> SUT evaluation):** gpt-5.4-mini rejected as task model (17/54 ceiling
+> survival; forensics in git history), escalated to gpt-5.4; applied-content
+> regex assertions rejected (39–42% ceiling failure vs 9–17% semantic),
+> replaced per spec v0.3; all-instances cluster gate replaced by
+> instance-level validity (spec v0.3).
+>
+> **Remaining for full G3 (blocked on codex quota, resets 2026-07-29):**
+> screen seeds 2–5. Seed 2 has 356/486 task-model runs cached and
+> prompt-verified against the final probes
+> (`datasets/dev/screening/org-00002/`). Per seed N:
 > `python scripts/screen_probes.py manifest datasets/dev/org-0000N
-> datasets/dev/org-0000N-twin <work>/sN && … run && … judge && … report`.
-> Seed-1 judging note: 339/399 semantic verdicts by gpt-5.4, the final 60 by
-> a documented fallback judge (Claude Fable, `judgements.jsonl` rows tagged
-> `claude-fable-5-fallback`) after the quota cut off mid-pass.
+> datasets/dev/org-0000N-twin <work>/sN`, seed the work dir with any cached
+> `results.jsonl`, then `run` (fills the gap), `judge-export` → Claude
+> judge → `judge-import`, `report`.
 
 ## Phase 4 — Human validation + judge calibration *(week 5–6)*
 
