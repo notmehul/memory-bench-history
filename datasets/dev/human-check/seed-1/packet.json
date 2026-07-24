@@ -1,0 +1,82 @@
+[
+ {
+  "id": 1,
+  "text": "Platform retro action items must carry an owner and due date inside forty-eight hours"
+ },
+ {
+  "id": 2,
+  "text": "Otto prefers refunds under $300 without looping finance in"
+ },
+ {
+  "id": 3,
+  "text": "Growth team travel must get booked at least fourteen days beforehand"
+ },
+ {
+  "id": 4,
+  "text": "Mei prefers bundling non-urgent Slack replies twice every day"
+ },
+ {
+  "id": 5,
+  "text": "Production changes ship org-wide on a fixed Tuesday and Thursday cadence."
+ },
+ {
+  "id": 6,
+  "text": "Bug triage is shared daily, with its schedule published in Slack."
+ },
+ {
+  "id": 7,
+  "text": "Company meeting notes must record decisions, owners, plus due dates"
+ },
+ {
+  "id": 8,
+  "text": "Platform pauses risky deploys once monthly error-budget crosses sixty percent"
+ },
+ {
+  "id": 9,
+  "text": "Sev-1 pages must escalate toward the engineering-director after thirty minutes"
+ },
+ {
+  "id": 10,
+  "text": "Platform invoices above $5,000 need finance approval before payment"
+ },
+ {
+  "id": 11,
+  "text": "Platform production access needs manager sign-off before grants activate"
+ },
+ {
+  "id": 12,
+  "text": "Sprint carryover is capped at four unfinished tickets per squad"
+ },
+ {
+  "id": 13,
+  "text": "company travel exceeding $2,000 needs director approval before booking."
+ },
+ {
+  "id": 14,
+  "text": "Growth briefly paid trial on-call stipends of $150 weekly last spring"
+ },
+ {
+  "id": 15,
+  "text": "Org might permit one approval when both reviewers sit on call"
+ },
+ {
+  "id": 16,
+  "text": "Growth routes contracts carrying over three redlines toward legal first"
+ },
+ {
+  "id": 17,
+  "text": "Growth marketing copy adopts the upbeat voice from the brand guide"
+ },
+ {
+  "id": 18,
+  "text": "Every production deploy must carry a same-day changelog entry posted"
+ },
+ {
+  "id": 19,
+  "text": "Any change touching a shared library requires a design doc."
+ },
+ {
+  "id": 20,
+  "text": "Platform assigns bug triage unto a weekly primary plus a named backup"
+ }
+]

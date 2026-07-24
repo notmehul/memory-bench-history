@@ -1,0 +1,82 @@
+[
+ {
+  "id": 1,
+  "text": "contracts with more than five redlined clauses need legal review before countersign."
+ },
+ {
+  "id": 2,
+  "text": "the data platform records migration approvals inside 10 minutes of signoff"
+ },
+ {
+  "id": 3,
+  "text": "the migration signoff form sits at go/db-signoff on the internal portal."
+ },
+ {
+  "id": 4,
+  "text": "core pushes production changes on a Tuesday and Thursday cadence."
+ },
+ {
+  "id": 5,
+  "text": "Oncall engineers get a 400 dollar stipend per primary week."
+ },
+ {
+  "id": 6,
+  "text": "partner-facing incidents have to be acknowledged within thirty minutes."
+ },
+ {
+  "id": 7,
+  "text": "launch readiness owners clear every launch criterion within three business days"
+ },
+ {
+  "id": 8,
+  "text": "Core pauses feature launches when monthly error budget use exceeds 50%."
+ },
+ {
+  "id": 9,
+  "text": "Standups stay focused on blockers, priorities, staffing changes, risks, and dependencies."
+ },
+ {
+  "id": 10,
+  "text": "core API paths follow kebab-case alongside plural resource names"
+ },
+ {
+  "id": 11,
+  "text": "roadmap reviews run a 3-decision agenda each planning cycle"
+ },
+ {
+  "id": 12,
+  "text": "Core needs a design doc for changes touching two or more services."
+ },
+ {
+  "id": 13,
+  "text": "Elena would rather track retro-actions in Linear than spreadsheets."
+ },
+ {
+  "id": 14,
+  "text": "changelog publication stops once release staffing falls below 2 available engineers"
+ },
+ {
+  "id": 15,
+  "text": "Company releases need a public changelog entry on ship day."
+ },
+ {
+  "id": 16,
+  "text": "aditi prefers meeting notes captured as bullet outcomes only."
+ },
+ {
+  "id": 17,
+  "text": "carryover caps stay 4 points per engineer, max"
+ },
+ {
+  "id": 18,
+  "text": "Company policy blocks deploys from Thursday noon until Monday morning."
+ },
+ {
+  "id": 19,
+  "text": "Engineering presents each SEV-1 postmortem during the companywide monthly operations review cadence."
+ },
+ {
+  "id": 20,
+  "text": "Experiment briefs list one primary metric and 2 guardrails before launch."
+ }
+]

@@ -1,0 +1,82 @@
+[
+ {
+  "id": 1,
+  "text": "support office hours now happen Wednesdays at 4pm, running two hours."
+ },
+ {
+  "id": 2,
+  "text": "new external integrations go through security review before launching to production."
+ },
+ {
+  "id": 3,
+  "text": "handoff confirmations may come in late while on-call staffing stays thin"
+ },
+ {
+  "id": 4,
+  "text": "sofia would rather anonymize analytics events after 90 days of storage"
+ },
+ {
+  "id": 5,
+  "text": "per leadership, handoff notes belong in the shared PagerDuty runbook."
+ },
+ {
+  "id": 6,
+  "text": "the changelog format guide sits in Notion's Engineering Standards section"
+ },
+ {
+  "id": 7,
+  "text": "company services stop feature launches once eighty percent of monthly error budget is consumed"
+ },
+ {
+  "id": 8,
+  "text": "partner escalations need acknowledgment within ten minutes through the shared support alias"
+ },
+ {
+  "id": 9,
+  "text": "leadership set customer data retention for closed accounts at five years."
+ },
+ {
+  "id": 10,
+  "text": "the template for meeting notes sits in the shared Google Drive."
+ },
+ {
+  "id": 11,
+  "text": "I prefer drafting postmortems as bullet outlines before the full write-up."
+ },
+ {
+  "id": 12,
+  "text": "every quarterly capacity plan must carry a fifteen-percent contingency buffer."
+ },
+ {
+  "id": 13,
+  "text": "pages that go unacknowledged escalate to secondary on-call after 15 minutes."
+ },
+ {
+  "id": 14,
+  "text": "the code review checklist now mandates two approvals on each merge"
+ },
+ {
+  "id": 15,
+  "text": "with the security team down two people, access reviews might slow."
+ },
+ {
+  "id": 16,
+  "text": "the platform team pushes its releases out every Friday at noon"
+ },
+ {
+  "id": 17,
+  "text": "demo day is weekly now, with seven-minute slots for each team"
+ },
+ {
+  "id": 18,
+  "text": "The page owner must review each company runbook every ninety days."
+ },
+ {
+  "id": 19,
+  "text": "the board approved keeping audit logs seven years company-wide"
+ },
+ {
+  "id": 20,
+  "text": "feature flags across the company must be made permanent or retired within ninety days of creation."
+ }
+]
