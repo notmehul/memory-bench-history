@@ -71,6 +71,13 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning: Se
   thesis.
 
 ### Changed
+- Independence protocol (2026-07-25): the pilot evaluates no
+  author-affiliated system. The "Marshmallow-style" baseline is replaced
+  by a generic typed-memory reference implementation (architecture-class
+  test, open-sourced with the benchmark); market systems enter by
+  published inclusion criteria with every exclusion reported; author
+  affiliation disclosed. See the Phase 5 protocol note in
+  `docs/dataset-plan.md`.
 - Probe spec v0.2 (Phase 3 pilot): the floor validity gate is evaluated at
   pair level for counterfactual-paired probes — a floor run only counts as
   "passable without memory" if one memoryless output satisfies BOTH sides

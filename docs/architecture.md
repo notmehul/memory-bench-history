@@ -181,7 +181,8 @@ runner/              per-principal event feed → SUT adapter interface → prob
 scoring/             assertion engine, judge harness, floor/ceiling normalization,
                      per-archetype metric aggregation, CI computation
 adapters/            SUT interface implementations (no-memory, full-context, naive
-                     RAG, Mem0/Letta/Zep, file-graph harness)
+                     RAG, market systems per the Phase 5 selection criteria,
+                     typed-memory reference implementation)
 datasets/            frozen released orgs (public) + holdout seeds (private)
 ```
 

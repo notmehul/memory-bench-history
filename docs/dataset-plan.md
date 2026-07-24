@@ -186,15 +186,34 @@ Baselines (fixed task model across all — the main-track rule):
 2. full-transcript long-context (with token cost reported)
 3. naive vector RAG over the raw stream (chunked, top-k)
 4. summarize-then-RAG (rolling per-principal summaries)
-5. an off-the-shelf memory product (Mem0 / Letta / Zep — pick 1–2 by adapter effort)
-6. typed file-graph harness (Marshmallow-style: typed nodes, source-backed, explicit
-   update semantics) — the architecture the benchmark's thesis predicts should win
+5. market memory systems, selected by the published criteria below — not by
+   convenience *(revised 2026-07-25; was "pick 1–2 by adapter effort")*
+6. typed-memory reference implementation: a **generic** open-source baseline
+   (typed nodes, tier/scope metadata, source-backed updates, explicit
+   supersession) specified alongside the benchmark and implemented from that
+   spec — testing the architecture *class*, affiliated with no product
+   *(revised 2026-07-25; was "Marshmallow-style file-graph harness")*
 7. silo ablation *(added 2026-07-25)*: the strongest shared-store baseline among
    3–6 re-run with per-principal isolated stores — identical system, sharing
    disabled. An adapter configuration, not new machinery. v1 measures only the
    propagation benefit of sharing; the governance cost (leakage) arrives with A10
    in v2, so the comparison is one-sided and must be reported as such.
 
+> **Independence & market-coverage protocol (2026-07-25):** the pilot is an
+> independent study — **no author-affiliated system is evaluated**. Market
+> candidates (Mem0, Zep, Letta, LangMem, Cognee, and any others surfaced by
+> a pre-pilot survey) are enumerated *before* any is run; inclusion requires
+> (a) publicly available (OSS or GA API), (b) an adapter implementable
+> against the two-call SUT interface without privileged access, (c)
+> per-principal isolation configurable. The paper reports the complete
+> candidate table including every exclusion and its reason (no silent
+> selection). Baseline #6 tests the typed-memory architecture class via a
+> generic reference implementation open-sourced with the benchmark; the
+> structure hypothesis below is prespecified at class level, never at
+> product level. Disclosure for the paper: the authors also build a
+> typed-memory harness; it is not evaluated, and no result is reported for
+> it.
+>
 > **Prespecified pilot hypotheses (2026-07-25, recorded before any pilot run;
 > ladder rungs per `docs/vision.md` §3):**
 > - **H1 (ladder-ordered separation):** where systems separate, separation is

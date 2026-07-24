@@ -93,6 +93,11 @@ The framing above is positioning; claims stop at what is instantiated.
 - Every hypothesis about pilot outcomes is prespecified in `dataset-plan.md`
   (Phase 5), dated, before any pilot run — the same discipline as the Phase 3
   screening amendments.
+- The study is independent: no author-affiliated memory system is evaluated,
+  market systems enter by published inclusion criteria (with every exclusion
+  reported), and the structured-memory hypothesis is stated at the
+  architecture-class level, tested via a generic open-source reference
+  implementation. Author affiliations are disclosed in the paper.
 
 ## 6. Roadmap implications
 
