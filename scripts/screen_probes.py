@@ -16,36 +16,45 @@ pilot rejected gpt-5.4-mini):
                       judge produces verdicts, `judge-import` validates and
                       merges them.
 
-Pass rules (n=3 instances/cluster; small-n adaptation of the spec's >=90%
-ceiling / >=70% floor-fail gates; floor rule revised at the pilot stage,
-before any full screening run — see probe-spec.md changelog v0.2):
+Pass rules (probe-spec v0.3, instance-level; floor rule v0.2 — both revised
+on screening evidence before any SUT evaluation, see probe-spec.md changelog):
   instance ceiling-pass  <=> weighted assertion score == 1.0
   instance floor-fail    <=> weighted assertion score <= 0.5
   pair-level floor       <=> a floor output scoring 1.0 against BOTH the
                              base and counterfactual assertion sets (the
                              floor prompt is org-independent, so one output
                              serves both sides)
-  cluster survives G3    <=> all 3 ceiling pass, all twin_ceiling pass
-                             (both sides of every twin pair), and no floor
-                             run passes at pair level. Per-side floor
-                             passes are reported as `guessability` — for
-                             pair-credited probes they indicate a guessable
-                             base side, which pair crediting cancels
+  instance valid         <=> ceiling pass AND twin_ceiling pass AND no
+                             pair-level floor pass
+  cluster survives G3    <=> >= 2/3 instances valid; only valid instances
+                             ship. The strict all-instances rule is reported
+                             alongside for comparison. Per-side floor passes
+                             are reported as `guessability` (mean and
+                             per-cluster) — pair crediting cancels them
                              structurally (risk register: generator bias).
 
 Resumable: every completed run is appended to results.jsonl; re-running
-`run`/`judge` skips completed work.
+`run` skips completed work.
+
+Judge blinding: `judge-export` writes pending-judge.json under opaque row
+and criterion ids — the judge sees only (output, criteria), never run ids,
+conditions (floor/ceiling/twin), or base-vs-counterfactual side. The
+translation table stays local in pending-judge.map.json and is applied by
+`judge-import`. `--ids <file>` exports specific run_ids (one per line) for
+blinded re-judging of already-judged rows.
 
 Usage:
   python scripts/screen_probes.py manifest <org_dir> <twin_dir> <work_dir>
   python scripts/screen_probes.py run <work_dir> [--jobs 8] [--limit N]
-  python scripts/screen_probes.py judge <work_dir> [--jobs 6]
+  python scripts/screen_probes.py judge-export <work_dir> [--ids <file>]
+  python scripts/screen_probes.py judge-import <work_dir> <verdicts.json> --judge <tag>
   python scripts/screen_probes.py report <work_dir> [--out <org_dir>/g3-report.json]
 """
 
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 import subprocess
@@ -255,42 +264,62 @@ def cmd_judge_export(args) -> int:
     rows = {r["run_id"]: r for r in
             (json.loads(x) for x in (args.work_dir / "runs.jsonl").read_text().splitlines())}
     results = _read_done(args.work_dir / "results.jsonl")
-    done = {rid for rid, r in _read_done(args.work_dir / "judgements.jsonl").items()
-            if r.get("verdicts")}
-    todo = []
-    for rid, res in results.items():
-        if rid in done or not res.get("output"):
+    if args.ids:
+        wanted = [x.strip() for x in Path(args.ids).read_text().splitlines() if x.strip()]
+        missing = [rid for rid in wanted if rid not in results]
+        if missing:
+            raise SystemExit(f"--ids run_ids without results: {missing[:5]}")
+        selected = wanted
+    else:
+        done = {rid for rid, r in _read_done(args.work_dir / "judgements.jsonl").items()
+                if r.get("verdicts")}
+        selected = [rid for rid in results if rid not in done]
+    # Blinding (probe-spec §3: the judge sees only output + criteria): rows
+    # and criteria go out under opaque ids so neither the condition
+    # (floor/ceiling/twin) nor the org side (asrt-/casrt-) is inferable.
+    todo, mapping = [], {}
+    for rid in selected:
+        res = results[rid]
+        if not res.get("output"):
             continue
         row = rows[rid]
         pool = row["assertions"] + (row.get("cf_assertions") or [])
         semantic = [a for a in pool if a["checker"] == "semantic"]
-        if semantic:
-            todo.append({
-                "run_id": rid,
-                "criteria": {a["id"]: a["criterion"] for a in semantic},
-                "output": res["output"],
-            })
+        if not semantic:
+            continue
+        blind = "r" + hashlib.sha1(rid.encode()).hexdigest()[:12]
+        keys = {f"c{i + 1}": a for i, a in enumerate(semantic)}
+        todo.append({
+            "id": blind,
+            "criteria": {k: a["criterion"] for k, a in keys.items()},
+            "output": res["output"],
+        })
+        mapping[blind] = {"run_id": rid,
+                          "criteria": {k: a["id"] for k, a in keys.items()}}
+    todo.sort(key=lambda t: t["id"])  # opaque order, not manifest order
     out = args.work_dir / "pending-judge.json"
     out.write_text(json.dumps(todo, indent=1))
+    (args.work_dir / "pending-judge.map.json").write_text(json.dumps(mapping, indent=1))
     print(f"{len(todo)} rows ({sum(len(t['criteria']) for t in todo)} criteria) -> {out}")
     return 0
 
 
 def cmd_judge_import(args) -> int:
-    pending = {t["run_id"]: t for t in
-               json.loads((args.work_dir / "pending-judge.json").read_text())}
+    mapping = json.loads((args.work_dir / "pending-judge.map.json").read_text())
     verdicts = json.loads(Path(args.verdicts).read_text())
-    unknown = set(verdicts) - set(pending)
+    unknown = set(verdicts) - set(mapping)
     if unknown:
-        raise SystemExit(f"unknown run_ids: {sorted(unknown)[:5]}")
+        raise SystemExit(f"unknown row ids: {sorted(unknown)[:5]}")
     with (args.work_dir / "judgements.jsonl").open("a") as fh:
-        for rid, v in verdicts.items():
-            want = set(pending[rid]["criteria"])
+        for blind, v in verdicts.items():
+            m = mapping[blind]
+            want = set(m["criteria"])
             if set(v) != want:
-                raise SystemExit(f"{rid}: verdict ids {sorted(v)} != {sorted(want)}")
+                raise SystemExit(
+                    f"{blind}: verdict ids {sorted(v)} != {sorted(want)}")
             fh.write(json.dumps({
-                "run_id": rid,
-                "verdicts": {k: bool(x) for k, x in v.items()},
+                "run_id": m["run_id"],
+                "verdicts": {m["criteria"][k]: bool(x) for k, x in v.items()},
                 "judge": args.judge,
             }) + "\n")
     print(f"imported {len(verdicts)} judgements (judge={args.judge})")
@@ -435,6 +464,7 @@ def main() -> int:
     r.add_argument("--limit", type=int, default=None)
     je = sub.add_parser("judge-export")
     je.add_argument("work_dir", type=Path)
+    je.add_argument("--ids", type=Path, default=None)
     ji = sub.add_parser("judge-import")
     ji.add_argument("work_dir", type=Path)
     ji.add_argument("verdicts", type=Path)
