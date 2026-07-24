@@ -51,6 +51,10 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning: Se
   never punish co-valid sibling facts. Task model escalated to gpt-5.4
   after mini failed ceiling anchors (17/54); screening judge moved to the
   Claude family (cross-provider).
+- Positioning document `docs/vision.md` (2026-07-25): the capability ladder
+  (Retention → Alignment → Coordination → Compounding) operationalizing the
+  collective-intelligence claim, and the heterogeneity / consumer-portability
+  thesis.
 
 ### Changed
 - Probe spec v0.2 (Phase 3 pilot): the floor validity gate is evaluated at
@@ -77,6 +81,11 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning: Se
   an explicit ledger field; annotations carry `rendering`; `offsets_from`
   fails loudly on collapse; Contract #2 v0.2 drops `embeds_distractors`
   (salience lint needs distractor spans; ledger owns distractor status).
+- Pre-pilot amendments (2026-07-25, before any pilot run): silo-ablation
+  baseline added to the Phase 5 lineup; three pilot hypotheses prespecified
+  in `docs/dataset-plan.md`; the model-grid track repurposed as consumer
+  portability; v2 archetype queue reordered (A12/A5 first). README metrics
+  regrouped by capability rung.
 
 ### Fixed
 - Ledger spec §5: `distributed` facts now require all evidence events witnessed

@@ -14,6 +14,13 @@ continual learning when implemented as a harness rather than weight updates.
 memory-bench evaluates a memory system (the "SUT" — system under test) by embedding it
 in a simulated organization and observing agent *behavior*, never memory internals.
 
+> Addendum 2026-07-25: organizations are getting smaller while agents per person
+> multiply, and each person picks a specialized harness (coding agent, creative
+> tool, generalist assistant) precisely for its specialization. Organizational
+> coherence therefore cannot live in the models — the weights are plural and
+> vendor-owned — only in the memory layer every harness shares. Full argument:
+> `vision.md` §1.
+
 ## 2. Positioning vs. prior work (validated 2026-07-14)
 
 | Benchmark | What it covers | What it lacks that we cover |
@@ -28,6 +35,11 @@ Defensible claim: **first benchmark of tiered, typed, longitudinal memory dynami
 simulated organization**, with governance measured jointly against propagation (the two
 are adversarial — that tension is a core design feature). Access-control-alone is
 GateMem's territory; we cite it and go wider.
+
+> Addendum 2026-07-25: the benchmark operationalizes the "company as mini AGI"
+> frame (`vision.md` §2). Pooled-context implementations of the org world model
+> are literally the long-context and naive-RAG baselines; the claim under test
+> is that collective intelligence requires *scoped* memory, not pooled memory.
 
 ## 3. Dimensional model
 
@@ -66,7 +78,8 @@ first four; the taxonomy exists from day one so coverage gaps are explicit:
 
 Reusable templates the generator instantiates many times per org at varying
 difficulty. Each defines an event pattern, the ledger truth it creates, its probe, and
-the metric it feeds.
+the metric it feeds. Orthogonally to the groups below, each archetype feeds exactly
+one rung of the capability ladder (`vision.md` §3; added 2026-07-25).
 
 **Propagation & application**
 - A1 **Decision ripple** — decision made in a meeting principal P didn't attend; probe
@@ -123,10 +136,16 @@ the metric it feeds.
    (wrong tier / expired / lower authority) at a fixed ratio.
 5. **Variance as first-class.** Every number = mean over ≥5 org seeds with CIs.
    Output is a metric radar profile, never a single aggregate (propagation and leakage
-   are adversarial; a scalar hides the tradeoff).
+   are adversarial; a scalar hides the tradeoff). The radar is presented grouped by
+   capability-ladder rung (`vision.md` §3; 2026-07-25); the no-aggregate rule stands.
 6. **Fixed-model main track.** The underlying LLM is held constant across SUTs so the
-   memory harness is the only variable. A secondary grid track varies the model to
-   measure how much memory quality compensates for model quality.
+   memory harness is the only variable. A secondary grid track varies the consumer
+   model to test portability: memory-system rankings should be invariant to the
+   model/harness consuming the memory (repurposed 2026-07-25; previously framed as
+   memory-compensating-for-model-quality). Probe validity is task-model-relative —
+   Phase 3 measured 17/54 vs 46/54 ceiling survival between gpt-5.4-mini and
+   gpt-5.4 — so each added consumer model requires its own ceiling/floor screening
+   pass.
 7. **Long-context as an honest baseline.** "Stuff the full transcript in context" is a
    real competitor. Timelines are sized so the full transcript is impractical or
    costly, and all results report token cost alongside accuracy.

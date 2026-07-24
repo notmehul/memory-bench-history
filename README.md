@@ -13,20 +13,26 @@ commitments — can be learned, updated, superseded, and rolled back by a memory
 No existing benchmark measures whether a memory system does this correctly across the
 tiers of a real organization. This one does.
 
+As organizations get smaller and each person's agents live in different specialized
+harnesses, the memory layer is the only substrate organizational coherence can live in.
+memory-bench measures which memory substrate turns a company of agents into a
+collective intelligence — the "mini AGI" claim, operationalized in `docs/vision.md`.
+
 ## What it measures
 
-Six-to-eight metric profile per system (never a single aggregate score):
+Six-to-eight metric profile per system, grouped by capability rung
+(`docs/vision.md`) — never a single aggregate score:
 
-| Metric | Question it answers |
-|---|---|
-| Scope-resolution accuracy | When personal/team/org facts conflict, does the contextually correct tier win? |
-| Propagation latency | How many sessions until a decision made in one principal's context changes another's behavior? |
-| Proactive application | Does a working rule stated once fire later, unprompted? |
-| Staleness rate | Do superseded facts stop driving behavior (while remaining retrievable as history)? |
-| Rollback fidelity | After a correction, does the wrong behavior disappear everywhere it spread? |
-| Leakage rate | Do private/need-to-know facts stay inside their visibility boundary? |
-| Conflict-surfacing | Are unresolved contradictions flagged rather than silently resolved? |
-| Experience utilization | Do recorded outcomes change future recommendations? |
+| Rung | Metric | Question it answers |
+|---|---|---|
+| Alignment | Scope-resolution accuracy | When personal/team/org facts conflict, does the contextually correct tier win? |
+| Alignment | Staleness rate | Do superseded facts stop driving behavior (while remaining retrievable as history)? |
+| Coordination | Propagation latency | How many sessions until a decision made in one principal's context changes another's behavior? |
+| Coordination | Rollback fidelity | After a correction, does the wrong behavior disappear everywhere it spread? |
+| Coordination | Leakage rate | Do private/need-to-know facts stay inside their visibility boundary? |
+| Coordination | Conflict-surfacing | Are unresolved contradictions flagged rather than silently resolved? |
+| Compounding | Proactive application | Does a working rule stated once fire later, unprompted? |
+| Compounding | Experience utilization | Do recorded outcomes change future recommendations? |
 
 ## How it works
 
@@ -42,6 +48,7 @@ Six-to-eight metric profile per system (never a single aggregate score):
 
 ## Repository layout
 
+- `docs/vision.md` — positioning: the capability ladder and heterogeneity thesis
 - `docs/architecture.md` — full benchmark design: dimensional model, scenario
   archetypes, methodology, positioning vs. prior work
 - `docs/validation-report.md` — final v1 dataset validation numbers

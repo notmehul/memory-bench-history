@@ -165,16 +165,36 @@ Baselines (fixed task model across all — the main-track rule):
 5. an off-the-shelf memory product (Mem0 / Letta / Zep — pick 1–2 by adapter effort)
 6. typed file-graph harness (Marshmallow-style: typed nodes, source-backed, explicit
    update semantics) — the architecture the benchmark's thesis predicts should win
+7. silo ablation *(added 2026-07-25)*: the strongest shared-store baseline among
+   3–6 re-run with per-principal isolated stores — identical system, sharing
+   disabled. An adapter configuration, not new machinery. v1 measures only the
+   propagation benefit of sharing; the governance cost (leakage) arrives with A10
+   in v2, so the comparison is one-sided and must be reported as such.
+
+> **Prespecified pilot hypotheses (2026-07-25, recorded before any pilot run;
+> ladder rungs per `docs/vision.md` §3):**
+> - **H1 (ladder-ordered separation):** where systems separate, separation is
+>   larger on rung-2/3 metrics (coordination, compounding) than on rung-0/1;
+>   pooled-context baselines degrade top-down on the ladder as org scale grows;
+>   L3 exists to map the crossover.
+> - **H2 (silo cost):** the silo configuration scores materially worse than its
+>   shared twin on propagation latency (A1), with the gap concentrated on rung 2
+>   and rung-1 metrics roughly unchanged.
+> - **H3 (consumer portability; grid track, not v1):** the direction of
+>   memory-system rankings is stable across consumer task models on ≥4/5 seeds.
 
 Protocol: 5 seeds × all probes × 3 conditions × counterfactual twins. Report the
 metric radar (application accuracy, scope resolution, propagation latency
 distribution, staleness rate, proactive application) with 95% CIs, per difficulty
 level, plus token cost per system.
 
-**Item analysis** on pilot results: probes where all six baselines pass or all six
+**Item analysis** on pilot results: probes where all baselines pass or all
 fail are flagged for review (non-discriminative among real systems); headline claims
 checked for seed-robustness (direction of every system ranking stable across ≥4/5
-seeds).
+seeds). An exploratory cross-principal coherence statistic (behavioral agreement
+across instances of a cluster issued via different principals) is computed from
+existing per-instance scores; it is confounded with offset variation and reported
+as secondary only (`docs/vision.md` §6).
 
 **Gate G5 (release):** pilot produces at least one seed-robust headline finding (the
 expected one: systems without tier/type structure fail scope-resolution and
@@ -205,8 +225,12 @@ propagation disproportionately vs. recall-style metrics); frozen public release 
 - **What v1 explicitly does NOT claim**: leakage/governance coverage (GateMem's
   territory; ours lands in v2 with A10 jointly scored against propagation), people/
   customer/governance work modalities, L3–L4 difficulty, model-grid track.
-- **v2 queue** (unblocked by v1 machinery, pure content): A3, A5, A6, A8, A9, A10,
-  A11, A12; modalities 5–7; L3; leaderboard on regenerated holdouts.
+- **v2 queue** (unblocked by v1 machinery, pure content): A12, A5, A10, A8, A3,
+  A6, A9, A11 (reordered 2026-07-25 per `docs/vision.md` — outcome learning and
+  conflict surfacing are the most mini-AGI-critical; A10+A8 complete the
+  adversarial sharing pair); modalities 5–7; L3; leaderboard on regenerated
+  holdouts. v3 adds heterogeneous consumer profiles, agent-authored artifacts,
+  and delegated authority (`docs/vision.md` §6).
 
 ## Risk register
 
