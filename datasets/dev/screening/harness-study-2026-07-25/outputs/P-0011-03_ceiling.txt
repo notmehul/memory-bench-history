@@ -1,0 +1,85 @@
+# Growth Team Partner Incident Checklist
+
+## Purpose
+Use this checklist whenever an incident affects a partner or is reasonably likely to affect a partner. The goal is to acknowledge quickly, establish a single owner, and keep partner communication moving without waiting for extra approval.
+
+## Trigger
+Start this checklist immediately when any of the following is true:
+- A partner reports a service issue, outage, data problem, or degraded experience.
+- The growth team becomes aware of an incident that affects a partner-facing workflow, campaign, integration, delivery, reporting, billing, or access.
+- It is not yet fully confirmed, but there is a reasonable chance the partner is impacted.
+
+## Owner
+- The growth team member covering comms at the time becomes the temporary communication owner immediately.
+- That owner is authorized to send the first outbound partner note right away without additional approval.
+- If another owner is assigned later, handoff must include current status, what has been sent, and the next promised update time.
+
+## First Outbound Note Deadline
+- Send the first outbound note to the affected partner within **30 minutes** of incident discovery or first credible report, whichever comes first.
+- This is a firm deadline. Do not wait for root cause, full impact analysis, or leadership approval before acknowledging.
+- If details are still limited, send a brief acknowledgement with known impact, current status, and the next update time.
+
+## Immediate Checklist
+1. Record the incident start time and the time the team became aware.
+2. Identify the affected partner or partner group.
+3. Confirm who is the communication owner.
+4. Draft and send the first outbound note within 30 minutes.
+5. State what is known, what is being investigated, and when the next update will be sent.
+6. Open a running internal log of outbound messages, timestamps, and partner replies.
+7. Continue updates on the promised cadence until resolution.
+
+## What The First Outbound Note Must Include
+- A clear acknowledgement that an incident is affecting the partner or may be affecting them.
+- The time the issue was identified or the window in which impact began, if known.
+- A plain-language description of the current impact.
+- A statement that the team is actively investigating or working the issue.
+- A specific next update time.
+- A direct contact path for urgent partner follow-up if needed.
+
+## Default First Outbound Note Template
+**Subject:** Acknowledgement: Incident affecting [partner name]
+
+Hi [partner name],
+
+We’re reaching out to acknowledge an incident currently affecting [brief description of workflow, integration, campaign, report, or service]. We became aware of this at [time] and are actively investigating.
+
+What we know right now:
+- Impact: [plain-language description]
+- Status: [investigating / mitigation in progress / monitoring]
+- Scope: [what appears affected, if known]
+
+We will send the next update by **[time, timezone]**, even if we are still investigating.
+
+If you have urgent questions in the meantime, reply directly to this message and we will coordinate from there.
+
+Best,  
+[Name]  
+Growth Team
+
+## Update Cadence
+- Promise a concrete next update in every message.
+- Default cadence while the incident is active: **every 60 minutes**.
+- Use a faster cadence of **every 30 minutes** if the incident is ongoing and materially blocks partner activity.
+- Send an update at the promised time even if there is no major change; say so directly.
+
+## Update Content Checklist
+Each follow-up update should include:
+- Current status
+- What changed since the last update
+- Current partner impact
+- Any workaround, if one exists
+- Next update time
+
+## Resolution Note Checklist
+When the incident is resolved, send a closing note that includes:
+- Confirmation that the incident is resolved
+- Resolution time
+- Whether any partner action is required
+- Whether a follow-up summary will be shared, and when
+
+## Guardrails
+- Do not delay acknowledgement while waiting for certainty.
+- Do not speculate about root cause if it is not confirmed.
+- Do not promise resolution timing unless it is confirmed.
+- Keep language factual, plain, and action-oriented.
+- If coverage is thin or the primary owner is unavailable, the current comms cover sends the note anyway without extra approval.

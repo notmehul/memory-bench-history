@@ -1,0 +1,15 @@
+## Slack Etiquette for `#general`
+
+To keep communication smooth across the company, please use `#general` for updates, questions, and follow-ups that are relevant to the broader org during our normal operating window.
+
+A good default for follow-ups in `#general` is **within one business day**. If someone asks a question or requests context there, aim to acknowledge or respond by the end of the next business day, even if the full answer will come later.
+
+A few simple norms help this channel work well for everyone:
+- Keep posts clear, concise, and broadly relevant.
+- Start a thread for replies so the main channel stays readable.
+- If you need input, say exactly what you need and when you need it.
+- If a topic becomes narrow or back-and-forth, move it to a smaller channel or direct message and bring back any decision or takeaway.
+
+On **company holidays, Slack response expectations are fully suspended**. No one is expected to monitor or reply during those days.
+
+Thanks for helping keep `#general` useful, calm, and easy to follow for the whole company.

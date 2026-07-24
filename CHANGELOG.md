@@ -45,6 +45,12 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning: Se
   instances (cluster gate PASS at zero margin, instance gate an explicit
   FAIL at 125/135; evidence in `datasets/dev/screening/org-00001/`).
   Seed-2 partial run cache staged.
+- Harness-sensitivity study (2026-07-25): 60 prespecified seed-1 runs
+  through cursor-agent gpt-5.4-medium, blinded-judged and compared to the
+  codex canon — twin-ceiling outcome agreement 65% (ceiling 95%, floor
+  pair 100%). Worker harness rejected as interchangeable; the fixed
+  worker is now pinned as (gpt-5.4, medium, codex-cli 0.144.5). Evidence
+  in `datasets/dev/screening/harness-study-2026-07-25/`.
 - Blinded judging in the screening harness (2026-07-25, from the
   meta-review audit): `judge-export` emits opaque row/criterion ids so
   the judge cannot infer condition or org side; `--ids` supports targeted

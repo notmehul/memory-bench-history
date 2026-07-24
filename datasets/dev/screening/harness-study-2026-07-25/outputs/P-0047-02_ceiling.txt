@@ -1,0 +1,1 @@
+Temporary production access for incident work is valid for up to 6 hours from approval. If the access window expires before the task is complete, submit a renewal request right away and resume production work only after renewed access is granted.

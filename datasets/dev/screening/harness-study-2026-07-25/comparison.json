@@ -1,0 +1,87 @@
+{
+ "agree": {
+  "twin_ceiling_pass": [
+   13,
+   7
+  ],
+  "ceiling_pass": [
+   19,
+   1
+  ],
+  "floor_pair_pass": [
+   20,
+   0
+  ],
+  "floor_base_pass": [
+   15,
+   5
+  ]
+ },
+ "mismatches": [
+  [
+   "P-0003-02:floor",
+   "floor_base_pass",
+   "codex=False cursor=True"
+  ],
+  [
+   "P-0012-01:twin_ceiling",
+   "twin_ceiling_pass",
+   "codex=False cursor=True"
+  ],
+  [
+   "P-0013-01:twin_ceiling",
+   "twin_ceiling_pass",
+   "codex=False cursor=True"
+  ],
+  [
+   "P-0022-01:twin_ceiling",
+   "twin_ceiling_pass",
+   "codex=False cursor=True"
+  ],
+  [
+   "P-0024-03:twin_ceiling",
+   "twin_ceiling_pass",
+   "codex=False cursor=True"
+  ],
+  [
+   "P-0037-01:twin_ceiling",
+   "twin_ceiling_pass",
+   "codex=False cursor=True"
+  ],
+  [
+   "P-0037-02:floor",
+   "floor_base_pass",
+   "codex=False cursor=True"
+  ],
+  [
+   "P-0037-03:twin_ceiling",
+   "twin_ceiling_pass",
+   "codex=True cursor=False"
+  ],
+  [
+   "P-0038-02:floor",
+   "floor_base_pass",
+   "codex=True cursor=False"
+  ],
+  [
+   "P-0041-01:ceiling",
+   "ceiling_pass",
+   "codex=False cursor=True"
+  ],
+  [
+   "P-0041-01:floor",
+   "floor_base_pass",
+   "codex=True cursor=False"
+  ],
+  [
+   "P-0051-02:twin_ceiling",
+   "twin_ceiling_pass",
+   "codex=True cursor=False"
+  ],
+  [
+   "P-0054-02:floor",
+   "floor_base_pass",
+   "codex=False cursor=True"
+  ]
+ ]
+}

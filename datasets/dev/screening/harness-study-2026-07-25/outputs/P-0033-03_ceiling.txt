@@ -1,0 +1,5 @@
+For the next sprint cycle, each squad may carry over no more than two unfinished tickets.
+
+Only tickets that are still unfinished at sprint close and move into the next sprint count toward this limit.
+
+If your squad is above two, flag it in the weekly operations update and bring a plan to get back to the limit next cycle.

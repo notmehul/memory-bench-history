@@ -1,0 +1,5 @@
+# Urgent Platform Support Threads
+
+For urgent Slack threads routed to platform support, the growth team should treat the thread as a priority support lane and post an initial reply within **4 hours**. Use that first response to acknowledge ownership, clarify the next step if needed, and keep the thread updated until the issue is handed off or resolved.
+
+If you pick up an urgent thread, make ownership clear in the thread so coverage stays unambiguous and duplicate replies are avoided. When a resolution will take longer, reply within the 4-hour window with status, expected next step, and who is driving follow-through.

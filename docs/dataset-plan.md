@@ -245,6 +245,24 @@ propagation disproportionately vs. recall-style metrics); frozen public release 
   > the Claude family. Amendment made before any SUT evaluation, on screening
   > evidence alone.
   >
+  > **Harness-sensitivity study; worker harness pinned (2026-07-25):** a
+  > prespecified 60-run comparison (protocol + full evidence:
+  > `datasets/dev/screening/harness-study-2026-07-25/`) put the same gpt-5.4
+  > weights at the same effort behind two agent harnesses — codex exec
+  > (incumbent) vs cursor-agent. Outcome agreement vs the seed-1 canon:
+  > ceiling-pass 95%, floor pair-pass 100%, twin-ceiling-pass **65%** (cursor
+  > states awkward counterfactuals that codex refuses; guessability runs
+  > slightly higher under cursor). Equivalence rejected per the prespecified
+  > ≥90% bar: **the worker is (model, effort, harness), not just a model.**
+  > Decision: codex retained, and the harness is now part of the pin —
+  > **codex-cli 0.144.5** — chosen for reproducibility (codex's scaffold is
+  > open-source and version-pinnable; cursor's is closed and updates
+  > silently). Accepted cost, on the record: codex's counterfactual-refusal
+  > behavior drives twin-side attrition and the zero-margin cluster gate; if
+  > a seed fails G3, the remedy is content-side (v2 planner rules), not a
+  > harness swap. The 65% figure is the first measured motivation for the
+  > consumer-portability track (`docs/vision.md` §6).
+  >
   > **Note (2026-07-25):** the small-n gate adaptation above was itself revised
   > by probe-spec v0.3 (instance-level validity, cluster survives with ≥2/3
   > valid instances — see the G3 note and the spec changelog); the 3/3 rule

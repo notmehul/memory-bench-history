@@ -1,0 +1,109 @@
+# Q3 Bug Triage Coverage Model
+
+Audience: Support, Product, and Engineering  
+Owner: Platform Engineering  
+Effective period: July 1 through September 30
+
+For the next quarter, bug triage will run on a single-threaded primary-owner model with a defined backup path. At any given time, one named triage contact is responsible for intake, severity confirmation, first routing, and cross-team coordination for new bugs. This gives Support a clear escalation target, gives Product a consistent view of active customer pain, and lets Engineering work from a stable queue instead of parallel side channels.
+
+## What the triage contact owns
+
+The active triage contact is responsible for:
+
+- Reviewing all newly reported bugs during business hours.
+- Confirming severity within `4 business hours` for `Severity 1` and `Severity 2` issues.
+- Confirming severity within `1 business day` for `Severity 3` and `Severity 4` issues.
+- Assigning an owning engineering team or explicitly marking the issue as awaiting more information.
+- Posting a daily queue update by `4:00 PM local time` on business days.
+- Handing off all open context at each scheduled contact change.
+
+The triage contact is not the default fixer for every bug. Their job is to make sure each issue lands with the right owner, at the right priority, with enough context to move.
+
+## Severity and response expectations
+
+Use the following company-wide thresholds:
+
+- `Severity 1`: Production outage, security-impacting defect, or a bug blocking core workflows for multiple customers. Initial triage response in `1 hour`; engineering owner assigned in `4 business hours`.
+- `Severity 2`: Major functionality broken, degraded customer workflow, or repeated high-value account impact. Initial triage response in `4 business hours`; engineering owner assigned by end of next business day.
+- `Severity 3`: Standard product defect with workaround or limited blast radius. Triage and routing within `1 business day`.
+- `Severity 4`: Minor defect, cosmetic issue, edge case, or low-frequency internal nuisance. Triage and routing within `3 business days`.
+
+If severity is unclear, route as the higher plausible severity until the triage contact narrows it.
+
+## Intake channels
+
+All teams should use the same intake path:
+
+- Support: File customer-reported bugs in the shared bug queue with reproduction steps, customer impact, account name, and any screenshots or logs.
+- Product: File defects found in research, betas, or roadmap validation through the same queue, tagged with feature area and launch impact.
+- Engineering: File internal defects through the same queue instead of handling them only in team chat or personal backlog.
+
+Do not route new bugs through direct messages to individual engineers unless there is an active `Severity 1` incident and immediate paging is required.
+
+## Coverage cadence
+
+The primary triage contact rotates every `2 weeks`, starting on Mondays at `10:00 AM local time`. A `30-minute handoff` is required on each rotation day, and the outgoing contact must leave:
+
+- Current `Severity 1` and `Severity 2` status
+- Aging unassigned bugs older than `2 business days`
+- Open requests for reproduction or customer follow-up
+- Any known release-risk items for the next `14 days`
+
+Platform Engineering will publish the quarterly rotation schedule in advance. Changes inside a rotation window should be rare and only happen for leave, incident load, or staffing constraints.
+
+## July through August example
+
+Below is the working example for the first half of the quarter:
+
+- `July 1 - July 14`: Priya Shah is the active triage contact.
+- `July 15 - July 28`: Marcus Lee is the active triage contact.
+- `July 29 - August 11`: Elena Garcia is the active triage contact.
+- `August 12 - August 25`: Jonah Kim is the active triage contact.
+- `August 26 - September 8`: Priya Shah resumes as the active triage contact.
+
+Example handoff points:
+
+- On `July 15 at 10:00 AM`, ownership changes from Priya Shah to Marcus Lee.
+- On `July 29 at 10:00 AM`, ownership changes from Marcus Lee to Elena Garcia.
+- On `August 12 at 10:00 AM`, ownership changes from Elena Garcia to Jonah Kim.
+
+If you are filing or escalating a bug, use the contact who is active at the time the issue is reported, not the person who handled the last bug in that area.
+
+## If the listed contact drops out mid-cycle
+
+If the active triage contact becomes unavailable mid-cycle due to leave, illness, incident duty, or bandwidth loss, use this routing order immediately:
+
+1. Route the issue to the named backup for Platform Engineering triage coverage.
+2. If no backup is confirmed within `2 business hours`, route to the Platform Engineering manager on duty.
+3. If the issue is `Severity 1`, page the incident commander path immediately and note that triage ownership is being reassigned in parallel.
+
+Operational rule: a mid-cycle coverage change becomes effective as soon as it is posted in the shared bug queue and the company engineering channel. Teams should follow the most recent posted assignment, even if the original schedule has not yet reached its planned end date.
+
+Concrete example:
+
+- Elena Garcia is scheduled for `July 29 - August 11`.
+- If Elena drops out on `August 5 at 1:00 PM`, all new bugs reported after that timestamp should go to the posted replacement contact, not to Elena.
+- Any bugs Elena had already triaged remain with their assigned engineering owners unless the replacement contact explicitly reopens coordination.
+
+## How each team should route issues
+
+Support should route every customer bug through the queue and tag severity based on customer impact. If the active contact becomes unavailable, Support should not wait for a perfect handoff; use the backup path and continue filing.
+
+Product should route bugs that affect launches, experiments, or roadmap commitments through the same queue and add the launch date or decision deadline. If the listed contact drops out, Product should update the ticket mention to the replacement contact and keep the original context in-thread.
+
+Engineering should avoid re-triaging through team-specific channels unless the bug is already assigned. If the contact changes mid-cycle, engineers should continue working assigned bugs as planned and use the new triage contact only for net-new intake, reprioritization, or cross-team disputes.
+
+## Escalation and aging rules
+
+The triage contact must escalate when:
+
+- A `Severity 1` bug has no clear engineering owner after `4 business hours`.
+- A `Severity 2` bug has no owner by end of next business day.
+- Any bug remains unassigned for more than `3 business days`.
+- More than `10` new untriaged bugs are aging past SLA in the shared queue.
+
+If any of those thresholds are crossed, Platform Engineering will call for overflow help from the relevant engineering leads until the queue returns to target.
+
+## Expected outcome for the quarter
+
+This model is intended to create one clear front door for bugs, faster severity confirmation, fewer dropped issues during handoffs, and less confusion about who owns routing at any given moment. For Q3, teams should assume the published rotation is the source of truth unless a mid-cycle replacement is formally posted.

@@ -1,0 +1,3 @@
+## Changelog Note
+
+For audit readers: this note describes the earlier state of the travel workflow before the latest tooling update. Under that older setup, company travel was booked through the Concur portal, and employees would begin the process by signing into Concur and creating the trip booking there.

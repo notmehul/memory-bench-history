@@ -1,0 +1,66 @@
+# Growth Runbook Maintenance Checklist
+
+## Purpose
+Keep Growth runbooks accurate, easy to use under time pressure, and ready for routine execution. Formal review is required only after a major incident affecting Growth-owned systems or workflows.
+
+## Ownership
+- `Growth Runbook Steward`: one named Growth teammate owns runbook upkeep for the current quarter.
+- The steward tracks the `next review due` date for every runbook and reports status in the weekly Growth team meeting.
+- Each runbook also has a `runbook owner` responsible for the content of that specific document.
+
+## Refresh Cadence
+- Review every active Growth runbook every `90 days`.
+- Review any runbook used in a live issue, launch, rollback, or manual recovery within `5 business days` of use.
+- Archive or merge any runbook not used and not updated for `12 months`.
+- Hold a formal reviewed refresh within `10 business days` after any major incident.
+
+## What Starts an Update
+Start the update process immediately when any of the following happens:
+- The `90-day` review date is reached.
+- A Growth teammate uses the runbook and finds missing, unclear, or outdated steps.
+- A launch, tooling change, vendor change, dashboard change, or access change alters the process.
+- A KPI definition, alert threshold, naming convention, or escalation path changes.
+- A major incident occurs in a Growth-owned workflow or system.
+
+For this checklist, a `major incident` means any incident that:
+- blocks a Growth campaign, launch, experiment, or reporting workflow for more than `2 hours`, or
+- causes incorrect customer targeting, broken attribution, or missing Growth reporting for more than `1 business day`.
+
+## Required Checks For Each Refresh
+- Confirm the runbook still has a clear owner.
+- Verify the title matches the actual workflow.
+- Check that prerequisites, permissions, links, dashboards, and tools still work.
+- Validate every step in order and remove stale branches or duplicate instructions.
+- Confirm alert names, thresholds, queries, and expected outputs are current.
+- Check rollback, fallback, and escalation instructions.
+- Make sure contact points and handoff paths are current.
+- Add the `last reviewed` date, reviewer name, and `next review due` date.
+- Note whether the refresh was routine or incident-driven.
+
+## Meeting-Ready Review Flow
+Use this in the weekly Growth team meeting:
+1. Review runbooks due in the next `14 days`.
+2. Confirm the owner and steward for each due item.
+3. Identify any runbooks touched by launches, tooling changes, or incidents since the last meeting.
+4. Assign updates that must be completed before the next meeting.
+5. Confirm any major-incident follow-up that requires formal review.
+6. Read out overdue items and their new committed completion dates.
+
+## Tracking Standard
+Track every runbook in a simple table with:
+- `Runbook name`
+- `Runbook owner`
+- `Last reviewed`
+- `Next review due`
+- `Status: on track / due soon / overdue`
+- `Last trigger: routine / used / change / incident`
+
+The `Growth Runbook Steward` keeps this tracker current and updates it before each weekly team meeting.
+
+## Definition Of Done
+A runbook refresh is complete only when:
+- the content has been updated,
+- links and operational steps have been checked,
+- the owner agrees it is usable today,
+- the tracker reflects the new `last reviewed` and `next review due` dates, and
+- formal signoff is recorded if the refresh followed a major incident.

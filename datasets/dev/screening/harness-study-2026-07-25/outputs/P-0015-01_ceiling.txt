@@ -1,0 +1,5 @@
+## Company Standup
+
+Our standup format is simple: the live standup is capped at 15 minutes, and there is a written async option for anyone who cannot attend live or prefers to share their update in writing.
+
+To keep the routine easy to follow, keep updates brief and focused on progress, next steps, and blockers. If you are using the async option, post your written update in the usual standup channel before the live standup so the team has the same visibility.

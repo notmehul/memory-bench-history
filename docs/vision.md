@@ -103,7 +103,11 @@ The framing above is positioning; claims stop at what is instantiated.
   value evaporates outside one vendor's harness fails the premise in §1. Probe
   validity is task-model-relative (measured in Phase 3: ceiling-gate survival
   17/54 for gpt-5.4-mini vs 37/54 for gpt-5.4 under the identical strict rule),
-  so each added consumer model requires its own screening pass.
+  so each added consumer model requires its own screening pass. And the
+  harness is part of the consumer: identical gpt-5.4 weights behind two agent
+  harnesses agreed on only 65% of twin-ceiling outcomes in a prespecified
+  60-run study (2026-07-25, evidence in
+  `datasets/dev/screening/harness-study-2026-07-25/`).
 - **v3 — heterogeneous organization**: per-principal consumer profiles (synthetic
   profiles differing in system prompt, specialization, and context budget — not
   product clones, which date), agent-authored artifacts as an ingestion

@@ -1,0 +1,9 @@
+I’m in Ask mode, so I can’t write `output.md` directly. Here’s the deliverable content:
+
+## Platform Support: Urgent Slack Threads
+
+For urgent Slack threads routed to platform support, the growth team should treat the thread as a priority support lane and respond within **4 hours**. This turnaround commitment applies to the initial reply so the requester has clear confirmation that the issue is being handled.
+
+When an urgent thread comes in, the assigned teammate should acknowledge it promptly, confirm ownership in the thread, and either begin triage or hand it off immediately to the right person if another owner is better positioned to respond. If the issue cannot be resolved in the first reply, the owner should keep the thread updated with the next step and current status until it is unblocked or resolved.
+
+Use the urgent tag carefully and reserve it for issues that require expedited handling from platform support. Clear ownership, fast acknowledgment, and visible status updates are the baseline expectations for this lane.

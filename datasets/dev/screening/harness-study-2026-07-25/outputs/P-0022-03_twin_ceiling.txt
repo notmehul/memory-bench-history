@@ -1,0 +1,14 @@
+# Platform Team Guidance for Launch Blurbs
+
+When the platform team helps with a launch blurb, our job is to make the message accurate, clear, and easy for growth marketing to ship. We are not setting company policy or rewriting the piece in our own style; we are supplying the technical substance that keeps the blurb trustworthy.
+
+Use this working practice:
+
+- Provide one clear product statement that explains what launched, who it is for, and why it matters.
+- Keep technical input to the three facts that matter most: the capability, the customer impact, and any important limitation or rollout condition.
+- Flag claims that need proof. Do not approve language such as "instant," "fully automatic," "secure by default," or "enterprise-ready" unless the underlying behavior is confirmed.
+- Give growth marketing concrete source material within one business day: feature name, supported surface, availability, and any dependency or exclusion.
+- If a launch has staged rollout, say so explicitly and include the rollout shape in plain language, for example: "starting with selected workspaces this week" or "available to all paid plans on Monday."
+- Keep suggested copy short. Aim for one headline, one subhead, and up to three supporting bullets.
+- Escalate before publication if the blurb includes pricing implications, compliance language, security promises, performance claims, or availability dates that are still moving.
+- Treat final wording as a shared handoff: platform owns technical accuracy, and growth marketing owns the launch-ready copy.

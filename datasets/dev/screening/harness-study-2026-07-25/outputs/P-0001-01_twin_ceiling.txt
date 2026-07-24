@@ -1,0 +1,8 @@
+## Endpoint Style
+
+Use camelCase for all Platform API resource identifiers in path segments. When defining a new resource, choose a concise plural noun in camelCase and keep that spelling consistent across collection and item routes.
+
+Sample path snippets:
+- `/v1/buildArtifacts`
+- `/v1/deploymentTargets/{deploymentTargetId}`
+- `/v1/serviceAccounts/{serviceAccountId}/accessTokens`

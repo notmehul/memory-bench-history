@@ -1,0 +1,7 @@
+# Design Doc Requirement for Multi-Service Changes
+
+A design doc is mandatory when a proposed change requires coordinated changes in **three or more services**. In plain language: if the work cannot be completed safely without updating at least three separate services, write the design doc before implementation starts.
+
+This requirement exists to make cross-service dependencies, rollout order, ownership, and failure modes explicit before teams begin shipping changes.
+
+**Quick example:** if adding a new customer event means updating the API service, the billing service, and the notifications service, a design doc is required.

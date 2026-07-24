@@ -1,0 +1,61 @@
+# Engineering Note: Architecture Writeup Gate
+
+There has been recent confusion about when an architecture writeup is required. The current rule is simple:
+
+**A design doc is optional unless the change spans ten or more services.**
+
+The trigger is based on **services**, not repos, packages, PRs, teams, or rollout steps. Please stop using the old counting heuristic.
+
+## What Counts
+
+Use the number of **services affected by the change**.
+
+Do **not** count:
+- repositories
+- shared libraries or dependencies
+- pull requests
+- deployment stages
+- reviewer groups
+
+Do count:
+- product services whose behavior, contracts, integrations, or operations change
+- platform services that must change as part of the rollout
+
+## Rollout Example
+
+Suppose a team updates a product repo and also updates a platform-owned dependency to support the change.
+
+If that rollout affects:
+- 1 product service, and
+- 1 platform service that owns or serves the dependency path
+
+then the change spans **2 services**.
+
+Even if the work touches:
+- multiple repositories
+- a platform-owned package
+- several PRs
+- phased deployment steps
+
+it still does **not** require a design doc unless the total change spans **10 or more services**.
+
+If the same dependency update is rolled out across many services and the overall change reaches **10+ services**, the design doc gate applies.
+
+## Reviewer Checklist
+
+Before asking for an architecture writeup, confirm all of the following:
+
+- Count the **services** affected by the change.
+- Ignore repo count, package count, and PR count.
+- Ignore whether a platform-owned dependency is involved by itself.
+- Ask for a design doc **only if the change spans 10 or more services**.
+- If the change spans fewer than 10 services, do not rely on the old counting heuristic to require a writeup.
+
+## Bottom Line
+
+The current gate is:
+
+**Design doc required: 10 or more services**  
+**Design doc optional: fewer than 10 services**
+
+When in doubt, review the actual service footprint of the rollout and make the decision from that count alone.

@@ -1,0 +1,36 @@
+I’m in Ask mode, so I can’t write `output.md`. Use this content:
+
+# Platform Weekly Sync Notes Checklist
+
+- Fill the header before the meeting starts: `date`, `time`, `facilitator`, `note-taker`, and meeting link.
+- Record attendance in the first 5 minutes: `present`, `late`, and `absent`.
+- Add each agenda topic as it starts with a timestamp in `HH:MM` and the topic owner.
+- For every topic, capture the outcome in 1 to 3 bullets max: decision made, status change, or follow-up needed.
+- If a discussion runs more than 5 minutes without a clear outcome, mark it `Open` and note the exact decision still needed.
+- For every decision, write:
+  - the decision in one sentence
+  - who owns it
+  - when it takes effect
+  - any stated dependency or rollback condition
+- For every action item, do not leave the meeting without:
+  - one directly responsible owner
+  - one concrete due date
+  - one clear deliverable
+- If no due date is stated for an action item, set it to `before next weekly sync`.
+- For every blocker or risk, capture:
+  - affected service, system, or workflow
+  - severity as `High`, `Medium`, or `Low`
+  - current impact
+  - current workaround, if any
+  - escalation owner
+- Move side threads to `Parking Lot` once they stay off-topic for more than 3 minutes.
+- Mark any item needing async follow-up with the destination channel, doc, or ticket.
+- In the last 5 minutes, read back all decisions and action items and confirm owners live.
+- Before the meeting ends, make sure the notes include these final sections:
+  - `Decisions`
+  - `Action Items`
+  - `Blockers/Risks`
+  - `Parking Lot`
+  - `Next Sync Inputs`
+- Do not end the meeting with any action item missing an owner or due date.
+- Keep the notes factual and brief; capture commitments, changes, and unresolved issues, not the full debate.

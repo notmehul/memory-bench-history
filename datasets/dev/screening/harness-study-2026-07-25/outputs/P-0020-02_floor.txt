@@ -1,0 +1,88 @@
+# Growth Ops Checklist: Platform Vendor Bills
+
+## Scope
+Use this checklist for Growth-owned platform vendor bills such as ad platforms, analytics tools, outbound tools, creative tooling, data vendors, and other recurring or one-off software charges paid by Growth.
+
+## Routing Rule
+- Bills **under `$2,500 USD`** follow the **standard Growth approval path**.
+- Bills **at or above `$2,500 USD`** follow the **escalated approval path** and require Finance review before payment is released.
+- Treat any invoice marked overdue, prepaid, or service-at-risk as **priority same-day handling** regardless of amount.
+
+## Required Handoff Order Before Funds Are Sent
+1. **Growth requestor** confirms the charge is expected and within approved budget.
+2. **Growth ops owner** checks invoice accuracy and routing threshold.
+3. **Growth manager** approves the spend.
+4. **Finance/AP** validates payment details, tax/vendor info, and schedules payment.
+5. **Funds are sent** only after Finance/AP confirms all prior handoffs are complete.
+
+## Standard Path: Bills Under $2,500
+- [ ] Post the invoice in `#ops` with:
+  - vendor name
+  - invoice amount in USD
+  - due date
+  - billing period
+  - tool or platform purpose
+  - budget owner
+- [ ] Confirm the invoice matches the contract, subscription plan, or expected monthly spend.
+- [ ] Confirm the vendor, entity name, and payment destination match prior records.
+- [ ] Check for duplicate billing, auto-renew overlap, or unauthorized seat expansion.
+- [ ] Confirm the spend fits the current Growth budget line.
+- [ ] Get approval from the Growth manager in-channel.
+- [ ] Hand off to Finance/AP with the approved invoice and payment deadline.
+- [ ] Wait for Finance/AP confirmation that payment is scheduled before marking complete.
+
+## Escalated Path: Bills $2,500 And Above
+- [ ] Post the invoice in `#ops` with the same details as above plus:
+  - reason for spend
+  - expected outcome or business need
+  - whether this is recurring or one-time
+- [ ] Verify contract terms, pricing, renewal date, and any committed minimums.
+- [ ] Confirm the spend is budgeted; if not, note the source of coverage.
+- [ ] Get approval from the Growth manager.
+- [ ] Route to Finance/AP for payment review and release approval.
+- [ ] If payment terms changed or bank details changed, require fresh vendor verification before payment.
+- [ ] Do not send forward as ready-to-pay until Finance/AP explicitly confirms approval.
+- [ ] Mark complete only after Finance/AP confirms payment is scheduled or sent.
+
+## Invoice Checks Every Time
+- [ ] Vendor legal name is correct.
+- [ ] Invoice number is present.
+- [ ] Amount and currency are correct.
+- [ ] Due date is clear.
+- [ ] Billing period is correct.
+- [ ] PO, contract reference, or subscription reference is attached if applicable.
+- [ ] No sales tax/VAT issue is unresolved.
+- [ ] Payment method on file is still valid.
+- [ ] Supporting context exists for unusual overages or one-time fees.
+
+## Slack Handoff Template
+```md
+Platform vendor bill for review
+
+Vendor:
+Amount:
+Due date:
+Billing period:
+Owner:
+Budget line:
+Recurring or one-time:
+Reason / tool purpose:
+Routing path: Standard (<$2,500) or Escalated (≥$2,500)
+
+Approvals needed:
+1. Growth requestor confirmation
+2. Growth ops check
+3. Growth manager approval
+4. Finance/AP payment release
+```
+
+## Timing Expectations
+- [ ] Submit invoices to `#ops` within **1 business day** of receipt.
+- [ ] Route invoices due within **5 business days** as priority.
+- [ ] Escalate same day if service interruption risk is mentioned.
+- [ ] Follow up with Finance/AP if no payment scheduling confirmation within **2 business days**.
+
+## Completion Standard
+A platform vendor bill is not complete when it is posted or approved. It is complete only when:
+- [ ] all required handoffs happened in order, and
+- [ ] Finance/AP confirmed payment is scheduled or sent.

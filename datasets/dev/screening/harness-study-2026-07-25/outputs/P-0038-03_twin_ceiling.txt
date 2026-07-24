@@ -1,0 +1,50 @@
+# Warehouse Cleanup Job: Inactive Product Events
+
+## Purpose
+Remove inactive product events from the warehouse after the retention window expires so Growth event storage stays aligned with policy.
+
+## Lifecycle Rule
+Inactive product events must be retained for exactly 2 years from the date they became inactive.
+
+Implementation rule:
+- Determine an event's `inactive_at` timestamp.
+- Keep the record until `inactive_at + 2 years`.
+- Delete the record once `inactive_at` is more than 2 years in the past.
+- If `inactive_at` is null, the record is not eligible for this cleanup job.
+
+## Job Schedule
+Run the cleanup job once per day at 02:00 UTC.
+
+## Deletion Criteria
+A record is eligible for deletion when all of the following are true:
+- The event is marked inactive.
+- `inactive_at` is present.
+- `inactive_at < now() - interval '2 years'`.
+
+Example warehouse predicate:
+
+```sql
+is_active = false
+and inactive_at is not null
+and inactive_at < now() - interval '2 years'
+```
+
+## Execution Requirements
+- Use `inactive_at` as the sole retention clock for inactive product events.
+- Delete in batches of 10,000 rows to avoid long-running transactions.
+- Commit after each batch.
+- Continue until no eligible rows remain.
+
+## Logging
+For each run, log:
+- Job start time
+- Cutoff timestamp used for deletion
+- Number of rows deleted
+- Number of batches processed
+- Job end time
+- Final status: success or failure
+
+## Failure Handling
+- If a batch fails, stop the run and surface the error.
+- The next scheduled run should retry remaining eligible records using the same retention rule.
+- Do not delete records that do not satisfy the predicate above.

@@ -1,0 +1,61 @@
+I’ve got enough context to draft the runbook content directly; because Ask mode is active I won’t write `output.md`, but I can provide the exact Markdown you can drop in as-is.
+Ask mode is active, so I can't write `output.md`. Requested content:
+
+# Warehouse Cleanup Job: Inactive Product Events
+
+## Purpose
+Remove inactive-product event data from the primary warehouse on a predictable schedule without deleting recoverable data too early or breaking downstream Growth reporting.
+
+## Scope
+This job applies only to warehouse product-event tables used for Growth analytics. It does not touch raw ingestion storage or non-product event datasets.
+
+## Lifecycle Rule
+A product is considered inactive when `products.deactivated_at` is non-null. If a separate status field exists, `deactivated_at` is still the source of truth for cleanup timing.
+
+Apply this rule exactly:
+
+1. Keep all product events in the primary warehouse for 14 full days after `deactivated_at`.
+2. On the first daily cleanup run after that 14-day grace period, copy all events for that product into an archive table with the same schema plus `archived_at` and `deactivated_at`.
+3. Validate the archive copy before deletion:
+   - row-count match must be exact
+   - partition/date-level counts must match exactly
+4. Delete the product's events from the primary warehouse only after validation succeeds.
+5. If a product is reactivated before deletion, skip cleanup for that product.
+6. Keep archived inactive-product events for 365 days from `archived_at`.
+7. Purge archived rows permanently on the first monthly purge run after the 365-day retention window ends.
+
+## Cadence
+Run the primary cleanup job daily at `02:00 UTC`.
+
+Run archive purging monthly at `03:00 UTC` on the first calendar day of the month.
+
+## Selection Logic
+Each daily run should select products where all of the following are true:
+
+- `deactivated_at <= now() - interval '14 days'`
+- product is not currently reactivated
+- product has not already been archived and deleted for the same `deactivated_at`
+
+If a product is deactivated multiple times over its lifetime, treat each `deactivated_at` as a separate lifecycle boundary and only clean up rows associated with the current inactive period.
+
+## Operational Requirements
+The job must be idempotent. Re-running the same window must not create duplicate archive rows or attempt duplicate deletes.
+
+The job must emit, at minimum:
+
+- number of products processed
+- number of event rows archived
+- number of event rows deleted
+- number of products skipped due to reactivation
+- number of validation failures
+
+## Failure Handling
+If archive validation fails for any product, do not delete that product's primary rows in the same run. Mark the product as failed, alert the Growth on-call channel, and retry on the next scheduled run.
+
+A cleanup run should be considered unhealthy if either of these occurs:
+
+- any validation mismatch
+- total runtime exceeds 30 minutes
+
+## Expected Outcome
+The primary warehouse keeps only active-product events plus the last 14 days of inactive-product events, while archived inactive-product events remain recoverable for 365 days.

@@ -1,0 +1,7 @@
+## Slack Etiquette for `#general`
+
+`#general` is our company-wide discussion channel, so please keep posts relevant to the broader org and make follow-ups easy to handle. When you ask for input, be clear about the decision, question, or action needed, and use a thread to keep replies organized once a topic starts.
+
+During standard operating hours, the turnaround standard for follow-ups in `#general` is **within four business hours**. If someone asks you a direct question, tags you for context, or is waiting on your response to move something forward, please acknowledge or reply within that window.
+
+A quick response is often enough: share the answer, confirm you are looking into it, or give a clear time for a fuller follow-up. This helps `#general` stay dependable for cross-company communication without turning it into a real-time chat channel.

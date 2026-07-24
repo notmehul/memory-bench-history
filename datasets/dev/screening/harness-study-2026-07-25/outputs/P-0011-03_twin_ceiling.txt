@@ -1,0 +1,148 @@
+# Growth Team Partner Incident Checklist
+
+Use this checklist for any incident that materially affects a partner-facing growth workflow, integration, campaign, reporting feed, data delivery, or partner-visible SLA.
+
+## 1. Confirm This Is Partner-Facing
+Treat the issue as a partner incident if at least one of these is true:
+
+- A partner cannot access, use, or trust a growth-owned workflow or deliverable.
+- Partner data is delayed, incomplete, duplicated, or incorrect.
+- A live campaign, launch, report, sync, or scheduled delivery is disrupted.
+- A partner has already noticed the issue or is likely to notice before the next scheduled touchpoint.
+
+If none of the above apply, handle it as an internal issue instead.
+
+## 2. Open Comms Ownership Immediately
+Assign one comms owner for the incident as soon as partner impact is confirmed.
+
+The comms owner is responsible for:
+
+- Sending the first outbound partner note.
+- Posting every partner update until the incident is resolved or handed off.
+- Keeping the incident timeline, affected partners list, and next update time current.
+
+No additional approval is required for the comms owner to send the first acknowledgment if the message stays within the approved template and avoids speculation.
+
+## 3. Deadline for the First Outbound Note
+Send the first outbound note to each affected partner within **2 business hours** of confirming partner impact.
+
+If partner impact is confirmed outside business hours, on a weekend, or on a holiday, the first outbound note may wait until the **next business day**, but it must be sent by **10:00 AM in the partner’s local time** or **within 1 business hour of the growth team starting coverage**, whichever comes first.
+
+Do not wait for root cause, engineering confirmation, or leadership approval before sending the first acknowledgment.
+
+## 4. Minimum Facts to Gather Before Sending
+Before the first note, confirm only these facts:
+
+- What is affected.
+- Which partners are affected.
+- When the issue started or when it was first detected.
+- Current status: investigating, identified, mitigated, or resolved.
+- When the next update will be sent.
+
+If any detail is unknown, say it is under investigation. Do not guess.
+
+## 5. Send the First Outbound Note
+Send this message immediately once the minimum facts above are known:
+
+**Subject:** Acknowledgment: issue affecting [partner-facing workflow]
+
+Hello [Partner Name],
+
+We’re aware of an issue affecting [brief description of workflow, report, campaign, sync, or deliverable]. Our team is actively investigating.
+
+What we know right now:
+- Impact: [plain-language description]
+- Start time: [time, or “under investigation”]
+- Status: [investigating / identified / mitigated]
+
+We’ll send the next update by [time with time zone], even if we are still investigating.
+
+If you have urgent operational needs in the meantime, reply here and we’ll coordinate directly.
+
+Best,  
+[Name]  
+Growth Team
+
+## 6. Update Cadence While the Incident Is Active
+After the first outbound note, send partner updates on this cadence:
+
+- **Severity High:** every **60 minutes**
+- **Severity Medium:** every **4 business hours**
+- **Severity Low:** by the **end of the same business day**, then **once per business day**
+
+If a promised update time is approaching and there is no new information, still send an update confirming the issue remains active and giving the next update time.
+
+## 7. Severity Guide for Growth Partner Incidents
+Use these levels to set cadence:
+
+- **High:** multiple partners blocked, launch-critical disruption, materially incorrect partner-visible data, or likely executive escalation.
+- **Medium:** one or more partners degraded, delayed, or at moderate business risk, but with workaround or partial functionality.
+- **Low:** minor degradation, limited scope, non-critical delay, or issue unlikely to change partner operations today.
+
+If unsure, start at Medium until clarified.
+
+## 8. What to Say and What Not to Say
+Always include:
+
+- Acknowledgment that the issue exists.
+- Clear statement of current impact.
+- Current status.
+- Concrete next update time.
+- Point of contact.
+
+Do not include:
+
+- Guesses about root cause.
+- Blame on another team or vendor.
+- Promises on resolution time unless confirmed.
+- Unreviewed legal, security, or financial conclusions.
+
+## 9. Partner List and Segmentation
+Track all affected partners in one working list with:
+
+- Partner name
+- Primary contact
+- Severity for that partner
+- Time first notified
+- Latest update sent
+- Next update due
+- Any partner-specific workaround or commitment
+
+If impact differs by partner, tailor the message rather than sending one generic note to everyone.
+
+## 10. Escalate Within Growth When Any of These Are True
+Escalate to the growth lead immediately if:
+
+- More than 3 partners are affected.
+- The incident lasts more than 4 business hours.
+- A launch, campaign, or scheduled delivery date is at risk.
+- A partner requests executive involvement.
+- The issue involves contractual reporting, billing-related metrics, or data accuracy concerns.
+
+## 11. Resolution Note
+When the incident is mitigated or resolved, send a closeout note within **2 business hours**:
+
+**Subject:** Resolved: [partner-facing workflow issue]
+
+Hello [Partner Name],
+
+The issue affecting [workflow/deliverable] has been resolved as of [time with time zone].
+
+Summary:
+- Impact: [brief description]
+- Resolution: [brief description]
+- Follow-up: [optional next step, backfill, rerun, or monitoring note]
+
+Please reply if you are still seeing any issues on your side.
+
+Best,  
+[Name]  
+Growth Team
+
+## 12. Aftercare
+Within **1 business day** after resolution:
+
+- Confirm all affected partners received the resolution note.
+- Send any promised reruns, backfills, or corrected deliverables.
+- Record the incident timeline, partner impact, and communication timestamps for future reference.
+- Note any improvements needed to reduce repeat partner impact.

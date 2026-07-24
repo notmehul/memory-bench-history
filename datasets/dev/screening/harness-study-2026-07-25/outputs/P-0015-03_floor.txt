@@ -1,0 +1,18 @@
+# Company Standup Routine
+
+Starting now, the whole company will use one shared standup routine every workday.
+
+**When:** Monday to Friday, by **10:30 AM local time**  
+**Where:** Post in the **`#daily-standup`** Slack channel  
+**Format:** Keep it to **3 short bullets**
+- **Yesterday:** what you completed
+- **Today:** what you are working on
+- **Blockers:** anything slowing you down or needing help
+
+**Guidelines**
+- Keep each update to **under 5 lines**
+- If you have **no blockers**, write `Blockers: none`
+- If you are blocked for **more than 24 hours**, tag the person or team that can help
+- If a discussion takes more than **5 back-and-forth messages**, move it to a quick call or thread follow-up
+
+The goal is simple: everyone posts once per workday, everyone can scan progress quickly, and blockers surface early without needing extra manager coordination.

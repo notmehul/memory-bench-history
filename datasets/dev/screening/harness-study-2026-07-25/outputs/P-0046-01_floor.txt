@@ -1,0 +1,28 @@
+# Platform Sprint Boundary Checklist
+
+Use this at sprint close and again before the next sprint is committed whenever there is unfinished estimated work.
+
+- Check remaining work by engineer, not original ticket size.
+- Apply the current rule exactly: **carryover is limited to 5 story points per engineer each sprint**.
+- If an engineer is at **5 story points or below**, the remaining work can carry as planned.
+- If an engineer is **above 5 story points**, the lead must split the leftover work before the next sprint commit.
+- Put the carryover estimate only on the unfinished remainder that is still being brought forward.
+- Make sure every carried ticket has **one named owner**.
+- Keep the carryover portion small enough to fit within the engineer’s `5-point` cap; move the rest into a separate follow-on ticket for later planning.
+- In the planning note, record for each carryover item: ticket name, owner, remaining points, and what was split out.
+
+## Worked Example
+
+Engineer `Alex` ends the sprint with **8 story points** of unfinished work left on one story.
+
+Lead action:
+- Split the leftover into `5 story points` that will carry into the next sprint.
+- Move the remaining `3 story points` into a separate follow-on ticket.
+
+Example split:
+- `PLA-214A`: finish retry logic, final tests, and rollout steps — **5 points** — owner: `Alex` — carries into next sprint.
+- `PLA-214B`: cleanup work, dashboard follow-up, and non-blocking refactor — **3 points** — owner: `Alex` or reassigned during planning — does **not** count as carryover for the same engineer in the next sprint commit.
+
+Result:
+- Alex stays within the current per-engineer carryover limit of **5 story points**.
+- The leftover work is still visible, estimated, and schedulable without hiding over-cap carryover inside one oversized story.

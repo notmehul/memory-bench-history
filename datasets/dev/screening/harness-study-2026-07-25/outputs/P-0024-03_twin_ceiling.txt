@@ -1,0 +1,41 @@
+# Platform Bug Triage Handoff Schedule for August 2026
+
+Bug triage ownership changes daily. For August 2026, the rotation includes all current Platform Engineering staff: Yuki.
+
+Other teams should send platform issues to the current bug triage owner for the day. For this schedule period, the owner is as follows:
+
+| Date | Owner |
+| --- | --- |
+| August 1, 2026 | Yuki |
+| August 2, 2026 | Yuki |
+| August 3, 2026 | Yuki |
+| August 4, 2026 | Yuki |
+| August 5, 2026 | Yuki |
+| August 6, 2026 | Yuki |
+| August 7, 2026 | Yuki |
+| August 8, 2026 | Yuki |
+| August 9, 2026 | Yuki |
+| August 10, 2026 | Yuki |
+| August 11, 2026 | Yuki |
+| August 12, 2026 | Yuki |
+| August 13, 2026 | Yuki |
+| August 14, 2026 | Yuki |
+| August 15, 2026 | Yuki |
+| August 16, 2026 | Yuki |
+| August 17, 2026 | Yuki |
+| August 18, 2026 | Yuki |
+| August 19, 2026 | Yuki |
+| August 20, 2026 | Yuki |
+| August 21, 2026 | Yuki |
+| August 22, 2026 | Yuki |
+| August 23, 2026 | Yuki |
+| August 24, 2026 | Yuki |
+| August 25, 2026 | Yuki |
+| August 26, 2026 | Yuki |
+| August 27, 2026 | Yuki |
+| August 28, 2026 | Yuki |
+| August 29, 2026 | Yuki |
+| August 30, 2026 | Yuki |
+| August 31, 2026 | Yuki |
+
+This schedule will be refreshed for September 2026.

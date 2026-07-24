@@ -1,0 +1,12 @@
+# Post-Retrospective Handoff
+
+Right after the retrospective ends, each follow-up item is converted from discussion into one execution artifact so it can be tracked and completed. Use this mapping:
+
+- A concrete fix or improvement becomes a work ticket in the team backlog.
+- A larger cross-cutting change becomes an initiative or epic with linked work tickets.
+- A gap in process, policy, or operating guidance becomes a documentation task tied to the source document.
+- A risk that needs watching but not immediate delivery becomes a risk log entry with a review date.
+
+Every follow-up item must include three accountability details before handoff is considered complete: one directly responsible owner, one clear success outcome, and one due date or next decision date. If the item depends on another team, record the external dependency and the platform-side owner who will drive it; shared ownership is not enough.
+
+The handoff from retro discussion to tracked execution must be completed within 24 hours. By the end of the next business day, every follow-up item should exist in its destination system, have an owner, and be visible in the platform team’s normal planning view. Items that are still unassigned or not written down after 24 hours should be treated as missed handoff and raised in the next team sync.

@@ -1,0 +1,8 @@
+## Endpoint Style
+
+Rule: For all new Platform API endpoints, use `camelCase` for every resource identifier in the path.
+
+Sample path snippets:
+- `/v1/userProfiles`
+- `/v1/serviceAccounts`
+- `/v1/deploymentTargets`

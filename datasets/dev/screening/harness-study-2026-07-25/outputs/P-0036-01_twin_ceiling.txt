@@ -1,0 +1,1 @@
+Previously, there was no cap on sprint spillover. Squads could carry over any number of unfinished tickets into the next sprint, and manager approval was not required.

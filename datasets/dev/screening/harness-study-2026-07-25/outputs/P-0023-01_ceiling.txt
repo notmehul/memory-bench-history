@@ -1,0 +1,14 @@
+- Lead with the user benefit in the first 1-2 lines.
+- Keep every sentence short. Cut or split any sentence over 20 words.
+- Use numerals for counts, dates, times, and version numbers.
+- Replace jargon with plain words on the last edit pass.
+- Name the feature once, then stay consistent with the same term.
+- Make the main action obvious with 1 clear verb per sentence.
+- Keep each blurb to 3-5 sentences unless a channel needs less.
+- Open upbeat, but skip hype words that do not add meaning.
+- Check that every sentence answers 1 of 3 things: what changed, why it matters, or what to do next.
+- Remove filler like "simply," "just," "seamless," and "robust."
+- Add 1 concrete detail if the blurb feels vague.
+- End with a clear next step, link target, or availability note.
+- Read it once out loud and cut anything that sounds stiff.
+- Do a 60-second final pass: shorter, clearer, more specific.

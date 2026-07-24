@@ -1,0 +1,14 @@
+# Urgent Platform Support Threads: Growth Team Guidance
+
+When an urgent Slack thread is routed to platform support, treat it as a live operational handoff, not a background request. The owner on point should acknowledge the thread within **10 minutes during growth team support hours** and clearly state who is driving next steps.
+
+For this lane, the growth team commitment is:
+- **Initial acknowledgment:** within **10 minutes**
+- **First meaningful update:** within **30 minutes**
+- **Ongoing updates:** at least every **30 minutes** until the issue is resolved, handed off, or a clear next checkpoint is set
+
+The assigned owner is responsible for triage, narrowing the problem, and keeping the thread decision-oriented. That means confirming severity, identifying the impacted growth workflow or metric, summarizing what is known, and making the next action explicit in-thread.
+
+If the issue cannot be resolved quickly, escalate within **15 minutes of triage** to the right platform contact and stay attached until ownership is unambiguous. Do not leave urgent threads in a passive waiting state; every open thread should always have a named owner, a current status, and a next update time.
+
+Close the loop before stepping away. Once the issue is resolved or transferred, post a final summary covering impact, resolution, and any follow-up task needed from growth.

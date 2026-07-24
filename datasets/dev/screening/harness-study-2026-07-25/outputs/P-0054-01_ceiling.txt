@@ -1,0 +1,1 @@
+Previous bug triage setup: bug triage ran every Monday, and a published owner was named for each triage.

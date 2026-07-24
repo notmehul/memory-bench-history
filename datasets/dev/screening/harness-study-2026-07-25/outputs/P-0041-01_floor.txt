@@ -1,0 +1,40 @@
+# Meeting Wrap-Up Card
+
+## Share Notes First
+**Within 15 minutes of every meeting, send the notes.** If I have back-to-back meetings, send a short version first and finish the full version by the end of the hour.
+
+## Minimum Note Format
+- Purpose: one line on what the meeting was for
+- Decisions: what was decided
+- Actions: owner + due date for every follow-up
+- Risks or open questions: what still needs resolution
+- Next checkpoint: next meeting, async update, or explicit close
+
+## Before Leaving The Call
+- Restate the decision or current direction out loud
+- Confirm each action has one owner
+- Confirm each action has a concrete due date
+- Name the next checkpoint before everyone drops
+
+## Right After The Call
+- Post notes in the shared thread, doc, or channel used for the work
+- Flag anything time-sensitive at the top
+- Convert my own follow-ups into tracked tasks within 30 minutes
+- Rename any vague action item until it reads like something that can be done today
+
+## If The Meeting Was Messy
+- Send a 5-line summary anyway
+- Separate facts from assumptions
+- Call out unresolved items explicitly
+- Propose the smallest next step with an owner and date
+
+## End-Of-Day Sweep
+At 4:30 PM, check that every meeting from the day has:
+- notes sent
+- actions tracked
+- owners confirmed
+- due dates assigned
+- no orphaned follow-ups in my head or inbox
+
+## Personal Standard
+If someone should wonder what happened after the meeting, I wrapped it up too slowly.

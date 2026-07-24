@@ -1,0 +1,62 @@
+# Standup Rhythm
+
+Our default standup rhythm is async across the organization, with one shared live sync on Wednesdays. This gives everyone a consistent weekly pattern: lightweight written updates on ordinary days and one real-time gathering to stay aligned together.
+
+## Weekly Pattern
+
+### Monday, Tuesday, Thursday, and Friday: Async Standups
+On ordinary workdays, standup happens asynchronously.
+
+What to do:
+- Post your update in the designated async standup channel or tool for your team or org area.
+- Share what you completed, what you are working on next, and any blockers or decisions that need attention.
+- Keep it clear and concise so others can scan it quickly.
+- Read relevant updates from teammates and respond if you can help unblock something.
+
+What participation looks like:
+- Everyone is expected to contribute a written update on async standup days.
+- Updates should be posted during your normal workday so teammates have current context.
+- If you have no major changes, a short update is still useful.
+
+A simple format:
+- Yesterday: what you finished or moved forward
+- Today: what you plan to work on
+- Blockers: anything slowing you down or needing input
+
+### Wednesday: Shared Live Sync
+Wednesday is the one org-wide live standup touchpoint.
+
+What to do:
+- Join the live sync on time and come prepared with your current priorities, progress, and blockers.
+- Keep updates brief and focused on alignment, dependencies, and anything that benefits from real-time discussion.
+- Use the meeting to surface risks, clarify cross-functional questions, and confirm shared priorities for the rest of the week.
+
+What participation looks like:
+- Attendance is expected unless you are out of office or have a conflicting priority approved by your manager or team lead.
+- Everyone should participate in a way that helps the group stay aligned.
+- Topics that require deep problem-solving should usually be taken offline with the relevant people after the sync.
+
+## What Good Standup Participation Looks Like
+
+Across both async and live standups:
+- Be consistent.
+- Be specific.
+- Call out blockers early.
+- Focus on work that affects team or org visibility.
+- Keep updates short, factual, and easy to act on.
+
+## Quick Reference for New Hires
+
+If you are new, follow this default:
+- Monday: post an async update
+- Tuesday: post an async update
+- Wednesday: join the live sync
+- Thursday: post an async update
+- Friday: post an async update
+
+When in doubt, share:
+- what changed,
+- what you are doing next,
+- and where you need help.
+
+This is the current standup rhythm across the organization.

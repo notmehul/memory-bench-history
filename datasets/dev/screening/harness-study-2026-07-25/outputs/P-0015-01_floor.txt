@@ -1,0 +1,14 @@
+## Company Standup: Current Setup
+
+We run one company-wide async standup every weekday in `#company-standup`.
+
+**When:** Post by `10:15 AM` in your local time zone, Monday through Friday. If you are out of office, post your status before the end of your previous working day.
+
+**Format:** Keep it to `3 bullets` and `5 lines max`.
+- `Yesterday:` what you finished or moved forward
+- `Today:` what you are working on next
+- `Blockers:` anything slowing you down or needing help
+
+**If blocked:** If a blocker has been open for more than `24 hours`, tag the right owner directly and move follow-up into a thread or a quick call. Standup should surface work, not become the discussion itself.
+
+**Expectation:** Everyone posts. Keep updates clear, specific, and skim-friendly so the whole company can track progress without extra coordination.

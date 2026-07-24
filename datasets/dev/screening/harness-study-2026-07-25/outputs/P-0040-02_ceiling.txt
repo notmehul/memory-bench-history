@@ -1,0 +1,17 @@
+# Platform Weekly Sync Meeting-Notes Checklist
+
+- [ ] Add the meeting date, attendees, and note-taker at the top.
+- [ ] Capture each decision as it happens in a dedicated **Decisions** section.
+- [ ] For every decision, record:
+  - [ ] the decision made
+  - [ ] the owner
+  - [ ] the due date in `YYYY-MM-DD` format
+- [ ] Capture action items in a dedicated **Actions** section before the meeting ends.
+- [ ] For every action item, record:
+  - [ ] the task
+  - [ ] the owner
+  - [ ] the due date in `YYYY-MM-DD` format
+- [ ] Link every related ticket in the notes before the meeting ends.
+- [ ] If a topic has no ticket yet, note `Ticket needed` next to it before closing the notes.
+- [ ] Do a final in-meeting scan to confirm there are no missing owners, due dates, or ticket links.
+- [ ] Mark the notes ready to post before the meeting closes.

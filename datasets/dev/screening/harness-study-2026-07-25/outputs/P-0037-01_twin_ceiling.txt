@@ -1,0 +1,13 @@
+# Post-Retro Handoff
+
+Right after a platform retrospective ends, every follow-up item stays in the retro notes as a note through the next planning session. The facilitator closes the meeting by making sure each item is written as a concrete next step, not just an observation.
+
+Within 24 hours, each follow-up note must be classified into the artifact it is expected to become at planning:
+
+- Work to build, change, or fix something becomes a backlog item.
+- A team workflow or operating change becomes a platform process note or checklist update.
+- A question that needs validation first becomes a short investigation note.
+
+Each note must include one accountability detail before handoff is considered complete: the platform area or workstream responsible for carrying it into planning. It does not need an individual owner yet, but it must be clear which part of the team is expected to pick it up.
+
+The handoff is complete when all retro follow-ups are captured in the notes, mapped to their next artifact type, and assigned to a responsible platform area within 24 hours of the retrospective ending. At the next planning session, each note is then either converted into its execution artifact with a named owner and timing, or explicitly dropped.

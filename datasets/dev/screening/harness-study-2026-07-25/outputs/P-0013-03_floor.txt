@@ -1,0 +1,38 @@
+# Urgent Platform Support Slack Threads
+
+For any urgent Slack thread routed to platform support, the growth team treats it as a same-lane operational issue, not a background request. The owner on duty must acknowledge the thread within **10 minutes during coverage hours** and either begin handling it directly or assign a clear responder before that window closes.
+
+## Operating Standard
+
+Urgent platform support threads should be handled in the thread, with one clearly named growth owner responsible from intake to handoff or resolution. The first response should confirm ownership, restate the issue in one sentence, and give the next update time.
+
+## Turnaround Commitment
+
+Our commitment for the urgent platform support lane is:
+
+- **Acknowledge within 10 minutes** during coverage hours.
+- **Post a meaningful status update within 30 minutes** of acknowledgment.
+- **Reach resolution or clear handoff within 2 hours** when the issue is within growth's scope.
+- If full resolution will take longer than 2 hours, post the blocker, current owner, and next checkpoint time before the 2-hour mark.
+
+## Thread Handling Rules
+
+- Keep all operational updates in the original Slack thread so context stays intact.
+- Name the current owner explicitly whenever ownership changes.
+- If the issue is not in growth's scope, route it to the correct team immediately and stay on the thread until the new owner confirms takeover.
+- If the issue affects a live campaign, conversion path, tracking, billing-related growth workflow, or customer-facing launch, treat it as urgent unless told otherwise.
+
+## Coverage Cadence
+
+During coverage hours, the on-duty growth owner should check the urgent platform support lane at least every **5 minutes**. At shift change, any open urgent thread must be handed off with a short status summary, current blocker, and next expected action.
+
+## Escalation
+
+Escalate immediately if:
+
+- no clear owner is available,
+- the issue is blocking revenue, launches, or critical measurement,
+- the thread is stalled for **15 minutes** without progress,
+- or another team is needed and has not responded within **20 minutes**.
+
+The goal is simple: urgent routed threads must get fast ownership, visible progress, and a concrete next step until they are resolved or safely handed off.

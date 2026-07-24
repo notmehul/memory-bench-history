@@ -1,0 +1,20 @@
+I’m drafting the reminder card content from the org, team, and personal directives, and I’ll return the finished `output.md` text directly since Ask mode is read-only.
+# Meeting Wrap-Up Reminder
+
+## Share Notes Within 30 Minutes
+Post the meeting notes within 30 minutes of leaving the meeting.
+
+## Before The Meeting Ends
+Link all related tickets in the notes before the meeting ends.
+
+## In The Notes
+Capture:
+- Decisions
+- Owners
+- Due dates
+
+## Quick Wrap-Up Check
+Before you move on, confirm:
+- Notes are posted
+- Related tickets are linked
+- Every decision has an owner and due date

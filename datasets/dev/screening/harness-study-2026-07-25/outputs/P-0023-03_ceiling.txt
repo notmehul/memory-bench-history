@@ -1,0 +1,12 @@
+- [ ] Open with the user benefit in the first line.
+- [ ] Keep every sentence short. Cut or split any sentence over 16 words.
+- [ ] Use plain words. Replace product, platform, or marketing jargon on the first pass.
+- [ ] Prefer numerals for all figures, dates, and counts.
+- [ ] Lead with what changed, then why it matters, then what to do next.
+- [ ] Keep the blurb to 3 short paragraphs max.
+- [ ] Use 1 clear message per paragraph.
+- [ ] Swap vague claims for concrete details, examples, or numbers.
+- [ ] Cut filler words like "very," "simply," "seamless," and "robust."
+- [ ] Read it once out loud and remove any line that sounds stiff or overloaded.
+- [ ] Check that the tone feels upbeat, clear, and human.
+- [ ] End with 1 direct next step or takeaway.

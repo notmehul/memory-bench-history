@@ -1,0 +1,25 @@
+# Bug Triage Operating Model
+
+To keep escalation paths clear and response handling consistent, bug triage is owned by a rotating daily contact. The active contact is the first point of coordination for new bug escalations during the workday and is responsible for directing issues to the right team, aligning on urgency, and keeping intake organized.
+
+The active bug triage contact changes each workday according to the published schedule in Slack. Before routing a bug escalation, check the current day's bug triage schedule in Slack and contact the person listed for that day. This is the source of truth for who is on point.
+
+Use the daily contact for:
+- New bug escalations that need immediate routing
+- Questions about where a production or customer-impacting issue should go
+- Coordination when multiple teams may need to respond
+- Clarification on who is currently handling triage coverage
+
+For consistency, teams should always route escalations to the contact listed for that specific workday in Slack rather than relying on memory, older messages, or last week's schedule.
+
+## Weekly Example
+
+Use this pattern every week by checking Slack for the named contact on the current day:
+
+- Monday: route bug escalations to Monday's published triage contact in Slack
+- Tuesday: route bug escalations to Tuesday's published triage contact in Slack
+- Wednesday: route bug escalations to Wednesday's published triage contact in Slack
+- Thursday: route bug escalations to Thursday's published triage contact in Slack
+- Friday: route bug escalations to Friday's published triage contact in Slack
+
+If you are escalating a bug, start by checking the Slack schedule for today's assignment and contact that person directly so the issue enters the correct triage flow without delay.

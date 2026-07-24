@@ -1,0 +1,44 @@
+# Bug Triage Coverage Model for Next Quarter
+
+For the next quarter, bug triage will continue to run on a monthly single-owner model.
+
+Each calendar month has one named triage contact. That person is the only active bug triage assignee for the full month. There is no standing backup. The contact changes at 00:00 on the first day of the new month and remains fixed through 23:59 on the last day of that month.
+
+## What Support, Product, and Engineering Should Do
+
+Route new bugs to the named contact for the current month.
+
+Use the monthly contact listed in the coverage calendar at the time the issue is opened. Do not split intake across multiple people and do not assign an informal backup on your own. If the contact changes because the month changes, use the new month’s contact for all newly opened issues from that point forward.
+
+## July Through August Example
+
+Example coverage:
+- July contact: Maya Patel
+- August contact: Daniel Kim
+
+The handoff happens at 00:00 on August 1.
+
+Examples:
+- A bug reported on July 31 at 16:45 goes to Maya Patel.
+- A bug reported on August 1 at 09:00 goes to Daniel Kim.
+
+The month boundary, not when someone happens to read the issue, determines the correct contact.
+
+## If the Listed Contact Drops Out Mid-Cycle
+
+Because there is no backup assignee, treat a mid-cycle dropout as a coverage gap.
+
+If the listed contact becomes unavailable during the month:
+1. Stop routing new issues directly to that person.
+2. Route all new bugs to Platform Engineering for reassignment until a replacement contact is announced.
+3. Keep using the replacement contact for the rest of that month once Platform Engineering publishes the updated name.
+
+Concrete example:
+- August contact is Daniel Kim.
+- Daniel becomes unavailable on August 18.
+- From August 18 until a replacement is posted, Support, Product, and Engineering should route new bugs to Platform Engineering for reassignment, not to Daniel and not to an unofficial backup.
+- If Platform Engineering announces Priya Shah as the new August contact on August 19, all new bugs opened from that announcement forward go to Priya Shah through August 31 at 23:59.
+
+## Operating Rule
+
+One month, one named owner, no backup. If the month changes, the contact changes. If the contact drops out mid-cycle, route to Platform Engineering until a new single owner is named.

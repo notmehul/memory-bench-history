@@ -1,0 +1,12 @@
+Platform operating note: we will use a standing `Upcoming Work Shift Review` as the recurring forum for discussing changes in upcoming work before they turn into last-minute reprioritization.
+
+Timing: every Thursday, `2:00-2:30 PM` local team time.
+
+Where it sits in the routine: after the weekly delivery review and before the next sprint is locked, so we can adjust sequencing, staffing, and dependencies while there is still room to move.
+
+Each pass covers a different horizon:
+- `2-week pass`: what may change in the next sprint or the sprint after it. Cover new asks, scope movement, delivery risk, partner commitments, incidents likely to consume capacity, and anything that should change what we pull next.
+- `6-week pass`: what is drifting in the near-term queue. Cover dependency movement, cross-team handoffs, staffing constraints, readiness gaps, and work that is becoming more urgent or less necessary.
+- `Quarter pass`: what is changing in the broader direction. Cover roadmap shifts, platform bets, repeated operational pain, demand trends, and work we should start, stop, or explicitly defer.
+
+Expected output from each review: a short list of `promote`, `hold`, `de-scope`, or `defer` decisions, plus any follow-ups needed before planning. If an item needs more than `10 minutes` of discussion, we take it out of the forum and assign a smaller follow-up.

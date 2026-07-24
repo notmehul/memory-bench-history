@@ -1,0 +1,1 @@
+Historical note: before the later bug triage updates, the engineering handbook described bug triage as running every Monday, with a published owner named for each triage session.

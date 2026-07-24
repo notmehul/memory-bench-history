@@ -1,0 +1,3 @@
+## Changelog Note: Prior Travel Workflow
+
+For audit readers, this note describes the earlier state of the travel process before the latest tooling update. Previously, employees requested travel by completing the handbook-linked travel request form, sending it to their manager for approval, and forwarding the approved request to Operations for booking and recordkeeping. Under that older setup, an employee would begin on the `Travel Policy` page by opening the travel request form before making any bookings.

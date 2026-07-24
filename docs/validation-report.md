@@ -105,6 +105,21 @@ co-valid-sibling rule (identical defect class and treatment as the
 precedented P-0031/40/41 repairs; task text byte-identical, so all
 cached task-model outputs remain valid).
 
+**Harness-sensitivity study (2026-07-25).** A prespecified 60-run
+comparison (20 per condition, deterministic sample; evidence in
+`datasets/dev/screening/harness-study-2026-07-25/`) ran the identical
+prompts through the same gpt-5.4 weights behind a second agent harness
+(cursor-agent) and scored them through the identical blinded pipeline.
+Outcome agreement with the codex canon: ceiling-pass 95%, floor
+pair-pass 100%, twin-ceiling-pass 65% — the second harness states
+awkward counterfactuals the incumbent refuses. Equivalence was rejected
+per the prespecified ≥90% bar; codex is retained and version-pinned
+(codex-cli 0.144.5, open-source scaffold) as the reproducible
+instrument. Consequence made explicit: probe validity is calibrated to
+(model, effort, harness), and harness heterogeneity alone flips a third
+of twin-side outcomes — the first measured motivation for the
+consumer-portability track.
+
 The screening iterations themselves produced the protocol (each revision
 measured, made before any SUT evaluation, evidence in git history):
 gpt-5.4-mini rejected as task model (ceiling-gate survival 17/54 vs

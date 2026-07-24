@@ -1,0 +1,159 @@
+# Growth Partner Incident Checklist
+
+## Purpose
+Use this checklist when a confirmed or likely incident affects an external partner’s traffic, tracking, reporting, payout visibility, campaign delivery, or launch timing. The goal is to keep affected partners informed quickly, clearly, and consistently.
+
+## Roles
+Assign these roles immediately:
+
+- `Incident lead`: owns decisions, timeline, and internal coordination for growth.
+- `Comms cover`: sends all partner updates and keeps the outbound log current.
+- `Partner list owner`: confirms exactly which partners, contacts, and channels are in scope.
+
+One person may cover multiple roles if needed, but `comms cover` must be explicitly named.
+
+## Start Conditions
+Start this checklist as soon as any of the following is true:
+
+- A partner-facing workflow is down or materially degraded.
+- Tracking, attribution, or reporting is delayed by more than 15 minutes.
+- A launch, campaign, or partner deliverable is blocked.
+- Three or more partners are likely affected by the same issue.
+- One strategic or revenue-critical partner is affected.
+
+Do not wait for full root cause confirmation if partner impact is already likely.
+
+## First 10 Minutes
+- Name the `incident lead`, `comms cover`, and `partner list owner`.
+- Write a one-line incident summary:
+  - what is broken
+  - when it started or was first observed
+  - who is affected
+  - current known workaround, if any
+- Build the affected partner list:
+  - partner name
+  - primary contact
+  - backup contact
+  - channel to use now (`email`, `Slack`, `shared channel`, or `partner portal`)
+  - severity for that partner (`critical`, `high`, `standard`)
+- Decide whether the issue is:
+  - `critical`: launch-blocking, spend-blocking, payout-blocking, or live revenue impact
+  - `high`: meaningful degradation without full outage
+  - `standard`: limited or recoverable impact
+
+## First Outbound Note
+**Deadline:** send the very first outbound note to every affected partner within **15 minutes of incident confirmation**, or within **5 minutes of taking over comms coverage**, whichever is sooner.
+
+**Approval rule:** the `comms cover` is explicitly authorized to send this first note **without additional approval** from leadership, legal, product, engineering, or the incident lead, as long as the note:
+- states only confirmed facts,
+- avoids guessing root cause,
+- gives the next update time,
+- includes a current workaround if one exists.
+
+If facts are still limited, send the note anyway with a short acknowledgment and a next-update commitment.
+
+### First Outbound Note Template
+**Subject:** Issue affecting `Partner Name` - investigating
+
+Hi `Name`,
+
+We’re investigating an issue currently affecting `brief impact, e.g. click tracking / reporting / campaign delivery` for `Partner Name`.
+
+What we know now:
+- Start time: `time + timezone` or `first observed around time + timezone`
+- Impact: `plain-language impact`
+- Workaround: `workaround` or `none at the moment`
+
+Our team is actively working this now. We will send the next update by **`time + timezone`** even if we are still investigating.
+
+If you are seeing anything different on your side, reply here and include examples.
+
+Thanks,  
+`Comms cover name`  
+Growth Team
+
+## Update Cadence
+After the first note is sent:
+
+- Send updates every **30 minutes** while the issue is unresolved.
+- If impact is `critical`, send updates every **15 minutes**.
+- Once the issue is stable and no longer worsening, move to **hourly** updates until fully resolved.
+- If there is no new information, still send the scheduled update and say so plainly.
+
+Every update must include:
+- current status
+- what changed since last note
+- partner impact right now
+- workaround status
+- next update time
+
+## When To Expand Outreach
+Add more partners to the notification list immediately if any of the following happens:
+
+- the issue spreads to additional partner accounts
+- impact lasts more than **30 minutes**
+- expected revenue, spend, or launch impact becomes non-trivial
+- a workaround fails or is incomplete
+- inbound partner reports suggest the blast radius is larger than first believed
+
+When in doubt, notify.
+
+## Escalation Thresholds For Growth
+Mark the incident as `critical` and use 15-minute updates if any of these apply:
+
+- a top-tier or contract-sensitive partner is affected
+- paid acquisition or partner-driven revenue is blocked
+- attribution or reporting is delayed by more than **60 minutes**
+- campaign launch or promised delivery misses its committed start window
+- more than **5 partners** are affected
+- the incident is visible enough that partners may pause spend or traffic
+
+## Partner Response Handling
+- Reply to partner questions within **10 minutes** during the active incident window.
+- If a partner asks for details we cannot confirm, say that the issue is under active investigation and commit to the next update time.
+- Do not speculate about root cause, blame another team, or promise an exact fix time unless confirmed.
+- Log every outbound and inbound partner message in one running incident timeline.
+
+## Resolution Note
+Send the resolution note within **30 minutes** of confirmed recovery.
+
+### Resolution Note Template
+**Subject:** Resolved: Issue affecting `Partner Name`
+
+Hi `Name`,
+
+The issue affecting `brief impact` has been resolved as of `time + timezone`.
+
+Summary:
+- Incident window: `start time` to `resolved time`
+- Impact: `plain-language summary`
+- Current status: service is back to normal / reporting is catching up / campaign delivery has resumed
+- Follow-up: we will share a fuller summary by `day/time` if additional validation is still underway
+
+Please let us know if you continue to see any issues on your side.
+
+Thanks,  
+`Comms cover name`  
+Growth Team
+
+## Aftercare
+Within **1 business day** after resolution:
+
+- send a follow-up summary to affected partners if the incident lasted more than **60 minutes**, affected a strategic partner, or caused a launch/revenue disruption
+- confirm whether any backfill, credit, relaunch, or manual cleanup is needed from the growth side
+- record:
+  - affected partners
+  - first outbound sent time
+  - whether the 15-minute SLA was met
+  - total duration
+  - major questions or objections raised by partners
+  - any follow-up commitments and owners
+
+## Definition Of Done
+This checklist is complete when:
+
+- all affected partners received the first outbound note on time
+- scheduled updates were maintained until recovery
+- all partner replies were addressed
+- the resolution note was sent
+- follow-up commitments are recorded with owners and dates

@@ -1,0 +1,17 @@
+## Launch Blurb Support
+
+When the platform team helps with launch blurbs, aim for clear, restrained, formal copy that explains the user-facing value without sounding promotional. Keep the draft grounded in what shipped, who it helps, and why it matters now.
+
+Use this working format:
+- one sentence on the launch itself
+- one sentence on the practical benefit
+- one sentence on any important scope, limit, or availability detail
+
+Keep blurbs between sixty and ninety words. Lead with the outcome, not the implementation. Prefer plain product language over internal terms, architectural detail, or feature-building history. Avoid hype words, unsupported superlatives, and vague claims such as "powerful," "seamless," or "game-changing."
+
+Before handing off a draft, check that it answers three questions:
+- What is new?
+- Who is it for?
+- What changes for the user?
+
+If any of those answers are missing, the blurb is not ready.

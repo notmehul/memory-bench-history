@@ -1,0 +1,5 @@
+## Design Docs for Multi-Service Changes
+
+A design doc is mandatory when a proposed change touches **three or more services**. In plain terms: if your work affects **1 or 2 services**, a design doc is not required by this policy; if it affects **3+ services**, you must write one before moving forward.
+
+Example: updating a shared workflow that requires changes to the API service, the worker service, and the notification service requires a design doc because the change spans **three services**.

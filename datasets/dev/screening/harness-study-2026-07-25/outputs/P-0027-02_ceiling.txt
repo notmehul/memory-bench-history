@@ -1,0 +1,3 @@
+## Handbook Changelog
+
+Historical note: before the current daily shared bug triage schedule, bug triage was owned by one platform engineer at a time on a weekly rotation. The assigned platform engineer carried the duty for the full week, and handoff to the next platform engineer occurred once per week.

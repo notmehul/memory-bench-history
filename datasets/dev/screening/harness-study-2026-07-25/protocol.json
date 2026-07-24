@@ -1,0 +1,9 @@
+{
+ "date": "2026-07-25",
+ "purpose": "task-model harness equivalence: codex vs cursor-agent",
+ "candidate": "cursor-agent 2026.07.09-a3815c0, model gpt-5.4-medium, --mode ask --print, isolated empty workspace",
+ "incumbent": "codex exec gpt-5.4 effort=medium (seed-1 canon)",
+ "sample": "60 seed-1 runs: 20/condition, RNG seed 20260725, prespecified before any cursor screening run",
+ "scoring": "identical blinded pipeline (opaque-id export, claude-sonnet-5 judge), existing assertions",
+ "acceptance": "outcome-level agreement >=90% per condition (ceiling-pass, twin-pass, floor pair-pass) AND no directional skew (cursor ceiling-pass rate not lower than codex by >1 run per condition); decision documented before seeds 3-5"
+}

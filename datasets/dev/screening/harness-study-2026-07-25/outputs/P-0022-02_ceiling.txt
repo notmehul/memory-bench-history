@@ -1,0 +1,14 @@
+# Launch Blurb Support
+
+When the platform team helps with launch blurbs, keep the copy clear, simple, and easy to scan. Use plain language. Cut jargon, internal terms, and technical shorthand unless a term is required for accuracy.
+
+Match an upbeat tone. Sound confident, helpful, and forward-looking without sounding hypey. Focus on what is new, why it matters, and who benefits.
+
+Use this quick check before handing off a draft:
+1. Lead with the user-facing value in the first 2 sentences.
+2. Keep the blurb to 75 to 120 words unless the request asks for a different length.
+3. Include no more than 3 key points.
+4. Replace technical detail with outcome-focused language where possible.
+5. Read it once for clarity and once for tone before sharing.
+
+If a draft feels dense, rewrite for simpler words, shorter sentences, and a stronger opening.

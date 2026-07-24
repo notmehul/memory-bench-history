@@ -1,0 +1,35 @@
+# Strategic Priorities: How They Reach Leadership
+
+To surface strategic priorities across the business, we use a single operating rhythm: each function brings its most important decisions, risks, and asks into a shared leadership review. This is the forum where cross-company priorities are aligned, tradeoffs are made, and executive support is assigned.
+
+## Timing
+- Teams submit updates by **12:00 PM local time every Monday**.
+- Function leads review and consolidate inputs by **5:00 PM every Tuesday**.
+- The cross-business leadership review runs **every Wednesday for 60 minutes**.
+- Urgent issues that cannot wait for the weekly cycle should be escalated within **24 hours** through the relevant executive sponsor.
+
+## Who Joins
+- CEO and executive staff
+- Function heads
+- Finance, People, Legal, and Operations leads as needed
+- The directly responsible team lead for any item under discussion
+
+## What Teams Should Bring
+Bring only the items that need leadership attention:
+- The **top 3 strategic priorities** for the next **30-90 days**
+- Decisions needed from leadership
+- Cross-functional dependencies or blockers
+- Material risks to delivery, revenue, customers, compliance, or hiring
+- Key changes in plan, scope, timing, or resourcing
+- Metrics that show current status and expected impact
+
+Each item should fit on **one page or one slide** and include:
+- Objective
+- Owner
+- Decision or support needed
+- Target date
+- Current status
+- Risk level: **Low, Medium, or High**
+
+## Standard
+If a priority needs funding, headcount, sequencing changes, or executive resolution, bring it to this review. If it can be resolved within a team, keep it within the team. This keeps leadership focused on the highest-leverage decisions for the company.

@@ -1,0 +1,432 @@
+{
+ "rd89fc8b74e9b": {
+  "run_id": "P-0001-01:twin_ceiling",
+  "criteria": {
+   "c1": "casrt-1"
+  }
+ },
+ "rcae015ec2895": {
+  "run_id": "P-0001-02:twin_ceiling",
+  "criteria": {
+   "c1": "casrt-1"
+  }
+ },
+ "r24733451639c": {
+  "run_id": "P-0001-03:ceiling",
+  "criteria": {
+   "c1": "asrt-1"
+  }
+ },
+ "rc746e5a68a9f": {
+  "run_id": "P-0003-02:floor",
+  "criteria": {
+   "c1": "asrt-1",
+   "c2": "asrt-3",
+   "c3": "casrt-1",
+   "c4": "casrt-2",
+   "c5": "casrt-3"
+  }
+ },
+ "r7bd79dc405f9": {
+  "run_id": "P-0004-02:floor",
+  "criteria": {
+   "c1": "asrt-1",
+   "c2": "asrt-2",
+   "c3": "asrt-3",
+   "c4": "casrt-1",
+   "c5": "casrt-2",
+   "c6": "casrt-3"
+  }
+ },
+ "rf82648af94ae": {
+  "run_id": "P-0006-01:ceiling",
+  "criteria": {
+   "c1": "asrt-1"
+  }
+ },
+ "rf490359ae7c6": {
+  "run_id": "P-0006-03:ceiling",
+  "criteria": {
+   "c1": "asrt-1"
+  }
+ },
+ "r763459e307f0": {
+  "run_id": "P-0006-03:floor",
+  "criteria": {
+   "c1": "asrt-1",
+   "c2": "casrt-1"
+  }
+ },
+ "r9a9eff367417": {
+  "run_id": "P-0008-01:twin_ceiling",
+  "criteria": {
+   "c1": "casrt-1"
+  }
+ },
+ "ra2657a95b56c": {
+  "run_id": "P-0011-03:ceiling",
+  "criteria": {
+   "c1": "asrt-1"
+  }
+ },
+ "r0408d8e73dbb": {
+  "run_id": "P-0011-03:floor",
+  "criteria": {
+   "c1": "asrt-1",
+   "c2": "casrt-1"
+  }
+ },
+ "r766f0ced2e42": {
+  "run_id": "P-0011-03:twin_ceiling",
+  "criteria": {
+   "c1": "casrt-1"
+  }
+ },
+ "r1864efe8b169": {
+  "run_id": "P-0012-01:twin_ceiling",
+  "criteria": {
+   "c1": "casrt-1",
+   "c2": "casrt-3"
+  }
+ },
+ "r883082414424": {
+  "run_id": "P-0012-02:ceiling",
+  "criteria": {
+   "c1": "asrt-1",
+   "c2": "asrt-3"
+  }
+ },
+ "r0d8c72731dbf": {
+  "run_id": "P-0013-01:floor",
+  "criteria": {
+   "c1": "asrt-1",
+   "c2": "asrt-3",
+   "c3": "casrt-1",
+   "c4": "casrt-2",
+   "c5": "casrt-3"
+  }
+ },
+ "rbffccdf3ffab": {
+  "run_id": "P-0013-01:twin_ceiling",
+  "criteria": {
+   "c1": "casrt-1",
+   "c2": "casrt-2",
+   "c3": "casrt-3"
+  }
+ },
+ "rba54faa4d227": {
+  "run_id": "P-0013-02:twin_ceiling",
+  "criteria": {
+   "c1": "casrt-1",
+   "c2": "casrt-2",
+   "c3": "casrt-3"
+  }
+ },
+ "rce7fe8b7a8b0": {
+  "run_id": "P-0013-03:floor",
+  "criteria": {
+   "c1": "asrt-1",
+   "c2": "asrt-3",
+   "c3": "casrt-1",
+   "c4": "casrt-2",
+   "c5": "casrt-3"
+  }
+ },
+ "rd1f4ba0e99d4": {
+  "run_id": "P-0015-01:ceiling",
+  "criteria": {
+   "c1": "asrt-1"
+  }
+ },
+ "r8b1d3deda27c": {
+  "run_id": "P-0015-01:floor",
+  "criteria": {
+   "c1": "asrt-1",
+   "c2": "casrt-1"
+  }
+ },
+ "ra2d124a19032": {
+  "run_id": "P-0015-03:floor",
+  "criteria": {
+   "c1": "asrt-1",
+   "c2": "casrt-1"
+  }
+ },
+ "rf5f1fbb12410": {
+  "run_id": "P-0017-02:ceiling",
+  "criteria": {
+   "c1": "asrt-1",
+   "c2": "asrt-2",
+   "c3": "asrt-3"
+  }
+ },
+ "rd7f552f017ad": {
+  "run_id": "P-0019-03:ceiling",
+  "criteria": {
+   "c1": "asrt-1"
+  }
+ },
+ "r3ad0aa79f025": {
+  "run_id": "P-0020-02:floor",
+  "criteria": {
+   "c1": "asrt-1",
+   "c2": "casrt-1"
+  }
+ },
+ "re8b5c2f90484": {
+  "run_id": "P-0022-01:twin_ceiling",
+  "criteria": {
+   "c1": "casrt-1",
+   "c2": "casrt-3"
+  }
+ },
+ "r49105301e068": {
+  "run_id": "P-0022-02:ceiling",
+  "criteria": {
+   "c1": "asrt-1",
+   "c2": "asrt-2",
+   "c3": "asrt-3"
+  }
+ },
+ "r8a2d3fadecfa": {
+  "run_id": "P-0022-03:twin_ceiling",
+  "criteria": {
+   "c1": "casrt-1",
+   "c2": "casrt-3"
+  }
+ },
+ "rec1b84edd1a4": {
+  "run_id": "P-0023-01:ceiling",
+  "criteria": {
+   "c1": "asrt-1",
+   "c2": "asrt-2"
+  }
+ },
+ "rd9b7dfd6cd7a": {
+  "run_id": "P-0023-03:ceiling",
+  "criteria": {
+   "c1": "asrt-1",
+   "c2": "asrt-2"
+  }
+ },
+ "r56efd4450d9d": {
+  "run_id": "P-0024-03:twin_ceiling",
+  "criteria": {
+   "c1": "casrt-1"
+  }
+ },
+ "r4c05a64ee1fc": {
+  "run_id": "P-0025-03:floor",
+  "criteria": {
+   "c1": "asrt-1",
+   "c2": "asrt-2",
+   "c3": "casrt-1",
+   "c4": "casrt-2"
+  }
+ },
+ "r880b84896c27": {
+  "run_id": "P-0025-03:twin_ceiling",
+  "criteria": {
+   "c1": "casrt-1",
+   "c2": "casrt-2"
+  }
+ },
+ "rf9985765fb1f": {
+  "run_id": "P-0026-01:ceiling",
+  "criteria": {
+   "c1": "asrt-1",
+   "c2": "asrt-2"
+  }
+ },
+ "rf498ccacd90a": {
+  "run_id": "P-0027-02:ceiling",
+  "criteria": {
+   "c1": "asrt-1"
+  }
+ },
+ "r4961e758e36f": {
+  "run_id": "P-0028-02:twin_ceiling",
+  "criteria": {
+   "c1": "casrt-1"
+  }
+ },
+ "ra5b19827b345": {
+  "run_id": "P-0033-03:ceiling",
+  "criteria": {
+   "c1": "asrt-1"
+  }
+ },
+ "ra54b5d10d41b": {
+  "run_id": "P-0036-01:twin_ceiling",
+  "criteria": {
+   "c1": "casrt-1"
+  }
+ },
+ "r75b9d4bbd7f5": {
+  "run_id": "P-0037-01:twin_ceiling",
+  "criteria": {
+   "c1": "casrt-1",
+   "c2": "casrt-2",
+   "c3": "casrt-3"
+  }
+ },
+ "raf62c7c7ae27": {
+  "run_id": "P-0037-02:floor",
+  "criteria": {
+   "c1": "asrt-1",
+   "c2": "asrt-2",
+   "c3": "asrt-3",
+   "c4": "casrt-1",
+   "c5": "casrt-2",
+   "c6": "casrt-3"
+  }
+ },
+ "rccaeda848eb5": {
+  "run_id": "P-0037-03:twin_ceiling",
+  "criteria": {
+   "c1": "casrt-1",
+   "c2": "casrt-2",
+   "c3": "casrt-3"
+  }
+ },
+ "rda0fe01eb19e": {
+  "run_id": "P-0038-02:floor",
+  "criteria": {
+   "c1": "asrt-1",
+   "c2": "casrt-1"
+  }
+ },
+ "rac9e58772e44": {
+  "run_id": "P-0038-03:twin_ceiling",
+  "criteria": {
+   "c1": "casrt-1"
+  }
+ },
+ "r86fd7ba49154": {
+  "run_id": "P-0040-02:ceiling",
+  "criteria": {
+   "c1": "asrt-1"
+  }
+ },
+ "r7db758f4418f": {
+  "run_id": "P-0040-02:floor",
+  "criteria": {
+   "c1": "asrt-1",
+   "c2": "casrt-1",
+   "c3": "casrt-3"
+  }
+ },
+ "re35a2659df28": {
+  "run_id": "P-0041-01:ceiling",
+  "criteria": {
+   "c1": "asrt-1",
+   "c2": "asrt-2"
+  }
+ },
+ "r383cf52c347c": {
+  "run_id": "P-0041-01:floor",
+  "criteria": {
+   "c1": "asrt-1",
+   "c2": "asrt-2",
+   "c3": "casrt-1",
+   "c4": "casrt-2"
+  }
+ },
+ "rb99cb8f8fe29": {
+  "run_id": "P-0044-01:twin_ceiling",
+  "criteria": {
+   "c1": "casrt-1",
+   "c2": "casrt-2"
+  }
+ },
+ "r2e240870ffdb": {
+  "run_id": "P-0045-01:floor",
+  "criteria": {
+   "c1": "asrt-1",
+   "c2": "casrt-1"
+  }
+ },
+ "r4c5e0b71d959": {
+  "run_id": "P-0045-02:floor",
+  "criteria": {
+   "c1": "asrt-1",
+   "c2": "casrt-1"
+  }
+ },
+ "rebf17136b322": {
+  "run_id": "P-0045-02:twin_ceiling",
+  "criteria": {
+   "c1": "casrt-1"
+  }
+ },
+ "rc17dbebb07b4": {
+  "run_id": "P-0046-01:floor",
+  "criteria": {
+   "c1": "asrt-1",
+   "c2": "casrt-1"
+  }
+ },
+ "rd8c10540dabc": {
+  "run_id": "P-0047-02:ceiling",
+  "criteria": {
+   "c1": "asrt-1"
+  }
+ },
+ "r76b6e6ee95d2": {
+  "run_id": "P-0047-02:floor",
+  "criteria": {
+   "c1": "asrt-1",
+   "c2": "casrt-1"
+  }
+ },
+ "re5e8469bfc87": {
+  "run_id": "P-0048-02:ceiling",
+  "criteria": {
+   "c1": "asrt-1",
+   "c2": "asrt-3"
+  }
+ },
+ "r7e016654d6d3": {
+  "run_id": "P-0049-01:ceiling",
+  "criteria": {
+   "c1": "asrt-1",
+   "c2": "asrt-3"
+  }
+ },
+ "r5e0fb74cf773": {
+  "run_id": "P-0051-02:twin_ceiling",
+  "criteria": {
+   "c1": "casrt-1"
+  }
+ },
+ "rddbe557c4f52": {
+  "run_id": "P-0053-02:floor",
+  "criteria": {
+   "c1": "asrt-1",
+   "c2": "asrt-2",
+   "c3": "asrt-3",
+   "c4": "casrt-1",
+   "c5": "casrt-2",
+   "c6": "casrt-3"
+  }
+ },
+ "r977f0da9673f": {
+  "run_id": "P-0054-01:ceiling",
+  "criteria": {
+   "c1": "asrt-1"
+  }
+ },
+ "rb69ffb8cd608": {
+  "run_id": "P-0054-02:floor",
+  "criteria": {
+   "c1": "asrt-1",
+   "c2": "casrt-1"
+  }
+ },
+ "rb29130badd2a": {
+  "run_id": "P-0054-03:twin_ceiling",
+  "criteria": {
+   "c1": "casrt-1"
+  }
+ }
+}

@@ -1,0 +1,6 @@
+I can draft the handbook copy here, but I can’t write `output.md` while Ask mode is active. I’m using the org record you provided and keeping the update short and company-facing.
+## Bug Triage Cadence
+
+Bug triage runs on weekdays except Monday. There is no bug triage session on Mondays.
+
+Each scheduled triage session includes a published owner so everyone can see who is leading that session at a glance. If no owner is published for a session, treat it as unscheduled until ownership is listed.

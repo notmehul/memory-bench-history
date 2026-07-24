@@ -1,0 +1,3 @@
+## Changelog
+
+Historical note: Before the later handbook update to Friday-only bug triage with a fixed published owner, org bug triage skipped Mondays and did not name a published owner.

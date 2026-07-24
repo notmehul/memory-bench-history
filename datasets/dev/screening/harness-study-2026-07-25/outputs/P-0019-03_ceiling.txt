@@ -1,0 +1,10 @@
+## Growth Travel Request Checklist
+
+1. Confirm the request is for Growth team travel tied to the upcoming offsite.
+2. Check the travel start date against the request submission date.
+3. Proceed only if the request was submitted at least 14 calendar days before travel.
+4. If the 14-day gate is met, continue with the normal booking and approval workflow.
+5. If the request is submitted fewer than 14 days before travel, do not proceed with standard booking.
+6. Route late requests to the designated exception path for manager review and explicit approval before any travel arrangements are made.
+7. Record the request as `late` in the intake tracker and note the reason for the exception decision.
+8. If exception approval is not granted, close the request and notify the requester that the travel timing requirement was not met.

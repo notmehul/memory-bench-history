@@ -1,0 +1,101 @@
+# Bug Triage Operating Rhythm
+
+Bug triage runs on a fixed cadence so every issue has a clear next owner, a clear next action, and no ambiguity between sessions.
+
+## Intake and First Response
+
+All bugs enter the shared triage queue as soon as they are reported. The reporter must include a reproducible summary, affected surface area, observed impact, and any logs, screenshots, or links needed to verify the issue.
+
+New bugs are reviewed against the following first-response targets:
+
+- `P0`: immediate acknowledgment, 15 minutes or less
+- `P1`: acknowledgment within 1 hour
+- `P2`: acknowledgment within 4 business hours
+- `P3`: acknowledgment within 2 business days
+
+Acknowledgment means one person has accepted responsibility for the next step. It does not mean the bug is fixed.
+
+## Triage Cadence
+
+The team works the queue in three rhythms:
+
+1. **Continuous intake**
+   `P0` and `P1` bugs are handled as they arrive. They do not wait for the next scheduled session.
+
+2. **Twice-daily triage sessions**
+   The shared queue is reviewed at `09:00 UTC` and `17:00 UTC` every business day. Each session is 30 minutes. During the session, the triage owner must:
+   - confirm severity and priority
+   - merge duplicates
+   - request missing reproduction details
+   - assign an owner for investigation or resolution
+   - set the next update time
+
+3. **Weekly backlog sweep**
+   Every Wednesday at `16:00 UTC`, the team reviews all open `P2` and `P3` bugs older than 7 days to re-prioritize, close stale items, or escalate blocked work.
+
+## Severity and Escalation
+
+Use these severity levels consistently:
+
+- `P0`: service unavailable, data loss, security exposure, or a broken critical workflow with no workaround
+- `P1`: major customer-facing degradation or a broken important workflow with limited workaround
+- `P2`: meaningful defect with workaround available or limited blast radius
+- `P3`: minor defect, polish issue, or low-frequency edge case
+
+Escalation rules are simple:
+
+- `P0` starts an active response immediately and stays with a live owner until stabilized.
+- `P1` must have an investigation owner in the same business day.
+- `P2` and `P3` can wait for the next scheduled triage session unless new impact changes the priority.
+
+## How Responsibility Moves Between Sessions
+
+Responsibility must always sit with one named person, never with “the team” or “next shift.”
+
+When a bug leaves a session, the current owner must set all three of these before handing off:
+
+- **Owner**: the single person responsible until the next checkpoint
+- **Next action**: the exact next step, written as a verb
+- **Next update time**: a specific timestamp, not “tomorrow” or “soon”
+
+Handoffs follow this rule:
+
+- The current owner keeps responsibility until the next owner explicitly accepts it.
+- If the next owner has not accepted by the stated update time, responsibility automatically returns to the triage owner for re-assignment.
+- If a bug is blocked on another team, the original owner still owns status updates until the receiving team accepts ownership in writing.
+- If a session ends with missing information, the triage owner remains the owner until the reporter or investigating engineer supplies what is missing.
+
+## Session Closeout Standard
+
+Every triage session ends with each open bug in one of five states:
+
+- `Assigned`: owner accepted and next update time is set
+- `Need Info`: waiting on a named person, with due time set
+- `Blocked`: dependency is named, blocker owner is named, and next review time is set
+- `Monitoring`: mitigation is in place and the next check is scheduled
+- `Closed`: fix verified, duplicate merged, or report invalidated
+
+A bug is not allowed to remain in an unowned or unspecified state between sessions.
+
+## Update Expectations
+
+Open bugs must be updated on this cadence at minimum:
+
+- `P0`: every 30 minutes until stabilized
+- `P1`: every 4 hours during business hours
+- `P2`: once per business day
+- `P3`: once per week
+
+If there is no material progress, the owner still posts a status update stating what is blocked, what was checked, and when the next update will happen.
+
+## Definition of a Clean Queue
+
+The queue is considered healthy when all of the following are true:
+
+- every open bug has exactly one owner
+- every open bug has a next update time
+- no `P1` bug is unassigned for more than 1 business hour
+- no `P2` or `P3` bug is untouched past its required update cadence
+- duplicate and invalid reports are closed within 2 business days
+
+This is the operating rhythm to follow by default. If priority changes, update severity first, then reset owner and next update time so responsibility remains explicit.

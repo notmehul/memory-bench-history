@@ -1,0 +1,13 @@
+I can draft the note, but Ask mode prevents me from writing `output.md`, so I’ll provide the exact deliverable text here for you to paste or use in Agent mode.
+I’m in Ask mode and can’t write `output.md`. Here is the deliverable text:
+
+## Post-Retro Handoff
+
+Right after the retrospective ends, every follow-up item is converted into one of two artifacts:
+
+- Execution work becomes a tracked backlog item.
+- Platform retro actions remain retro notes without owners until the next planning cycle.
+
+For each backlog item, capture the accountability detail needed to start execution: a directly responsible owner, a clear outcome, and the first concrete next step. If the item needs coordination, note the key dependency in the same handoff.
+
+Complete this handoff within 1 business day of the retrospective ending. By then, every execution item should exist in the backlog with its accountability detail filled in, and every retro action that is intentionally staying in notes should be recorded clearly enough to review during next planning.

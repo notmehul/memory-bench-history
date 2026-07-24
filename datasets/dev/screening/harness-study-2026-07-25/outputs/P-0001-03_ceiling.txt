@@ -1,0 +1,9 @@
+Reviewing the endpoint-style request and drafting a short handbook note aligned to the platform API naming decision.
+## Endpoint Style
+
+Use kebab-case for all new Platform API resource names in path segments. Write resource words in lowercase and join them with hyphens so new endpoints match the existing Platform API surface consistently.
+
+Sample paths:
+- `/v1/build-artifacts`
+- `/v1/service-accounts`
+- `/v1/tenant-usage-reports`

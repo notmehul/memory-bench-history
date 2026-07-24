@@ -1,0 +1,3 @@
+Ask mode prevents me from writing `output.md`, but here is the blurb to paste into the template:
+
+Temporary production access is valid for 4 hours from approval. If the window expires while incident work is still in progress, submit a renewal request immediately with the incident ID and original request link, and continue only after the extension is approved.
