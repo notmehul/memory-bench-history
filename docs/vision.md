@@ -101,9 +101,9 @@ The framing above is positioning; claims stop at what is instantiated.
 - **Grid track = consumer portability.** The secondary model-grid track exists to
   test that memory-system rankings are consumer-invariant — a memory layer whose
   value evaporates outside one vendor's harness fails the premise in §1. Probe
-  validity is task-model-relative (measured in Phase 3: 17/54 vs 46/54 ceiling
-  survival across two models), so each added consumer model requires its own
-  screening pass.
+  validity is task-model-relative (measured in Phase 3: ceiling-gate survival
+  17/54 for gpt-5.4-mini vs 37/54 for gpt-5.4 under the identical strict rule),
+  so each added consumer model requires its own screening pass.
 - **v3 — heterogeneous organization**: per-principal consumer profiles (synthetic
   profiles differing in system prompt, specialization, and context budget — not
   product clones, which date), agent-authored artifacts as an ingestion

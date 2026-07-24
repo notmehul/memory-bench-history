@@ -143,9 +143,9 @@ one rung of the capability ladder (`vision.md` §3; added 2026-07-25).
    model to test portability: memory-system rankings should be invariant to the
    model/harness consuming the memory (repurposed 2026-07-25; previously framed as
    memory-compensating-for-model-quality). Probe validity is task-model-relative —
-   Phase 3 measured 17/54 vs 46/54 ceiling survival between gpt-5.4-mini and
-   gpt-5.4 — so each added consumer model requires its own ceiling/floor screening
-   pass.
+   Phase 3 measured ceiling-gate survival of 17/54 (gpt-5.4-mini) vs 37/54
+   (gpt-5.4) under the identical strict rule — so each added consumer model
+   requires its own ceiling/floor screening pass.
 7. **Long-context as an honest baseline.** "Stuff the full transcript in context" is a
    real competitor. Timelines are sized so the full transcript is impractical or
    costly, and all results report token cost alongside accuracy.

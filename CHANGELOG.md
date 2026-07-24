@@ -41,9 +41,17 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning: Se
 - Probes for all 5 dev orgs: 810 oracle-validated instances
   (`datasets/dev/org-0000N/probes.jsonl`) under probe-spec v0.3. Seed-1
   validity screening complete under the final protocol: 486 gpt-5.4 runs,
-  claude-sonnet-5 judging, 46/54 clusters survive with 129 valid
-  instances (cluster gate PASS, instance gate 129/135; evidence in
-  `datasets/dev/screening/org-00001/`). Seed-2 partial run cache staged.
+  blinded claude-sonnet-5 judging, 45/54 clusters survive with 125 valid
+  instances (cluster gate PASS at zero margin, instance gate an explicit
+  FAIL at 125/135; evidence in `datasets/dev/screening/org-00001/`).
+  Seed-2 partial run cache staged.
+- Blinded judging in the screening harness (2026-07-25, from the
+  meta-review audit): `judge-export` emits opaque row/criterion ids so
+  the judge cannot infer condition or org side; `--ids` supports targeted
+  blinded re-judging; round-trip tests in `tests/test_screening.py`. All
+  1,092 seed-1 semantic verdicts re-judged blinded (97.6% agreement with
+  the unblinded pass, retained in git history; fallback-judge conflict of
+  interest eliminated — blinded verdicts confirmed all 6 affected rows).
 - Probe spec v0.3: applied-content assertions must be semantic (measured:
   regex-on-paraphrase fails 39-42% of ceiling runs vs 9-17% semantic);
   pattern reserved for fact_absent detectors; validity gates evaluated per
@@ -88,6 +96,17 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning: Se
   regrouped by capability rung.
 
 ### Fixed
+- Meta-review remediations (2026-07-25, four-track audit of Phase 3): P-0023
+  recovered and one P-0032 assertion pair repaired under the co-valid-sibling
+  rule (inconsistently applied during screening; same treatment as the
+  precedented P-0031/40/41 repairs); the G3 instance shortfall re-attributed
+  from "single-instance noise" to structured twin-side counterfactual
+  anchoring failure and the gate carried as an explicit FAIL; the
+  "per-archetype n ≥ 30" gate unit pinned to instances; mini-vs-gpt-5.4
+  comparison corrected to like-for-like (17/54 vs 37/54 ceiling-gate
+  survival); verdict-count and task-defect-count corrections in the
+  validation report; provenance note distinguishing commit-verifiable
+  prespecifications from in-file-dated working decisions.
 - Ledger spec §5: `distributed` facts now require all evidence events witnessed
   (found during G0 fixture review).
 - Fact planner: probed supersession-chain links lacked counterfactuals; A4/A7

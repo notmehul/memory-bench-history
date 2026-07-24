@@ -73,31 +73,53 @@ cross-validation (each pattern must match every numeral/word surface
 variant of its own side and no variant of the other side, and no sibling
 fact). The authoring loop converged in ≤3 attempts per org.
 
-**Screening (seed 1, final protocol): 486/486 gpt-5.4 task-model runs;
-46/54 clusters survive, shipping 129 valid instances**
-(`datasets/dev/org-00001/g3-report.json`, raw evidence in
-`datasets/dev/screening/org-00001/`). Gate G3: cluster floor PASS
-(46 ≥ 45); instance floor FAIL (129 < 135, single-instance noise inside
-surviving clusters — v2 should over-generate 4 instances/cluster).
-Strict all-instances rule for comparison: 37/54. Mean per-side floor
-guessability 0.31 (cancelled by pair crediting). Judging: 1,146 semantic
-verdicts, claude-sonnet-5 (each row tagged; a handful adjudicated by
-claude-fable-5-fallback). Every dropped cluster was individually
-adjudicated: twin-side model failures (the task model refusing to state
-an awkward counterfactual cleanly, inventing structure the twin fact
-forbids) or task defects (one task presupposing a base-side mechanism);
-all recorded for the v2 generator.
+**Screening (seed 1, final protocol, blinded re-judge 2026-07-25):
+486/486 gpt-5.4 task-model runs; 45/54 clusters survive, shipping 125
+valid instances** (`datasets/dev/org-00001/g3-report.json`, raw evidence
+in `datasets/dev/screening/org-00001/`). Gate G3: cluster floor PASS at
+zero margin (45 ≥ 45); instance floor **FAIL** (125 < 135, carried as an
+explicit FAIL — the shortfall is structured, not noise: it is the
+residual tail of twin-side counterfactual anchoring failure, the same
+family that drives cluster drops; v2 over-generates 4 instances/cluster
+and requires counterfactuals to invert the task-elicited aspect). Strict
+all-instances rule for comparison: 35/54. Mean per-side floor
+guessability 0.33; 7 surviving clusters have guessability 1.0 (their
+discriminative power lives entirely on the counterfactual side — valid
+under pair crediting, per-cluster values in the report; users scoring
+sides independently must exclude them).
+
+Judging is **blinded and single-provenance**: all 1,092 semantic verdicts
+by claude-sonnet-5 through opaque-id export (the judge sees only output +
+criterion — never probe ids, floor/ceiling/twin condition, or
+base-vs-counterfactual side; harness-enforced in `screen_probes.py`).
+An earlier unblinded pass (46/54 survivors, including 6 verdicts by a
+fallback judge from the authoring model family) is retained in git
+history for comparison: blinded agreement 97.6% (26/1,092 flips; 14
+True→False vs 12 False→True, so no systematic direction). The two
+clusters the blinded pass additionally dropped (P-0037, P-0041) had been
+independently flagged as marginal by an item-level audit before the
+blinded verdicts landed — convergent evidence that the drops are probe
+defects, not judge noise. A post-screening adjudication (2026-07-25)
+recovered P-0023 and repaired one P-0032 assertion pair under the
+co-valid-sibling rule (identical defect class and treatment as the
+precedented P-0031/40/41 repairs; task text byte-identical, so all
+cached task-model outputs remain valid).
 
 The screening iterations themselves produced the protocol (each revision
 measured, made before any SUT evaluation, evidence in git history):
-gpt-5.4-mini rejected as task model (17/54 ceiling survival on compound
-facts); applied-content regex assertions rejected (39–42% ceiling failure
-— deliverables paraphrase around any anchor — vs 4% for absence-detector
-patterns and 9–17% for semantic criteria), hence probe-spec v0.3's
-checker policy; the all-instances cluster gate replaced by instance-level
-validity (0.9^6 ≈ 0.53 cluster survival at realistic noise made the
-strict rule unsatisfiable at n=3); and one authoring rule from failure
-adjudication — assertions must never punish co-valid sibling facts.
+gpt-5.4-mini rejected as task model (ceiling-gate survival 17/54 vs
+37/54 for gpt-5.4 under the identical strict rule); applied-content
+regex assertions rejected (39–42% ceiling failure — deliverables
+paraphrase around any anchor — vs 4% for absence-detector patterns and
+9–17% for semantic criteria), hence probe-spec v0.3's checker policy;
+the all-instances cluster gate replaced by instance-level validity
+(0.9^6 ≈ 0.53 cluster survival at realistic noise made the strict rule
+unsatisfiable at n=3); assertions must never punish co-valid sibling
+facts (from failure adjudication); and judging fully blinded
+(2026-07-25). Provenance discipline: "prespecified" is reserved for
+commitments git can corroborate (the 2026-07-14 design anchors); the
+2026-07-19-dated working decisions were first committed 2026-07-22 —
+see the standing-decisions note in `dataset-plan.md`.
 
 **Seeds 2–5: probes final under spec v0.3; screening blocked on codex
 quota (resets 2026-07-29).** Seed 2 has 356/486 task-model runs cached

@@ -73,8 +73,10 @@ v1 dev dataset complete: 5 seeded orgs + 5 counterfactual twins, all
 machine validation green (`docs/validation-report.md`). Phase 3: 810
 oracle-validated behavioral probes across the 5 orgs (`probes.jsonl`,
 probe-spec v0.3); seed 1 fully screened under the final floor/ceiling
-protocol — 46/54 clusters survive with 129 valid instances (cluster gate
-PASS; see the G3 note in `docs/dataset-plan.md` for the measured protocol
-revisions the screening forced). Remaining: screening seeds 2–5 (staged,
-blocked on task-model quota), then Phases 4–5 (judge calibration, pilot
+protocol with fully blinded judging — 45/54 clusters survive with 125
+valid instances (cluster gate PASS, instance gate an explicit FAIL
+carried with its cause; see the G3 note in `docs/dataset-plan.md` for
+the measured protocol revisions the screening forced and the blinded
+re-judge audit trail). Remaining: screening seeds 2–5 (staged, blocked
+on task-model quota), then Phases 4–5 (judge calibration, pilot
 baselines).

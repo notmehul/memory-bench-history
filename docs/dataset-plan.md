@@ -109,28 +109,51 @@ Expected attrition: plan for 30% probe loss; over-generate accordingly.
 n ≥ 30 across the 5-seed suite; every surviving probe discriminative per the
 floor/ceiling gates.
 
-> **G3 status 2026-07-23: seed 1 SCREENED under the final protocol —
-> cluster gate PASS (46/54 ≥ 45), instance gate FAIL (129/135).** All 5
-> orgs carry probes under probe-spec v0.3 (semantic applied-content
-> assertions, pattern reserved for absence detectors, instance-level
-> gates). Seed-1 evidence: 486 gpt-5.4 task-model runs
-> (`datasets/dev/screening/org-00001/`), semantic verdicts by
-> claude-sonnet-5 (tagged per row; a handful by claude-fable-5-fallback),
-> report at `datasets/dev/org-00001/g3-report.json` — 46 surviving
-> clusters shipping 129 valid instances (strict all-instances rule: 37).
-> The 8 dropped clusters were individually adjudicated: twin-side model
-> failures (e.g. refusing to state a counterfactual fact cleanly) or task
-> defects (a task presupposing a base-side mechanism), recorded for the v2
-> generator. The 6-instance shortfall vs 135 comes from single-instance
-> noise inside surviving clusters; v2 should over-generate 4 instances per
-> cluster.
+> **Gate-unit clarification (2026-07-25, recorded before seeds 2–5 are
+> screened):** "per-archetype n ≥ 30" counts probe **instances**, not clusters.
+> The per-org archetype mix (A1=6, A2=6, A4=18, A7=24 clusters) gives A1/A2
+> exactly 30 clusters across 5 seeds, so a cluster reading would leave zero
+> attrition margin and turn any single A1/A2 loss into a gate failure; the
+> instance reading (~85 projected for A1/A2 at seed-1 attrition) is the
+> intended power requirement. Pinned before seeds 2–5 are screened; full
+> disclosure: the same-day seed-1 blinded re-scoring dropped one A1 cluster
+> (P-0037), which a cluster reading would already fail — the pin was written
+> before that result landed, but git cannot corroborate intra-day ordering,
+> so this note does not claim "prespecified" relative to seed 1.
+
+> **G3 status 2026-07-25 (supersedes 2026-07-23; full audit + blinded
+> re-judge): seed 1 SCREENED — cluster gate PASS at zero margin (45/54 ≥
+> 45), instance gate FAIL (125/135, carried as an explicit FAIL).** All 5
+> orgs carry probes under probe-spec v0.3. Seed-1 evidence: 486 gpt-5.4
+> task-model runs (`datasets/dev/screening/org-00001/`), all 1,092
+> semantic verdicts by claude-sonnet-5 under **blinded** judging (opaque
+> row/criterion ids; the judge never sees conditions or sides). The
+> earlier unblinded pass (46/54) is retained in git history; blinded
+> agreement with it was 97.6% (26/1,092 flips, 14 True→False vs 12
+> False→True). Report: `datasets/dev/org-00001/g3-report.json` — 45
+> surviving clusters shipping 125 valid instances (strict rule: 35), mean
+> per-side guessability 0.33; 7 surviving clusters have guessability 1.0
+> (all discriminative signal on the twin side — valid under pair
+> crediting, flagged per cluster in the report). The 9 dropped clusters
+> were individually adjudicated: twin-side counterfactual anchoring
+> failures, task defects (two tasks presupposing base-side mechanisms),
+> and two clusters whose counterfactuals are not task-relevant inversions
+> (P-0037, P-0041 — the class the v2 planner must fix). The instance
+> shortfall is the same failure family (structured, not noise); v2
+> over-generates 4 instances/cluster. Post-screening adjudication
+> 2026-07-25: P-0023 recovered and one P-0032 assertion pair removed under
+> the co-valid-sibling rule (same class as the precedented P-0031/40/41
+> repairs; task text byte-identical, cached outputs reused).
 >
 > **Protocol history (all revisions made on screening evidence, before any
-> SUT evaluation):** gpt-5.4-mini rejected as task model (17/54 ceiling
-> survival; forensics in git history), escalated to gpt-5.4; applied-content
+> SUT evaluation):** gpt-5.4-mini rejected as task model (ceiling-gate
+> survival 17/54 vs 37/54 for gpt-5.4 under the identical strict rule;
+> forensics in git history), escalated to gpt-5.4; applied-content
 > regex assertions rejected (39–42% ceiling failure vs 9–17% semantic),
 > replaced per spec v0.3; all-instances cluster gate replaced by
-> instance-level validity (spec v0.3).
+> instance-level validity (spec v0.3); judging fully blinded 2026-07-25
+> (harness-enforced, closing a gap between the spec's stated rule and the
+> original export format).
 >
 > **Remaining for full G3 (blocked on codex quota, resets 2026-07-29):**
 > screen seeds 2–5. Seed 2 has 356/486 task-model runs cached and
@@ -138,8 +161,9 @@ floor/ceiling gates.
 > (`datasets/dev/screening/org-00002/`). Per seed N:
 > `python scripts/screen_probes.py manifest datasets/dev/org-0000N
 > datasets/dev/org-0000N-twin <work>/sN`, seed the work dir with any cached
-> `results.jsonl`, then `run` (fills the gap), `judge-export` → Claude
-> judge → `judge-import`, `report`.
+> `results.jsonl`, then `run` (fills the gap), `judge-export` (blinded) →
+> Claude judge → `judge-import`, `report`. Seeds 2–5 are judged blinded
+> from the start.
 
 ## Phase 4 — Human validation + judge calibration *(week 5–6)*
 
@@ -220,6 +244,17 @@ propagation disproportionately vs. recall-style metrics); frozen public release 
   > escalates to **`gpt-5.4` (effort medium)** and the screening judge moves to
   > the Claude family. Amendment made before any SUT evaluation, on screening
   > evidence alone.
+  >
+  > **Note (2026-07-25):** the small-n gate adaptation above was itself revised
+  > by probe-spec v0.3 (instance-level validity, cluster survives with ≥2/3
+  > valid instances — see the G3 note and the spec changelog); the 3/3 rule
+  > quoted here is historical. **Provenance discipline:** "prespecified" is
+  > reserved for commitments corroborated by git history (the 2026-07-14
+  > design anchors: pair crediting, the 90%/70% gates, the risk register, and
+  > this 2026-07-25 gate-unit pin). The 2026-07-19-dated decisions in this
+  > block were working decisions first committed 2026-07-22 alongside
+  > screening results; they are documented, but git cannot date them
+  > independently.
 - **Twin-org cost control**: twins re-render only delta-affected events (~5–10% of the
   stream); everything else is byte-identical to the base org.
 - **What v1 explicitly does NOT claim**: leakage/governance coverage (GateMem's
