@@ -1,0 +1,17 @@
+{
+ "date": "2026-07-25",
+ "checker": "cursor-agent 2026.07.09 / gpt-5.4-high (QA tooling, not the pinned worker; checker != renderer per Phase 2 rule)",
+ "scope": "full base stream vs full ledger (matches the seed-1 pass)",
+ "report": {
+  "contradictions": [
+   {
+    "event_id": "E-0046",
+    "fact_id_or_event_id": "F-0070",
+    "explanation": "This event says growth ships production releases every Tuesday and Thursday before noon, which conflicts with the already-active org-wide rule that production releases ship every second Tuesday without exception."
+   }
+  ],
+  "filler_flags": [],
+  "events_read": 204
+ },
+ "resolution": "E-0046 filler asserted a growth release cadence contradicting probed org fact F-0070; line replaced with inert one-off logistics (2026-07-25), full lint sweep re-green."
+}

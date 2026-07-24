@@ -143,6 +143,17 @@ and prompt-verified against the final probes.
 ## Consistency and coherence
 
 - LLM consistency pass (seed 1, full stream vs. full ledger): zero
-  contradictions; filler inert. (Seeds 2–5 pending equivalent passes.)
+  contradictions; filler inert.
+- LLM consistency passes, seeds 2–5 (2026-07-25; checker = gpt-5.4-high
+  via cursor-agent — QA tooling, distinct from both the renderer and the
+  pinned worker; per-org evidence in
+  `datasets/dev/org-0000N/consistency-report.json`): seeds 4/5 clean;
+  seeds 2/3 each had ONE filler line asserting rule content that
+  contradicted a probed fact (a growth release cadence vs F-0070; a
+  deploy-freeze window vs F-0043). Both lines replaced with inert
+  one-off logistics chatter (twins were unaffected — those events were
+  delta-re-rendered); the full clean-room sweep is ALL GREEN after the
+  fix. Screening artifacts are untouched by construction: floor/ceiling
+  prompts derive from the ledger, never from the event stream.
 - The spec's HUMAN blinded spot-check and per-org read-throughs remain
   open items for formal G2 closure; all machine-side checks are complete.

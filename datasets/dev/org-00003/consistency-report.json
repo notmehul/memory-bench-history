@@ -1,0 +1,17 @@
+{
+ "date": "2026-07-25",
+ "checker": "cursor-agent 2026.07.09 / gpt-5.4-high (QA tooling, not the pinned worker; checker != renderer per Phase 2 rule)",
+ "scope": "full base stream vs full ledger (matches the seed-1 pass)",
+ "report": {
+  "contradictions": [
+   {
+    "event_id": "E-0114",
+    "fact_id_or_event_id": "F-0043",
+    "explanation": "This event says Core's deploy freeze runs Thursday 5pm through Monday 10am, but the earlier non-distractor fact F-0043, still marked durable and unsuperseded, says Core's deploy freeze is Friday 4pm through Monday 9am. No ledger supersession or intended-distractor fact explains the change."
+   }
+  ],
+  "filler_flags": [],
+  "events_read": 204
+ },
+ "resolution": "E-0114 filler asserted a deploy-freeze window contradicting probed team fact F-0043; line replaced with inert one-off logistics (2026-07-25), full lint sweep re-green."
+}

@@ -102,6 +102,12 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning: Se
   regrouped by capability rung.
 
 ### Fixed
+- Seeds 2/3 stream contamination (2026-07-25, found by the seeds-2–5 LLM
+  consistency passes): one filler line per seed asserted rule content
+  contradicting a probed fact (release cadence vs F-0070 in seed 2;
+  deploy-freeze window vs F-0043 in seed 3). Lines replaced with inert
+  one-off chatter; twins unaffected; full validation sweep re-green.
+  Checker reports committed per org (`consistency-report.json`).
 - Meta-review remediations (2026-07-25, four-track audit of Phase 3): P-0023
   recovered and one P-0032 assertion pair repaired under the co-valid-sibling
   rule (inconsistently applied during screening; same treatment as the
