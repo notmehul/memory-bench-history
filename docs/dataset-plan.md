@@ -178,6 +178,12 @@ floor/ceiling gates.
 **Gate G4:** overall judge–human κ ≥ 0.75; no surviving criterion below 0.7; hygiene
 audit clean.
 
+> **Amended 2026-07-25 (standards audit B.1):** G4 additionally requires an
+> adversarial decoy audit — a set of deliberately wrong-but-topical outputs
+> judged blind; the judge's false-accept rate is published and becomes part
+> of the pilot tie rule. Motivated by the LoCoMo judge accepting 63% of
+> intentionally wrong answers (Penfield audit).
+
 ## Phase 5 — Pilot evaluation + release *(week 6–8)*
 
 Baselines (fixed task model across all — the main-track rule):
@@ -198,6 +204,41 @@ Baselines (fixed task model across all — the main-track rule):
    disabled. An adapter configuration, not new machinery. v1 measures only the
    propagation benefit of sharing; the governance cost (leakage) arrives with A10
    in v2, so the comparison is one-sided and must be reported as such.
+8. filesystem+grep agent *(added 2026-07-25 per `docs/standards-audit.md` B.4)*:
+   the worker with plain file read/search tools over its witnessed transcript —
+   the trivial-tools floor any memory product must beat (motivated by Letta's
+   74%-with-grep result on LoCoMo).
+
+> **Pilot protocol hardening (2026-07-25, adopted from the benchmark-standards
+> audit — `docs/standards-audit.md` §B, recorded before any pilot run):**
+> - **Statistics (prespecified):** headline numbers = mean over 5 seeds with
+>   cluster-robust SEs (probe instances cluster within fact clusters and orgs
+>   — Miller 2024), paired per-item comparisons between systems, K=3 worker
+>   resamples per probe for run variance, a pre-pilot power analysis computed
+>   from screening variance, and a tie rule: system deltas inside the combined
+>   noise band (judge error + run variance) are reported as ties, never as
+>   rankings.
+> - **Scorer-exploit audit** before any SUT run: empty output,
+>   enumerate-everything output, verbose topical waffle, and base-side-only
+>   output must each score ≤ floor on paired probes; results published (ABC).
+> - **Judge validation** (extends Phase 4): adversarial decoy set of
+>   deliberately wrong-but-topical outputs; false-accept rate published and
+>   folded into the tie rule. Second judge family added only if false-accept
+>   exceeds ~5%.
+> - **Confound pinning:** one pinned, reported embedding model for all
+>   RAG-class baselines (one alternate as ablation); no gain attributed to
+>   "memory" without component ablation (MemDelta).
+> - **Cost columns mandatory:** ingestion/write tokens, query tokens, dollars,
+>   and latency at disclosed concurrency alongside every accuracy number.
+> - **Vendor fairness:** written vendor-recommended configuration frozen
+>   before any run; SDK/API/model versions pinned and published; identical
+>   prompts/templates across systems; each vendor receives its raw
+>   per-question results + harness with a right-of-reply window, responses
+>   published verbatim (Mem0/Zep postmortem).
+> - **Benchmark agreement testing:** report rank-correlation of pilot
+>   rankings against published LoCoMo/LongMemEval results where available;
+>   divergence concentrated on rungs 2–3 is the prespecified expectation,
+>   reported either way.
 
 > **Independence & market-coverage protocol (2026-07-25):** the pilot is an
 > independent study — **no author-affiliated system is evaluated**. Market
@@ -243,6 +284,14 @@ as secondary only (`docs/vision.md` §6).
 expected one: systems without tier/type structure fail scope-resolution and
 propagation disproportionately vs. recall-style metrics); frozen public release =
 3 orgs public + 2 holdout, generator withheld pending v2 decision; results write-up.
+
+> **Amended 2026-07-25 (standards audit B.9):** release additionally requires:
+> Croissant metadata with Responsible-AI fields, explicit licenses on data and
+> code, long-term hosting on a standard ML data platform, a maintenance +
+> versioning + retirement plan, one-command reproduction of every table from
+> committed artifacts, and — if a leaderboard is run — tiered verification
+> (self-reported / reproduced / audited, with commit hashes) per GateMem's
+> model. Tracker: `docs/standards-audit.md`.
 
 ---
 

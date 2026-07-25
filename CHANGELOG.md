@@ -45,6 +45,16 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning: Se
   instances (cluster gate PASS at zero margin, instance gate an explicit
   FAIL at 125/135; evidence in `datasets/dev/screening/org-00001/`).
   Seed-2 partial run cache staged.
+- Benchmark-standards audit (2026-07-25, `docs/standards-audit.md`):
+  memory-bench compared against every verifiable published memory
+  benchmark, the vendor eval controversies (Mem0/Zep, Letta, MemPalace,
+  LoCoMo audit), and formal standards (BetterBench, ABC, NeurIPS E&D,
+  Miller error-bar canon). Nine gaps adopted as dated Phase 4/5
+  amendments: adversarial judge decoy audit, prespecified statistics
+  protocol (cluster-robust SEs, paired comparisons, power analysis, tie
+  rule), scorer-exploit audit, filesystem+grep baseline (#8), embedding
+  pinning, mandatory cost columns, vendor fairness with right-of-reply,
+  benchmark agreement testing, and release-compliance requirements on G5.
 - Harness-sensitivity study (2026-07-25): 60 prespecified seed-1 runs
   through cursor-agent gpt-5.4-medium, blinded-judged and compared to the
   codex canon — twin-ceiling outcome agreement 65% (ceiling 95%, floor
