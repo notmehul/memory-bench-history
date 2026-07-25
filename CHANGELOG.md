@@ -45,6 +45,11 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning: Se
   instances (cluster gate PASS at zero margin, instance gate an explicit
   FAIL at 125/135; evidence in `datasets/dev/screening/org-00001/`).
   Seed-2 partial run cache staged.
+- Project orientation for agents (2026-07-25): repo-level `CLAUDE.md`
+  (hard rules: pinned worker, blinded judging, prespecification and
+  independence discipline) and `docs/status.md` (living work queue:
+  codex-quota-blocked, human-blocked, and unblocked items, with the three
+  BLOCKING pre-headline gates).
 - Benchmark-standards audit (2026-07-25, `docs/standards-audit.md`):
   memory-bench compared against every verifiable published memory
   benchmark, the vendor eval controversies (Mem0/Zep, Letta, MemPalace,

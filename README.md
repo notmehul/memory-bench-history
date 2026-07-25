@@ -48,7 +48,9 @@ Six-to-eight metric profile per system, grouped by capability rung
 
 ## Repository layout
 
+- `docs/status.md` — current state and work queue (start here)
 - `docs/vision.md` — positioning: the capability ladder and heterogeneity thesis
+- `docs/standards-audit.md` — field-failure audit and pre-release tracker
 - `docs/architecture.md` — full benchmark design: dimensional model, scenario
   archetypes, methodology, positioning vs. prior work
 - `docs/validation-report.md` — final v1 dataset validation numbers
