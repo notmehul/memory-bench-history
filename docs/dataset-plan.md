@@ -352,6 +352,17 @@ propagation disproportionately vs. recall-style metrics); frozen public release 
   adversarial sharing pair); modalities 5–7; L3; leaderboard on regenerated
   holdouts. v3 adds heterogeneous consumer profiles, agent-authored artifacts,
   and delegated authority (`docs/vision.md` §6).
+  **Industry matrix (added 2026-08-05, Mehul directive):** v2 introduces
+  industry as a designed, seed-crossed factor (never confounded with seed):
+  2–3 contrast industries selected for the memory dynamics software exercises
+  weakly — consulting (engagement-based re-teaming → propagation/A11
+  bootstrap; client confidentiality walls + external tier → A10) and a
+  regulated-finance org (hard governance, retention/deletion, need-to-know,
+  formal authority gradients → A6/A9/A10). Per-industry: new org-designer
+  profiles (roles, surfaces, registers), per-register salience re-tuning and
+  full lint re-pass, and ≥1 practitioner review of fact plans per industry
+  (BetterBench domain-expert criterion). Fact *types* generalize unchanged;
+  what varies is surfaces, personas, and registers.
 
 ## Risk register
 

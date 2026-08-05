@@ -84,8 +84,10 @@ jointly once both exist.
 
 The framing above is positioning; claims stop at what is instantiated.
 
-- v1 measures four archetypes at L1–L2 in a simulated two-team org. It does not
-  measure "mini-AGI-ness."
+- v1 measures four archetypes at L1–L2 in a simulated two-team **software**
+  organization. It does not measure "mini-AGI-ness," and its external-validity
+  claim is scoped to that org type; industry breadth (consulting, regulated
+  finance, …) enters in v2 as a *designed factor*, not by relabeling v1.
 - At L1–L2 scale, long context may win everything — a real, publishable finding.
   The premise "every piece of work creates an artifact" guarantees the stream
   outgrows any context window; the scientific object is the crossover point
