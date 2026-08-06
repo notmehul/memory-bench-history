@@ -29,7 +29,7 @@ file whenever a queue item completes; keep entries dated.
 
 | # | Item | Size | Notes |
 |---|---|---|---|
-| A1 | Seed-2 screening: fill 130 missing runs | 130 runs | 356/486 cached + prompt-verified in `datasets/dev/screening/org-00002/results.partial.jsonl`; manifest → seed work dir → `run` → blinded `judge-export` → sonnet judges → `judge-import` → `report` (commands in dataset-plan G3 note) |
+| A1 | Seed-2 screening: fill 130 missing runs | IN PROGRESS 2026-08-06 — 486/486 runs done, blinded judging dispatched | 356/486 cached + prompt-verified in `datasets/dev/screening/org-00002/results.partial.jsonl`; manifest → seed work dir → `run` → blinded `judge-export` → sonnet judges → `judge-import` → `report` (commands in dataset-plan G3 note) |
 | A2 | Seed-3 screening | 486 runs | full pipeline, blinded from the start |
 | A3 | Seed-4 screening | 486 runs | " |
 | A4 | Seed-5 screening | 486 runs | " |
@@ -52,10 +52,10 @@ file whenever a queue item completes; keep entries dated.
 
 | # | Item | Notes |
 |---|---|---|
-| C1 | Scorer-exploit audit (BLOCKING) | degenerate outputs (empty / enumerate-all / topical waffle / base-side-only) through the scorer + blinded judge; publish results; expected pass via pair crediting — show it |
-| C2 | Judge decoy set construction (BLOCKING) | deliberately wrong-but-topical outputs for G4 false-accept measurement; keep decoy authorship isolated from judging |
-| C3 | Power-analysis script (BLOCKING) | from seed-1 screening variance; cluster-robust per Miller; sizes the pilot |
-| C4 | Codex worker adapter for the runner | wraps the pinned worker behind `WorkerModel`; transport (file capture, timeout, retries) mirrors `screen_probes.py run` |
+| C1 | Scorer-exploit audit (BLOCKING) | IN PROGRESS 2026-08-06: harness built (`scripts/exploit_audit.py`), empty-exploit DEFINITIVELY clean (mean 0.304 = absence share, zero 1.0s); 359 blinded verdicts pending for the other 3 types. NEW pilot rule needed before A7/A8: define scoring for empty SUT outputs (judge-export currently skips falsy outputs → would raise at scoring; adopt the audit's mechanical rule: positive criteria false, absence criteria true) |
+| C2 | Judge decoy set construction (BLOCKING) | DONE 2026-08-06: 20 validated decoys in `datasets/dev/screening/judge-decoys/` (third values, zero discriminative tokens either side); never judged — reserved for Phase 4 false-accept audit |
+| C3 | Power-analysis script (BLOCKING) | DONE 2026-08-06 (`docs/power-analysis.md`): tie rule ~9.3 pp at rho=0.6/K=3; regenerate after seeds 2-5 + decoy audit |
+| C4 | Codex worker adapter for the runner | DONE 2026-08-06 (`src/membench/workers.py`, commit f733793) |
 | C5 | Grep-agent adapter (baseline #8) | worker + file read/search tools over witnessed transcript |
 | C6 | Naive-RAG + summarize-RAG adapters | needs embedding-model pin decision (standards-audit B.5) — flag to Mehul before adding any dependency |
 | C7 | Typed-memory reference implementation | generic (typed nodes, tier/scope metadata, source-backed updates, supersession); spec+prompts frozen before pilot scoring; ablation planned |
