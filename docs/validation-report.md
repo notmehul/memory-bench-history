@@ -73,11 +73,20 @@ cross-validation (each pattern must match every numeral/word surface
 variant of its own side and no variant of the other side, and no sibling
 fact). The authoring loop converged in ≤3 attempts per org.
 
-**Screening (seed 1, final protocol, blinded re-judge 2026-07-25):
-486/486 gpt-5.4 task-model runs; 45/54 clusters survive, shipping 125
-valid instances** (`datasets/dev/org-00001/g3-report.json`, raw evidence
-in `datasets/dev/screening/org-00001/`). Gate G3: cluster floor PASS at
-zero margin (45 ≥ 45); instance floor **FAIL** (125 < 135, carried as an
+**Screening (seed 1, final protocol, blinded re-judge 2026-07-25;
+lineage repairs 2026-08-06): 486/486 gpt-5.4 task-model runs; 46/54
+clusters survive, shipping 128 valid instances**
+(`datasets/dev/org-00001/g3-report.json`, raw evidence in
+`datasets/dev/screening/org-00001/`). The 2026-08-06 cross-org co-valid
+lineage sweep found latent defective assertion pairs in two seed-1
+survivors (P-0032, P-0023-family) and in the dropped P-0041; symmetric
+removal under the precedented rule — applied blind to direction, with
+the stated risk that floor-pair flips could move numbers DOWN —
+re-scored from cached outputs and verdicts to 46/54 and 128 instances:
+P-0041 recovered (its blinded-re-judge drop traced substantially to its
+own defective criterion pair, refining the earlier "marginal probe"
+adjudication), P-0032's pilot-time fairness risk eliminated. Gate G3:
+cluster floor PASS (46 ≥ 45, margin one); instance floor **FAIL** (128 < 135, carried as an
 explicit FAIL — the shortfall is structured, not noise: it is the
 residual tail of twin-side counterfactual anchoring failure, the same
 family that drives cluster drops; v2 over-generates 4 instances/cluster

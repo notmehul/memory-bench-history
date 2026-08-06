@@ -816,19 +816,19 @@
     "P-0032-01": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.5,
+     "floor": 0.0,
      "valid": true
     },
     "P-0032-02": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.5,
+     "floor": 0.0,
      "valid": true
     },
     "P-0032-03": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.5,
+     "floor": 0.0,
      "valid": true
     }
    },
@@ -1048,16 +1048,16 @@
   "P-0041": {
    "instances": {
     "P-0041-01": {
-     "ceiling": 0.5,
-     "twin_ceiling": 0.5,
+     "ceiling": 1.0,
+     "twin_ceiling": 1.0,
      "floor": 1.0,
-     "valid": false
+     "valid": true
     },
     "P-0041-02": {
-     "ceiling": 0.5,
-     "twin_ceiling": 0.5,
+     "ceiling": 1.0,
+     "twin_ceiling": 1.0,
      "floor": 1.0,
-     "valid": false
+     "valid": true
     },
     "P-0041-03": {
      "ceiling": 1.0,
@@ -1066,10 +1066,10 @@
      "valid": true
     }
    },
-   "n_valid": 1,
+   "n_valid": 3,
    "guessability": 0.667,
-   "survive": false,
-   "strict_survive": false
+   "survive": true,
+   "strict_survive": true
   },
   "P-0042": {
    "instances": {
@@ -1411,9 +1411,9 @@
   }
  },
  "n_clusters": 54,
- "n_survivors": 45,
- "n_valid_instances": 125,
- "n_strict_survivors": 35,
+ "n_survivors": 46,
+ "n_valid_instances": 128,
+ "n_strict_survivors": 36,
  "gate_g3_clusters": true,
  "gate_g3_instances": false
 }

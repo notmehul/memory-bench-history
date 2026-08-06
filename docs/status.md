@@ -7,11 +7,12 @@ file whenever a queue item completes; keep entries dated.
 
 - **G0–G1 PASSED**; **G2 machine-side complete** (human spot-check +
   read-throughs pending, packets ready in `datasets/dev/human-check/`).
-- **Phase 3**: 810 probes (spec v0.3) across 5 orgs. Seed 1 fully screened
-  under the final protocol with fully blinded judging: **45/54 clusters
-  (cluster gate PASS at zero margin), 125 valid instances (instance gate
-  explicit FAIL, structured twin-anchoring cause), strict 35**. Seeds 2–5
-  probes final; screening blocked on codex quota.
+- **Phase 3**: 810 probes across 5 orgs. Seed 1 (post lineage repairs
+  2026-08-06): **46/54 PASS margin 1, 128 valid instances (instance gate
+  FAIL carried)**. Seed 2: **43/54 — cluster gate FAIL carried**, fully
+  adjudicated. Cross-org co-valid lineage repairs applied to orgs 1/3/4/5
+  (24 pairs; asymmetric + UNCLEAR + brittle-pattern classes deferred to
+  the v0.4 decision). Seeds 3–5 blocked on v0.4 sign-off.
 - **Worker pinned**: (gpt-5.4, medium, codex-cli 0.144.5). Harness-sensitivity
   study committed (`datasets/dev/screening/harness-study-2026-07-25/`).
 - **Consistency passes** done for all seeds; 2 filler defects found/fixed.
