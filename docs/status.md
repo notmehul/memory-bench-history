@@ -38,7 +38,7 @@ file whenever a queue item completes; keep entries dated.
 | A7 | Dev smoke run, seed 1 (non-headline) | ~500 runs | long-context + grep + silo adapters through the runner; first real curves; labeled dev, never headline |
 | A8 | Pilot (headline) | ~9,000 runs + K=3 resamples | ONLY after G4 passes (κ ≥ 0.75 + decoy audit) and the power analysis; budget decision (packs vs reduced prespecified design) is Mehul's |
 
-## Queue B — human-blocked (owner: Mehul)
+## Queue B — human-blocked (owner: Mehul; full instructions: `docs/human-review.md`)
 
 | # | Item | Notes |
 |---|---|---|
