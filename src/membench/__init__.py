@@ -21,14 +21,17 @@ from .ledger import (
     validate,
 )
 from .runner import Runner, RunnerError, task_prompt
+from .workers import CodexWorker, WorkerError
 
 __all__ = [
+    "CodexWorker",
     "FullTranscriptAdapter",
     "MockWorker",
     "NoMemoryAdapter",
     "Runner",
     "RunnerError",
     "SUTAdapter",
+    "WorkerError",
     "WorkerModel",
     "task_prompt",
     "ContextFrame",
