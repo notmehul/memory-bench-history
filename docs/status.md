@@ -42,7 +42,7 @@ file whenever a queue item completes; keep entries dated.
 
 | # | Item | Notes |
 |---|---|---|
-| B1 | G2 blinded spot-checks, 5 seeds | seed 4 DONE 2026-08-05: 10/20 = 50% PASS (Mehul + naive friend, joint; result.txt). Seed 5 pending with same raters. Seeds 1–3 must go to a rater naive to our sessions (Mehul contaminated for those — probed content was discussed in-chat) |
+| B1 | G2 blinded spot-checks, 5 seeds | seeds 4+5 DONE (2026-08-05/06): 10/20=50% and 12/20=60%, both PASS (Mehul + naive friend, joint; result.txt per seed). Seeds 1–3 must go to a rater naive to our sessions (Mehul contaminated for those — probed content was discussed in-chat) |
 | B2 | G2 read-through (≥1 org) | notes to `human-check/seed-N/readthrough-notes.md` |
 | B3 | Recruit second rater for Phase 4 | ~3–5h of labeling; κ needs two independent raters |
 | B4 | Human baseline decision (standards-audit §C.1) | ~20 probes, 2 humans, ceiling context |
