@@ -29,8 +29,8 @@ file whenever a queue item completes; keep entries dated.
 
 | # | Item | Size | Notes |
 |---|---|---|---|
-| A1 | Seed-2 screening: fill 130 missing runs | IN PROGRESS 2026-08-06 — 486/486 runs done, blinded judging dispatched | 356/486 cached + prompt-verified in `datasets/dev/screening/org-00002/results.partial.jsonl`; manifest → seed work dir → `run` → blinded `judge-export` → sonnet judges → `judge-import` → `report` (commands in dataset-plan G3 note) |
-| A2 | Seed-3 screening | 486 runs | full pipeline, blinded from the start |
+| A1 | Seed-2 screening | DONE 2026-08-06: 43/54 post-repair (first pass 40/54; 3 clusters recovered via precedented co-valid repairs), 123 valid instances — **cluster gate FAIL carried**; 14 drops adjudicated; dominant new defect class = unnatural-negation criteria (5 clusters) | 356/486 cached + prompt-verified in `datasets/dev/screening/org-00002/results.partial.jsonl`; manifest → seed work dir → `run` → blinded `judge-export` → sonnet judges → `judge-import` → `report` (commands in dataset-plan G3 note) |
+| A2 | Seed-3 screening | 486 runs | BLOCKED on the v0.4 decision + co-valid lineage sweep (repair before evidence exists) |
 | A3 | Seed-4 screening | 486 runs | " |
 | A4 | Seed-5 screening | 486 runs | " |
 | A5 | G3 final verdict across 5 seeds | — | cluster gate has ZERO margin; if any seed fails, remedy is content-side (v2 planner rules: cf must invert the task-elicited aspect; over-generate 4 instances/cluster) — never gate softening. Per-archetype n≥30 counts INSTANCES (pinned 2026-07-25) |
@@ -52,7 +52,7 @@ file whenever a queue item completes; keep entries dated.
 
 | # | Item | Notes |
 |---|---|---|
-| C1 | Scorer-exploit audit (BLOCKING) | IN PROGRESS 2026-08-06: harness built (`scripts/exploit_audit.py`), empty-exploit DEFINITIVELY clean (mean 0.304 = absence share, zero 1.0s); 359 blinded verdicts pending for the other 3 types. NEW pilot rule needed before A7/A8: define scoring for empty SUT outputs (judge-export currently skips falsy outputs → would raise at scoring; adopt the audit's mechanical rule: positive criteria false, absence criteria true) |
+| C1 | Scorer-exploit audit (BLOCKING) | DONE 2026-08-06 — **BAR FAIL**: enumerate-both-values passes 27/45 pairs (hedging defeats pair crediting where no cross-side absence detector exists); empty/waffle/base_correct essentially clean. Remediation = probe-spec v0.4 package (decision pending with Mehul). Also pending: empty-SUT-output scoring rule before A7/A8 |
 | C2 | Judge decoy set construction (BLOCKING) | DONE 2026-08-06: 20 validated decoys in `datasets/dev/screening/judge-decoys/` (third values, zero discriminative tokens either side); never judged — reserved for Phase 4 false-accept audit |
 | C3 | Power-analysis script (BLOCKING) | DONE 2026-08-06 (`docs/power-analysis.md`): tie rule ~9.3 pp at rho=0.6/K=3; regenerate after seeds 2-5 + decoy audit |
 | C4 | Codex worker adapter for the runner | DONE 2026-08-06 (`src/membench/workers.py`, commit f733793) |

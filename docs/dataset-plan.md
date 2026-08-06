@@ -155,15 +155,29 @@ floor/ceiling gates.
 > (harness-enforced, closing a gap between the spec's stated rule and the
 > original export format).
 >
-> **Remaining for full G3 (blocked on codex quota, resets 2026-07-29):**
-> screen seeds 2–5. Seed 2 has 356/486 task-model runs cached and
-> prompt-verified against the final probes
-> (`datasets/dev/screening/org-00002/`). Per seed N:
+> **Seed 2 SCREENED 2026-08-06 (fully blinded from the start): cluster gate
+> FAIL — 43/54 after precedented repairs (was 40/54 first pass); 123 valid
+> instances; strict 37.** Evidence: `datasets/dev/screening/org-00002/`,
+> report `datasets/dev/org-00002/g3-report.json`. All 14 first-pass drops
+> individually adjudicated from raw outputs: 3 clusters recovered under the
+> co-valid-sibling rule (P-0032, P-0040, P-0041 — the same defect lineage
+> repaired in seed 1 on 2026-07-25; those repairs had touched org-00001
+> only). Final drop lessons: the dominant new class (5 clusters) is
+> **unnatural-negation criteria** — the twin fact is correctly applied but
+> the criterion additionally demands an explicit "never / no longer /
+> because it was discontinued" statement no natural artifact contains; plus
+> two task defects, one twin-epoch planner defect, two genuine model
+> failures, one unrescuable co-valid cluster. Per the pinned disposition
+> rule the gate FAIL stands — remediation, if any, must be a uniform
+> spec-level revision (v0.4 decision pending with Mehul), never a per-seed
+> rescue.
+>
+> **Remaining: screen seeds 3–5** (same blinded pipeline; run the co-valid
+> lineage sweep FIRST so known-defective assertion pairs are repaired
+> before their evidence exists). Per seed N:
 > `python scripts/screen_probes.py manifest datasets/dev/org-0000N
-> datasets/dev/org-0000N-twin <work>/sN`, seed the work dir with any cached
-> `results.jsonl`, then `run` (fills the gap), `judge-export` (blinded) →
-> Claude judge → `judge-import`, `report`. Seeds 2–5 are judged blinded
-> from the start.
+> datasets/dev/org-0000N-twin <work>/sN`, then `run`, blinded
+> `judge-export` → Claude judge → `judge-import`, `report`.
 
 ## Phase 4 — Human validation + judge calibration *(week 5–6)*
 
