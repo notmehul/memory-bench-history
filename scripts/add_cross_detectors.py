@@ -27,6 +27,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -107,6 +108,62 @@ def add_detectors(probe: dict, base_canon: dict[str, str],
     return out
 
 
+_WORD_NUM_SET = frozenset(
+    ["one", "two", "three", "four", "five", "six", "seven", "eight",
+     "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen",
+     "sixteen", "seventeen", "eighteen", "nineteen", "twenty", "thirty",
+     "sixty", "ninety"]
+)
+
+
+def _top_level_branches(inner: str) -> list[str]:
+    out, depth, cur = [], 0, []
+    for ch in inner:
+        if ch == "(":
+            depth += 1
+        elif ch == ")":
+            depth -= 1
+        if ch == "|" and depth == 0:
+            out.append("".join(cur))
+            cur = []
+        else:
+            cur.append(ch)
+    out.append("".join(cur))
+    return out
+
+
+def _validate_branches(probe: dict) -> None:
+    """R5 hard errors (2026-08-07): a shipped -cs pattern may contain no
+    unit-less digit-only branch (any length — the `(?:000|two)` fragment
+    bug class) and no unit-less bare number-word branch. Branches with a
+    unit tail (`[\\s-]+<stem>`) are exempt."""
+    sides = [probe["assertions"]]
+    cf = probe["counterfactual_probe"]
+    sides.append(cf["cf_assertions" if "cf_assertions" in cf else "assertions"])
+    for assertions in sides:
+        for a in assertions:
+            if not a["id"].endswith("-cs"):
+                continue
+            m = re.fullmatch(
+                r"\(\?<!\[[^]]*]\)\(\?:(.*)\)\(\?!\[[^]]*]\)", a["criterion"])
+            inner = m.group(1) if m else a["criterion"]
+            for branch in _top_level_branches(inner):
+                if "[\\s-]" in branch:
+                    continue  # unit-anchored compound: exempt
+                alts = [x.strip("(?:)") for x in re.split(r"[|]", branch)]
+                alts = [x for x in alts if x]
+                if alts and all(re.fullmatch(r"\d+", x) for x in alts):
+                    raise SystemExit(
+                        f"{probe['probe_id']} {a['id']}: unit-less "
+                        f"digit-only branch '{branch}' (R5)")
+                if alts and all(x.lower() in _WORD_NUM_SET or
+                                re.fullmatch(r"\d+", x) for x in alts) \
+                        and any(x.lower() in _WORD_NUM_SET for x in alts):
+                    raise SystemExit(
+                        f"{probe['probe_id']} {a['id']}: unit-less bare "
+                        f"number-word branch '{branch}' (R5)")
+
+
 def apply_org(org_dir: Path, twin_dir: Path) -> dict:
     org = json.loads((org_dir / "org.json").read_text())
     twin = json.loads((twin_dir / "org.json").read_text())
@@ -119,14 +176,28 @@ def apply_org(org_dir: Path, twin_dir: Path) -> dict:
     for line in path.read_text().splitlines():
         p = json.loads(line)
         if p.get("counterfactual_probe"):
-            r = add_detectors(p, base_canon, twin_canon,
-                              cross_foreign(p, org, twin))
-            report["probes"] += 1
-            report["added"] += len(r["added"])
-            report["prune_notes"] += sum(
-                1 for n in r["notes"] if "pruned" in n)
-            for s in r["skipped"]:
-                report["skips"].append({"probe_id": p["probe_id"], **s})
+            if p.get("kind") == "historical":
+                # R3 (2026-08-07): historical probes narrate multiple
+                # epochs by design — no cross-side detectors. Strip any
+                # previously generated ones (idempotency).
+                p["assertions"] = _strip_cs(p["assertions"])
+                cf = p["counterfactual_probe"]
+                key = "cf_assertions" if "cf_assertions" in cf else "assertions"
+                cf[key] = _strip_cs(cf[key])
+                report["probes"] += 1
+                report["skips"].append({
+                    "probe_id": p["probe_id"], "side": "both",
+                    "reason": "historical exemption (v0.4 R3)"})
+            else:
+                r = add_detectors(p, base_canon, twin_canon,
+                                  cross_foreign(p, org, twin))
+                _validate_branches(p)
+                report["probes"] += 1
+                report["added"] += len(r["added"])
+                report["prune_notes"] += sum(
+                    1 for n in r["notes"] if "pruned" in n)
+                for s in r["skipped"]:
+                    report["skips"].append({"probe_id": p["probe_id"], **s})
         rows.append(json.dumps(p))
     path.write_text("\n".join(rows) + "\n")
     return report

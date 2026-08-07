@@ -69,7 +69,11 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from membench.belief import belief_hist, belief_state  # noqa: E402
 from membench.ledger import load_event_index, load_ledger  # noqa: E402
-from membench.probes import build_side_patterns, is_hedged  # noqa: E402
+from membench.probes import (  # noqa: E402
+    build_side_patterns,
+    is_hedged,
+    pattern_hits_unnegated,
+)
 
 TASK_MODEL = ("gpt-5.4", "medium")
 JUDGE_MODEL = "claude"
@@ -163,8 +167,10 @@ def cmd_manifest(args) -> int:
         # Commitment-rule patterns (spec v0.4.1): one per side, from the
         # probe's delta facts; co-valid canonicals of both orgs are the
         # foreign set so hedge detection never keys on nested constraints.
+        # R3 (2026-08-07): historical probes are exempt — multi-epoch
+        # narration is the task, so no hedge patterns are embedded.
         hedge_base = hedge_cf = None
-        if cf:
+        if cf and p.get("kind") != "historical":
             deltas = set(cf.get("ledger_deltas") or [])
             by_id = {f["fact_id"]: f for f in org["facts"]}
             topics = {by_id[t].get("topic") for t in p["targets"]
@@ -367,9 +373,15 @@ def _score(
             # Absence detectors still score normally.
             continue
         if a["checker"] == "pattern":
-            hit = re.search(
-                a["criterion"], output, re.IGNORECASE | re.DOTALL
-            ) is not None
+            if a["id"].endswith("-cs"):
+                # Cross-side detectors use the negation-window guard
+                # (v0.4 refinement R4): a negated mention of the other
+                # side's value is commitment, not enumeration.
+                hit = pattern_hits_unnegated(a["criterion"], output)
+            else:
+                hit = re.search(
+                    a["criterion"], output, re.IGNORECASE | re.DOTALL
+                ) is not None
             ok = (not hit) if a["kind"] == "fact_absent" else hit
         elif a["checker"] == "semantic":
             if verdicts is None or a["id"] not in verdicts:

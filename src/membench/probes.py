@@ -311,39 +311,76 @@ def _is_value_token(tok: str, own: str) -> bool:
     return False
 
 
+_DURATION_UNITS = frozenset(["minute", "hour", "day", "week", "month"])
+
+
+def _lemma(word: str) -> str:
+    """Naive s/es-strip (v0.4 refinement R2)."""
+    w = word.lower()
+    if w.endswith("es") and len(w) > 4:
+        return w[:-2]
+    if w.endswith("s") and len(w) > 3:
+        return w[:-1]
+    return w
+
+
+def _standalone_number(digit: str, text: str) -> bool:
+    """R5: the digit form must appear as a standalone number in the
+    canonical — never as a comma/period fragment of a larger figure
+    (the `(?:000|two)` bug class)."""
+    return re.search(
+        rf"(?<![\w,.\-]){re.escape(digit)}(?![\w,.\-])", text
+    ) is not None
+
+
 def side_value_anchors(own: str, other: str) -> list[str]:
     """Regex branches identifying OWN side's distinctive VALUES.
 
-    Spec v0.4 rules 2 and 4: digit and number-word forms are alternated so
-    every surface variant is covered; a bare 1-2 digit numeral is never a
-    branch on its own — it must carry a mandatory unit anchor taken from
-    the canonical text; plain-word anchors are admitted only for value
-    classes (see _is_value_token) — generic phrasing words that happen to
-    be side-exclusive ("across", "capped", "unlimited") are never anchors,
-    because honest deliverables rephrase freely.
+    Spec v0.4 rules 2 and 4, refined 2026-08-07 (R1/R2/R5 from flip
+    adjudication):
+    - R1: duration-class branches (number + minute/hour/day/week/month)
+      are banned — durations are generic ops vocabulary that honest
+      artifacts reinvent constantly; valid anchors are money, %,
+      day-names/cadence words, unitless counts WITH object nouns,
+      hyphenated compounds, and mixed-case identifiers.
+    - R2: a plain-word anchor whose naive lemma appears in the other
+      side's text is skipped (monday vs mondays inflection degeneracy).
+    - R5: no digit-only fragments of larger figures; no unit-less bare
+      number-words. Bare 1-2 digit numerals still require a unit anchor.
     """
+    other_lemmas = {_lemma(t) for t in _content_tokens(other)}
     branches: list[str] = []
     for tok in _side_exclusive_tokens(own, other):
         digit, word = _num_pair(tok)
         if digit is not None:
+            unit = _unit_after(tok, own)
+            if unit and unit.lower().rstrip("s") in _DURATION_UNITS:
+                continue  # R1: duration anchors banned
             alt = f"(?:{digit}|{word})" if word else digit
             if len(digit) >= 3:
-                branches.append(alt)
+                if not _standalone_number(digit, own):
+                    continue  # R5: no fragments of larger figures
+                if re.search(rf"\$\s?{re.escape(digit)}", own):
+                    branches.append(rf"\$\s?{digit}")  # money anchor
+                elif unit:
+                    stem = re.escape(unit.rstrip("s"))
+                    branches.append(rf"{alt}[\s-]+{stem}\w*")
+                # R5: a long digit with neither $ nor unit is dropped —
+                # bare numerals are never branches, whatever their length
                 continue
-            unit = _unit_after(tok, own)
             if unit:
                 stem = re.escape(unit.rstrip("s"))
                 branches.append(rf"{alt}[\s-]+{stem}\w*")
-            elif word:
-                branches.append(re.escape(word))
-            # a bare 1-2 digit numeral with no unit and no word form is
-            # dropped: matching it alone is the banned false-positive class
+            # R5: unit-less bare number-words are banned; a bare 1-2
+            # digit numeral without a unit anchor is likewise dropped.
         elif not _is_value_token(tok, own):
             continue
         elif re.search(r"\d", tok):
-            if len(tok) >= 3:  # fused forms: "5,000", "2.5", "2pm"
-                branches.append(re.escape(tok))
+            if len(tok) >= 3 and _standalone_number(tok, own):
+                branches.append(re.escape(tok))  # fused: "5,000", "2pm"
         elif len(tok) >= 3:
+            if _lemma(tok) in other_lemmas:
+                continue  # R2: inflection-degenerate anchor
             branches.append(re.escape(tok))
     return sorted(set(branches))
 
@@ -414,15 +451,50 @@ def build_side_patterns(
     return one_side("base"), one_side("cf"), notes
 
 
+_NEGATORS = re.compile(
+    r"\b(?:no|not|never|without|don'?t|doesn'?t|do\s+not|does\s+not|"
+    r"stopped|skips?|skipped|omits?|omitted)\b"
+    r"|\bno\s+longer\b|\brather\s+than\b|\binstead\s+of\b",
+    re.IGNORECASE,
+)
+_SENTENCE_BOUNDARY = re.compile(r"[.!?;\n]")
+
+
+def pattern_hits_unnegated(pattern: str, text: str) -> bool:
+    """v0.4 refinement R4 (negation-window guard): a match is suppressed
+    when a negator precedes it within the same sentence at <=12 tokens —
+    mentioning the other side's value in order to NEGATE it ("there is no
+    Monday session") is committed behavior, not hedging. Suppression only
+    spares absence detectors; a negated mention still cannot satisfy the
+    side's affirmative fact_applied criteria."""
+    if not pattern or not text:
+        return False
+    norm = text.replace("’", "'")
+    for m in re.finditer(pattern, norm, re.IGNORECASE | re.DOTALL):
+        before = norm[: m.start()]
+        cut = 0
+        b = _SENTENCE_BOUNDARY.search(before)
+        while b:
+            cut = b.end()
+            b = _SENTENCE_BOUNDARY.search(before, b.end())
+        window = " ".join(before[cut:].split()[-12:])
+        if not _NEGATORS.search(window):
+            return True
+    return False
+
+
 def is_hedged(
     output: str, base_pattern: str | None, cf_pattern: str | None
 ) -> bool:
-    """Commitment rule (spec v0.4.1): an output asserting distinctive
-    values of BOTH sides of a paired probe is non-committal."""
+    """Commitment rule (spec v0.4.1, R4-guarded): an output asserting the
+    distinctive values of BOTH sides of a paired probe is non-committal.
+    Negated mentions do not count as assertions (R4); probes with
+    kind=historical are exempt upstream — no patterns are embedded for
+    them (R3)."""
     if not output or not base_pattern or not cf_pattern:
         return False
-    return (_pattern_hits(base_pattern, output)
-            and _pattern_hits(cf_pattern, output))
+    return (pattern_hits_unnegated(base_pattern, output)
+            and pattern_hits_unnegated(cf_pattern, output))
 
 
 def _check_assertion(

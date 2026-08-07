@@ -24,8 +24,8 @@ def _load_script(name):
     return mod
 
 
-BASE = "Retro action items must carry an owner within 48 hours."
-CF = "Retro action items must carry an owner within 6 days."
+BASE = "Deploy reviews happen on Monday with 2 approvals."
+CF = "Deploy reviews happen on Friday with 6 approvals."
 
 
 def test_anchors_no_bare_short_numerals():
@@ -39,8 +39,8 @@ def test_anchors_number_word_and_unit():
     pat = anchors_pattern(cf_anchors)
     assert pat is not None
     # must hit both numeral and word surface forms, unit-anchored
-    assert is_hedged("plan for 6 days out", pat, pat)
-    assert is_hedged("plan for six days out", pat, pat)
+    assert is_hedged("needs 6 approvals now", pat, pat)
+    assert is_hedged("needs six approvals now", pat, pat)
     # bare "6" without the unit must NOT fire
     assert not is_hedged("section 6 covers retros", pat, pat)
 
@@ -48,8 +48,8 @@ def test_anchors_number_word_and_unit():
 def test_is_hedged_requires_both_sides():
     b_pat = anchors_pattern(side_value_anchors(BASE, CF))
     c_pat = anchors_pattern(side_value_anchors(CF, BASE))
-    committed = "Owners assigned within 48 hours."
-    hedging = "Assign owners within 48 hours (or 6 days, whichever applies)."
+    committed = "Reviews run Monday with 2 approvals."
+    hedging = "Reviews run Monday or Friday, whichever applies."
     assert not is_hedged(committed, b_pat, c_pat)
     assert is_hedged(hedging, b_pat, c_pat)
     assert not is_hedged(hedging, None, c_pat)  # uncoverable side -> never
@@ -70,7 +70,7 @@ def test_build_side_patterns_prunes_foreign_and_reports_uncoverable():
     twin_facts = {"F-1": CF}
     # foreign text containing the base value: branch pruned -> base side
     # uncoverable -> None with a note
-    foreign = [("base:F-9", "The SLA handbook already says 48 hours.")]
+    foreign = [("base:F-9", "The handbook already says Monday with 2 approvals.")]
     b_pat, c_pat, notes = build_side_patterns(
         base_facts, twin_facts, ["F-1"], foreign)
     assert b_pat is None
@@ -121,9 +121,9 @@ def test_add_detectors_idempotent_and_valid():
     asrt_cs = [a for a in probe["assertions"] if a["id"] == "asrt-cs"][0]
     # base-side detector hunts CF values, not base values
     import re
-    assert re.search(asrt_cs["criterion"], "within six days",
+    assert re.search(asrt_cs["criterion"], "moved to Friday",
                      re.IGNORECASE | re.DOTALL)
-    assert not re.search(asrt_cs["criterion"], "within 48 hours",
+    assert not re.search(asrt_cs["criterion"], "Monday with 2 approvals",
                          re.IGNORECASE | re.DOTALL)
 
 
@@ -146,3 +146,111 @@ def test_manifest_prompts_unchanged_by_v04(tmp_path):
     assert all(new[r]["prompt"] == committed[r]["prompt"] for r in new)
     # and every paired row carries the hedge fields
     assert all("hedge_base" in new[r] for r in new)
+    # R3: historical probes carry no hedge patterns
+    kinds = {}
+    for line in (ROOT / "datasets/dev/org-00001/probes.jsonl"
+                 ).read_text().splitlines():
+        prb = json.loads(line)
+        kinds[prb["probe_id"]] = prb.get("kind")
+    for row in new.values():
+        if kinds[row["probe_id"]] == "historical":
+            assert row["hedge_base"] is None and row["hedge_cf"] is None
+
+
+# ------------------------- v0.4 refinements R1-R5 (2026-08-07)
+
+from membench.probes import pattern_hits_unnegated  # noqa: E402
+
+
+def test_r1_duration_anchors_banned():
+    assert side_value_anchors(
+        "escalate within 30 minutes", "escalate within 2 hours") == []
+    assert side_value_anchors(
+        "retire flags after 90 days", "retire flags after 26 weeks") == []
+    # non-duration unit survives
+    assert side_value_anchors(
+        "needs 2 approvals", "needs 6 approvals") != []
+
+
+def test_r2_lemma_inflection_guard():
+    # twin's own canonical contains "Mondays"; base anchor "monday" must
+    # be skipped for the detector guarding the twin side
+    assert side_value_anchors(
+        "Triage happens every Monday.", "Triage skips Mondays entirely.") == []
+
+
+def test_r3_historical_probes_get_no_detectors():
+    acd = _load_script("add_cross_detectors")
+    probe = {
+        "probe_id": "P-H-01", "kind": "historical", "targets": ["F-1"],
+        "assertions": [
+            {"id": "asrt-1", "kind": "fact_applied", "checker": "semantic",
+             "criterion": "x", "weight": 1.0},
+            {"id": "asrt-cs", "kind": "fact_absent", "checker": "pattern",
+             "criterion": "stale", "weight": 1.0}],
+        "counterfactual_probe": {
+            "ledger_deltas": ["F-1"],
+            "assertions": [
+                {"id": "casrt-cs", "kind": "fact_absent",
+                 "checker": "pattern", "criterion": "stale", "weight": 1.0}]},
+    }
+    # mirror of apply_org's R3 path
+    probe["assertions"] = acd._strip_cs(probe["assertions"])
+    probe["counterfactual_probe"]["assertions"] = acd._strip_cs(
+        probe["counterfactual_probe"]["assertions"])
+    ids = [a["id"] for a in probe["assertions"]]
+    assert "asrt-cs" not in ids
+    assert probe["counterfactual_probe"]["assertions"] == []
+
+
+def test_r4_negation_window_guard():
+    pat = r"(?<![\w-])(?:monday)(?![\w-])"
+    assert not pattern_hits_unnegated(
+        pat, "There is no Monday triage session.")
+    assert not pattern_hits_unnegated(
+        pat, "We skip Monday sessions this cycle.")
+    assert pattern_hits_unnegated(pat, "Triage happens Monday.")
+    # negator in a PREVIOUS sentence does not suppress
+    assert pattern_hits_unnegated(
+        pat, "No exceptions here. Triage happens Monday.")
+    # negator further than 12 tokens away in the same clause: no suppress
+    far = ("not once did anyone in any of the many long meetings on any "
+           "topic decide against holding triage every Monday")
+    assert pattern_hits_unnegated(pat, far)
+
+
+def test_r4_negated_mention_cannot_pass_applied_side():
+    sp = _load_script("screen_probes")
+    assertions = [
+        {"id": "a1", "kind": "fact_applied", "checker": "semantic",
+         "criterion": "states the Monday schedule", "weight": 1.0},
+        {"id": "asrt-cs", "kind": "fact_absent", "checker": "pattern",
+         "criterion": r"(?<![\w-])(?:monday)(?![\w-])", "weight": 1.0},
+    ]
+    out = "There is no Monday session; we meet Friday."
+    # suppression spares the absence detector...
+    score = sp._score("r", assertions, out, {"a1": False})
+    # ...but the affirmative criterion still fails: only absence credit
+    assert score == 0.5
+
+
+def test_r5_branch_validation_rejects_fragments():
+    import pytest
+    acd = _load_script("add_cross_detectors")
+
+    def probe_with(crit):
+        return {
+            "probe_id": "P-V-01",
+            "assertions": [
+                {"id": "asrt-cs", "kind": "fact_absent",
+                 "checker": "pattern", "criterion": crit, "weight": 1.0}],
+            "counterfactual_probe": {"assertions": []},
+        }
+    bad_digit = r"(?<![\w-])(?:(?:000|two))(?![\w-])"
+    with pytest.raises(SystemExit):
+        acd._validate_branches(probe_with(bad_digit))
+    bad_word = r"(?<![\w-])(?:two)(?![\w-])"
+    with pytest.raises(SystemExit):
+        acd._validate_branches(probe_with(bad_word))
+    good = r"(?<![\w-])(?:(?:2|two)[\s-]+approval\w*|friday)(?![\w-])"
+    acd._validate_branches(probe_with(good))  # no raise

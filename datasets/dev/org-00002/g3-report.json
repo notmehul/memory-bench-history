@@ -21,7 +21,7 @@
     },
     "P-0001-03": {
      "ceiling": 1.0,
-     "twin_ceiling": 0.0,
+     "twin_ceiling": 0.5,
      "floor": 0.0,
      "valid": false
     }
@@ -42,7 +42,7 @@
     "P-0002-02": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.0,
+     "floor": 0.5,
      "valid": true
     },
     "P-0002-03": {
@@ -166,19 +166,19 @@
     "P-0007-01": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.5,
+     "floor": 0.6666666666666666,
      "valid": true
     },
     "P-0007-02": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.5,
+     "floor": 0.6666666666666666,
      "valid": true
     },
     "P-0007-03": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.5,
+     "floor": 0.6666666666666666,
      "valid": true
     }
    },
@@ -192,19 +192,19 @@
     "P-0008-01": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.6666666666666666,
+     "floor": 0.75,
      "valid": true
     },
     "P-0008-02": {
      "ceiling": 1.0,
      "twin_ceiling": 0.6666666666666666,
-     "floor": 0.6666666666666666,
+     "floor": 0.75,
      "valid": false
     },
     "P-0008-03": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.6666666666666666,
+     "floor": 0.75,
      "valid": true
     }
    },
@@ -256,7 +256,7 @@
     "P-0010-03": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.0,
+     "floor": 0.5,
      "valid": true
     }
    },
@@ -281,7 +281,7 @@
     },
     "P-0011-03": {
      "ceiling": 1.0,
-     "twin_ceiling": 0.0,
+     "twin_ceiling": 0.5,
      "floor": 1.0,
      "valid": false
     }
@@ -426,19 +426,19 @@
     "P-0017-01": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.6666666666666666,
+     "floor": 0.75,
      "valid": true
     },
     "P-0017-02": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.6666666666666666,
+     "floor": 0.75,
      "valid": true
     },
     "P-0017-03": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.6666666666666666,
+     "floor": 0.75,
      "valid": true
     }
    },
@@ -743,13 +743,13 @@
     },
     "P-0029-02": {
      "ceiling": 1.0,
-     "twin_ceiling": 0.0,
+     "twin_ceiling": 0.5,
      "floor": 1.0,
      "valid": false
     },
     "P-0029-03": {
      "ceiling": 1.0,
-     "twin_ceiling": 0.0,
+     "twin_ceiling": 0.5,
      "floor": 1.0,
      "valid": false
     }
@@ -972,7 +972,7 @@
     "P-0038-01": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.0,
+     "floor": 0.5,
      "valid": true
     },
     "P-0038-02": {
@@ -984,7 +984,7 @@
     "P-0038-03": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.0,
+     "floor": 0.5,
      "valid": true
     }
    },

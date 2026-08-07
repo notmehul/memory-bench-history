@@ -150,6 +150,27 @@ Validity gates (computed during dataset construction, before any SUT is evaluate
 >    variant sets.
 > Re-scoring under v0.4 happens only after per-flip adjudication;
 > pre-/post-v0.4 numbers are reported side by side wherever both exist.
+>
+> **v0.4 refinements R1–R5 (2026-08-07, from adjudication of the 11
+> mechanical-layer flips — 0 of 11 were true positives):**
+> R1 — duration-class anchors (number + minute/hour/day/week/month) are
+> banned for cross-side detectors and the hedge rule: durations recur in
+> unrelated semantic roles in honest artifacts (8/11 flips). Money, %,
+> day-names/cadence words, unitless counts with object nouns, compounds,
+> and identifiers remain valid.
+> R2 — an anchor whose naive s/es-lemma appears in the other side's text
+> is skipped (monday/mondays inflection degeneracy).
+> R3 — `kind=historical` probes carry no cross-side detectors and are
+> exempt from the hedge rule: multi-epoch narration is the task.
+> R4 — a `-cs`/hedge match preceded by a negator within the same sentence
+> (≤12 tokens) is suppressed: negated mention is commitment, not
+> enumeration. Suppression spares only the absence detector; a negated
+> mention still cannot satisfy the side's affirmative criteria.
+> R5 — per-branch hard errors: no unit-less digit-only branches, no
+> unit-less bare number-words.
+> Consequence, measured and accepted: the mechanical layer alone cannot
+> police enumeration for duration-valued probes (audit residual rises
+> accordingly); full closure is assigned to the v0.4.3 semantic layer.
 
 ## 4. Counterfactual twins
 
