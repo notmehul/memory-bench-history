@@ -31,7 +31,7 @@ file whenever a queue item completes; keep entries dated.
 | # | Item | Size | Notes |
 |---|---|---|---|
 | A1 | Seed-2 screening | DONE 2026-08-06: 43/54 post-repair (first pass 40/54; 3 clusters recovered via precedented co-valid repairs), 123 valid instances — **cluster gate FAIL carried**; 14 drops adjudicated; dominant new defect class = unnatural-negation criteria (5 clusters) | 356/486 cached + prompt-verified in `datasets/dev/screening/org-00002/results.partial.jsonl`; manifest → seed work dir → `run` → blinded `judge-export` → sonnet judges → `judge-import` → `report` (commands in dataset-plan G3 note) |
-| A2 | Seed-3 screening | 486 runs | BLOCKED on the v0.4 decision + co-valid lineage sweep (repair before evidence exists) |
+| A2 | Seed-3 screening | 486 runs | v0.4 APPROVED 2026-08-07; fixes 1-2 implementing (mechanical); screening starts after flip adjudication + item-3 re-authoring |
 | A3 | Seed-4 screening | 486 runs | " |
 | A4 | Seed-5 screening | 486 runs | " |
 | A5 | G3 final verdict across 5 seeds | — | cluster gate has ZERO margin; if any seed fails, remedy is content-side (v2 planner rules: cf must invert the task-elicited aspect; over-generate 4 instances/cluster) — never gate softening. Per-archetype n≥30 counts INSTANCES (pinned 2026-07-25) |

@@ -121,6 +121,36 @@ Validity gates (computed during dataset construction, before any SUT is evaluate
 > facts legitimately co-apply; only genuine precedence losers get
 > `fact_absent` guards).
 
+> **Spec change v0.4 (2026-08-07, approved by the PI; from the scorer-exploit
+> audit and seed-2 adjudication — evidence in
+> `datasets/dev/screening/exploit-audit/` and the dataset-plan G3 note):**
+> 1. *Commitment rule (scoring):* an output that asserts the discriminative
+>    values of BOTH sides of a paired probe (any surface variant) is
+>    non-committal; all its applied-content criteria (`fact_applied`,
+>    `scope_correct`, `constraint_followed`) score FAIL on both sides.
+>    `fact_absent` detectors score normally. Rationale: pair crediting
+>    cancels prior-based guessing but not deliberate hedging — the audit
+>    measured enumerate-both-values passing 27/45 pairs.
+> 2. *Cross-side absence detectors (structure):* every paired instance
+>    carries a mechanically generated `fact_absent` pattern pair
+>    (`asrt-cs` / `casrt-cs`) matching the OTHER side's discriminative
+>    value variants. Generated, not authored: the pattern must match every
+>    other-side surface variant, no own-side variant, and no co-valid
+>    sibling canonical (detectors target the twin delta only — never
+>    nested co-valid constraints).
+> 3. *Natural-artifact rule (authoring):* absence criteria may demand only
+>    OBSERVABLE absence; they may never require explicit denial, negation,
+>    or historical narration the task did not ask for ("states there is no
+>    X", "says X never ran", "because X was discontinued" are all invalid
+>    criteria — seed-2 adjudication found this class caused 5/11 final
+>    drops while the twin fact was correctly applied).
+> 4. *Pattern quality:* alternations must not reduce to bare numerals or
+>    common words under optional anchors (`(one|1)\s*(?:pm)?` matches "1";
+>    banned). Surface-variant cross-validation runs against BOTH orgs'
+>    variant sets.
+> Re-scoring under v0.4 happens only after per-flip adjudication;
+> pre-/post-v0.4 numbers are reported side by side wherever both exist.
+
 ## 4. Counterfactual twins
 
 `counterfactual_probe.ledger_deltas` names the facts whose `counterfactual.canonical`
