@@ -255,6 +255,176 @@ def surface_variants(text: str) -> list[str]:
     return sorted(variants)
 
 
+# ------------------------------------- v0.4: commitment rule & cross-side
+
+def _side_exclusive_tokens(own: str, other: str) -> list[str]:
+    return sorted(set(_content_tokens(own)) - set(_content_tokens(other)))
+
+
+def _num_pair(tok: str) -> tuple[str | None, str | None]:
+    """(digit_form, word_form) when `tok` is a numeral or number-word."""
+    if re.fullmatch(r"\d+", tok):
+        return tok, _NUM_WORDS.get(tok)
+    if tok in _WORD_NUMS:
+        return _WORD_NUMS[tok], tok
+    return None, None
+
+
+def _unit_after(tok: str, text: str) -> str | None:
+    m = re.search(
+        rf"(?<![\w-]){re.escape(tok)}(?![\w-])[\s-]*([a-z]+)",
+        text, re.IGNORECASE,
+    )
+    if not m:
+        return None
+    unit = m.group(1).lower()
+    if unit in _STOPWORDS or len(unit) < 3:
+        return None
+    return unit
+
+
+_VALUE_WORDS = frozenset(
+    ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday",
+     "sunday", "mondays", "tuesdays", "wednesdays", "thursdays", "fridays",
+     "saturdays", "sundays", "daily", "weekly", "biweekly", "fortnightly",
+     "monthly", "quarterly", "annually", "yearly", "hourly", "noon",
+     "midnight"]
+)
+
+
+def _is_value_token(tok: str, own: str) -> bool:
+    """A token qualifies as a VALUE anchor, never a phrasing word.
+
+    Value classes (spec v0.4.4 — anchors must be invariant, never common
+    words): contains a digit / $ / %; hyphenated compound ("kebab-case");
+    calendar and cadence vocabulary; or a mixed-case identifier in the
+    canonical's original casing ("camelCase", "LaunchDarkly")."""
+    if re.search(r"[\d$%]", tok) or "-" in tok:
+        return True
+    if tok in _VALUE_WORDS or tok in _WORD_NUMS:
+        return True
+    m = re.search(rf"(?<![\w-])({re.escape(tok)})(?![\w-])", own, re.IGNORECASE)
+    if m:
+        span = m.group(1)
+        if re.search(r"[a-z][A-Z]", span):  # internal case transition
+            return True
+    return False
+
+
+def side_value_anchors(own: str, other: str) -> list[str]:
+    """Regex branches identifying OWN side's distinctive VALUES.
+
+    Spec v0.4 rules 2 and 4: digit and number-word forms are alternated so
+    every surface variant is covered; a bare 1-2 digit numeral is never a
+    branch on its own — it must carry a mandatory unit anchor taken from
+    the canonical text; plain-word anchors are admitted only for value
+    classes (see _is_value_token) — generic phrasing words that happen to
+    be side-exclusive ("across", "capped", "unlimited") are never anchors,
+    because honest deliverables rephrase freely.
+    """
+    branches: list[str] = []
+    for tok in _side_exclusive_tokens(own, other):
+        digit, word = _num_pair(tok)
+        if digit is not None:
+            alt = f"(?:{digit}|{word})" if word else digit
+            if len(digit) >= 3:
+                branches.append(alt)
+                continue
+            unit = _unit_after(tok, own)
+            if unit:
+                stem = re.escape(unit.rstrip("s"))
+                branches.append(rf"{alt}[\s-]+{stem}\w*")
+            elif word:
+                branches.append(re.escape(word))
+            # a bare 1-2 digit numeral with no unit and no word form is
+            # dropped: matching it alone is the banned false-positive class
+        elif not _is_value_token(tok, own):
+            continue
+        elif re.search(r"\d", tok):
+            if len(tok) >= 3:  # fused forms: "5,000", "2.5", "2pm"
+                branches.append(re.escape(tok))
+        elif len(tok) >= 3:
+            branches.append(re.escape(tok))
+    return sorted(set(branches))
+
+
+def anchors_pattern(branches: list[str]) -> str | None:
+    if not branches:
+        return None
+    return r"(?<![\w-])(?:" + "|".join(branches) + r")(?![\w-])"
+
+
+def build_side_patterns(
+    base_facts: dict[str, str],
+    twin_facts: dict[str, str],
+    delta_ids: list[str],
+    foreign: list[tuple[str, str]],
+) -> tuple[str | None, str | None, list[str]]:
+    """(base_pattern, cf_pattern, notes) for one paired probe.
+
+    base_pattern matches BASE-side distinctive values (used by `casrt-cs`
+    and by the commitment rule); cf_pattern matches CF-side values (used
+    by `asrt-cs`). Branches that hit any own-side surface variant or any
+    `foreign` co-valid canonical are pruned (detectors target the twin
+    delta only — never nested co-valid constraints). A side whose pruned
+    pattern no longer covers every one of its full-text surface variants
+    is returned as None with an explanatory note: no silent weakening.
+    """
+    notes: list[str] = []
+
+    def one_side(own_key: str) -> str | None:
+        own_map, other_map = (
+            (base_facts, twin_facts) if own_key == "base"
+            else (twin_facts, base_facts)
+        )
+        pairs = [(own_map[d], other_map[d]) for d in delta_ids
+                 if d in own_map and d in other_map]
+        if not pairs:
+            notes.append(f"{own_key}: no delta fact pair available")
+            return None
+        branches: list[str] = []
+        for own_text, other_text in pairs:
+            branches += side_value_anchors(own_text, other_text)
+        own_variants = [v for own_text, _ in pairs
+                        for v in surface_variants(own_text)]
+        other_variants = [v for _, other_text in pairs
+                          for v in surface_variants(other_text)]
+        kept = []
+        for b in sorted(set(branches)):
+            pat = anchors_pattern([b])
+            if any(_pattern_hits(pat, v) for v in other_variants):
+                notes.append(f"{own_key}: branch '{b}' hits other side; pruned")
+                continue
+            hit = next((n for n, t in foreign if _pattern_hits(pat, t)), None)
+            if hit is not None:
+                notes.append(f"{own_key}: branch '{b}' hits co-valid {hit}; pruned")
+                continue
+            kept.append(b)
+        pattern = anchors_pattern(kept)
+        if pattern is None:
+            notes.append(f"{own_key}: no valid branches survive")
+            return None
+        missed = [v for v in own_variants if not _pattern_hits(pattern, v)]
+        if missed:
+            notes.append(
+                f"{own_key}: pattern misses variant '{missed[0][:60]}'")
+            return None
+        return pattern
+
+    return one_side("base"), one_side("cf"), notes
+
+
+def is_hedged(
+    output: str, base_pattern: str | None, cf_pattern: str | None
+) -> bool:
+    """Commitment rule (spec v0.4.1): an output asserting distinctive
+    values of BOTH sides of a paired probe is non-committal."""
+    if not output or not base_pattern or not cf_pattern:
+        return False
+    return (_pattern_hits(base_pattern, output)
+            and _pattern_hits(cf_pattern, output))
+
+
 def _check_assertion(
     a: dict, facts: dict[str, dict], side: str, winner: str | None
 ) -> list[str]:

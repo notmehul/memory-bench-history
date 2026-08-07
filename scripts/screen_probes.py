@@ -69,6 +69,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from membench.belief import belief_hist, belief_state  # noqa: E402
 from membench.ledger import load_event_index, load_ledger  # noqa: E402
+from membench.probes import build_side_patterns, is_hedged  # noqa: E402
 
 TASK_MODEL = ("gpt-5.4", "medium")
 JUDGE_MODEL = "claude"
@@ -152,10 +153,31 @@ def cmd_manifest(args) -> int:
     ledger, index = load_ledger(org), load_event_index(org)
     t_ledger, t_index = load_ledger(twin), load_event_index(twin)
 
+    base_canon = {f["fact_id"]: f["canonical"] for f in org["facts"]}
+    twin_canon = {f["fact_id"]: f["canonical"] for f in twin["facts"]}
+
     rows = []
     for p in probes:
         base_asserts = p["assertions"]
         cf = p["counterfactual_probe"]
+        # Commitment-rule patterns (spec v0.4.1): one per side, from the
+        # probe's delta facts; co-valid canonicals of both orgs are the
+        # foreign set so hedge detection never keys on nested constraints.
+        hedge_base = hedge_cf = None
+        if cf:
+            deltas = set(cf.get("ledger_deltas") or [])
+            by_id = {f["fact_id"]: f for f in org["facts"]}
+            topics = {by_id[t].get("topic") for t in p["targets"]
+                      if t in by_id}
+            foreign = [
+                (f"{tag}:{f['fact_id']}", f["canonical"])
+                for tag, o in (("base", org), ("twin", twin))
+                for f in o["facts"]
+                if (f["fact_id"] not in deltas and not f.get("distractor")
+                    and f.get("topic") in topics)
+            ]
+            hedge_base, hedge_cf, _ = build_side_patterns(
+                base_canon, twin_canon, sorted(deltas), foreign)
         rows.append({
             "run_id": f"{p['probe_id']}:floor",
             "probe_id": p["probe_id"], "cluster_id": p["cluster_id"],
@@ -165,6 +187,7 @@ def cmd_manifest(args) -> int:
             # The floor prompt is identical on both orgs (no context), so the
             # same output is scored against both sides for pair-level floor.
             "cf_assertions": cf["assertions"] if cf else None,
+            "hedge_base": hedge_base, "hedge_cf": hedge_cf,
         })
         rows.append({
             "run_id": f"{p['probe_id']}:ceiling",
@@ -172,6 +195,7 @@ def cmd_manifest(args) -> int:
             "condition": "ceiling",
             "prompt": _prompt(org, p, _context_facts(org, ledger, index, p)),
             "assertions": base_asserts,
+            "hedge_base": hedge_base, "hedge_cf": hedge_cf,
         })
         if cf:
             rows.append({
@@ -180,6 +204,7 @@ def cmd_manifest(args) -> int:
                 "condition": "twin_ceiling",
                 "prompt": _prompt(twin, p, _context_facts(twin, t_ledger, t_index, p)),
                 "assertions": p["counterfactual_probe"]["assertions"],
+                "hedge_base": hedge_base, "hedge_cf": hedge_cf,
             })
 
     args.work_dir.mkdir(parents=True, exist_ok=True)
@@ -331,10 +356,16 @@ def cmd_judge_import(args) -> int:
 def _score(
     run_id: str, assertions: list[dict], output: str,
     verdicts: dict[str, bool] | None,
+    hedged: bool = False,
 ) -> float:
     total = passed = 0.0
     for a in assertions:
         total += a["weight"]
+        if hedged and a["kind"] != "fact_absent":
+            # Commitment rule (probe-spec v0.4.1): a both-sides output is
+            # non-committal — applied-content criteria fail on both sides.
+            # Absence detectors still score normally.
+            continue
         if a["checker"] == "pattern":
             hit = re.search(
                 a["criterion"], output, re.IGNORECASE | re.DOTALL
@@ -371,15 +402,21 @@ def cmd_report(args) -> int:
         if not res or not res.get("output"):
             raise SystemExit(f"incomplete: no output for {rid} (run `run` again)")
         verdicts = (judgements.get(rid) or {}).get("verdicts")
-        score = _score(rid, row["assertions"], res["output"], verdicts)
+        hedged = is_hedged(
+            res["output"], row.get("hedge_base"), row.get("hedge_cf"))
+        score = _score(rid, row["assertions"], res["output"], verdicts,
+                       hedged=hedged)
         p = per_probe[row["probe_id"]]
         p["cluster_id"] = row["cluster_id"]
         p[row["condition"]] = score
+        if hedged:
+            p.setdefault("hedged_runs", []).append(row["condition"])
         if row["condition"] == "floor" and row.get("cf_assertions"):
             # The floor prompt is org-independent, so the same output is
             # scored against both sides; a memoryless model passes the pair
             # only if the assertions fail to discriminate.
-            cf_score = _score(rid, row["cf_assertions"], res["output"], verdicts)
+            cf_score = _score(rid, row["cf_assertions"], res["output"], verdicts,
+                              hedged=hedged)
             p["floor_pair_pass"] = (
                 score >= CEILING_PASS and cf_score >= CEILING_PASS
             )
