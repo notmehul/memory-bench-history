@@ -53,7 +53,7 @@ file whenever a queue item completes; keep entries dated.
 
 | # | Item | Notes |
 |---|---|---|
-| C1 | Scorer-exploit audit (BLOCKING) | DONE 2026-08-06 — **BAR FAIL**: enumerate-both-values passes 27/45 pairs (hedging defeats pair crediting where no cross-side absence detector exists); empty/waffle/base_correct essentially clean. Remediation = probe-spec v0.4 package (decision pending with Mehul). Also pending: empty-SUT-output scoring rule before A7/A8 |
+| C1 | Scorer-exploit audit (BLOCKING) | v0.4 mechanical layer DONE 2026-08-07 (commitment rule + refined cross-side detectors, R1-R5 adjudicated; canon unchanged 46/128, 43/123; zero honest fires). Residual: enumerate_all 18 pair-passes (duration-valued/uncoverable sides) + 2 known defective twin sides — ALL assigned to v0.4.3 semantic layer (item-3 wave, next). Empty-SUT scoring rule still pending before A7/A8 |
 | C2 | Judge decoy set construction (BLOCKING) | DONE 2026-08-06: 20 validated decoys in `datasets/dev/screening/judge-decoys/` (third values, zero discriminative tokens either side); never judged — reserved for Phase 4 false-accept audit |
 | C3 | Power-analysis script (BLOCKING) | DONE 2026-08-06 (`docs/power-analysis.md`): tie rule ~9.3 pp at rho=0.6/K=3; regenerate after seeds 2-5 + decoy audit |
 | C4 | Codex worker adapter for the runner | DONE 2026-08-06 (`src/membench/workers.py`, commit f733793) |
