@@ -80,7 +80,7 @@ keep entries dated.
 | C4 | Codex worker adapter for the runner | DONE 2026-08-06 (`src/membench/workers.py`, commit f733793) |
 | C5 | Grep-agent adapter (baseline #8) | DONE 2026-08-15 (`GrepAgentAdapter`: witnessed transcript materialized as one file per event in the worker's workdir; codex's native file tools; nothing in-context; shared/silo like FullTranscript) |
 | C6 | Naive-RAG + summarize-RAG adapters | needs embedding-model pin decision (standards-audit B.5) — flag to Mehul before adding any dependency |
-| C7 | Typed-memory reference implementation | generic (typed nodes, tier/scope metadata, source-backed updates, supersession); spec+prompts frozen before pilot scoring; ablation planned |
+| C7 | Typed-memory reference implementation | SPEC DRAFTED 2026-08-15 (`docs/specs/typed-memory-reference.md`, PROPOSED — needs Mehul's sign-off on D1-D3); implementation + frozen prompt after sign-off; ablations planned |
 | C8 | Vendor survey + candidate table | Mem0/Zep/Letta/LangMem/Cognee/…; inclusion criteria in dataset-plan; written vendor-recommended configs; right-of-reply contacts |
 | C9 | Cross-principal coherence statistic | exploratory, computed from pilot outputs when they exist |
 
