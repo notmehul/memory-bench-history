@@ -491,7 +491,7 @@ flagged in item analysis, never fixed. Worker (gpt-5.4, medium, codex-cli
 to an OpenAI API key behind the same pinned binary (disclosed).
 
 **Systems run (fixed worker).** no-memory (floor; cached from screening) ·
-full-transcript shared · full-transcript silo (H2) · grep-agent · naive-RAG
+full-transcript · grep-agent · naive-RAG
 (embedding pin: Gemini `gemini-embedding-001`) · **four market systems by
 rule**: from the vendor survey's INCLUDE list, the four dedicated
 memory-system repositories with the most GitHub stars on 2026-08-15 →
@@ -501,14 +501,14 @@ LlamaIndex Memory not ranked (stars belong to the framework, not the memory
 module); Zep Cloud represented by Graphiti (its OSS core). Everything else in
 the candidate table: "not run in v1 (budget)". Market systems' internal LLM =
 Gemini where configurable, vendor default listed alongside; ceiling condition
-cached from screening.
+cached from screening. **Silo ablation (H2)** runs on Mem0 (per-principal stores vs one org-wide store), not on full-transcript — for a raw transcript the two configurations yield identical context text (`adapters.py`), so the ablation is only meaningful on a derived-memory system. Corrected 2026-08-15 before any run.
 
 **Run budget.** 371 × 2 sides × 8 systems ≈ 5,900 SUT runs at K=1, plus one
 variance subset (seed 1 × full-transcript + one market system × K=3, ≈500) for
 the tie rule. Nothing else.
 
 **Cut from v1 (deferred, no work).** Typed-memory reference implementation
-(#6), summarize-RAG, K=3 elsewhere, G2 human read-through, industry matrix,
+(#6), summarize-RAG, full-transcript silo, K=3 elsewhere, G2 human read-through, industry matrix,
 L3, grid track, further vendor-survey verification, seeds 4–5.
 
 **Analysis.** As prespecified above (rung radar, cluster-robust SEs, paired
