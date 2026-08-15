@@ -81,7 +81,7 @@ keep entries dated.
 | C5 | Grep-agent adapter (baseline #8) | DONE 2026-08-15 (`GrepAgentAdapter`: witnessed transcript materialized as one file per event in the worker's workdir; codex's native file tools; nothing in-context; shared/silo like FullTranscript) |
 | C6 | Naive-RAG + summarize-RAG adapters | needs embedding-model pin decision (standards-audit B.5) — flag to Mehul before adding any dependency |
 | C7 | Typed-memory reference implementation | SPEC DRAFTED 2026-08-15 (`docs/specs/typed-memory-reference.md`, PROPOSED — needs Mehul's sign-off on D1-D3); implementation + frozen prompt after sign-off; ablations planned |
-| C8 | Vendor survey + candidate table | Mem0/Zep/Letta/LangMem/Cognee/…; inclusion criteria in dataset-plan; written vendor-recommended configs; right-of-reply contacts |
+| C8 | Vendor survey + candidate table | DRAFT 2026-08-15 (`docs/vendor-survey.md`: 10 INCLUDE / 2 UNCLEAR / 6 EXCLUDE with reasons + URLs + right-of-reply channels; produced pre-pilot, nothing run). Some cells marked not independently verified — manual doc read before adapter work; vendor-recommended configs still to request |
 | C9 | Cross-principal coherence statistic | exploratory, computed from pilot outputs when they exist |
 
 ## Standing cautions
