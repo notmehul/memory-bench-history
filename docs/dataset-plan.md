@@ -225,9 +225,25 @@ floor/ceiling gates.
 > detectors (S1) — 19 honest instances flipped, 0 true positives; details
 > in the spec changelog and the adjudication file above.
 >
-> **Remaining: screen seeds 3–5** (same blinded pipeline; run the co-valid
-> lineage sweep FIRST so known-defective assertion pairs are repaired
-> before their evidence exists). Per seed N:
+> **Seed 3 SCREENED 2026-08-15 (pinned codex 0.144.5, rubric v2, S6):
+> cluster gate FAIL — 40/54, carried; 115 valid instances (FAIL); strict
+> 35.** Every drop adjudicated
+> (`datasets/dev/screening/org-00003/adjudication-2026-08-15.json`): the
+> dominant class (5 clusters) is a **retraction counterfactual under a
+> task that demands the positive value** ("state the required home for
+> notes" vs cf "any format the facilitator prefers") — the twin ceiling
+> model cannot comply, so the pair is structurally invalid; v2 planner
+> rule: never pair a retraction cf with a value-demanding task, prefer
+> replacement values. S6 caught four non-inverting twins; one drop was a
+> task/fact team-name mismatch; two were model failures on retraction
+> twins; one a rubric-v2 hedge; P-0041 exposed a mechanical false positive
+> (day-name detector on a no-freeze twin) → **R6 contested-attribute rule**
+> (probe-spec), applied to all orgs the same day; seeds 1–3 re-scored
+> mechanically (seed 1 126→125 valid instances, seeds 2–3 gates
+> unchanged). Current canon: **seed 1 46/54, 125; seed 2 46/54, 131; seed
+> 3 40/54, 115.**
+>
+> **Remaining: screen seeds 4–5** (same blinded pipeline). Per seed N:
 > `python scripts/screen_probes.py manifest datasets/dev/org-0000N
 > datasets/dev/org-0000N-twin <work>/sN`, then `run`, blinded
 > `judge-export` → Claude judge → `judge-import`, `report`.

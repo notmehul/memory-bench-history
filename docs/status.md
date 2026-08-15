@@ -12,8 +12,8 @@ keep entries dated.
 - **Phase 3 under probe-spec v0.4.3** (2026-08-15) with **judge rubric v2**
   (`docs/specs/judge-rubric.md`, commitment clause; verbatim, versioned).
   Canon, pre → post (incl. the S6 discrimination gate): **seed 1 = 46/54
-  → 46/54 PASS, 128 → 126 valid instances; seed 2 = 43/54 FAIL → 46/54
-  PASS, 123 → 131 valid instances**; both instance gates still explicit
+  → 46/54 PASS, 128 → 125 valid instances (post-R6); seed 2 = 43/54 FAIL → 46/54
+  PASS, 123 → 131 valid instances; seed 3 = 40/54 FAIL carried, 115**; both instance gates still explicit
   FAILs (<135). All five
   orgs carry v0.4.3 assertions; task text byte-identical; all cached
   worker outputs reused; every semantic verdict in seeds 1–2 is a
@@ -52,9 +52,9 @@ keep entries dated.
 | # | Item | Size | Notes |
 |---|---|---|---|
 | A1 | Seed-2 screening | DONE 2026-08-06: 43/54 post-repair (first pass 40/54; 3 clusters recovered via precedented co-valid repairs), 123 valid instances — **cluster gate FAIL carried**; 14 drops adjudicated; dominant new defect class = unnatural-negation criteria (5 clusters) | 356/486 cached + prompt-verified in `datasets/dev/screening/org-00002/results.partial.jsonl`; manifest → seed work dir → `run` → blinded `judge-export` → sonnet judges → `judge-import` → `report` (commands in dataset-plan G3 note) |
-| A2 | Seed-3 screening | 486 runs | UNBLOCKED 2026-08-15 (v0.4.3 + rubric v2 in place); run with the pinned codex binary |
-| A3 | Seed-4 screening | 486 runs | " |
-| A4 | Seed-5 screening | 486 runs | " |
+| A2 | Seed-3 screening | DONE 2026-08-15: 40/54 cluster gate FAIL carried, 115 valid instances; all drops adjudicated (retraction-cf-under-value-demanding-task class dominant); R6 applied |
+| A3 | Seed-4 screening | 486 runs | RUNNING 2026-08-15 (detached, pinned codex) |
+| A4 | Seed-5 screening | 486 runs | queued after seed 4 in the same detached script |
 | A5 | G3 final verdict across 5 seeds | — | cluster gate has ZERO margin; if any seed fails, remedy is content-side (v2 planner rules: cf must invert the task-elicited aspect; over-generate 4 instances/cluster) — never gate softening. Per-archetype n≥30 counts INSTANCES (pinned 2026-07-25) |
 | A6 | Regenerate calibration packet to 150 pairs | DONE 2026-08-15 | `datasets/dev/calibration/` (150 pairs from seeds 1-2 under rubric v2; `rater-packet.json` + `rating-template.json` go to R and M; `packet-key.json` never leaves the repo). Regenerate only if seeds 3-5 change the pool policy |
 | A7 | Dev smoke run, seed 1 (non-headline) | ~500 runs | long-context + grep + silo adapters through the runner; first real curves; labeled dev, never headline |
