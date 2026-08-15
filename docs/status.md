@@ -1,7 +1,8 @@
 # Status & Work Queue
 
-Last updated: 2026-08-15 (v0.4.3 semantic layer landed; seeds 1–2 re-scored
-under judge rubric v2). Update this file whenever a queue item completes;
+Last updated: 2026-08-15 evening (v0.4.3 + R6; seed 3 screened; seed 4
+partial; codex quota blocked until 2026-08-22 15:24 IST — decision: wait;
+pilot machinery built). Update this file whenever a queue item completes;
 keep entries dated.
 
 ## Where the project stands
