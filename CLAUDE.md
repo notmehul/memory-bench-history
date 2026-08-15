@@ -18,11 +18,14 @@ pointed and short — one file, one ask; never sprawling report sets.
 
 1. `docs/status.md` — current state and the work queue with blockers.
 2. `docs/vision.md` — capability ladder, heterogeneity thesis, claims discipline.
-3. `docs/dataset-plan.md` — phases, gates G0–G5, standing decisions (all
-   protocol pins live here, dated).
+3. `docs/dataset-plan.md` — short: phases, gates G0–G5, standing decisions,
+   and the v1 FREEZE section at the bottom. The dated history (gate results,
+   protocol amendments, harness study, screening notes) lives verbatim in
+   `docs/decision-log.md` — read it only when a decision's provenance matters.
 4. `docs/standards-audit.md` — field-failure audit; the pre-release tracker.
    Nothing ships while a BLOCKING row is open.
-5. `docs/architecture.md`, `docs/validation-report.md`, `docs/specs/` as needed.
+5. `docs/architecture.md`, `docs/validation-report.md`, `docs/specs/` as needed;
+   `docs/deferred.md` (optional) — what v1 cut and where its material lives.
 
 ## Hard rules (violations invalidate published numbers)
 

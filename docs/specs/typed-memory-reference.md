@@ -1,6 +1,7 @@
 # Baseline #6 — Typed-Memory Reference Implementation (spec, PROPOSED)
 
-Status: **DRAFT 2026-08-15 — awaiting PI sign-off; frozen (spec + prompts)
+Status: **DEFERRED (v1 freeze 2026-08-15)** — not run in v1; see
+`docs/deferred.md`. Prior status: **DRAFT 2026-08-15 — awaiting PI sign-off; frozen (spec + prompts)
 before any pilot scoring.** Independence rule: this is a *generic*
 architecture-class baseline specified from the benchmark's own contracts,
 affiliated with no product, open-sourced with the benchmark. It tests the

@@ -9,6 +9,12 @@ No system in this document has been run, scored, or ranked. The benchmark
 authors' own memory harness (Marshmallow) is not a candidate and does not
 appear below.
 
+> **Selection applied 2026-08-15 (v1 freeze):** top-4 dedicated-repo GitHub
+> stars → Mem0 63.3k, Cognee 30.0k, Graphiti/Zep 29.9k, Supermemory 28.9k;
+> next Letta 24.3k, Honcho 6.7k, Memobase 2.8k, LangMem 1.6k; LlamaIndex
+> Memory not ranked (framework stars); Zep Cloud represented by Graphiti.
+> Others: not run in v1 (budget).
+
 ## 1. Purpose
 
 memory-bench evaluates memory systems for organizations of agents through a
