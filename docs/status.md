@@ -59,7 +59,7 @@ keep entries dated.
 | A4 | Seed-5 screening | 486 runs | BLOCKED on codex quota (reset 2026-08-22 15:24 IST); manifest already written |
 | A5 | G3 final verdict across 5 seeds | — | cluster gate has ZERO margin; if any seed fails, remedy is content-side (v2 planner rules: cf must invert the task-elicited aspect; over-generate 4 instances/cluster) — never gate softening. Per-archetype n≥30 counts INSTANCES (pinned 2026-07-25) |
 | A6 | Regenerate calibration packet to 150 pairs | DONE 2026-08-15 | `datasets/dev/calibration/` (150 pairs from seeds 1-2 under rubric v2; `rater-packet.json` + `rating-template.json` go to R and M; `packet-key.json` never leaves the repo). Regenerate only if seeds 3-5 change the pool policy |
-| A7 | Dev smoke run, seed 1 (non-headline) | ~500 runs | long-context + grep + silo adapters through the runner; first real curves; labeled dev, never headline |
+| A7 | Dev smoke run, seed 1 (non-headline) | ~500 runs | TOOLING READY 2026-08-15: `python -m membench.pilot <nomemory|fulltranscript|grep|typed> datasets/dev/org-00001[-twin] out.jsonl [--silo]` → `scripts/score_sut.py manifest/report` (+ blinded judge round trip). Runs need codex quota (blocked until 2026-08-22) |
 | A8 | Pilot (headline) | ~9,000 runs + K=3 resamples | ONLY after G4 passes (κ ≥ 0.75 + decoy audit) and the power analysis; budget decision (packs vs reduced prespecified design) is Mehul's |
 
 ## Queue B — human-blocked (owner: Mehul; full instructions: `docs/human-review.md`)
@@ -82,9 +82,10 @@ keep entries dated.
 | C4 | Codex worker adapter for the runner | DONE 2026-08-06 (`src/membench/workers.py`, commit f733793) |
 | C5 | Grep-agent adapter (baseline #8) | DONE 2026-08-15 (`GrepAgentAdapter`: witnessed transcript materialized as one file per event in the worker's workdir; codex's native file tools; nothing in-context; shared/silo like FullTranscript) |
 | C6 | Naive-RAG + summarize-RAG adapters | needs embedding-model pin decision (standards-audit B.5) — flag to Mehul before adding any dependency |
-| C7 | Typed-memory reference implementation | SPEC DRAFTED 2026-08-15 (`docs/specs/typed-memory-reference.md`, PROPOSED — needs Mehul's sign-off on D1-D3); implementation + frozen prompt after sign-off; ablations planned |
+| C7 | Typed-memory reference implementation | IMPLEMENTED 2026-08-15 (`membench.typed_memory`, prompt `prompts/typed-memory-extract.md` hashable; ablation flags; scripted-worker tests). Spec + prompt are PROPOSED until Mehul signs off D1-D3; frozen before any pilot scoring; live smoke after the codex reset |
 | C8 | Vendor survey + candidate table | DRAFT 2026-08-15 (`docs/vendor-survey.md`: 10 INCLUDE / 2 UNCLEAR / 6 EXCLUDE with reasons + URLs + right-of-reply channels; produced pre-pilot, nothing run). Some cells marked not independently verified — manual doc read before adapter work; vendor-recommended configs still to request |
 | C9 | Cross-principal coherence statistic | exploratory, computed from pilot outputs when they exist |
+| C10 | SUT scoring pipeline | DONE 2026-08-15 (`scripts/score_sut.py`: pair credit vs screening anchors, blinded judging reuse, radar by rung/metric, cluster-robust SEs; tests) |
 
 ## Standing cautions
 

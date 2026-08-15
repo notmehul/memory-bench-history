@@ -188,3 +188,11 @@ datasets/            frozen released orgs (public) + holdout seeds (private)
 
 The SUT adapter interface is deliberately minimal: `ingest(principal, event)` and
 `run_task(principal, task) -> output`. Nothing else is observed.
+
+> *Implementation map (2026-08-15):* `membench.runner` (feed + injection),
+> `membench.adapters` (no-memory, full-transcript ± silo, grep-agent #8),
+> `membench.typed_memory` (reference #6, spec `docs/specs/typed-memory-reference.md`),
+> `membench.workers` (pinned codex worker), `membench.pilot` (CLI: adapter ×
+> org → `<probe>:sut` rows), `scripts/score_sut.py` (blinded judging via
+> `screen_probes`, pair credit against the screening anchors, radar by
+> rung/metric with cluster-robust SEs). RAG adapters await the embedding pin.

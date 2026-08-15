@@ -195,3 +195,22 @@ def test_grep_agent_adapter_materializes_history_files(tmp_path):
     assert "dm-secret-plan" not in bodies                  # unwitnessed stays out
     assert adapter.counters["last_context_chars"] == 0
     assert adapter.counters["last_files"] == len(files)
+
+
+def test_pilot_cli_builds_every_adapter_and_writes_meta(tmp_path, monkeypatch):
+    from membench import pilot
+    from membench.adapters import GrepAgentAdapter
+    from membench.typed_memory import TypedMemoryAdapter
+    for name in pilot.ADAPTERS:
+        a = pilot.build_adapter(name, MockWorker(), silo=True)
+        assert hasattr(a, "ingest") and hasattr(a, "run_task")
+    assert isinstance(pilot.build_adapter("grep", MockWorker()), GrepAgentAdapter)
+    assert isinstance(pilot.build_adapter("typed", MockWorker()), TypedMemoryAdapter)
+    org_dir = _write_org(tmp_path)
+    monkeypatch.setattr(pilot, "CodexWorker", MockWorker)   # no live worker in tests
+    out = tmp_path / "sut.jsonl"
+    assert pilot.main(["nomemory", str(org_dir), str(out)]) == 0
+    rows = [json.loads(x) for x in out.read_text().splitlines()]
+    assert rows[0]["run_id"] == "P-0001-01:sut"
+    meta = json.loads((tmp_path / "sut.jsonl.meta.json").read_text())
+    assert meta["worker"]["harness"] == "codex-cli 0.144.5" and meta["adapter"] == "nomemory"

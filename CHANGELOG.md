@@ -100,6 +100,15 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning: Se
   in code (`membench.codex_bin`) after Homebrew silently upgraded PATH.
   Generated semantic cross-side detectors were built, measured (0/19 true
   positives) and rejected; kept behind `--semantic` for reproduction.
+- Pilot machinery (2026-08-15): grep-agent baseline adapter (#8) with a
+  files seam on the worker; typed-memory reference implementation (#6,
+  proposed spec + hashable extraction prompt, ablation flags);
+  `membench.pilot` CLI; `scripts/score_sut.py` (pair credit against the
+  screening anchors, blinded judging, radar by rung/metric with
+  cluster-robust SEs); judge decoy false-accept audit tooling and result;
+  150-pair calibration packet; cross-seed G3 summary; pre-pilot vendor
+  survey; codex-cli pin enforced in code. Seed 3 screened (40/54 FAIL
+  carried) with R6; seed 4 partial (quota).
 
 ### Changed
 - Independence protocol (2026-07-25): the pilot evaluates no
