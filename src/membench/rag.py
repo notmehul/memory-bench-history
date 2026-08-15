@@ -23,10 +23,15 @@ from typing import Protocol
 from .adapters import FullTranscriptAdapter, WorkerModel, _render_event
 
 _TOKEN = re.compile(r"[a-z0-9][a-z0-9$%'-]*")
+_STOP = frozenset([
+    "a", "an", "and", "are", "as", "at", "be", "by", "for", "from", "has", "have", "in",
+    "is", "it", "its", "of", "on", "or", "that", "the", "their", "there", "this", "to",
+    "was", "were", "will", "with", "when", "what", "who", "how", "you", "your", "we",
+    "our", "task", "write", "draft"])
 
 
 def _toks(text: str) -> list[str]:
-    return _TOKEN.findall(text.lower())
+    return [t for t in _TOKEN.findall(text.lower()) if t not in _STOP]
 
 
 class Retriever(Protocol):
