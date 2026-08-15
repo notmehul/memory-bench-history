@@ -471,3 +471,58 @@ propagation disproportionately vs. recall-style metrics); frozen public release 
 | Long-context baseline wins everything at L1–L2 | acceptable and publishable (it's a real finding at that scale); L3 sizing exists precisely to map the crossover point |
 | Probe attrition > 30% | over-generate; attrition rate itself is reported (silent-cap rule) |
 | Generator LLM's own biases make facts guessable | counterfactual pairing structurally cancels this |
+
+---
+
+## v1 pilot FREEZE + reduced design (prespecified 2026-08-15, before any SUT run)
+
+Decided by Mehul with the agent after a scope review; supersedes anything above
+that conflicts. Rationale: one month of screening produced a usable dataset and
+zero evaluated systems; the deliverable is pilot numbers.
+
+**Frozen.** Dataset = seeds 1–3 exactly as in the repo at this commit (371
+valid instances: A1 50, A2 43, A4 106, A7 172), probe-spec v0.4.3, judge
+rubric v2. Seed 3's cluster-gate FAIL and all three instance-gate FAILs are
+reported as FAILs. Seeds 4–5 are **unscreened holdouts** — no further
+screening runs in v1. No further scoring-rule changes, criterion repairs,
+adjudications, or re-judging; a probe that looks wrong during the pilot is
+flagged in item analysis, never fixed. Worker (gpt-5.4, medium, codex-cli
+0.144.5) and judge (claude-sonnet-5, rubric v2) unchanged. Worker billing moves
+to an OpenAI API key behind the same pinned binary (disclosed).
+
+**Systems run (fixed worker).** no-memory (floor; cached from screening) ·
+full-transcript shared · full-transcript silo (H2) · grep-agent · naive-RAG
+(embedding pin: Gemini `gemini-embedding-001`) · **four market systems by
+rule**: from the vendor survey's INCLUDE list, the four dedicated
+memory-system repositories with the most GitHub stars on 2026-08-15 →
+**Mem0 (63.3k), Cognee (30.0k), Graphiti/Zep (29.9k), Supermemory (28.9k)**;
+next: Letta 24.3k, Honcho 6.7k, Memobase 2.8k, LangMem 1.6k. Rulings:
+LlamaIndex Memory not ranked (stars belong to the framework, not the memory
+module); Zep Cloud represented by Graphiti (its OSS core). Everything else in
+the candidate table: "not run in v1 (budget)". Market systems' internal LLM =
+Gemini where configurable, vendor default listed alongside; ceiling condition
+cached from screening.
+
+**Run budget.** 371 × 2 sides × 8 systems ≈ 5,900 SUT runs at K=1, plus one
+variance subset (seed 1 × full-transcript + one market system × K=3, ≈500) for
+the tie rule. Nothing else.
+
+**Cut from v1 (deferred, no work).** Typed-memory reference implementation
+(#6), summarize-RAG, K=3 elsewhere, G2 human read-through, industry matrix,
+L3, grid track, further vendor-survey verification, seeds 4–5.
+
+**Analysis.** As prespecified above (rung radar, cluster-robust SEs, paired
+per-item, tie rule, cost columns, H1–H3) with two disclosed downgrades:
+(1) rank-direction robustness threshold ≥2/3 seeds (was 4/5); (2) G4 =
+single author-rater agreement on the existing 150-pair packet (rater is
+Mehul, who has seen seeds 1–3 content — disclosed) + the 20-decoy audit;
+criteria below 0.7 are dropped, never rewritten.
+
+**Order.** Adapters + `run_pilot.py` + doc consolidation (no quota) → seed-1
+smoke, all systems → item analysis → seeds 2–3 → blind judge → rater packet
++ stats → draft. Vendors receive raw results + harness with a 7-day
+right-of-reply window before submission.
+
+**Violations (any of these breaks the freeze):** a new gate, rule, spec
+section, audit, or seed screening; a run outside the listed systems; any
+harness other than pinned codex on a protocol path; any criterion edit.

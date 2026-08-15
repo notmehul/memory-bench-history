@@ -5,6 +5,15 @@ agents. High stakes: this ships as a research paper and must survive hostile
 review. When in doubt, choose the option that is *measurable, dated, and
 disclosed* over the convenient one.
 
+## v1 freeze (2026-08-15) — read before anything else
+
+The deliverable is **pilot numbers** (`docs/dataset-plan.md`, "v1 pilot
+FREEZE"). No new gate, scoring rule, spec section, audit, spec doc, seed
+screening, criterion edit, or system outside the frozen list without Mehul's
+explicit ask in the current session. Prefer running the loop end-to-end over
+hardening it. Outputs for Mehul (rater packets, decisions, summaries) are
+pointed and short — one file, one ask; never sprawling report sets.
+
 ## Read first (in this order)
 
 1. `docs/status.md` — current state and the work queue with blockers.
