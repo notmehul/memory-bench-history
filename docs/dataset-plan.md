@@ -266,6 +266,13 @@ audit clean.
 > judged blind; the judge's false-accept rate is published and becomes part
 > of the pilot tie rule. Motivated by the LoCoMo judge accepting 63% of
 > intentionally wrong answers (Penfield audit).
+> *Result (2026-08-15, rubric v2, blinded):* 20 decoys × both sides'
+> positive criteria = 41 verdicts; false-accept 2/41 = 4.9% as measured
+> (PASS at the 5% line, no margin) — both on one decoy that legitimately
+> satisfies the two criteria (it varied only the timing value);
+> adjudicated 0/39. Both reported in
+> `datasets/dev/screening/judge-decoys/audit.json`; n is small (a smoke
+> check), the binding G4 number is judge–human κ.
 
 ## Phase 5 — Pilot evaluation + release *(week 6–8)*
 

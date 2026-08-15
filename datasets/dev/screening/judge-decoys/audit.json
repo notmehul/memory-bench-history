@@ -1,0 +1,265 @@
+{
+ "date": "2026-08-15",
+ "judge": "claude-sonnet-5-blinded-v2",
+ "n_decoys": 20,
+ "n_positive_criteria": 41,
+ "false_accepts": 2,
+ "false_accept_rate": 0.04878048780487805,
+ "threshold_second_judge_family": 0.05,
+ "verdict": "PASS",
+ "rows": [
+  {
+   "probe_id": "P-0002-01",
+   "assertion_id": "asrt-1",
+   "false_accept": false,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0002-01",
+   "assertion_id": "casrt-1",
+   "false_accept": false,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0003-01",
+   "assertion_id": "asrt-1",
+   "false_accept": false,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0003-01",
+   "assertion_id": "casrt-1",
+   "false_accept": false,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0007-01",
+   "assertion_id": "asrt-1",
+   "false_accept": false,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0007-01",
+   "assertion_id": "casrt-1",
+   "false_accept": false,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0008-01",
+   "assertion_id": "asrt-1",
+   "false_accept": false,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0008-01",
+   "assertion_id": "casrt-1",
+   "false_accept": false,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0016-01",
+   "assertion_id": "asrt-1",
+   "false_accept": false,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0016-01",
+   "assertion_id": "casrt-1",
+   "false_accept": false,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0019-01",
+   "assertion_id": "asrt-1",
+   "false_accept": false,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0019-01",
+   "assertion_id": "casrt-1",
+   "false_accept": false,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0020-01",
+   "assertion_id": "asrt-1",
+   "false_accept": false,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0020-01",
+   "assertion_id": "casrt-1",
+   "false_accept": false,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0025-01",
+   "assertion_id": "asrt-1",
+   "false_accept": false,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0025-01",
+   "assertion_id": "casrt-1",
+   "false_accept": false,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0029-01",
+   "assertion_id": "asrt-1",
+   "false_accept": true,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0029-01",
+   "assertion_id": "asrt-2",
+   "false_accept": true,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0029-01",
+   "assertion_id": "asrt-3",
+   "false_accept": false,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0029-01",
+   "assertion_id": "casrt-1",
+   "false_accept": false,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0029-01",
+   "assertion_id": "casrt-2",
+   "false_accept": false,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0032-01",
+   "assertion_id": "asrt-1",
+   "false_accept": false,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0032-01",
+   "assertion_id": "casrt-1",
+   "false_accept": false,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0034-01",
+   "assertion_id": "asrt-1",
+   "false_accept": false,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0034-01",
+   "assertion_id": "casrt-1",
+   "false_accept": false,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0036-01",
+   "assertion_id": "asrt-1",
+   "false_accept": false,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0036-01",
+   "assertion_id": "casrt-1",
+   "false_accept": false,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0040-01",
+   "assertion_id": "asrt-1",
+   "false_accept": false,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0042-01",
+   "assertion_id": "asrt-1",
+   "false_accept": false,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0042-01",
+   "assertion_id": "casrt-1",
+   "false_accept": false,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0045-01",
+   "assertion_id": "asrt-1",
+   "false_accept": false,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0045-01",
+   "assertion_id": "casrt-1",
+   "false_accept": false,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0046-01",
+   "assertion_id": "asrt-1",
+   "false_accept": false,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0048-01",
+   "assertion_id": "asrt-1",
+   "false_accept": false,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0048-01",
+   "assertion_id": "casrt-1",
+   "false_accept": false,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0049-01",
+   "assertion_id": "asrt-1",
+   "false_accept": false,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0049-01",
+   "assertion_id": "casrt-1",
+   "false_accept": false,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0050-01",
+   "assertion_id": "asrt-1",
+   "false_accept": false,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0050-01",
+   "assertion_id": "casrt-1",
+   "false_accept": false,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0054-01",
+   "assertion_id": "asrt-1",
+   "false_accept": false,
+   "judge": "claude-sonnet-5-blinded-v2"
+  },
+  {
+   "probe_id": "P-0054-01",
+   "assertion_id": "casrt-1",
+   "false_accept": false,
+   "judge": "claude-sonnet-5-blinded-v2"
+  }
+ ],
+ "adjudication_2026_08_15": {
+  "note": "Both false accepts are P-0029-01 asrt-1/asrt-2 ('names a responsible person', 'includes a completion deadline'). The decoy states 'a named lead and a deadline inside the coming week' \u2014 it varies only the TIMING (week vs 48h), which asrt-3 correctly rejects; asrt-1/2 are satisfied by the decoy by construction, so these are correct verdicts on an under-specified decoy, not judge false accepts. Decoy authoring lesson: a decoy must contradict EVERY positive criterion of its probe, not only the headline value.",
+  "as_measured": "2/41 = 0.049 (PASS at the 5% threshold, no margin)",
+  "adjudicated": "0/39 = 0.000 excluding the two criteria the decoy legitimately satisfies",
+  "both_reported": true,
+  "caveat": "n=41 criteria from 20 decoys; the 95% CI on the as-measured rate spans roughly 0.6%-16%; the audit is a smoke check, not a precise estimate \u2014 G4's binding number is judge-human kappa on the 150-pair packet"
+ }
+}

@@ -1,0 +1,163 @@
+[
+ {
+  "id": "d025e91090a89",
+  "criteria": {
+   "c1": "The note states Mei's own preferred on-call compensation as receiving money, and it frames that choice as her personal preference rather than a company or platform rule.",
+   "c2": "The note states Mei's own preferred on-call compensation as additional leave rather than money, and it frames that choice as her personal preference rather than a company or platform rule."
+  },
+  "output": "Private note \u2014 what I want from future on-call rotations\n\nWhat actually motivates me: a guaranteed conference budget top-up for every completed rotation, plus a public shout-out in the all-hands notes. The default reward does nothing for me \u2014 I'd rather bank toward learning. Raise this at the review cycle when rewards come up."
+ },
+ {
+  "id": "d08445d882bac",
+  "criteria": {
+   "c1": "The update states that org standups run for 10 minutes and that contributions are limited to blockers.",
+   "c2": "The update states that org standups run for 20 minutes and include full attendee status updates."
+  },
+  "output": "Handbook update \u2014 standups\n\nOrg standups now go fifteen minutes, focused on wins and risks: each person shares a headline win and their biggest risk for the day, then we clear the room. Longer discussions move to follow-up threads. Facilitators keep the clock honest."
+ },
+ {
+  "id": "d0ba94cfa08d3",
+  "criteria": {
+   "c1": "The HR note states that on-call weeks earn a two-hundred-dollar stipend paid each week.",
+   "c2": "The HR note describes the company-wide reward as compensatory time rather than a cash payment."
+  },
+  "output": "HR note \u2014 on-call rewards (handbook)\n\nStandard recognition for a completed on-call rotation: employees receive a seventy-five-dollar wellness credit applied with the following payroll run. Credits are automatic once the rotation calendar closes out; no form needed. Questions go to people-ops in the benefits channel."
+ },
+ {
+  "id": "d14025edec50f",
+  "criteria": {
+   "c1": "The changelog note recounts the earlier workflow as starting in the Navan portal.",
+   "c2": "The changelog note recounts the earlier workflow as starting in the Concur portal."
+  },
+  "output": "Handbook changelog \u2014 travel policy page\n\nFor the record: before the current portal rollout, employees reserved trips through TravelPerk, with itineraries approved by direct managers inside the app. That flow is retired; see the travel page for the live process. This note exists so audits of older bookings have the right context."
+ },
+ {
+  "id": "d2557f876b10d",
+  "criteria": {
+   "c1": "The checklist requires Growth travel bookings at least fourteen days ahead of the trip.",
+   "c2": "The checklist allows Growth travel bookings with as little as two days' notice."
+  },
+  "output": "Platform checklist \u2014 Growth travel requests (offsite)\n\n- Confirm traveler details and trip dates first.\n- Reserve flights no later than thirty days before departure; the same window applies to hotels.\n- Route the itinerary to the Growth ops channel for visibility.\n- File receipts within the expense window after the trip.\n- Flag exceptions to the offsite coordinator early."
+ },
+ {
+  "id": "d2e560771b2d8",
+  "criteria": {
+   "c1": "The message directs employees to book company travel in Navan.",
+   "c2": "The message directs employees to book company travel in Concur."
+  },
+  "output": "Reminder \u2014 reserving work travel\n\nAll work trips go through the Egencia portal \u2014 flights, hotels, and rail in a single itinerary. Personal cards and outside sites are not reimbursable except for emergencies documented with your manager. Log in with SSO from the tools page and set your traveler profile before your first trip."
+ },
+ {
+  "id": "d2e98034940bb",
+  "criteria": {
+   "c1": "The note makes the trigger depend on whether work touches a shared library, not on counting services.",
+   "c2": "The note treats a design doc as optional unless the change spans ten or more services."
+  },
+  "output": "Engineering note \u2014 clearing up the architecture writeup gate\n\nThe rule as it stands: a design doc is needed whenever work crosses a team boundary \u2014 anything landing in another squad's codebase gets a writeup first. Single-squad work proceeds with a lightweight summary in the tracking issue. If in doubt, ask in the architecture channel before starting."
+ },
+ {
+  "id": "d36b55f127789",
+  "criteria": {
+   "c1": "The changelog entry says the earlier rule limited carryover to two unfinished tickets per squad.",
+   "c2": "The changelog entry says the earlier rule placed no cap on unfinished tickets carried by a squad."
+  },
+  "output": "Handbook changelog \u2014 sprint spillover section\n\nEarlier guidance: squads capped carryover at eight unfinished tickets per sprint. The section has since been rewritten; consult the current page for today's rule. This entry records the earlier setup for historical reference only."
+ },
+ {
+  "id": "d4ebf51de8bd3",
+  "criteria": {
+   "c1": "The checklist requires each action item to name a responsible person.",
+   "c2": "The checklist requires each action item to include a completion deadline.",
+   "c3": "The checklist states that the owner and deadline fields must be filled in within forty-eight hours of the retrospective.",
+   "c4": "The checklist allows action items to remain unassigned.",
+   "c5": "The checklist allows action items to stay unresolved until the following retrospective."
+  },
+  "output": "Growth retro follow-up checklist\n\n- Convert every action item into a tracked task before leaving the room.\n- Each task needs a named lead and a deadline inside the coming week.\n- Post the task list to the growth channel the same afternoon.\n- Check progress at the following standup and close out anything finished."
+ },
+ {
+  "id": "d6d05169bf8c2",
+  "criteria": {
+   "c1": "The note says PRs under 200 lines should be handled before lunch.",
+   "c2": "The note says PRs over 200 lines should be handled after lunch."
+  },
+  "output": "PR triage note \u2014 tomorrow\n\nPersonal order of attack: start with the biggest diffs late in the afternoon when the calendar is quiet, and clear tiny ones in gaps between meetings. Anything heading to production waits for three reviewer thumbs-ups before merging. For auth-touching work, walk through the privacy sweep sheet first. Re-request stale reviewers by lunchtime."
+ },
+ {
+  "id": "d77b6ffac25ed",
+  "criteria": {
+   "c1": "The note states that on-call weeks for this team earn a three-hundred-dollar stipend paid weekly.",
+   "c2": "The note states that on-call weeks for this team earn a one-hundred-dollar stipend paid weekly."
+  },
+  "output": "Platform on-call guide \u2014 rotation reward\n\nFor this group, finishing a rotation earns an extra floating holiday, logged automatically in the leave tracker the Monday after the rotation wraps. Holidays are stackable up to a quarterly cap; check the tracker for your balance. Escalation load does not change the reward."
+ },
+ {
+  "id": "d8db381545ebe",
+  "criteria": {
+   "c1": "The checklist sends platform invoices above $5,000 to finance for approval before payment.",
+   "c2": "The checklist says platform invoices under $10,000 can be paid without finance review."
+  },
+  "output": "Growth checklist \u2014 platform vendor bills\n\n- Match the bill to a purchase order before anything else.\n- Any invoice above $2,500 goes to the finance desk for sign-off before payment is released.\n- Below that line, the budget owner settles it directly.\n- Log every processed bill in the vendor tracker the same day."
+ },
+ {
+  "id": "dc7384fd159bc",
+  "criteria": {
+   "c1": "The note presents this as a recurring leadership forum on a weekly rhythm for the whole business, not as a team-level or personal practice.",
+   "c2": "The note says these reviews are paused until the next quarterly planning cycle rather than scheduled as a recurring leadership forum."
+  },
+  "output": "All-Hands Note: How Strategic Priorities Reach Leadership\n\nOur direction-setting rhythm is simple: team leads consolidate their top priorities into a shared brief, and leadership walks through that brief together twice each quarter in a dedicated session. Between sessions, urgent shifts go straight to your lead, who escalates as needed. Everyone is welcome to read the brief after each session \u2014 it lives in the shared drive."
+ },
+ {
+  "id": "dd0fc09d4c82c",
+  "criteria": {
+   "c1": "The event-page copy states each presenter gets five minutes to speak.",
+   "c2": "The event-page copy states each presenter gets fifteen minutes to speak."
+  },
+  "output": "Growth Demo Session \u2014 Event Page\n\nJoin us for the next growth demo session! Each presenter has a strict ten-minute speaking slot, so prepare a tight walkthrough. Bring a working build, arrive early to test screen sharing, and queue questions for the end. The sign-up sheet is pinned in the demos channel."
+ },
+ {
+  "id": "ddc53e1838bdf",
+  "criteria": {
+   "c1": "The checklist tells the note-taker to add related ticket references before the meeting finishes."
+  },
+  "output": "Meeting-notes checklist (pin for the weekly sync)\n\n- Note attendees and each outcome with the person carrying it forward.\n- Attach the agenda doc so context travels with the notes.\n- Post the writeup to the group channel inside an hour of wrap-up.\n- Close by listing decisions still awaiting a call, so nothing silently drifts."
+ },
+ {
+  "id": "ddd588694a1e5",
+  "criteria": {
+   "c1": "The note describes bug triage rotating every two weeks with a backup assignee in place.",
+   "c2": "The note presents one standing point person for bug triage on a month-by-month cycle and does not include a fallback contact."
+  },
+  "output": "Company note \u2014 bug triage coverage\n\nTriage duty rotates every Friday: the incoming engineer picks up the queue at the start of the day, and a designated shadow stays available for overflow. Support and product should tag the current triager in the triage channel rather than pinging individuals. The rotation calendar lives in the engineering wiki."
+ },
+ {
+  "id": "de55d3153aa6c",
+  "criteria": {
+   "c1": "The checklist states that carryover is limited to five story points per engineer each sprint."
+  },
+  "output": "Platform sprint checklist \u2014 boundary estimation\n\n- Sweep the board on the final day and mark everything unfinished.\n- Each engineer carries at most a dozen estimation units across into the new sprint; anything beyond that returns to the backlog.\n- Re-estimate carried work in the first refinement session.\n- Record the carryover totals in the sprint doc before kickoff."
+ },
+ {
+  "id": "de8f8cacf0dc4",
+  "criteria": {
+   "c1": "The entry states that carryover is limited to four unfinished tickets per squad.",
+   "c2": "The entry states that carryover is limited to one unfinished ticket per squad."
+  },
+  "output": "FAQ \u2014 sprint spillover\n\nHow much unfinished work can roll into the coming sprint? Each squad carries at most six unfinished items across the boundary. Anything beyond that gets re-triaged into the backlog during refinement. Squad leads confirm the carryover list at the close of each sprint so the count stays visible."
+ },
+ {
+  "id": "df3d5dc5a6e8d",
+  "criteria": {
+   "c1": "The updated policy snippet states the design-doc threshold is five or more services.",
+   "c2": "The updated policy snippet states the design-doc threshold is seven or more services."
+  },
+  "output": "Policy update \u2014 architecture writeups\n\nA design doc is now mandatory for any change that touches three or more services. Author the doc before implementation starts, circulate it in the architecture channel, and collect signoff from the affected leads. Below that threshold, a summary comment on the tracking issue is enough."
+ },
+ {
+  "id": "df59df47221c4",
+  "criteria": {
+   "c1": "The changelog note recounts the earlier bug triage setup as happening on Monday with a published owner.",
+   "c2": "The changelog note recounts the earlier bug triage setup as not taking place on Monday and as having no published owner for those Monday instances."
+  },
+  "output": "Engineering handbook changelog \u2014 bug triage\n\nRecording the earlier setup: triage previously happened midweek, every Wednesday, coordinated by whoever held the support pager that day, with the queue summary posted to the bugs channel. The section above documents the current model; this entry preserves the older arrangement for reference."
+ }
+]

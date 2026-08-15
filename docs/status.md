@@ -77,7 +77,7 @@ keep entries dated.
 | # | Item | Notes |
 |---|---|---|
 | C1 | Scorer-exploit audit (BLOCKING) | v0.4 mechanical layer DONE 2026-08-07; v0.4.3 DONE 2026-08-15 (natural-artifact rewrites, tier rule, brittle patterns, empty-output rule; semantic detectors tried and REJECTED). Audit rebuilt on the post canon (46 clusters × 4), rubric v2: zero pair-passes all types, enumerate single-side 0; FAIL as literally prespecified (3 waffle absence-only cf sides) / PASS re-scoped (disclosed). BLOCKING row considered closed on the re-scoped reading; the literal line stays in the report |
-| C2 | Judge decoy set construction (BLOCKING) | DONE 2026-08-06: 20 validated decoys in `datasets/dev/screening/judge-decoys/` (third values, zero discriminative tokens either side); never judged — reserved for Phase 4 false-accept audit |
+| C2 | Judge decoy set + false-accept audit (BLOCKING) | DONE 2026-08-15: 20 decoys judged blind under rubric v2 against both sides' positive criteria — false-accept 2/41 = 4.9% as measured (PASS at 5%, no margin); both are one under-specified decoy's criteria the decoy legitimately satisfies → adjudicated 0/39; both numbers in `judge-decoys/audit.json`. Second judge family not triggered. Binding G4 number remains judge–human κ (Task 3) |
 | C3 | Power-analysis script (BLOCKING) | DONE 2026-08-06 (`docs/power-analysis.md`): tie rule ~9.3 pp at rho=0.6/K=3; regenerate after seeds 2-5 + decoy audit |
 | C4 | Codex worker adapter for the runner | DONE 2026-08-06 (`src/membench/workers.py`, commit f733793) |
 | C5 | Grep-agent adapter (baseline #8) | DONE 2026-08-15 (`GrepAgentAdapter`: witnessed transcript materialized as one file per event in the worker's workdir; codex's native file tools; nothing in-context; shared/silo like FullTranscript) |
