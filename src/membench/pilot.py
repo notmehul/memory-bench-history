@@ -3,7 +3,7 @@ write runner-shaped results (`<probe>:sut` rows) for `scripts/score_sut.py`.
 
   python -m membench.pilot <adapter> <org_dir> <out.jsonl> [--silo]
 
-Adapters: nomemory | fulltranscript | grep | typed. `--silo` selects the
+Adapters: nomemory | fulltranscript | grep | typed | rag-lexical. `--silo` selects the
 per-principal isolated store where the adapter supports it (baseline #7).
 Every run records the adapter counters and the typed-memory prompt hash
 next to the results (`<out>.meta.json`) so cost columns and freezes are
@@ -17,6 +17,7 @@ import json
 from pathlib import Path
 
 from .adapters import FullTranscriptAdapter, GrepAgentAdapter, NoMemoryAdapter
+from .rag import NaiveRAGAdapter
 from .runner import Runner
 from .typed_memory import TypedMemoryAdapter, prompt_hash
 from .workers import CodexWorker
@@ -26,6 +27,8 @@ ADAPTERS = {
     "fulltranscript": lambda w, silo: FullTranscriptAdapter(w, shared=not silo),
     "grep": lambda w, silo: GrepAgentAdapter(w, shared=not silo),
     "typed": lambda w, silo: TypedMemoryAdapter(w, shared=not silo),
+    # lexical retriever until the embedding pin (standards-audit B.5) lands
+    "rag-lexical": lambda w, silo: NaiveRAGAdapter(w, shared=not silo),
 }
 
 

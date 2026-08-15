@@ -81,7 +81,7 @@ keep entries dated.
 | C3 | Power-analysis script (BLOCKING) | DONE 2026-08-06 (`docs/power-analysis.md`): tie rule ~9.3 pp at rho=0.6/K=3; regenerate after seeds 2-5 + decoy audit |
 | C4 | Codex worker adapter for the runner | DONE 2026-08-06 (`src/membench/workers.py`, commit f733793) |
 | C5 | Grep-agent adapter (baseline #8) | DONE 2026-08-15 (`GrepAgentAdapter`: witnessed transcript materialized as one file per event in the worker's workdir; codex's native file tools; nothing in-context; shared/silo like FullTranscript) |
-| C6 | Naive-RAG + summarize-RAG adapters | needs embedding-model pin decision (standards-audit B.5) — flag to Mehul before adding any dependency |
+| C6 | Naive-RAG + summarize-RAG adapters | naive RAG DONE 2026-08-15 with a stdlib BM25 retriever (`membench.rag`, pilot adapter `rag-lexical`) + `EmbeddingRetriever` seam; the EMBEDDING PIN (standards-audit B.5) is still Mehul's decision before any dependency is added; summarize-then-RAG (#4) not built |
 | C7 | Typed-memory reference implementation | IMPLEMENTED 2026-08-15 (`membench.typed_memory`, prompt `prompts/typed-memory-extract.md` hashable; ablation flags; scripted-worker tests). Spec + prompt are PROPOSED until Mehul signs off D1-D3; frozen before any pilot scoring; live smoke after the codex reset |
 | C8 | Vendor survey + candidate table | DRAFT 2026-08-15 (`docs/vendor-survey.md`: 10 INCLUDE / 2 UNCLEAR / 6 EXCLUDE with reasons + URLs + right-of-reply channels; produced pre-pilot, nothing run). Some cells marked not independently verified — manual doc read before adapter work; vendor-recommended configs still to request |
 | C9 | Cross-principal coherence statistic | exploratory, computed from pilot outputs when they exist |
