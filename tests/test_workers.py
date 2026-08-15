@@ -15,6 +15,12 @@ from membench.workers import (
 )
 
 
+@pytest.fixture(autouse=True)
+def _stub_pin(monkeypatch):
+    # The version pin is exercised in test_codex_bin.py; here we test transport.
+    monkeypatch.setattr("membench.workers.pinned_codex", lambda: "codex")
+
+
 class FakeRun:
     """Scriptable subprocess.run stand-in: per-call output.md contents
     (None = write nothing, "" = write empty, "TIMEOUT" sentinel = raise)."""

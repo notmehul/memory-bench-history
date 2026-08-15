@@ -22,7 +22,9 @@ disclosed* over the convenient one.
   path — measured evidence: identical weights behind cursor-agent agree only
   65% on twin-ceiling outcomes (`datasets/dev/screening/harness-study-2026-07-25/`).
   cursor-agent is allowed ONLY for QA tooling and non-protocol work (wrap in
-  `timeout`, retry ×2).
+  `timeout`, retry ×2). The PATH `codex` may be newer (Homebrew upgrades
+  silently); protocol paths enforce the pin via `membench.codex_bin` — run
+  them with `MEMBENCH_CODEX_BIN=~/.local/codex-0.144.5/node_modules/.bin/codex`.
 - **Blinded judging always**: semantic verdicts go through
   `screen_probes.py judge-export` (opaque ids) → fresh judge agents that read
   ONLY the batch file → `judge-import`. Judge model ≠ worker model, and never

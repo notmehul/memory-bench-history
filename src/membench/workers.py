@@ -18,6 +18,8 @@ import time
 from dataclasses import dataclass, field
 from pathlib import Path
 
+from .codex_bin import pinned_codex
+
 MODEL = "gpt-5.4"
 EFFORT = "medium"
 RUN_TIMEOUT = 360
@@ -44,13 +46,14 @@ class CodexWorker:
         full = f"{prompt}\n\n{TRANSPORT_INSTRUCTION}"
         started = time.monotonic()
         last_err = "no output.md produced"
+        codex = pinned_codex()
         try:
             for _ in range(2):
                 with tempfile.TemporaryDirectory(prefix="mbworker-") as tmp:
                     tmp_path = Path(tmp)
                     try:
                         subprocess.run(
-                            ["codex", "exec", "-C", str(tmp_path),
+                            [codex, "exec", "-C", str(tmp_path),
                              "-s", "workspace-write", "--skip-git-repo-check",
                              "-m", MODEL,
                              "-c", f"model_reasoning_effort={EFFORT}", "-"],

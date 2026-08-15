@@ -344,6 +344,14 @@ propagation disproportionately vs. recall-style metrics); frozen public release 
   > a seed fails G3, the remedy is content-side (v2 planner rules), not a
   > harness swap. The 65% figure is the first measured motivation for the
   > consumer-portability track (`docs/vision.md` §6).
+  > *Enforcement note (2026-08-15):* Homebrew silently moved the PATH
+  > `codex` to 0.147.0 on 2026-08-14. Protocol paths (`screen_probes.py
+  > run`, `CodexWorker`) now resolve the binary through
+  > `membench.codex_bin.pinned_codex()`, which refuses any version other
+  > than 0.144.5; the pinned CLI is installed via
+  > `npm install --prefix ~/.local/codex-0.144.5 @openai/codex@0.144.5` and
+  > selected with `MEMBENCH_CODEX_BIN`. No protocol run happened under
+  > 0.147.0.
   >
   > **Note (2026-07-25):** the small-n gate adaptation above was itself revised
   > by probe-spec v0.3 (instance-level validity, cluster survives with ≥2/3

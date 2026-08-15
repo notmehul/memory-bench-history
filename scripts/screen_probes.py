@@ -68,6 +68,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from membench.belief import belief_hist, belief_state  # noqa: E402
+from membench.codex_bin import pinned_codex  # noqa: E402
 from membench.ledger import load_event_index, load_ledger  # noqa: E402
 from membench.probes import (  # noqa: E402
     build_side_patterns,
@@ -225,7 +226,7 @@ def cmd_manifest(args) -> int:
 
 def _codex(prompt: str, model: str, effort: str, cwd: Path) -> None:
     subprocess.run(
-        ["codex", "exec", "-C", str(cwd), "-s", "workspace-write",
+        [pinned_codex(), "exec", "-C", str(cwd), "-s", "workspace-write",
          "--skip-git-repo-check",
          "-m", model, "-c", f"model_reasoning_effort={effort}", "-"],
         input=prompt, text=True, capture_output=True, timeout=RUN_TIMEOUT,
