@@ -3,8 +3,10 @@ write runner-shaped results (`<probe>:sut` rows) for `scripts/score_sut.py`.
 
   python -m membench.pilot <adapter> <org_dir> <out.jsonl> [--silo]
 
-Adapters: nomemory | fulltranscript | grep | typed | rag-lexical. `--silo` selects the
-per-principal isolated store where the adapter supports it (baseline #7).
+Adapters: nomemory | fulltranscript | grep | typed | rag | rag-lexical (`rag` is the
+pinned v1 baseline #3 — `EMBEDDING_MODEL` via `GeminiEmbedder`, needs `GEMINI_API_KEY`;
+`rag-lexical` is its BM25 ablation). `--silo` selects the per-principal isolated store
+where the adapter supports it (baseline #7).
 Every run records the adapter counters and the typed-memory prompt hash
 next to the results (`<out>.meta.json`) so cost columns and freezes are
 auditable. Dev smoke runs (A7) are never headline numbers.
@@ -17,7 +19,7 @@ import json
 from pathlib import Path
 
 from .adapters import FullTranscriptAdapter, GrepAgentAdapter, NoMemoryAdapter
-from .rag import NaiveRAGAdapter
+from .rag import EMBEDDING_MODEL, EmbeddingRetriever, GeminiEmbedder, NaiveRAGAdapter
 from .runner import Runner
 from .typed_memory import TypedMemoryAdapter, prompt_hash
 from .workers import CodexWorker
@@ -27,7 +29,10 @@ ADAPTERS = {
     "fulltranscript": lambda w, silo: FullTranscriptAdapter(w, shared=not silo),
     "grep": lambda w, silo: GrepAgentAdapter(w, shared=not silo),
     "typed": lambda w, silo: TypedMemoryAdapter(w, shared=not silo),
-    # lexical retriever until the embedding pin (standards-audit B.5) lands
+    # pinned embedding baseline (standards-audit B.5) + its lexical ablation
+    "rag": lambda w, silo: NaiveRAGAdapter(
+        w, retriever=EmbeddingRetriever(GeminiEmbedder().embed, model_name=EMBEDDING_MODEL),
+        shared=not silo),
     "rag-lexical": lambda w, silo: NaiveRAGAdapter(w, shared=not silo),
 }
 

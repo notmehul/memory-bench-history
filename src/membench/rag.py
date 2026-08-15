@@ -5,15 +5,19 @@ RAG-class baselines; one alternate as ablation — the pin is a PI decision
 and adds a dependency, so it is not chosen here).
 
 Ships with `LexicalRetriever` (BM25-style scoring, stdlib only) so the
-RAG-class code path is testable and runnable today; `EmbeddingRetriever`
-takes any `embed(texts) -> vectors` callable and is wired the moment the
-pin lands. Storage follows FullTranscriptAdapter (shared store with access
-lists, or per-principal silos).
+RAG-class code path is testable without a network, and `EmbeddingRetriever`,
+which takes any `embed(texts) -> vectors` callable — the pinned one is
+`GeminiEmbedder(EMBEDDING_MODEL).embed` — and embeds each chunk once
+(cached by chunk text, i.e. once per event even in shared mode). Storage
+follows FullTranscriptAdapter (shared store with access lists, or
+per-principal silos); the prompt is `retrieval_prompt`, the one template
+every retrieval-style adapter (this one, market systems) reuses.
 """
 
 from __future__ import annotations
 
 import math
+import os
 import re
 from collections import Counter
 from collections.abc import Callable
@@ -21,6 +25,10 @@ from dataclasses import dataclass, field
 from typing import Protocol
 
 from .adapters import FullTranscriptAdapter, WorkerModel, _render_event
+
+# v1 freeze pin (dataset-plan; standards-audit B.5): the ONE embedding model
+# behind every RAG-class baseline.
+EMBEDDING_MODEL = "gemini-embedding-001"
 
 _TOKEN = re.compile(r"[a-z0-9][a-z0-9$%'-]*")
 _STOP = frozenset([
@@ -73,30 +81,83 @@ class LexicalRetriever:
 
 
 @dataclass
+class GeminiEmbedder:
+    """The pinned embedder (`EMBEDDING_MODEL`) via the `google-genai` SDK
+    (optional extra `adapters`); key from `GEMINI_API_KEY`. The SDK is
+    imported lazily on first use so the module imports without it. Requests
+    are batched at the API's per-call limit."""
+
+    model: str = EMBEDDING_MODEL
+    batch_size: int = 100
+    counters: dict = field(default_factory=lambda: {"calls": 0, "texts": 0})
+    _client: object = None
+
+    def _get_client(self):
+        if self._client is None:
+            from google import genai  # optional dependency
+            self._client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
+        return self._client
+
+    def embed(self, texts: list[str]) -> list[list[float]]:
+        client = self._get_client()
+        out: list[list[float]] = []
+        for i in range(0, len(texts), self.batch_size):
+            batch = texts[i:i + self.batch_size]
+            resp = client.models.embed_content(model=self.model, contents=batch)
+            out.extend(list(e.values) for e in resp.embeddings)
+            self.counters["calls"] += 1
+            self.counters["texts"] += len(batch)
+        return out
+
+
+def retrieval_prompt(memories: list[str], task: str) -> str:
+    """The ONE prompt template every retrieval-style adapter uses: header,
+    the retrieved items in the order the adapter hands them over, then the
+    task. No items -> the bare task."""
+    if not memories:
+        return task
+    context = "\n\n".join(memories)
+    return ("Retrieved workspace history (top matches for this task):\n\n"
+            f"{context}\n\n{task}")
+
+
+def _cosine(a: list[float], b: list[float]) -> float:
+    na = math.sqrt(sum(x * x for x in a)) or 1.0
+    nb = math.sqrt(sum(x * x for x in b)) or 1.0
+    return sum(x * y for x, y in zip(a, b, strict=True)) / (na * nb)
+
+
+@dataclass
 class EmbeddingRetriever:
-    """Cosine ranking over `embed(texts)`; the callable is the pinned model."""
+    """Cosine ranking over `embed(texts)`; the callable is the pinned model.
+    Chunk vectors are cached by chunk text so each event is embedded once;
+    the query is embedded per call. `embed_calls` counts embed round-trips."""
 
     embed: Callable[[list[str]], list[list[float]]]
     model_name: str = "UNPINNED"
+    embed_calls: int = 0
+    _cache: dict = field(default_factory=dict)      # chunk text -> vector
+
+    def _vectors(self, docs: list[str]) -> list[list[float]]:
+        missing = list(dict.fromkeys(d for d in docs if d not in self._cache))
+        if missing:
+            self._cache.update(zip(missing, self.embed(missing), strict=True))
+            self.embed_calls += 1
+        return [self._cache[d] for d in docs]
 
     def rank(self, query: str, docs: list[str]) -> list[int]:
         if not docs:
             return []
-        vecs = self.embed([query] + docs)
-        q, ds = vecs[0], vecs[1:]
-
-        def cos(a, b):
-            na = math.sqrt(sum(x * x for x in a)) or 1.0
-            nb = math.sqrt(sum(x * x for x in b)) or 1.0
-            return sum(x * y for x, y in zip(a, b, strict=True)) / (na * nb)
-
-        return [i for _, i in sorted(((-cos(q, d), i) for i, d in enumerate(ds)))]
+        ds = self._vectors(docs)
+        q = self.embed([query])[0]
+        self.embed_calls += 1
+        return [i for _, i in sorted(((-_cosine(q, d), i) for i, d in enumerate(ds)))]
 
 
 @dataclass
 class NaiveRAGAdapter:
-    """Chunk = one witnessed event; top-k retrieved chunks are prepended to
-    the task, oldest first, as 'Retrieved workspace history'."""
+    """Chunk = one witnessed event; the top-k retrieved chunks are handed to
+    `retrieval_prompt` in chronological order (oldest first)."""
 
     worker: WorkerModel
     retriever: Retriever = field(default_factory=LexicalRetriever)
@@ -120,13 +181,12 @@ class NaiveRAGAdapter:
         docs = [_render_event(e) for e in events]
         order = self.retriever.rank(task, docs)[: self.k]
         picked = sorted(order)                       # chronological presentation
-        context = "\n\n".join(docs[i] for i in picked)
-        prompt = task
-        if context:
-            prompt = ("Retrieved workspace history (top matches, oldest first):\n\n"
-                      f"{context}\n\n{task}")
+        memories = [docs[i] for i in picked]
+        context = "\n\n".join(memories)
+        prompt = retrieval_prompt(memories, task)
         self.counters["calls"] += 1
         self.counters["retrieved"] += len(picked)
+        self.counters["embed_calls"] = getattr(self.retriever, "embed_calls", 0)
         self.counters["last_context_chars"] = len(context)
         self.counters["context_chars"] += len(context)
         return self.worker.complete(prompt)
