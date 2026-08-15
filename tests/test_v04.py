@@ -327,7 +327,8 @@ def test_r6_uncontested_attribute_classes_are_not_hunted():
     """R6: day-name/time, money and percent anchors only when the other
     side also carries that class (the attribute is contested)."""
     freeze = "Company policy freezes deploys from Thursday noon through Monday morning."
-    assert side_value_anchors(freeze, "Company policy allows deploys through the weekend.") == []
+    no_freeze = "Company policy allows deploys through the weekend."
+    assert side_value_anchors(freeze, no_freeze) == []
     assert side_value_anchors(freeze, "Company policy freezes deploys Friday 5pm to Tuesday.")
     assert side_value_anchors("Oncall engineers receive a $300 stipend per primary week.",
                               "Oncall engineers receive no stipend.") == []

@@ -42,10 +42,12 @@ keep entries dated.
 
 ## NEXT (in order)
 
-1. Seeds 3–5 screening (blinded pipeline, pinned codex, rubric v2;
-   ~1,460 codex runs). Their probes already carry v0.4.3.
-2. A5 G3 verdict across 5 seeds; A6 calibration packet to 150; A7 dev
-   smoke; then Queue C5–C9.
+1. Seed 4 remainder (159 runs) + seed 5 (486 runs) — codex quota-blocked
+   until 2026-08-22 15:24 IST unless credits are bought (Mehul's call).
+   Then judge (rubric v2, blinded), report, adjudicate drops.
+2. A5 G3 verdict across 5 seeds (`scripts/g3_summary.py`); A7 dev smoke
+   (no-memory / full-transcript / silo / grep adapters, seed 1); C7
+   implementation after spec sign-off; C6 embedding pin decision.
 
 ## Queue A — codex-quota-blocked (resets 2026-07-29; ~1.6 packs total)
 
@@ -53,8 +55,8 @@ keep entries dated.
 |---|---|---|---|
 | A1 | Seed-2 screening | DONE 2026-08-06: 43/54 post-repair (first pass 40/54; 3 clusters recovered via precedented co-valid repairs), 123 valid instances — **cluster gate FAIL carried**; 14 drops adjudicated; dominant new defect class = unnatural-negation criteria (5 clusters) | 356/486 cached + prompt-verified in `datasets/dev/screening/org-00002/results.partial.jsonl`; manifest → seed work dir → `run` → blinded `judge-export` → sonnet judges → `judge-import` → `report` (commands in dataset-plan G3 note) |
 | A2 | Seed-3 screening | DONE 2026-08-15: 40/54 cluster gate FAIL carried, 115 valid instances; all drops adjudicated (retraction-cf-under-value-demanding-task class dominant); R6 applied |
-| A3 | Seed-4 screening | 486 runs | RUNNING 2026-08-15 (detached, pinned codex) |
-| A4 | Seed-5 screening | 486 runs | queued after seed 4 in the same detached script |
+| A3 | Seed-4 screening | 159 runs left | PARTIAL 2026-08-15: 327/486 outputs cached (codex usage limit hit mid-seed; resets 2026-08-22 15:24 IST or buy credits); the 327 done rows judged blind under rubric v2 and imported — only the remainder needs runs + judging. Resume: `MEMBENCH_CODEX_BIN=... screen_probes.py run datasets/dev/screening/org-00004`, then `judge-export --incremental` |
+| A4 | Seed-5 screening | 486 runs | BLOCKED on codex quota (reset 2026-08-22 15:24 IST); manifest already written |
 | A5 | G3 final verdict across 5 seeds | — | cluster gate has ZERO margin; if any seed fails, remedy is content-side (v2 planner rules: cf must invert the task-elicited aspect; over-generate 4 instances/cluster) — never gate softening. Per-archetype n≥30 counts INSTANCES (pinned 2026-07-25) |
 | A6 | Regenerate calibration packet to 150 pairs | DONE 2026-08-15 | `datasets/dev/calibration/` (150 pairs from seeds 1-2 under rubric v2; `rater-packet.json` + `rating-template.json` go to R and M; `packet-key.json` never leaves the repo). Regenerate only if seeds 3-5 change the pool policy |
 | A7 | Dev smoke run, seed 1 (non-headline) | ~500 runs | long-context + grep + silo adapters through the runner; first real curves; labeled dev, never headline |
@@ -86,7 +88,7 @@ keep entries dated.
 
 ## Standing cautions
 
-- Codex quota: one pack ≈ ~1,000 gpt-5.4-medium runs. Weekly reset cadence.
+- Codex quota: one pack ≈ ~1,000 gpt-5.4-medium runs. Weekly reset cadence. HIT 2026-08-15 18:30 IST with 645 screening runs left (seed 4 remainder 159 + seed 5 486 ≈ 0.65 pack) — next reset 2026-08-22 15:24 IST.
 - cursor-agent: QA/non-protocol only; never a protocol path (65% twin
   agreement — `docs/standards-audit.md` §A, dataset-plan standing decisions).
 - The three BLOCKING rows (C1–C3) gate any headline number, including A8.
