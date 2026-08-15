@@ -122,7 +122,7 @@ against written criteria. The benchmark's credibility rests on proving the
 AI judge agrees with careful humans (target: Cohen's κ ≥ 0.75). Your
 labels are the gold standard the judge is measured against.
 
-**You receive:** `rater-packet.json` — ~150 items. Each item has only two
+**You receive:** `rater-packet.json` — 150 items (M sends it from `datasets/dev/calibration/`; the packet is ready as of 2026-08-15). Each item has only two
 things: a **criterion** (a single yes/no statement) and an **output** (a
 work document some model wrote — a checklist, a note, an announcement).
 You also receive `rating-template.json`, the same item ids with `null`

@@ -56,7 +56,7 @@ keep entries dated.
 | A3 | Seed-4 screening | 486 runs | " |
 | A4 | Seed-5 screening | 486 runs | " |
 | A5 | G3 final verdict across 5 seeds | — | cluster gate has ZERO margin; if any seed fails, remedy is content-side (v2 planner rules: cf must invert the task-elicited aspect; over-generate 4 instances/cluster) — never gate softening. Per-archetype n≥30 counts INSTANCES (pinned 2026-07-25) |
-| A6 | Regenerate calibration packet to 150 pairs | — | pool `datasets/dev/screening/org-0000{1,2,...}` via `scripts/calibration.py sample` once ≥2 seeds screened |
+| A6 | Regenerate calibration packet to 150 pairs | DONE 2026-08-15 | `datasets/dev/calibration/` (150 pairs from seeds 1-2 under rubric v2; `rater-packet.json` + `rating-template.json` go to R and M; `packet-key.json` never leaves the repo). Regenerate only if seeds 3-5 change the pool policy |
 | A7 | Dev smoke run, seed 1 (non-headline) | ~500 runs | long-context + grep + silo adapters through the runner; first real curves; labeled dev, never headline |
 | A8 | Pilot (headline) | ~9,000 runs + K=3 resamples | ONLY after G4 passes (κ ≥ 0.75 + decoy audit) and the power analysis; budget decision (packs vs reduced prespecified design) is Mehul's |
 
