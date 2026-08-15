@@ -1,5 +1,6 @@
 from .adapters import (
     FullTranscriptAdapter,
+    GrepAgentAdapter,
     MockWorker,
     NoMemoryAdapter,
     SUTAdapter,
@@ -26,6 +27,7 @@ from .workers import CodexWorker, WorkerError
 __all__ = [
     "CodexWorker",
     "FullTranscriptAdapter",
+    "GrepAgentAdapter",
     "MockWorker",
     "NoMemoryAdapter",
     "Runner",

@@ -75,3 +75,20 @@ def test_timeout_raises_clear_error(monkeypatch):
         worker.complete("p")
     assert len(fake.calls) == 2
     assert worker.counters["calls"] == 1
+
+
+def test_files_are_materialized_in_workdir_and_cannot_escape(monkeypatch):
+    seen = {}
+
+    class Recorder(FakeRun):
+        def __call__(self, argv, **kwargs):
+            cwd = Path(argv[argv.index("-C") + 1])
+            seen["hist"] = (cwd / "history" / "00001_e.md").read_text()
+            return super().__call__(argv, **kwargs)
+
+    fake = Recorder(["ok"])
+    monkeypatch.setattr("membench.workers.subprocess.run", fake)
+    assert CodexWorker().complete("p", files={"history/00001_e.md": "event text"}) == "ok"
+    assert seen["hist"] == "event text"
+    with pytest.raises(WorkerError, match="escapes workdir"):
+        CodexWorker().complete("p", files={"../evil.md": "x"})

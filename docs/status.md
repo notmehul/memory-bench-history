@@ -78,7 +78,7 @@ keep entries dated.
 | C2 | Judge decoy set construction (BLOCKING) | DONE 2026-08-06: 20 validated decoys in `datasets/dev/screening/judge-decoys/` (third values, zero discriminative tokens either side); never judged — reserved for Phase 4 false-accept audit |
 | C3 | Power-analysis script (BLOCKING) | DONE 2026-08-06 (`docs/power-analysis.md`): tie rule ~9.3 pp at rho=0.6/K=3; regenerate after seeds 2-5 + decoy audit |
 | C4 | Codex worker adapter for the runner | DONE 2026-08-06 (`src/membench/workers.py`, commit f733793) |
-| C5 | Grep-agent adapter (baseline #8) | worker + file read/search tools over witnessed transcript |
+| C5 | Grep-agent adapter (baseline #8) | DONE 2026-08-15 (`GrepAgentAdapter`: witnessed transcript materialized as one file per event in the worker's workdir; codex's native file tools; nothing in-context; shared/silo like FullTranscript) |
 | C6 | Naive-RAG + summarize-RAG adapters | needs embedding-model pin decision (standards-audit B.5) — flag to Mehul before adding any dependency |
 | C7 | Typed-memory reference implementation | generic (typed nodes, tier/scope metadata, source-backed updates, supersession); spec+prompts frozen before pilot scoring; ablation planned |
 | C8 | Vendor survey + candidate table | Mem0/Zep/Letta/LangMem/Cognee/…; inclusion criteria in dataset-plan; written vendor-recommended configs; right-of-reply contacts |

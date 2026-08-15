@@ -175,3 +175,23 @@ def test_worker_failure_is_recorded_not_fatal(tmp_path):
     rows = Runner(org_dir, NoMemoryAdapter(FailingWorker())).run()
     assert rows[0]["output"] is None
     assert "timeout" in rows[0]["error"]
+
+
+def test_grep_agent_adapter_materializes_history_files(tmp_path):
+    """Baseline #8: nothing in-context; the witnessed transcript is handed
+    to the worker as one file per event and the prompt points at it."""
+    from membench.adapters import GrepAgentAdapter
+    org_dir = _write_org(tmp_path)
+    worker = MockWorker()
+    adapter = GrepAgentAdapter(worker, shared=True)
+    Runner(org_dir, adapter).run()
+    prompt = worker.calls[0]
+    assert "./history/" in prompt and "workspace history" in prompt
+    assert "standup-decision-kebab" not in prompt          # nothing in-context
+    files = worker.files_seen[0]
+    assert "history/README.md" in files
+    bodies = "\n".join(files.values())
+    assert "standup-decision-kebab" in bodies              # witnessed event on disk
+    assert "dm-secret-plan" not in bodies                  # unwitnessed stays out
+    assert adapter.counters["last_context_chars"] == 0
+    assert adapter.counters["last_files"] == len(files)

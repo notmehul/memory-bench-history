@@ -42,7 +42,10 @@ class CodexWorker:
 
     counters: dict = field(default_factory=lambda: {"calls": 0, "seconds": 0.0})
 
-    def complete(self, prompt: str) -> str:
+    def complete(self, prompt: str, files: dict[str, str] | None = None) -> str:
+        """`files` (relative path -> text) are materialized in the per-call
+        working directory before the call — the seam tools-baseline adapters
+        (grep-agent) use; codex's own file tools do the rest."""
         full = f"{prompt}\n\n{TRANSPORT_INSTRUCTION}"
         started = time.monotonic()
         last_err = "no output.md produced"
@@ -51,6 +54,12 @@ class CodexWorker:
             for _ in range(2):
                 with tempfile.TemporaryDirectory(prefix="mbworker-") as tmp:
                     tmp_path = Path(tmp)
+                    for rel, text in (files or {}).items():
+                        target = (tmp_path / rel).resolve()
+                        if tmp_path.resolve() not in target.parents:
+                            raise WorkerError(f"file path escapes workdir: {rel}")
+                        target.parent.mkdir(parents=True, exist_ok=True)
+                        target.write_text(text)
                     try:
                         subprocess.run(
                             [codex, "exec", "-C", str(tmp_path),

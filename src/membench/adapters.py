@@ -26,20 +26,23 @@ class WorkerModel(Protocol):
     decision: gpt-5.4, effort medium, codex-cli — pinned). Adapters must
     treat it as a pure prompt->text function."""
 
-    def complete(self, prompt: str) -> str: ...
+    def complete(self, prompt: str, files: dict[str, str] | None = None) -> str: ...
 
 
 @dataclass
 class MockWorker:
     """Deterministic worker for tests: returns the response whose key is a
-    substring of the prompt, else `default`. Records every prompt."""
+    substring of the prompt, else `default`. Records every prompt (and the
+    files a tools-baseline adapter handed it)."""
 
     responses: dict[str, str] = field(default_factory=dict)
     default: str = "mock deliverable"
     calls: list[str] = field(default_factory=list)
+    files_seen: list[dict] = field(default_factory=list)
 
-    def complete(self, prompt: str) -> str:
+    def complete(self, prompt: str, files: dict[str, str] | None = None) -> str:
         self.calls.append(prompt)
+        self.files_seen.append(dict(files or {}))
         for key, response in self.responses.items():
             if key in prompt:
                 return response
@@ -132,3 +135,60 @@ class FullTranscriptAdapter:
         self.counters["last_context_chars"] = len(context)
         self.counters["context_chars"] += len(context)
         return self.worker.complete(prompt)
+
+
+def _event_filename(i: int, event: dict) -> str:
+    stamp = str(event.get("sim_time", "")).replace(":", "").replace(" ", "_")
+    return f"history/{i:05d}_{stamp}_{event['surface']}.md"
+
+
+@dataclass
+class GrepAgentAdapter:
+    """Baseline #8 (standards-audit B.4): the worker with plain file
+    read/search tools over its witnessed transcript — the trivial-tools
+    floor any memory product must beat. The transcript is materialized as
+    one file per witnessed event (chronological, in `history/`) in the
+    worker's working directory; nothing is retrieved or summarized for the
+    worker, it must search itself. Storage follows FullTranscriptAdapter
+    (shared store with access lists, or per-principal silos).
+    """
+
+    worker: WorkerModel
+    shared: bool = True
+    counters: dict = field(default_factory=lambda: {"calls": 0, "context_chars": 0,
+                                                    "last_context_chars": 0,
+                                                    "stored_events": 0,
+                                                    "last_files": 0})
+    _shared_store: dict = field(default_factory=dict)
+    _access: dict = field(default_factory=dict)
+    _silo_store: dict = field(default_factory=dict)
+
+    def ingest(self, principal: str, event: dict) -> None:
+        FullTranscriptAdapter.ingest(self, principal, event)  # same storage
+
+    def _transcript(self, principal: str) -> list[dict]:
+        return FullTranscriptAdapter._transcript(self, principal)
+
+    def run_task(self, principal: str, task: str) -> str:
+        events = self._transcript(principal)
+        files = {_event_filename(i, e): _render_event(e) + "\n"
+                 for i, e in enumerate(events)}
+        if files:
+            files["history/README.md"] = (
+                "Your witnessed workspace history: one file per event, "
+                "chronological by filename. Nothing here has been filtered "
+                "or summarized for you.\n")
+        prompt = task
+        if files:
+            prompt = (
+                "Your witnessed workspace history is on disk in ./history/ "
+                "(one file per event, chronological; see history/README.md). "
+                "Search and read it with your file tools as needed before "
+                "writing.\n\n" + task)
+        total = sum(len(v) for v in files.values())
+        self.counters["calls"] += 1
+        self.counters["last_files"] = len(files)
+        self.counters["last_context_chars"] = 0      # nothing is in-context
+        self.counters["context_chars"] += 0
+        self.counters["disk_chars"] = self.counters.get("disk_chars", 0) + total
+        return self.worker.complete(prompt, files=files)
