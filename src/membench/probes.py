@@ -333,8 +333,43 @@ def _standalone_number(digit: str, text: str) -> bool:
     ) is not None
 
 
+_CAL_RE = re.compile(r"\b(\d{1,2}(?::\d{2})?\s?(?:am|pm)|noon|midnight)\b", re.I)
+
+
+def _value_classes(text: str) -> set[str]:
+    """Which contestable value classes a side's text carries (R6)."""
+    toks = {t.lower() for t in re.findall(r"[A-Za-z0-9$%:.,'-]+", text)}
+    classes = set()
+    if toks & _VALUE_WORDS or _CAL_RE.search(text):
+        classes.add("cal")
+    if "$" in text:
+        classes.add("money")
+    if "%" in text or re.search(r"\bpercent\b", text, re.I):
+        classes.add("pct")
+    return classes
+
+
+def _anchor_class(branch: str, tok: str) -> str | None:
+    tl = tok.lower()
+    if tl in _VALUE_WORDS or _CAL_RE.fullmatch(tok):
+        return "cal"
+    if branch.startswith("\\$"):
+        return "money"
+    if "%" in tok or "percent" in tl:
+        return "pct"
+    return None
+
+
 def side_value_anchors(own: str, other: str) -> list[str]:
     """Regex branches identifying OWN side's distinctive VALUES.
+
+    R6 (2026-08-15, contested-attribute rule; evidence: seed-3 P-0041 twin
+    outputs "cannot wait until Monday" hit a base-side day-name detector
+    on a no-freeze twin): a calendar/time-of-day, money or percent anchor
+    is emitted only when the OTHER side's text also carries a value of
+    that class — i.e. the attribute is contested between the sides. When
+    a class appears on one side only (retraction or attribute-less twin),
+    hunting it punishes any incidental use of that vocabulary.
 
     Spec v0.4 rules 2 and 4, refined 2026-08-07 (R1/R2/R5 from flip
     adjudication):
@@ -382,7 +417,15 @@ def side_value_anchors(own: str, other: str) -> list[str]:
             if _lemma(tok) in other_lemmas:
                 continue  # R2: inflection-degenerate anchor
             branches.append(re.escape(tok))
-    return sorted(set(branches))
+    other_classes = _value_classes(other)
+    kept = []
+    for b in branches:
+        tok = re.sub(r"\\(.)", r"\1", b).split("[")[0].strip("(?:)")
+        cls = _anchor_class(b, tok)
+        if cls is not None and cls not in other_classes:
+            continue  # R6: uncontested attribute class
+        kept.append(b)
+    return sorted(set(kept))
 
 
 def anchors_pattern(branches: list[str]) -> str | None:

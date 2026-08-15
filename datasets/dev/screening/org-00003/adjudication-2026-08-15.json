@@ -1,0 +1,26 @@
+{
+ "date": "2026-08-15",
+ "seed": 3,
+ "result": "40/54 cluster gate FAIL carried; 115 valid instances (instance gate FAIL); strict 35",
+ "drops": {
+  "P-0004": "task defect: task/fact team-name mismatch (task says infra, winner fact names Core); ceiling criterion demands 'Core's cap' \u2014 3/3 ceiling fail",
+  "P-0005": "task presupposes a personal numeric rule; cf is a retraction (no cap) \u2014 twin ceilings invent caps; class: task-presupposes-base-mechanism (v2 planner rule)",
+  "P-0012": "same class: task demands 'the required home for notes' while cf is 'any format the facilitator prefers'",
+  "P-0021": "same class: task demands 'when a brief becomes mandatory' while cf is 'optional regardless'",
+  "P-0023": "S6: twin outputs satisfy the base criterion (cf 'skip under 50 lines' complements base 'design doc for any shared-library change') \u2014 non-inverting personal twin; same lineage as seed-1 P-0032",
+  "P-0029": "twin outputs hedge (snapshot day-before + 'inputs can still change until morning'); rubric-v2 judge fails the hedge \u2014 carried",
+  "P-0033": "A7 staleness with pure-retraction cf ('loop drops all four interviews') and a task demanding the current loop \u2014 twin ceilings restate the loop; class: task-presupposes-positive-value vs retraction cf",
+  "P-0034": "same class (1/3 valid)",
+  "P-0036": "historical: twin ceilings narrate base content (four interviews) instead of the retraction \u2014 model failure on retraction twin; S6 also flags",
+  "P-0041": "before R6: dropped by casrt-cs day-name hits on 'cannot wait until Monday' in a no-freeze twin (mechanical FP \u2192 R6). After R6: twin passes; S6 shows the base ceiling output also satisfies the cf criterion (urgent fixes late) \u2014 non-inverting personal twin. Carried for the right reason",
+  "P-0045": "S6 both directions: historical narration of a superseded price satisfies both sides \u2014 non-inverting historical twin (same class as seed-2 P-0045/P-0054)",
+  "P-0048": "ceiling: absence criterion 'no one-person prep-timing step' fails on generic 'assets locked 30 minutes before launch' (judge-strict) + twin: task presupposes changelog publication while cf makes it optional",
+  "P-0049": "S6: ceiling outputs satisfy the cf side (org changelog optional vs team PR-bullets rule are complementary) \u2014 non-inverting; 1 floor-pair pass",
+  "P-0054": "historical retraction cf ('no 300 stipend'); twin ceilings state $300 \u2014 model failure on retraction twin; S6 flags"
+ },
+ "lessons": [
+  "retraction counterfactuals under tasks that demand the positive value are the dominant seed-3 defect (5 clusters) \u2014 v2 planner: never pair a retraction cf with a value-demanding task; prefer replacement values",
+  "S6 caught 4 non-inverting twins (P-0023/41/45/49) \u2014 the discrimination gate is load-bearing",
+  "day-name/time/money/percent anchors on uncontested attributes fire on incidental mentions \u2192 R6 (contested-attribute rule), applied to all orgs 2026-08-15; seeds 1-3 re-scored: seed 1 126\u2192125 instances (one S6-unmasked non-inverting instance), seeds 2-3 gates unchanged"
+ ]
+}

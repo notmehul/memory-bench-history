@@ -243,6 +243,18 @@ Validity gates (computed during dataset construction, before any SUT is evaluate
 > criteria, twin rows the base criteria; the judge sees only criteria).
 > Reported per instance as `ceiling_vs_cf` / `twin_vs_base`.
 >
+> **R6 — contested-attribute rule for pattern anchors (2026-08-15, from
+> seed-3 adjudication).** A calendar/time-of-day, money or percent anchor
+> is emitted only when the OTHER side of the same delta fact also carries
+> a value of that class; when a class appears on one side only
+> (retraction or attribute-less twin) the detector would punish incidental
+> uses of that vocabulary (seed-3 P-0041: "cannot wait until Monday" in a
+> no-freeze twin hit a base-side day-name detector). Unit-anchored counts
+> unchanged. Applied to all five orgs; seeds 1–3 re-scored mechanically
+> (no re-judging): seed 1 126→125 valid instances (an S6-unmasked
+> non-inverting instance), seeds 2–3 gates unchanged. Detector coverage
+> after R6: 51/54/33/81/54 pattern detectors per org.
+>
 > **Exploit-audit bar, re-scoped and disclosed (2026-08-15).** The
 > prespecified bar demanded zero single-side 1.0 for waffle. The
 > natural-artifact rule (approved v0.4 rule 3) makes some counterfactual
