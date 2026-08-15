@@ -132,10 +132,20 @@ values to fill in.
 
 - `true` ONLY if the output **clearly** satisfies the criterion.
 - **When in doubt, `false`.** This is the protocol, not pessimism.
-- Criteria phrased as absence ("does not mention X"): `true` only if X is
-  genuinely absent — paraphrases and synonyms of X count as present.
+- Criteria phrased as absence ("does not mention X", "does not present X
+  as current"): `true` only if X is genuinely not presented as
+  current/applicable — paraphrases and synonyms of X count as present. If
+  X appears only as past, replaced, hypothetical, or rejected ("we no
+  longer do X"), that does NOT count as presenting it → `true`.
+- Criteria demanding positive content ("states X", "sets X as the rule"):
+  `true` only if the output actually commits to X. If it presents X AND a
+  conflicting alternative as both current (hedging, listing both), it does
+  not commit → `false`.
 - Judge ONLY what is on the page. No outside knowledge, no guessing what
   the writer meant, no partial credit.
+- These are exactly the rules the AI judge is given
+  (`docs/specs/judge-rubric.md`, v2) — the comparison is only meaningful
+  if you apply the same ones.
 
 Example item:
 

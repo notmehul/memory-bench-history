@@ -1,0 +1,628 @@
+[
+ {
+  "item_id": "org-00001:P-0052:base:asrt-1",
+  "class": "positive",
+  "reason": "demands the specific Wednesday cadence and published-owner setup",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0052:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "demands the specific Friday cadence and published-owner setup",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0053:base:asrt-1",
+  "class": "positive",
+  "reason": "demands daily morning timing and a rotating published owner",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0053:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "demands Friday-only timing and a fixed published owner",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0001:base:asrt-1",
+  "class": "positive",
+  "reason": "specifies kebab-case resource naming",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0001:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "specifies camelCase resource naming",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0002:base:asrt-1",
+  "class": "positive",
+  "reason": "sets a five-minute speaking limit",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0002:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "sets a fifteen-minute speaking limit",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0003:base:asrt-1",
+  "class": "positive",
+  "reason": "defines a weekly company-wide leadership forum",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0003:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "sets the reviews as paused until quarterly planning",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0004:base:asrt-1",
+  "class": "positive",
+  "reason": "sets a biweekly team-planning rhythm",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0004:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "sets a monthly team-planning rhythm",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0005:base:asrt-1",
+  "class": "positive",
+  "reason": "specifies Mei's monthly written check-in practice",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0005:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "specifies Mei's weekly live-sync practice",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0006:base:asrt-1",
+  "class": "positive",
+  "reason": "sets the threshold at three or more services",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0006:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "sets the threshold at two or more services",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0007:base:asrt-1",
+  "class": "positive",
+  "reason": "sets the threshold at five or more services",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0007:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "sets the threshold at seven or more services",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0008:base:asrt-1",
+  "class": "positive",
+  "reason": "uses shared-library impact as the trigger",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0008:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "makes design docs optional below ten services",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0010:base:asrt-1",
+  "class": "positive",
+  "reason": "assigns a $250 weekly stipend",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0010:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "assigns time off as the recognition method",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0011:base:asrt-1",
+  "class": "positive",
+  "reason": "requires the first note within thirty minutes",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0011:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "allows the first note by the next business day",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0032:base:asrt-1",
+  "class": "positive",
+  "reason": "specifies an ordering rule and time cue",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0032:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "specifies an ordering rule and time cue",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0033:base:asrt-1",
+  "class": "positive",
+  "reason": "sets a concrete carryover cap",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0033:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "asserts the rule is uncapped",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0034:base:asrt-1",
+  "class": "positive",
+  "reason": "sets a concrete carryover cap",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0034:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "sets a concrete carryover cap",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0035:base:asrt-1",
+  "class": "positive",
+  "reason": "adds a specific approval condition",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0035:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "asserts six-ticket carryover without the approval gate",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0037:base:asrt-1",
+  "class": "positive",
+  "reason": "requires conversion into tracked work items",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0037:base:asrt-2",
+  "class": "positive",
+  "reason": "requires a named owner",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0037:base:asrt-3",
+  "class": "positive",
+  "reason": "sets a concrete assignment deadline",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0037:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "specifies that follow-ups remain in meeting notes",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0037:counterfactual:casrt-2",
+  "class": "positive",
+  "reason": "specifies the absence of named owners as the arrangement",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0037:counterfactual:casrt-3",
+  "class": "positive",
+  "reason": "sets next planning as the formalization point",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0038:base:asrt-1",
+  "class": "positive",
+  "reason": "sets a concrete purge timing rule",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0038:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "sets a concrete retention period",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0039:base:asrt-1",
+  "class": "positive",
+  "reason": "lists required fields for meeting notes",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0039:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "sets omission of those fields as the rule",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0040:base:asrt-1",
+  "class": "positive",
+  "reason": "requires ticket references before the meeting ends",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0040:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "only retracts the during-meeting ticket-link requirement",
+  "rewrite": null,
+  "audit_override": "already observable absence ('does not require ... during the meeting')"
+ },
+ {
+  "item_id": "org-00001:P-0023:base:asrt-1",
+  "class": "positive",
+  "reason": "demands the specific writing preferences of brief sentences and numerals",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0023:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "demands the specific writing preferences of longer sentences and spelled-out quantities",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0024:base:asrt-1",
+  "class": "positive",
+  "reason": "sets an independent weekly handoff cadence for bug triage",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0024:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "sets an independent daily handoff cadence for the full platform group",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0025:base:asrt-1",
+  "class": "positive",
+  "reason": "specifies a biweekly rotation with a backup assignee",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0025:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "specifies a monthly single-assignee model with no fallback contact",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0026:base:asrt-1",
+  "class": "positive",
+  "reason": "requires daily coverage changes and a Slack location for the active contact",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0026:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "states the independent ad hoc assignment model for bug triage",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0028:base:asrt-1",
+  "class": "positive",
+  "reason": "requires a concrete 60-day review cadence for runbooks",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0028:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "requires runbook review after major incidents as the governing trigger",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0029:base:asrt-1",
+  "class": "positive",
+  "reason": "requires a responsible person for each action item",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0029:base:asrt-2",
+  "class": "positive",
+  "reason": "requires a completion deadline for each action item",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0029:base:asrt-3",
+  "class": "positive",
+  "reason": "sets a concrete forty-eight-hour timing rule for owner and deadline fields",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0029:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "permits the independent state of unassigned action items",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0029:counterfactual:casrt-2",
+  "class": "positive",
+  "reason": "permits action items to remain unresolved until the next retrospective",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0029:counterfactual:casrt-3",
+  "class": "positive",
+  "reason": "only retracts the immediate owner-and-deadline requirement",
+  "rewrite": null,
+  "audit_override": "already observable absence ('does not require ... immediately')"
+ },
+ {
+  "item_id": "org-00001:P-0030:base:asrt-1",
+  "class": "positive",
+  "reason": "states the concrete rule of two approvals for production-bound changes",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0030:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "states the concrete single-approval rule during freeze windows",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0031:base:asrt-1",
+  "class": "positive",
+  "reason": "requires security checklist items on auth-related PRs",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0031:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "states the negative-valued rule that auth-related PRs do not need security checklist items",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0012:base:asrt-1",
+  "class": "positive",
+  "reason": "sets a concrete four-business-hour turnaround rule",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0012:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "asserts a concrete no-standard rule for company holidays",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0013:base:asrt-1",
+  "class": "positive",
+  "reason": "sets a specific one-hour reply expectation",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0013:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "sets a specific four-hour reply expectation",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0014:base:asrt-1",
+  "class": "positive",
+  "reason": "requires a twice-daily batching cadence",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0014:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "requires handling items as they arrive",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0015:base:asrt-1",
+  "class": "positive",
+  "reason": "specifies a 15-minute cap and an async option",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0015:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "specifies a 30-minute cap and no async option",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0016:base:asrt-1",
+  "class": "positive",
+  "reason": "states a 10-minute duration and blockers-only format",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0016:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "states a 20-minute duration and full-status format",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0017:base:asrt-1",
+  "class": "positive",
+  "reason": "defines an async-default rhythm with a Wednesday live sync",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0017:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "defines cancellation plus daily written status posts",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0019:base:asrt-1",
+  "class": "positive",
+  "reason": "requires a concrete fourteen-day advance-booking threshold",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0019:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "allows a concrete two-day notice threshold",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0020:base:asrt-1",
+  "class": "positive",
+  "reason": "sets a $5,000 cutoff and finance-approval routing rule",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0020:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "sets a $10,000 cutoff and payment path without finance review",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0021:base:asrt-1",
+  "class": "positive",
+  "reason": "requires plain language and absence of jargon as the standard",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0021:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "sets optionality for brand voice on internal-only documents",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0022:base:asrt-1",
+  "class": "positive",
+  "reason": "requires an energetic style as the team practice",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0022:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "requires a restrained formal style",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0041:base:asrt-1",
+  "class": "positive",
+  "reason": "specifies a concrete timing and ordering rule",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0041:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "specifies a concrete timing and ordering rule",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0042:base:asrt-1",
+  "class": "positive",
+  "reason": "names a specific booking portal",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0042:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "names a specific booking portal",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0043:base:asrt-1",
+  "class": "positive",
+  "reason": "sets a concrete booking threshold",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0043:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "sets a concrete booking threshold",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0044:base:asrt-1",
+  "class": "positive",
+  "reason": "states a concrete approval trigger and owner",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0044:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "provides an independent after-the-trip handling rule",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0046:base:asrt-1",
+  "class": "positive",
+  "reason": "states a concrete per-engineer cap",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0046:counterfactual:casrt-1",
+  "class": "pure_retraction",
+  "reason": "only retracts the five-point per-engineer cap",
+  "rewrite": "The checklist does not present a five story point per engineer carryover cap as the rule."
+ },
+ {
+  "item_id": "org-00001:P-0047:base:asrt-1",
+  "class": "positive",
+  "reason": "states a concrete expiration window",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0047:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "describes a concrete manual-change access arrangement",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0048:base:asrt-1",
+  "class": "positive",
+  "reason": "states a concrete company-wide reward amount and cadence",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0048:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "names a concrete company-wide reward form",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0049:base:asrt-1",
+  "class": "positive",
+  "reason": "states a concrete team-specific reward amount and cadence",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0049:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "states a concrete team-specific reward amount and cadence",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0050:base:asrt-1",
+  "class": "positive",
+  "reason": "names a concrete personal preference",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0050:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "names a concrete personal preference",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0051:base:asrt-1",
+  "class": "positive",
+  "reason": "states a concrete cadence and ownership setup",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00001:P-0051:counterfactual:casrt-1",
+  "class": "pure_retraction",
+  "reason": "only retracts Monday triage and its published owner",
+  "rewrite": "The handbook update does not present org bug triage as running every Monday with a published owner as the current process."
+ }
+]

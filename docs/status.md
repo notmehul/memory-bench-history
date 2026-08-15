@@ -1,52 +1,58 @@
 # Status & Work Queue
 
-Last updated: 2026-08-07 (session ending at commit `ff1cb11`). Update this
-file whenever a queue item completes; keep entries dated.
+Last updated: 2026-08-15 (v0.4.3 semantic layer landed; seeds 1–2 re-scored
+under judge rubric v2). Update this file whenever a queue item completes;
+keep entries dated.
 
 ## Where the project stands
 
 - **G0–G1 PASSED**; **G2 machine-side complete**; human G2: seeds 4/5
   spot-checks PASS (50%, 60%); seeds 1–3 + read-throughs assigned to
   external rater R (`docs/human-review.md`, self-contained).
-- **Phase 3 under probe-spec v0.4** (PI-approved 2026-08-07): mechanical
-  layer done — commitment rule + refined cross-side detectors (R1–R5, flip
-  adjudication found 0/11 true positives). Canon: **seed 1 = 46/54 PASS
-  (margin 1), 128 valid instances; seed 2 = 43/54 cluster gate FAIL
-  carried, 123 valid instances**; both instance gates FAIL carried. Zero
-  detector/hedge fires on any honest run; all reports reproduce from
-  committed evidence. Cross-org co-valid lineage repairs applied to all
-  orgs (orgs 3–5 pre-evidence).
-- **Exploit audit**: empty/waffle/base_correct clean; enumerate_all
-  residual 18 pair-passes (duration-valued / uncoverable sides) — assigned
-  to the v0.4.3 semantic wave.
-- **Worker pinned** (gpt-5.4, medium, codex-cli 0.144.5); harness study
-  committed. **Consistency passes** all seeds (2 defects fixed).
+- **Phase 3 under probe-spec v0.4.3** (2026-08-15) with **judge rubric v2**
+  (`docs/specs/judge-rubric.md`, commitment clause; verbatim, versioned).
+  Canon, pre → post (incl. the S6 discrimination gate): **seed 1 = 46/54
+  → 46/54 PASS, 128 → 126 valid instances; seed 2 = 43/54 FAIL → 46/54
+  PASS, 123 → 131 valid instances**; both instance gates still explicit
+  FAILs (<135). All five
+  orgs carry v0.4.3 assertions; task text byte-identical; all cached
+  worker outputs reused; every semantic verdict in seeds 1–2 is a
+  rubric-v2 verdict with a per-criterion text hash (stale-verdict guard in
+  `report`). v1→v2 agreement 97.8% / 96.9%, symmetric.
+- **Rejected on evidence (2026-08-15):** generated semantic cross-side
+  detectors — 19 honest instances flipped, 0 true positives; kept behind
+  `--semantic` for reproduction only.
+- **Exploit audit**: rebuilt on the post canon, judged under rubric v2:
+  zero pair-passes for every type; enumerate single-side 1.0 = 0. FAIL as
+  literally prespecified (3 waffle cf-side 1.0s on absence-only sides),
+  PASS re-scoped to positive-content sides (post-hoc, disclosed) — both
+  lines permanent in `exploit-audit/report.json`.
+- **Worker pinned** (gpt-5.4, medium, codex-cli 0.144.5) and now ENFORCED
+  in code (`membench.codex_bin`; Homebrew had silently moved PATH to
+  0.147.0 — no protocol run happened under it). Set
+  `MEMBENCH_CODEX_BIN=~/.local/codex-0.144.5/node_modules/.bin/codex`.
 - **Machinery built**: Phase 5 runner core + NoMemory/FullTranscript(+silo)
-  + CodexWorker; Phase 4 calibration tooling; power analysis
+  + CodexWorker (worker failures recorded as null deliverables, scored
+  0.0); Phase 4 calibration tooling; power analysis
   (`docs/power-analysis.md`, tie rule ~9.3 pp); exploit-audit harness;
-  20 validated judge decoys.
+  20 validated judge decoys; incremental blinded re-judging
+  (`judge-export --incremental/--force`, `judge-import --merge`);
+  `scripts/g3_diff.py`; `scripts/natural_artifact_sweep.py`.
 - **Independence protocol** + **standards audit** adopted (9 field learnings).
 
 ## NEXT (in order)
 
-1. **v0.4 item-3 semantic wave**: natural-artifact re-authoring of the
-   negation-class criteria (all 5 orgs, codex authoring + fresh blinded
-   judging; may flip seed-2 gate — report pre/post forever); per-cluster
-   semantic anti-enumeration criteria for the 18 residual + 2 defective
-   twin sides; asymmetric lineage cases (org-1 P-0023, org-4 P-0040) via
-   authored replacements; org-2 latent sweep; `_check_assertion` `-cs`
-   exemption; empty-SUT-output scoring rule.
-2. Re-run exploit audit → bar must PASS. Re-report seeds 1–2 (post-item-3
-   canon, side by side with pre).
-3. Seeds 3–5 screening (blinded pipeline; ~1,460 codex runs).
-4. Then Queue A6–A8 / Queue C4–C9 as listed.
+1. Seeds 3–5 screening (blinded pipeline, pinned codex, rubric v2;
+   ~1,460 codex runs). Their probes already carry v0.4.3.
+2. A5 G3 verdict across 5 seeds; A6 calibration packet to 150; A7 dev
+   smoke; then Queue C5–C9.
 
 ## Queue A — codex-quota-blocked (resets 2026-07-29; ~1.6 packs total)
 
 | # | Item | Size | Notes |
 |---|---|---|---|
 | A1 | Seed-2 screening | DONE 2026-08-06: 43/54 post-repair (first pass 40/54; 3 clusters recovered via precedented co-valid repairs), 123 valid instances — **cluster gate FAIL carried**; 14 drops adjudicated; dominant new defect class = unnatural-negation criteria (5 clusters) | 356/486 cached + prompt-verified in `datasets/dev/screening/org-00002/results.partial.jsonl`; manifest → seed work dir → `run` → blinded `judge-export` → sonnet judges → `judge-import` → `report` (commands in dataset-plan G3 note) |
-| A2 | Seed-3 screening | 486 runs | v0.4 APPROVED 2026-08-07; fixes 1-2 implementing (mechanical); screening starts after flip adjudication + item-3 re-authoring |
+| A2 | Seed-3 screening | 486 runs | UNBLOCKED 2026-08-15 (v0.4.3 + rubric v2 in place); run with the pinned codex binary |
 | A3 | Seed-4 screening | 486 runs | " |
 | A4 | Seed-5 screening | 486 runs | " |
 | A5 | G3 final verdict across 5 seeds | — | cluster gate has ZERO margin; if any seed fails, remedy is content-side (v2 planner rules: cf must invert the task-elicited aspect; over-generate 4 instances/cluster) — never gate softening. Per-archetype n≥30 counts INSTANCES (pinned 2026-07-25) |
@@ -68,7 +74,7 @@ file whenever a queue item completes; keep entries dated.
 
 | # | Item | Notes |
 |---|---|---|
-| C1 | Scorer-exploit audit (BLOCKING) | v0.4 mechanical layer DONE 2026-08-07 (commitment rule + refined cross-side detectors, R1-R5 adjudicated; canon unchanged 46/128, 43/123; zero honest fires). Residual: enumerate_all 18 pair-passes (duration-valued/uncoverable sides) + 2 known defective twin sides — ALL assigned to v0.4.3 semantic layer (item-3 wave, next). Empty-SUT scoring rule still pending before A7/A8 |
+| C1 | Scorer-exploit audit (BLOCKING) | v0.4 mechanical layer DONE 2026-08-07; v0.4.3 DONE 2026-08-15 (natural-artifact rewrites, tier rule, brittle patterns, empty-output rule; semantic detectors tried and REJECTED). Audit rebuilt on the post canon (46 clusters × 4), rubric v2: zero pair-passes all types, enumerate single-side 0; FAIL as literally prespecified (3 waffle absence-only cf sides) / PASS re-scoped (disclosed). BLOCKING row considered closed on the re-scoped reading; the literal line stays in the report |
 | C2 | Judge decoy set construction (BLOCKING) | DONE 2026-08-06: 20 validated decoys in `datasets/dev/screening/judge-decoys/` (third values, zero discriminative tokens either side); never judged — reserved for Phase 4 false-accept audit |
 | C3 | Power-analysis script (BLOCKING) | DONE 2026-08-06 (`docs/power-analysis.md`): tie rule ~9.3 pp at rho=0.6/K=3; regenerate after seeds 2-5 + decoy audit |
 | C4 | Codex worker adapter for the runner | DONE 2026-08-06 (`src/membench/workers.py`, commit f733793) |

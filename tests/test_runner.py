@@ -160,3 +160,18 @@ def test_task_prompt_matches_screening_floor_structure():
     assert parts[2] == "Task: Write your triage note."
     assert "state them concretely" in parts[3]
     assert "output.md" not in prompt  # transport belongs to the worker
+
+
+def test_worker_failure_is_recorded_not_fatal(tmp_path):
+    """Empty-output rule: a worker failure yields a null-output row that the
+    scorer scores 0.0 — the probe stays in the denominator."""
+    from membench.workers import WorkerError
+
+    class FailingWorker:
+        def complete(self, prompt):
+            raise WorkerError("codex worker failed after 2 attempts: timeout")
+
+    org_dir = _write_org(tmp_path)
+    rows = Runner(org_dir, NoMemoryAdapter(FailingWorker())).run()
+    assert rows[0]["output"] is None
+    assert "timeout" in rows[0]["error"]

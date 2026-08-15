@@ -1,0 +1,2494 @@
+{
+ "date": "2026-08-15",
+ "rule": "v0.4.3 tier rule: fact_absent guards on sibling facts of a HIGHER tier than the artifact frame are removed (nested rules may be restated; misapplication is caught by scope_correct); lower-tier sibling guards remain. Symmetric pairs only. Generalizes the 1594c1d lineage precedent to all orgs.",
+ "removals": {
+  "org-00001": [
+   {
+    "probe_id": "P-0004-01",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0009",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "The note does not present this forum as a business-wide weekly review with leadership.",
+     "The note does not say these reviews are paused until the next quarterly planning cycle."
+    ]
+   },
+   {
+    "probe_id": "P-0004-02",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0009",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "The note does not present this forum as a business-wide weekly review with leadership.",
+     "The note does not say these reviews are paused until the next quarterly planning cycle."
+    ]
+   },
+   {
+    "probe_id": "P-0004-03",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0009",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "The note does not present this forum as a business-wide weekly review with leadership.",
+     "The note does not say these reviews are paused until the next quarterly planning cycle."
+    ]
+   },
+   {
+    "probe_id": "P-0005-01",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0009",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "The note does not turn this into a business-wide weekly review with leadership.",
+     "The note does not say these reviews are paused until the next quarterly planning cycle."
+    ]
+   },
+   {
+    "probe_id": "P-0005-01",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0010",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "(?:every\\s+(?:two|2)\\s+weeks|bi-?weekly|fortnightly)",
+     "The note does not place this practice in team planning on a monthly rhythm."
+    ]
+   },
+   {
+    "probe_id": "P-0005-02",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0009",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "The note does not turn this into a business-wide weekly review with leadership.",
+     "The note does not say these reviews are paused until the next quarterly planning cycle."
+    ]
+   },
+   {
+    "probe_id": "P-0005-02",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0010",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "(?:every\\s+(?:two|2)\\s+weeks|bi-?weekly|fortnightly)",
+     "The note does not place this practice in team planning on a monthly rhythm."
+    ]
+   },
+   {
+    "probe_id": "P-0005-03",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0009",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "The note does not turn this into a business-wide weekly review with leadership.",
+     "The note does not say these reviews are paused until the next quarterly planning cycle."
+    ]
+   },
+   {
+    "probe_id": "P-0005-03",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0010",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "(?:every\\s+(?:two|2)\\s+weeks|bi-?weekly|fortnightly)",
+     "The note does not place this practice in team planning on a monthly rhythm."
+    ]
+   },
+   {
+    "probe_id": "P-0013-01",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0030",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "((four|4)\\s+business\\s+hours?)",
+     "The note does not say that company holidays remove the turnaround standard for the channel it is describing."
+    ]
+   },
+   {
+    "probe_id": "P-0013-02",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0030",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "((four|4)\\s+business\\s+hours?)",
+     "The note does not say that company holidays remove the turnaround standard for the channel it is describing."
+    ]
+   },
+   {
+    "probe_id": "P-0013-03",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0030",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "((four|4)\\s+business\\s+hours?)",
+     "The note does not say that company holidays remove the turnaround standard for the channel it is describing."
+    ]
+   },
+   {
+    "probe_id": "P-0014-01",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0030",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "((four|4)\\s+business\\s+hours?)",
+     "The plan does not suspend its personal Slack routine on company holidays."
+    ]
+   },
+   {
+    "probe_id": "P-0014-01",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0031",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "((one|1)\\s+hour)",
+     "((four|4)\\s+hours?)"
+    ]
+   },
+   {
+    "probe_id": "P-0014-02",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0030",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "((four|4)\\s+business\\s+hours?)",
+     "The plan does not suspend its personal Slack routine on company holidays."
+    ]
+   },
+   {
+    "probe_id": "P-0014-02",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0031",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "((one|1)\\s+hour)",
+     "((four|4)\\s+hours?)"
+    ]
+   },
+   {
+    "probe_id": "P-0014-03",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0030",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "((four|4)\\s+business\\s+hours?)",
+     "The plan does not suspend its personal Slack routine on company holidays."
+    ]
+   },
+   {
+    "probe_id": "P-0014-03",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0031",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "((one|1)\\s+hour)",
+     "((four|4)\\s+hours?)"
+    ]
+   },
+   {
+    "probe_id": "P-0022-01",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0051",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "The note does not present launch-blurb guidance as a company-wide requirement to keep wording broadly accessible and free of specialist terms.",
+     "internal[- ]?only|optional"
+    ]
+   },
+   {
+    "probe_id": "P-0022-02",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0051",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "The note does not present launch-blurb guidance as a company-wide requirement to keep wording broadly accessible and free of specialist terms.",
+     "internal[- ]?only|optional"
+    ]
+   },
+   {
+    "probe_id": "P-0022-03",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0051",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "The note does not present launch-blurb guidance as a company-wide requirement to keep wording broadly accessible and free of specialist terms.",
+     "internal[- ]?only|optional"
+    ]
+   },
+   {
+    "probe_id": "P-0049-01",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0115",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "(?:two|2)\\s*(?:-|\u2013)?\\s*hundred",
+     "The note does not describe the reward as compensatory time instead of a cash payment."
+    ]
+   },
+   {
+    "probe_id": "P-0049-02",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0115",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "(?:two|2)\\s*(?:-|\u2013)?\\s*hundred",
+     "The note does not describe the reward as compensatory time instead of a cash payment."
+    ]
+   },
+   {
+    "probe_id": "P-0049-03",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0115",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "(?:two|2)\\s*(?:-|\u2013)?\\s*hundred",
+     "The note does not describe the reward as compensatory time instead of a cash payment."
+    ]
+   },
+   {
+    "probe_id": "P-0050-01",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0115",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "((two\\s*(-|\u2013)?\\s*hundred)|200)\\s*(-|\u2013)?\\s*dollar",
+     "The note does not present the company-wide on-call arrangement as additional leave replacing money."
+    ]
+   },
+   {
+    "probe_id": "P-0050-01",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0116",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "((three\\s*(-|\u2013)?\\s*hundred)|300)\\s*(-|\u2013)?\\s*dollar",
+     "((one\\s*(-|\u2013)?\\s*hundred)|100)\\s*(-|\u2013)?\\s*dollar"
+    ]
+   },
+   {
+    "probe_id": "P-0050-02",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0115",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "((two\\s*(-|\u2013)?\\s*hundred)|200)\\s*(-|\u2013)?\\s*dollar",
+     "The note does not present the company-wide on-call arrangement as additional leave replacing money."
+    ]
+   },
+   {
+    "probe_id": "P-0050-02",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0116",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "((three\\s*(-|\u2013)?\\s*hundred)|300)\\s*(-|\u2013)?\\s*dollar",
+     "((one\\s*(-|\u2013)?\\s*hundred)|100)\\s*(-|\u2013)?\\s*dollar"
+    ]
+   },
+   {
+    "probe_id": "P-0050-03",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0115",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "((two\\s*(-|\u2013)?\\s*hundred)|200)\\s*(-|\u2013)?\\s*dollar",
+     "The note does not present the company-wide on-call arrangement as additional leave replacing money."
+    ]
+   },
+   {
+    "probe_id": "P-0050-03",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0116",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "((three\\s*(-|\u2013)?\\s*hundred)|300)\\s*(-|\u2013)?\\s*dollar",
+     "((one\\s*(-|\u2013)?\\s*hundred)|100)\\s*(-|\u2013)?\\s*dollar"
+    ]
+   }
+  ],
+  "org-00003": [
+   {
+    "probe_id": "P-0004-01",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0010",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "(five|5)\\s+story\\s+points?\\s+per\\s+engineer",
+     "The infra note does not describe the company-wide rule as unrestricted from one planning cycle to the next."
+    ]
+   },
+   {
+    "probe_id": "P-0004-02",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0010",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "(five|5)\\s+story\\s+points?\\s+per\\s+engineer",
+     "The infra note does not describe the company-wide rule as unrestricted from one planning cycle to the next."
+    ]
+   },
+   {
+    "probe_id": "P-0004-03",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0010",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "(five|5)\\s+story\\s+points?\\s+per\\s+engineer",
+     "The infra note does not describe the company-wide rule as unrestricted from one planning cycle to the next."
+    ]
+   },
+   {
+    "probe_id": "P-0005-01",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0010",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "(five|5)\\s+story\\s+points?\\s+per\\s+engineer",
+     "The prep note does not describe the company-wide rule as unrestricted from one planning cycle to the next."
+    ]
+   },
+   {
+    "probe_id": "P-0005-01",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0011",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "(three|3)\\s+story\\s+points?\\s+per\\s+engineer",
+     "The prep note does not treat the team backlog as having no limit on carried-over items."
+    ]
+   },
+   {
+    "probe_id": "P-0005-02",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0010",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "(five|5)\\s+story\\s+points?\\s+per\\s+engineer",
+     "The prep note does not describe the company-wide rule as unrestricted from one planning cycle to the next."
+    ]
+   },
+   {
+    "probe_id": "P-0005-02",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0011",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "(three|3)\\s+story\\s+points?\\s+per\\s+engineer",
+     "The prep note does not treat the team backlog as having no limit on carried-over items."
+    ]
+   },
+   {
+    "probe_id": "P-0005-03",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0010",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "(five|5)\\s+story\\s+points?\\s+per\\s+engineer",
+     "The prep note does not describe the company-wide rule as unrestricted from one planning cycle to the next."
+    ]
+   },
+   {
+    "probe_id": "P-0005-03",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0011",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "(three|3)\\s+story\\s+points?\\s+per\\s+engineer",
+     "The prep note does not treat the team backlog as having no limit on carried-over items."
+    ]
+   },
+   {
+    "probe_id": "P-0013-01",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0031",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "The blurb does not treat a company-wide Confluence page as the required starting point.",
+     "The blurb does not let each facilitator choose any format for the write-up."
+    ]
+   },
+   {
+    "probe_id": "P-0013-02",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0031",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "The blurb does not treat a company-wide Confluence page as the required starting point.",
+     "The blurb does not let each facilitator choose any format for the write-up."
+    ]
+   },
+   {
+    "probe_id": "P-0013-03",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0031",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "The blurb does not treat a company-wide Confluence page as the required starting point.",
+     "The blurb does not let each facilitator choose any format for the write-up."
+    ]
+   },
+   {
+    "probe_id": "P-0014-01",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0031",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "The prep note does not mention a company-wide notes location or a company-wide starting page.",
+     "The prep note does not mention letting a facilitator choose any format."
+    ]
+   },
+   {
+    "probe_id": "P-0014-01",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0032",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "The prep note does not defer to a team handbook page or team-specific note scaffold.",
+     "The prep note does not suggest posting notes as freeform Slack chat summaries."
+    ]
+   },
+   {
+    "probe_id": "P-0014-02",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0031",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "The prep note does not mention a company-wide notes location or a company-wide starting page.",
+     "The prep note does not mention letting a facilitator choose any format."
+    ]
+   },
+   {
+    "probe_id": "P-0014-02",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0032",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "The prep note does not defer to a team handbook page or team-specific note scaffold.",
+     "The prep note does not suggest posting notes as freeform Slack chat summaries."
+    ]
+   },
+   {
+    "probe_id": "P-0014-03",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0031",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "The prep note does not mention a company-wide notes location or a company-wide starting page.",
+     "The prep note does not mention letting a facilitator choose any format."
+    ]
+   },
+   {
+    "probe_id": "P-0014-03",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0032",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "The prep note does not defer to a team handbook page or team-specific note scaffold.",
+     "The prep note does not suggest posting notes as freeform Slack chat summaries."
+    ]
+   },
+   {
+    "probe_id": "P-0022-01",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0051",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "\\b(three|3)\\s+or\\s+more\\b",
+     "The playbook entry does not treat the brief as discretionary regardless of how broadly the work reaches."
+    ]
+   },
+   {
+    "probe_id": "P-0022-02",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0051",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "\\b(three|3)\\s+or\\s+more\\b",
+     "The playbook entry does not treat the brief as discretionary regardless of how broadly the work reaches."
+    ]
+   },
+   {
+    "probe_id": "P-0022-03",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0051",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "\\b(three|3)\\s+or\\s+more\\b",
+     "The playbook entry does not treat the brief as discretionary regardless of how broadly the work reaches."
+    ]
+   },
+   {
+    "probe_id": "P-0049-01",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0113",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "The checklist does not focus on company-wide launch-day publication duties.",
+     "The checklist does not say a company release can proceed without a public changelog."
+    ]
+   },
+   {
+    "probe_id": "P-0049-02",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0113",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "The checklist does not focus on company-wide launch-day publication duties.",
+     "The checklist does not say a company release can proceed without a public changelog."
+    ]
+   },
+   {
+    "probe_id": "P-0049-03",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0113",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "The checklist does not focus on company-wide launch-day publication duties.",
+     "The checklist does not say a company release can proceed without a public changelog."
+    ]
+   },
+   {
+    "probe_id": "P-0050-01",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0113",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "The note does not set a company-wide requirement about publishing a public changelog item at release time.",
+     "The note does not treat public changelog work for company releases as optional or unnecessary."
+    ]
+   },
+   {
+    "probe_id": "P-0050-01",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0114",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "The note does not make pre-merge PR changelog bullets the action that drives Tara's alignment with Anouk.",
+     "The note does not introduce an exception letting internal refactors skip changelog bullets before merge."
+    ]
+   },
+   {
+    "probe_id": "P-0050-02",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0113",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "The note does not set a company-wide requirement about publishing a public changelog item at release time.",
+     "The note does not treat public changelog work for company releases as optional or unnecessary."
+    ]
+   },
+   {
+    "probe_id": "P-0050-02",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0114",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "The note does not make pre-merge PR changelog bullets the action that drives Tara's alignment with Anouk.",
+     "The note does not introduce an exception letting internal refactors skip changelog bullets before merge."
+    ]
+   },
+   {
+    "probe_id": "P-0050-03",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0113",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "The note does not set a company-wide requirement about publishing a public changelog item at release time.",
+     "The note does not treat public changelog work for company releases as optional or unnecessary."
+    ]
+   },
+   {
+    "probe_id": "P-0050-03",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0114",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "The note does not make pre-merge PR changelog bullets the action that drives Tara's alignment with Anouk.",
+     "The note does not introduce an exception letting internal refactors skip changelog bullets before merge."
+    ]
+   }
+  ],
+  "org-00004": [
+   {
+    "probe_id": "P-0004-01",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0009",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "(tuesday|tue\\.?|thursday|thu\\.?|before\\s+noon)",
+     "The note does not describe the infra schedule as an unrestricted company-wide weekday process with no standing schedule."
+    ]
+   },
+   {
+    "probe_id": "P-0004-02",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0009",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "(tuesday|tue\\.?|thursday|thu\\.?|before\\s+noon)",
+     "The note does not describe the infra schedule as an unrestricted company-wide weekday process with no standing schedule."
+    ]
+   },
+   {
+    "probe_id": "P-0004-03",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0009",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "(tuesday|tue\\.?|thursday|thu\\.?|before\\s+noon)",
+     "The note does not describe the infra schedule as an unrestricted company-wide weekday process with no standing schedule."
+    ]
+   },
+   {
+    "probe_id": "P-0005-01",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0009",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "(tuesday\\s+and\\s+thursday|thursday\\s+and\\s+tuesday)",
+     "The private note does not treat your plan as a company rule that can happen on any weekday without a standing schedule."
+    ]
+   },
+   {
+    "probe_id": "P-0005-01",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0010",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "The private note does not anchor your plan to the infra team's midweek release slot after its team gate.",
+     "The private note does not anchor your plan to infra shipping every day based on pipeline status."
+    ]
+   },
+   {
+    "probe_id": "P-0005-02",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0009",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "(tuesday\\s+and\\s+thursday|thursday\\s+and\\s+tuesday)",
+     "The private note does not treat your plan as a company rule that can happen on any weekday without a standing schedule."
+    ]
+   },
+   {
+    "probe_id": "P-0005-02",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0010",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "The private note does not anchor your plan to the infra team's midweek release slot after its team gate.",
+     "The private note does not anchor your plan to infra shipping every day based on pipeline status."
+    ]
+   },
+   {
+    "probe_id": "P-0005-03",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0009",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "(tuesday\\s+and\\s+thursday|thursday\\s+and\\s+tuesday)",
+     "The private note does not treat your plan as a company rule that can happen on any weekday without a standing schedule."
+    ]
+   },
+   {
+    "probe_id": "P-0005-03",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0010",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "The private note does not anchor your plan to the infra team's midweek release slot after its team gate.",
+     "The private note does not anchor your plan to infra shipping every day based on pipeline status."
+    ]
+   },
+   {
+    "probe_id": "P-0013-01",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0031",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "The checklist does not require every retro action to include both an owner and a due date within 48 hours.",
+     "The checklist does not allow retro actions to remain open without owners until a later retro cycle."
+    ]
+   },
+   {
+    "probe_id": "P-0013-02",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0031",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "The checklist does not require every retro action to include both an owner and a due date within 48 hours.",
+     "The checklist does not allow retro actions to remain open without owners until a later retro cycle."
+    ]
+   },
+   {
+    "probe_id": "P-0013-03",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0031",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "The checklist does not require every retro action to include both an owner and a due date within 48 hours.",
+     "The checklist does not allow retro actions to remain open without owners until a later retro cycle."
+    ]
+   },
+   {
+    "probe_id": "P-0014-01",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0031",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "The plan does not use an org-wide requirement for owners and 48-hour due dates as the main checkpoint for follow-up.",
+     "The plan does not allow retro actions to remain ownerless until a later retro cycle."
+    ]
+   },
+   {
+    "probe_id": "P-0014-01",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0032",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "The plan does not rely on Jira ticket creation within one business day as the trigger for whether to ping Yuki again.",
+     "The plan does not treat meeting notes without tickets as sufficient tracking for Yuki's retro actions."
+    ]
+   },
+   {
+    "probe_id": "P-0014-02",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0031",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "The plan does not use an org-wide requirement for owners and 48-hour due dates as the main checkpoint for follow-up.",
+     "The plan does not allow retro actions to remain ownerless until a later retro cycle."
+    ]
+   },
+   {
+    "probe_id": "P-0014-02",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0032",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "The plan does not rely on Jira ticket creation within one business day as the trigger for whether to ping Yuki again.",
+     "The plan does not treat meeting notes without tickets as sufficient tracking for Yuki's retro actions."
+    ]
+   },
+   {
+    "probe_id": "P-0014-03",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0031",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "The plan does not use an org-wide requirement for owners and 48-hour due dates as the main checkpoint for follow-up.",
+     "The plan does not allow retro actions to remain ownerless until a later retro cycle."
+    ]
+   },
+   {
+    "probe_id": "P-0014-03",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0032",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "The plan does not rely on Jira ticket creation within one business day as the trigger for whether to ping Yuki again.",
+     "The plan does not treat meeting notes without tickets as sufficient tracking for Yuki's retro actions."
+    ]
+   },
+   {
+    "probe_id": "P-0022-01",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0051",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "\\b(ninety|90)\\b",
+     "The checklist does not turn into company-wide guidance saying switches may remain enabled with no retirement deadline after rollout."
+    ]
+   },
+   {
+    "probe_id": "P-0022-02",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0051",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "\\b(ninety|90)\\b",
+     "The checklist does not turn into company-wide guidance saying switches may remain enabled with no retirement deadline after rollout."
+    ]
+   },
+   {
+    "probe_id": "P-0022-03",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0051",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "\\b(ninety|90)\\b",
+     "The checklist does not turn into company-wide guidance saying switches may remain enabled with no retirement deadline after rollout."
+    ]
+   },
+   {
+    "probe_id": "P-0041-01",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0091",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "The note does not frame the preparation step as a company-wide 12-item checklist requirement.",
+     "The note does not say there is no launch requirement for a completed 12-item checklist."
+    ]
+   },
+   {
+    "probe_id": "P-0041-01",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0092",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "The note does not introduce load test signoff as the deciding detail for this private prep note.",
+     "The note does not say load test signoff is never needed for launches."
+    ]
+   },
+   {
+    "probe_id": "P-0041-02",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0091",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "The note does not frame the preparation step as a company-wide 12-item checklist requirement.",
+     "The note does not say there is no launch requirement for a completed 12-item checklist."
+    ]
+   },
+   {
+    "probe_id": "P-0041-02",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0092",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "The note does not introduce load test signoff as the deciding detail for this private prep note.",
+     "The note does not say load test signoff is never needed for launches."
+    ]
+   },
+   {
+    "probe_id": "P-0041-03",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0091",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "The note does not frame the preparation step as a company-wide 12-item checklist requirement.",
+     "The note does not say there is no launch requirement for a completed 12-item checklist."
+    ]
+   },
+   {
+    "probe_id": "P-0041-03",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0092",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "The note does not introduce load test signoff as the deciding detail for this private prep note.",
+     "The note does not say load test signoff is never needed for launches."
+    ]
+   },
+   {
+    "probe_id": "P-0049-01",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0112",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "((twenty[\\s-]?four|24)\\s+hours?)",
+     "The note does not make the support brief optional for low-impact launches."
+    ]
+   },
+   {
+    "probe_id": "P-0049-02",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0112",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "((twenty[\\s-]?four|24)\\s+hours?)",
+     "The note does not make the support brief optional for low-impact launches."
+    ]
+   },
+   {
+    "probe_id": "P-0049-03",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0112",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "((twenty[\\s-]?four|24)\\s+hours?)",
+     "The note does not make the support brief optional for low-impact launches."
+    ]
+   },
+   {
+    "probe_id": "P-0050-01",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0112",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "((twenty[\\s-]?four|24)\\s+hours?)",
+     "The prep note does not make the support brief optional for low-impact launches."
+    ]
+   },
+   {
+    "probe_id": "P-0050-01",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0113",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "The prep note does not frame readiness around required sign-off from both the on-call primary and the team lead.",
+     "The prep note does not frame readiness around a single lead approval with no on-call check."
+    ]
+   },
+   {
+    "probe_id": "P-0050-02",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0112",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "((twenty[\\s-]?four|24)\\s+hours?)",
+     "The prep note does not make the support brief optional for low-impact launches."
+    ]
+   },
+   {
+    "probe_id": "P-0050-02",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0113",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "The prep note does not frame readiness around required sign-off from both the on-call primary and the team lead.",
+     "The prep note does not frame readiness around a single lead approval with no on-call check."
+    ]
+   },
+   {
+    "probe_id": "P-0050-03",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0112",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "((twenty[\\s-]?four|24)\\s+hours?)",
+     "The prep note does not make the support brief optional for low-impact launches."
+    ]
+   },
+   {
+    "probe_id": "P-0050-03",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0113",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "The prep note does not frame readiness around required sign-off from both the on-call primary and the team lead.",
+     "The prep note does not frame readiness around a single lead approval with no on-call check."
+    ]
+   }
+  ],
+  "org-00005": [
+   {
+    "probe_id": "P-0004-01",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0009",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "The checklist does not direct reviewers to retire aged release switches after a ninety-day threshold or convert them into a lasting configuration.",
+     "The checklist does not tell reviewers that aged release switches can stay in place forever with no cleanup timeline."
+    ]
+   },
+   {
+    "probe_id": "P-0004-02",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0009",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "The checklist does not direct reviewers to retire aged release switches after a ninety-day threshold or convert them into a lasting configuration.",
+     "The checklist does not tell reviewers that aged release switches can stay in place forever with no cleanup timeline."
+    ]
+   },
+   {
+    "probe_id": "P-0004-03",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0009",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "The checklist does not direct reviewers to retire aged release switches after a ninety-day threshold or convert them into a lasting configuration.",
+     "The checklist does not tell reviewers that aged release switches can stay in place forever with no cleanup timeline."
+    ]
+   },
+   {
+    "probe_id": "P-0005-01",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0009",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "The checklist does not treat controls older than ninety days as a company-wide governance rule with outcomes such as retirement or conversion into a lasting configuration.",
+     "The checklist does not say older controls can remain temporary forever without a cleanup deadline."
+    ]
+   },
+   {
+    "probe_id": "P-0005-01",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0010",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "The checklist does not tell you to assign both an owner and a review date before merge.",
+     "The checklist does not say you can merge without a named owner or review date."
+    ]
+   },
+   {
+    "probe_id": "P-0005-02",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0009",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "The checklist does not treat controls older than ninety days as a company-wide governance rule with outcomes such as retirement or conversion into a lasting configuration.",
+     "The checklist does not say older controls can remain temporary forever without a cleanup deadline."
+    ]
+   },
+   {
+    "probe_id": "P-0005-02",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0010",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "The checklist does not tell you to assign both an owner and a review date before merge.",
+     "The checklist does not say you can merge without a named owner or review date."
+    ]
+   },
+   {
+    "probe_id": "P-0005-03",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0009",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "The checklist does not treat controls older than ninety days as a company-wide governance rule with outcomes such as retirement or conversion into a lasting configuration.",
+     "The checklist does not say older controls can remain temporary forever without a cleanup deadline."
+    ]
+   },
+   {
+    "probe_id": "P-0005-03",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0010",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "The checklist does not tell you to assign both an owner and a review date before merge.",
+     "The checklist does not say you can merge without a named owner or review date."
+    ]
+   },
+   {
+    "probe_id": "P-0013-01",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0030",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "(four|4)\\s+business\\s+hours?",
+     "The checklist does not say that shared-channel handling lacks any response target outside support hours."
+    ]
+   },
+   {
+    "probe_id": "P-0013-02",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0030",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "(four|4)\\s+business\\s+hours?",
+     "The checklist does not say that shared-channel handling lacks any response target outside support hours."
+    ]
+   },
+   {
+    "probe_id": "P-0013-03",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0030",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "(four|4)\\s+business\\s+hours?",
+     "The checklist does not say that shared-channel handling lacks any response target outside support hours."
+    ]
+   },
+   {
+    "probe_id": "P-0014-01",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0030",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "(four|4)\\s+business\\s+hours?",
+     "The plan does not say shared-channel handling lacks any response target outside support hours."
+    ]
+   },
+   {
+    "probe_id": "P-0014-01",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0031",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "(thirty|30)\\s*(-|\u2013)?\\s*min(ute)?s?",
+     "The plan does not defer urgent-tagged Growth threads to the end of the next business day."
+    ]
+   },
+   {
+    "probe_id": "P-0014-02",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0030",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "(four|4)\\s+business\\s+hours?",
+     "The plan does not say shared-channel handling lacks any response target outside support hours."
+    ]
+   },
+   {
+    "probe_id": "P-0014-02",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0031",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "(thirty|30)\\s*(-|\u2013)?\\s*min(ute)?s?",
+     "The plan does not defer urgent-tagged Growth threads to the end of the next business day."
+    ]
+   },
+   {
+    "probe_id": "P-0014-03",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0030",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "(four|4)\\s+business\\s+hours?",
+     "The plan does not say shared-channel handling lacks any response target outside support hours."
+    ]
+   },
+   {
+    "probe_id": "P-0014-03",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0031",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "(thirty|30)\\s*(-|\u2013)?\\s*min(ute)?s?",
+     "The plan does not defer urgent-tagged Growth threads to the end of the next business day."
+    ]
+   },
+   {
+    "probe_id": "P-0022-01",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0051",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "(seven|7)\\s+days?",
+     "The checklist does not use a same-calendar-month filing window as team guidance."
+    ]
+   },
+   {
+    "probe_id": "P-0022-02",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0051",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "(seven|7)\\s+days?",
+     "The checklist does not use a same-calendar-month filing window as team guidance."
+    ]
+   },
+   {
+    "probe_id": "P-0022-03",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0051",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "(seven|7)\\s+days?",
+     "The checklist does not use a same-calendar-month filing window as team guidance."
+    ]
+   },
+   {
+    "probe_id": "P-0031-01",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0071",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "((three|3)\\s*(?:pm)?\\s*(?:-|to|\u2013)\\s*(five|5)\\s*(?:pm)?)",
+     "((nine|9)\\s*(?:am)?\\s*(?:-|to|\u2013)\\s*(eleven|11)\\s*(?:am)?)"
+    ]
+   },
+   {
+    "probe_id": "P-0031-02",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0071",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "((three|3)\\s*(?:pm)?\\s*(?:-|to|\u2013)\\s*(five|5)\\s*(?:pm)?)",
+     "((nine|9)\\s*(?:am)?\\s*(?:-|to|\u2013)\\s*(eleven|11)\\s*(?:am)?)"
+    ]
+   },
+   {
+    "probe_id": "P-0031-03",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0071",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "((three|3)\\s*(?:pm)?\\s*(?:-|to|\u2013)\\s*(five|5)\\s*(?:pm)?)",
+     "((nine|9)\\s*(?:am)?\\s*(?:-|to|\u2013)\\s*(eleven|11)\\s*(?:am)?)"
+    ]
+   },
+   {
+    "probe_id": "P-0032-01",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0071",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "((three|3)\\s*(?:pm)?\\s*(?:-|to|\u2013)\\s*(five|5)\\s*(?:pm)?)",
+     "((nine|9)\\s*(?:am)?\\s*(?:-|to|\u2013)\\s*(eleven|11)\\s*(?:am)?)"
+    ]
+   },
+   {
+    "probe_id": "P-0032-01",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0072",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "((one|1)\\s*(?:pm)?)",
+     "((four|4)\\s*(?:pm)?)"
+    ]
+   },
+   {
+    "probe_id": "P-0032-02",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0071",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "((three|3)\\s*(?:pm)?\\s*(?:-|to|\u2013)\\s*(five|5)\\s*(?:pm)?)",
+     "((nine|9)\\s*(?:am)?\\s*(?:-|to|\u2013)\\s*(eleven|11)\\s*(?:am)?)"
+    ]
+   },
+   {
+    "probe_id": "P-0032-02",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0072",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "((one|1)\\s*(?:pm)?)",
+     "((four|4)\\s*(?:pm)?)"
+    ]
+   },
+   {
+    "probe_id": "P-0032-03",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0071",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "((three|3)\\s*(?:pm)?\\s*(?:-|to|\u2013)\\s*(five|5)\\s*(?:pm)?)",
+     "((nine|9)\\s*(?:am)?\\s*(?:-|to|\u2013)\\s*(eleven|11)\\s*(?:am)?)"
+    ]
+   },
+   {
+    "probe_id": "P-0032-03",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0072",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "((one|1)\\s*(?:pm)?)",
+     "((four|4)\\s*(?:pm)?)"
+    ]
+   },
+   {
+    "probe_id": "P-0041-01",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0093",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "(three[\\s-]day[\\s-]plus)",
+     "(month[\\s-]long[\\s-]plus)"
+    ]
+   },
+   {
+    "probe_id": "P-0041-02",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0093",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "(three[\\s-]day[\\s-]plus)",
+     "(month[\\s-]long[\\s-]plus)"
+    ]
+   },
+   {
+    "probe_id": "P-0041-03",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0093",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "(three[\\s-]day[\\s-]plus)",
+     "(month[\\s-]long[\\s-]plus)"
+    ]
+   },
+   {
+    "probe_id": "P-0049-01",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0112",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "((seventy|70)\\s*(percent|%)\\s+line)",
+     "((twenty|20)\\s*(percent|%)\\s+branch\\s+coverage\\s+ceiling)"
+    ]
+   },
+   {
+    "probe_id": "P-0049-02",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0112",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "((seventy|70)\\s*(percent|%)\\s+line)",
+     "((twenty|20)\\s*(percent|%)\\s+branch\\s+coverage\\s+ceiling)"
+    ]
+   },
+   {
+    "probe_id": "P-0049-03",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0112",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "((seventy|70)\\s*(percent|%)\\s+line)",
+     "((twenty|20)\\s*(percent|%)\\s+branch\\s+coverage\\s+ceiling)"
+    ]
+   },
+   {
+    "probe_id": "P-0050-01",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0112",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "((seventy|70)\\s*(percent|%)\\s+line)",
+     "((twenty|20)\\s*(percent|%)\\s+branch\\s+coverage\\s+ceiling)"
+    ]
+   },
+   {
+    "probe_id": "P-0050-01",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0113",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "((eighty\\s*-?\\s*five|85)\\s*(percent|%))",
+     "The note does not say incoming changes have no numeric test threshold."
+    ]
+   },
+   {
+    "probe_id": "P-0050-02",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0112",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "((seventy|70)\\s*(percent|%)\\s+line)",
+     "((twenty|20)\\s*(percent|%)\\s+branch\\s+coverage\\s+ceiling)"
+    ]
+   },
+   {
+    "probe_id": "P-0050-02",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0113",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "((eighty\\s*-?\\s*five|85)\\s*(percent|%))",
+     "The note does not say incoming changes have no numeric test threshold."
+    ]
+   },
+   {
+    "probe_id": "P-0050-03",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0112",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "((seventy|70)\\s*(percent|%)\\s+line)",
+     "((twenty|20)\\s*(percent|%)\\s+branch\\s+coverage\\s+ceiling)"
+    ]
+   },
+   {
+    "probe_id": "P-0050-03",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0113",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "((eighty\\s*-?\\s*five|85)\\s*(percent|%))",
+     "The note does not say incoming changes have no numeric test threshold."
+    ]
+   }
+  ],
+  "org-00002": [
+   {
+    "probe_id": "P-0004-01",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0009",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "\\b(seventy\\s*(-|\\s)?two|72)\\s+hours?\\b",
+     "The team template does not allow Sev-1 postmortems to bypass the five-whys structure just because the issue is already understood."
+    ]
+   },
+   {
+    "probe_id": "P-0004-02",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0009",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "\\b(seventy\\s*(-|\\s)?two|72)\\s+hours?\\b",
+     "The team template does not allow Sev-1 postmortems to bypass the five-whys structure just because the issue is already understood."
+    ]
+   },
+   {
+    "probe_id": "P-0004-03",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0009",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "\\b(seventy\\s*(-|\\s)?two|72)\\s+hours?\\b",
+     "The team template does not allow Sev-1 postmortems to bypass the five-whys structure just because the issue is already understood."
+    ]
+   },
+   {
+    "probe_id": "P-0005-01",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0009",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "\\b(seventy\\s*(-|\\s)?two|72)\\s+hours?\\b",
+     "The private note does not say Sev-1 postmortems can bypass the five-whys structure when the issue is already understood."
+    ]
+   },
+   {
+    "probe_id": "P-0005-01",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0010",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "\\bminute\\s*(-|\\s)?by\\s*(-|\\s)?minute\\b",
+     "\\binternal\\s*(-|\\s)?only\\b"
+    ]
+   },
+   {
+    "probe_id": "P-0005-02",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0009",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "\\b(seventy\\s*(-|\\s)?two|72)\\s+hours?\\b",
+     "The private note does not say Sev-1 postmortems can bypass the five-whys structure when the issue is already understood."
+    ]
+   },
+   {
+    "probe_id": "P-0005-02",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0010",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "\\bminute\\s*(-|\\s)?by\\s*(-|\\s)?minute\\b",
+     "\\binternal\\s*(-|\\s)?only\\b"
+    ]
+   },
+   {
+    "probe_id": "P-0005-03",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0009",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "\\b(seventy\\s*(-|\\s)?two|72)\\s+hours?\\b",
+     "The private note does not say Sev-1 postmortems can bypass the five-whys structure when the issue is already understood."
+    ]
+   },
+   {
+    "probe_id": "P-0005-03",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0010",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "\\bminute\\s*(-|\\s)?by\\s*(-|\\s)?minute\\b",
+     "\\binternal\\s*(-|\\s)?only\\b"
+    ]
+   },
+   {
+    "probe_id": "P-0013-01",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0029",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "\\b((eighty|80)\\s*percent|80\\s*%)\\b",
+     "The operating note does not frame the rule as a company-wide service standard tied to a monthly threshold or monthly full depletion."
+    ]
+   },
+   {
+    "probe_id": "P-0013-02",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0029",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "\\b((eighty|80)\\s*percent|80\\s*%)\\b",
+     "The operating note does not frame the rule as a company-wide service standard tied to a monthly threshold or monthly full depletion."
+    ]
+   },
+   {
+    "probe_id": "P-0013-03",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0029",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "\\b((eighty|80)\\s*percent|80\\s*%)\\b",
+     "The operating note does not frame the rule as a company-wide service standard tied to a monthly threshold or monthly full depletion."
+    ]
+   },
+   {
+    "probe_id": "P-0014-01",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0029",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "\\b((eighty|80)\\s*percent|80\\s*%)\\b",
+     "The personal reminder does not frame the rule as a company-wide service standard tied to a monthly threshold or monthly full depletion."
+    ]
+   },
+   {
+    "probe_id": "P-0014-01",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0030",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "\\b((sixty|60)\\s*percent|60\\s*%)\\b",
+     "The personal reminder does not frame the rule as a Growth-team standard tied to a team-level threshold or team-level full depletion."
+    ]
+   },
+   {
+    "probe_id": "P-0014-02",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0029",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "\\b((eighty|80)\\s*percent|80\\s*%)\\b",
+     "The personal reminder does not frame the rule as a company-wide service standard tied to a monthly threshold or monthly full depletion."
+    ]
+   },
+   {
+    "probe_id": "P-0014-02",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0030",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "\\b((sixty|60)\\s*percent|60\\s*%)\\b",
+     "The personal reminder does not frame the rule as a Growth-team standard tied to a team-level threshold or team-level full depletion."
+    ]
+   },
+   {
+    "probe_id": "P-0014-03",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0029",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "\\b((eighty|80)\\s*percent|80\\s*%)\\b",
+     "The personal reminder does not frame the rule as a company-wide service standard tied to a monthly threshold or monthly full depletion."
+    ]
+   },
+   {
+    "probe_id": "P-0014-03",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0030",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "\\b((sixty|60)\\s*percent|60\\s*%)\\b",
+     "The personal reminder does not frame the rule as a Growth-team standard tied to a team-level threshold or team-level full depletion."
+    ]
+   },
+   {
+    "probe_id": "P-0022-01",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0050",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "(ninety|90)\\s+days?",
+     "The operating note does not allow experiment flags to continue with no required end date."
+    ]
+   },
+   {
+    "probe_id": "P-0022-02",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0050",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "(ninety|90)\\s+days?",
+     "The operating note does not allow experiment flags to continue with no required end date."
+    ]
+   },
+   {
+    "probe_id": "P-0022-03",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0050",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "(ninety|90)\\s+days?",
+     "The operating note does not allow experiment flags to continue with no required end date."
+    ]
+   },
+   {
+    "probe_id": "P-0023-01",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0050",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "(ninety|90)\\s+days?",
+     "The checklist does not allow personal flags to remain open-ended without any planned end point."
+    ]
+   },
+   {
+    "probe_id": "P-0023-01",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0051",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "(thirty|30)\\s+days?",
+     "(six|6)\\s+months?"
+    ]
+   },
+   {
+    "probe_id": "P-0023-02",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0050",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "(ninety|90)\\s+days?",
+     "The checklist does not allow personal flags to remain open-ended without any planned end point."
+    ]
+   },
+   {
+    "probe_id": "P-0023-02",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0051",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "(thirty|30)\\s+days?",
+     "(six|6)\\s+months?"
+    ]
+   },
+   {
+    "probe_id": "P-0023-03",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0050",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "(ninety|90)\\s+days?",
+     "The checklist does not allow personal flags to remain open-ended without any planned end point."
+    ]
+   },
+   {
+    "probe_id": "P-0023-03",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0051",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "(thirty|30)\\s+days?",
+     "(six|6)\\s+months?"
+    ]
+   },
+   {
+    "probe_id": "P-0032-01",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0071",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "every\\s+friday\\s+at\\s+(12\\s*(pm)?|noon)",
+     "The checklist does not say releases fail to ship at noon on Fridays."
+    ]
+   },
+   {
+    "probe_id": "P-0032-02",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0071",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "every\\s+friday\\s+at\\s+(12\\s*(pm)?|noon)",
+     "The checklist does not say releases fail to ship at noon on Fridays."
+    ]
+   },
+   {
+    "probe_id": "P-0032-03",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0071",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "every\\s+friday\\s+at\\s+(12\\s*(pm)?|noon)",
+     "The checklist does not say releases fail to ship at noon on Fridays."
+    ]
+   },
+   {
+    "probe_id": "P-0049-01",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0112",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "The note does not discuss whether production access is persistent by default or whether grants expire.",
+     "The note does not discuss persistent production access as the standard default or say grants lack an expiry."
+    ]
+   },
+   {
+    "probe_id": "P-0049-02",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0112",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "The note does not discuss whether production access is persistent by default or whether grants expire.",
+     "The note does not discuss persistent production access as the standard default or say grants lack an expiry."
+    ]
+   },
+   {
+    "probe_id": "P-0049-03",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0112",
+    "sibling_tier": "org",
+    "winner_tier": "team",
+    "was": [
+     "The note does not discuss whether production access is persistent by default or whether grants expire.",
+     "The note does not discuss persistent production access as the standard default or say grants lack an expiry."
+    ]
+   },
+   {
+    "probe_id": "P-0050-01",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0112",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "The checklist does not discuss whether production access is persistent by default or whether grants expire.",
+     "The checklist does not discuss persistent production access as the standard default or say grants lack an expiry."
+    ]
+   },
+   {
+    "probe_id": "P-0050-01",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0113",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "((one|1)\\s+business\\s+hour|an\\s+hour|60\\s+minutes)",
+     "The checklist does not say requests can wait for weeks before anyone responds."
+    ]
+   },
+   {
+    "probe_id": "P-0050-02",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0112",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "The checklist does not discuss whether production access is persistent by default or whether grants expire.",
+     "The checklist does not discuss persistent production access as the standard default or say grants lack an expiry."
+    ]
+   },
+   {
+    "probe_id": "P-0050-02",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0113",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "((one|1)\\s+business\\s+hour|an\\s+hour|60\\s+minutes)",
+     "The checklist does not say requests can wait for weeks before anyone responds."
+    ]
+   },
+   {
+    "probe_id": "P-0050-03",
+    "removed": [
+     "asrt-2",
+     "casrt-2"
+    ],
+    "fact_id": "F-0112",
+    "sibling_tier": "org",
+    "winner_tier": "personal",
+    "was": [
+     "The checklist does not discuss whether production access is persistent by default or whether grants expire.",
+     "The checklist does not discuss persistent production access as the standard default or say grants lack an expiry."
+    ]
+   },
+   {
+    "probe_id": "P-0050-03",
+    "removed": [
+     "asrt-3",
+     "casrt-3"
+    ],
+    "fact_id": "F-0113",
+    "sibling_tier": "team",
+    "winner_tier": "personal",
+    "was": [
+     "((one|1)\\s+business\\s+hour|an\\s+hour|60\\s+minutes)",
+     "The checklist does not say requests can wait for weeks before anyone responds."
+    ]
+   }
+  ]
+ }
+}

@@ -1,0 +1,132 @@
+{
+ "date": "2026-08-15",
+ "rule": "v0.4 rule 4 (pattern quality) applied to authored absence patterns: branches reducing to bare numerals / common words under optional anchors are replaced by semantic mirrors of the same fact_absent intent (kind and pairing unchanged).",
+ "replacements": [
+  {
+   "org": "org-00002",
+   "probe_id": "P-0012-01",
+   "assertion_id": "asrt-3",
+   "was_pattern": "\\b(half|50\\s*percent|50\\s*%)\\b",
+   "now": "The handbook note does not present pausing launches at half of an individual's personal error budget as the rule."
+  },
+  {
+   "org": "org-00002",
+   "probe_id": "P-0012-02",
+   "assertion_id": "asrt-3",
+   "was_pattern": "\\b(half|50\\s*percent|50\\s*%)\\b",
+   "now": "The handbook note does not present pausing launches at half of an individual's personal error budget as the rule."
+  },
+  {
+   "org": "org-00002",
+   "probe_id": "P-0012-03",
+   "assertion_id": "asrt-3",
+   "was_pattern": "\\b(half|50\\s*percent|50\\s*%)\\b",
+   "now": "The handbook note does not present pausing launches at half of an individual's personal error budget as the rule."
+  },
+  {
+   "org": "org-00002",
+   "probe_id": "P-0013-01",
+   "assertion_id": "asrt-3",
+   "was_pattern": "\\b(half|50\\s*percent|50\\s*%)\\b",
+   "now": "The operating note does not present pausing launches at half of an individual's personal error budget as the rule."
+  },
+  {
+   "org": "org-00002",
+   "probe_id": "P-0013-02",
+   "assertion_id": "asrt-3",
+   "was_pattern": "\\b(half|50\\s*percent|50\\s*%)\\b",
+   "now": "The operating note does not present pausing launches at half of an individual's personal error budget as the rule."
+  },
+  {
+   "org": "org-00002",
+   "probe_id": "P-0013-03",
+   "assertion_id": "asrt-3",
+   "was_pattern": "\\b(half|50\\s*percent|50\\s*%)\\b",
+   "now": "The operating note does not present pausing launches at half of an individual's personal error budget as the rule."
+  },
+  {
+   "org": "org-00003",
+   "probe_id": "P-0039-01",
+   "assertion_id": "asrt-2",
+   "was_pattern": "(5\\s*(pm)?|10\\s*(am)?)",
+   "now": "The announcement does not present a Thursday 5pm through Monday 10am freeze window as the company-wide rule."
+  },
+  {
+   "org": "org-00003",
+   "probe_id": "P-0039-02",
+   "assertion_id": "asrt-2",
+   "was_pattern": "(5\\s*(pm)?|10\\s*(am)?)",
+   "now": "The announcement does not present a Thursday 5pm through Monday 10am freeze window as the company-wide rule."
+  },
+  {
+   "org": "org-00003",
+   "probe_id": "P-0039-03",
+   "assertion_id": "asrt-2",
+   "was_pattern": "(5\\s*(pm)?|10\\s*(am)?)",
+   "now": "The announcement does not present a Thursday 5pm through Monday 10am freeze window as the company-wide rule."
+  },
+  {
+   "org": "org-00004",
+   "probe_id": "P-0021-01",
+   "assertion_id": "asrt-3",
+   "was_pattern": "\\b(thirty|30)\\b",
+   "now": "The note does not present cleaning up flags within thirty days of ramp completion as the company-wide rule."
+  },
+  {
+   "org": "org-00004",
+   "probe_id": "P-0021-02",
+   "assertion_id": "asrt-3",
+   "was_pattern": "\\b(thirty|30)\\b",
+   "now": "The note does not present cleaning up flags within thirty days of ramp completion as the company-wide rule."
+  },
+  {
+   "org": "org-00004",
+   "probe_id": "P-0021-03",
+   "assertion_id": "asrt-3",
+   "was_pattern": "\\b(thirty|30)\\b",
+   "now": "The note does not present cleaning up flags within thirty days of ramp completion as the company-wide rule."
+  },
+  {
+   "org": "org-00004",
+   "probe_id": "P-0022-01",
+   "assertion_id": "asrt-3",
+   "was_pattern": "\\b(thirty|30)\\b",
+   "now": "The checklist does not present cleaning up flags within thirty days of ramp completion as the team's rule."
+  },
+  {
+   "org": "org-00004",
+   "probe_id": "P-0022-02",
+   "assertion_id": "asrt-3",
+   "was_pattern": "\\b(thirty|30)\\b",
+   "now": "The checklist does not present cleaning up flags within thirty days of ramp completion as the team's rule."
+  },
+  {
+   "org": "org-00004",
+   "probe_id": "P-0022-03",
+   "assertion_id": "asrt-3",
+   "was_pattern": "\\b(thirty|30)\\b",
+   "now": "The checklist does not present cleaning up flags within thirty days of ramp completion as the team's rule."
+  },
+  {
+   "org": "org-00005",
+   "probe_id": "P-0031-01",
+   "assertion_id": "casrt-3",
+   "was_pattern": "((six|6)\\s*(?:pm)?)",
+   "now": "The note does not present Monday evenings at 6pm as the office-hours slot."
+  },
+  {
+   "org": "org-00005",
+   "probe_id": "P-0031-02",
+   "assertion_id": "casrt-3",
+   "was_pattern": "((six|6)\\s*(?:pm)?)",
+   "now": "The note does not present Monday evenings at 6pm as the office-hours slot."
+  },
+  {
+   "org": "org-00005",
+   "probe_id": "P-0031-03",
+   "assertion_id": "casrt-3",
+   "was_pattern": "((six|6)\\s*(?:pm)?)",
+   "now": "The note does not present Monday evenings at 6pm as the office-hours slot."
+  }
+ ]
+}

@@ -1,0 +1,962 @@
+[
+ {
+  "org": "org-00001",
+  "probe_id": "P-0046-01",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00001:P-0046:counterfactual:casrt-1",
+  "was": "The checklist treats sprint carryover as having no per-engineer cap.",
+  "now": "The checklist does not present a five story point per engineer carryover cap as the rule."
+ },
+ {
+  "org": "org-00001",
+  "probe_id": "P-0046-02",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00001:P-0046:counterfactual:casrt-1",
+  "was": "The checklist treats sprint carryover as having no per-engineer cap.",
+  "now": "The checklist does not present a five story point per engineer carryover cap as the rule."
+ },
+ {
+  "org": "org-00001",
+  "probe_id": "P-0046-03",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00001:P-0046:counterfactual:casrt-1",
+  "was": "The checklist treats sprint carryover as having no per-engineer cap.",
+  "now": "The checklist does not present a five story point per engineer carryover cap as the rule."
+ },
+ {
+  "org": "org-00001",
+  "probe_id": "P-0051-01",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00001:P-0051:counterfactual:casrt-1",
+  "was": "The handbook update describes org bug triage as not occurring on Monday and says those Monday instances do not have any published owner.",
+  "now": "The handbook update does not present org bug triage as running every Monday with a published owner as the current process."
+ },
+ {
+  "org": "org-00001",
+  "probe_id": "P-0051-02",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00001:P-0051:counterfactual:casrt-1",
+  "was": "The handbook update describes org bug triage as not occurring on Monday and says those Monday instances do not have any published owner.",
+  "now": "The handbook update does not present org bug triage as running every Monday with a published owner as the current process."
+ },
+ {
+  "org": "org-00001",
+  "probe_id": "P-0051-03",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00001:P-0051:counterfactual:casrt-1",
+  "was": "The handbook update describes org bug triage as not occurring on Monday and says those Monday instances do not have any published owner.",
+  "now": "The handbook update does not present org bug triage as running every Monday with a published owner as the current process."
+ },
+ {
+  "org": "org-00002",
+  "probe_id": "P-0030-01",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00002:P-0030:counterfactual:casrt-1",
+  "was": "The note says the org no longer ships production releases on second Tuesdays.",
+  "now": "The note does not present second-Tuesday production releases as the current org-wide standard."
+ },
+ {
+  "org": "org-00002",
+  "probe_id": "P-0030-02",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00002:P-0030:counterfactual:casrt-1",
+  "was": "The note says the org no longer ships production releases on second Tuesdays.",
+  "now": "The note does not present second-Tuesday production releases as the current org-wide standard."
+ },
+ {
+  "org": "org-00002",
+  "probe_id": "P-0030-03",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00002:P-0030:counterfactual:casrt-1",
+  "was": "The note says the org no longer ships production releases on second Tuesdays.",
+  "now": "The note does not present second-Tuesday production releases as the current org-wide standard."
+ },
+ {
+  "org": "org-00002",
+  "probe_id": "P-0031-01",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00002:P-0031:counterfactual:casrt-1",
+  "was": "The note states that the team does not release on Fridays at noon, rather than presenting that slot as the standard release window.",
+  "now": "The note does not present Friday at noon as the team's standard release window."
+ },
+ {
+  "org": "org-00002",
+  "probe_id": "P-0031-02",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00002:P-0031:counterfactual:casrt-1",
+  "was": "The note states that the team does not release on Fridays at noon, rather than presenting that slot as the standard release window.",
+  "now": "The note does not present Friday at noon as the team's standard release window."
+ },
+ {
+  "org": "org-00002",
+  "probe_id": "P-0031-03",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00002:P-0031:counterfactual:casrt-1",
+  "was": "The note states that the team does not release on Fridays at noon, rather than presenting that slot as the standard release window.",
+  "now": "The note does not present Friday at noon as the team's standard release window."
+ },
+ {
+  "org": "org-00002",
+  "probe_id": "P-0035-01",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00002:P-0035:counterfactual:casrt-1",
+  "was": "The update says a change cannot land with a single reviewer sign-off.",
+  "now": "The update does not present a single reviewer sign-off as the rule before code can land."
+ },
+ {
+  "org": "org-00002",
+  "probe_id": "P-0035-02",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00002:P-0035:counterfactual:casrt-1",
+  "was": "The update says a change cannot land with a single reviewer sign-off.",
+  "now": "The update does not present a single reviewer sign-off as the rule before code can land."
+ },
+ {
+  "org": "org-00002",
+  "probe_id": "P-0035-03",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00002:P-0035:counterfactual:casrt-1",
+  "was": "The update says a change cannot land with a single reviewer sign-off.",
+  "now": "The update does not present a single reviewer sign-off as the rule before code can land."
+ },
+ {
+  "org": "org-00002",
+  "probe_id": "P-0040-01",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00002:P-0040:counterfactual:casrt-1",
+  "was": "The checklist says production access sessions are not capped for teammates.",
+  "now": "The checklist does not present a four-hour cap on production access sessions as the rule."
+ },
+ {
+  "org": "org-00002",
+  "probe_id": "P-0040-02",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00002:P-0040:counterfactual:casrt-1",
+  "was": "The checklist says production access sessions are not capped for teammates.",
+  "now": "The checklist does not present a four-hour cap on production access sessions as the rule."
+ },
+ {
+  "org": "org-00002",
+  "probe_id": "P-0040-03",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00002:P-0040:counterfactual:casrt-1",
+  "was": "The checklist says production access sessions are not capped for teammates.",
+  "now": "The checklist does not present a four-hour cap on production access sessions as the rule."
+ },
+ {
+  "org": "org-00002",
+  "probe_id": "P-0042-01",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00002:P-0042:counterfactual:casrt-1",
+  "was": "The note says demo day is not monthly and does not give each group ten minutes to present.",
+  "now": "The note does not present a monthly cadence with ten-minute presentation slots for each group as the current demo day format."
+ },
+ {
+  "org": "org-00002",
+  "probe_id": "P-0042-02",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00002:P-0042:counterfactual:casrt-1",
+  "was": "The note says demo day is not monthly and does not give each group ten minutes to present.",
+  "now": "The note does not present a monthly cadence with ten-minute presentation slots for each group as the current demo day format."
+ },
+ {
+  "org": "org-00002",
+  "probe_id": "P-0042-03",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00002:P-0042:counterfactual:casrt-1",
+  "was": "The note says demo day is not monthly and does not give each group ten minutes to present.",
+  "now": "The note does not present a monthly cadence with ten-minute presentation slots for each group as the current demo day format."
+ },
+ {
+  "org": "org-00002",
+  "probe_id": "P-0043-01",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00002:P-0043:counterfactual:casrt-1",
+  "was": "The announcement states that demo day has never run a biweekly, five-minute-slot format.",
+  "now": "The announcement does not present a biweekly cadence with five-minute slots per team as the current demo day format."
+ },
+ {
+  "org": "org-00002",
+  "probe_id": "P-0043-02",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00002:P-0043:counterfactual:casrt-1",
+  "was": "The announcement states that demo day has never run a biweekly, five-minute-slot format.",
+  "now": "The announcement does not present a biweekly cadence with five-minute slots per team as the current demo day format."
+ },
+ {
+  "org": "org-00002",
+  "probe_id": "P-0043-03",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00002:P-0043:counterfactual:casrt-1",
+  "was": "The announcement states that demo day has never run a biweekly, five-minute-slot format.",
+  "now": "The announcement does not present a biweekly cadence with five-minute slots per team as the current demo day format."
+ },
+ {
+  "org": "org-00002",
+  "probe_id": "P-0044-01",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00002:P-0044:counterfactual:casrt-1",
+  "was": "The email states demo day has stopped running its weekly, seven-minute-slot format.",
+  "now": "The email does not present a weekly cadence with seven-minute slots per team as the current demo day format."
+ },
+ {
+  "org": "org-00002",
+  "probe_id": "P-0044-02",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00002:P-0044:counterfactual:casrt-1",
+  "was": "The email states demo day has stopped running its weekly, seven-minute-slot format.",
+  "now": "The email does not present a weekly cadence with seven-minute slots per team as the current demo day format."
+ },
+ {
+  "org": "org-00002",
+  "probe_id": "P-0044-03",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00002:P-0044:counterfactual:casrt-1",
+  "was": "The email states demo day has stopped running its weekly, seven-minute-slot format.",
+  "now": "The email does not present a weekly cadence with seven-minute slots per team as the current demo day format."
+ },
+ {
+  "org": "org-00002",
+  "probe_id": "P-0046-01",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00002:P-0046:counterfactual:casrt-1",
+  "was": "The checklist says pages are never recertified on a 90-day cadence.",
+  "now": "The checklist does not present recertifying pages on a 90-day cadence as the rule."
+ },
+ {
+  "org": "org-00002",
+  "probe_id": "P-0046-02",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00002:P-0046:counterfactual:casrt-1",
+  "was": "The checklist says pages are never recertified on a 90-day cadence.",
+  "now": "The checklist does not present recertifying pages on a 90-day cadence as the rule."
+ },
+ {
+  "org": "org-00002",
+  "probe_id": "P-0046-03",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00002:P-0046:counterfactual:casrt-1",
+  "was": "The checklist says pages are never recertified on a 90-day cadence.",
+  "now": "The checklist does not present recertifying pages on a 90-day cadence as the rule."
+ },
+ {
+  "org": "org-00002",
+  "probe_id": "P-0051-01",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00002:P-0051:counterfactual:casrt-1",
+  "was": "The blurb states that there is no Monday 2pm support office-hours slot.",
+  "now": "The blurb does not present a Monday 2pm support office-hours slot as current."
+ },
+ {
+  "org": "org-00002",
+  "probe_id": "P-0051-02",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00002:P-0051:counterfactual:casrt-1",
+  "was": "The blurb states that there is no Monday 2pm support office-hours slot.",
+  "now": "The blurb does not present a Monday 2pm support office-hours slot as current."
+ },
+ {
+  "org": "org-00002",
+  "probe_id": "P-0051-03",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00002:P-0051:counterfactual:casrt-1",
+  "was": "The blurb states that there is no Monday 2pm support office-hours slot.",
+  "now": "The blurb does not present a Monday 2pm support office-hours slot as current."
+ },
+ {
+  "org": "org-00002",
+  "probe_id": "P-0052-01",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00002:P-0052:counterfactual:casrt-1",
+  "was": "The announcement says there is no Wednesday 4pm support office-hours session.",
+  "now": "The announcement does not present a Wednesday 4pm support office-hours session as current."
+ },
+ {
+  "org": "org-00002",
+  "probe_id": "P-0052-02",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00002:P-0052:counterfactual:casrt-1",
+  "was": "The announcement says there is no Wednesday 4pm support office-hours session.",
+  "now": "The announcement does not present a Wednesday 4pm support office-hours session as current."
+ },
+ {
+  "org": "org-00002",
+  "probe_id": "P-0052-03",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00002:P-0052:counterfactual:casrt-1",
+  "was": "The announcement says there is no Wednesday 4pm support office-hours session.",
+  "now": "The announcement does not present a Wednesday 4pm support office-hours session as current."
+ },
+ {
+  "org": "org-00002",
+  "probe_id": "P-0053-01",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00002:P-0053:counterfactual:casrt-1",
+  "was": "The reminder says there is no current Friday 1pm support session because that slot was discontinued during the most recent quarter.",
+  "now": "The reminder does not present a Friday 1pm support session as current."
+ },
+ {
+  "org": "org-00002",
+  "probe_id": "P-0053-02",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00002:P-0053:counterfactual:casrt-1",
+  "was": "The reminder says there is no current Friday 1pm support session because that slot was discontinued during the most recent quarter.",
+  "now": "The reminder does not present a Friday 1pm support session as current."
+ },
+ {
+  "org": "org-00002",
+  "probe_id": "P-0053-03",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00002:P-0053:counterfactual:casrt-1",
+  "was": "The reminder says there is no current Friday 1pm support session because that slot was discontinued during the most recent quarter.",
+  "now": "The reminder does not present a Friday 1pm support session as current."
+ },
+ {
+  "org": "org-00003",
+  "probe_id": "P-0030-01",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00003:P-0030:counterfactual:casrt-1",
+  "was": "The guideline states the org-wide rule as not requiring 95 percent significance before any rollout decision.",
+  "now": "The guideline does not present 95 percent significance before any rollout decision as the org-wide rule."
+ },
+ {
+  "org": "org-00003",
+  "probe_id": "P-0030-02",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00003:P-0030:counterfactual:casrt-1",
+  "was": "The guideline states the org-wide rule as not requiring 95 percent significance before any rollout decision.",
+  "now": "The guideline does not present 95 percent significance before any rollout decision as the org-wide rule."
+ },
+ {
+  "org": "org-00003",
+  "probe_id": "P-0030-03",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00003:P-0030:counterfactual:casrt-1",
+  "was": "The guideline states the org-wide rule as not requiring 95 percent significance before any rollout decision.",
+  "now": "The guideline does not present 95 percent significance before any rollout decision as the org-wide rule."
+ },
+ {
+  "org": "org-00003",
+  "probe_id": "P-0033-01",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00003:P-0033:counterfactual:casrt-1",
+  "was": "The note says the four interviews and the hiring-manager screen are removed from the loop.",
+  "now": "The note does not describe four interviews and a hiring-manager screen as part of the current loop."
+ },
+ {
+  "org": "org-00003",
+  "probe_id": "P-0033-02",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00003:P-0033:counterfactual:casrt-1",
+  "was": "The note says the four interviews and the hiring-manager screen are removed from the loop.",
+  "now": "The note does not describe four interviews and a hiring-manager screen as part of the current loop."
+ },
+ {
+  "org": "org-00003",
+  "probe_id": "P-0033-03",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00003:P-0033:counterfactual:casrt-1",
+  "was": "The note says the four interviews and the hiring-manager screen are removed from the loop.",
+  "now": "The note does not describe four interviews and a hiring-manager screen as part of the current loop."
+ },
+ {
+  "org": "org-00003",
+  "probe_id": "P-0034-01",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00003:P-0034:counterfactual:casrt-1",
+  "was": "The blurb says the five interviews and the hiring-manager screen are removed from the loop.",
+  "now": "The blurb does not describe five interviews and a hiring-manager screen as part of the current loop."
+ },
+ {
+  "org": "org-00003",
+  "probe_id": "P-0034-02",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00003:P-0034:counterfactual:casrt-1",
+  "was": "The blurb says the five interviews and the hiring-manager screen are removed from the loop.",
+  "now": "The blurb does not describe five interviews and a hiring-manager screen as part of the current loop."
+ },
+ {
+  "org": "org-00003",
+  "probe_id": "P-0034-03",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00003:P-0034:counterfactual:casrt-1",
+  "was": "The blurb says the five interviews and the hiring-manager screen are removed from the loop.",
+  "now": "The blurb does not describe five interviews and a hiring-manager screen as part of the current loop."
+ },
+ {
+  "org": "org-00003",
+  "probe_id": "P-0035-01",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00003:P-0035:counterfactual:casrt-1",
+  "was": "The checklist describes the hiring loop as having dropped all three interviews plus the hiring-manager screen.",
+  "now": "The checklist does not describe three interviews and a hiring-manager screen as part of the current loop."
+ },
+ {
+  "org": "org-00003",
+  "probe_id": "P-0035-02",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00003:P-0035:counterfactual:casrt-1",
+  "was": "The checklist describes the hiring loop as having dropped all three interviews plus the hiring-manager screen.",
+  "now": "The checklist does not describe three interviews and a hiring-manager screen as part of the current loop."
+ },
+ {
+  "org": "org-00003",
+  "probe_id": "P-0035-03",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00003:P-0035:counterfactual:casrt-1",
+  "was": "The checklist describes the hiring loop as having dropped all three interviews plus the hiring-manager screen.",
+  "now": "The checklist does not describe three interviews and a hiring-manager screen as part of the current loop."
+ },
+ {
+  "org": "org-00003",
+  "probe_id": "P-0037-01",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00003:P-0037:counterfactual:casrt-1",
+  "was": "The message does not invite the infra team to attend platform office hours on Tuesday at 3 PM in Atlas, and instead makes clear that slot is not used for the session.",
+  "now": "The message does not invite the infra team to attend platform office hours on Tuesday at 3 PM in Atlas as the current session slot."
+ },
+ {
+  "org": "org-00003",
+  "probe_id": "P-0037-02",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00003:P-0037:counterfactual:casrt-1",
+  "was": "The message does not invite the infra team to attend platform office hours on Tuesday at 3 PM in Atlas, and instead makes clear that slot is not used for the session.",
+  "now": "The message does not invite the infra team to attend platform office hours on Tuesday at 3 PM in Atlas as the current session slot."
+ },
+ {
+  "org": "org-00003",
+  "probe_id": "P-0037-03",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00003:P-0037:counterfactual:casrt-1",
+  "was": "The message does not invite the infra team to attend platform office hours on Tuesday at 3 PM in Atlas, and instead makes clear that slot is not used for the session.",
+  "now": "The message does not invite the infra team to attend platform office hours on Tuesday at 3 PM in Atlas as the current session slot."
+ },
+ {
+  "org": "org-00003",
+  "probe_id": "P-0042-01",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00003:P-0042:counterfactual:casrt-1",
+  "was": "The draft says 49 dollars per seat per month is no longer the current Pro amount.",
+  "now": "The draft does not present 49 dollars per seat per month as the current Pro amount."
+ },
+ {
+  "org": "org-00003",
+  "probe_id": "P-0042-02",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00003:P-0042:counterfactual:casrt-1",
+  "was": "The draft says 49 dollars per seat per month is no longer the current Pro amount.",
+  "now": "The draft does not present 49 dollars per seat per month as the current Pro amount."
+ },
+ {
+  "org": "org-00003",
+  "probe_id": "P-0042-03",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00003:P-0042:counterfactual:casrt-1",
+  "was": "The draft says 49 dollars per seat per month is no longer the current Pro amount.",
+  "now": "The draft does not present 49 dollars per seat per month as the current Pro amount."
+ },
+ {
+  "org": "org-00003",
+  "probe_id": "P-0043-01",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00003:P-0043:counterfactual:casrt-1",
+  "was": "The message says 59 dollars per seat per month is no longer the current Pro amount.",
+  "now": "The message does not present 59 dollars per seat per month as the current Pro amount."
+ },
+ {
+  "org": "org-00003",
+  "probe_id": "P-0043-02",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00003:P-0043:counterfactual:casrt-1",
+  "was": "The message says 59 dollars per seat per month is no longer the current Pro amount.",
+  "now": "The message does not present 59 dollars per seat per month as the current Pro amount."
+ },
+ {
+  "org": "org-00003",
+  "probe_id": "P-0043-03",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00003:P-0043:counterfactual:casrt-1",
+  "was": "The message says 59 dollars per seat per month is no longer the current Pro amount.",
+  "now": "The message does not present 59 dollars per seat per month as the current Pro amount."
+ },
+ {
+  "org": "org-00003",
+  "probe_id": "P-0044-01",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00003:P-0044:counterfactual:casrt-1",
+  "was": "The FAQ entry states that the Pro plan is no longer priced at 65 dollars per seat monthly.",
+  "now": "The FAQ entry does not present 65 dollars per seat monthly as the current Pro plan price."
+ },
+ {
+  "org": "org-00003",
+  "probe_id": "P-0044-02",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00003:P-0044:counterfactual:casrt-1",
+  "was": "The FAQ entry states that the Pro plan is no longer priced at 65 dollars per seat monthly.",
+  "now": "The FAQ entry does not present 65 dollars per seat monthly as the current Pro plan price."
+ },
+ {
+  "org": "org-00003",
+  "probe_id": "P-0044-03",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00003:P-0044:counterfactual:casrt-1",
+  "was": "The FAQ entry states that the Pro plan is no longer priced at 65 dollars per seat monthly.",
+  "now": "The FAQ entry does not present 65 dollars per seat monthly as the current Pro plan price."
+ },
+ {
+  "org": "org-00003",
+  "probe_id": "P-0046-01",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00003:P-0046:counterfactual:casrt-1",
+  "was": "The checklist states that backend services enforce no minimum 80 percent line-coverage floor.",
+  "now": "The checklist does not require a minimum 80 percent line-coverage floor as the rule for backend services."
+ },
+ {
+  "org": "org-00003",
+  "probe_id": "P-0046-02",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00003:P-0046:counterfactual:casrt-1",
+  "was": "The checklist states that backend services enforce no minimum 80 percent line-coverage floor.",
+  "now": "The checklist does not require a minimum 80 percent line-coverage floor as the rule for backend services."
+ },
+ {
+  "org": "org-00003",
+  "probe_id": "P-0046-03",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00003:P-0046:counterfactual:casrt-1",
+  "was": "The checklist states that backend services enforce no minimum 80 percent line-coverage floor.",
+  "now": "The checklist does not require a minimum 80 percent line-coverage floor as the rule for backend services."
+ },
+ {
+  "org": "org-00003",
+  "probe_id": "P-0051-01",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00003:P-0051:counterfactual:casrt-1",
+  "was": "The FAQ blurb states that oncall engineers receive no 300 dollar stipend per primary week.",
+  "now": "The FAQ blurb does not state 300 dollars per primary week as the oncall stipend."
+ },
+ {
+  "org": "org-00003",
+  "probe_id": "P-0051-02",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00003:P-0051:counterfactual:casrt-1",
+  "was": "The FAQ blurb states that oncall engineers receive no 300 dollar stipend per primary week.",
+  "now": "The FAQ blurb does not state 300 dollars per primary week as the oncall stipend."
+ },
+ {
+  "org": "org-00003",
+  "probe_id": "P-0051-03",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00003:P-0051:counterfactual:casrt-1",
+  "was": "The FAQ blurb states that oncall engineers receive no 300 dollar stipend per primary week.",
+  "now": "The FAQ blurb does not state 300 dollars per primary week as the oncall stipend."
+ },
+ {
+  "org": "org-00003",
+  "probe_id": "P-0052-01",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00003:P-0052:counterfactual:casrt-1",
+  "was": "The compensation update states that oncall engineers receive no 400 dollar stipend per primary week.",
+  "now": "The compensation update does not state 400 dollars per primary week as the oncall stipend."
+ },
+ {
+  "org": "org-00003",
+  "probe_id": "P-0052-02",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00003:P-0052:counterfactual:casrt-1",
+  "was": "The compensation update states that oncall engineers receive no 400 dollar stipend per primary week.",
+  "now": "The compensation update does not state 400 dollars per primary week as the oncall stipend."
+ },
+ {
+  "org": "org-00003",
+  "probe_id": "P-0052-03",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00003:P-0052:counterfactual:casrt-1",
+  "was": "The compensation update states that oncall engineers receive no 400 dollar stipend per primary week.",
+  "now": "The compensation update does not state 400 dollars per primary week as the oncall stipend."
+ },
+ {
+  "org": "org-00003",
+  "probe_id": "P-0053-01",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00003:P-0053:counterfactual:casrt-1",
+  "was": "The org note states that oncall engineers receive no 500 dollar stipend per primary week.",
+  "now": "The org note does not state 500 dollars per primary week as the oncall stipend."
+ },
+ {
+  "org": "org-00003",
+  "probe_id": "P-0053-02",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00003:P-0053:counterfactual:casrt-1",
+  "was": "The org note states that oncall engineers receive no 500 dollar stipend per primary week.",
+  "now": "The org note does not state 500 dollars per primary week as the oncall stipend."
+ },
+ {
+  "org": "org-00003",
+  "probe_id": "P-0053-03",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00003:P-0053:counterfactual:casrt-1",
+  "was": "The org note states that oncall engineers receive no 500 dollar stipend per primary week.",
+  "now": "The org note does not state 500 dollars per primary week as the oncall stipend."
+ },
+ {
+  "org": "org-00004",
+  "probe_id": "P-0028-01",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00004:P-0028:counterfactual:casrt-1",
+  "was": "The note states that data-services pull requests have no minimum unit-test coverage percentage to satisfy.",
+  "now": "The note does not present an eighty percent minimum unit-test coverage threshold for data-services pull requests as the rule."
+ },
+ {
+  "org": "org-00004",
+  "probe_id": "P-0028-02",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00004:P-0028:counterfactual:casrt-1",
+  "was": "The note states that data-services pull requests have no minimum unit-test coverage percentage to satisfy.",
+  "now": "The note does not present an eighty percent minimum unit-test coverage threshold for data-services pull requests as the rule."
+ },
+ {
+  "org": "org-00004",
+  "probe_id": "P-0028-03",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00004:P-0028:counterfactual:casrt-1",
+  "was": "The note states that data-services pull requests have no minimum unit-test coverage percentage to satisfy.",
+  "now": "The note does not present an eighty percent minimum unit-test coverage threshold for data-services pull requests as the rule."
+ },
+ {
+  "org": "org-00004",
+  "probe_id": "P-0030-01",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00004:P-0030:counterfactual:casrt-1",
+  "was": "The handbook says unanswered pages no longer escalate to the secondary oncall automatically.",
+  "now": "The handbook does not present unanswered pages escalating to the secondary oncall automatically after ten minutes as the org-wide rule."
+ },
+ {
+  "org": "org-00004",
+  "probe_id": "P-0030-02",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00004:P-0030:counterfactual:casrt-1",
+  "was": "The handbook says unanswered pages no longer escalate to the secondary oncall automatically.",
+  "now": "The handbook does not present unanswered pages escalating to the secondary oncall automatically after ten minutes as the org-wide rule."
+ },
+ {
+  "org": "org-00004",
+  "probe_id": "P-0030-03",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00004:P-0030:counterfactual:casrt-1",
+  "was": "The handbook says unanswered pages no longer escalate to the secondary oncall automatically.",
+  "now": "The handbook does not present unanswered pages escalating to the secondary oncall automatically after ten minutes as the org-wide rule."
+ },
+ {
+  "org": "org-00004",
+  "probe_id": "P-0031-01",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00004:P-0031:counterfactual:casrt-1",
+  "was": "The note says that for the team context, an unacknowledged page does not escalate after five minutes.",
+  "now": "The note does not present an unacknowledged page escalating after five minutes as part of the team process."
+ },
+ {
+  "org": "org-00004",
+  "probe_id": "P-0031-02",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00004:P-0031:counterfactual:casrt-1",
+  "was": "The note says that for the team context, an unacknowledged page does not escalate after five minutes.",
+  "now": "The note does not present an unacknowledged page escalating after five minutes as part of the team process."
+ },
+ {
+  "org": "org-00004",
+  "probe_id": "P-0031-03",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00004:P-0031:counterfactual:casrt-1",
+  "was": "The note says that for the team context, an unacknowledged page does not escalate after five minutes.",
+  "now": "The note does not present an unacknowledged page escalating after five minutes as part of the team process."
+ },
+ {
+  "org": "org-00004",
+  "probe_id": "P-0033-01",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00004:P-0033:counterfactual:casrt-1",
+  "was": "The policy note says contract redlines above $50,000 do not require legal review.",
+  "now": "The policy note does not require legal review within five business days for contract redlines above $50,000 as the rule."
+ },
+ {
+  "org": "org-00004",
+  "probe_id": "P-0033-02",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00004:P-0033:counterfactual:casrt-1",
+  "was": "The policy note says contract redlines above $50,000 do not require legal review.",
+  "now": "The policy note does not require legal review within five business days for contract redlines above $50,000 as the rule."
+ },
+ {
+  "org": "org-00004",
+  "probe_id": "P-0033-03",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00004:P-0033:counterfactual:casrt-1",
+  "was": "The policy note says contract redlines above $50,000 do not require legal review.",
+  "now": "The policy note does not require legal review within five business days for contract redlines above $50,000 as the rule."
+ },
+ {
+  "org": "org-00004",
+  "probe_id": "P-0035-01",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00004:P-0035:counterfactual:casrt-1",
+  "was": "The memo says contract redlines above $10,000 never require legal review before final signature.",
+  "now": "The memo does not present legal review before final signature for contract redlines above $10,000 as the current rule."
+ },
+ {
+  "org": "org-00004",
+  "probe_id": "P-0035-02",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00004:P-0035:counterfactual:casrt-1",
+  "was": "The memo says contract redlines above $10,000 never require legal review before final signature.",
+  "now": "The memo does not present legal review before final signature for contract redlines above $10,000 as the current rule."
+ },
+ {
+  "org": "org-00004",
+  "probe_id": "P-0035-03",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00004:P-0035:counterfactual:casrt-1",
+  "was": "The memo says contract redlines above $10,000 never require legal review before final signature.",
+  "now": "The memo does not present legal review before final signature for contract redlines above $10,000 as the current rule."
+ },
+ {
+  "org": "org-00004",
+  "probe_id": "P-0039-01",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00004:P-0039:counterfactual:casrt-1",
+  "was": "The template states that there is no company-wide requirement to complete a 12-item checklist before launch.",
+  "now": "The template does not present a completed 12-item checklist before launch as a company-wide requirement."
+ },
+ {
+  "org": "org-00004",
+  "probe_id": "P-0039-02",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00004:P-0039:counterfactual:casrt-1",
+  "was": "The template states that there is no company-wide requirement to complete a 12-item checklist before launch.",
+  "now": "The template does not present a completed 12-item checklist before launch as a company-wide requirement."
+ },
+ {
+  "org": "org-00004",
+  "probe_id": "P-0039-03",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00004:P-0039:counterfactual:casrt-1",
+  "was": "The template states that there is no company-wide requirement to complete a 12-item checklist before launch.",
+  "now": "The template does not present a completed 12-item checklist before launch as a company-wide requirement."
+ },
+ {
+  "org": "org-00004",
+  "probe_id": "P-0040-01",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00004:P-0040:counterfactual:casrt-1",
+  "was": "The note says this team does not need load test signoff for releases.",
+  "now": "The note does not present load test signoff for releases as part of this team's process."
+ },
+ {
+  "org": "org-00004",
+  "probe_id": "P-0040-02",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00004:P-0040:counterfactual:casrt-1",
+  "was": "The note says this team does not need load test signoff for releases.",
+  "now": "The note does not present load test signoff for releases as part of this team's process."
+ },
+ {
+  "org": "org-00004",
+  "probe_id": "P-0040-03",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00004:P-0040:counterfactual:casrt-1",
+  "was": "The note says this team does not need load test signoff for releases.",
+  "now": "The note does not present load test signoff for releases as part of this team's process."
+ },
+ {
+  "org": "org-00004",
+  "probe_id": "P-0042-01",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00004:P-0042:counterfactual:casrt-1",
+  "was": "The reminder states that launches do not need signoff from two directors three days before release.",
+  "now": "The reminder does not present signoff from two directors three days before release as the standing requirement."
+ },
+ {
+  "org": "org-00004",
+  "probe_id": "P-0042-02",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00004:P-0042:counterfactual:casrt-1",
+  "was": "The reminder states that launches do not need signoff from two directors three days before release.",
+  "now": "The reminder does not present signoff from two directors three days before release as the standing requirement."
+ },
+ {
+  "org": "org-00004",
+  "probe_id": "P-0042-03",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00004:P-0042:counterfactual:casrt-1",
+  "was": "The reminder states that launches do not need signoff from two directors three days before release.",
+  "now": "The reminder does not present signoff from two directors three days before release as the standing requirement."
+ },
+ {
+  "org": "org-00004",
+  "probe_id": "P-0043-01",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00004:P-0043:counterfactual:casrt-1",
+  "was": "The note says launches move forward without director signoff five days before release.",
+  "now": "The note does not present director signoff five days before release as the current approval gate."
+ },
+ {
+  "org": "org-00004",
+  "probe_id": "P-0043-02",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00004:P-0043:counterfactual:casrt-1",
+  "was": "The note says launches move forward without director signoff five days before release.",
+  "now": "The note does not present director signoff five days before release as the current approval gate."
+ },
+ {
+  "org": "org-00004",
+  "probe_id": "P-0043-03",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00004:P-0043:counterfactual:casrt-1",
+  "was": "The note says launches move forward without director signoff five days before release.",
+  "now": "The note does not present director signoff five days before release as the current approval gate."
+ },
+ {
+  "org": "org-00004",
+  "probe_id": "P-0044-01",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00004:P-0044:counterfactual:casrt-1",
+  "was": "The bulletin says launches skip any director signoff two days before release.",
+  "now": "The bulletin does not present any director signoff two days before release as the current approval rule."
+ },
+ {
+  "org": "org-00004",
+  "probe_id": "P-0044-02",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00004:P-0044:counterfactual:casrt-1",
+  "was": "The bulletin says launches skip any director signoff two days before release.",
+  "now": "The bulletin does not present any director signoff two days before release as the current approval rule."
+ },
+ {
+  "org": "org-00004",
+  "probe_id": "P-0044-03",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00004:P-0044:counterfactual:casrt-1",
+  "was": "The bulletin says launches skip any director signoff two days before release.",
+  "now": "The bulletin does not present any director signoff two days before release as the current approval rule."
+ },
+ {
+  "org": "org-00004",
+  "probe_id": "P-0047-01",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00004:P-0047:counterfactual:casrt-1",
+  "was": "The scheduling note says Friday with six five-minute demo slots is not the standing setup for demo day.",
+  "now": "The scheduling note does not present Friday with six five-minute demo slots as the standing setup for demo day."
+ },
+ {
+  "org": "org-00004",
+  "probe_id": "P-0047-02",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00004:P-0047:counterfactual:casrt-1",
+  "was": "The scheduling note says Friday with six five-minute demo slots is not the standing setup for demo day.",
+  "now": "The scheduling note does not present Friday with six five-minute demo slots as the standing setup for demo day."
+ },
+ {
+  "org": "org-00004",
+  "probe_id": "P-0047-03",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00004:P-0047:counterfactual:casrt-1",
+  "was": "The scheduling note says Friday with six five-minute demo slots is not the standing setup for demo day.",
+  "now": "The scheduling note does not present Friday with six five-minute demo slots as the standing setup for demo day."
+ },
+ {
+  "org": "org-00005",
+  "probe_id": "P-0006-01",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00005:P-0006:counterfactual:casrt-1",
+  "was": "The note says schema changes can proceed to live rollout without approval from the platform leadership role.",
+  "now": "The note does not present signoff from one platform lead as the rule before schema changes reach production."
+ },
+ {
+  "org": "org-00005",
+  "probe_id": "P-0006-02",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00005:P-0006:counterfactual:casrt-1",
+  "was": "The note says schema changes can proceed to live rollout without approval from the platform leadership role.",
+  "now": "The note does not present signoff from one platform lead as the rule before schema changes reach production."
+ },
+ {
+  "org": "org-00005",
+  "probe_id": "P-0006-03",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00005:P-0006:counterfactual:casrt-1",
+  "was": "The note says schema changes can proceed to live rollout without approval from the platform leadership role.",
+  "now": "The note does not present signoff from one platform lead as the rule before schema changes reach production."
+ },
+ {
+  "org": "org-00005",
+  "probe_id": "P-0011-01",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00005:P-0011:counterfactual:casrt-1",
+  "was": "The checklist says vendor invoices above $5,000 can be paid without finance review.",
+  "now": "The checklist does not require finance review for vendor invoices above $5,000 before payment."
+ },
+ {
+  "org": "org-00005",
+  "probe_id": "P-0011-02",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00005:P-0011:counterfactual:casrt-1",
+  "was": "The checklist says vendor invoices above $5,000 can be paid without finance review.",
+  "now": "The checklist does not require finance review for vendor invoices above $5,000 before payment."
+ },
+ {
+  "org": "org-00005",
+  "probe_id": "P-0011-03",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00005:P-0011:counterfactual:casrt-1",
+  "was": "The checklist says vendor invoices above $5,000 can be paid without finance review.",
+  "now": "The checklist does not require finance review for vendor invoices above $5,000 before payment."
+ },
+ {
+  "org": "org-00005",
+  "probe_id": "P-0029-01",
+  "assertion_id": "casrt-2",
+  "item_id": "org-00005:P-0029:counterfactual:casrt-2",
+  "was": "The note leaves the partner-paperwork turnaround without a concrete deadline.",
+  "now": "The note does not present a five-business-day turnaround for partner paperwork as the current standard."
+ },
+ {
+  "org": "org-00005",
+  "probe_id": "P-0029-02",
+  "assertion_id": "casrt-2",
+  "item_id": "org-00005:P-0029:counterfactual:casrt-2",
+  "was": "The note leaves the partner-paperwork turnaround without a concrete deadline.",
+  "now": "The note does not present a five-business-day turnaround for partner paperwork as the current standard."
+ },
+ {
+  "org": "org-00005",
+  "probe_id": "P-0029-03",
+  "assertion_id": "casrt-2",
+  "item_id": "org-00005:P-0029:counterfactual:casrt-2",
+  "was": "The note leaves the partner-paperwork turnaround without a concrete deadline.",
+  "now": "The note does not present a five-business-day turnaround for partner paperwork as the current standard."
+ },
+ {
+  "org": "org-00005",
+  "probe_id": "P-0049-01",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00005:P-0049:counterfactual:casrt-1",
+  "was": "The note says the platform team has no numeric test threshold for merges.",
+  "now": "The note does not state any numeric test threshold for merges as the rule."
+ },
+ {
+  "org": "org-00005",
+  "probe_id": "P-0049-02",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00005:P-0049:counterfactual:casrt-1",
+  "was": "The note says the platform team has no numeric test threshold for merges.",
+  "now": "The note does not state any numeric test threshold for merges as the rule."
+ },
+ {
+  "org": "org-00005",
+  "probe_id": "P-0049-03",
+  "assertion_id": "casrt-1",
+  "item_id": "org-00005:P-0049:counterfactual:casrt-1",
+  "was": "The note says the platform team has no numeric test threshold for merges.",
+  "now": "The note does not state any numeric test threshold for merges as the rule."
+ }
+]

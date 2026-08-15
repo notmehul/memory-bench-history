@@ -1,0 +1,62 @@
+[
+ {
+  "org": "org-00001",
+  "probe_id": "P-0023-01",
+  "removed": [
+   "asrt-2",
+   "casrt-2"
+  ],
+  "fact_id": "F-0051",
+  "reason": "co-valid org-tier sibling detector pair; one side punished legitimate content (org-1: brittle `optional` pattern; org-4: twin-org restatement). Symmetric removal; cross-side role now carried by -css detectors (v0.4.3)."
+ },
+ {
+  "org": "org-00001",
+  "probe_id": "P-0023-02",
+  "removed": [
+   "asrt-2",
+   "casrt-2"
+  ],
+  "fact_id": "F-0051",
+  "reason": "co-valid org-tier sibling detector pair; one side punished legitimate content (org-1: brittle `optional` pattern; org-4: twin-org restatement). Symmetric removal; cross-side role now carried by -css detectors (v0.4.3)."
+ },
+ {
+  "org": "org-00001",
+  "probe_id": "P-0023-03",
+  "removed": [
+   "asrt-2",
+   "casrt-2"
+  ],
+  "fact_id": "F-0051",
+  "reason": "co-valid org-tier sibling detector pair; one side punished legitimate content (org-1: brittle `optional` pattern; org-4: twin-org restatement). Symmetric removal; cross-side role now carried by -css detectors (v0.4.3)."
+ },
+ {
+  "org": "org-00004",
+  "probe_id": "P-0040-01",
+  "removed": [
+   "asrt-2",
+   "casrt-2"
+  ],
+  "fact_id": "F-0091",
+  "reason": "co-valid org-tier sibling detector pair; one side punished legitimate content (org-1: brittle `optional` pattern; org-4: twin-org restatement). Symmetric removal; cross-side role now carried by -css detectors (v0.4.3)."
+ },
+ {
+  "org": "org-00004",
+  "probe_id": "P-0040-02",
+  "removed": [
+   "asrt-2",
+   "casrt-2"
+  ],
+  "fact_id": "F-0091",
+  "reason": "co-valid org-tier sibling detector pair; one side punished legitimate content (org-1: brittle `optional` pattern; org-4: twin-org restatement). Symmetric removal; cross-side role now carried by -css detectors (v0.4.3)."
+ },
+ {
+  "org": "org-00004",
+  "probe_id": "P-0040-03",
+  "removed": [
+   "asrt-2",
+   "casrt-2"
+  ],
+  "fact_id": "F-0091",
+  "reason": "co-valid org-tier sibling detector pair; one side punished legitimate content (org-1: brittle `optional` pattern; org-4: twin-org restatement). Symmetric removal; cross-side role now carried by -css detectors (v0.4.3)."
+ }
+]

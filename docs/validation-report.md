@@ -114,6 +114,31 @@ co-valid-sibling rule (identical defect class and treatment as the
 precedented P-0031/40/41 repairs; task text byte-identical, so all
 cached task-model outputs remain valid).
 
+**Seed 2 (2026-08-06) and probe-spec v0.4.3 re-scoring of seeds 1–2
+(2026-08-15).** Seed 2 screened fully blinded: 43/54 (cluster gate FAIL
+carried), 123 valid instances, dominant defect class = unnatural-negation
+criteria. The v0.4.3 semantic layer (natural-artifact rule in operational
+form, tier rule for sibling guards, brittle-pattern replacements, empty-
+output rule, S6 discrimination gate) and judge rubric v2 (commitment
+clause, verbatim in `docs/specs/judge-rubric.md`) were then applied to
+all five orgs; seeds 1–2 were re-scored from the identical cached worker
+outputs (prompt equality verified) with every semantic verdict re-judged
+blind under v2. **Current canon: seed 1 = 46/54 PASS, 126 valid
+instances (strict 34); seed 2 = 46/54 PASS, 131 valid instances (strict
+39); both instance gates FAIL (<135).** v1→v2 verdict agreement on
+unchanged criteria 97.8% / 96.9%, symmetric. Two designs were tried and
+rejected on evidence the same day: generated semantic cross-side
+detectors (0/19 true positives) — see the spec changelog. The
+scorer-exploit audit, rebuilt on the post canon under rubric v2, shows
+zero pair-passes for every degenerate type and zero enumerate single-side
+1.0s (from 27 pairs / 23 single sides at first audit); it reads FAIL as
+literally prespecified (three waffle cf-side 1.0s, all absence-only
+sides created by the natural-artifact rule) and PASS re-scoped to
+positive-content sides — both lines are permanent in the report. Full
+pre/post decomposition and every adjudicated flip: dataset-plan G3 note,
+`datasets/dev/screening/org-0000N/pre-post-diff-v043-2026-08-15.json`,
+`datasets/dev/screening/exploit-audit/css-flip-adjudication-2026-08-15.json`.
+
 **Harness-sensitivity study (2026-07-25).** A prespecified 60-run
 comparison (20 per condition, deterministic sample; evidence in
 `datasets/dev/screening/harness-study-2026-07-25/`) ran the identical

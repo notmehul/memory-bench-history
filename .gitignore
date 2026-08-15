@@ -16,3 +16,7 @@ datasets/**/events.prev.jsonl
 /.tmp*
 *.ipynb
 /blind*.json
+
+# blinded-judge staging (transient; verdicts live in judgements.jsonl)
+datasets/dev/screening/org-*/pending-judge.json
+datasets/dev/screening/org-*/pending-judge.map.json

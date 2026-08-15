@@ -172,6 +172,59 @@ floor/ceiling gates.
 > spec-level revision (v0.4 decision pending with Mehul), never a per-seed
 > rescue.
 >
+> **Probe-spec v0.4.3 applied; seeds 1–2 re-scored (2026-08-15).** All five
+> orgs now carry: pure-retraction criteria rewritten to observable absence
+> (40 criteria; classifier + hand audit logged under
+> `datasets/dev/screening/natural-artifact-sweep/`), the tier rule for
+> sibling guards (168 pairs removed across five orgs, log
+> `tier-rule-sweep-2026-08-15.json`), six brittle authored patterns
+> replaced by semantic mirrors, and the two asymmetric lineage cases
+> resolved symmetrically. Task text is byte-identical everywhere (prompt
+> equality verified per seed), so every cached worker output was reused;
+> the changed criteria were re-judged blind, then — because the judge
+> rubric gained the commitment clause (`docs/specs/judge-rubric.md` v2) —
+> ALL semantic verdicts of seeds 1–2 were re-judged under v2 in one clean
+> pass so the canon is single-rubric. v1→v2 agreement on unchanged
+> criteria: seed 1 97.8% (12 T→F / 10 F→T of 996), seed 2 96.9% (12/13 of
+> 816) — the same order as the July blinded re-judge, no directional
+> drift.
+> **Canon, side by side (pre = v0.4.2/rubric v1 → post = v0.4.3/rubric v2
+> incl. the S6 discrimination gate):** seed 1: 46/54 PASS, 128 valid
+> instances, strict 36 → **46/54 PASS, 126, strict 34**; seed 2: 43/54
+> FAIL, 123, strict 37 → **46/54 PASS, 131, strict 39**. Both instance
+> gates remain explicit FAILs (<135). Decomposition, for the record:
+> v0.4.3 assertions + rubric v2 alone gave 47/131 and 47/133 (seed 2:
+> P-0005, P-0031, P-0043, P-0051, P-0053 recovered — the unnatural-negation
+> class the natural-artifact rule was written for; P-0033 dropped because
+> its twin outputs hedge "no approvals required" against "reviewers must
+> confirm", which the commitment clause now fails); the S6 discrimination
+> gate (prespecified before its cross-verdicts existed) then removed one
+> cluster per seed — org-1 P-0032 (complementary, non-inverting personal
+> counterfactual) and org-2 P-0054 (historical narration satisfying both
+> sides) — plus single instances elsewhere (6 per seed; the seed-2 A7
+> historical drops P-0036/P-0045 were already drops and are now flagged
+> for the right reason). Every pass→fail crossing was adjudicated: the
+> rejected S1 layer's flips in
+> `datasets/dev/screening/exploit-audit/css-flip-adjudication-2026-08-15.json`;
+> the v1→v2 crossings (judge strictness on hedged outputs plus symmetric
+> judge noise) are listed in
+> `datasets/dev/screening/org-0000N/pre-post-diff-v043-2026-08-15.json`
+> next to the frozen pre report `g3-report.pre-v043.json` (regenerable
+> with `scripts/g3_diff.py`). Seed 2's flip to PASS is exactly the outcome
+> the v0.4 approval anticipated and is reported with the pre number
+> forever.
+> **Scorer-exploit audit (C1), rebuilt on the post canon and judged under
+> rubric v2:** zero pair-passes for every degenerate type; enumerate-both-
+> values single-side 1.0 = 0 (was 23/21, 27 pairs); empty = 0.0 by the
+> empty-output rule; waffle 3 cf-side 1.0s, all on absence-only sides (5
+> of 92 sides). Verdict as literally prespecified: FAIL (those three);
+> verdict with the single-side clause re-scoped to positive-content sides
+> (post-hoc, disclosed): PASS. Both lines are in
+> `datasets/dev/screening/exploit-audit/report.json` and stay there.
+> **Rejected on the same day, on evidence:** generated semantic cross-side
+> detectors (S1) — 19 honest instances flipped, 0 true positives; details
+> in the spec changelog and the adjudication file above.
+>
 > **Remaining: screen seeds 3–5** (same blinded pipeline; run the co-valid
 > lineage sweep FIRST so known-defective assertion pairs are repaired
 > before their evidence exists). Per seed N:

@@ -25,6 +25,7 @@ from pathlib import Path
 from .adapters import SUTAdapter
 from .belief import is_member
 from .ledger import EventIndex, Ledger, load_event_index, load_ledger
+from .workers import WorkerError
 
 # Mirrors scripts/screen_probes.py::_FRAME_LINE / _persona_line so SUT runs
 # stay prompt-comparable with the screening floor/ceiling anchors.
@@ -127,14 +128,19 @@ class Runner:
             for pid in witnesses(ledger, index, t):
                 self.adapter.ingest(pid, event)
             for probe in by_event.get(event["event_id"], ()):
-                output = self.adapter.run_task(
-                    probe["principal"], task_prompt(org, probe))
-                rows.append({
-                    "run_id": f"{probe['probe_id']}:sut",
-                    "output": output,
-                    "context_chars": self.adapter.counters.get(
-                        "last_context_chars", 0),
-                })
+                row = {"run_id": f"{probe['probe_id']}:sut"}
+                try:
+                    row["output"] = self.adapter.run_task(
+                        probe["principal"], task_prompt(org, probe))
+                except WorkerError as e:
+                    # Empty-output rule (probe-spec v0.4.3): a worker failure
+                    # is a recorded null deliverable that scores 0.0 on every
+                    # assertion — never a dropped run.
+                    row["output"] = None
+                    row["error"] = str(e)
+                row["context_chars"] = self.adapter.counters.get(
+                    "last_context_chars", 0)
+                rows.append(row)
         if out_path is not None:
             out_path.write_text(
                 "".join(json.dumps(r) + "\n" for r in rows))

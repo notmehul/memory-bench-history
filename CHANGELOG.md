@@ -84,6 +84,22 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning: Se
   (Retention → Alignment → Coordination → Compounding) operationalizing the
   collective-intelligence claim, and the heterogeneity / consumer-portability
   thesis.
+- Probe-spec v0.4.3 semantic layer (2026-08-15): natural-artifact rule in operational form
+  (pure-retraction criteria rewritten to observable absence, 40 criteria
+  across five orgs, uniform codex classification + hand audit); tier rule
+  for sibling guards (higher-tier nested rules may be restated); six
+  brittle authored patterns replaced by semantic mirrors; empty-output
+  scoring rule; incremental blinded re-judging with per-criterion text
+  hashes (`judge-export --incremental`, `judge-import --merge`, stale-verdict
+  guard in `report`); S6 discrimination gate (ceiling output must fail the
+  cf assertion set and vice versa — cross rows judged in the same blinded
+  pass); versioned verbatim judge rubric (`docs/specs/judge-rubric.md`,
+  v2 = commitment clause) with a full clean re-judge of seeds 1–2; exploit
+  audit reports both the literal and re-scoped bar; `scripts/g3_diff.py`;
+  `scripts/natural_artifact_sweep.py`. Codex-cli 0.144.5 pin now enforced
+  in code (`membench.codex_bin`) after Homebrew silently upgraded PATH.
+  Generated semantic cross-side detectors were built, measured (0/19 true
+  positives) and rejected; kept behind `--semantic` for reproduction.
 
 ### Changed
 - Independence protocol (2026-07-25): the pilot evaluates no

@@ -1,0 +1,596 @@
+[
+ {
+  "item_id": "org-00003:P-0001:base:asrt-1",
+  "class": "positive",
+  "reason": "specifies Tuesday and Thursday as the allowed cadence",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0001:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "specifies weekday-wide allowance without a fixed cadence",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0002:base:asrt-1",
+  "class": "positive",
+  "reason": "sets the changelog before deploy as the required ordering",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0002:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "sets the changelog after deploy as the required ordering",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0003:base:asrt-1",
+  "class": "positive",
+  "reason": "states a concrete cap of five story points per engineer",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0003:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "asserts unlimited carryover with no numeric ceiling as the rule",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0004:base:asrt-1",
+  "class": "positive",
+  "reason": "states a concrete cap of three story points per engineer",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0004:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "asserts unrestricted carryover within the team backlog as the rule",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0005:base:asrt-1",
+  "class": "positive",
+  "reason": "states a concrete personal limit of one ticket per sprint",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0005:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "asserts rolling work forward without a per-sprint cap as the approach",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0006:base:asrt-1",
+  "class": "positive",
+  "reason": "sets a 50% error-budget trigger that freezes launches",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0006:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "asserts launches continue regardless of error-budget burn",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0007:base:asrt-1",
+  "class": "positive",
+  "reason": "states a concrete launch-freeze threshold of 70%",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0007:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "states a concrete launch-freeze threshold of 90%",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0008:base:asrt-1",
+  "class": "positive",
+  "reason": "states a concrete launch-freeze threshold of 85%",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0008:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "sets full error-budget exhaustion as the trigger",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0010:base:asrt-1",
+  "class": "positive",
+  "reason": "sets a concrete first-response deadline of thirty minutes",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0010:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "sets the first-response deadline at the next business day",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0011:base:asrt-1",
+  "class": "positive",
+  "reason": "states a concrete no-approval refund ceiling of $250",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0011:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "states a concrete no-approval refund ceiling of $1,000",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0012:base:asrt-1",
+  "class": "positive",
+  "reason": "requires a single standard notes location and starter page",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0012:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "assigns facilitator choice of notes format as the rule",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0013:base:asrt-1",
+  "class": "positive",
+  "reason": "sets the team handbook page as the required starting point",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0013:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "requires a freeform Slack chat summary as the write-up form",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0014:base:asrt-1",
+  "class": "positive",
+  "reason": "specifies outcome-only bullets as the note format",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0014:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "specifies full dialogue transcripts as the note format",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0015:base:asrt-1",
+  "class": "positive",
+  "reason": "states kebab-case as the naming rule",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0015:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "states camelCase as the naming rule",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0016:base:asrt-1",
+  "class": "positive",
+  "reason": "states plural resource names as the endpoint rule",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0016:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "states singular resource names as the endpoint rule",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0017:base:asrt-1",
+  "class": "positive",
+  "reason": "requires new API paths to begin under /v2",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0017:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "sets omission of a version prefix as the path rule",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0019:base:asrt-1",
+  "class": "positive",
+  "reason": "sets Friday 4pm as the freeze start time",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0019:base:asrt-2",
+  "class": "positive",
+  "reason": "sets Monday 9am as the freeze end time",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0019:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "permits weekend production rollouts as the active rule",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0020:base:asrt-1",
+  "class": "positive",
+  "reason": "places the standing session on Tuesday",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0020:base:asrt-2",
+  "class": "positive",
+  "reason": "sets the office-hours window to 2pm to 3pm",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0020:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "places the standing session on Thursday",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0020:counterfactual:casrt-2",
+  "class": "positive",
+  "reason": "sets the office-hours window to 10am to 11am",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0021:base:asrt-1",
+  "class": "positive",
+  "reason": "defines a three-or-more-services threshold for requiring a design doc",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0043:counterfactual:casrt-1",
+  "class": "pure_retraction",
+  "reason": "only retracts the old 59-dollar amount",
+  "rewrite": "The message does not present 59 dollars per seat per month as the current Pro amount."
+ },
+ {
+  "item_id": "org-00003:P-0044:base:asrt-1",
+  "class": "positive",
+  "reason": "demands the concrete current price",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0044:counterfactual:casrt-1",
+  "class": "pure_retraction",
+  "reason": "only retracts the 65-dollar monthly price",
+  "rewrite": "The FAQ entry does not present 65 dollars per seat monthly as the current Pro plan price."
+ },
+ {
+  "item_id": "org-00003:P-0046:base:asrt-1",
+  "class": "positive",
+  "reason": "sets a specific minimum coverage threshold",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0046:counterfactual:casrt-1",
+  "class": "pure_retraction",
+  "reason": "only retracts the 80 percent floor",
+  "rewrite": "The checklist does not require a minimum 80 percent line-coverage floor as the rule for backend services."
+ },
+ {
+  "item_id": "org-00003:P-0047:base:asrt-1",
+  "class": "positive",
+  "reason": "demands a concrete release gate",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0047:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "allows release under a specific condition",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0048:base:asrt-1",
+  "class": "positive",
+  "reason": "requires a concrete changelog step on ship day",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0048:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "permits release without that changelog requirement",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0049:base:asrt-1",
+  "class": "positive",
+  "reason": "requires reviewers to confirm a concrete artifact detail",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0049:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "defines an approval exception for internal refactors",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0050:base:asrt-1",
+  "class": "positive",
+  "reason": "sets a concrete timing preference for the reminder",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0050:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "sets a concrete post-release timing preference",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0051:base:asrt-1",
+  "class": "positive",
+  "reason": "states a concrete stipend amount",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0051:counterfactual:casrt-1",
+  "class": "pure_retraction",
+  "reason": "only retracts the 300-dollar stipend",
+  "rewrite": "The FAQ blurb does not state 300 dollars per primary week as the oncall stipend."
+ },
+ {
+  "item_id": "org-00003:P-0052:base:asrt-1",
+  "class": "positive",
+  "reason": "states a concrete weekly stipend amount",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0052:counterfactual:casrt-1",
+  "class": "pure_retraction",
+  "reason": "only retracts the 400-dollar stipend",
+  "rewrite": "The compensation update does not state 400 dollars per primary week as the oncall stipend."
+ },
+ {
+  "item_id": "org-00003:P-0053:base:asrt-1",
+  "class": "positive",
+  "reason": "states a concrete weekly stipend amount",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0053:counterfactual:casrt-1",
+  "class": "pure_retraction",
+  "reason": "only retracts the 500-dollar stipend",
+  "rewrite": "The org note does not state 500 dollars per primary week as the oncall stipend."
+ },
+ {
+  "item_id": "org-00003:P-0021:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "it specifies an optionality rule regardless of service count",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0022:base:asrt-1",
+  "class": "positive",
+  "reason": "it sets a concrete trigger at two or more services",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0022:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "it sets a concrete trigger at five or more services",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0023:base:asrt-1",
+  "class": "positive",
+  "reason": "it names shared-library work as the trigger",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0023:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "it gives a specific exemption for shared-library tweaks under fifty lines",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0024:base:asrt-1",
+  "class": "positive",
+  "reason": "it sets a concrete minimum lead time of fourteen days",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0024:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "it sets a concrete minimum lead time of two days",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0025:base:asrt-1",
+  "class": "positive",
+  "reason": "it sets a concrete minimum lead time of ten days",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0025:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "it sets a concrete minimum lead time of five days",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0026:base:asrt-1",
+  "class": "positive",
+  "reason": "it sets a concrete minimum lead time of seven days",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0026:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "it specifies a day-before booking rule with lead approval",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0028:base:asrt-1",
+  "class": "positive",
+  "reason": "it sets a concrete routing rule to legal review before countersign",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0028:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "it permits immediate countersign without prior legal review",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0029:base:asrt-1",
+  "class": "positive",
+  "reason": "it sets a concrete lock point two weeks before the offsite",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0029:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "it sets a concrete cutoff at the day of the planning session",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0030:base:asrt-1",
+  "class": "positive",
+  "reason": "it requires a concrete significance threshold of 95 percent",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0030:counterfactual:casrt-1",
+  "class": "pure_retraction",
+  "reason": "it only retracts the 95 percent significance requirement",
+  "rewrite": "The guideline does not present 95 percent significance before any rollout decision as the org-wide rule."
+ },
+ {
+  "item_id": "org-00003:P-0031:base:asrt-1",
+  "class": "positive",
+  "reason": "it sets a concrete review gate of two peer reviews",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0031:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "it sets a concrete review gate of zero peer reviews",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0032:base:asrt-1",
+  "class": "positive",
+  "reason": "it specifies an ordering of raw material before summary slides",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0032:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "it requires a concrete ordering of summary slides before raw material",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0033:base:asrt-1",
+  "class": "positive",
+  "reason": "it specifies the active loop composition",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0033:counterfactual:casrt-1",
+  "class": "pure_retraction",
+  "reason": "it only retracts the prior loop stages without replacing them",
+  "rewrite": "The note does not describe four interviews and a hiring-manager screen as part of the current loop."
+ },
+ {
+  "item_id": "org-00003:P-0034:base:asrt-1",
+  "class": "positive",
+  "reason": "it specifies the live loop composition",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0034:counterfactual:casrt-1",
+  "class": "pure_retraction",
+  "reason": "it only retracts the prior loop stages without replacing them",
+  "rewrite": "The blurb does not describe five interviews and a hiring-manager screen as part of the current loop."
+ },
+ {
+  "item_id": "org-00003:P-0035:base:asrt-1",
+  "class": "positive",
+  "reason": "it presents a concrete active hiring loop",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0035:counterfactual:casrt-1",
+  "class": "pure_retraction",
+  "reason": "it only says the existing loop stages were dropped",
+  "rewrite": "The checklist does not describe three interviews and a hiring-manager screen as part of the current loop."
+ },
+ {
+  "item_id": "org-00003:P-0037:base:asrt-1",
+  "class": "positive",
+  "reason": "it requires a concrete day, time, and room",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0037:counterfactual:casrt-1",
+  "class": "pure_retraction",
+  "reason": "it only rules out the Tuesday 3 PM Atlas slot",
+  "rewrite": "The message does not invite the infra team to attend platform office hours on Tuesday at 3 PM in Atlas as the current session slot."
+ },
+ {
+  "item_id": "org-00003:P-0038:base:asrt-1",
+  "class": "positive",
+  "reason": "it states a concrete approval threshold and owner rule",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0038:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "it states an independent rule requiring manager signoff below 100 dollars",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0039:base:asrt-1",
+  "class": "positive",
+  "reason": "it specifies the blackout window with exact endpoints",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0039:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "it states an independent rule allowing weekend code changes",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0040:base:asrt-1",
+  "class": "positive",
+  "reason": "it specifies the team's freeze window with exact times",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0040:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "it states an independent condition for allowing weekend code changes",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0041:base:asrt-1",
+  "class": "positive",
+  "reason": "it gives a concrete personal cutoff rule",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0041:counterfactual:casrt-1",
+  "class": "positive",
+  "reason": "it states an independent practice of continuing urgent fixes into the weekend",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0042:base:asrt-1",
+  "class": "positive",
+  "reason": "it names a concrete current price",
+  "rewrite": null
+ },
+ {
+  "item_id": "org-00003:P-0042:counterfactual:casrt-1",
+  "class": "pure_retraction",
+  "reason": "it only says the 49-dollar price is not current",
+  "rewrite": "The draft does not present 49 dollars per seat per month as the current Pro amount."
+ },
+ {
+  "item_id": "org-00003:P-0043:base:asrt-1",
+  "class": "positive",
+  "reason": "it names a concrete current price",
+  "rewrite": null
+ }
+]

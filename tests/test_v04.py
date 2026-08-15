@@ -254,3 +254,70 @@ def test_r5_branch_validation_rejects_fragments():
         acd._validate_branches(probe_with(bad_word))
     good = r"(?<![\w-])(?:(?:2|two)[\s-]+approval\w*|friday)(?![\w-])"
     acd._validate_branches(probe_with(good))  # no raise
+
+
+# ------------------------------------------------------------ v0.4.3 items
+
+def test_empty_output_scores_zero_on_every_assertion():
+    """Empty-output rule: no deliverable, no credit — absence detectors
+    included (an empty output would otherwise pass an absence-only side)."""
+    sp = _load_script("screen_probes")
+    assertions = [
+        {"id": "a1", "kind": "fact_absent", "checker": "pattern",
+         "criterion": r"never-there", "weight": 1.0},
+        {"id": "a2", "kind": "fact_applied", "checker": "semantic",
+         "criterion": "x", "weight": 1.0},
+    ]
+    assert sp._score("r", assertions, "", {"a2": True}) == 0.0
+    assert sp._score("r", assertions, "  \n ", {"a2": True}) == 0.0
+    assert sp._score("r", assertions, None, {"a2": True}) == 0.0
+    assert sp._score("r", assertions, "real text", {"a2": True}) == 1.0
+
+
+def test_check_assertion_exempts_cross_side_detectors():
+    from membench.probes import _check_assertion
+    facts = {"F-1": {"fact_id": "F-1", "canonical": "Standup at 9am.",
+                     "counterfactual": "Standup at 4pm."}}
+    cs = {"id": "asrt-cs", "kind": "fact_absent", "checker": "pattern",
+          "criterion": r"(?<![\w-])4\s?pm(?![\w-])", "weight": 1.0}
+    assert _check_assertion(cs, facts, "base", "F-1") == []
+    bad = dict(cs, kind="fact_applied")
+    assert any("cross-side detectors must be" in e
+               for e in _check_assertion(bad, facts, "base", "F-1"))
+    bad_re = dict(cs, criterion="(")
+    assert any("bad regex" in e
+               for e in _check_assertion(bad_re, facts, "base", "F-1"))
+
+
+def test_semantic_detector_fallback_when_pattern_uncoverable():
+    """The semantic fallback was measured and REJECTED (2026-08-15, 0/19
+    true positives); default is pattern-only (skip). `semantic=True` is
+    kept for reproduction; idempotent across both."""
+    acd = _load_script("add_cross_detectors")
+    base = "Standup lasts 15 minutes."
+    cf = "Standup lasts 45 minutes."
+    probe = {
+        "probe_id": "P-Y-01", "targets": ["F-1"],
+        "assertions": [
+            {"id": "asrt-1", "kind": "fact_applied", "checker": "semantic",
+             "criterion": "states the length", "weight": 1.0}],
+        "counterfactual_probe": {
+            "ledger_deltas": ["F-1"],
+            "assertions": [
+                {"id": "casrt-1", "kind": "fact_applied",
+                 "checker": "semantic", "criterion": "states the length",
+                 "weight": 1.0}]},
+    }
+    r = acd.add_detectors(probe, {"F-1": base}, {"F-1": cf}, [])
+    assert r["added"] == [] and len(r["skipped"]) == 2
+    r = acd.add_detectors(probe, {"F-1": base}, {"F-1": cf}, [], semantic=True)
+    assert r["added"] == ["asrt-css", "casrt-css"]
+    snap = json.dumps(probe, sort_keys=True)
+    acd.add_detectors(probe, {"F-1": base}, {"F-1": cf}, [], semantic=True)
+    assert json.dumps(probe, sort_keys=True) == snap
+    a = [x for x in probe["assertions"] if x["id"] == "asrt-css"][0]
+    assert a["kind"] == "fact_absent" and a["checker"] == "semantic"
+    assert cf in a["criterion"] and base not in a["criterion"]
+    assert "does not present" in a["criterion"]
+    from membench.probes import _check_assertion
+    assert _check_assertion(a, {}, "base", "F-1") == []

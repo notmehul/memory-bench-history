@@ -1,0 +1,15 @@
+{
+ "date": "2026-08-15",
+ "auditor": "Claude (authoring side; not the judge family)",
+ "rule": "binary: pure_retraction => observable-absence rewrite; historical exempt",
+ "classifier": "codex gpt-5.4 medium (content family), 495 non-historical applied criteria, 5 orgs, fixed rubric",
+ "flagged": 44,
+ "applied": 40,
+ "skipped": {
+  "org-00001:P-0029:counterfactual:casrt-3": "already observable absence ('does not require ... immediately')",
+  "org-00001:P-0040:counterfactual:casrt-1": "already observable absence ('does not require ... during the meeting')",
+  "org-00002:P-0037:counterfactual:casrt-1": "already observable on the artifact itself ('headings avoid sentence case'); rewrite would be worse",
+  "org-00005:P-0046:counterfactual:casrt-1": "already observable absence ('leaves out tests, security, rollback')"
+ },
+ "evidence_check": "cf-side criteria on negation-valued cf facts that were classed positive (permission-style rules) pass twin-ceiling 27/36 (seed 1) and 35/39 (seed 2) vs 134/162 and 130/162 overall \u2014 natural in practice; classification upheld"
+}

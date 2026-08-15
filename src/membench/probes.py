@@ -504,6 +504,25 @@ def _check_assertion(
     twin org every fact with a counterfactual reads as its twin variant, so
     patterns must discriminate against the *other* side's text."""
     errs = []
+    aid = str(a.get("id", ""))
+    if aid.endswith("-cs") or aid.endswith("-css"):
+        # Mechanically generated cross-side detectors (spec v0.4 rule 2 /
+        # v0.4.3 semantic fallback): they hunt the OTHER side's values and
+        # carry no fact_id, so the fact-relative checks below do not apply
+        # — the generator validated them against both orgs' variant sets.
+        want = "pattern" if aid.endswith("-cs") else "semantic"
+        if a.get("kind") != "fact_absent" or a.get("checker") != want:
+            errs.append(f"{aid}: cross-side detectors must be fact_absent/{want}")
+        if not isinstance(a.get("weight"), (int, float)) or a["weight"] <= 0:
+            errs.append(f"{aid}: weight must be positive")
+        if want == "pattern":
+            try:
+                re.compile(a.get("criterion") or "", re.IGNORECASE)
+            except re.error as e:
+                errs.append(f"{aid}: bad regex ({e})")
+        elif "does not present" not in (a.get("criterion") or ""):
+            errs.append(f"{aid}: semantic detector must use the fixed template")
+        return errs
     for key in ("id", "kind", "fact_id", "checker", "criterion"):
         if not a.get(key):
             errs.append(f"assertion missing {key}")

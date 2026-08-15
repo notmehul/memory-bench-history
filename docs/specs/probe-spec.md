@@ -171,6 +171,89 @@ Validity gates (computed during dataset construction, before any SUT is evaluate
 > Consequence, measured and accepted: the mechanical layer alone cannot
 > police enumeration for duration-valued probes (audit residual rises
 > accordingly); full closure is assigned to the v0.4.3 semantic layer.
+>
+> **v0.4.3 semantic layer (2026-08-15, applied to all five orgs before
+> seeds 3–5 have any screening evidence; seeds 1–2 re-scored from cached
+> outputs with only the changed criteria re-judged blind — pre/post
+> reported side by side in the G3 note):**
+> S1 — *Semantic cross-side detectors.* Every paired non-historical side
+> the pattern layer cannot cover (after R1–R5 that is the majority of
+> sides) carries `asrt-css` / `casrt-css`: `fact_absent` + `semantic`,
+> generated from ONE fixed template that hunts the other side's delta-fact
+> canonicals verbatim — "The deliverable does not present the statement
+> "…" as currently in effect. Mentioning it only as past, replaced,
+> hypothetical, or rejected does not count as presenting it." (the
+> past/replaced carve-out is the semantic form of R4). Never authored,
+> never per-cluster; judged by the standard blinded pipeline.
+> S2 — *Natural-artifact rule, operational form.* An applied-content
+> criterion is a **pure retraction** iff its only demanded content is that
+> the other side's value/arrangement does not / no longer / never holds,
+> adding no independent value. Every pure-retraction criterion is
+> rewritten to observable absence of the retracted value. The rewrite is
+> monotonic (an explicit denial already implies observable absence), so
+> it can only stop punishing natural omission. Classification ran
+> uniformly over all 495 non-historical applied criteria by the content
+> model under a fixed rubric, then was audited by hand (44 flagged, 40
+> applied, 4 already-observable originals kept; log in
+> `datasets/dev/screening/natural-artifact-sweep/`). Permission-style
+> negatives ("may pay without finance review", "no cap") are positive
+> content and were left alone — evidence: they pass twin-ceiling at
+> 27/36 and 35/39 in seeds 1–2, at or above the overall rate.
+> S3 — *Tier rule for sibling guards.* `fact_absent` guards on a sibling
+> fact of a HIGHER tier than the artifact's frame are never used: nested
+> rules (org→team/personal, team→personal) may legitimately be restated,
+> and misapplying them is already caught by the winner's `scope_correct`
+> criterion. Guards on LOWER-tier siblings remain (that is a real scope
+> leak). Generalizes the 2026-08-06 lineage precedent to every org;
+> symmetric pairs only. The two asymmetric lineage cases (org-1 P-0023,
+> org-4 P-0040) resolve under the same rule now that S1 carries the
+> cross-side role.
+> S4 — *Authored pattern quality (rule 4 applied to authored patterns).*
+> Six authored absence patterns whose branches reduce to bare numerals or
+> common words under optional anchors (`(5\s*(pm)?|10\s*(am)?)`,
+> `\b(thirty|30)\b`, `\b(half|…)`) were replaced by semantic mirrors of the
+> same absence intent; kind and pairing unchanged.
+> S5 — *Empty-output rule (scoring).* An empty / whitespace-only / missing
+> deliverable (including a worker failure after retries) scores 0.0 on
+> every assertion, absence detectors included, and stays in the
+> denominator: no deliverable, no credit.
+> Provenance: incremental blinded re-judging is harness-enforced —
+> judgements now carry a per-criterion text hash and `report` refuses any
+> verdict whose criterion text changed without a re-judge.
+>
+> **S1' — Commitment clause moves to the judge rubric (2026-08-15).** With
+> S1 rejected, enumeration closure is the rubric v2 clause
+> (`docs/specs/judge-rubric.md`): a positive-content criterion is not
+> satisfied by an output that presents the required value together with a
+> conflicting alternative as both current. Measured on the rebuilt exploit
+> audit: enumerate-both-values pair-passes 18 → 1, base-side mean 0.74 →
+> 0.15; the one remaining pair-pass is a non-inverting twin (below).
+>
+> **S6 — Discrimination gate (prespecified 2026-08-15, before any
+> cross-verdict existed; computed on seeds 1–2 immediately after).** The
+> exploit audit's `base_correct` row exposed a twin whose counterfactual
+> criteria are satisfied by the honest BASE output (org-1 P-0032: "over
+> 200 lines after lunch" complements "under 200 lines before lunch"). Such
+> a pair does not discriminate — a stale SUT would be credited on the twin
+> — and the ceiling/twin/floor gates cannot see it. Rule: an instance is
+> valid only if, in addition to the v0.3 conditions, its ceiling output
+> scores < 1.0 against the counterfactual assertion set AND its twin
+> output scores < 1.0 against the base assertion set. Both cross-scores
+> come from the same blinded judging pass (ceiling rows carry the cf
+> criteria, twin rows the base criteria; the judge sees only criteria).
+> Reported per instance as `ceiling_vs_cf` / `twin_vs_base`.
+>
+> **Exploit-audit bar, re-scoped and disclosed (2026-08-15).** The
+> prespecified bar demanded zero single-side 1.0 for waffle. The
+> natural-artifact rule (approved v0.4 rule 3) makes some counterfactual
+> sides absence-only by design (retraction counterfactuals: "no longer
+> Mondays 2pm" has no replacement value), and a content-free output passes
+> an absence-only side by construction while the pair still fails. The
+> single-side clause is therefore re-scoped to sides carrying at least one
+> positive-content criterion; the audit report prints BOTH the original
+> and the re-scoped verdict, and the count of absence-only sides, forever.
+> This is a post-hoc re-scoping made after seeing three such sides; it is
+> labelled as such and is not called prespecified.
 
 ## 4. Counterfactual twins
 

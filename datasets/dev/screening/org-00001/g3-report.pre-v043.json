@@ -8,59 +8,21 @@
   "P-0001": {
    "instances": {
     "P-0001-01": {
-     "ceiling": 0.0,
-     "twin_ceiling": 0.5,
-     "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
-     "valid": false
+     "ceiling": 1.0,
+     "twin_ceiling": 1.0,
+     "floor": 1.0,
+     "valid": true
     },
     "P-0001-02": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
+     "floor": 1.0,
      "valid": true
     },
     "P-0001-03": {
      "ceiling": 1.0,
-     "twin_ceiling": 0.5,
-     "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
-     "valid": false
-    }
-   },
-   "n_valid": 1,
-   "guessability": 0.0,
-   "survive": false,
-   "strict_survive": false
-  },
-  "P-0002": {
-   "instances": {
-    "P-0002-01": {
-     "ceiling": 1.0,
-     "twin_ceiling": 1.0,
-     "floor": 1.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
-     "valid": true
-    },
-    "P-0002-02": {
-     "ceiling": 1.0,
      "twin_ceiling": 1.0,
      "floor": 0.5,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
-     "valid": true
-    },
-    "P-0002-03": {
-     "ceiling": 1.0,
-     "twin_ceiling": 1.0,
-     "floor": 1.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
      "valid": true
     }
    },
@@ -69,100 +31,108 @@
    "survive": true,
    "strict_survive": true
   },
+  "P-0002": {
+   "instances": {
+    "P-0002-01": {
+     "ceiling": 1.0,
+     "twin_ceiling": 1.0,
+     "floor": 1.0,
+     "valid": true
+    },
+    "P-0002-02": {
+     "ceiling": 1.0,
+     "twin_ceiling": 1.0,
+     "floor": 1.0,
+     "valid": true
+    },
+    "P-0002-03": {
+     "ceiling": 1.0,
+     "twin_ceiling": 1.0,
+     "floor": 1.0,
+     "valid": true
+    }
+   },
+   "n_valid": 3,
+   "guessability": 1.0,
+   "survive": true,
+   "strict_survive": true
+  },
   "P-0003": {
    "instances": {
     "P-0003-01": {
      "ceiling": 1.0,
-     "twin_ceiling": 0.6666666666666666,
-     "floor": 0.3333333333333333,
-     "ceiling_vs_cf": 0.6666666666666666,
-     "twin_vs_base": 0.6666666666666666,
-     "valid": false
+     "twin_ceiling": 1.0,
+     "floor": 1.0,
+     "valid": true
     },
     "P-0003-02": {
      "ceiling": 1.0,
      "twin_ceiling": 0.6666666666666666,
      "floor": 0.6666666666666666,
-     "ceiling_vs_cf": 0.6666666666666666,
-     "twin_vs_base": 0.6666666666666666,
      "valid": false
     },
     "P-0003-03": {
      "ceiling": 1.0,
-     "twin_ceiling": 0.6666666666666666,
-     "floor": 0.3333333333333333,
-     "ceiling_vs_cf": 0.6666666666666666,
-     "twin_vs_base": 0.6666666666666666,
-     "valid": false
+     "twin_ceiling": 1.0,
+     "floor": 0.6666666666666666,
+     "valid": true
     }
    },
-   "n_valid": 0,
-   "guessability": 0.0,
-   "survive": false,
+   "n_valid": 2,
+   "guessability": 0.333,
+   "survive": true,
    "strict_survive": false
   },
   "P-0004": {
    "instances": {
     "P-0004-01": {
      "ceiling": 1.0,
-     "twin_ceiling": 1.0,
-     "floor": 0.5,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.5,
-     "valid": true
+     "twin_ceiling": 0.6666666666666666,
+     "floor": 0.6666666666666666,
+     "valid": false
     },
     "P-0004-02": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.5,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.5,
+     "floor": 0.6666666666666666,
      "valid": true
     },
     "P-0004-03": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.5,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.5,
+     "floor": 0.6666666666666666,
      "valid": true
     }
    },
-   "n_valid": 3,
+   "n_valid": 2,
    "guessability": 0.0,
    "survive": true,
-   "strict_survive": true
+   "strict_survive": false
   },
   "P-0005": {
    "instances": {
     "P-0005-01": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 1.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
+     "floor": 0.6666666666666666,
      "valid": true
     },
     "P-0005-02": {
-     "ceiling": 1.0,
-     "twin_ceiling": 0.0,
-     "floor": 1.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
+     "ceiling": 0.6666666666666666,
+     "twin_ceiling": 0.6666666666666666,
+     "floor": 0.6666666666666666,
      "valid": false
     },
     "P-0005-03": {
      "ceiling": 1.0,
-     "twin_ceiling": 1.0,
-     "floor": 1.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
-     "valid": true
+     "twin_ceiling": 0.6666666666666666,
+     "floor": 0.6666666666666666,
+     "valid": false
     }
    },
-   "n_valid": 2,
-   "guessability": 1.0,
-   "survive": true,
+   "n_valid": 1,
+   "guessability": 0.0,
+   "survive": false,
    "strict_survive": false
   },
   "P-0006": {
@@ -170,30 +140,24 @@
     "P-0006-01": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
+     "floor": 1.0,
      "valid": true
     },
     "P-0006-02": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
      "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
      "valid": true
     },
     "P-0006-03": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
+     "floor": 1.0,
      "valid": true
     }
    },
    "n_valid": 3,
-   "guessability": 0.0,
+   "guessability": 0.667,
    "survive": true,
    "strict_survive": true
   },
@@ -202,25 +166,19 @@
     "P-0007-01": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.6666666666666666,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.3333333333333333,
+     "floor": 0.5,
      "valid": true
     },
     "P-0007-02": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.6666666666666666,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.3333333333333333,
+     "floor": 0.5,
      "valid": true
     },
     "P-0007-03": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.6666666666666666,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.3333333333333333,
+     "floor": 0.0,
      "valid": true
     }
    },
@@ -234,32 +192,26 @@
     "P-0008-01": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.75,
-     "ceiling_vs_cf": 0.6666666666666666,
-     "twin_vs_base": 0.5,
+     "floor": 1.0,
      "valid": true
     },
     "P-0008-02": {
      "ceiling": 1.0,
-     "twin_ceiling": 0.6666666666666666,
-     "floor": 0.75,
-     "ceiling_vs_cf": 0.6666666666666666,
-     "twin_vs_base": 0.5,
-     "valid": false
+     "twin_ceiling": 1.0,
+     "floor": 1.0,
+     "valid": true
     },
     "P-0008-03": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.75,
-     "ceiling_vs_cf": 0.6666666666666666,
-     "twin_vs_base": 0.5,
+     "floor": 0.6666666666666666,
      "valid": true
     }
    },
-   "n_valid": 2,
-   "guessability": 0.0,
+   "n_valid": 3,
+   "guessability": 0.667,
    "survive": true,
-   "strict_survive": false
+   "strict_survive": true
   },
   "P-0009": {
    "instances": {
@@ -267,24 +219,18 @@
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
      "floor": 1.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
      "valid": true
     },
     "P-0009-02": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
      "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
      "valid": true
     },
     "P-0009-03": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
      "floor": 1.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
      "valid": true
     }
    },
@@ -298,30 +244,24 @@
     "P-0010-01": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 1.0,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.5,
+     "floor": 0.0,
      "valid": true
     },
     "P-0010-02": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 1.0,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.5,
+     "floor": 0.0,
      "valid": true
     },
     "P-0010-03": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 1.0,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.5,
+     "floor": 0.0,
      "valid": true
     }
    },
    "n_valid": 3,
-   "guessability": 1.0,
+   "guessability": 0.0,
    "survive": true,
    "strict_survive": true
   },
@@ -330,127 +270,103 @@
     "P-0011-01": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 1.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
+     "floor": 0.0,
      "valid": true
     },
     "P-0011-02": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 1.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
+     "floor": 0.0,
      "valid": true
     },
     "P-0011-03": {
      "ceiling": 1.0,
-     "twin_ceiling": 0.5,
-     "floor": 1.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 1.0,
-     "valid": false
+     "twin_ceiling": 1.0,
+     "floor": 0.0,
+     "valid": true
     }
    },
-   "n_valid": 2,
-   "guessability": 1.0,
+   "n_valid": 3,
+   "guessability": 0.0,
    "survive": true,
-   "strict_survive": false
+   "strict_survive": true
   },
   "P-0012": {
    "instances": {
     "P-0012-01": {
      "ceiling": 1.0,
-     "twin_ceiling": 1.0,
-     "floor": 0.6666666666666666,
-     "ceiling_vs_cf": 0.6666666666666666,
-     "twin_vs_base": 0.3333333333333333,
-     "valid": true
+     "twin_ceiling": 0.6666666666666666,
+     "floor": 1.0,
+     "valid": false
     },
     "P-0012-02": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.6666666666666666,
-     "ceiling_vs_cf": 0.6666666666666666,
-     "twin_vs_base": 0.6666666666666666,
+     "floor": 1.0,
      "valid": true
     },
     "P-0012-03": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
      "floor": 0.6666666666666666,
-     "ceiling_vs_cf": 0.6666666666666666,
-     "twin_vs_base": 0.6666666666666666,
      "valid": true
     }
    },
-   "n_valid": 3,
-   "guessability": 0.0,
+   "n_valid": 2,
+   "guessability": 0.667,
    "survive": true,
-   "strict_survive": true
+   "strict_survive": false
   },
   "P-0013": {
    "instances": {
     "P-0013-01": {
      "ceiling": 1.0,
-     "twin_ceiling": 1.0,
-     "floor": 0.5,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.5,
-     "valid": true
+     "twin_ceiling": 0.6666666666666666,
+     "floor": 0.6666666666666666,
+     "valid": false
     },
     "P-0013-02": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.5,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.5,
+     "floor": 0.6666666666666666,
      "valid": true
     },
     "P-0013-03": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.5,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.5,
-     "valid": true
-    }
-   },
-   "n_valid": 3,
-   "guessability": 0.0,
-   "survive": true,
-   "strict_survive": true
-  },
-  "P-0014": {
-   "instances": {
-    "P-0014-01": {
-     "ceiling": 1.0,
-     "twin_ceiling": 1.0,
-     "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
-     "valid": true
-    },
-    "P-0014-02": {
-     "ceiling": 1.0,
-     "twin_ceiling": 0.0,
-     "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
-     "valid": false
-    },
-    "P-0014-03": {
-     "ceiling": 1.0,
-     "twin_ceiling": 1.0,
-     "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
+     "floor": 0.6666666666666666,
      "valid": true
     }
    },
    "n_valid": 2,
    "guessability": 0.0,
    "survive": true,
+   "strict_survive": false
+  },
+  "P-0014": {
+   "instances": {
+    "P-0014-01": {
+     "ceiling": 1.0,
+     "twin_ceiling": 0.6666666666666666,
+     "floor": 0.6666666666666666,
+     "valid": false
+    },
+    "P-0014-02": {
+     "ceiling": 0.6666666666666666,
+     "twin_ceiling": 0.6666666666666666,
+     "floor": 0.6666666666666666,
+     "valid": false
+    },
+    "P-0014-03": {
+     "ceiling": 1.0,
+     "twin_ceiling": 1.0,
+     "floor": 0.6666666666666666,
+     "valid": true
+    }
+   },
+   "n_valid": 1,
+   "guessability": 0.0,
+   "survive": false,
    "strict_survive": false
   },
   "P-0015": {
@@ -459,24 +375,18 @@
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
      "floor": 0.0,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.0,
      "valid": true
     },
     "P-0015-02": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
      "floor": 0.0,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.0,
      "valid": true
     },
     "P-0015-03": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
      "floor": 0.0,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.0,
      "valid": true
     }
    },
@@ -490,30 +400,24 @@
     "P-0016-01": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 1.0,
-     "ceiling_vs_cf": 0.3333333333333333,
-     "twin_vs_base": 0.5,
+     "floor": 0.0,
      "valid": true
     },
     "P-0016-02": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 1.0,
-     "ceiling_vs_cf": 0.6666666666666666,
-     "twin_vs_base": 0.5,
+     "floor": 0.0,
      "valid": true
     },
     "P-0016-03": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.5,
-     "ceiling_vs_cf": 0.6666666666666666,
-     "twin_vs_base": 0.5,
+     "floor": 0.0,
      "valid": true
     }
    },
    "n_valid": 3,
-   "guessability": 0.667,
+   "guessability": 0.0,
    "survive": true,
    "strict_survive": true
   },
@@ -522,30 +426,24 @@
     "P-0017-01": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.75,
-     "ceiling_vs_cf": 0.75,
-     "twin_vs_base": 0.75,
+     "floor": 1.0,
      "valid": true
     },
     "P-0017-02": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.75,
-     "ceiling_vs_cf": 0.75,
-     "twin_vs_base": 0.75,
+     "floor": 1.0,
      "valid": true
     },
     "P-0017-03": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.75,
-     "ceiling_vs_cf": 0.75,
-     "twin_vs_base": 0.75,
+     "floor": 1.0,
      "valid": true
     }
    },
    "n_valid": 3,
-   "guessability": 0.0,
+   "guessability": 1.0,
    "survive": true,
    "strict_survive": true
   },
@@ -555,24 +453,18 @@
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
      "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
      "valid": true
     },
     "P-0018-02": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
      "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
      "valid": true
     },
     "P-0018-03": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
      "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
      "valid": true
     }
    },
@@ -586,30 +478,24 @@
     "P-0019-01": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
+     "floor": 1.0,
      "valid": true
     },
     "P-0019-02": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
      "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
      "valid": true
     },
     "P-0019-03": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
+     "floor": 1.0,
      "valid": true
     }
    },
    "n_valid": 3,
-   "guessability": 0.0,
+   "guessability": 0.667,
    "survive": true,
    "strict_survive": true
   },
@@ -618,89 +504,19 @@
     "P-0020-01": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 1.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
+     "floor": 0.0,
      "valid": true
     },
     "P-0020-02": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 1.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.5,
+     "floor": 0.0,
      "valid": true
     },
     "P-0020-03": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 1.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
-     "valid": true
-    }
-   },
-   "n_valid": 3,
-   "guessability": 1.0,
-   "survive": true,
-   "strict_survive": true
-  },
-  "P-0021": {
-   "instances": {
-    "P-0021-01": {
-     "ceiling": 1.0,
-     "twin_ceiling": 1.0,
      "floor": 0.0,
-     "ceiling_vs_cf": 0.6666666666666666,
-     "twin_vs_base": 0.3333333333333333,
-     "valid": true
-    },
-    "P-0021-02": {
-     "ceiling": 1.0,
-     "twin_ceiling": 1.0,
-     "floor": 1.0,
-     "ceiling_vs_cf": 0.6666666666666666,
-     "twin_vs_base": 0.6666666666666666,
-     "valid": true
-    },
-    "P-0021-03": {
-     "ceiling": 1.0,
-     "twin_ceiling": 1.0,
-     "floor": 0.6666666666666666,
-     "ceiling_vs_cf": 0.6666666666666666,
-     "twin_vs_base": 0.3333333333333333,
-     "valid": true
-    }
-   },
-   "n_valid": 3,
-   "guessability": 0.333,
-   "survive": true,
-   "strict_survive": true
-  },
-  "P-0022": {
-   "instances": {
-    "P-0022-01": {
-     "ceiling": 1.0,
-     "twin_ceiling": 1.0,
-     "floor": 0.5,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.5,
-     "valid": true
-    },
-    "P-0022-02": {
-     "ceiling": 1.0,
-     "twin_ceiling": 1.0,
-     "floor": 0.5,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.5,
-     "valid": true
-    },
-    "P-0022-03": {
-     "ceiling": 1.0,
-     "twin_ceiling": 1.0,
-     "floor": 0.5,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.5,
      "valid": true
     }
    },
@@ -709,35 +525,81 @@
    "survive": true,
    "strict_survive": true
   },
+  "P-0021": {
+   "instances": {
+    "P-0021-01": {
+     "ceiling": 1.0,
+     "twin_ceiling": 0.6666666666666666,
+     "floor": 1.0,
+     "valid": false
+    },
+    "P-0021-02": {
+     "ceiling": 1.0,
+     "twin_ceiling": 0.6666666666666666,
+     "floor": 1.0,
+     "valid": false
+    },
+    "P-0021-03": {
+     "ceiling": 1.0,
+     "twin_ceiling": 0.6666666666666666,
+     "floor": 1.0,
+     "valid": false
+    }
+   },
+   "n_valid": 0,
+   "guessability": 1.0,
+   "survive": false,
+   "strict_survive": false
+  },
+  "P-0022": {
+   "instances": {
+    "P-0022-01": {
+     "ceiling": 0.6666666666666666,
+     "twin_ceiling": 0.3333333333333333,
+     "floor": 0.6666666666666666,
+     "valid": false
+    },
+    "P-0022-02": {
+     "ceiling": 0.6666666666666666,
+     "twin_ceiling": 1.0,
+     "floor": 0.6666666666666666,
+     "valid": false
+    },
+    "P-0022-03": {
+     "ceiling": 0.6666666666666666,
+     "twin_ceiling": 0.6666666666666666,
+     "floor": 0.6666666666666666,
+     "valid": false
+    }
+   },
+   "n_valid": 0,
+   "guessability": 0.0,
+   "survive": false,
+   "strict_survive": false
+  },
   "P-0023": {
    "instances": {
     "P-0023-01": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
+     "floor": 1.0,
      "valid": true
     },
     "P-0023-02": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
      "floor": 1.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
      "valid": true
     },
     "P-0023-03": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
+     "floor": 1.0,
      "valid": true
     }
    },
    "n_valid": 3,
-   "guessability": 0.333,
+   "guessability": 1.0,
    "survive": true,
    "strict_survive": true
   },
@@ -747,184 +609,18 @@
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
      "floor": 1.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
      "valid": true
     },
     "P-0024-02": {
      "ceiling": 1.0,
-     "twin_ceiling": 1.0,
-     "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
-     "valid": true
+     "twin_ceiling": 0.5,
+     "floor": 1.0,
+     "valid": false
     },
     "P-0024-03": {
      "ceiling": 1.0,
-     "twin_ceiling": 1.0,
-     "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
-     "valid": true
-    }
-   },
-   "n_valid": 3,
-   "guessability": 0.333,
-   "survive": true,
-   "strict_survive": true
-  },
-  "P-0025": {
-   "instances": {
-    "P-0025-01": {
-     "ceiling": 1.0,
-     "twin_ceiling": 1.0,
-     "floor": 0.5,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.5,
-     "valid": true
-    },
-    "P-0025-02": {
-     "ceiling": 1.0,
-     "twin_ceiling": 1.0,
-     "floor": 0.5,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.5,
-     "valid": true
-    },
-    "P-0025-03": {
-     "ceiling": 1.0,
-     "twin_ceiling": 1.0,
-     "floor": 0.5,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.5,
-     "valid": true
-    }
-   },
-   "n_valid": 3,
-   "guessability": 0.0,
-   "survive": true,
-   "strict_survive": true
-  },
-  "P-0026": {
-   "instances": {
-    "P-0026-01": {
-     "ceiling": 1.0,
-     "twin_ceiling": 1.0,
-     "floor": 0.3333333333333333,
-     "ceiling_vs_cf": 0.6666666666666666,
-     "twin_vs_base": 0.6666666666666666,
-     "valid": true
-    },
-    "P-0026-02": {
-     "ceiling": 1.0,
-     "twin_ceiling": 1.0,
-     "floor": 0.3333333333333333,
-     "ceiling_vs_cf": 0.6666666666666666,
-     "twin_vs_base": 0.6666666666666666,
-     "valid": true
-    },
-    "P-0026-03": {
-     "ceiling": 1.0,
-     "twin_ceiling": 1.0,
-     "floor": 0.3333333333333333,
-     "ceiling_vs_cf": 0.6666666666666666,
-     "twin_vs_base": 0.6666666666666666,
-     "valid": true
-    }
-   },
-   "n_valid": 3,
-   "guessability": 0.0,
-   "survive": true,
-   "strict_survive": true
-  },
-  "P-0027": {
-   "instances": {
-    "P-0027-01": {
-     "ceiling": 1.0,
-     "twin_ceiling": 1.0,
-     "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
-     "valid": true
-    },
-    "P-0027-02": {
-     "ceiling": 1.0,
-     "twin_ceiling": 1.0,
-     "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
-     "valid": true
-    },
-    "P-0027-03": {
-     "ceiling": 1.0,
-     "twin_ceiling": 1.0,
-     "floor": 1.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
-     "valid": true
-    }
-   },
-   "n_valid": 3,
-   "guessability": 0.333,
-   "survive": true,
-   "strict_survive": true
-  },
-  "P-0028": {
-   "instances": {
-    "P-0028-01": {
-     "ceiling": 1.0,
-     "twin_ceiling": 1.0,
-     "floor": 1.0,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.5,
-     "valid": true
-    },
-    "P-0028-02": {
-     "ceiling": 1.0,
-     "twin_ceiling": 1.0,
-     "floor": 1.0,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.5,
-     "valid": true
-    },
-    "P-0028-03": {
-     "ceiling": 1.0,
-     "twin_ceiling": 1.0,
-     "floor": 1.0,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.5,
-     "valid": true
-    }
-   },
-   "n_valid": 3,
-   "guessability": 1.0,
-   "survive": true,
-   "strict_survive": true
-  },
-  "P-0029": {
-   "instances": {
-    "P-0029-01": {
-     "ceiling": 1.0,
-     "twin_ceiling": 1.0,
-     "floor": 1.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
-     "valid": true
-    },
-    "P-0029-02": {
-     "ceiling": 1.0,
      "twin_ceiling": 0.5,
      "floor": 1.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
-     "valid": false
-    },
-    "P-0029-03": {
-     "ceiling": 1.0,
-     "twin_ceiling": 0.5,
-     "floor": 1.0,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.0,
      "valid": false
     }
    },
@@ -933,30 +629,154 @@
    "survive": false,
    "strict_survive": false
   },
+  "P-0025": {
+   "instances": {
+    "P-0025-01": {
+     "ceiling": 1.0,
+     "twin_ceiling": 1.0,
+     "floor": 1.0,
+     "valid": true
+    },
+    "P-0025-02": {
+     "ceiling": 1.0,
+     "twin_ceiling": 1.0,
+     "floor": 1.0,
+     "valid": true
+    },
+    "P-0025-03": {
+     "ceiling": 1.0,
+     "twin_ceiling": 1.0,
+     "floor": 1.0,
+     "valid": true
+    }
+   },
+   "n_valid": 3,
+   "guessability": 1.0,
+   "survive": true,
+   "strict_survive": true
+  },
+  "P-0026": {
+   "instances": {
+    "P-0026-01": {
+     "ceiling": 1.0,
+     "twin_ceiling": 0.3333333333333333,
+     "floor": 0.6666666666666666,
+     "valid": false
+    },
+    "P-0026-02": {
+     "ceiling": 1.0,
+     "twin_ceiling": 0.3333333333333333,
+     "floor": 1.0,
+     "valid": false
+    },
+    "P-0026-03": {
+     "ceiling": 1.0,
+     "twin_ceiling": 0.3333333333333333,
+     "floor": 1.0,
+     "valid": false
+    }
+   },
+   "n_valid": 0,
+   "guessability": 0.667,
+   "survive": false,
+   "strict_survive": false
+  },
+  "P-0027": {
+   "instances": {
+    "P-0027-01": {
+     "ceiling": 1.0,
+     "twin_ceiling": 1.0,
+     "floor": 1.0,
+     "valid": true
+    },
+    "P-0027-02": {
+     "ceiling": 1.0,
+     "twin_ceiling": 1.0,
+     "floor": 1.0,
+     "valid": true
+    },
+    "P-0027-03": {
+     "ceiling": 1.0,
+     "twin_ceiling": 1.0,
+     "floor": 1.0,
+     "valid": true
+    }
+   },
+   "n_valid": 3,
+   "guessability": 1.0,
+   "survive": true,
+   "strict_survive": true
+  },
+  "P-0028": {
+   "instances": {
+    "P-0028-01": {
+     "ceiling": 1.0,
+     "twin_ceiling": 0.0,
+     "floor": 0.0,
+     "valid": false
+    },
+    "P-0028-02": {
+     "ceiling": 1.0,
+     "twin_ceiling": 1.0,
+     "floor": 0.0,
+     "valid": true
+    },
+    "P-0028-03": {
+     "ceiling": 1.0,
+     "twin_ceiling": 1.0,
+     "floor": 0.0,
+     "valid": true
+    }
+   },
+   "n_valid": 2,
+   "guessability": 0.0,
+   "survive": true,
+   "strict_survive": false
+  },
+  "P-0029": {
+   "instances": {
+    "P-0029-01": {
+     "ceiling": 1.0,
+     "twin_ceiling": 0.6666666666666666,
+     "floor": 0.6666666666666666,
+     "valid": false
+    },
+    "P-0029-02": {
+     "ceiling": 1.0,
+     "twin_ceiling": 1.0,
+     "floor": 0.6666666666666666,
+     "valid": true
+    },
+    "P-0029-03": {
+     "ceiling": 1.0,
+     "twin_ceiling": 1.0,
+     "floor": 0.6666666666666666,
+     "valid": true
+    }
+   },
+   "n_valid": 2,
+   "guessability": 0.0,
+   "survive": true,
+   "strict_survive": false
+  },
   "P-0030": {
    "instances": {
     "P-0030-01": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
      "floor": 0.6666666666666666,
-     "ceiling_vs_cf": 0.6666666666666666,
-     "twin_vs_base": 0.6666666666666666,
      "valid": true
     },
     "P-0030-02": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
      "floor": 0.6666666666666666,
-     "ceiling_vs_cf": 0.6666666666666666,
-     "twin_vs_base": 0.6666666666666666,
      "valid": true
     },
     "P-0030-03": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
      "floor": 0.6666666666666666,
-     "ceiling_vs_cf": 0.6666666666666666,
-     "twin_vs_base": 0.6666666666666666,
      "valid": true
     }
    },
@@ -970,30 +790,24 @@
     "P-0031-01": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.5,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.5,
+     "floor": 1.0,
      "valid": true
     },
     "P-0031-02": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.5,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.5,
+     "floor": 1.0,
      "valid": true
     },
     "P-0031-03": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.5,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.5,
+     "floor": 1.0,
      "valid": true
     }
    },
    "n_valid": 3,
-   "guessability": 0.0,
+   "guessability": 1.0,
    "survive": true,
    "strict_survive": true
   },
@@ -1003,24 +817,18 @@
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
      "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
      "valid": true
     },
     "P-0032-02": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
      "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
      "valid": true
     },
     "P-0032-03": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
      "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
      "valid": true
     }
    },
@@ -1033,58 +841,46 @@
    "instances": {
     "P-0033-01": {
      "ceiling": 1.0,
-     "twin_ceiling": 0.5,
+     "twin_ceiling": 1.0,
      "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
-     "valid": false
+     "valid": true
     },
     "P-0033-02": {
      "ceiling": 1.0,
-     "twin_ceiling": 0.5,
-     "floor": 1.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
-     "valid": false
+     "twin_ceiling": 1.0,
+     "floor": 0.0,
+     "valid": true
     },
     "P-0033-03": {
      "ceiling": 1.0,
-     "twin_ceiling": 0.5,
+     "twin_ceiling": 1.0,
      "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
-     "valid": false
+     "valid": true
     }
    },
-   "n_valid": 0,
-   "guessability": 0.333,
-   "survive": false,
-   "strict_survive": false
+   "n_valid": 3,
+   "guessability": 0.0,
+   "survive": true,
+   "strict_survive": true
   },
   "P-0034": {
    "instances": {
     "P-0034-01": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.5,
-     "ceiling_vs_cf": 0.6666666666666666,
-     "twin_vs_base": 0.5,
+     "floor": 0.6666666666666666,
      "valid": true
     },
     "P-0034-02": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.5,
-     "ceiling_vs_cf": 0.3333333333333333,
-     "twin_vs_base": 0.5,
+     "floor": 0.3333333333333333,
      "valid": true
     },
     "P-0034-03": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.5,
-     "ceiling_vs_cf": 0.3333333333333333,
-     "twin_vs_base": 0.5,
+     "floor": 0.6666666666666666,
      "valid": true
     }
    },
@@ -1098,89 +894,45 @@
     "P-0035-01": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 1.0,
-     "ceiling_vs_cf": 0.6666666666666666,
-     "twin_vs_base": 0.3333333333333333,
+     "floor": 0.6666666666666666,
      "valid": true
     },
     "P-0035-02": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 1.0,
-     "ceiling_vs_cf": 0.6666666666666666,
-     "twin_vs_base": 0.3333333333333333,
+     "floor": 0.6666666666666666,
      "valid": true
     },
     "P-0035-03": {
-     "ceiling": 1.0,
+     "ceiling": 0.6666666666666666,
      "twin_ceiling": 1.0,
-     "floor": 1.0,
-     "ceiling_vs_cf": 0.6666666666666666,
-     "twin_vs_base": 0.3333333333333333,
-     "valid": true
+     "floor": 0.6666666666666666,
+     "valid": false
     }
    },
-   "n_valid": 3,
-   "guessability": 1.0,
+   "n_valid": 2,
+   "guessability": 0.0,
    "survive": true,
-   "strict_survive": true
+   "strict_survive": false
   },
   "P-0036": {
    "instances": {
     "P-0036-01": {
      "ceiling": 1.0,
-     "twin_ceiling": 0.0,
+     "twin_ceiling": 1.0,
      "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 1.0,
-     "valid": false
+     "valid": true
     },
     "P-0036-02": {
-     "ceiling": 0.0,
-     "twin_ceiling": 0.0,
+     "ceiling": 1.0,
+     "twin_ceiling": 1.0,
      "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 1.0,
-     "valid": false
+     "valid": true
     },
     "P-0036-03": {
      "ceiling": 1.0,
-     "twin_ceiling": 0.0,
-     "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 1.0,
-     "valid": false
-    }
-   },
-   "n_valid": 0,
-   "guessability": 0.0,
-   "survive": false,
-   "strict_survive": false
-  },
-  "P-0037": {
-   "instances": {
-    "P-0037-01": {
-     "ceiling": 1.0,
      "twin_ceiling": 1.0,
      "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
-     "valid": true
-    },
-    "P-0037-02": {
-     "ceiling": 1.0,
-     "twin_ceiling": 1.0,
-     "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
-     "valid": true
-    },
-    "P-0037-03": {
-     "ceiling": 1.0,
-     "twin_ceiling": 1.0,
-     "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
      "valid": true
     }
    },
@@ -1188,6 +940,32 @@
    "guessability": 0.0,
    "survive": true,
    "strict_survive": true
+  },
+  "P-0037": {
+   "instances": {
+    "P-0037-01": {
+     "ceiling": 1.0,
+     "twin_ceiling": 0.0,
+     "floor": 1.0,
+     "valid": false
+    },
+    "P-0037-02": {
+     "ceiling": 1.0,
+     "twin_ceiling": 0.6666666666666666,
+     "floor": 0.6666666666666666,
+     "valid": false
+    },
+    "P-0037-03": {
+     "ceiling": 1.0,
+     "twin_ceiling": 1.0,
+     "floor": 1.0,
+     "valid": true
+    }
+   },
+   "n_valid": 1,
+   "guessability": 0.667,
+   "survive": false,
+   "strict_survive": false
   },
   "P-0038": {
    "instances": {
@@ -1195,24 +973,18 @@
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
      "floor": 0.5,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.5,
      "valid": true
     },
     "P-0038-02": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
      "floor": 1.0,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.5,
      "valid": true
     },
     "P-0038-03": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
      "floor": 0.5,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.5,
      "valid": true
     }
    },
@@ -1226,30 +998,24 @@
     "P-0039-01": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.3333333333333333,
-     "ceiling_vs_cf": 0.6666666666666666,
-     "twin_vs_base": 0.6666666666666666,
+     "floor": 1.0,
      "valid": true
     },
     "P-0039-02": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.6666666666666666,
-     "ceiling_vs_cf": 0.6666666666666666,
-     "twin_vs_base": 0.6666666666666666,
+     "floor": 1.0,
      "valid": true
     },
     "P-0039-03": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.6666666666666666,
-     "ceiling_vs_cf": 0.6666666666666666,
-     "twin_vs_base": 0.3333333333333333,
+     "floor": 1.0,
      "valid": true
     }
    },
    "n_valid": 3,
-   "guessability": 0.0,
+   "guessability": 1.0,
    "survive": true,
    "strict_survive": true
   },
@@ -1259,29 +1025,23 @@
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
      "floor": 0.5,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.5,
      "valid": true
     },
     "P-0040-02": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
      "floor": 0.5,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.5,
      "valid": true
     },
     "P-0040-03": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.5,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.5,
+     "floor": 1.0,
      "valid": true
     }
    },
    "n_valid": 3,
-   "guessability": 0.0,
+   "guessability": 0.333,
    "survive": true,
    "strict_survive": true
   },
@@ -1290,32 +1050,26 @@
     "P-0041-01": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
+     "floor": 1.0,
      "valid": true
     },
     "P-0041-02": {
-     "ceiling": 0.0,
-     "twin_ceiling": 0.0,
-     "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
-     "valid": false
+     "ceiling": 1.0,
+     "twin_ceiling": 1.0,
+     "floor": 1.0,
+     "valid": true
     },
     "P-0041-03": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
      "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
      "valid": true
     }
    },
-   "n_valid": 2,
-   "guessability": 0.0,
+   "n_valid": 3,
+   "guessability": 0.667,
    "survive": true,
-   "strict_survive": false
+   "strict_survive": true
   },
   "P-0042": {
    "instances": {
@@ -1323,29 +1077,23 @@
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
      "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
      "valid": true
     },
     "P-0042-02": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
+     "floor": 1.0,
      "valid": true
     },
     "P-0042-03": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
      "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
      "valid": true
     }
    },
    "n_valid": 3,
-   "guessability": 0.0,
+   "guessability": 0.333,
    "survive": true,
    "strict_survive": true
   },
@@ -1355,24 +1103,18 @@
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
      "floor": 0.5,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.0,
      "valid": true
     },
     "P-0043-02": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
      "floor": 0.5,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.0,
      "valid": true
     },
     "P-0043-03": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
      "floor": 0.5,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.0,
      "valid": true
     }
    },
@@ -1385,58 +1127,20 @@
    "instances": {
     "P-0044-01": {
      "ceiling": 1.0,
-     "twin_ceiling": 1.0,
-     "floor": 0.6666666666666666,
-     "ceiling_vs_cf": 0.6666666666666666,
-     "twin_vs_base": 0.6666666666666666,
-     "valid": true
+     "twin_ceiling": 0.6666666666666666,
+     "floor": 0.75,
+     "valid": false
     },
     "P-0044-02": {
      "ceiling": 1.0,
-     "twin_ceiling": 1.0,
-     "floor": 0.6666666666666666,
-     "ceiling_vs_cf": 0.6666666666666666,
-     "twin_vs_base": 0.6666666666666666,
-     "valid": true
+     "twin_ceiling": 0.6666666666666666,
+     "floor": 0.75,
+     "valid": false
     },
     "P-0044-03": {
      "ceiling": 1.0,
-     "twin_ceiling": 1.0,
-     "floor": 0.6666666666666666,
-     "ceiling_vs_cf": 0.6666666666666666,
-     "twin_vs_base": 0.6666666666666666,
-     "valid": true
-    }
-   },
-   "n_valid": 3,
-   "guessability": 0.0,
-   "survive": true,
-   "strict_survive": true
-  },
-  "P-0045": {
-   "instances": {
-    "P-0045-01": {
-     "ceiling": 1.0,
-     "twin_ceiling": 0.0,
-     "floor": 0.0,
-     "ceiling_vs_cf": 1.0,
-     "twin_vs_base": 0.0,
-     "valid": false
-    },
-    "P-0045-02": {
-     "ceiling": 1.0,
-     "twin_ceiling": 0.0,
-     "floor": 0.0,
-     "ceiling_vs_cf": 1.0,
-     "twin_vs_base": 0.0,
-     "valid": false
-    },
-    "P-0045-03": {
-     "ceiling": 1.0,
-     "twin_ceiling": 0.0,
-     "floor": 0.0,
-     "ceiling_vs_cf": 1.0,
-     "twin_vs_base": 0.0,
+     "twin_ceiling": 0.6666666666666666,
+     "floor": 0.75,
      "valid": false
     }
    },
@@ -1445,35 +1149,55 @@
    "survive": false,
    "strict_survive": false
   },
-  "P-0046": {
+  "P-0045": {
    "instances": {
-    "P-0046-01": {
+    "P-0045-01": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
      "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
      "valid": true
     },
-    "P-0046-02": {
+    "P-0045-02": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
      "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
      "valid": true
     },
-    "P-0046-03": {
+    "P-0045-03": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
      "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
      "valid": true
     }
    },
    "n_valid": 3,
    "guessability": 0.0,
+   "survive": true,
+   "strict_survive": true
+  },
+  "P-0046": {
+   "instances": {
+    "P-0046-01": {
+     "ceiling": 1.0,
+     "twin_ceiling": 1.0,
+     "floor": 1.0,
+     "valid": true
+    },
+    "P-0046-02": {
+     "ceiling": 1.0,
+     "twin_ceiling": 1.0,
+     "floor": 1.0,
+     "valid": true
+    },
+    "P-0046-03": {
+     "ceiling": 1.0,
+     "twin_ceiling": 1.0,
+     "floor": 0.5,
+     "valid": true
+    }
+   },
+   "n_valid": 3,
+   "guessability": 0.667,
    "survive": true,
    "strict_survive": true
   },
@@ -1481,63 +1205,51 @@
    "instances": {
     "P-0047-01": {
      "ceiling": 1.0,
-     "twin_ceiling": 0.5,
-     "floor": 0.0,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.0,
-     "valid": false
+     "twin_ceiling": 1.0,
+     "floor": 0.5,
+     "valid": true
     },
     "P-0047-02": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.0,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.0,
+     "floor": 0.5,
      "valid": true
     },
     "P-0047-03": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.0,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.0,
+     "floor": 0.5,
      "valid": true
     }
    },
-   "n_valid": 2,
+   "n_valid": 3,
    "guessability": 0.0,
    "survive": true,
-   "strict_survive": false
+   "strict_survive": true
   },
   "P-0048": {
    "instances": {
     "P-0048-01": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 1.0,
-     "ceiling_vs_cf": 0.6666666666666666,
-     "twin_vs_base": 0.6666666666666666,
+     "floor": 0.6666666666666666,
      "valid": true
     },
     "P-0048-02": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 1.0,
-     "ceiling_vs_cf": 0.6666666666666666,
-     "twin_vs_base": 0.6666666666666666,
+     "floor": 0.6666666666666666,
      "valid": true
     },
     "P-0048-03": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 1.0,
-     "ceiling_vs_cf": 0.6666666666666666,
-     "twin_vs_base": 0.6666666666666666,
+     "floor": 0.6666666666666666,
      "valid": true
     }
    },
    "n_valid": 3,
-   "guessability": 1.0,
+   "guessability": 0.0,
    "survive": true,
    "strict_survive": true
   },
@@ -1545,63 +1257,51 @@
    "instances": {
     "P-0049-01": {
      "ceiling": 1.0,
-     "twin_ceiling": 0.5,
-     "floor": 0.5,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.5,
-     "valid": false
+     "twin_ceiling": 1.0,
+     "floor": 0.6666666666666666,
+     "valid": true
     },
     "P-0049-02": {
      "ceiling": 1.0,
-     "twin_ceiling": 0.5,
-     "floor": 0.5,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.5,
-     "valid": false
+     "twin_ceiling": 1.0,
+     "floor": 0.6666666666666666,
+     "valid": true
     },
     "P-0049-03": {
      "ceiling": 1.0,
-     "twin_ceiling": 0.5,
-     "floor": 0.5,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.5,
-     "valid": false
+     "twin_ceiling": 1.0,
+     "floor": 0.6666666666666666,
+     "valid": true
     }
    },
-   "n_valid": 0,
+   "n_valid": 3,
    "guessability": 0.0,
-   "survive": false,
-   "strict_survive": false
+   "survive": true,
+   "strict_survive": true
   },
   "P-0050": {
    "instances": {
     "P-0050-01": {
-     "ceiling": 0.0,
+     "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 1.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
-     "valid": false
+     "floor": 0.6666666666666666,
+     "valid": true
     },
     "P-0050-02": {
      "ceiling": 1.0,
-     "twin_ceiling": 1.0,
-     "floor": 1.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
-     "valid": true
+     "twin_ceiling": 0.6666666666666666,
+     "floor": 0.6666666666666666,
+     "valid": false
     },
     "P-0050-03": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 1.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
+     "floor": 0.6666666666666666,
      "valid": true
     }
    },
    "n_valid": 2,
-   "guessability": 1.0,
+   "guessability": 0.0,
    "survive": true,
    "strict_survive": false
   },
@@ -1611,56 +1311,44 @@
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
      "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
      "valid": true
     },
     "P-0051-02": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
+     "floor": 1.0,
      "valid": true
     },
     "P-0051-03": {
      "ceiling": 1.0,
-     "twin_ceiling": 1.0,
-     "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
-     "valid": true
+     "twin_ceiling": 0.0,
+     "floor": 1.0,
+     "valid": false
     }
    },
-   "n_valid": 3,
-   "guessability": 0.0,
+   "n_valid": 2,
+   "guessability": 0.667,
    "survive": true,
-   "strict_survive": true
+   "strict_survive": false
   },
   "P-0052": {
    "instances": {
     "P-0052-01": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.5,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.5,
+     "floor": 0.6666666666666666,
      "valid": true
     },
     "P-0052-02": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.5,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.5,
+     "floor": 0.6666666666666666,
      "valid": true
     },
     "P-0052-03": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.5,
-     "ceiling_vs_cf": 0.5,
-     "twin_vs_base": 0.5,
+     "floor": 0.6666666666666666,
      "valid": true
     }
    },
@@ -1674,32 +1362,26 @@
     "P-0053-01": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.6666666666666666,
-     "ceiling_vs_cf": 0.6666666666666666,
-     "twin_vs_base": 0.6666666666666666,
+     "floor": 0.75,
      "valid": true
     },
     "P-0053-02": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
-     "floor": 0.6666666666666666,
-     "ceiling_vs_cf": 0.6666666666666666,
-     "twin_vs_base": 0.6666666666666666,
+     "floor": 0.75,
      "valid": true
     },
     "P-0053-03": {
      "ceiling": 1.0,
-     "twin_ceiling": 1.0,
-     "floor": 0.6666666666666666,
-     "ceiling_vs_cf": 0.6666666666666666,
-     "twin_vs_base": 0.6666666666666666,
-     "valid": true
+     "twin_ceiling": 0.75,
+     "floor": 0.75,
+     "valid": false
     }
    },
-   "n_valid": 3,
+   "n_valid": 2,
    "guessability": 0.0,
    "survive": true,
-   "strict_survive": true
+   "strict_survive": false
   },
   "P-0054": {
    "instances": {
@@ -1707,37 +1389,31 @@
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
      "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
      "valid": true
     },
     "P-0054-02": {
      "ceiling": 1.0,
      "twin_ceiling": 1.0,
      "floor": 0.0,
-     "ceiling_vs_cf": 1.0,
-     "twin_vs_base": 0.0,
-     "valid": false
+     "valid": true
     },
     "P-0054-03": {
      "ceiling": 1.0,
-     "twin_ceiling": 0.0,
-     "floor": 0.0,
-     "ceiling_vs_cf": 0.0,
-     "twin_vs_base": 0.0,
-     "valid": false
+     "twin_ceiling": 1.0,
+     "floor": 1.0,
+     "valid": true
     }
    },
-   "n_valid": 1,
-   "guessability": 0.0,
-   "survive": false,
-   "strict_survive": false
+   "n_valid": 3,
+   "guessability": 0.333,
+   "survive": true,
+   "strict_survive": true
   }
  },
  "n_clusters": 54,
  "n_survivors": 46,
- "n_valid_instances": 131,
- "n_strict_survivors": 39,
+ "n_valid_instances": 128,
+ "n_strict_survivors": 36,
  "gate_g3_clusters": true,
  "gate_g3_instances": false
 }

@@ -74,11 +74,12 @@ Six-to-eight metric profile per system, grouped by capability rung
 v1 dev dataset complete: 5 seeded orgs + 5 counterfactual twins, all
 machine validation green (`docs/validation-report.md`). Phase 3: 810
 oracle-validated behavioral probes across the 5 orgs (`probes.jsonl`,
-probe-spec v0.3); seed 1 fully screened under the final floor/ceiling
-protocol with fully blinded judging — 45/54 clusters survive with 125
-valid instances (cluster gate PASS, instance gate an explicit FAIL
-carried with its cause; see the G3 note in `docs/dataset-plan.md` for
-the measured protocol revisions the screening forced and the blinded
-re-judge audit trail). Remaining: screening seeds 2–5 (staged, blocked
-on task-model quota), then Phases 4–5 (judge calibration, pilot
-baselines).
+probe-spec v0.4.3); seeds 1 and 2 fully screened under the final
+floor/ceiling protocol with fully blinded judging (rubric v2, verbatim in
+`docs/specs/judge-rubric.md`) — 46/54 and 46/54 clusters survive with 126
+and 131 valid instances (cluster gates PASS, instance gates explicit
+FAILs carried with their cause; every protocol revision is dated in the
+G3 note of `docs/dataset-plan.md`, with pre/post numbers side by side).
+The scorer-exploit audit shows zero pair-passes for every degenerate
+strategy. Remaining: screening seeds 3–5, then Phases 4–5 (judge
+calibration, pilot baselines).

@@ -1,0 +1,436 @@
+{
+ "pre": {
+  "survivors": 46,
+  "valid_instances": 128,
+  "strict": 36
+ },
+ "post": {
+  "survivors": 47,
+  "valid_instances": 131,
+  "strict": 37
+ },
+ "cluster_flips": [
+  {
+   "cluster": "P-0037",
+   "pre": false,
+   "post": true,
+   "direction": "RECOVERED"
+  }
+ ],
+ "instance_flips": [
+  {
+   "instance": "P-0004-01",
+   "field": "twin_ceiling",
+   "pre": 0.6666666666666666,
+   "post": 1.0
+  },
+  {
+   "instance": "P-0004-01",
+   "field": "floor",
+   "pre": 0.6666666666666666,
+   "post": 0.5
+  },
+  {
+   "instance": "P-0004-01",
+   "field": "valid",
+   "pre": false,
+   "post": true
+  },
+  {
+   "instance": "P-0004-02",
+   "field": "floor",
+   "pre": 0.6666666666666666,
+   "post": 0.5
+  },
+  {
+   "instance": "P-0004-03",
+   "field": "floor",
+   "pre": 0.6666666666666666,
+   "post": 0.5
+  },
+  {
+   "instance": "P-0005-01",
+   "field": "floor",
+   "pre": 0.6666666666666666,
+   "post": 0.0
+  },
+  {
+   "instance": "P-0005-02",
+   "field": "ceiling",
+   "pre": 0.6666666666666666,
+   "post": 0.0
+  },
+  {
+   "instance": "P-0005-02",
+   "field": "twin_ceiling",
+   "pre": 0.6666666666666666,
+   "post": 0.0
+  },
+  {
+   "instance": "P-0005-02",
+   "field": "floor",
+   "pre": 0.6666666666666666,
+   "post": 0.0
+  },
+  {
+   "instance": "P-0005-03",
+   "field": "twin_ceiling",
+   "pre": 0.6666666666666666,
+   "post": 0.0
+  },
+  {
+   "instance": "P-0005-03",
+   "field": "floor",
+   "pre": 0.6666666666666666,
+   "post": 0.0
+  },
+  {
+   "instance": "P-0008-01",
+   "field": "floor",
+   "pre": 1.0,
+   "post": 0.6666666666666666
+  },
+  {
+   "instance": "P-0008-02",
+   "field": "twin_ceiling",
+   "pre": 1.0,
+   "post": 0.6666666666666666
+  },
+  {
+   "instance": "P-0008-02",
+   "field": "floor",
+   "pre": 1.0,
+   "post": 0.6666666666666666
+  },
+  {
+   "instance": "P-0008-02",
+   "field": "valid",
+   "pre": true,
+   "post": false
+  },
+  {
+   "instance": "P-0009-02",
+   "field": "twin_ceiling",
+   "pre": 1.0,
+   "post": 0.0
+  },
+  {
+   "instance": "P-0009-02",
+   "field": "valid",
+   "pre": true,
+   "post": false
+  },
+  {
+   "instance": "P-0013-01",
+   "field": "twin_ceiling",
+   "pre": 0.6666666666666666,
+   "post": 1.0
+  },
+  {
+   "instance": "P-0013-01",
+   "field": "floor",
+   "pre": 0.6666666666666666,
+   "post": 0.5
+  },
+  {
+   "instance": "P-0013-01",
+   "field": "valid",
+   "pre": false,
+   "post": true
+  },
+  {
+   "instance": "P-0013-02",
+   "field": "floor",
+   "pre": 0.6666666666666666,
+   "post": 0.5
+  },
+  {
+   "instance": "P-0013-03",
+   "field": "floor",
+   "pre": 0.6666666666666666,
+   "post": 0.5
+  },
+  {
+   "instance": "P-0014-01",
+   "field": "twin_ceiling",
+   "pre": 0.6666666666666666,
+   "post": 0.0
+  },
+  {
+   "instance": "P-0014-01",
+   "field": "floor",
+   "pre": 0.6666666666666666,
+   "post": 0.0
+  },
+  {
+   "instance": "P-0014-02",
+   "field": "ceiling",
+   "pre": 0.6666666666666666,
+   "post": 1.0
+  },
+  {
+   "instance": "P-0014-02",
+   "field": "twin_ceiling",
+   "pre": 0.6666666666666666,
+   "post": 0.0
+  },
+  {
+   "instance": "P-0014-02",
+   "field": "floor",
+   "pre": 0.6666666666666666,
+   "post": 0.0
+  },
+  {
+   "instance": "P-0014-03",
+   "field": "twin_ceiling",
+   "pre": 1.0,
+   "post": 0.0
+  },
+  {
+   "instance": "P-0014-03",
+   "field": "floor",
+   "pre": 0.6666666666666666,
+   "post": 0.0
+  },
+  {
+   "instance": "P-0014-03",
+   "field": "valid",
+   "pre": true,
+   "post": false
+  },
+  {
+   "instance": "P-0020-02",
+   "field": "floor",
+   "pre": 0.0,
+   "post": 1.0
+  },
+  {
+   "instance": "P-0022-01",
+   "field": "ceiling",
+   "pre": 0.6666666666666666,
+   "post": 0.5
+  },
+  {
+   "instance": "P-0022-01",
+   "field": "twin_ceiling",
+   "pre": 0.3333333333333333,
+   "post": 1.0
+  },
+  {
+   "instance": "P-0022-01",
+   "field": "floor",
+   "pre": 0.6666666666666666,
+   "post": 0.5
+  },
+  {
+   "instance": "P-0022-02",
+   "field": "ceiling",
+   "pre": 0.6666666666666666,
+   "post": 0.5
+  },
+  {
+   "instance": "P-0022-02",
+   "field": "floor",
+   "pre": 0.6666666666666666,
+   "post": 0.5
+  },
+  {
+   "instance": "P-0022-03",
+   "field": "ceiling",
+   "pre": 0.6666666666666666,
+   "post": 0.5
+  },
+  {
+   "instance": "P-0022-03",
+   "field": "twin_ceiling",
+   "pre": 0.6666666666666666,
+   "post": 1.0
+  },
+  {
+   "instance": "P-0022-03",
+   "field": "floor",
+   "pre": 0.6666666666666666,
+   "post": 0.5
+  },
+  {
+   "instance": "P-0025-02",
+   "field": "twin_ceiling",
+   "pre": 1.0,
+   "post": 0.5
+  },
+  {
+   "instance": "P-0025-02",
+   "field": "valid",
+   "pre": true,
+   "post": false
+  },
+  {
+   "instance": "P-0028-01",
+   "field": "twin_ceiling",
+   "pre": 0.0,
+   "post": 1.0
+  },
+  {
+   "instance": "P-0028-01",
+   "field": "valid",
+   "pre": false,
+   "post": true
+  },
+  {
+   "instance": "P-0029-01",
+   "field": "twin_ceiling",
+   "pre": 0.6666666666666666,
+   "post": 1.0
+  },
+  {
+   "instance": "P-0029-01",
+   "field": "valid",
+   "pre": false,
+   "post": true
+  },
+  {
+   "instance": "P-0029-02",
+   "field": "twin_ceiling",
+   "pre": 1.0,
+   "post": 0.6666666666666666
+  },
+  {
+   "instance": "P-0029-02",
+   "field": "valid",
+   "pre": true,
+   "post": false
+  },
+  {
+   "instance": "P-0035-03",
+   "field": "ceiling",
+   "pre": 0.6666666666666666,
+   "post": 1.0
+  },
+  {
+   "instance": "P-0035-03",
+   "field": "valid",
+   "pre": false,
+   "post": true
+  },
+  {
+   "instance": "P-0037-02",
+   "field": "twin_ceiling",
+   "pre": 0.6666666666666666,
+   "post": 1.0
+  },
+  {
+   "instance": "P-0037-02",
+   "field": "valid",
+   "pre": false,
+   "post": true
+  },
+  {
+   "instance": "P-0038-02",
+   "field": "floor",
+   "pre": 1.0,
+   "post": 0.5
+  },
+  {
+   "instance": "P-0038-03",
+   "field": "floor",
+   "pre": 0.5,
+   "post": 1.0
+  },
+  {
+   "instance": "P-0040-03",
+   "field": "floor",
+   "pre": 1.0,
+   "post": 0.5
+  },
+  {
+   "instance": "P-0047-02",
+   "field": "twin_ceiling",
+   "pre": 1.0,
+   "post": 0.0
+  },
+  {
+   "instance": "P-0047-02",
+   "field": "valid",
+   "pre": true,
+   "post": false
+  },
+  {
+   "instance": "P-0049-01",
+   "field": "floor",
+   "pre": 0.6666666666666666,
+   "post": 0.5
+  },
+  {
+   "instance": "P-0049-02",
+   "field": "floor",
+   "pre": 0.6666666666666666,
+   "post": 0.5
+  },
+  {
+   "instance": "P-0049-03",
+   "field": "floor",
+   "pre": 0.6666666666666666,
+   "post": 0.5
+  },
+  {
+   "instance": "P-0050-01",
+   "field": "floor",
+   "pre": 0.6666666666666666,
+   "post": 0.0
+  },
+  {
+   "instance": "P-0050-02",
+   "field": "twin_ceiling",
+   "pre": 0.6666666666666666,
+   "post": 0.0
+  },
+  {
+   "instance": "P-0050-02",
+   "field": "floor",
+   "pre": 0.6666666666666666,
+   "post": 0.0
+  },
+  {
+   "instance": "P-0050-03",
+   "field": "floor",
+   "pre": 0.6666666666666666,
+   "post": 0.0
+  },
+  {
+   "instance": "P-0051-03",
+   "field": "twin_ceiling",
+   "pre": 0.0,
+   "post": 1.0
+  },
+  {
+   "instance": "P-0051-03",
+   "field": "valid",
+   "pre": false,
+   "post": true
+  },
+  {
+   "instance": "P-0053-02",
+   "field": "twin_ceiling",
+   "pre": 1.0,
+   "post": 0.75
+  },
+  {
+   "instance": "P-0053-02",
+   "field": "valid",
+   "pre": true,
+   "post": false
+  },
+  {
+   "instance": "P-0053-03",
+   "field": "twin_ceiling",
+   "pre": 0.75,
+   "post": 1.0
+  },
+  {
+   "instance": "P-0053-03",
+   "field": "valid",
+   "pre": false,
+   "post": true
+  }
+ ]
+}

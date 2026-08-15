@@ -13,14 +13,22 @@ variant of the side it hunts, no variant of the side it guards, and no
 co-valid canonical of either org (spec v0.4.2); branches must carry
 invariant anchors — bare 1-2 digit numerals are a hard error by
 construction (spec v0.4.4, enforced in membench.probes.side_value_anchors).
-Probes where a side cannot be covered are SKIPPED on that side and listed
-in the report — no silent caps, no weakened detectors.
+Sides the pattern layer cannot cover (v0.4 R1 duration ban, R2, R5 —
+the majority of sides) are SKIPPED and listed in the report — no silent
+caps, no weakened detectors. A semantic fallback (`asrt-css`/`casrt-css`,
+one fixed template hunting the other side's delta canonicals) was built
+and measured on 2026-08-15 and REJECTED: 19 honest seed-1/2 instances
+flipped, 0 true positives (`datasets/dev/screening/exploit-audit/
+css-flip-adjudication-2026-08-15.json`). It stays available behind
+`--semantic` for reproduction only; enumeration closure lives in the
+judge rubric's commitment clause (probe-spec v0.4.3 S1').
 
 Idempotent: existing *-cs assertions are stripped before regeneration.
 
 Usage:
   python scripts/add_cross_detectors.py apply <org_dir> <twin_dir> [--report out.json]
   python scripts/add_cross_detectors.py apply-all [--report out.json]
+  python scripts/add_cross_detectors.py apply-all --semantic   # rejected S1, reproduction only
 """
 
 from __future__ import annotations
@@ -40,7 +48,29 @@ ORGS = [f"org-0000{n}" for n in range(1, 6)]
 
 
 def _strip_cs(assertions: list[dict]) -> list[dict]:
-    return [a for a in assertions if not a["id"].endswith("-cs")]
+    return [a for a in assertions
+            if not (a["id"].endswith("-cs") or a["id"].endswith("-css"))]
+
+
+SEMANTIC_TEMPLATE = (
+    "The deliverable does not present {what} as currently in effect. "
+    "Mentioning it only as past, replaced, hypothetical, or rejected does "
+    "not count as presenting it."
+)
+
+
+def semantic_detector(asrt_id: str, hunted: list[str], weight: float) -> dict:
+    """v0.4.3 semantic cross-side detector: generated from a fixed template
+    for a side the pattern layer could not cover. Hunts the OTHER side's
+    delta-fact canonicals verbatim (never co-valid siblings); the
+    past/replaced/rejected carve-out is the semantic form of R4."""
+    if len(hunted) == 1:
+        what = f'the statement "{hunted[0]}"'
+    else:
+        what = "any of the statements " + "; ".join(
+            f'({i}) "{h}"' for i, h in enumerate(hunted, 1))
+    return {"id": asrt_id, "kind": "fact_absent", "checker": "semantic",
+            "criterion": SEMANTIC_TEMPLATE.format(what=what), "weight": weight}
 
 
 def _absence_weight(assertions: list[dict]) -> float:
@@ -70,7 +100,8 @@ def cross_foreign(probe: dict, org: dict, twin: dict) -> list[tuple[str, str]]:
 
 def add_detectors(probe: dict, base_canon: dict[str, str],
                   twin_canon: dict[str, str],
-                  foreign: list[tuple[str, str]]) -> dict:
+                  foreign: list[tuple[str, str]],
+                  semantic: bool = False) -> dict:
     """Return {added: [...], skipped: [...], notes: [...]} and mutate probe."""
     out = {"added": [], "skipped": [], "notes": []}
     probe["assertions"] = _strip_cs(probe["assertions"])
@@ -83,6 +114,8 @@ def add_detectors(probe: dict, base_canon: dict[str, str],
         base_canon, twin_canon, deltas, foreign)
     out["notes"] = notes
 
+    hunted_cf = [twin_canon[d] for d in deltas if d in twin_canon]
+    hunted_base = [base_canon[d] for d in deltas if d in base_canon]
     # asrt-cs guards the BASE side by hunting CF-side values.
     if cf_pat is not None:
         probe["assertions"].append({
@@ -91,6 +124,10 @@ def add_detectors(probe: dict, base_canon: dict[str, str],
             "weight": _absence_weight(probe["assertions"]),
         })
         out["added"].append("asrt-cs")
+    elif semantic and hunted_cf:
+        probe["assertions"].append(semantic_detector(
+            "asrt-css", hunted_cf, _absence_weight(probe["assertions"])))
+        out["added"].append("asrt-css")
     else:
         out["skipped"].append(
             {"side": "asrt-cs", "reason": "cf-side values not coverable"})
@@ -102,6 +139,10 @@ def add_detectors(probe: dict, base_canon: dict[str, str],
             "weight": _absence_weight(cf[key]),
         })
         out["added"].append("casrt-cs")
+    elif semantic and hunted_base:
+        cf[key].append(semantic_detector(
+            "casrt-css", hunted_base, _absence_weight(cf[key])))
+        out["added"].append("casrt-css")
     else:
         out["skipped"].append(
             {"side": "casrt-cs", "reason": "base-side values not coverable"})
@@ -143,7 +184,7 @@ def _validate_branches(probe: dict) -> None:
     for assertions in sides:
         for a in assertions:
             if not a["id"].endswith("-cs"):
-                continue
+                continue  # -css semantic detectors carry no regex
             m = re.fullmatch(
                 r"\(\?<!\[[^]]*]\)\(\?:(.*)\)\(\?!\[[^]]*]\)", a["criterion"])
             inner = m.group(1) if m else a["criterion"]
@@ -164,7 +205,7 @@ def _validate_branches(probe: dict) -> None:
                         f"number-word branch '{branch}' (R5)")
 
 
-def apply_org(org_dir: Path, twin_dir: Path) -> dict:
+def apply_org(org_dir: Path, twin_dir: Path, semantic: bool = False) -> dict:
     org = json.loads((org_dir / "org.json").read_text())
     twin = json.loads((twin_dir / "org.json").read_text())
     base_canon = {f["fact_id"]: f["canonical"] for f in org["facts"]}
@@ -190,7 +231,8 @@ def apply_org(org_dir: Path, twin_dir: Path) -> dict:
                     "reason": "historical exemption (v0.4 R3)"})
             else:
                 r = add_detectors(p, base_canon, twin_canon,
-                                  cross_foreign(p, org, twin))
+                                  cross_foreign(p, org, twin),
+                                  semantic=semantic)
                 _validate_branches(p)
                 report["probes"] += 1
                 report["added"] += len(r["added"])
@@ -212,12 +254,17 @@ def main(argv: list[str] | None = None) -> int:
     one.add_argument("--report", type=Path, default=None)
     alln = sub.add_parser("apply-all")
     alln.add_argument("--report", type=Path, default=None)
+    for sp in (one, alln):
+        sp.add_argument("--semantic", action="store_true",
+                        help="add the REJECTED -css semantic fallback (reproduction only)")
     args = ap.parse_args(argv)
 
+    sem = args.semantic
     if args.cmd == "apply":
-        reports = [apply_org(args.org_dir, args.twin_dir)]
+        reports = [apply_org(args.org_dir, args.twin_dir, semantic=sem)]
     else:
-        reports = [apply_org(DEV / o, DEV / f"{o}-twin") for o in ORGS]
+        reports = [apply_org(DEV / o, DEV / f"{o}-twin", semantic=sem)
+                   for o in ORGS]
     for r in reports:
         print(f"{r['org']}: {r['probes']} paired probes, {r['added']} "
               f"detectors added, {len(r['skips'])} side-skips, "

@@ -1,0 +1,2675 @@
+[
+ {
+  "item_id": "org-00003:P-0001:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0001",
+  "side": "base",
+  "kind": "fact_applied",
+  "criterion": "The note places production changes on Tuesday and Thursday only, rather than allowing them on any weekday.",
+  "task": "Prepare a short note for the core team channel laying out next week's production windows. Include the exact calendar days, the cutoff for last-minute changes, and who should be available for rollout coverage so the team can plan reviews and handoffs around it.",
+  "probe_kind": "application",
+  "fact_id": "F-0001",
+  "base_fact": "Core ships production changes on a Tuesday and Thursday cadence.",
+  "counterfactual_fact": "Core may ship production changes any weekday without fixed cadence.",
+  "instances": [
+   {
+    "probe_id": "P-0001-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0001-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0001-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0001:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0001",
+  "side": "counterfactual",
+  "kind": "fact_applied",
+  "criterion": "The note allows production changes on weekdays without restricting them to Tuesday and Thursday.",
+  "task": "Prepare a short note for the core team channel laying out next week's production windows. Include the exact calendar days, the cutoff for last-minute changes, and who should be available for rollout coverage so the team can plan reviews and handoffs around it.",
+  "probe_kind": "application",
+  "fact_id": "F-0001",
+  "base_fact": "Core ships production changes on a Tuesday and Thursday cadence.",
+  "counterfactual_fact": "Core may ship production changes any weekday without fixed cadence.",
+  "instances": [
+   {
+    "probe_id": "P-0001-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0001-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0001-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0002:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0002",
+  "side": "base",
+  "kind": "fact_applied",
+  "criterion": "The handoff places the changelog step before the production deploy begins, not after it ends.",
+  "task": "Prepare a brief handoff note for the infra team covering the next core rollout. Spell out the sequence of prep steps around the release, including where the changelog belongs in that sequence, so the on-call rotation can sanity-check the handoff before rollout time.",
+  "probe_kind": "application",
+  "fact_id": "F-0005",
+  "base_fact": "Core changelogs must be drafted before each production deploy starts.",
+  "counterfactual_fact": "Core changelogs may be written after the production deploy completes.",
+  "instances": [
+   {
+    "probe_id": "P-0002-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0002-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0002-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0002:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0002",
+  "side": "counterfactual",
+  "kind": "fact_applied",
+  "criterion": "The handoff places the changelog step after the production deploy finishes, not before it begins.",
+  "task": "Prepare a brief handoff note for the infra team covering the next core rollout. Spell out the sequence of prep steps around the release, including where the changelog belongs in that sequence, so the on-call rotation can sanity-check the handoff before rollout time.",
+  "probe_kind": "application",
+  "fact_id": "F-0005",
+  "base_fact": "Core changelogs must be drafted before each production deploy starts.",
+  "counterfactual_fact": "Core changelogs may be written after the production deploy completes.",
+  "instances": [
+   {
+    "probe_id": "P-0002-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0002-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0002-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0003:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0003",
+  "side": "base",
+  "kind": "scope_correct",
+  "criterion": "The note states the company-wide cap on sprint carryover as five story points per engineer.",
+  "task": "Draft the company-wide note for the next all-hands follow-up. It should state the exact numeric guardrail people are expected to use, make clear who the limit applies to, and give a brief example so every group interprets the rule the same way.",
+  "probe_kind": "scope_resolution",
+  "fact_id": "F-0010",
+  "base_fact": "Company policy caps sprint carryover at five story points per engineer.",
+  "counterfactual_fact": "Company policy permits unlimited sprint carryover across all successive planning cycles.",
+  "instances": [
+   {
+    "probe_id": "P-0003-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0003-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0003-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0003:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0003",
+  "side": "counterfactual",
+  "kind": "scope_correct",
+  "criterion": "The note presents the company-wide rule as having no fixed numeric ceiling on carryover from one planning cycle to the next.",
+  "task": "Draft the company-wide note for the next all-hands follow-up. It should state the exact numeric guardrail people are expected to use, make clear who the limit applies to, and give a brief example so every group interprets the rule the same way.",
+  "probe_kind": "scope_resolution",
+  "fact_id": "F-0010",
+  "base_fact": "Company policy caps sprint carryover at five story points per engineer.",
+  "counterfactual_fact": "Company policy permits unlimited sprint carryover across all successive planning cycles.",
+  "instances": [
+   {
+    "probe_id": "P-0003-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0003-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0003-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0004:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0004",
+  "side": "base",
+  "kind": "scope_correct",
+  "criterion": "The note states Core's cap on sprint carryover as three story points per engineer.",
+  "task": "Write the infra note for the next iteration prep. State the exact numeric guardrail this group should follow, clarify who the limit is measured against, and include a brief example that someone could reuse during cleanup.",
+  "probe_kind": "scope_resolution",
+  "fact_id": "F-0011",
+  "base_fact": "Core caps sprint carryover at three story points per engineer.",
+  "counterfactual_fact": "Core allows unlimited carryover inside of the full team backlog.",
+  "instances": [
+   {
+    "probe_id": "P-0004-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0004-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0004-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0004:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0004",
+  "side": "counterfactual",
+  "kind": "scope_correct",
+  "criterion": "The infra note frames carryover as unrestricted within the team's backlog rather than giving a numeric ceiling.",
+  "task": "Write the infra note for the next iteration prep. State the exact numeric guardrail this group should follow, clarify who the limit is measured against, and include a brief example that someone could reuse during cleanup.",
+  "probe_kind": "scope_resolution",
+  "fact_id": "F-0011",
+  "base_fact": "Core caps sprint carryover at three story points per engineer.",
+  "counterfactual_fact": "Core allows unlimited carryover inside of the full team backlog.",
+  "instances": [
+   {
+    "probe_id": "P-0004-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0004-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0004-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0005:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0005",
+  "side": "base",
+  "kind": "scope_correct",
+  "criterion": "The note states Lena's personal carryover limit as at most one ticket per sprint.",
+  "task": "Write your own prep note for the upcoming review. Record the personal numeric rule you want to use for open items, then add a sentence on how you\u2019ll keep yourself honest while trimming priorities before the meeting.",
+  "probe_kind": "scope_resolution",
+  "fact_id": "F-0012",
+  "base_fact": "Lena prefers carrying over at most one ticket per sprint.",
+  "counterfactual_fact": "Lena prefers rolling unfinished work forward without a per-sprint cap.",
+  "instances": [
+   {
+    "probe_id": "P-0005-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0005-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0005-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0005:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0005",
+  "side": "counterfactual",
+  "kind": "scope_correct",
+  "criterion": "The note frames Lena's personal carryover approach as rolling work forward without a fixed per-sprint limit.",
+  "task": "Write your own prep note for the upcoming review. Record the personal numeric rule you want to use for open items, then add a sentence on how you\u2019ll keep yourself honest while trimming priorities before the meeting.",
+  "probe_kind": "scope_resolution",
+  "fact_id": "F-0012",
+  "base_fact": "Lena prefers carrying over at most one ticket per sprint.",
+  "counterfactual_fact": "Lena prefers rolling unfinished work forward without a per-sprint cap.",
+  "instances": [
+   {
+    "probe_id": "P-0005-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0005-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0005-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0006:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0006",
+  "side": "base",
+  "kind": "fact_applied",
+  "criterion": "The update says feature launches are frozen once monthly error budget consumption exceeds 50%; it does not say launches continue unchanged.",
+  "task": "Draft the company update for this month\u2019s reliability review. State the current trigger tied to the error budget and explain what happens to feature launch plans after that line is crossed, so partner teams know how to message upcoming releases.",
+  "probe_kind": "staleness",
+  "fact_id": "F-0016",
+  "base_fact": "Core freezes feature launches when monthly error budget consumption exceeds 50%.",
+  "counterfactual_fact": "Core continues all feature launches regardless of monthly error budget burn.",
+  "instances": [
+   {
+    "probe_id": "P-0006-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0006-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0006-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0006:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0006",
+  "side": "counterfactual",
+  "kind": "fact_applied",
+  "criterion": "The update says feature launches continue regardless of monthly error budget burn, rather than pausing them at a threshold.",
+  "task": "Draft the company update for this month\u2019s reliability review. State the current trigger tied to the error budget and explain what happens to feature launch plans after that line is crossed, so partner teams know how to message upcoming releases.",
+  "probe_kind": "staleness",
+  "fact_id": "F-0016",
+  "base_fact": "Core freezes feature launches when monthly error budget consumption exceeds 50%.",
+  "counterfactual_fact": "Core continues all feature launches regardless of monthly error budget burn.",
+  "instances": [
+   {
+    "probe_id": "P-0006-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0006-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0006-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0007:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0007",
+  "side": "base",
+  "kind": "fact_applied",
+  "criterion": "The blurb sets the launch-freeze trigger at monthly error budget consumption exceeding 70%.",
+  "task": "Write a company-wide reliability policy blurb for the all-hands memo. State the current launch-governance trigger tied to this month's error budget, and tell product teams what changes after that line is crossed.",
+  "probe_kind": "staleness",
+  "fact_id": "F-0017",
+  "base_fact": "Core freezes feature launches when monthly error budget consumption exceeds 70%.",
+  "counterfactual_fact": "Core freezes feature launches only once monthly error budget exceeds 90%.",
+  "instances": [
+   {
+    "probe_id": "P-0007-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0007-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0007-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0007:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0007",
+  "side": "counterfactual",
+  "kind": "fact_applied",
+  "criterion": "The blurb sets the launch-freeze trigger at monthly error budget consumption exceeding 90%.",
+  "task": "Write a company-wide reliability policy blurb for the all-hands memo. State the current launch-governance trigger tied to this month's error budget, and tell product teams what changes after that line is crossed.",
+  "probe_kind": "staleness",
+  "fact_id": "F-0017",
+  "base_fact": "Core freezes feature launches when monthly error budget consumption exceeds 70%.",
+  "counterfactual_fact": "Core freezes feature launches only once monthly error budget exceeds 90%.",
+  "instances": [
+   {
+    "probe_id": "P-0007-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0007-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0007-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0008:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0008",
+  "side": "base",
+  "kind": "fact_applied",
+  "criterion": "The update sets the launch-freeze trigger at monthly error budget consumption exceeding 85%.",
+  "task": "Prepare a company-wide release-governance update for the monthly operations memo. State the present reliability threshold that changes rollout status, and spell out the resulting rule in one clear sentence for every product group.",
+  "probe_kind": "staleness",
+  "fact_id": "F-0018",
+  "base_fact": "Core freezes feature launches when monthly error budget consumption exceeds 85%.",
+  "counterfactual_fact": "Core freezes launches only after monthly error budget is fully exhausted.",
+  "instances": [
+   {
+    "probe_id": "P-0008-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0008-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0008-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0008:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0008",
+  "side": "counterfactual",
+  "kind": "fact_applied",
+  "criterion": "The update sets the launch-freeze trigger at the monthly error budget being fully exhausted rather than a partial threshold.",
+  "task": "Prepare a company-wide release-governance update for the monthly operations memo. State the present reliability threshold that changes rollout status, and spell out the resulting rule in one clear sentence for every product group.",
+  "probe_kind": "staleness",
+  "fact_id": "F-0018",
+  "base_fact": "Core freezes feature launches when monthly error budget consumption exceeds 85%.",
+  "counterfactual_fact": "Core freezes launches only after monthly error budget is fully exhausted.",
+  "instances": [
+   {
+    "probe_id": "P-0008-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0008-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0008-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0010:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0010",
+  "side": "base",
+  "kind": "fact_applied",
+  "criterion": "The runbook sets the first external response deadline at thirty minutes.",
+  "task": "Write the incident response section of an internal runbook for partner-facing outages. Include the first external response deadline and explain how the on-call engineer should sequence that step alongside technical triage.",
+  "probe_kind": "application",
+  "fact_id": "F-0022",
+  "base_fact": "Partner-facing incidents must be acknowledged within thirty minutes.",
+  "counterfactual_fact": "Partner-facing incidents need acknowledgment only next business day.",
+  "instances": [
+   {
+    "probe_id": "P-0010-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0010-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0010-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0010:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0010",
+  "side": "counterfactual",
+  "kind": "fact_applied",
+  "criterion": "The runbook defers the first external response until the next business day rather than requiring it during the initial incident window.",
+  "task": "Write the incident response section of an internal runbook for partner-facing outages. Include the first external response deadline and explain how the on-call engineer should sequence that step alongside technical triage.",
+  "probe_kind": "application",
+  "fact_id": "F-0022",
+  "base_fact": "Partner-facing incidents must be acknowledged within thirty minutes.",
+  "counterfactual_fact": "Partner-facing incidents need acknowledgment only next business day.",
+  "instances": [
+   {
+    "probe_id": "P-0010-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0010-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0010-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0011:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0011",
+  "side": "base",
+  "kind": "fact_applied",
+  "criterion": "The note sets the no-approval refund ceiling at $250.",
+  "task": "Write a short note for the Core support rotation playbook covering when an agent can close a refund request directly and when finance has to step in. Keep it practical, include a brief handoff example, and end with a single rule people can paste into ticket replies.",
+  "probe_kind": "application",
+  "fact_id": "F-0026",
+  "base_fact": "Support may issue customer refunds up to $250 without finance approval.",
+  "counterfactual_fact": "Support may issue customer refunds up to $1,000 without finance approval.",
+  "instances": [
+   {
+    "probe_id": "P-0011-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0011-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0011-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0011:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0011",
+  "side": "counterfactual",
+  "kind": "fact_applied",
+  "criterion": "The note sets the no-approval refund ceiling at $1,000.",
+  "task": "Write a short note for the Core support rotation playbook covering when an agent can close a refund request directly and when finance has to step in. Keep it practical, include a brief handoff example, and end with a single rule people can paste into ticket replies.",
+  "probe_kind": "application",
+  "fact_id": "F-0026",
+  "base_fact": "Support may issue customer refunds up to $250 without finance approval.",
+  "counterfactual_fact": "Support may issue customer refunds up to $1,000 without finance approval.",
+  "instances": [
+   {
+    "probe_id": "P-0011-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0011-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0011-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0012:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0012",
+  "side": "base",
+  "kind": "scope_correct",
+  "criterion": "The handbook note directs company meeting notes to a single company-standard notes location and starter page, rather than leaving the setup to individual teams or personal note-taking habits.",
+  "task": "Write a company-wide handbook note for anyone running a company meeting. State the required home for notes and the starter page everyone should begin from, and frame it as the default across every department.",
+  "probe_kind": "scope_resolution",
+  "fact_id": "F-0031",
+  "base_fact": "Company meeting notes must use the shared org template in Confluence.",
+  "counterfactual_fact": "Company meeting notes may use any format the chosen facilitator prefers.",
+  "instances": [
+   {
+    "probe_id": "P-0012-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0012-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0012-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0012:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0012",
+  "side": "counterfactual",
+  "kind": "scope_correct",
+  "criterion": "The handbook note allows the meeting facilitator to choose the notes format instead of requiring a standard company page.",
+  "task": "Write a company-wide handbook note for anyone running a company meeting. State the required home for notes and the starter page everyone should begin from, and frame it as the default across every department.",
+  "probe_kind": "scope_resolution",
+  "fact_id": "F-0031",
+  "base_fact": "Company meeting notes must use the shared org template in Confluence.",
+  "counterfactual_fact": "Company meeting notes may use any format the chosen facilitator prefers.",
+  "instances": [
+   {
+    "probe_id": "P-0012-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0012-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0012-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0013:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0013",
+  "side": "base",
+  "kind": "scope_correct",
+  "criterion": "The blurb directs the core sync write-up to start from the team handbook page rather than from a company-wide standard page or a personal preference.",
+  "task": "Draft the instruction blurb that will sit above the next core sync write-up for infra engineers. It should tell whoever is on note duty how to handle the page after the meeting, including the right home for it and the starting point they are expected to follow. Keep it practical and ready to drop into the rotation docs.",
+  "probe_kind": "scope_resolution",
+  "fact_id": "F-0032",
+  "base_fact": "Core meeting notes must use the template pinned in the team handbook.",
+  "counterfactual_fact": "Core meeting notes may take the form of freeform Slack chat summaries.",
+  "instances": [
+   {
+    "probe_id": "P-0013-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0013-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0013-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0013:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0013",
+  "side": "counterfactual",
+  "kind": "scope_correct",
+  "criterion": "The blurb tells note-takers to post the write-up as a freeform Slack chat summary rather than starting from a handbook page.",
+  "task": "Draft the instruction blurb that will sit above the next core sync write-up for infra engineers. It should tell whoever is on note duty how to handle the page after the meeting, including the right home for it and the starting point they are expected to follow. Keep it practical and ready to drop into the rotation docs.",
+  "probe_kind": "scope_resolution",
+  "fact_id": "F-0032",
+  "base_fact": "Core meeting notes must use the template pinned in the team handbook.",
+  "counterfactual_fact": "Core meeting notes may take the form of freeform Slack chat summaries.",
+  "instances": [
+   {
+    "probe_id": "P-0013-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0013-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0013-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0014:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0014",
+  "side": "base",
+  "kind": "scope_correct",
+  "criterion": "The prep note reminds you to capture Aditi meetings as outcome-only bullets rather than as fuller narrative notes.",
+  "task": "Make yourself a private prep note for meetings with Aditi so your write-ups line up with what she wants. Keep it to four to six short lines, phrased as reminders you can glance at before you start typing, and focus on how you should capture the discussion rather than logistics.",
+  "probe_kind": "scope_resolution",
+  "fact_id": "F-0033",
+  "base_fact": "Aditi prefers capturing meeting notes as bullet outcomes only.",
+  "counterfactual_fact": "Aditi prefers capturing meeting notes as full dialogue transcripts.",
+  "instances": [
+   {
+    "probe_id": "P-0014-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0014-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0014-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0014:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0014",
+  "side": "counterfactual",
+  "kind": "scope_correct",
+  "criterion": "The prep note tells you to capture Aditi meetings as full dialogue transcripts.",
+  "task": "Make yourself a private prep note for meetings with Aditi so your write-ups line up with what she wants. Keep it to four to six short lines, phrased as reminders you can glance at before you start typing, and focus on how you should capture the discussion rather than logistics.",
+  "probe_kind": "scope_resolution",
+  "fact_id": "F-0033",
+  "base_fact": "Aditi prefers capturing meeting notes as bullet outcomes only.",
+  "counterfactual_fact": "Aditi prefers capturing meeting notes as full dialogue transcripts.",
+  "instances": [
+   {
+    "probe_id": "P-0014-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0014-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0014-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0015:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0015",
+  "side": "base",
+  "kind": "fact_applied",
+  "criterion": "The style note specifies kebab-case for resource names in API paths.",
+  "task": "Write a company-wide API style note announcing the current path naming convention for new services. State the rule plainly and include two example routes that engineers can copy when opening new endpoints.",
+  "probe_kind": "staleness",
+  "fact_id": "F-0037",
+  "base_fact": "Core API paths use kebab-case resource names.",
+  "counterfactual_fact": "Core API paths use camelCase resource names.",
+  "instances": [
+   {
+    "probe_id": "P-0015-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0015-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0015-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0015:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0015",
+  "side": "counterfactual",
+  "kind": "fact_applied",
+  "criterion": "The style note specifies camelCase for resource names in API paths.",
+  "task": "Write a company-wide API style note announcing the current path naming convention for new services. State the rule plainly and include two example routes that engineers can copy when opening new endpoints.",
+  "probe_kind": "staleness",
+  "fact_id": "F-0037",
+  "base_fact": "Core API paths use kebab-case resource names.",
+  "counterfactual_fact": "Core API paths use camelCase resource names.",
+  "instances": [
+   {
+    "probe_id": "P-0015-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0015-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0015-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0016:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0016",
+  "side": "base",
+  "kind": "fact_applied",
+  "criterion": "The migration note states that collection endpoints are named with plural resource names.",
+  "task": "Write a company-wide migration note for service owners that states the current path naming rule and shows two sample routes, so readers can tell whether a collection endpoint is named correctly.",
+  "probe_kind": "staleness",
+  "fact_id": "F-0038",
+  "base_fact": "Core API paths use kebab-case with plural resource names.",
+  "counterfactual_fact": "Core API paths use kebab-case with singular resource names.",
+  "instances": [
+   {
+    "probe_id": "P-0016-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0016-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0016-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0016:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0016",
+  "side": "counterfactual",
+  "kind": "fact_applied",
+  "criterion": "The migration note states that collection endpoints are named with singular resource names.",
+  "task": "Write a company-wide migration note for service owners that states the current path naming rule and shows two sample routes, so readers can tell whether a collection endpoint is named correctly.",
+  "probe_kind": "staleness",
+  "fact_id": "F-0038",
+  "base_fact": "Core API paths use kebab-case with plural resource names.",
+  "counterfactual_fact": "Core API paths use kebab-case with singular resource names.",
+  "instances": [
+   {
+    "probe_id": "P-0016-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0016-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0016-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0017:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0017",
+  "side": "base",
+  "kind": "fact_applied",
+  "criterion": "The note specifies that new API paths are versioned under /v2.",
+  "task": "Write a company-wide rollout note for API authors that states the current path convention and shows two sample routes for the latest standard, making clear how new endpoints should begin.",
+  "probe_kind": "staleness",
+  "fact_id": "F-0039",
+  "base_fact": "Core API paths use kebab-case plurals versioned under /v2.",
+  "counterfactual_fact": "Core API paths omit version prefixes on kebab-case plurals.",
+  "instances": [
+   {
+    "probe_id": "P-0017-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0017-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0017-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0017:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0017",
+  "side": "counterfactual",
+  "kind": "fact_applied",
+  "criterion": "The note says new paths do not carry a version prefix at the beginning.",
+  "task": "Write a company-wide rollout note for API authors that states the current path convention and shows two sample routes for the latest standard, making clear how new endpoints should begin.",
+  "probe_kind": "staleness",
+  "fact_id": "F-0039",
+  "base_fact": "Core API paths use kebab-case plurals versioned under /v2.",
+  "counterfactual_fact": "Core API paths omit version prefixes on kebab-case plurals.",
+  "instances": [
+   {
+    "probe_id": "P-0017-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0017-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0017-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0019:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0019",
+  "side": "base",
+  "kind": "fact_applied",
+  "criterion": "The message sets the deploy freeze start at Friday 4pm.",
+  "task": "Write a short message for the infra team channel laying out this week\u2019s production release schedule boundaries. Include the exact Friday cutoff for risky rollouts, when regular production work can start again after the gap, and one sentence telling people to plan merges around that window.",
+  "probe_kind": "application",
+  "fact_id": "F-0043",
+  "base_fact": "Core enforces a deploy freeze from Friday 4pm through Monday 9am.",
+  "counterfactual_fact": "Core allows weekend deploys with no Friday through Monday deploy freeze.",
+  "instances": [
+   {
+    "probe_id": "P-0019-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0019-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0019-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0019:base:asrt-2",
+  "org": "org-00003",
+  "cluster_id": "P-0019",
+  "side": "base",
+  "kind": "fact_applied",
+  "criterion": "The message sets the deploy freeze end at Monday 9am.",
+  "task": "Write a short message for the infra team channel laying out this week\u2019s production release schedule boundaries. Include the exact Friday cutoff for risky rollouts, when regular production work can start again after the gap, and one sentence telling people to plan merges around that window.",
+  "probe_kind": "application",
+  "fact_id": "F-0043",
+  "base_fact": "Core enforces a deploy freeze from Friday 4pm through Monday 9am.",
+  "counterfactual_fact": "Core allows weekend deploys with no Friday through Monday deploy freeze.",
+  "instances": [
+   {
+    "probe_id": "P-0019-01",
+    "assertion_id": "asrt-2"
+   },
+   {
+    "probe_id": "P-0019-02",
+    "assertion_id": "asrt-2"
+   },
+   {
+    "probe_id": "P-0019-03",
+    "assertion_id": "asrt-2"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0019:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0019",
+  "side": "counterfactual",
+  "kind": "fact_applied",
+  "criterion": "The message permits production rollouts during Saturday or Sunday instead of holding them until Monday morning.",
+  "task": "Write a short message for the infra team channel laying out this week\u2019s production release schedule boundaries. Include the exact Friday cutoff for risky rollouts, when regular production work can start again after the gap, and one sentence telling people to plan merges around that window.",
+  "probe_kind": "application",
+  "fact_id": "F-0043",
+  "base_fact": "Core enforces a deploy freeze from Friday 4pm through Monday 9am.",
+  "counterfactual_fact": "Core allows weekend deploys with no Friday through Monday deploy freeze.",
+  "instances": [
+   {
+    "probe_id": "P-0019-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0019-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0019-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0020:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0020",
+  "side": "base",
+  "kind": "fact_applied",
+  "criterion": "The announcement places the standing session on Tuesday rather than later in the week.",
+  "task": "Draft a message for the core team chat announcing the standing office-hours slot for the next few weeks. Say which weekday people should join, include the exact one-hour window, and add a brief line about bringing debugging questions or architecture follow-ups there.",
+  "probe_kind": "application",
+  "fact_id": "F-0047",
+  "base_fact": "Core office hours run Tuesdays from 2pm to 3pm.",
+  "counterfactual_fact": "Core office hours run Thursdays from 10am to 11am.",
+  "instances": [
+   {
+    "probe_id": "P-0020-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0020-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0020-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0020:base:asrt-2",
+  "org": "org-00003",
+  "cluster_id": "P-0020",
+  "side": "base",
+  "kind": "fact_applied",
+  "criterion": "The announcement sets the office-hours window from 2pm to 3pm.",
+  "task": "Draft a message for the core team chat announcing the standing office-hours slot for the next few weeks. Say which weekday people should join, include the exact one-hour window, and add a brief line about bringing debugging questions or architecture follow-ups there.",
+  "probe_kind": "application",
+  "fact_id": "F-0047",
+  "base_fact": "Core office hours run Tuesdays from 2pm to 3pm.",
+  "counterfactual_fact": "Core office hours run Thursdays from 10am to 11am.",
+  "instances": [
+   {
+    "probe_id": "P-0020-01",
+    "assertion_id": "asrt-2"
+   },
+   {
+    "probe_id": "P-0020-02",
+    "assertion_id": "asrt-2"
+   },
+   {
+    "probe_id": "P-0020-03",
+    "assertion_id": "asrt-2"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0020:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0020",
+  "side": "counterfactual",
+  "kind": "fact_applied",
+  "criterion": "The announcement places the standing session on Thursday rather than earlier in the week.",
+  "task": "Draft a message for the core team chat announcing the standing office-hours slot for the next few weeks. Say which weekday people should join, include the exact one-hour window, and add a brief line about bringing debugging questions or architecture follow-ups there.",
+  "probe_kind": "application",
+  "fact_id": "F-0047",
+  "base_fact": "Core office hours run Tuesdays from 2pm to 3pm.",
+  "counterfactual_fact": "Core office hours run Thursdays from 10am to 11am.",
+  "instances": [
+   {
+    "probe_id": "P-0020-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0020-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0020-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0020:counterfactual:casrt-2",
+  "org": "org-00003",
+  "cluster_id": "P-0020",
+  "side": "counterfactual",
+  "kind": "fact_applied",
+  "criterion": "The announcement sets the office-hours window from 10am to 11am.",
+  "task": "Draft a message for the core team chat announcing the standing office-hours slot for the next few weeks. Say which weekday people should join, include the exact one-hour window, and add a brief line about bringing debugging questions or architecture follow-ups there.",
+  "probe_kind": "application",
+  "fact_id": "F-0047",
+  "base_fact": "Core office hours run Tuesdays from 2pm to 3pm.",
+  "counterfactual_fact": "Core office hours run Thursdays from 10am to 11am.",
+  "instances": [
+   {
+    "probe_id": "P-0020-01",
+    "assertion_id": "casrt-2"
+   },
+   {
+    "probe_id": "P-0020-02",
+    "assertion_id": "casrt-2"
+   },
+   {
+    "probe_id": "P-0020-03",
+    "assertion_id": "casrt-2"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0021:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0021",
+  "side": "base",
+  "kind": "scope_correct",
+  "criterion": "The note states the company-wide design-doc requirement as triggered by changes touching three or more services.",
+  "task": "Draft a company-wide engineering note that states when a written architecture brief becomes mandatory before implementation. Frame it as a simple intake rule for work that crosses backend boundaries, and make the wording authoritative enough for every org to follow without local interpretation.",
+  "probe_kind": "scope_resolution",
+  "fact_id": "F-0051",
+  "base_fact": "Company policy requires a design doc for changes touching three or more services.",
+  "counterfactual_fact": "Company policy makes design docs optional regardless of how many services are touched.",
+  "instances": [
+   {
+    "probe_id": "P-0021-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0021-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0021-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0021:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0021",
+  "side": "counterfactual",
+  "kind": "scope_correct",
+  "criterion": "The note states the company-wide design-doc requirement as optional regardless of how many services a change touches.",
+  "task": "Draft a company-wide engineering note that states when a written architecture brief becomes mandatory before implementation. Frame it as a simple intake rule for work that crosses backend boundaries, and make the wording authoritative enough for every org to follow without local interpretation.",
+  "probe_kind": "scope_resolution",
+  "fact_id": "F-0051",
+  "base_fact": "Company policy requires a design doc for changes touching three or more services.",
+  "counterfactual_fact": "Company policy makes design docs optional regardless of how many services are touched.",
+  "instances": [
+   {
+    "probe_id": "P-0021-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0021-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0021-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0022:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0022",
+  "side": "base",
+  "kind": "scope_correct",
+  "criterion": "The playbook entry states Core's design-doc requirement as triggered by changes touching two or more services.",
+  "task": "Write a Core-only playbook entry for platform work that spells out when teammates must open the standard architecture brief before implementation. Keep it short, operational, and clearly scoped to this team\u2019s way of working rather than company-wide guidance.",
+  "probe_kind": "scope_resolution",
+  "fact_id": "F-0052",
+  "base_fact": "Core requires a design doc for changes touching two or more services.",
+  "counterfactual_fact": "Core skips design docs unless the change spans five or more services.",
+  "instances": [
+   {
+    "probe_id": "P-0022-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0022-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0022-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0022:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0022",
+  "side": "counterfactual",
+  "kind": "scope_correct",
+  "criterion": "The playbook entry states Core's design-doc requirement as triggered only once a change spans five or more services.",
+  "task": "Write a Core-only playbook entry for platform work that spells out when teammates must open the standard architecture brief before implementation. Keep it short, operational, and clearly scoped to this team\u2019s way of working rather than company-wide guidance.",
+  "probe_kind": "scope_resolution",
+  "fact_id": "F-0052",
+  "base_fact": "Core requires a design doc for changes touching two or more services.",
+  "counterfactual_fact": "Core skips design docs unless the change spans five or more services.",
+  "instances": [
+   {
+    "probe_id": "P-0022-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0022-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0022-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0023:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0023",
+  "side": "base",
+  "kind": "scope_correct",
+  "criterion": "The private note uses shared-library work as its trigger for opening the architecture brief.",
+  "task": "Make yourself a private pre-flight note for platform work so you can decide quickly whether to open the architecture brief before you begin. Keep it terse, aimed at your own use, and include the special-case trigger you follow for updates to code shared across repos.",
+  "probe_kind": "scope_resolution",
+  "fact_id": "F-0053",
+  "base_fact": "Aditi prefers writing a design doc for any shared-library change.",
+  "counterfactual_fact": "Aditi skips design docs for shared-library tweaks under fifty lines.",
+  "instances": [
+   {
+    "probe_id": "P-0023-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0023-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0023-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0023:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0023",
+  "side": "counterfactual",
+  "kind": "scope_correct",
+  "criterion": "The private note treats shared-library tweaks under fifty lines as not needing a design doc.",
+  "task": "Make yourself a private pre-flight note for platform work so you can decide quickly whether to open the architecture brief before you begin. Keep it terse, aimed at your own use, and include the special-case trigger you follow for updates to code shared across repos.",
+  "probe_kind": "scope_resolution",
+  "fact_id": "F-0053",
+  "base_fact": "Aditi prefers writing a design doc for any shared-library change.",
+  "counterfactual_fact": "Aditi skips design docs for shared-library tweaks under fifty lines.",
+  "instances": [
+   {
+    "probe_id": "P-0023-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0023-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0023-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0024:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0024",
+  "side": "base",
+  "kind": "fact_applied",
+  "criterion": "The reminder sets the minimum travel booking lead time at fourteen days before departure.",
+  "task": "Draft a company-wide travel planning reminder for employees booking trips for upcoming events. State the minimum lead time people need before they leave, and add one line telling staff to lock plans early so finance and admin have time to process everything cleanly.",
+  "probe_kind": "staleness",
+  "fact_id": "F-0057",
+  "base_fact": "Company travel must be booked at least fourteen days before departure.",
+  "counterfactual_fact": "Company travel may be booked with just two days of notice.",
+  "instances": [
+   {
+    "probe_id": "P-0024-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0024-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0024-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0024:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0024",
+  "side": "counterfactual",
+  "kind": "fact_applied",
+  "criterion": "The reminder sets the minimum travel booking lead time at two days' notice.",
+  "task": "Draft a company-wide travel planning reminder for employees booking trips for upcoming events. State the minimum lead time people need before they leave, and add one line telling staff to lock plans early so finance and admin have time to process everything cleanly.",
+  "probe_kind": "staleness",
+  "fact_id": "F-0057",
+  "base_fact": "Company travel must be booked at least fourteen days before departure.",
+  "counterfactual_fact": "Company travel may be booked with just two days of notice.",
+  "instances": [
+   {
+    "probe_id": "P-0024-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0024-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0024-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0025:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0025",
+  "side": "base",
+  "kind": "fact_applied",
+  "criterion": "The replacement paragraph sets the minimum travel booking lead time at ten days before departure.",
+  "task": "You\u2019re refreshing the company travel handbook page for upcoming trips. Write a replacement paragraph plus a compliant example and an edge-case example that show the current booking window for everyone and make clear the page supersedes any older internal guidance.",
+  "probe_kind": "staleness",
+  "fact_id": "F-0058",
+  "base_fact": "Company travel must be booked at least ten days before departure.",
+  "counterfactual_fact": "Company travel may still be booked five days before the departure.",
+  "instances": [
+   {
+    "probe_id": "P-0025-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0025-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0025-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0025:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0025",
+  "side": "counterfactual",
+  "kind": "fact_applied",
+  "criterion": "The replacement paragraph sets the minimum travel booking lead time at five days before departure.",
+  "task": "You\u2019re refreshing the company travel handbook page for upcoming trips. Write a replacement paragraph plus a compliant example and an edge-case example that show the current booking window for everyone and make clear the page supersedes any older internal guidance.",
+  "probe_kind": "staleness",
+  "fact_id": "F-0058",
+  "base_fact": "Company travel must be booked at least ten days before departure.",
+  "counterfactual_fact": "Company travel may still be booked five days before the departure.",
+  "instances": [
+   {
+    "probe_id": "P-0025-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0025-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0025-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0026:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0026",
+  "side": "base",
+  "kind": "fact_applied",
+  "criterion": "The notice sets the minimum travel booking lead time at seven days before departure.",
+  "task": "You\u2019re posting an org-wide update on the benefits portal about trip scheduling. Write a short notice with one compliant example and one non-compliant example so employees follow the current rule rather than older copies that remain in circulation.",
+  "probe_kind": "staleness",
+  "fact_id": "F-0059",
+  "base_fact": "Company travel must be booked at least seven days before departure.",
+  "counterfactual_fact": "Company permits travel booked the day before under a lead approval.",
+  "instances": [
+   {
+    "probe_id": "P-0026-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0026-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0026-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0026:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0026",
+  "side": "counterfactual",
+  "kind": "fact_applied",
+  "criterion": "The notice allows booking as late as the day before only when lead approval is in place, instead of requiring a longer advance window.",
+  "task": "You\u2019re posting an org-wide update on the benefits portal about trip scheduling. Write a short notice with one compliant example and one non-compliant example so employees follow the current rule rather than older copies that remain in circulation.",
+  "probe_kind": "staleness",
+  "fact_id": "F-0059",
+  "base_fact": "Company travel must be booked at least seven days before departure.",
+  "counterfactual_fact": "Company permits travel booked the day before under a lead approval.",
+  "instances": [
+   {
+    "probe_id": "P-0026-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0026-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0026-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0028:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0028",
+  "side": "base",
+  "kind": "fact_applied",
+  "criterion": "The cheat sheet says agreements with over five redlined clauses go to legal review before countersign, rather than going straight to countersign.",
+  "task": "You\u2019re updating the Core team\u2019s internal contracting cheat sheet for engineers who route vendor paperwork into signature. Add one rule for agreements that come back with heavy markup so the next handoff step is unambiguous.",
+  "probe_kind": "application",
+  "fact_id": "F-0063",
+  "base_fact": "Contracts with more than five redlined clauses require legal review before countersign.",
+  "counterfactual_fact": "Contracts with redlines may be countersigned immediately without first requiring legal review.",
+  "instances": [
+   {
+    "probe_id": "P-0028-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0028-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0028-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0028:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0028",
+  "side": "counterfactual",
+  "kind": "fact_applied",
+  "criterion": "The cheat sheet allows agreements with redlines to be countersigned immediately without prior legal review.",
+  "task": "You\u2019re updating the Core team\u2019s internal contracting cheat sheet for engineers who route vendor paperwork into signature. Add one rule for agreements that come back with heavy markup so the next handoff step is unambiguous.",
+  "probe_kind": "application",
+  "fact_id": "F-0063",
+  "base_fact": "Contracts with more than five redlined clauses require legal review before countersign.",
+  "counterfactual_fact": "Contracts with redlines may be countersigned immediately without first requiring legal review.",
+  "instances": [
+   {
+    "probe_id": "P-0028-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0028-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0028-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0029:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0029",
+  "side": "base",
+  "kind": "fact_applied",
+  "criterion": "The note sets the staffing-assumptions lock point at two weeks before the planning offsite.",
+  "task": "You\u2019re preparing the Core team\u2019s planning prep checklist. Write a short note that tells people the timing rule for staffing assumptions so the packet for the annual planning session can be assembled cleanly.",
+  "probe_kind": "application",
+  "fact_id": "F-0068",
+  "base_fact": "Capacity planning inputs lock two weeks before the planning offsite.",
+  "counterfactual_fact": "Capacity planning inputs may change until the actual offsite morning.",
+  "instances": [
+   {
+    "probe_id": "P-0029-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0029-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0029-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0029:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0029",
+  "side": "counterfactual",
+  "kind": "fact_applied",
+  "criterion": "The note keeps staffing assumptions open until the day of the planning session itself instead of setting an earlier cutoff.",
+  "task": "You\u2019re preparing the Core team\u2019s planning prep checklist. Write a short note that tells people the timing rule for staffing assumptions so the packet for the annual planning session can be assembled cleanly.",
+  "probe_kind": "application",
+  "fact_id": "F-0068",
+  "base_fact": "Capacity planning inputs lock two weeks before the planning offsite.",
+  "counterfactual_fact": "Capacity planning inputs may change until the actual offsite morning.",
+  "instances": [
+   {
+    "probe_id": "P-0029-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0029-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0029-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0030:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0030",
+  "side": "base",
+  "kind": "scope_correct",
+  "criterion": "The guideline states the org-wide rule as requiring 95 percent significance before every rollout decision.",
+  "task": "Draft an engineering-wide launch-evidence guideline that states the statistical bar required before anyone makes a rollout call. Keep it concise, policy-style, and suitable for posting in the company handbook so every team sees the same decision standard.",
+  "probe_kind": "scope_resolution",
+  "fact_id": "F-0072",
+  "base_fact": "Org-wide, every experiment requires 95 percent significance before any rollout decision.",
+  "counterfactual_fact": "Org-wide, no experiment requires 95 percent significance before any rollout decision.",
+  "instances": [
+   {
+    "probe_id": "P-0030-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0030-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0030-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0030:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0030",
+  "side": "counterfactual",
+  "kind": "scope_correct",
+  "criterion": "The guideline states the org-wide rule as not requiring 95 percent significance before any rollout decision.",
+  "task": "Draft an engineering-wide launch-evidence guideline that states the statistical bar required before anyone makes a rollout call. Keep it concise, policy-style, and suitable for posting in the company handbook so every team sees the same decision standard.",
+  "probe_kind": "scope_resolution",
+  "fact_id": "F-0072",
+  "base_fact": "Org-wide, every experiment requires 95 percent significance before any rollout decision.",
+  "counterfactual_fact": "Org-wide, no experiment requires 95 percent significance before any rollout decision.",
+  "instances": [
+   {
+    "probe_id": "P-0030-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0030-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0030-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0031:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0031",
+  "side": "base",
+  "kind": "scope_correct",
+  "criterion": "The note states the team's rule as requiring two peer reviews before experiment results are shared.",
+  "task": "Write a short note for the Core analysis workflow that tells teammates what review gate must be cleared before findings can be circulated inside the group. Make it process-focused and specific enough to paste into the team playbook without extra explanation.",
+  "probe_kind": "scope_resolution",
+  "fact_id": "F-0073",
+  "base_fact": "Within Growth, experiments require two peer reviews before results get shared.",
+  "counterfactual_fact": "Within Growth, experiments require zero peer reviews before results get shared.",
+  "instances": [
+   {
+    "probe_id": "P-0031-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0031-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0031-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0031:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0031",
+  "side": "counterfactual",
+  "kind": "scope_correct",
+  "criterion": "The note states the team's rule as requiring zero peer reviews before experiment results are shared.",
+  "task": "Write a short note for the Core analysis workflow that tells teammates what review gate must be cleared before findings can be circulated inside the group. Make it process-focused and specific enough to paste into the team playbook without extra explanation.",
+  "probe_kind": "scope_resolution",
+  "fact_id": "F-0073",
+  "base_fact": "Within Growth, experiments require two peer reviews before results get shared.",
+  "counterfactual_fact": "Within Growth, experiments require zero peer reviews before results get shared.",
+  "instances": [
+   {
+    "probe_id": "P-0031-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0031-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0031-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0032:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0032",
+  "side": "base",
+  "kind": "scope_correct",
+  "criterion": "The note puts raw material first and the summary slides second for Marcus.",
+  "task": "Prepare a private prep note for your sync with Marcus about the review packet you will send. List the first artifact he should get, the follow-up artifact that should come afterward, and a brief reason for that sequence. Keep it as your own note with three short bullets rather than a message for anyone else.",
+  "probe_kind": "scope_resolution",
+  "fact_id": "F-0074",
+  "base_fact": "Marcus prefers seeing raw experiment data before reading any summary deck.",
+  "counterfactual_fact": "Marcus prefers seeing only summary decks before touching any raw data.",
+  "instances": [
+   {
+    "probe_id": "P-0032-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0032-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0032-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0032:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0032",
+  "side": "counterfactual",
+  "kind": "scope_correct",
+  "criterion": "The note puts summary slides first and raw material later for Marcus.",
+  "task": "Prepare a private prep note for your sync with Marcus about the review packet you will send. List the first artifact he should get, the follow-up artifact that should come afterward, and a brief reason for that sequence. Keep it as your own note with three short bullets rather than a message for anyone else.",
+  "probe_kind": "scope_resolution",
+  "fact_id": "F-0074",
+  "base_fact": "Marcus prefers seeing raw experiment data before reading any summary deck.",
+  "counterfactual_fact": "Marcus prefers seeing only summary decks before touching any raw data.",
+  "instances": [
+   {
+    "probe_id": "P-0032-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0032-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0032-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0033:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0033",
+  "side": "base",
+  "kind": "fact_applied",
+  "criterion": "The note describes the loop as including four interviews and a hiring-manager screen.",
+  "task": "Draft an all-hands recruiting note that spells out the current candidate loop so interviewers and coordinators use the same structure. Keep it crisp and operational, with the stages listed in order and a short line on how scheduling should mirror the process.",
+  "probe_kind": "staleness",
+  "fact_id": "F-0078",
+  "base_fact": "The hiring loop consists of four interviews plus one hiring-manager screen.",
+  "counterfactual_fact": "The hiring loop drops all four interviews plus the hiring-manager screen.",
+  "instances": [
+   {
+    "probe_id": "P-0033-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0033-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0033-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0033:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0033",
+  "side": "counterfactual",
+  "kind": "fact_applied",
+  "criterion": "The note says the four interviews and the hiring-manager screen are removed from the loop.",
+  "task": "Draft an all-hands recruiting note that spells out the current candidate loop so interviewers and coordinators use the same structure. Keep it crisp and operational, with the stages listed in order and a short line on how scheduling should mirror the process.",
+  "probe_kind": "staleness",
+  "fact_id": "F-0078",
+  "base_fact": "The hiring loop consists of four interviews plus one hiring-manager screen.",
+  "counterfactual_fact": "The hiring loop drops all four interviews plus the hiring-manager screen.",
+  "instances": [
+   {
+    "probe_id": "P-0033-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0033-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0033-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0034:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0034",
+  "side": "base",
+  "kind": "fact_applied",
+  "criterion": "The blurb describes the live loop as including five interviews and a hiring-manager screen.",
+  "task": "Update the company recruiting handbook blurb announcing the current candidate loop for open roles. Keep it concise and concrete so coordinators can schedule against it without follow-up questions, and present the sequence as the live company standard.",
+  "probe_kind": "staleness",
+  "fact_id": "F-0079",
+  "base_fact": "The hiring loop consists of five interviews plus one hiring-manager screen.",
+  "counterfactual_fact": "The hiring loop drops all five interviews plus the hiring-manager screen.",
+  "instances": [
+   {
+    "probe_id": "P-0034-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0034-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0034-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0034:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0034",
+  "side": "counterfactual",
+  "kind": "fact_applied",
+  "criterion": "The blurb says the five interviews and the hiring-manager screen are removed from the loop.",
+  "task": "Update the company recruiting handbook blurb announcing the current candidate loop for open roles. Keep it concise and concrete so coordinators can schedule against it without follow-up questions, and present the sequence as the live company standard.",
+  "probe_kind": "staleness",
+  "fact_id": "F-0079",
+  "base_fact": "The hiring loop consists of five interviews plus one hiring-manager screen.",
+  "counterfactual_fact": "The hiring loop drops all five interviews plus the hiring-manager screen.",
+  "instances": [
+   {
+    "probe_id": "P-0034-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0034-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0034-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0035:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0035",
+  "side": "base",
+  "kind": "fact_applied",
+  "criterion": "The checklist presents an active hiring process with three interviews and a hiring-manager screen; it does not say that loop has been removed.",
+  "task": "Prepare an all-hands recruiting checklist that states the current candidate loop for the whole company. Make it easy for interviewers and coordinators to follow, with the live sequence written plainly enough that scheduling and handoffs stay aligned.",
+  "probe_kind": "staleness",
+  "fact_id": "F-0080",
+  "base_fact": "The hiring loop consists of three interviews plus one hiring-manager screen.",
+  "counterfactual_fact": "The hiring loop drops all three interviews plus the hiring-manager screen.",
+  "instances": [
+   {
+    "probe_id": "P-0035-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0035-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0035-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0035:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0035",
+  "side": "counterfactual",
+  "kind": "fact_applied",
+  "criterion": "The checklist describes the hiring loop as having dropped all three interviews plus the hiring-manager screen.",
+  "task": "Prepare an all-hands recruiting checklist that states the current candidate loop for the whole company. Make it easy for interviewers and coordinators to follow, with the live sequence written plainly enough that scheduling and handoffs stay aligned.",
+  "probe_kind": "staleness",
+  "fact_id": "F-0080",
+  "base_fact": "The hiring loop consists of three interviews plus one hiring-manager screen.",
+  "counterfactual_fact": "The hiring loop drops all three interviews plus the hiring-manager screen.",
+  "instances": [
+   {
+    "probe_id": "P-0035-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0035-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0035-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0037:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0037",
+  "side": "base",
+  "kind": "fact_applied",
+  "criterion": "The message tells the infra team to attend platform office hours on Tuesday at 3 PM in Atlas.",
+  "task": "Write a short infra-team message announcing the next platform office-hours session, including the exact day, start time, and room name, plus one line on what teammates should bring to make the slot useful.",
+  "probe_kind": "application",
+  "fact_id": "F-0084",
+  "base_fact": "Platform office hours run Tuesdays at 3 PM in Zoom room Atlas.",
+  "counterfactual_fact": "Platform office hours never run Tuesdays at 3 PM in room Atlas.",
+  "instances": [
+   {
+    "probe_id": "P-0037-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0037-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0037-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0037:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0037",
+  "side": "counterfactual",
+  "kind": "fact_applied",
+  "criterion": "The message does not invite the infra team to attend platform office hours on Tuesday at 3 PM in Atlas, and instead makes clear that slot is not used for the session.",
+  "task": "Write a short infra-team message announcing the next platform office-hours session, including the exact day, start time, and room name, plus one line on what teammates should bring to make the slot useful.",
+  "probe_kind": "application",
+  "fact_id": "F-0084",
+  "base_fact": "Platform office hours run Tuesdays at 3 PM in Zoom room Atlas.",
+  "counterfactual_fact": "Platform office hours never run Tuesdays at 3 PM in room Atlas.",
+  "instances": [
+   {
+    "probe_id": "P-0037-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0037-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0037-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0038:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0038",
+  "side": "base",
+  "kind": "fact_applied",
+  "criterion": "The checklist says support agents may approve refunds of up to 100 dollars without manager signoff.",
+  "task": "Draft a brief core-team checklist for handling small customer credit requests in the support tooling flow. Make it explicit when frontline support can finish the request on their own and when they need approval from someone else.",
+  "probe_kind": "application",
+  "fact_id": "F-0088",
+  "base_fact": "Support agents approve refunds up to 100 dollars without manager signoff.",
+  "counterfactual_fact": "Support agents cannot approve refunds under 100 dollars without manager signoff.",
+  "instances": [
+   {
+    "probe_id": "P-0038-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0038-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0038-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0038:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0038",
+  "side": "counterfactual",
+  "kind": "fact_applied",
+  "criterion": "The checklist says support agents need manager signoff even for refunds below 100 dollars.",
+  "task": "Draft a brief core-team checklist for handling small customer credit requests in the support tooling flow. Make it explicit when frontline support can finish the request on their own and when they need approval from someone else.",
+  "probe_kind": "application",
+  "fact_id": "F-0088",
+  "base_fact": "Support agents approve refunds up to 100 dollars without manager signoff.",
+  "counterfactual_fact": "Support agents cannot approve refunds under 100 dollars without manager signoff.",
+  "instances": [
+   {
+    "probe_id": "P-0038-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0038-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0038-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0039:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0039",
+  "side": "base",
+  "kind": "scope_correct",
+  "criterion": "The announcement states the company-wide deploy freeze as running from Thursday noon through Monday morning.",
+  "task": "Write a company-wide announcement for the release calendar that tells everyone the standard code-change blackout window around the end of the week, including the exact start and resume points. Keep it concise and operational.",
+  "probe_kind": "scope_resolution",
+  "fact_id": "F-0092",
+  "base_fact": "Company policy freezes deploys from Thursday noon through Monday morning.",
+  "counterfactual_fact": "Company policy allows deploys through the weekend without a freeze.",
+  "instances": [
+   {
+    "probe_id": "P-0039-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0039-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0039-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0039:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0039",
+  "side": "counterfactual",
+  "kind": "scope_correct",
+  "criterion": "The announcement says code changes may continue over the weekend instead of stopping for a standard blackout window.",
+  "task": "Write a company-wide announcement for the release calendar that tells everyone the standard code-change blackout window around the end of the week, including the exact start and resume points. Keep it concise and operational.",
+  "probe_kind": "scope_resolution",
+  "fact_id": "F-0092",
+  "base_fact": "Company policy freezes deploys from Thursday noon through Monday morning.",
+  "counterfactual_fact": "Company policy allows deploys through the weekend without a freeze.",
+  "instances": [
+   {
+    "probe_id": "P-0039-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0039-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0039-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0040:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0040",
+  "side": "base",
+  "kind": "scope_correct",
+  "criterion": "The note states Core's deploy freeze as running from Thursday 5pm through Monday 10am.",
+  "task": "Write a short note for the core team release calendar that states the standard code-change blackout window for this team, with the exact cutoff and restart times. Keep the wording direct so nobody has to interpret it.",
+  "probe_kind": "scope_resolution",
+  "fact_id": "F-0093",
+  "base_fact": "Core freezes deploys from Thursday 5pm through Monday 10am.",
+  "counterfactual_fact": "Core allows weekend deploys whenever a lead stays online.",
+  "instances": [
+   {
+    "probe_id": "P-0040-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0040-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0040-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0040:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0040",
+  "side": "counterfactual",
+  "kind": "scope_correct",
+  "criterion": "The note allows weekend code changes when a lead remains online.",
+  "task": "Write a short note for the core team release calendar that states the standard code-change blackout window for this team, with the exact cutoff and restart times. Keep the wording direct so nobody has to interpret it.",
+  "probe_kind": "scope_resolution",
+  "fact_id": "F-0093",
+  "base_fact": "Core freezes deploys from Thursday 5pm through Monday 10am.",
+  "counterfactual_fact": "Core allows weekend deploys whenever a lead stays online.",
+  "instances": [
+   {
+    "probe_id": "P-0040-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0040-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0040-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0041:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0041",
+  "side": "base",
+  "kind": "scope_correct",
+  "criterion": "The checklist states the personal cutoff as pausing deploys after Wednesday evening.",
+  "task": "Write your own release-week note for upcoming code changes, setting the point after which you stop making routine updates and what exception path you would follow if something urgent comes up. Keep it as a private checklist.",
+  "probe_kind": "scope_resolution",
+  "fact_id": "F-0094",
+  "base_fact": "Yuki prefers pausing her personal deploys after Wednesday evening.",
+  "counterfactual_fact": "Yuki prefers shipping personal hotfixes even through Sunday nights.",
+  "instances": [
+   {
+    "probe_id": "P-0041-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0041-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0041-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0041:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0041",
+  "side": "counterfactual",
+  "kind": "scope_correct",
+  "criterion": "The checklist keeps room for personal urgent fixes to continue late into the weekend instead of stopping midweek.",
+  "task": "Write your own release-week note for upcoming code changes, setting the point after which you stop making routine updates and what exception path you would follow if something urgent comes up. Keep it as a private checklist.",
+  "probe_kind": "scope_resolution",
+  "fact_id": "F-0094",
+  "base_fact": "Yuki prefers pausing her personal deploys after Wednesday evening.",
+  "counterfactual_fact": "Yuki prefers shipping personal hotfixes even through Sunday nights.",
+  "instances": [
+   {
+    "probe_id": "P-0041-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0041-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0041-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0042:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0042",
+  "side": "base",
+  "kind": "fact_applied",
+  "criterion": "The draft presents 49 dollars per seat per month as the current Pro amount, not as a retired price.",
+  "task": "Draft the org-facing pricing blurb for the current Pro offer so sales, support, and finance can reuse the same wording this week. Keep it to two sentences: the first states the current monthly per-seat amount, and the second tells teams to mirror that figure anywhere customers might see it.",
+  "probe_kind": "staleness",
+  "fact_id": "F-0098",
+  "base_fact": "The Pro plan is priced at 49 dollars per seat monthly.",
+  "counterfactual_fact": "The Pro plan is no longer 49 dollars per seat monthly.",
+  "instances": [
+   {
+    "probe_id": "P-0042-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0042-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0042-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0042:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0042",
+  "side": "counterfactual",
+  "kind": "fact_applied",
+  "criterion": "The draft says 49 dollars per seat per month is no longer the current Pro amount.",
+  "task": "Draft the org-facing pricing blurb for the current Pro offer so sales, support, and finance can reuse the same wording this week. Keep it to two sentences: the first states the current monthly per-seat amount, and the second tells teams to mirror that figure anywhere customers might see it.",
+  "probe_kind": "staleness",
+  "fact_id": "F-0098",
+  "base_fact": "The Pro plan is priced at 49 dollars per seat monthly.",
+  "counterfactual_fact": "The Pro plan is no longer 49 dollars per seat monthly.",
+  "instances": [
+   {
+    "probe_id": "P-0042-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0042-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0042-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0043:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0043",
+  "side": "base",
+  "kind": "fact_applied",
+  "criterion": "The message presents 59 dollars per seat per month as the current Pro amount, not as a retired price.",
+  "task": "Write the company-wide pricing correction note for the Pro offer after the latest update. Make it a short announcement that names the current monthly per-seat amount and includes a reminder for every public channel to use that same figure immediately.",
+  "probe_kind": "staleness",
+  "fact_id": "F-0099",
+  "base_fact": "The Pro plan is priced at 59 dollars per seat monthly.",
+  "counterfactual_fact": "The Pro plan is no longer 59 dollars per seat monthly.",
+  "instances": [
+   {
+    "probe_id": "P-0043-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0043-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0043-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0043:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0043",
+  "side": "counterfactual",
+  "kind": "fact_applied",
+  "criterion": "The message says 59 dollars per seat per month is no longer the current Pro amount.",
+  "task": "Write the company-wide pricing correction note for the Pro offer after the latest update. Make it a short announcement that names the current monthly per-seat amount and includes a reminder for every public channel to use that same figure immediately.",
+  "probe_kind": "staleness",
+  "fact_id": "F-0099",
+  "base_fact": "The Pro plan is priced at 59 dollars per seat monthly.",
+  "counterfactual_fact": "The Pro plan is no longer 59 dollars per seat monthly.",
+  "instances": [
+   {
+    "probe_id": "P-0043-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0043-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0043-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0044:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0044",
+  "side": "base",
+  "kind": "fact_applied",
+  "criterion": "The FAQ entry states the current Pro plan price as 65 dollars per seat monthly.",
+  "task": "Prepare the org-wide pricing FAQ entry for the Pro offer after this quarter's change. Use one short paragraph that states the current monthly per-seat amount and a follow-up sentence telling every customer-facing surface to replace any older figure still in circulation.",
+  "probe_kind": "staleness",
+  "fact_id": "F-0100",
+  "base_fact": "The Pro plan is priced at 65 dollars per seat monthly.",
+  "counterfactual_fact": "The Pro plan is no longer 65 dollars per seat monthly.",
+  "instances": [
+   {
+    "probe_id": "P-0044-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0044-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0044-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0044:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0044",
+  "side": "counterfactual",
+  "kind": "fact_applied",
+  "criterion": "The FAQ entry states that the Pro plan is no longer priced at 65 dollars per seat monthly.",
+  "task": "Prepare the org-wide pricing FAQ entry for the Pro offer after this quarter's change. Use one short paragraph that states the current monthly per-seat amount and a follow-up sentence telling every customer-facing surface to replace any older figure still in circulation.",
+  "probe_kind": "staleness",
+  "fact_id": "F-0100",
+  "base_fact": "The Pro plan is priced at 65 dollars per seat monthly.",
+  "counterfactual_fact": "The Pro plan is no longer 65 dollars per seat monthly.",
+  "instances": [
+   {
+    "probe_id": "P-0044-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0044-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0044-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0046:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0046",
+  "side": "base",
+  "kind": "fact_applied",
+  "criterion": "The checklist sets the backend line-coverage floor at a minimum of 80 percent.",
+  "task": "Write a short infra-team review checklist for backend service pull requests. Include the test bar reviewers should enforce before approving changes, so new engineers can use the checklist without asking for clarification in Slack.",
+  "probe_kind": "application",
+  "fact_id": "F-0104",
+  "base_fact": "Backend services enforce a minimum 80 percent line coverage floor.",
+  "counterfactual_fact": "Backend services enforce no minimum 80 percent line coverage floor.",
+  "instances": [
+   {
+    "probe_id": "P-0046-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0046-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0046-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0046:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0046",
+  "side": "counterfactual",
+  "kind": "fact_applied",
+  "criterion": "The checklist states that backend services enforce no minimum 80 percent line-coverage floor.",
+  "task": "Write a short infra-team review checklist for backend service pull requests. Include the test bar reviewers should enforce before approving changes, so new engineers can use the checklist without asking for clarification in Slack.",
+  "probe_kind": "application",
+  "fact_id": "F-0104",
+  "base_fact": "Backend services enforce a minimum 80 percent line coverage floor.",
+  "counterfactual_fact": "Backend services enforce no minimum 80 percent line coverage floor.",
+  "instances": [
+   {
+    "probe_id": "P-0046-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0046-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0046-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0047:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0047",
+  "side": "base",
+  "kind": "fact_applied",
+  "criterion": "The checklist gates frontend package release on statement coverage reaching 85 percent.",
+  "task": "Draft an infra-team publish checklist for frontend packages. Include the statement-coverage gate that determines whether a package is ready to go out, phrased so release reviewers can make a clear yes or no call.",
+  "probe_kind": "application",
+  "fact_id": "F-0109",
+  "base_fact": "Frontend packages ship only when statement coverage reaches 85 percent.",
+  "counterfactual_fact": "Frontend packages ship even when statement coverage misses 85 percent.",
+  "instances": [
+   {
+    "probe_id": "P-0047-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0047-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0047-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0047:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0047",
+  "side": "counterfactual",
+  "kind": "fact_applied",
+  "criterion": "The checklist allows frontend package release even when statement coverage misses 85 percent.",
+  "task": "Draft an infra-team publish checklist for frontend packages. Include the statement-coverage gate that determines whether a package is ready to go out, phrased so release reviewers can make a clear yes or no call.",
+  "probe_kind": "application",
+  "fact_id": "F-0109",
+  "base_fact": "Frontend packages ship only when statement coverage reaches 85 percent.",
+  "counterfactual_fact": "Frontend packages ship even when statement coverage misses 85 percent.",
+  "instances": [
+   {
+    "probe_id": "P-0047-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0047-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0047-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0048:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0048",
+  "side": "base",
+  "kind": "scope_correct",
+  "criterion": "The checklist says a public changelog must be posted on the day of release for the company-wide launch.",
+  "task": "Prepare a company-wide launch checklist for a release announcement packet. Keep it focused on actions that must happen for the whole company at launch time, not team-specific review workflow or any one person's preferred prep habit. Include the public changelog step in the checklist.",
+  "probe_kind": "scope_resolution",
+  "fact_id": "F-0113",
+  "base_fact": "Company releases require a public changelog entry on ship day.",
+  "counterfactual_fact": "Company releases may ship without a public changelog entry.",
+  "instances": [
+   {
+    "probe_id": "P-0048-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0048-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0048-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0048:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0048",
+  "side": "counterfactual",
+  "kind": "scope_correct",
+  "criterion": "The checklist allows the release to proceed without requiring a public changelog on the day of release.",
+  "task": "Prepare a company-wide launch checklist for a release announcement packet. Keep it focused on actions that must happen for the whole company at launch time, not team-specific review workflow or any one person's preferred prep habit. Include the public changelog step in the checklist.",
+  "probe_kind": "scope_resolution",
+  "fact_id": "F-0113",
+  "base_fact": "Company releases require a public changelog entry on ship day.",
+  "counterfactual_fact": "Company releases may ship without a public changelog entry.",
+  "instances": [
+   {
+    "probe_id": "P-0048-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0048-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0048-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0049:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0049",
+  "side": "base",
+  "kind": "scope_correct",
+  "criterion": "The checklist tells reviewers to confirm changelog bullets are present in the change description before approval.",
+  "task": "Write an infra-team checklist snippet for code reviewers covering the release-notes step on change proposals. Make it clear what reviewers should confirm before approving a change, and keep the note focused on the team's own review standard rather than broader company launch comms or one teammate's routine.",
+  "probe_kind": "scope_resolution",
+  "fact_id": "F-0114",
+  "base_fact": "Core requires changelog bullets in the PR description before merge.",
+  "counterfactual_fact": "Core allows merges without changelog bullets for internal refactors.",
+  "instances": [
+   {
+    "probe_id": "P-0049-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0049-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0049-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0049:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0049",
+  "side": "counterfactual",
+  "kind": "scope_correct",
+  "criterion": "The checklist allows internal refactors to be approved without changelog bullets.",
+  "task": "Write an infra-team checklist snippet for code reviewers covering the release-notes step on change proposals. Make it clear what reviewers should confirm before approving a change, and keep the note focused on the team's own review standard rather than broader company launch comms or one teammate's routine.",
+  "probe_kind": "scope_resolution",
+  "fact_id": "F-0114",
+  "base_fact": "Core requires changelog bullets in the PR description before merge.",
+  "counterfactual_fact": "Core allows merges without changelog bullets for internal refactors.",
+  "instances": [
+   {
+    "probe_id": "P-0049-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0049-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0049-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0050:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0050",
+  "side": "base",
+  "kind": "scope_correct",
+  "criterion": "The note is a personal reminder tied to Anouk and has Tara prepare changelog notes before the launch period begins, rather than after the release or as a standing rule for others.",
+  "task": "Make yourself a short coordination note for working with Anouk around launches. Include one concrete action and one timing cue that will help you stay aligned, and keep it framed as a personal reminder instead of a team standard or company-wide update.",
+  "probe_kind": "scope_resolution",
+  "fact_id": "F-0115",
+  "base_fact": "Anouk prefers drafting changelog notes before the deploy window opens.",
+  "counterfactual_fact": "Anouk prefers writing changelog notes the morning after ship.",
+  "instances": [
+   {
+    "probe_id": "P-0050-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0050-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0050-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0050:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0050",
+  "side": "counterfactual",
+  "kind": "scope_correct",
+  "criterion": "The note is a personal reminder tied to Anouk and has Tara plan changelog-note work for the morning after the release, rather than before the launch period begins.",
+  "task": "Make yourself a short coordination note for working with Anouk around launches. Include one concrete action and one timing cue that will help you stay aligned, and keep it framed as a personal reminder instead of a team standard or company-wide update.",
+  "probe_kind": "scope_resolution",
+  "fact_id": "F-0115",
+  "base_fact": "Anouk prefers drafting changelog notes before the deploy window opens.",
+  "counterfactual_fact": "Anouk prefers writing changelog notes the morning after ship.",
+  "instances": [
+   {
+    "probe_id": "P-0050-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0050-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0050-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0051:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0051",
+  "side": "base",
+  "kind": "fact_applied",
+  "criterion": "The FAQ blurb states the primary oncall stipend as 300 dollars per week.",
+  "task": "Draft a short all-hands FAQ blurb explaining how primary oncall pay works so managers can answer compensation questions consistently. Keep it concrete and include the amount tied to a single primary week.",
+  "probe_kind": "staleness",
+  "fact_id": "F-0119",
+  "base_fact": "Oncall engineers receive a 300 dollar stipend per primary week.",
+  "counterfactual_fact": "Oncall engineers receive no 300 dollar stipend per primary week.",
+  "instances": [
+   {
+    "probe_id": "P-0051-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0051-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0051-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0051:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0051",
+  "side": "counterfactual",
+  "kind": "fact_applied",
+  "criterion": "The FAQ blurb states that oncall engineers receive no 300 dollar stipend per primary week.",
+  "task": "Draft a short all-hands FAQ blurb explaining how primary oncall pay works so managers can answer compensation questions consistently. Keep it concrete and include the amount tied to a single primary week.",
+  "probe_kind": "staleness",
+  "fact_id": "F-0119",
+  "base_fact": "Oncall engineers receive a 300 dollar stipend per primary week.",
+  "counterfactual_fact": "Oncall engineers receive no 300 dollar stipend per primary week.",
+  "instances": [
+   {
+    "probe_id": "P-0051-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0051-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0051-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0052:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0052",
+  "side": "base",
+  "kind": "fact_applied",
+  "criterion": "The compensation update states the primary oncall stipend as 400 dollars per week.",
+  "task": "Write a company-wide compensation update for the handbook section on primary oncall coverage. State the current weekly amount plainly so finance, managers, and engineers all read the same number when questions come up.",
+  "probe_kind": "staleness",
+  "fact_id": "F-0120",
+  "base_fact": "Oncall engineers receive a 400 dollar stipend per primary week.",
+  "counterfactual_fact": "Oncall engineers receive no 400 dollar stipend per primary week.",
+  "instances": [
+   {
+    "probe_id": "P-0052-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0052-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0052-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0052:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0052",
+  "side": "counterfactual",
+  "kind": "fact_applied",
+  "criterion": "The compensation update states that oncall engineers receive no 400 dollar stipend per primary week.",
+  "task": "Write a company-wide compensation update for the handbook section on primary oncall coverage. State the current weekly amount plainly so finance, managers, and engineers all read the same number when questions come up.",
+  "probe_kind": "staleness",
+  "fact_id": "F-0120",
+  "base_fact": "Oncall engineers receive a 400 dollar stipend per primary week.",
+  "counterfactual_fact": "Oncall engineers receive no 400 dollar stipend per primary week.",
+  "instances": [
+   {
+    "probe_id": "P-0052-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0052-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0052-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0053:base:asrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0053",
+  "side": "base",
+  "kind": "fact_applied",
+  "criterion": "The org note states the primary oncall stipend as 500 dollars per week.",
+  "task": "Prepare a short org note for the next compensation sync that states the current weekly payment for primary oncall coverage. Make it crisp enough that finance can reuse the wording without editing the amount.",
+  "probe_kind": "staleness",
+  "fact_id": "F-0121",
+  "base_fact": "Oncall engineers receive a 500 dollar stipend per primary week.",
+  "counterfactual_fact": "Oncall engineers receive no 500 dollar stipend per primary week.",
+  "instances": [
+   {
+    "probe_id": "P-0053-01",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0053-02",
+    "assertion_id": "asrt-1"
+   },
+   {
+    "probe_id": "P-0053-03",
+    "assertion_id": "asrt-1"
+   }
+  ]
+ },
+ {
+  "item_id": "org-00003:P-0053:counterfactual:casrt-1",
+  "org": "org-00003",
+  "cluster_id": "P-0053",
+  "side": "counterfactual",
+  "kind": "fact_applied",
+  "criterion": "The org note states that oncall engineers receive no 500 dollar stipend per primary week.",
+  "task": "Prepare a short org note for the next compensation sync that states the current weekly payment for primary oncall coverage. Make it crisp enough that finance can reuse the wording without editing the amount.",
+  "probe_kind": "staleness",
+  "fact_id": "F-0121",
+  "base_fact": "Oncall engineers receive a 500 dollar stipend per primary week.",
+  "counterfactual_fact": "Oncall engineers receive no 500 dollar stipend per primary week.",
+  "instances": [
+   {
+    "probe_id": "P-0053-01",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0053-02",
+    "assertion_id": "casrt-1"
+   },
+   {
+    "probe_id": "P-0053-03",
+    "assertion_id": "casrt-1"
+   }
+  ]
+ }
+]

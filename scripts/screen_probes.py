@@ -41,13 +41,20 @@ and criterion ids — the judge sees only (output, criteria), never run ids,
 conditions (floor/ceiling/twin), or base-vs-counterfactual side. The
 translation table stays local in pending-judge.map.json and is applied by
 `judge-import`. `--ids <file>` exports specific run_ids (one per line) for
-blinded re-judging of already-judged rows.
+blinded re-judging of already-judged rows. `--incremental` exports, per
+row, only the criteria that lack a verdict, whose text changed since it
+was judged (judgements carry `criteria_sha`), or that are listed in
+`--force`; pair it with `judge-import --merge`. `report` refuses stale
+verdicts (sha mismatch) so a criterion can never be re-authored without
+being re-judged.
 
 Usage:
   python scripts/screen_probes.py manifest <org_dir> <twin_dir> <work_dir>
   python scripts/screen_probes.py run <work_dir> [--jobs 8] [--limit N]
   python scripts/screen_probes.py judge-export <work_dir> [--ids <file>]
-  python scripts/screen_probes.py judge-import <work_dir> <verdicts.json> --judge <tag>
+  python scripts/screen_probes.py judge-export <work_dir> --incremental [--force <file>]
+  python scripts/screen_probes.py judge-import <work_dir> <verdicts.json> --judge <tag> \
+      [--merge]
   python scripts/screen_probes.py report <work_dir> [--out <org_dir>/g3-report.json]
 """
 
@@ -202,6 +209,9 @@ def cmd_manifest(args) -> int:
             "condition": "ceiling",
             "prompt": _prompt(org, p, _context_facts(org, ledger, index, p)),
             "assertions": base_asserts,
+            # S6 discrimination gate: the ceiling output is also scored
+            # against the OTHER side's assertions (must fail there).
+            "cross_assertions": cf["assertions"] if cf else None,
             "hedge_base": hedge_base, "hedge_cf": hedge_cf,
         })
         if cf:
@@ -211,6 +221,7 @@ def cmd_manifest(args) -> int:
                 "condition": "twin_ceiling",
                 "prompt": _prompt(twin, p, _context_facts(twin, t_ledger, t_index, p)),
                 "assertions": p["counterfactual_probe"]["assertions"],
+                "cross_assertions": base_asserts,
                 "hedge_base": hedge_base, "hedge_cf": hedge_cf,
             })
 
@@ -292,31 +303,76 @@ def cmd_run(args) -> int:
 # satisfies it; false when in doubt) and returns
 # {run_id: {assertion_id: bool}}; judge-import validates ids and appends.
 
+def _crit_sha(text: str) -> str:
+    return hashlib.sha1(text.encode()).hexdigest()[:10]
+
+
+def _all_assertions(row: dict) -> list[dict]:
+    """Every assertion a run's output is scored against: its own side, the
+    floor's cf side, and (S6) the cross side for ceiling/twin rows."""
+    return (row["assertions"] + (row.get("cf_assertions") or [])
+            + (row.get("cross_assertions") or []))
+
+
+def _load_force(path: Path | None) -> set[tuple[str, str]]:
+    """Lines of `<probe_id|cluster_id> <assertion_id>`; a cluster id applies
+    to every instance and every condition of that cluster."""
+    out = set()
+    if path is None:
+        return out
+    for line in Path(path).read_text().splitlines():
+        parts = line.split()
+        if len(parts) == 2:
+            out.add((parts[0], parts[1]))
+    return out
+
+
+def _needs_verdict(rid: str, a: dict, judged: dict | None,
+                   force: set[tuple[str, str]]) -> bool:
+    probe_id = rid.split(":")[0]
+    if (probe_id, a["id"]) in force or (probe_id[:6], a["id"]) in force:
+        return True
+    if not judged or a["id"] not in judged.get("verdicts", {}):
+        return True
+    sha = (judged.get("criteria_sha") or {}).get(a["id"])
+    return sha is not None and sha != _crit_sha(a["criterion"])
+
+
 def cmd_judge_export(args) -> int:
     rows = {r["run_id"]: r for r in
             (json.loads(x) for x in (args.work_dir / "runs.jsonl").read_text().splitlines())}
     results = _read_done(args.work_dir / "results.jsonl")
+    judged = _read_done(args.work_dir / "judgements.jsonl")
+    force = _load_force(getattr(args, 'force', None))
+    incremental = getattr(args, 'incremental', False)
     if args.ids:
         wanted = [x.strip() for x in Path(args.ids).read_text().splitlines() if x.strip()]
         missing = [rid for rid in wanted if rid not in results]
         if missing:
             raise SystemExit(f"--ids run_ids without results: {missing[:5]}")
         selected = wanted
+    elif incremental:
+        selected = list(results)
     else:
-        done = {rid for rid, r in _read_done(args.work_dir / "judgements.jsonl").items()
-                if r.get("verdicts")}
+        done = {rid for rid, r in judged.items() if r.get("verdicts")}
         selected = [rid for rid in results if rid not in done]
     # Blinding (probe-spec §3: the judge sees only output + criteria): rows
     # and criteria go out under opaque ids so neither the condition
     # (floor/ceiling/twin) nor the org side (asrt-/casrt-) is inferable.
+    # --incremental exports, per row, only the semantic criteria that lack a
+    # verdict, whose text changed since it was judged (criteria_sha), or
+    # that are listed in --force; import them with --merge.
     todo, mapping = [], {}
     for rid in selected:
         res = results[rid]
         if not res.get("output"):
             continue
         row = rows[rid]
-        pool = row["assertions"] + (row.get("cf_assertions") or [])
+        pool = _all_assertions(row)
         semantic = [a for a in pool if a["checker"] == "semantic"]
+        if incremental:
+            semantic = [a for a in semantic
+                        if _needs_verdict(rid, a, judged.get(rid), force)]
         if not semantic:
             continue
         blind = "r" + hashlib.sha1(rid.encode()).hexdigest()[:12]
@@ -327,7 +383,9 @@ def cmd_judge_export(args) -> int:
             "output": res["output"],
         })
         mapping[blind] = {"run_id": rid,
-                          "criteria": {k: a["id"] for k, a in keys.items()}}
+                          "criteria": {k: a["id"] for k, a in keys.items()},
+                          "criteria_sha": {a["id"]: _crit_sha(a["criterion"])
+                                           for a in keys.values()}}
     todo.sort(key=lambda t: t["id"])  # opaque order, not manifest order
     out = args.work_dir / "pending-judge.json"
     out.write_text(json.dumps(todo, indent=1))
@@ -342,6 +400,8 @@ def cmd_judge_import(args) -> int:
     unknown = set(verdicts) - set(mapping)
     if unknown:
         raise SystemExit(f"unknown row ids: {sorted(unknown)[:5]}")
+    merge = getattr(args, "merge", False)
+    existing = _read_done(args.work_dir / "judgements.jsonl") if merge else {}
     with (args.work_dir / "judgements.jsonl").open("a") as fh:
         for blind, v in verdicts.items():
             m = mapping[blind]
@@ -349,12 +409,25 @@ def cmd_judge_import(args) -> int:
             if set(v) != want:
                 raise SystemExit(
                     f"{blind}: verdict ids {sorted(v)} != {sorted(want)}")
+            new_v = {m["criteria"][k]: bool(x) for k, x in v.items()}
+            new_sha = dict(m.get("criteria_sha") or {})
+            judge = args.judge
+            prev = existing.get(m["run_id"])
+            if prev:
+                # --merge: keep untouched verdicts, overwrite re-judged ones.
+                merged_v = dict(prev.get("verdicts") or {})
+                merged_v.update(new_v)
+                merged_sha = dict(prev.get("criteria_sha") or {})
+                merged_sha.update(new_sha)
+                new_v, new_sha = merged_v, merged_sha
+                if prev.get("judge") and prev["judge"] != judge:
+                    judge = f"{prev['judge']}+{judge}"
             fh.write(json.dumps({
-                "run_id": m["run_id"],
-                "verdicts": {m["criteria"][k]: bool(x) for k, x in v.items()},
-                "judge": args.judge,
+                "run_id": m["run_id"], "verdicts": new_v, "judge": judge,
+                "criteria_sha": new_sha,
             }) + "\n")
-    print(f"imported {len(verdicts)} judgements (judge={args.judge})")
+    print(f"imported {len(verdicts)} judgements (judge={args.judge}"
+          f"{', merged' if merge else ''})")
     return 0
 
 
@@ -365,6 +438,11 @@ def _score(
     verdicts: dict[str, bool] | None,
     hedged: bool = False,
 ) -> float:
+    if not output or not output.strip():
+        # Empty-output rule (probe-spec v0.4.3): no deliverable, no credit —
+        # every assertion fails, absence detectors included, and the run
+        # stays in the denominator. Applies to SUT worker failures too.
+        return 0.0
     total = passed = 0.0
     for a in assertions:
         total += a["weight"]
@@ -414,7 +492,14 @@ def cmd_report(args) -> int:
         res = results.get(rid)
         if not res or not res.get("output"):
             raise SystemExit(f"incomplete: no output for {rid} (run `run` again)")
-        verdicts = (judgements.get(rid) or {}).get("verdicts")
+        jrow = judgements.get(rid) or {}
+        verdicts = jrow.get("verdicts")
+        for a in _all_assertions(row):
+            sha = (jrow.get("criteria_sha") or {}).get(a["id"])
+            if sha is not None and sha != _crit_sha(a["criterion"]):
+                raise SystemExit(
+                    f"stale verdict: {rid} {a['id']} was judged under a "
+                    "different criterion text — re-export with --incremental")
         hedged = is_hedged(
             res["output"], row.get("hedge_base"), row.get("hedge_cf"))
         score = _score(rid, row["assertions"], res["output"], verdicts,
@@ -424,6 +509,14 @@ def cmd_report(args) -> int:
         p[row["condition"]] = score
         if hedged:
             p.setdefault("hedged_runs", []).append(row["condition"])
+        if row.get("cross_assertions"):
+            # S6 discrimination gate (probe-spec v0.4.3): the honest output
+            # of one side must NOT satisfy the other side's assertion set,
+            # else the twin does not discriminate and a stale SUT would be
+            # credited on it.
+            key = "ceiling_vs_cf" if row["condition"] == "ceiling" else "twin_vs_base"
+            p[key] = _score(rid, row["cross_assertions"], res["output"], verdicts,
+                            hedged=hedged)
         if row["condition"] == "floor" and row.get("cf_assertions"):
             # The floor prompt is org-independent, so the same output is
             # scored against both sides; a memoryless model passes the pair
@@ -439,10 +532,14 @@ def cmd_report(args) -> int:
         ceiling_ok = p["ceiling"] >= CEILING_PASS
         twin_ok = p.get("twin_ceiling", 1.0) >= CEILING_PASS
         floor_ok = not p.get("floor_pair_pass", p["floor"] > FLOOR_FAIL)
+        discriminates = (p.get("ceiling_vs_cf", 0.0) < CEILING_PASS
+                         and p.get("twin_vs_base", 0.0) < CEILING_PASS)
         clusters[p["cluster_id"]]["instances"][pid] = {
             "ceiling": p["ceiling"], "twin_ceiling": p.get("twin_ceiling"),
             "floor": p["floor"],
-            "valid": ceiling_ok and twin_ok and floor_ok,
+            "ceiling_vs_cf": p.get("ceiling_vs_cf"),
+            "twin_vs_base": p.get("twin_vs_base"),
+            "valid": ceiling_ok and twin_ok and floor_ok and discriminates,
         }
 
     report, survivors, n_valid_instances, strict_survivors = {}, [], 0, []
@@ -515,10 +612,16 @@ def main() -> int:
     je = sub.add_parser("judge-export")
     je.add_argument("work_dir", type=Path)
     je.add_argument("--ids", type=Path, default=None)
+    je.add_argument("--incremental", action="store_true",
+                    help="export only unjudged / text-changed / --force criteria")
+    je.add_argument("--force", type=Path, default=None,
+                    help="file of '<probe_id|cluster_id> <assertion_id>' to re-judge")
     ji = sub.add_parser("judge-import")
     ji.add_argument("work_dir", type=Path)
     ji.add_argument("verdicts", type=Path)
     ji.add_argument("--judge", default="claude-sonnet-5")
+    ji.add_argument("--merge", action="store_true",
+                    help="merge into existing verdicts for the row (incremental waves)")
     p = sub.add_parser("report")
     p.add_argument("work_dir", type=Path)
     p.add_argument("--out", type=Path, default=None)
