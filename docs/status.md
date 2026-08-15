@@ -1,30 +1,45 @@
 # Status & Work Queue
 
-Last updated: 2026-07-25 (session ending at commit `26343f6`). Update this
+Last updated: 2026-08-07 (session ending at commit `ff1cb11`). Update this
 file whenever a queue item completes; keep entries dated.
 
 ## Where the project stands
 
-- **G0–G1 PASSED**; **G2 machine-side complete** (human spot-check +
-  read-throughs pending, packets ready in `datasets/dev/human-check/`).
-- **Phase 3**: 810 probes across 5 orgs. Seed 1 (post lineage repairs
-  2026-08-06): **46/54 PASS margin 1, 128 valid instances (instance gate
-  FAIL carried)**. Seed 2: **43/54 — cluster gate FAIL carried**, fully
-  adjudicated. Cross-org co-valid lineage repairs applied to orgs 1/3/4/5
-  (24 pairs; asymmetric + UNCLEAR + brittle-pattern classes deferred to
-  the v0.4 decision). Seeds 3–5 blocked on v0.4 sign-off.
-- **Worker pinned**: (gpt-5.4, medium, codex-cli 0.144.5). Harness-sensitivity
-  study committed (`datasets/dev/screening/harness-study-2026-07-25/`).
-- **Consistency passes** done for all seeds; 2 filler defects found/fixed.
-- **Phase 5 runner core** + NoMemory/FullTranscript(+silo) adapters built
-  and tested; **Phase 4 calibration tooling** built (108-pair packet from
-  seed 1; 150 needs seed 2+).
-- **Independence protocol** adopted (no author-affiliated system; generic
-  typed-memory reference impl; published inclusion criteria).
-- **Standards audit** adopted 9 field learnings as dated amendments
-  (`docs/standards-audit.md`); three BLOCKING items before headline numbers:
-  judge decoy audit, statistics protocol (power analysis), scorer-exploit
-  audit.
+- **G0–G1 PASSED**; **G2 machine-side complete**; human G2: seeds 4/5
+  spot-checks PASS (50%, 60%); seeds 1–3 + read-throughs assigned to
+  external rater R (`docs/human-review.md`, self-contained).
+- **Phase 3 under probe-spec v0.4** (PI-approved 2026-08-07): mechanical
+  layer done — commitment rule + refined cross-side detectors (R1–R5, flip
+  adjudication found 0/11 true positives). Canon: **seed 1 = 46/54 PASS
+  (margin 1), 128 valid instances; seed 2 = 43/54 cluster gate FAIL
+  carried, 123 valid instances**; both instance gates FAIL carried. Zero
+  detector/hedge fires on any honest run; all reports reproduce from
+  committed evidence. Cross-org co-valid lineage repairs applied to all
+  orgs (orgs 3–5 pre-evidence).
+- **Exploit audit**: empty/waffle/base_correct clean; enumerate_all
+  residual 18 pair-passes (duration-valued / uncoverable sides) — assigned
+  to the v0.4.3 semantic wave.
+- **Worker pinned** (gpt-5.4, medium, codex-cli 0.144.5); harness study
+  committed. **Consistency passes** all seeds (2 defects fixed).
+- **Machinery built**: Phase 5 runner core + NoMemory/FullTranscript(+silo)
+  + CodexWorker; Phase 4 calibration tooling; power analysis
+  (`docs/power-analysis.md`, tie rule ~9.3 pp); exploit-audit harness;
+  20 validated judge decoys.
+- **Independence protocol** + **standards audit** adopted (9 field learnings).
+
+## NEXT (in order)
+
+1. **v0.4 item-3 semantic wave**: natural-artifact re-authoring of the
+   negation-class criteria (all 5 orgs, codex authoring + fresh blinded
+   judging; may flip seed-2 gate — report pre/post forever); per-cluster
+   semantic anti-enumeration criteria for the 18 residual + 2 defective
+   twin sides; asymmetric lineage cases (org-1 P-0023, org-4 P-0040) via
+   authored replacements; org-2 latent sweep; `_check_assertion` `-cs`
+   exemption; empty-SUT-output scoring rule.
+2. Re-run exploit audit → bar must PASS. Re-report seeds 1–2 (post-item-3
+   canon, side by side with pre).
+3. Seeds 3–5 screening (blinded pipeline; ~1,460 codex runs).
+4. Then Queue A6–A8 / Queue C4–C9 as listed.
 
 ## Queue A — codex-quota-blocked (resets 2026-07-29; ~1.6 packs total)
 
