@@ -209,8 +209,22 @@ def test_pilot_cli_builds_every_adapter_and_writes_meta(tmp_path, monkeypatch):
     org_dir = _write_org(tmp_path)
     monkeypatch.setattr(pilot, "CodexWorker", MockWorker)   # no live worker in tests
     out = tmp_path / "sut.jsonl"
-    assert pilot.main(["nomemory", str(org_dir), str(out)]) == 0
+    assert pilot.main(["nomemory", str(org_dir), str(out), "--no-only-valid"]) == 0
     rows = [json.loads(x) for x in out.read_text().splitlines()]
     assert rows[0]["run_id"] == "P-0001-01:sut"
     meta = json.loads((tmp_path / "sut.jsonl.meta.json").read_text())
     assert meta["worker"]["harness"] == "codex-cli 0.144.5" and meta["adapter"] == "nomemory"
+
+
+def test_probes_override_and_on_row_callback(tmp_path):
+    """Twin runs: the org dir has no probes.jsonl; probes come from the base
+    org. on_row sees each row as soon as it exists (incremental writers)."""
+    (tmp_path / "org.json").write_text(json.dumps(dict(ORG, org_id="org-twin")))
+    (tmp_path / "events.jsonl").write_text(
+        "".join(json.dumps(e) + "\n" for e in STREAM))
+    seen = []
+    worker = MockWorker()
+    rows = Runner(tmp_path, NoMemoryAdapter(worker), probes=[PROBE],
+                  on_row=seen.append).run()
+    assert [r["run_id"] for r in rows] == ["P-0001-01:sut"] and seen == rows
+    assert worker.calls[0].startswith("You are Bob, engineer (eng) at org-twin.")

@@ -46,6 +46,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
+from membench.g3 import valid_instances  # noqa: E402
+
 _SPEC = importlib.util.spec_from_file_location(
     "screen_probes", ROOT / "scripts" / "screen_probes.py")
 sp = importlib.util.module_from_spec(_SPEC)
@@ -71,9 +73,8 @@ def _last(rows: list[dict], key: str = "run_id") -> dict[str, dict]:
 
 def cmd_manifest(args) -> int:
     runs = _last(_jsonl(args.screening_dir / "runs.jsonl"))
-    report = json.loads((args.org_dir / "g3-report.json").read_text())
-    valid = {pid for c in report["clusters"].values()
-             for pid, i in c["instances"].items() if i["valid"]}
+    # valid instances of SURVIVING clusters only (the frozen 371 across seeds 1-3)
+    valid = valid_instances(json.loads((args.org_dir / "g3-report.json").read_text()))
     base = _last(_jsonl(args.sut_base))
     twin = _last(_jsonl(args.sut_twin)) if args.sut_twin else {}
     rows, results = [], []

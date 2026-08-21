@@ -19,6 +19,7 @@ not the task. Results rows are shaped like the screening scorer's
 from __future__ import annotations
 
 import json
+from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -100,18 +101,28 @@ class Runner:
     """Drives one org's stream through one adapter.
 
     The adapter owns its worker; the runner never calls the worker directly.
+
+    `probes` overrides the org's own `probes.jsonl` — twin orgs carry no
+    probes of their own, so a twin run is driven with the BASE org's probes
+    against the twin's stream/org.json (exactly as the screening harness
+    builds twin_ceiling runs). `on_row` is called with each result row as
+    soon as it exists (incremental, resumable writers).
     """
 
     org_dir: Path
     adapter: SUTAdapter
+    probes: list[dict] | None = None
+    on_row: Callable[[dict], None] | None = None
 
     def run(self, out_path: Path | None = None) -> list[dict]:
         org = json.loads((self.org_dir / "org.json").read_text())
         ledger, index = load_ledger(org), load_event_index(org)
         stream = [json.loads(line) for line in
                   (self.org_dir / "events.jsonl").read_text().splitlines()]
-        probes = [json.loads(line) for line in
-                  (self.org_dir / "probes.jsonl").read_text().splitlines()]
+        probes = self.probes
+        if probes is None:
+            probes = [json.loads(line) for line in
+                      (self.org_dir / "probes.jsonl").read_text().splitlines()]
 
         if [e["event_id"] for e in stream] != [e.event_id for e in index.events]:
             raise RunnerError("events.jsonl does not align with org.json event index")
@@ -141,6 +152,8 @@ class Runner:
                 row["context_chars"] = self.adapter.counters.get(
                     "last_context_chars", 0)
                 rows.append(row)
+                if self.on_row is not None:
+                    self.on_row(row)
         if out_path is not None:
             out_path.write_text(
                 "".join(json.dumps(r) + "\n" for r in rows))
