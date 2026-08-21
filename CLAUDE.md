@@ -1,73 +1,32 @@
-# memory-bench — agent instructions
+# memory-bench — Claude Code
 
-Publishable scientific benchmark for memory systems in organizations of
-agents. High stakes: this ships as a research paper and must survive hostile
-review. When in doubt, choose the option that is *measurable, dated, and
-disclosed* over the convenient one.
+The project rules — the v1 freeze, read-first order, hard rules, conventions — live in
+`AGENTS.md`, which Codex and cursor-agent read too. It is part of this file:
 
-## v1 freeze (2026-08-15) — read before anything else
+@./AGENTS.md
 
-The deliverable is **pilot numbers** (`docs/dataset-plan.md`, "v1 pilot
-FREEZE"). No new gate, scoring rule, spec section, audit, spec doc, seed
-screening, criterion edit, or system outside the frozen list without Mehul's
-explicit ask in the current session. Prefer running the loop end-to-end over
-hardening it. Outputs for Mehul (rater packets, decisions, summaries) are
-pointed and short — one file, one ask; never sprawling report sets.
+What follows is Claude-specific.
 
-## Read first (in this order)
+## Orchestration
 
-1. `docs/status.md` — current state and the work queue with blockers.
-2. `docs/vision.md` — capability ladder, heterogeneity thesis, claims discipline.
-3. `docs/dataset-plan.md` — short: phases, gates G0–G5, standing decisions,
-   and the v1 FREEZE section at the bottom. The dated history (gate results,
-   protocol amendments, harness study, screening notes) lives verbatim in
-   `docs/decision-log.md` — read it only when a decision's provenance matters.
-4. `docs/standards-audit.md` — field-failure audit; the pre-release tracker.
-   Nothing ships while a BLOCKING row is open.
-5. `docs/architecture.md`, `docs/validation-report.md`, `docs/specs/` as needed;
-   `docs/deferred.md` (optional) — what v1 cut and where its material lives.
+You are usually the orchestrator here, not the worker. Protocol content generation goes
+to pinned codex; cursor-agent is QA tooling only. Both now read `AGENTS.md`, so the pin
+and the blinding rules reach them directly — but you own enforcing them, because a
+subagent that violates one still produces output that looks fine.
 
-## Hard rules (violations invalidate published numbers)
+Inspect what a worker actually wrote before accepting it: the file, the diff, the row
+count. A summary is not evidence (`prove-it-works`).
 
-- **Pinned worker**: the fixed task model is **(gpt-5.4, effort medium,
-  codex-cli 0.144.5)**. Never substitute or mix harnesses in any protocol
-  path — measured evidence: identical weights behind cursor-agent agree only
-  65% on twin-ceiling outcomes (`datasets/dev/screening/harness-study-2026-07-25/`).
-  cursor-agent is allowed ONLY for QA tooling and non-protocol work (wrap in
-  `timeout`, retry ×2). The PATH `codex` may be newer (Homebrew upgrades
-  silently); protocol paths enforce the pin via `membench.codex_bin` — run
-  them with `MEMBENCH_CODEX_BIN=~/.local/codex-0.144.5/node_modules/.bin/codex`.
-- **Blinded judging always**: semantic verdicts go through
-  `screen_probes.py judge-export` (opaque ids) → fresh judge agents that read
-  ONLY the batch file → `judge-import`. Judge model ≠ worker model, and never
-  the model family that authored/repaired the assertions being judged.
-- **Prespecify, then measure**: any gate/protocol change is written into
-  `docs/dataset-plan.md` with a date BEFORE the evidence it applies to is
-  produced. "Prespecified" is reserved for commitments corroborated by git
-  history. Failed gates are carried as explicit FAILs, never narrated away.
-- **Independence**: no author-affiliated memory system is ever evaluated;
-  market systems enter by the published inclusion criteria; every exclusion
-  reported. No product-level "expected to win" language anywhere.
-- **Never a single aggregate score**; results are a radar grouped by
-  capability-ladder rung (`docs/vision.md` §3).
-- **Assertion repairs must keep task text byte-identical** (cached worker
-  outputs stay valid; verify with the prompt-equality check before reusing
-  results). Co-valid sibling facts must never be punished by assertions.
-- Blinded raters/judges must be isolated from the repo (the ledger contains
-  answers). Never run two screening pipelines against one work dir. Never
-  edit a bash script while it is executing.
+## Reach for these
 
-## Conventions
+- **`show-me-your-work`** — any run that goes unattended or spans phases. Screening runs
+  are exactly this: a decision trail beats reconstructing the night from scrollback.
+- **`grilling`** — before a gate, spec section, or scoring rule changes. The freeze means
+  the default answer is no; make the case explicit first.
+- **`interrogate`** — for anything that will appear in the paper. Hostile review is the
+  bar, so get the disagreement early and cheap.
 
-- Conventional Commits; every commit ends with the Claude co-author trailer.
-- Tests + `ruff check .` green before any commit (`.venv/bin/python -m pytest -q`).
-- Scratch work goes in the session scratchpad, never the repo; committed
-  evidence goes under `datasets/dev/screening/` or per-org dirs.
-- Content generation for protocol paths runs through codex CLI
-  (`codex exec -s workspace-write --skip-git-repo-check -m gpt-5.4 -c
-  model_reasoning_effort=medium -`), output captured via a file the model
-  writes, not stdout. Quota economics: one credit pack ≈ ~1,000 gpt-5.4
-  medium runs; one seed's screening = 486 runs.
-- Update `docs/status.md` when a queue item completes; update the
-  auto-memory project file for cross-session facts that don't belong in the
-  repo.
+## Memory
+
+Cross-session facts that don't belong in the repo go in the auto-memory project file.
+Convert relative dates to absolute ones.
