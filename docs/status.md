@@ -1,6 +1,6 @@
 # Status & Work Queue
 
-Last updated: 2026-08-15 (v1 freeze — `CLAUDE.md` + FREEZE section of
+Last updated: 2026-08-22 (adapters + pilot CLI landed; v1 freeze — `CLAUDE.md` + FREEZE section of
 `docs/dataset-plan.md`). Update when a queue item completes; keep entries dated.
 The pre-freeze A/B/C queue tables were removed 2026-08-15 — see git history
 (`git show d0820af:docs/status.md`); dated evidence is in `docs/decision-log.md`.
@@ -33,21 +33,26 @@ The pre-freeze A/B/C queue tables were removed 2026-08-15 — see git history
 
 ## Work queue (in order — the only queue)
 
-1. **Adapters** (two-call SUT interface, per-principal isolation): naive-RAG
-   with Gemini embeddings · Mem0 · Cognee · Graphiti (Kuzu backend) ·
-   Supermemory (hosted; needs key). Internal LLM = Gemini where configurable;
-   vendor-recommended config frozen in writing before any run.
-2. **Pilot CLI + orchestrator:** extend `membench.pilot` (only-valid
-   instances, resumable, cost columns) + `scripts/run_pilot.py` cross-seed
-   orchestrator (in progress) + `scripts/score_pilot.py`.
-3. **Keys from Mehul:** `OPENAI_API_KEY` (worker billing behind pinned codex
-   0.144.5), `GEMINI_API_KEY`, `SUPERMEMORY_API_KEY`.
-4. **Seed-1 smoke, all 8 systems** (+ Mem0 silo) → item analysis.
-5. **Seeds 2–3** (K=1; variance subset: seed 1 × full-transcript + one market system × K=3).
-6. **Blind judge** (rubric v2, opaque ids, fresh judge agents).
+1. DONE 2026-08-22 — **Adapters** for all 8 systems registered in `membench.pilot`
+   (`nomemory fulltranscript grep rag mem0 mem0-silo cognee graphiti supermemory`;
+   `uv sync --extra adapters --extra market`). Market systems' internal LLM =
+   Gemini where configurable (Supermemory: vendor-managed, not configurable).
+   Each `sut_<name>.py` has a `smoke(org_dir)` for a first live call once keys exist.
+2. DONE 2026-08-22 — **Pilot CLI + orchestrator**: `scripts/run_pilot.py run/report`
+   over `membench.pilot` (only-valid = the frozen 371, resumable, cost columns) and
+   `scripts/score_sut.py` (blinded judge round trip, pair credit, per-rung SEs).
+3. **Keys from Mehul** (shell env, never the repo): `OPENAI_API_KEY` (worker billing
+   behind pinned codex 0.144.5 — switch codex auth from chatgpt to API key),
+   `GEMINI_API_KEY`, `SUPERMEMORY_API_KEY`.
+4. **Live smokes** (one org, 20 events, each market adapter) → fix SDK surprises
+   (cognee 1.5 has auth/multi-tenant on by default — verify `smoke` runs; Supermemory
+   settle wait) → freeze each system's config in writing.
+5. **Seed-1 smoke, all 8 systems** (+ Mem0 silo) → blind judge → item analysis.
+6. **Seeds 2–3** (K=1; variance subset: seed 1 × full-transcript + one market system × K=3).
 7. **150-pair rater packet to Mehul** — one file, one column
    (`datasets/dev/calibration/rater-packet.json`); criteria < 0.7 dropped, never rewritten.
-8. **Stats + radar + reproducible tables** (cluster-robust SEs, paired per-item, tie rule, cost columns, H1–H3; ≥2/3-seed direction rule).
+8. **Stats + radar + reproducible tables** (cluster-robust SEs, paired per-item, tie rule,
+   cost columns, H1–H3; ≥2/3-seed direction rule).
 9. **Vendor right-of-reply** (raw results + harness, 7 days).
 10. **Draft.**
 
