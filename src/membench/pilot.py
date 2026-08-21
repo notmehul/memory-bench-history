@@ -44,6 +44,10 @@ from .adapters import FullTranscriptAdapter, GrepAgentAdapter, NoMemoryAdapter
 from .g3 import load_valid_instances
 from .rag import EMBEDDING_MODEL, EmbeddingRetriever, GeminiEmbedder, NaiveRAGAdapter
 from .runner import Runner
+from .sut_cognee import CogneeAdapter
+from .sut_graphiti import GraphitiAdapter
+from .sut_mem0 import Mem0Adapter
+from .sut_supermemory import SupermemoryAdapter
 from .typed_memory import TypedMemoryAdapter, prompt_hash
 from .workers import CodexWorker
 
@@ -57,6 +61,12 @@ ADAPTERS = {
         w, retriever=EmbeddingRetriever(GeminiEmbedder().embed, model_name=EMBEDDING_MODEL),
         shared=not silo),
     "rag-lexical": lambda w, silo: NaiveRAGAdapter(w, shared=not silo),
+    # market systems (v1 freeze: top-4 by stars, 2026-08-15); silo ablation on Mem0
+    "mem0": lambda w, silo: Mem0Adapter(w, shared=not silo),
+    "mem0-silo": lambda w, silo: Mem0Adapter(w, shared=False),
+    "cognee": lambda w, silo: CogneeAdapter(w, shared=not silo),
+    "graphiti": lambda w, silo: GraphitiAdapter(w, shared=not silo),
+    "supermemory": lambda w, silo: SupermemoryAdapter(w, shared=not silo),
 }
 
 
