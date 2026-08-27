@@ -55,8 +55,10 @@ The pre-freeze A/B/C queue tables were removed 2026-08-15 — see git history
 6. **Seeds 2–3** (K=1; variance subset: seed 1 × full-transcript + one market system × K=3).
 7. **150-pair rater packet to Mehul** — one file, one column
    (`datasets/dev/calibration/rater-packet.json`); criteria < 0.7 dropped, never rewritten.
-8. **Stats + radar + reproducible tables** (cluster-robust SEs, paired per-item, tie rule,
-   cost columns, H1–H3; ≥2/3-seed direction rule).
+8. **Stats + radar + reproducible tables** — generator DONE 2026-08-27
+   (`scripts/figures.py report --work W --systems ... --paired mem0,mem0-silo`:
+   radar by rung, per-rung/archetype tables, ≥2/3-seed direction rule, paired H2
+   diff, cost columns; dry-run on mock data). Rerun on real summaries when runs land.
 9. **Vendor right-of-reply** (raw results + harness, 7 days).
 10. **Draft.**
 

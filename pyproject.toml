@@ -12,6 +12,7 @@ dependencies = []
 adapters = ["google-genai>=1.0"]
 # market systems (v1 freeze); installed separately so the core stays dependency-free
 market = ["mem0ai>=2.0,<3", "cognee>=1.4", "graphiti-core[kuzu,google-genai]>=0.29", "supermemory>=3.59"]
+figures = ["matplotlib>=3.8"]
 
 [dependency-groups]
 dev = ["pytest>=8.0", "ruff>=0.8"]
