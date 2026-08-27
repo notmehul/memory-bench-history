@@ -1,0 +1,88 @@
+# Frozen system configurations — v1 pilot (2026-08-27)
+
+Written and committed BEFORE any live run against any system (vendor-fairness
+protocol; "prespecified" = corroborated by this file's git history). Every value
+below is read from the adapter code, not from intent. Live smokes (status queue
+item 4) may surface SDK breakage; the only permitted post-smoke changes are
+**mechanical availability fixes** (auth flags, timeouts, API-shape corrections)
+recorded here as dated amendments — never retrieval-quality tuning. No config
+changes of any kind once seed runs start.
+
+## Shared across all systems (identical by construction)
+
+| Parameter | Value | Where |
+| :--- | :--- | :--- |
+| Task worker | gpt-5.4, effort medium, codex-cli 0.144.5 (pinned via `membench.codex_bin`) | AGENTS.md hard rule |
+| Retrieval depth | top-k = 8 (every retrieval system) | `rag.py` `k=8`; `top_k=8` in each `sut_*.py` |
+| Prompt template | `retrieval_prompt(memories, task)` — one shared template; bare task when no hits | `rag.py` |
+| Event rendering | `_render_event(event)` — identical text into every system | `adapters.py` |
+| Shared-store scope | one org-wide store; dedupe by `event_id`; per-principal visibility NOT enforced (v1 scores no leakage; disclosed) | each adapter |
+| Silo ablation | Mem0 only (`mem0-silo`): per-principal stores, event added under every witness | `pilot.py` registry |
+| Ingestion | full pass per side/K, fresh adapter/store per run | `pilot.py run_side` |
+
+## Baselines
+
+- **no-memory** — bare task to the worker (cached floor).
+- **full-transcript** — entire witnessed stream in the prompt (ceiling anchor).
+- **grep-agent** — worker greps the raw stream files itself.
+- **naive-RAG** (`rag`) — chunk = one event; embeddings pinned
+  `gemini-embedding-001` (`GeminiEmbedder`, batch 100, chunk vector cached per
+  event text); cosine; top-8 in chronological order. Lexical ablation
+  `rag-lexical` = same adapter, stdlib BM25 (k1=1.5, b=0.75).
+
+## Market systems (top-4-by-stars rule, applied 2026-08-15)
+
+Principle: vendor-default behaviour wherever the SDK allows, embedded/local
+storage (no docker on the run machine), internal LLM = Gemini where
+configurable (one key, one billing surface; disclosed as a deviation from
+vendor default in each case).
+
+### Mem0 (`mem0ai>=2.0,<3`, local mode)
+- LLM `gemini-2.5-flash`; embedder `models/gemini-embedding-001` @ 768 dims;
+  vector store embedded Qdrant (scratch dir, `on_disk=False`); sqlite history.
+  Vendor defaults displaced: OpenAI gpt-5-mini + text-embedding-3-small.
+- Ingest `Memory.add(text, user_id=scope, infer=True)` — vendor-default LLM
+  extraction/consolidation ON. Search `Memory.search(task, filters={"user_id":
+  scope}, top_k=8)` (2.0.x rejects top-level `user_id=`). Hits rendered
+  `[created_at] memory`. `MEM0_TELEMETRY=false`.
+
+### Cognee (`cognee>=1.4`, embedded)
+- LLM `gemini/gemini-2.5-flash`; embedder `gemini/gemini-embedding-001` @ 3072
+  dims (env-configured before first import, `configure_gemini_env`). Vendor
+  defaults displaced: OpenAI gpt-5-mini + text-embedding-3-large. Storage =
+  cognee defaults: sqlite relational, lancedb vector, kuzu graph — embedded.
+- `cognee.add(text, dataset_name=scope)`; `cognify` lazily once per scope per
+  dirty period (at most once per probe injection). Search
+  `SearchType.CHUNKS, top_k=8` — raw chunk texts, no LLM answer generation.
+- Known risk for smoke: cognee 1.5.x enables auth/multi-tenant by default;
+  any needed flag is an availability amendment, recorded here.
+
+### Graphiti (`graphiti-core[kuzu,google-genai]>=0.29`, embedded)
+- Graph driver embedded **Kuzu** (in 0.29.3; deprecated upstream — disclosed;
+  no docker ⇒ no Neo4j/FalkorDB). LLM/embedder/reranker = graphiti's Gemini
+  clients at their own defaults (gemini-3-flash-preview + gemini-2.5-flash-lite,
+  text-embedding-001). Vendor defaults displaced: OpenAI.
+- `add_episode(name=event_id, episode_body=rendered, source_description=surface,
+  reference_time=sim_time, group_id=scope)` — LLM extraction/dedup/temporal
+  invalidation per event (cost counted). Search = `graphiti.search(task,
+  group_ids=[scope], num_results=8)` → edge facts, `[valid_at] fact`.
+  `GRAPHITI_TELEMETRY_ENABLED=false`.
+
+### Supermemory (`supermemory>=3.59`, hosted)
+- Hosted only; internal LLM/embedder vendor-managed and NOT configurable — the
+  one system running fully on vendor defaults (disclosed; no Gemini wiring).
+- Ingest `documents.add(content, container_tag=scope, custom_id, document_date=
+  sim_time, metadata)`; search `search.memories(q=task, container_tag=scope,
+  limit=8)` → `.memory`/`.chunk`, rendered `[sim_time] text`.
+- **Settle policy (frozen; ingestion is async server-side):** before the first
+  search after new ingests, sleep 5 s then poll `documents.list_processing()`
+  until the queue drains, bounded at 600 s (`ingest_settle_seconds=5,
+  wait_for_processing=True, settle_timeout=600` — wired in the `pilot.py`
+  registry; waits recorded in `settle_waits`/`settle_seconds` counters).
+  Timeout hits are reported, never silently absorbed.
+
+## Excluded / deferred
+
+Letta (24.3k stars, rank 5 — below the top-4 line), typed-memory reference
+implementation (registered, DEFERRED by the v1 freeze). Full candidate table
+and exclusion reasons: `docs/vendor-survey.md`.

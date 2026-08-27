@@ -199,3 +199,13 @@ def test_run_pilot_end_to_end_cross_seed_summary(tmp_path, monkeypatch):
     assert "aggregate" in summary["note"] and "overall" not in summary
     assert summary["cost"]["base"]["n_rows"] == 8 and summary["cost"]["twin"]["n_empty"] == 0
     assert set(summary["by_rung"]) == {"1", "2"}
+
+
+def test_supermemory_registry_freezes_settle_policy():
+    # docs/vendor-configs.md (2026-08-27): pilot runs must wait out async ingestion.
+    from membench.adapters import MockWorker
+    from membench.pilot import build_adapter
+
+    a = build_adapter("supermemory", MockWorker())
+    assert a.wait_for_processing is True
+    assert a.ingest_settle_seconds == 5 and a.settle_timeout == 600

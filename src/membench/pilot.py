@@ -66,7 +66,11 @@ ADAPTERS = {
     "mem0-silo": lambda w, silo: Mem0Adapter(w, shared=False),
     "cognee": lambda w, silo: CogneeAdapter(w, shared=not silo),
     "graphiti": lambda w, silo: GraphitiAdapter(w, shared=not silo),
-    "supermemory": lambda w, silo: SupermemoryAdapter(w, shared=not silo),
+    # settle policy frozen in docs/vendor-configs.md (2026-08-27): ingestion is
+    # async server-side; search only after the processing queue drains.
+    "supermemory": lambda w, silo: SupermemoryAdapter(
+        w, shared=not silo, ingest_settle_seconds=5, wait_for_processing=True,
+        settle_timeout=600),
 }
 
 

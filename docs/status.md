@@ -1,6 +1,7 @@
 # Status & Work Queue
 
-Last updated: 2026-08-22 (adapters + pilot CLI landed; v1 freeze — `CLAUDE.md` + FREEZE section of
+Last updated: 2026-08-27 (vendor configs frozen pre-run — `docs/vendor-configs.md`;
+rater packet sent to Mehul 2026-08-25; adapters + pilot CLI landed; v1 freeze — `CLAUDE.md` + FREEZE section of
 `docs/dataset-plan.md`). Update when a queue item completes; keep entries dated.
 The pre-freeze A/B/C queue tables were removed 2026-08-15 — see git history
 (`git show d0820af:docs/status.md`); dated evidence is in `docs/decision-log.md`.
@@ -46,7 +47,10 @@ The pre-freeze A/B/C queue tables were removed 2026-08-15 — see git history
    `GEMINI_API_KEY`, `SUPERMEMORY_API_KEY`.
 4. **Live smokes** (one org, 20 events, each market adapter) → fix SDK surprises
    (cognee 1.5 has auth/multi-tenant on by default — verify `smoke` runs; Supermemory
-   settle wait) → freeze each system's config in writing.
+   settle wait). Configs are already frozen in `docs/vendor-configs.md`
+   (2026-08-27, pre-run); smokes may add only dated mechanical amendments there.
+   Also not keys-gated, runnable now: stats/figures dry-run on mock results,
+   paper skeleton + results-independent sections, preprint checklist.
 5. **Seed-1 smoke, all 8 systems** (+ Mem0 silo) → blind judge → item analysis.
 6. **Seeds 2–3** (K=1; variance subset: seed 1 × full-transcript + one market system × K=3).
 7. **150-pair rater packet to Mehul** — one file, one column
