@@ -60,7 +60,10 @@ The pre-freeze A/B/C queue tables were removed 2026-08-15 — see git history
    radar by rung, per-rung/archetype tables, ≥2/3-seed direction rule, paired H2
    diff, cost columns; dry-run on mock data). Rerun on real summaries when runs land.
 9. **Vendor right-of-reply** (raw results + harness, 7 days).
-10. **Draft.**
+10. **Draft** — skeleton DONE 2026-08-27 (`paper/draft.md`: sections sourced
+    to docs, 10-item disclosure inventory; §5–6 wait on runs) + preprint
+    checklist (`paper/checklist.md`). Remaining: prose pass with Mehul after
+    real numbers.
 
 ## Standing cautions
 
