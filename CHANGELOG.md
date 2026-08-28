@@ -6,6 +6,23 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning: Se
 ## [Unreleased]
 
 ### Added
+- Backtest/cleanup pass (2026-08-28): README, power-analysis, human-review,
+  architecture, dataset-plan and validation-report re-pointed at the frozen v1
+  scope with dated supersession notes; CI installs the figures extra.
+- Results pipeline (2026-08-27): `scripts/figures.py` (radar by rung, per-rung/
+  archetype tables, ≥2/3-seed direction rule, paired H2 diff, cost table;
+  dry-run on mock data); per-system configs frozen before any live run
+  (`docs/vendor-configs.md`); paper skeleton + preprint checklist (`paper/`).
+- SUT adapters + pilot orchestrator (2026-08-22): Mem0, Cognee, Graphiti
+  (embedded Kuzu), Supermemory (hosted, async-settle logic) behind fake-client
+  tests; `scripts/run_pilot.py run/report` (resumable, only-valid instances,
+  cost columns, cross-seed summary); Gemini embedding pin
+  (`gemini-embedding-001`) behind the retriever seam.
+- v1 pilot FREEZE (2026-08-15, prespecified before any SUT run): dataset =
+  seeds 1–3 as-is (371 valid instances), 8 systems + Mem0 silo ablation
+  (market systems by top-4 GitHub stars), single author-rater G4 (disclosed
+  downgrade), ≥2/3-seed direction rule; seeds 4–5 unscreened holdouts. Dated
+  history split to `docs/decision-log.md`; cut scope to `docs/deferred.md`.
 - Benchmark design: dimensional model, 12 scenario archetypes, scientific
   methodology, difficulty ladder (`docs/architecture.md`).
 - Contracts: ground-truth ledger schema, event-stream format, probe spec
@@ -149,6 +166,14 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning: Se
   regrouped by capability rung.
 
 ### Fixed
+- Valid-instance counting included instances of dropped clusters (380 vs the
+  frozen 371); `membench.g3.valid_instances` now intersects valid instances
+  with surviving clusters (2026-08-22).
+- Silo-ablation design: full-transcript shared vs silo yields byte-identical
+  context, making the ablation vacuous there; moved to Mem0 before any run
+  (2026-08-15, disclosed).
+- Supermemory registry constructed the adapter with settle disabled; pilot
+  registry now passes the frozen settle policy (2026-08-27).
 - Seeds 2/3 stream contamination (2026-07-25, found by the seeds-2–5 LLM
   consistency passes): one filler line per seed asserted rule content
   contradicting a probed fact (release cadence vs F-0070 in seed 2;

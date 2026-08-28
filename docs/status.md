@@ -1,6 +1,8 @@
 # Status & Work Queue
 
-Last updated: 2026-08-27 (vendor configs frozen pre-run — `docs/vendor-configs.md`;
+Last updated: 2026-08-28 (backtest/cleanup: README + stale docs re-pointed at the
+frozen v1 scope with dated notes, CHANGELOG caught up, CI fixed for the figures extra;
+vendor configs frozen pre-run — `docs/vendor-configs.md`;
 rater packet sent to Mehul 2026-08-25; adapters + pilot CLI landed; v1 freeze — `CLAUDE.md` + FREEZE section of
 `docs/dataset-plan.md`). Update when a queue item completes; keep entries dated.
 The pre-freeze A/B/C queue tables were removed 2026-08-15 — see git history

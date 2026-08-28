@@ -20,19 +20,22 @@ collective intelligence — the "mini AGI" claim, operationalized in `docs/visio
 
 ## What it measures
 
-Six-to-eight metric profile per system, grouped by capability rung
-(`docs/vision.md`) — never a single aggregate score:
+v1 (frozen 2026-08-15) scores four probe archetypes, grouped by capability-ladder
+rung (`docs/vision.md` §3) — **never a single aggregate score**:
 
-| Rung | Metric | Question it answers |
+| Rung | Archetype | Question it answers |
 |---|---|---|
-| Alignment | Scope-resolution accuracy | When personal/team/org facts conflict, does the contextually correct tier win? |
-| Alignment | Staleness rate | Do superseded facts stop driving behavior (while remaining retrievable as history)? |
-| Coordination | Propagation latency | How many sessions until a decision made in one principal's context changes another's behavior? |
-| Coordination | Rollback fidelity | After a correction, does the wrong behavior disappear everywhere it spread? |
-| Coordination | Leakage rate | Do private/need-to-know facts stay inside their visibility boundary? |
-| Coordination | Conflict-surfacing | Are unresolved contradictions flagged rather than silently resolved? |
-| Compounding | Proactive application | Does a working rule stated once fire later, unprompted? |
-| Compounding | Experience utilization | Do recorded outcomes change future recommendations? |
+| 1 — retention | A4 (working rules) | Does a rule stated once keep driving behavior later? |
+| 1 — retention | A7 (commitments/outcomes) | Are recorded commitments and outcomes applied in later tasks? |
+| 2 — supersession | A1 (staleness) | Do superseded facts stop driving behavior? |
+| 3 — cross-principal | A2 (scope/conflict) | When facts conflict across tiers, does the right one win? |
+
+Every instance is scored as **pair credit**: the probe passes only if the base
+task passes AND its counterfactual-twin sibling passes — knowledge the system
+could have answered from priors earns nothing. The wider dimensional design
+(leakage, propagation latency, rollback, conflict-surfacing, experience
+utilization) is specified in `docs/architecture.md` and explicitly **deferred to
+v2** (`docs/deferred.md`); v1 claims none of it.
 
 ## How it works
 
@@ -57,11 +60,21 @@ Six-to-eight metric profile per system, grouped by capability rung
 - `docs/specs/ledger-schema.md` — ground-truth fact ledger (contract #1)
 - `docs/specs/event-stream.md` — event stream format (contract #2)
 - `docs/specs/probe-spec.md` — probe + assertion + counterfactual format (contract #3)
-- `docs/dataset-plan.md` — phased plan for building the v1 evaluation dataset
 - `prompts/` — content-generation contracts (event rendering, canonical
   realization) used by whichever LLM renders prose
-- `scripts/` — QA tooling: `validation_sweep.py`, `blind_check.py`,
-  `length_pin.py`, `author_probes.py`, `screen_probes.py`
+- `docs/dataset-plan.md` — phases + gates; the **v1 pilot FREEZE** section at
+  the bottom governs. Dated history: `docs/decision-log.md`; cut scope:
+  `docs/deferred.md`
+- `docs/vendor-survey.md` / `docs/vendor-configs.md` — market-system selection
+  (top-4 by GitHub stars, 2026-08-15) and the per-system configs frozen before
+  any run
+- `paper/` — preprint skeleton + checklist
+- `src/membench/sut_*.py`, `adapters.py`, `rag.py` — baseline + market-system
+  adapters; `scripts/run_pilot.py` / `score_sut.py` / `figures.py` — the run,
+  scoring, and results pipeline
+- `scripts/` (rest) — dataset construction + screening tooling
+  (`screen_probes.py`, `author_probes.py`, `validation_sweep.py`, …), kept as
+  the provenance of the frozen dataset
 - `datasets/dev/org-0000N/` — released org: `org.json` (private ledger),
   `plan.json` (probe plans), `realization-map.json` (template→prose
   provenance), `events.jsonl` (SUT-facing stream), `events.annotated.jsonl`
@@ -71,15 +84,14 @@ Six-to-eight metric profile per system, grouped by capability rung
 
 ## Status
 
-v1 dev dataset complete: 5 seeded orgs + 5 counterfactual twins, all
-machine validation green (`docs/validation-report.md`). Phase 3: 810
-oracle-validated behavioral probes across the 5 orgs (`probes.jsonl`,
-probe-spec v0.4.3); seeds 1 and 2 fully screened under the final
-floor/ceiling protocol with fully blinded judging (rubric v2, verbatim in
-`docs/specs/judge-rubric.md`) — 46/54 and 46/54 clusters survive with 126
-and 131 valid instances (cluster gates PASS, instance gates explicit
-FAILs carried with their cause; every protocol revision is dated in the
-G3 note of `docs/dataset-plan.md`, with pre/post numbers side by side).
-The scorer-exploit audit shows zero pair-passes for every degenerate
-strategy. Remaining: screening seeds 3–5, then Phases 4–5 (judge
-calibration, pilot baselines).
+**v1 pilot (frozen 2026-08-15, `docs/dataset-plan.md` FREEZE section):** the
+evaluation dataset is seeds 1–3 — **371 valid paired instances** (A1 50, A2 43,
+A4 106, A7 172; per-seed 125/131/115; failed gates carried as explicit FAILs,
+never repaired) under probe-spec v0.4.3 and judge rubric v2, screened with a
+pinned worker (gpt-5.4, effort medium, codex-cli 0.144.5) and fully blinded
+judging. Seeds 4–5 are unscreened holdouts. Systems under test: no-memory,
+full-transcript, grep-agent, naive-RAG (± lexical ablation), and the top-4
+market systems by GitHub stars — Mem0, Cognee, Graphiti, Supermemory — plus a
+Mem0 silo ablation. Adapters, run/scoring/figures pipeline, and per-system
+config freeze are done; the pilot runs are next (`docs/status.md` for the live
+queue).

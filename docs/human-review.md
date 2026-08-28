@@ -1,5 +1,12 @@
 # Human Review Handbook
 
+> **Note 2026-08-28:** the v1 freeze (2026-08-15, `docs/dataset-plan.md`)
+> replaced the two-rater G4 design below with a **single author-rater**
+> (Mehul) on the 150-pair packet — a disclosed downgrade; criteria < 0.7
+> agreement are dropped, never rewritten. The Rater-R protocol is retained
+> for provenance and for v2. Open item B3 (recruit rater R) is closed by
+> that decision.
+
 **Read this first — it is self-contained.** If you were handed this document
 (or just its task sections) you have everything you need; you should not
 need access to the project repository, and for most tasks you must not
@@ -199,7 +206,7 @@ graded by the standard pipeline and reported as the human reference band.
 
 | ID | Decision | Options | Status |
 |---|---|---|---|
-| B3 | Confirm R as official second rater | yes / find another | OPEN |
+| B3 | Confirm R as official second rater | yes / find another | CLOSED 2026-08-15 (single author-rater; see note at top) |
 | B4 | Run Task 4 (human baseline)? | yes (recommended) / skip + limitation note | OPEN |
 | B5 | Pilot compute budget | full (~9 quota packs; tie threshold stays ~9pp) / reduced prespecified design (cheaper; higher tie threshold) | OPEN — must be decided BEFORE any pilot result exists |
 

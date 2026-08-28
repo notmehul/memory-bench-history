@@ -1,5 +1,9 @@
 # v1 Dataset Validation Report
 
+> **Note 2026-08-28:** this report covers the construction of all 5 dev
+> orgs. The v1 pilot evaluates seeds 1–3 only (v1 FREEZE, `docs/dataset-plan.md`);
+> seeds 4–5 are unscreened holdouts.
+
 Final validation of the five dev orgs and their counterfactual twins,
 2026-07-18. Every check below runs from the committed artifacts via
 `scripts/validation_sweep.py` and `scripts/blind_check.py`.

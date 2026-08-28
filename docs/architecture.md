@@ -1,6 +1,9 @@
 # memory-bench — Architecture & Design
 
-Status: design frozen for v1 scope (2026-07-14). Contracts live in `docs/specs/`.
+Status: design frozen (2026-07-14). Contracts live in `docs/specs/`.
+**v1 measures a subset of this design** — archetypes A1/A2/A4/A7 with pair
+credit only (v1 pilot FREEZE, 2026-08-15, `docs/dataset-plan.md`); everything
+else here is specified-but-deferred (`docs/deferred.md`) and v1 claims none of it.
 
 ## 1. Problem statement
 

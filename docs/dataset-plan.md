@@ -1,5 +1,10 @@
 # v1 Evaluation Dataset — Creation Plan
 
+> **The "v1 pilot FREEZE" section at the bottom (2026-08-15) governs and
+> supersedes anything above it that conflicts** (e.g. the 5-seed goal below:
+> v1 evaluates seeds 1–3; seeds 4–5 are unscreened holdouts). The phase text
+> is the original plan, kept for provenance.
+
 Goal: a released v1 dataset + evaluation harness proving the benchmark concept:
 **5 seeded orgs (L1–L2), archetypes A1/A2/A4/A7, full scientific methodology,
 pilot results for 5–6 baseline memory systems.**

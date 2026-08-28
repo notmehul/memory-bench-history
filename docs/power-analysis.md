@@ -1,5 +1,11 @@
 # Pre-Pilot Power Analysis
 
+> **Note 2026-08-28 (v1 freeze, dated 2026-08-15):** computed for the original
+> 5-seed design. v1 runs seeds 1–3 only (N = 371 paired instances, not 625) and
+> the direction rule is **≥ 2/3 seeds**, not ≥ 4/5 (`docs/dataset-plan.md`
+> FREEZE; downgrade disclosed). Per-seed formulas below are unchanged; the
+> cross-seed power is correspondingly lower and is reported as such.
+
 Generated 2026-08-06 by `scripts/power_analysis.py` from committed
 seed-1 evidence. **Prespecified before any pilot run** (standards
 audit B.2 / dataset-plan Phase 5 hardening note). Regenerate after
