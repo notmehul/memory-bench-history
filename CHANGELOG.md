@@ -6,6 +6,9 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning: Se
 ## [Unreleased]
 
 ### Added
+- Unslop style pass (2026-08-28): README and `docs/vision.md` rewritten for
+  plain prose; no factual or numeric change (audit found no dead code; dated
+  records left byte-identical).
 - Backtest/cleanup pass (2026-08-28): README, power-analysis, human-review,
   architecture, dataset-plan and validation-report re-pointed at the frozen v1
   scope with dated supersession notes; CI installs the figures extra.
