@@ -100,3 +100,19 @@ def test_end_to_end_runner_with_mock_worker(tmp_path):
     Runner(org_dir, SupermemoryAdapter(w, client=fc)).run()
     assert len(fc.adds) == 3                               # 3 events, once each
     assert len(fc.searches) == 1 and "standup-decision-kebab" in w.calls[0]
+
+
+def test_namespace_prefixes_tags_in_both_modes():
+    # hosted store persists across runs: tags must be disjoint per org side
+    fc = FakeClient()
+    a = SupermemoryAdapter(MockWorker(), client=fc, namespace="org-00001-twin")
+    ev = {"event_id": "E-0001", "sim_time": "2026-03-01T09:00:00Z",
+          "channel": "meeting", "surface": "team:eng/standup",
+          "participants": ["persona:alice"], "content": "x"}
+    a.ingest("persona:alice", ev)
+    assert fc.adds[0]["container_tag"] == "org-00001-twin.org"
+    assert fc.adds[0]["custom_id"].startswith("org-00001-twin.org.")
+    silo = SupermemoryAdapter(MockWorker(), client=FakeClient(),
+                              namespace="org-00001", shared=False)
+    silo.ingest("persona:alice", ev)
+    assert silo.client.adds[0]["container_tag"] == "org-00001.persona_alice"

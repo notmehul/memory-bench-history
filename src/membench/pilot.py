@@ -74,10 +74,13 @@ ADAPTERS = {
 }
 
 
-def build_adapter(name: str, worker, silo: bool = False):
+def build_adapter(name: str, worker, silo: bool = False, namespace: str = ""):
     if name not in ADAPTERS:
         raise SystemExit(f"unknown adapter {name!r}; choose from {sorted(ADAPTERS)}")
-    return ADAPTERS[name](worker, silo)
+    adapter = ADAPTERS[name](worker, silo)
+    if namespace and hasattr(adapter, "namespace"):
+        adapter.namespace = namespace          # isolate persistent hosted stores
+    return adapter
 
 
 class _Instrumented:
@@ -137,7 +140,7 @@ def run_side(adapter_name: str, org_dir: Path, out: Path, worker, *,
     done = {rid for rid, r in read_rows(out).items() if r.get("output")}
     todo = [p for p in probes if f"{p['probe_id']}:sut" not in done]
 
-    adapter = build_adapter(adapter_name, worker, silo)
+    adapter = build_adapter(adapter_name, worker, silo, namespace=org_dir.name)
     proxy = _Instrumented(adapter, worker)
     out.parent.mkdir(parents=True, exist_ok=True)
     started = time.monotonic()

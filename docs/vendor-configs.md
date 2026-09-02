@@ -81,6 +81,17 @@ vendor default in each case).
   registry; waits recorded in `settle_waits`/`settle_seconds` counters).
   Timeout hits are reported, never silently absorbed.
 
+## Mechanical amendments (dated; isolation/availability only, never capability)
+
+- **2026-09-02 — Supermemory container-tag namespacing.** The hosted store
+  persists across runs while every other adapter's store is per-run (Mem0
+  fresh tempdir, Cognee root wiped on first use, Graphiti in-memory Kuzu).
+  With the fixed `org` tag, a twin run would retrieve base-run documents and
+  seeds would stack. Fix: every container tag (and custom_id) is prefixed
+  with the org side's dir name (`org-00001`, `org-00001-twin`, ...), passed
+  by `pilot.run_side`; smokes use a dated `smoke-YYYY-MM-DD` prefix. Changes
+  nothing about retrieval within a run; caught before any live call.
+
 ## Excluded / deferred
 
 Letta (24.3k stars, rank 5 — below the top-4 line), typed-memory reference

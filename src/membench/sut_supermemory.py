@@ -48,6 +48,11 @@ class SupermemoryAdapter:
     worker: WorkerModel
     shared: bool = True
     top_k: int = 8
+    # The hosted store persists across runs; `namespace` (the org side's dir
+    # name in pilot runs, e.g. "org-00001-twin") prefixes every container tag
+    # so base/twin/seed runs can never retrieve each other's documents.
+    # Mechanical isolation amendment, docs/vendor-configs.md 2026-09-02.
+    namespace: str = ""
     ingest_settle_seconds: float = 0
     wait_for_processing: bool = False
     settle_timeout: float = 120
@@ -65,7 +70,8 @@ class SupermemoryAdapter:
         return self.client
 
     def _scope(self, principal: str) -> str:
-        return ORG_TAG if self.shared else _tag(principal)
+        base = ORG_TAG if self.shared else principal
+        return _tag(f"{self.namespace}.{base}") if self.namespace else _tag(base)
 
     def ingest(self, principal: str, event: dict) -> None:
         scope = self._scope(principal)
@@ -126,7 +132,11 @@ def smoke(org_dir: Path, n_events: int = 20) -> dict:
 
     events = [json.loads(line) for line in
               (Path(org_dir) / "events.jsonl").read_text().splitlines()[:n_events]]
-    a = SupermemoryAdapter(MockWorker(), ingest_settle_seconds=5, wait_for_processing=True)
+    import datetime
+
+    ns = f"smoke-{datetime.date.today().isoformat()}"
+    a = SupermemoryAdapter(MockWorker(), namespace=ns,
+                           ingest_settle_seconds=5, wait_for_processing=True)
     for e in events:
         a.ingest(e["participants"][0] if e.get("participants") else "smoke", e)
     a.run_task("smoke", f"Task: summarize what happened around {events[0]['surface']}.")

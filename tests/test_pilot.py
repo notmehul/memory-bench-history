@@ -209,3 +209,7 @@ def test_supermemory_registry_freezes_settle_policy():
     a = build_adapter("supermemory", MockWorker())
     assert a.wait_for_processing is True
     assert a.ingest_settle_seconds == 5 and a.settle_timeout == 600
+    # isolation amendment (docs/vendor-configs.md 2026-09-02): run_side passes
+    # the org dir name so hosted container tags are disjoint per org side
+    b = build_adapter("supermemory", MockWorker(), namespace="org-00001-twin")
+    assert b.namespace == "org-00001-twin"
