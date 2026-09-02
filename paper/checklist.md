@@ -11,7 +11,7 @@ and can follow; nothing here may contradict a BLOCKING row).
       `scripts/figures.py` from committed raw outputs — zero hand-typed values.
 - [ ] Per-table reproduction command in Appendix E, tested from a clean clone
       (`uv sync --extra adapters --extra market --extra figures`).
-- [ ] All 10 disclosure items of draft §7 present in prose.
+- [ ] All 12 disclosure items of draft §7 present in prose.
 - [ ] Candidate table with stars snapshot date + every exclusion (Letta rank 5).
 - [ ] No "expected to win" language anywhere (grep the PDF).
 - [ ] No single aggregate score anywhere, including the abstract.

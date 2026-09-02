@@ -92,6 +92,28 @@ vendor default in each case).
   by `pilot.run_side`; smokes use a dated `smoke-YYYY-MM-DD` prefix. Changes
   nothing about retrieval within a run; caught before any live call.
 
+- **2026-09-02 — Supermemory live-smoke amendments (mechanical).** First live
+  calls surfaced three API realities, all fixed before any protocol run:
+  (1) container tags/custom ids reject dots — namespace separator is `:`,
+  parts sanitized to `[A-Za-z0-9_-]`; (2) null values are rejected —
+  `document_date` and null metadata entries are omitted (v1 streams carry no
+  `sim_time`; see the dataset note below); (3) `search.memories` defaults to
+  extracted-memories-only, which stays empty until the vendor's batched
+  "dreaming" extraction lands minutes after ingest — searches now pin
+  `search_mode="hybrid"` (the mode the vendor's own docs recommend: memories
+  + document chunks). Ingestion stays on the vendor-default `dreaming:
+  "dynamic"`; whatever memories exist at probe time are what the product
+  provides, and the settle policy bounds only queue processing, not
+  extraction — disclosed.
+- **2026-09-02 — dataset carries no timestamps (applies to every system).**
+  Every event in the frozen streams has `sim_time: null` (the generator never
+  emitted times; screening anchors never rendered events, so nothing frozen
+  is affected). Temporal order is positional — stream order only. Adapters
+  now render events without a `[None]` bracket, Graphiti gets a synthetic
+  monotonic `reference_time` encoding stream order only (the same signal
+  every adapter gets from sequential ingestion), and Supermemory sends no
+  `document_date`. Disclosed as a paper limitation.
+
 ## Excluded / deferred
 
 Letta (24.3k stars, rank 5 — below the top-4 line), typed-memory reference

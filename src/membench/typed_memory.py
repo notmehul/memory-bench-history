@@ -151,7 +151,7 @@ class TypedMemoryAdapter:
             node = Node(node_id=f"n{self._seq:05d}", kind=d["kind"],
                         statement=d["statement"], tier=d["tier"],
                         scope_ref=d["scope_ref"], topic=d["topic"],
-                        valid_from=str(event.get("sim_time", "")),
+                        valid_from=str(event.get("sim_time") or ""),
                         sources=[event["event_id"]], visibility={principal})
             store[node.node_id] = node
             self.counters["nodes_stored"] += 1

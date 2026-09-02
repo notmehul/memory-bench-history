@@ -59,8 +59,10 @@ class SUTAdapter(Protocol):
 
 def _render_event(event: dict) -> str:
     who = ", ".join(event.get("participants", ()))
+    when = event.get("sim_time")
+    stamp = f"[{when}] " if when else ""      # v1 streams carry no timestamps
     return (
-        f"[{event['sim_time']}] {event['surface']} ({event['channel']}; "
+        f"{stamp}{event['surface']} ({event['channel']}; "
         f"participants: {who})\n{event['content']}"
     )
 
@@ -138,7 +140,7 @@ class FullTranscriptAdapter:
 
 
 def _event_filename(i: int, event: dict) -> str:
-    stamp = str(event.get("sim_time", "")).replace(":", "").replace(" ", "_")
+    stamp = str(event.get("sim_time") or "").replace(":", "").replace(" ", "_")
     return f"history/{i:05d}_{stamp}_{event['surface']}.md"
 
 

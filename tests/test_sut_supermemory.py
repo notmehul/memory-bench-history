@@ -48,7 +48,7 @@ def test_shared_mode_dedupes_by_event_id_and_uses_org_tag():
     assert fc.adds[0]["metadata"] == {"event_id": "E-0001", "sim_time": STREAM[0]["sim_time"],
                                       "surface": "dm:alice-cara"}
     assert fc.adds[0]["document_date"] == STREAM[0]["sim_time"]
-    assert fc.adds[0]["custom_id"] == "org.E-0001"
+    assert fc.adds[0]["custom_id"] == "org:E-0001"
 
 
 def test_silo_mode_ingests_under_each_witness_with_sanitized_tags():
@@ -71,7 +71,7 @@ def test_run_task_builds_retrieval_prompt_with_top_k():
     out = a.run_task("persona:alice", "Task: write the deploy note")
     assert out == "mock deliverable"
     assert fc.searches == [{"q": "Task: write the deploy note", "container_tag": ORG_TAG,
-                            "limit": 3}]
+                            "limit": 3, "search_mode": "hybrid"}]
     items = ["[2026-03-02T09:00:00Z] deploy freeze Thursday", "raw chunk text"]
     assert w.calls[-1] == retrieval_prompt(items, "Task: write the deploy note")
     assert a.counters["retrieved"] == 2 and a.counters["search_calls"] == 1
@@ -110,9 +110,38 @@ def test_namespace_prefixes_tags_in_both_modes():
           "channel": "meeting", "surface": "team:eng/standup",
           "participants": ["persona:alice"], "content": "x"}
     a.ingest("persona:alice", ev)
-    assert fc.adds[0]["container_tag"] == "org-00001-twin.org"
-    assert fc.adds[0]["custom_id"].startswith("org-00001-twin.org.")
+    assert fc.adds[0]["container_tag"] == "org-00001-twin:org"
+    assert fc.adds[0]["custom_id"].startswith("org-00001-twin:org:")
     silo = SupermemoryAdapter(MockWorker(), client=FakeClient(),
                               namespace="org-00001", shared=False)
     silo.ingest("persona:alice", ev)
-    assert silo.client.adds[0]["container_tag"] == "org-00001.persona_alice"
+    assert silo.client.adds[0]["container_tag"] == "org-00001:persona_alice"
+
+
+def test_search_uses_vendor_recommended_hybrid_mode():
+    fc = FakeClient(results=[_result("m1")])
+    a = SupermemoryAdapter(MockWorker(), client=fc)
+    a.run_task("persona:alice", "Task: q")
+    assert fc.searches[0]["search_mode"] == "hybrid"
+
+
+def test_null_sim_time_omits_date_and_metadata_nulls():
+    # v1 streams: sim_time is null on every event (API 400s on null values)
+    fc = FakeClient()
+    a = SupermemoryAdapter(MockWorker(), client=fc)
+    a.ingest("persona:alice", {"event_id": "E-0001", "sim_time": None,
+                               "channel": "standup", "surface": "team:eng/standup",
+                               "participants": ["persona:alice"], "content": "x"})
+    add = fc.adds[0]
+    assert "document_date" not in add
+    assert "sim_time" not in add["metadata"] and add["metadata"]["event_id"] == "E-0001"
+    assert not add["content"].startswith("[None]")
+
+
+def test_render_event_omits_null_timestamp():
+    # v1 frozen streams: sim_time is null on every event
+    ev = {"event_id": "E-0001", "sim_time": None, "channel": "standup",
+          "surface": "team:eng/standup", "participants": ["persona:a"], "content": "x"}
+    out = _render_event(ev)
+    assert out.startswith("team:eng/standup (")
+    assert "None" not in out

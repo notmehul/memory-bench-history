@@ -118,6 +118,16 @@ deliverables, settle-timeout hits, per-system failure modes.
    validity limits stated plainly.
 10. Vendor right-of-reply: raw results + harness to each vendor 7 days before
     submission; replies summarized in an appendix.
+11. Event streams carry no timestamps (`sim_time` null throughout; found at
+    first live ingest, 2026-09-02): temporal order is positional. Supersession
+    (A1) is inferable from stream order only; systems that lean on absolute
+    time get no signal. Screening anchors never saw rendered timestamps, so
+    floor/ceiling validity is unaffected (`docs/vendor-configs.md`
+    amendments).
+12. Supermemory memory extraction ("dreaming") is batched server-side and may
+    land after the settle window; searches use the vendor-recommended hybrid
+    mode (extracted memories + document chunks), so retrieval always sees
+    ingested content. The settle policy bounds queue processing only.
 
 ## 8. Release
 

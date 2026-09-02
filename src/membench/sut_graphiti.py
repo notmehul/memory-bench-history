@@ -30,7 +30,7 @@ import asyncio
 import os
 import re
 from dataclasses import dataclass, field
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 from .adapters import WorkerModel, _render_event
@@ -101,7 +101,11 @@ class GraphitiAdapter:
             return
         self._seen.add(key)
         client = self._get_client()
-        when = datetime.fromisoformat(event["sim_time"].replace("Z", "+00:00"))
+        if event.get("sim_time"):
+            when = datetime.fromisoformat(event["sim_time"].replace("Z", "+00:00"))
+        else:                       # v1 streams carry no timestamps: synthetic
+            self._tick = getattr(self, "_tick", 0) + 1        # monotonic order
+            when = datetime(2026, 1, 1, tzinfo=UTC) + timedelta(minutes=self._tick)
         if when.tzinfo is None:
             when = when.replace(tzinfo=UTC)
         self._run(client.add_episode(
