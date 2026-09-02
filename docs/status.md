@@ -1,6 +1,6 @@
 # Status & Work Queue
 
-Last updated: 2026-08-28 (backtest/cleanup: README + stale docs re-pointed at the
+Last updated: 2026-09-02 (live smokes done, keys in; previously 2026-08-28 backtest/cleanup: README + stale docs re-pointed at the
 frozen v1 scope with dated notes, CHANGELOG caught up, CI fixed for the figures extra;
 vendor configs frozen pre-run — `docs/vendor-configs.md`;
 rater packet sent to Mehul 2026-08-25; adapters + pilot CLI landed; v1 freeze — `CLAUDE.md` + FREEZE section of
@@ -47,12 +47,13 @@ The pre-freeze A/B/C queue tables were removed 2026-08-15 — see git history
 3. **Keys from Mehul** (shell env, never the repo): `OPENAI_API_KEY` (worker billing
    behind pinned codex 0.144.5 — switch codex auth from chatgpt to API key),
    `GEMINI_API_KEY`, `SUPERMEMORY_API_KEY`.
-4. **Live smokes** (one org, 20 events, each market adapter) → fix SDK surprises
-   (cognee 1.5 has auth/multi-tenant on by default — verify `smoke` runs; Supermemory
-   settle wait). Configs are already frozen in `docs/vendor-configs.md`
-   (2026-08-27, pre-run); smokes may add only dated mechanical amendments there.
-   Also not keys-gated, runnable now: stats/figures dry-run on mock results,
-   paper skeleton + results-independent sections, preprint checklist.
+4. DONE 2026-09-02 — **Live smokes** ran against all four market adapters +
+   the RAG embedder (keys: Supermemory + Gemini in `~/.membench/keys.env`,
+   never the repo). Mechanical amendments dated in `docs/vendor-configs.md`:
+   Supermemory tag charset/nulls/hybrid search; Graphiti 0.29.3 Kuzu fixes +
+   Gemini model pins; dataset-wide finding — `sim_time` is null on every
+   event (disclosures 11–12 in `paper/draft.md`). Graphiti ingests ≈ 48 s/
+   episode → plan ≈ 2.7 h per org side.
 5. **Seed-1 smoke, all 8 systems** (+ Mem0 silo) → blind judge → item analysis.
 6. **Seeds 2–3** (K=1; variance subset: seed 1 × full-transcript + one market system × K=3).
 7. **150-pair rater packet to Mehul** — one file, one column

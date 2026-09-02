@@ -94,3 +94,13 @@ def test_end_to_end_through_runner(tmp_path):
     assert [e["name"] for e in fake.episodes] == ["E-0001", "E-0002", "E-0003"]  # once each
     assert a.counters["calls"] == 1 and "Retrieved workspace history" in w.calls[0]
     assert "standup-decision-kebab" in w.calls[0] and "allhands" not in w.calls[0]  # pre-probe
+
+
+def test_pin_group_initializes_kuzu_driver_database():
+    # graphiti-core 0.29.3: KuzuDriver never sets _database; adapter pins it
+    from types import SimpleNamespace
+
+    a = GraphitiAdapter(MockWorker(), client=FakeGraphiti())
+    a.client.driver = SimpleNamespace()
+    a._pin_group("org")
+    assert a.client.driver._database == "org"

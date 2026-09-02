@@ -114,6 +114,26 @@ vendor default in each case).
   every adapter gets from sequential ingestion), and Supermemory sends no
   `document_date`. Disclosed as a paper limitation.
 
+- **2026-09-02 — Graphiti live-smoke amendments (mechanical).** Four upstream
+  problems in the frozen `graphiti-core` 0.29.3 + embedded Kuzu path, all
+  availability, none capability: (1) `KuzuDriver` never initializes
+  `_database` though `add_episode`/`search` read it — the adapter pins it to
+  the group in use (the clone-per-database branch is a Neo4j multi-db concept
+  inapplicable to one embedded file); (2) the Kuzu FTS extension is never
+  installed/loaded and the FTS indices its search queries expect are never
+  created — the adapter runs `INSTALL FTS` / `LOAD EXTENSION FTS` and the
+  library's own `get_fulltext_indices(KUZU)` statements on the driver
+  connection at first use; (3) `execute_query` drops None-valued parameters
+  that the library's own save queries reference unconditionally
+  ("Parameter invalid_at not found") — patched to bind NULL for referenced
+  parameters and drop only unreferenced ones; (4) default Gemini models 404
+  for this key (`gemini-3-flash-preview`, small `gemini-2.5-flash-lite` "no
+  longer available to new users", embedder `text-embedding-001` not found) —
+  pinned to the benchmark's market-internal `gemini-2.5-flash` and
+  `gemini-embedding-001`, superseding the "graphiti defaults" line above.
+  Measured: ~48 s per episode ingested (Gemini extraction); an org side
+  (204 events) is ≈ 2.7 h of ingestion.
+
 ## Excluded / deferred
 
 Letta (24.3k stars, rank 5 — below the top-4 line), typed-memory reference
