@@ -164,10 +164,29 @@ explicitly out of scope for this paper.
 
 ## 8. Release
 
-Dataset (streams, twins, probes; ledger withheld per release policy),
-harness, screening evidence, partial pilot rows, reproduction commands,
-canary string, licenses. (G5 tracker: `docs/standards-audit.md` — nothing
-ships with a BLOCKING row open.)
+Built and checked by `scripts/release.py build|verify`, so the bundle is
+reproducible rather than hand-assembled and the withholding policy is
+enforced by code.
+
+- **Ships**: the SUT-facing streams, counterfactual twins, probes with their
+  scoring assertions, the frozen valid sets, Croissant 1.0 + RAI metadata,
+  `LICENSE-DATA` (CC BY 4.0; code stays MIT), `MAINTENANCE.md`, checksums, and
+  a manifest naming what was withheld and why.
+- **Withheld**: the ground-truth fact ledger (746 facts across the released
+  seeds — it records which facts are probed and which are planted
+  distractors), probe plans, realization maps, annotated scoring streams, the
+  generator, the two unscreened holdout seeds, and every rater key.
+- **Published on purpose**: the assertions. Scoring is impossible without
+  them and a benchmark that hides its criteria cannot be audited; the cost is
+  that the set is open-book by construction, which the withheld generator,
+  the holdout seeds, and the embedded canary strings are the answer to.
+- `verify` fails the release on a leaked ledger, a missing canary, a tampered
+  file, or any withheld filename. Redaction is runnable-safe: the redacted
+  bundle drives the real runner to the full frozen valid set (125 base + 125
+  twin rows on seed 1).
+
+(G5 tracker: `docs/standards-audit.md` — nothing ships with a BLOCKING row
+open; rows 1–3 closed 2026-08-15, row 9 closed here bar hosting and the DOI.)
 
 ## Appendices (planned)
 

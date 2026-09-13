@@ -175,6 +175,19 @@ propagation disproportionately vs. recall-style metrics); frozen public release 
   §2026-07-25, provenance note §2026-07-25 — all in `docs/decision-log.md`.*
 - **Twin-org cost control**: twins re-render only delta-affected events (~5–10% of the
   stream); everything else is byte-identical to the base org.
+- **Release target (decided 2026-09-14, Mehul)**: arXiv preprint first, as soon
+  as G4 lands and the prose pass is done. Croissant + RAI metadata, data
+  license, hosting and maintenance plan are built for the preprint release but
+  do not gate posting it; they gate a later Datasets & Benchmarks submission if
+  one happens.
+- **Data license (decided 2026-09-14, Mehul)**: the released dataset is
+  **CC BY 4.0** (`LICENSE-DATA`), separate from the repo's MIT license on code.
+  Attribution required, commercial use permitted — a memory vendor may evaluate
+  itself on this benchmark without asking.
+- **Human performance baseline (B4)**: deferred 2026-09-14 — decided after the
+  G4 κ is known, since the κ determines how much reference evidence the paper
+  still needs. Needs no model access, so it stays available (`docs/human-review.md`
+  Task 4).
 - **What v1 explicitly does NOT claim**: leakage/governance coverage (GateMem's
   territory; ours lands in v2 with A10 jointly scored against propagation), people/
   customer/governance work modalities, L3–L4 difficulty, model-grid track.

@@ -50,17 +50,56 @@ successor worker is pinned and anchors re-screened.
    number sourced (`paper/draft.md`, `paper/checklist.md`); deprecation
    event + reframe dated in `docs/decision-log.md`; partial pilot rows and
    the completed floor run committed as evidence (5959c26).
-2. **G4 from Mehul** — the 150-pair rater packet (sent 2026-08-25) is now
-   the paper's single missing measured number; criteria < 0.7 dropped,
-   never rewritten.
-3. **Prose pass with Mehul** on `paper/draft.md` (structure first, voice
-   second), then the checklist gate.
-4. **Release packaging** per `paper/checklist.md` + G5 tracker (canary,
-   licenses, ledger withheld, repro from clean clone).
-5. OPTIONAL, when a successor worker is affordable — **re-anchor**: pin
-   successor (rule: nearest same-provider successor; gpt-5.5 available),
-   re-run anchors seeds 1–3 under frozen gate rules, new valid set, then
-   the pilot queue (the driver + judge pipeline are ready as-is).
+1b. DONE 2026-09-14 — **Freeze reconciled** with the reframe: dated FREEZE
+   amendment (`docs/dataset-plan.md`), `AGENTS.md`, README, `docs/deferred.md`.
+   Decisions recorded: arXiv preprint first, data license CC BY 4.0, B4 held
+   until the G4 κ is known, B5 closed as superseded. Standards-audit B-table
+   closure status filled in. The G4 procedure in `docs/human-review.md` was
+   corrected — it still described a two-rater kappa + adjudication run that the
+   2026-08-15 single-author-rater downgrade had already made impossible.
+
+2. **G4 from Mehul — IN FLIGHT, the paper's single missing measured number.**
+   Fill `datasets/dev/calibration/rating-template.json` (150 ids, true/false,
+   doubt = false), save as `ratings-M.json` beside it, then:
+   `.venv/bin/python scripts/calibration.py judge-agreement
+   datasets/dev/calibration datasets/dev/calibration/ratings-M.json
+   datasets/dev/screening/org-00001 datasets/dev/screening/org-00002`.
+   Gate G4 = κ ≥ 0.75; criteria < 0.7 dropped with the count disclosed, never
+   rewritten; the result is carried whichever way it lands. Verified
+   2026-09-14 that all 150 pairs resolve to committed judge verdicts.
+
+3. DONE 2026-09-14 — **Release packaging**: `scripts/release.py build|verify`
+   (9 tests). Ships streams, twins, probes, valid sets, Croissant 1.0 + RAI
+   metadata, CC BY 4.0 `LICENSE-DATA`, `MAINTENANCE.md` (re-anchoring as the
+   maintenance contract), checksums, manifest. Withholds the ground-truth
+   ledger (`org.json.facts`, 746 across the released seeds), probe plans,
+   realization maps, annotated streams, holdout seeds, rater keys. `verify`
+   fails on a leaked ledger, a missing canary, a tampered file, or any
+   withheld filename. Proven runnable: the redacted bundle drives the real
+   Runner to 125 base + 125 twin rows on seed 1, matching the frozen valid
+   set. Remaining: hosting target + DOI (item 6).
+
+4. **Prose pass with Mehul** on `paper/draft.md` — abstract is a stub, §1/§2/§7
+   are bullets, §2 needs real citations (the ~20 arXiv ids in
+   `docs/standards-audit.md` are the pool). Structure first, voice second,
+   then `unslop` → `mehul-voice`. §4.4 waits on item 2; everything else can be
+   written now.
+
+5. **Verification gate** (`paper/checklist.md`): regenerate the floor numbers
+   from committed raw outputs so nothing in the paper is hand-typed, grep the
+   draft for surviving comparative language, confirm all 12 disclosures appear
+   in prose, repro from a clean clone.
+
+6. **Hosting + DOI** — pick the host (Zenodo gives a DOI; HuggingFace gives
+   reach), then replace the `DOI_PLACEHOLDER` in `scripts/release.py`.
+
+7. **B4 decision** (human performance baseline, ~20 probes × 2 people × 2h, no
+   model access) — taken once the G4 κ is known.
+
+8. OPTIONAL, when a successor worker is affordable — **re-anchor**: pin
+   successor by the stated rule, re-run anchors seeds 1–3 under frozen gate
+   rules, new valid set, then the pilot queue (the driver + judge pipeline are
+   ready as-is). Procedure: FREEZE amendment + released `MAINTENANCE.md`.
 
 ## Standing cautions
 

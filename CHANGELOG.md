@@ -23,6 +23,19 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning: Se
   across org-00001 and org-00002.
 
 ### Added
+- Release bundler (2026-09-14): `scripts/release.py build|verify` closes
+  standards-audit B9 bar hosting and the DOI. Ships streams, twins, probes,
+  valid sets, Croissant 1.0 + RAI metadata, CC BY 4.0 `LICENSE-DATA`,
+  `MAINTENANCE.md` (re-anchoring as the maintenance contract), checksums and a
+  manifest; withholds the ground-truth ledger, probe plans, realization maps,
+  annotated streams, holdout seeds and rater keys. `verify` fails on a leaked
+  ledger, a missing canary, a tampered file or any withheld filename. The
+  redacted `org.json` keeps the witness index the runner needs — verified by
+  driving the real runner over the built bundle to 125 base + 125 twin rows on
+  seed 1, matching the frozen valid set. 9 tests.
+- Standing decisions recorded 2026-09-14: arXiv preprint first; dataset
+  licensed CC BY 4.0 separately from the repo's MIT; B4 (human baseline) held
+  until the G4 κ is known.
 - Unslop style pass (2026-08-28): README and `docs/vision.md` rewritten for
   plain prose; no factual or numeric change (audit found no dead code; dated
   records left byte-identical).

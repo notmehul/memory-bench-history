@@ -11,6 +11,9 @@ datasets/**/render3/
 datasets/**/org.prev.json
 datasets/**/events.prev.jsonl
 
+# built release bundles (regenerable: scripts/release.py build)
+/dist/
+
 # agent scratch that must never land in the repo
 /_*
 /.tmp*

@@ -38,6 +38,20 @@ open.
 | 8 | New benchmark unanchored to the field (BenchBench) | Benchmark agreement testing: rank-correlation of pilot rankings vs published LoCoMo/LongMemEval results where available; divergence on rungs 2–3 is the expected, prespecified finding |
 | 9 | Release compliance (NeurIPS E&D: Croissant + RAI metadata, license, hosting, maintenance plan; GateMem's tiered leaderboard verification) | Added to the G5 release gate as hard requirements |
 
+### Closure status (updated 2026-09-14; the table above is the dated adoption record, unedited)
+
+| # | Status |
+|---|---|
+| 1 | CLOSED 2026-08-15 — 20-decoy audit, 2/41 measured and 0/39 adjudicated (`datasets/dev/screening/judge-decoys/audit.json`). No longer BLOCKING |
+| 2 | CLOSED 2026-08-15 — stats protocol prespecified and implemented (`scripts/score_sut.py`, `docs/power-analysis.md`). No longer BLOCKING |
+| 3 | CLOSED 2026-08-15 — scorer-exploit audit rebuilt on the frozen canon (`datasets/dev/screening/exploit-audit/`). No longer BLOCKING |
+| 4 | BUILT, NOT RUN — grep-agent baseline is registered and frozen; the comparative run died with the worker (FREEZE amendment 2026-09-14) |
+| 5 | BUILT, NOT RUN — embedding pinned and reported (`gemini-embedding-001`); the ablation needs runs |
+| 6 | BUILT, NOT RUN — cost columns are implemented in the runner and carried on every row |
+| 7 | NOT TRIGGERED 2026-09-14 — right-of-reply attaches to published vendor numbers and v1 publishes none; configs stay frozen and dated in `docs/vendor-configs.md` |
+| 8 | DEFERRED 2026-09-14 — no rankings to correlate without comparative runs |
+| 9 | IN PROGRESS 2026-09-14 — `scripts/release.py build/verify` produces the bundle with Croissant 1.0 + RAI metadata, CC BY 4.0 data license, maintenance plan, checksums, and a verifier that fails on a leaked ledger, a missing canary, a tampered file, or any withheld filename. Remaining: hosting target + DOI |
+
 ## C. Open decisions (owner: Mehul)
 
 1. **Human baseline on a probe subsample** (Bowman & Dahl; BetterBench): have 1–2 humans do ~20 probes with ceiling context to report a human reference band. Recommended; cost is a few hours of two people's time.

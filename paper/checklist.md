@@ -20,9 +20,15 @@ can no longer produce (decision-log 2026-09-14).
       rank 5) — kept: it documents the released harness configs.
 - [ ] No "expected to win" language anywhere; no single aggregate score
       anywhere, including the abstract.
-- [ ] Keys, ledger, `packet-key.json` absent from the release artifact.
-- [ ] Licenses: vendor SDK ToS reviewed for benchmark-publication clauses.
-- [ ] Canary string embedded in released dataset files.
+- [ ] Keys, ledger, `packet-key.json` absent from the release artifact —
+      enforced by `scripts/release.py verify`, which fails on a leaked ledger,
+      a missing canary, a tampered file, or any withheld filename. Run it on
+      the exact bundle that ships, not on a rebuild.
+- [ ] Canary string embedded in released dataset files — same check.
+- [ ] Data license (CC BY 4.0) and code license (MIT) both present and
+      distinguished; vendor SDK ToS reviewed for benchmark-publication clauses.
+- [ ] Hosting target chosen and the DOI placeholder in `scripts/release.py`
+      replaced with the real one before the bundle is published.
 - [ ] Reproduction commands tested from a clean clone
       (`uv sync --extra adapters --extra market --extra figures`).
 
