@@ -5,13 +5,14 @@ system, and withholds what would let them reverse-engineer the answers or
 contaminate the holdout seeds.
 
 Shipped, per public seed: the SUT-facing event stream (`events.jsonl`), the
-probe set with its assertions (`probes.jsonl` — criteria are required for
+probe set with its assertions (`probes.jsonl`; criteria are required for
 scoring, and an open benchmark publishes them), the frozen valid set
 (`g3-report.json`), and the counterfactual twin's stream. Plus Croissant +
 RAI metadata, the data license, a maintenance plan, and checksums.
 
-Withheld: the ground-truth fact ledger (`org.json`'s `facts` — 126 facts per
-seed carrying which facts are probed vs planted distractors), the probe plans
+Withheld: the ground-truth fact ledger (`org.json`'s `facts`, 126 facts per
+seed recording which are probed and which are planted distractors), the
+probe plans
 (`plan.json`), the template-to-prose provenance (`realization-map.json`), the
 annotated scoring stream (`events.annotated.jsonl`), the generator itself, the
 unscreened holdout seeds 4-5, and every rater key. `org.json` still ships in
@@ -130,7 +131,7 @@ def _croissant(out: Path, files: list[dict]) -> dict:
             "A screened benchmark for organizational memory in agent harnesses. "
             "Three simulated software organizations, each a multi-week stream of "
             "meetings, messages and documents delivered per principal, with "
-            "behavioural work-task probes injected at eval time and scored "
+            "behavioral work-task probes injected at eval time and scored "
             "against machine-checkable assertions. Every probe instance is "
             "paired with a counterfactual twin: an instance is credited only if "
             "both the base and twin sides pass, so knowledge answerable from "
@@ -315,7 +316,7 @@ party can do it without asking us.
    ceiling, and twin-ceiling for every instance.
 3. **Apply the frozen gate rules mechanically.** No criterion edits, no
    adjudications, no re-judging of anything that already has a verdict. Task
-   text must stay byte-identical — verify with the prompt-equality check
+   text must stay byte-identical. Verify with the prompt-equality check
    before reusing any cached output.
 4. **Publish the new valid set as its own thing.** It will not be the same 371
    instances, and that is the expected result, not a defect: probe validity is
@@ -347,17 +348,16 @@ Issues and correspondence through the repository.
 
 def _readme(manifest: dict) -> str:
     n = manifest["counts"]
-    return f"""# memory-bench v{VERSION} — public release
+    return f"""# memory-bench v{VERSION}, public release
 
 A screened benchmark for organizational memory in agent harnesses: does a
 memory system keep a rule that was stated once, drop a fact that was
 superseded, and pick the right one when tiers conflict?
 
-**{n['valid_instances']} valid paired probe instances** across
-{n['public_seeds']} simulated organizations, {n['probes']} probes, and
-{n['events']} events. Scored as pair credit — an instance counts only if the
-base task and its counterfactual twin both pass — so anything answerable from
-priors earns nothing.
+**{n['valid_instances']} valid paired probe instances** across {n['public_seeds']} simulated
+organizations, drawn from {n['probes']} probes over {n['events']} events. Scored as pair
+credit: an instance counts only if the base task and its counterfactual twin
+both pass, so anything answerable from priors earns nothing.
 
 ## Layout
 
@@ -383,7 +383,7 @@ The ground-truth fact ledger ({n['facts_withheld']} facts across the public
 seeds) stays private: it records which facts are probed and which are planted
 distractors, so publishing it would let a system learn the generator's
 planting patterns rather than remember the organization. The generator and the
-two unscreened holdout seeds are withheld for the same reason — they are the
+two unscreened holdout seeds are withheld for the same reason. They are the
 answer if the public seeds are ever contaminated.
 
 The probe assertions ARE published. Scoring is impossible without them, and an
@@ -395,10 +395,10 @@ stream are how you detect one that trained on this data.
 ## A warning about the anchors
 
 Every instance's validity was established under one pinned worker model, which
-its provider has since deprecated. Probe validity is task-model-relative — we
+its provider has since deprecated. Probe validity is task-model-relative: we
 measured 37/54 versus 17/54 cluster survival across two workers under
-identical rules — so **the valid set shipped here is valid relative to that
-worker, not in the abstract**. Running a different worker without re-screening
+identical rules. **The valid set shipped here is valid relative to that
+worker, not in the abstract.** Running a different worker without re-screening
 produces numbers that do not mean what they appear to mean. `MAINTENANCE.md`
 gives the procedure.
 
@@ -547,7 +547,7 @@ def cmd_verify(args) -> int:
     if failures:
         for f in failures:
             print(f"FAIL {f}")
-        print(f"\n{len(failures)} problem(s) — release is NOT shippable")
+        print(f"\n{len(failures)} problem(s); release is NOT shippable")
         return 1
     print(f"OK release v{manifest['version']}: {len(manifest['files'])} files, "
           f"checksums match, ledger withheld, canaries present, metadata complete")

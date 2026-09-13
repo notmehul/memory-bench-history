@@ -16,7 +16,7 @@ standardize away.
 
 It has one structural consequence: **organizational coherence cannot live in
 the models.** The weights are plural, vendor-owned, and chosen per person. The
-only substrate every harness can share is the memory layer. If continual
+only thing every harness can share is the memory layer. If continual
 learning of organizational knowledge (decisions, preferences, working rules,
 outcomes, commitments) happens anywhere, it happens in a harness, not in
 weights. The memory system is not an accessory to an org's agents; it is the
@@ -42,8 +42,8 @@ current epoch of truth.
 This is testable, and the pilot baselines instantiate the competing
 implementations directly. "Pool everything" is the long-context and naive-RAG
 baselines; typed, scoped harnesses are the structured alternative. The
-benchmark asks which substrate actually produces coherent organizational
-behavior, and at what scale the pooled substrate stops working.
+benchmark asks which design actually produces coherent organizational
+behavior, and at what scale the pooled version stops working.
 
 ## 3. The capability ladder
 
@@ -76,7 +76,7 @@ propagation latency across a silo boundary is infinite.
 
 The pilot measures this directly with a **silo ablation**: the same memory
 system run once as per-principal isolated stores and once as a shared,
-visibility-aware store. The delta is the measured value of a shared substrate.
+visibility-aware store. The delta is the measured value of sharing.
 v1 captures only the propagation *benefit* of sharing; the governance *cost*,
 leakage, arrives with A10 in v2. The two are adversarial by design, and are
 always reported jointly once both exist.
@@ -120,7 +120,7 @@ The framing above is positioning; claims stop at what is instantiated.
 - **v3, heterogeneous organization**: per-principal consumer profiles
   (synthetic profiles differing in system prompt, specialization, and context
   budget, not product clones, which date), agent-authored artifacts as an
-  ingestion modality, and delegated authority (what weight an agent's
+  ingestion channel, and delegated authority (what weight an agent's
   assertion carries on behalf of its principal) as an A6 extension.
 - **Exploratory metric, cross-principal coherence**: behavioral agreement
   across instances of one probe cluster issued via different principals;

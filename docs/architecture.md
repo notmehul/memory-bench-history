@@ -1,7 +1,7 @@
-# memory-bench — Architecture & Design
+# memory-bench: architecture and design
 
 Status: design frozen (2026-07-14). Contracts live in `docs/specs/`.
-**v1 measures a subset of this design** — archetypes A1/A2/A4/A7 with pair
+**v1 measures a subset of this design**: archetypes A1/A2/A4/A7 with pair
 credit only (v1 pilot FREEZE, 2026-08-15, `docs/dataset-plan.md`); everything
 else here is specified-but-deferred (`docs/deferred.md`) and v1 claims none of it.
 
@@ -11,17 +11,18 @@ Agents working inside organizations need the right bits of information at the ri
 scope at the right time: the user's personal preferences, the team's conventions, the
 org's decisions and policies. Existing memory benchmarks are single-principal and
 recall-oriented; none measure whether a memory system correctly handles **tiered scope,
-authority, propagation, supersession, and rollback** — the dynamics that constitute
-continual learning when implemented as a harness rather than weight updates.
+authority, propagation, supersession, and rollback**. Those are the dynamics that
+constitute continual learning when it is implemented in a harness rather than in
+weight updates.
 
-memory-bench evaluates a memory system (the "SUT" — system under test) by embedding it
+memory-bench evaluates a memory system (the "SUT", or system under test) by embedding it
 in a simulated organization and observing agent *behavior*, never memory internals.
 
 > Addendum 2026-07-25: organizations are getting smaller while agents per person
 > multiply, and each person picks a specialized harness (coding agent, creative
 > tool, generalist assistant) precisely for its specialization. Organizational
-> coherence therefore cannot live in the models — the weights are plural and
-> vendor-owned — only in the memory layer every harness shares. Full argument:
+> coherence therefore cannot live in the models, because the weights are plural
+> and vendor-owned. It lives in the memory layer every harness shares. Full argument:
 > `vision.md` §1.
 
 ## 2. Positioning vs. prior work (validated 2026-07-14)
@@ -36,7 +37,7 @@ in a simulated organization and observing agent *behavior*, never memory interna
 
 Defensible claim: **first benchmark of tiered, typed, longitudinal memory dynamics in a
 simulated organization**, with governance measured jointly against propagation (the two
-are adversarial — that tension is a core design feature). Access-control-alone is
+are adversarial, and that tension is a design feature). Access-control-alone is
 GateMem's territory; we cite it and go wider.
 
 > Addendum 2026-07-25: the benchmark operationalizes the "company as mini AGI"
@@ -49,15 +50,15 @@ GateMem's territory; we cite it and go wider.
 Every ground-truth fact has coordinates on six axes (full schema:
 `specs/ledger-schema.md`):
 
-1. **Type** — preference, decision, working_rule, reference, outcome, procedure,
+1. **Type**: preference, decision, working_rule, reference, outcome, procedure,
    commitment, relationship. Each type has distinct update semantics and distinct
    "correct use."
-2. **Tier** — personal, team, project (cross-team), org, external (client/vendor).
-3. **Visibility** — private, need_to_know, team_confidential, org_public.
-4. **Authority** — author role × capacity (formal_decision, directive, opinion,
+2. **Tier**: personal, team, project (cross-team), org, external (client/vendor).
+3. **Visibility**: private, need_to_know, team_confidential, org_public.
+4. **Authority**: author role × capacity (formal_decision, directive, opinion,
    speculation). An intern's musing ≠ a CTO's ruling.
-5. **Temporality** — valid_from, valid_until, superseded_by, decay class.
-6. **Explicitness** — stated, implied, distributed (across multiple events). Primary
+5. **Temporality**: valid_from, valid_until, superseded_by, decay class.
+6. **Explicitness**: stated, implied, distributed (across multiple events). Primary
    difficulty knob.
 
 The ledger induces a computable **expected belief state** `B(principal, t)`: the set of
@@ -69,7 +70,7 @@ t. All scoring derives from `B`.
 The generator and probes span seven organizational work modalities. v1 covers the
 first four; the taxonomy exists from day one so coverage gaps are explicit:
 
-1. Communication (email, chat, meetings) — primary ingestion surface *(v1)*
+1. Communication (email, chat, meetings): the primary ingestion channel *(v1)*
 2. Document work (proposals, specs, reports) *(v1)*
 3. Engineering (PR review, incidents, architecture decisions) *(v1)*
 4. Planning (sprints, OKRs, roadmaps) *(v1)*
@@ -85,37 +86,37 @@ the metric it feeds. Orthogonally to the groups below, each archetype feeds exac
 one rung of the capability ladder (`vision.md` §3; added 2026-07-25).
 
 **Propagation & application**
-- A1 **Decision ripple** — decision made in a meeting principal P didn't attend; probe
+- A1 **Decision ripple**: decision made in a meeting principal P didn't attend; probe
   P's agent N sessions later. → propagation latency, application accuracy. *(v1)*
-- A2 **Silent rule** — working rule stated once; probe 30+ events later, no reminder.
+- A2 **Silent rule**: working rule stated once; probe 30+ events later, no reminder.
   → proactive application. *(v1)*
-- A3 **Commitment resurfacing** — promise with deadline; must surface at the right
+- A3 **Commitment resurfacing**: promise with deadline; must surface at the right
   time unprompted. → prospective recall. *(v2)*
 
 **Conflict & precedence**
-- A4 **Tier collision** — personal vs team vs org facts conflict; context determines
+- A4 **Tier collision**: personal vs team vs org facts conflict; context determines
   the winner. → scope-resolution accuracy. *(v1)*
-- A5 **Unresolved contradiction** — equal-authority contradictory statements; correct
+- A5 **Unresolved contradiction**: equal-authority contradictory statements; correct
   behavior is flagging, not picking. → conflict-surfacing rate. *(v2)*
-- A6 **Authority gradient** — same claim at different authority/capacity; formal
+- A6 **Authority gradient**: same claim at different authority/capacity; formal
   decision must beat louder opinion. → authority-weighted accuracy. *(v2)*
 
 **Time & change**
-- A7 **Supersession chain** — fact updated 2–3 times; probes at each epoch plus a
+- A7 **Supersession chain**: fact updated 2–3 times; probes at each epoch plus a
   historical probe where the *old* fact is correct. → staleness + history retention.
   *(v1)*
-- A8 **Correction & rollback** — wrong fact spreads to several principals, then one
+- A8 **Correction & rollback**: wrong fact spreads to several principals, then one
   correction; probe everywhere it spread. → rollback fidelity. *(v2)*
-- A9 **Departure / role change** — formal decisions persist, personal authority
+- A9 **Departure / role change**: formal decisions persist, personal authority
   decays, private tier seals. → decay correctness. *(v2)*
 
 **Boundaries & growth**
-- A10 **Need-to-know leak trap** — adversarial and *innocent-adjacent* probes against
-  confidential facts. → leakage rate. *(v2; overlaps GateMem — our novelty is jointly
+- A10 **Need-to-know leak trap**: adversarial and *innocent-adjacent* probes against
+  confidential facts. → leakage rate. *(v2; overlaps GateMem, but our novelty is jointly
   scoring it against propagation)*
-- A11 **Onboarding bootstrap** — new principal joins mid-timeline with an empty agent.
+- A11 **Onboarding bootstrap**: new principal joins mid-timeline with an empty agent.
   → bootstrap latency. *(v2)*
-- A12 **Outcome learning** — strategy tried, outcome recorded, similar situation
+- A12 **Outcome learning**: strategy tried, outcome recorded, similar situation
   recurs; recommendations must reflect the result. → experience utilization. *(v2)*
 
 ## 6. Scientific methodology (never cut from any version)
@@ -145,9 +146,9 @@ one rung of the capability ladder (`vision.md` §3; added 2026-07-25).
    memory harness is the only variable. A secondary grid track varies the consumer
    model to test portability: memory-system rankings should be invariant to the
    model/harness consuming the memory (repurposed 2026-07-25; previously framed as
-   memory-compensating-for-model-quality). Probe validity is task-model-relative —
+   memory-compensating-for-model-quality). Probe validity is task-model-relative:
    Phase 3 measured ceiling-gate survival of 17/54 (gpt-5.4-mini) vs 37/54
-   (gpt-5.4) under the identical strict rule — so each added consumer model
+   (gpt-5.4) under the identical strict rule, so each added consumer model
    requires its own ceiling/floor screening pass.
 7. **Long-context as an honest baseline.** "Stuff the full transcript in context" is a
    real competitor. Timelines are sized so the full transcript is impractical or
@@ -158,10 +159,10 @@ one rung of the capability ladder (`vision.md` §3; added 2026-07-25).
 Four independent knobs: org scale, distractor density, explicitness
 (stated → implied → distributed), hop count (single fact → cross-tier composition).
 
-- **L1** — 1 team, 2 weeks, stated facts, 1-hop
-- **L2** — 2 teams, 4 weeks, stated + implied, 1–2 hop
-- **L3** — 2–3 teams, 8 weeks, implied + distributed, cross-tier composition
-- **L4** — multi-team org, a quarter, distributed facts, adversarial probes
+- **L1**: 1 team, 2 weeks, stated facts, 1-hop
+- **L2**: 2 teams, 4 weeks, stated + implied, 1–2 hop
+- **L3**: 2–3 teams, 8 weeks, implied + distributed, cross-tier composition
+- **L4**: multi-team org, a quarter, distributed facts, adversarial probes
 
 Published results always break out by level: *where* a system breaks is the finding.
 

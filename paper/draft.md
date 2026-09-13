@@ -14,8 +14,8 @@ artifacts they came from. One value is outstanding: the G4 κ, marked
 An organization's agents no longer run on one model: each person picks the
 harness built for their work, and picks it *because* it is specialized. The
 weights organizational knowledge must reach are therefore plural and
-vendor-owned, so coherence cannot live in them — the memory layer is the only
-substrate every harness shares. Of eleven published memory benchmarks we could
+vendor-owned, so coherence cannot live in them. The memory layer is the only
+place every harness can reach. Of eleven published memory benchmarks we could
 verify (§2), none measures whether a memory system holds that knowledge with
 the right scope, authority, and freshness.
 
@@ -88,7 +88,7 @@ and authority so that conflicts have correct rather than arbitrary
 resolutions, and facts are invalidated over time rather than merely
 accumulated.
 
-The gap is not only in coverage. §2 surveys the field's measurement failures —
+The gap is not only in coverage. §2 surveys the field's measurement failures:
 answers guessable from priors, corpora answerable without memory at all,
 corrupted ground truth producing impossible ceilings, judges that accept
 topical waffle, protocols loose enough to support score disputes between
@@ -103,7 +103,7 @@ We claim that the released dataset measures organizational memory behavior at
 rungs 1–3 of the ladder, for a two-team simulated software organization at L1–
 L2 scale, under a stated worker pin; and we report the measurements that
 support or qualify that claim, including the ones that qualify it. We do not
-claim that any memory system is better than another — this paper publishes no
+claim that any memory system is better than another. This paper publishes no
 comparative system numbers. We do not claim to measure "mini-AGI-ness," and
 the external-validity claim stops at the organization type instantiated;
 industry breadth enters a later version as a designed factor rather than by
@@ -137,7 +137,7 @@ once it binds was never a gate (`datasets/dev/org-0000N/g3-report.json`,
    result existed.
 
 3. **A validity study** (§4): the measurements that test whether the instrument
-   works — floor validation, the task-model-relativity of probe validity,
+   works: floor validation, the task-model-relativity of probe validity,
    harness sensitivity, judge false-accept rate, and judge–human agreement.
 
 4. **A durability procedure** (§4.6): what it takes to keep an agentic
@@ -172,7 +172,8 @@ prespecified pilot, carrying no comparative claim.
 - Probe archetypes by capability-ladder rung: A4, A7 (rung 1), A1 (rung 2),
   A2 (rung 3) (`docs/specs/probe-spec.md` v0.4.3, `docs/vision.md` §3).
 - Pair credit: an instance passes only if base AND twin sides pass
-  (`docs/specs/probe-spec.md` §4) — guards against answering from priors.
+  (`docs/specs/probe-spec.md` §4). This is what stops a system answering
+  from priors.
 - Streams carry no timestamps (`sim_time` null throughout; §7 item 11):
   temporal order is positional.
 
@@ -192,7 +193,9 @@ prespecified pilot, carrying no comparative claim.
   codex-cli 0.144.5); §4.2–4.3 give the measured reasons a pin is
   load-bearing, §4.6 what happens when the pinned worker dies.
 
-## 4. Validity study — THE RESULTS CORE (all numbers already measured)
+## 4. Validity study: the results core
+
+Every number below was already measured; none of it needed the deprecated worker.
 
 ### 4.1 Gate results
 - Per-gate outcomes by seed, failures carried as FAILs never repaired
@@ -214,7 +217,7 @@ prespecified pilot, carrying no comparative claim.
 ### 4.4 Judge validation
 - 20-decoy false-accept audit: **2/41 measured, 0/39 adjudicated**
   (`datasets/dev/screening/judge-decoys/audit.json`), rubric v2.
-- G4 human agreement: 150-pair author-rater packet — number lands when the
+- G4 human agreement: 150-pair author-rater packet. The number lands when the
   packet returns; criteria < 0.7 dropped, never rewritten (single
   author-rater downgrade disclosed, §7 item 1).
 
@@ -248,7 +251,7 @@ prespecified pilot, carrying no comparative claim.
   hand-typed numbers).
 - Live-smoke findings (2026-09-02) as evidence the harness meets real
   vendor APIs: Supermemory tag/nulls/hybrid-search amendments, Graphiti
-  0.29.3 embedded-Kuzu repairs — all availability-only, dated.
+  0.29.3 embedded-Kuzu repairs. All availability-only, dated.
 
 ## 6. Partial pilot record (provenance, not results)
 
@@ -279,7 +282,7 @@ prespecified pilot, carrying no comparative claim.
 8. Graphiti runs embedded Kuzu (deprecated upstream); adapter-side repairs
    documented.
 9. Simulated orgs, not real logs; 3 screened seeds; single worker model.
-10. Vendor right-of-reply: not triggered — this paper publishes no vendor
+10. Vendor right-of-reply: not triggered. This paper publishes no vendor
     numbers; the procedure remains specified for any re-anchored evaluation.
 11. Event streams carry no timestamps; temporal order is positional;
     screening anchors never saw rendered timestamps.
@@ -297,7 +300,7 @@ enforced by code.
   `LICENSE-DATA` (CC BY 4.0; code stays MIT), `MAINTENANCE.md`, checksums, and
   a manifest naming what was withheld and why.
 - **Withheld**: the ground-truth fact ledger (746 facts across the released
-  seeds — it records which facts are probed and which are planted
+  seeds. It records which facts are probed and which are planted
   distractors), probe plans, realization maps, annotated scoring streams, the
   generator, the two unscreened holdout seeds, and every rater key.
 - **Published on purpose**: the assertions. Scoring is impossible without
@@ -309,7 +312,7 @@ enforced by code.
   bundle drives the real runner to the full frozen valid set (125 base + 125
   twin rows on seed 1).
 
-(G5 tracker: `docs/standards-audit.md` — nothing ships with a BLOCKING row
+(G5 tracker: `docs/standards-audit.md`. Nothing ships with a BLOCKING row
 open; rows 1–3 closed 2026-08-15, row 9 closed here bar hosting and the DOI.)
 
 ## Appendices (planned)

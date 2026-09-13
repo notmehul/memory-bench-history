@@ -9,8 +9,9 @@ and org-level knowledge with the right scope, authority, and freshness.
 Continual learning for LLM agents is largely a harness problem, not a weights
 problem. Preferences, decisions, working rules, outcomes, and commitments can
 be learned, updated, superseded, and rolled back by a memory system that lives
-outside the weights. No existing benchmark measures whether a memory system
-does this correctly across the tiers of a real organization. This one does.
+outside the weights. Of the eleven published memory benchmarks we could
+verify, none measures whether a memory system does this correctly across the
+tiers of an organization. This one is built to.
 
 Organizations are getting smaller while each person's agents live in different
 specialized harnesses. The memory layer is the only place organizational
@@ -96,7 +97,7 @@ utilization) is specified in `docs/architecture.md` and deferred to v2
 
 v1 frozen 2026-08-15; deliverable amended 2026-09-14 (`docs/dataset-plan.md`
 FREEZE section + amendment). **v1 ships as a dataset, a construction
-methodology, and a validity study — not a leaderboard.** The provider
+methodology, and a validity study, not a leaderboard.** The provider
 deprecated the pinned worker (gpt-5.4) mid-pilot, which ends comparative
 evaluation until a successor is pinned and the anchors re-screened; that
 re-anchoring procedure is documented and released as the maintenance contract.
@@ -107,10 +108,10 @@ never repaired) under probe-spec v0.4.3 and judge rubric v2, screened with the
 pinned worker (gpt-5.4, effort medium, codex-cli 0.144.5) and fully blinded
 judging. Seeds 4–5 are unscreened holdouts.
 
-The released harness registers ten system configs — no-memory, full-transcript,
+The released harness registers ten system configs: no-memory, full-transcript,
 grep-agent, naive-RAG with and without a lexical ablation, the top-4 market
 systems by GitHub stars (Mem0, Cognee, Graphiti, Supermemory), and a Mem0 silo
-ablation — with every per-system config frozen before any live run. Of these,
+ablation. Every per-system config was frozen before any live run. Of these,
 only the no-memory floor completed on seed 1 before the deprecation; it is
 reported as instrument validation (pair credit ≈ 0 on every rung), and the
 partial rows for the other baselines are released as provenance carrying no

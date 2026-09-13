@@ -22,6 +22,21 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning: Se
   the 150-pair packet resolves to committed judge verdicts for all 150 pairs
   across org-00001 and org-00002.
 
+### Changed
+- Unslop pass on the public surfaces (2026-09-14): README, `paper/draft.md`,
+  `paper/checklist.md`, `docs/vision.md`, `docs/architecture.md`, and the
+  release-bundle strings in `scripts/release.py`. Em dashes removed (67 across
+  the six files), abstract metaphor nouns replaced with concrete words
+  ("substrate" → "the only place every harness can reach"), headings moved to
+  sentence case, definition-list dashes converted to colons. Prose only; every
+  number and claim unchanged, verified by `tests/test_paper_numbers.py`. Dated
+  records (decision-log, validation-report, CHANGELOG) deliberately untouched:
+  evidence is not restyled after the fact. `tests/test_prose_style.py` (30
+  tests) keeps the surfaces clean.
+- README claim scoped to match the abstract: "No existing benchmark measures…"
+  became "Of the eleven published memory benchmarks we could verify, none
+  measures…".
+
 ### Added
 - G4 rater sheet (2026-09-14): `scripts/calibration_sheet.py export|import`
   turns the blinded 150-pair packet into an .xlsx (TRUE/FALSE dropdown, frozen
