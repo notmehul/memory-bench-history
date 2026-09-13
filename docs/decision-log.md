@@ -356,3 +356,33 @@ Contents:
 > `python scripts/screen_probes.py manifest datasets/dev/org-0000N
 > datasets/dev/org-0000N-twin <work>/sN`, then `run`, blinded
 > `judge-export` → Claude judge → `judge-import`, `report`.
+
+## 2026-09-14 — worker deprecation; v1 deliverable reframed (Mehul, in-session)
+
+> **Event.** Pilot runs began 2026-09-02 under the pinned worker (gpt-5.4,
+> effort medium, codex-cli 0.144.5). Runs stalled 2026-09-04; on
+> 2026-09-14 the provider returns a hard 400 for gpt-5.4 on
+> ChatGPT-account codex, and Mehul reports gpt-5.4 removed from the APIs
+> accessible to him. The pinned worker is unreachable through any
+> available billing path.
+>
+> **Completed before the stall** (commit 5959c26): nomemory seed-1 both
+> sides, 250 blinded verdicts (claude-sonnet-5-blinded-v2), scored — rung
+> 1 pair credit 0.022 (95% CI ±0.040), rung 2 0.118 (±0.217), rung 3
+> 0.000. Partial resumable rows: fulltranscript 125/109, grep 125/46,
+> rag 0/34, rag-lexical 125/29 (base/twin non-empty of 125).
+>
+> **Decision (Mehul).** Token/model constraints rule out re-anchoring and
+> re-running now. The v1 deliverable is reframed from "pilot numbers" to
+> **dataset + construction methodology + validity study**: release the
+> screened dataset, publish the already-measured validity evidence
+> (model-relativity 37/54 vs 17/54; harness agreement 65%; decoy audit
+> 2/41 and 0/39; floor ≈ 0 under pair credit) and document the
+> re-anchoring procedure as the release's maintenance contract. Partial
+> gpt-5.4 rows are released as provenance, never as comparative results.
+> Comparative evaluation happens if/when a successor worker is pinned and
+> the anchors are re-screened under the frozen gate rules (task text
+> byte-identical; no criterion edits).
+>
+> All other freeze terms stand: dataset as-is, no criterion edits, no new
+> gates, judge and rubric unchanged, never a single aggregate.

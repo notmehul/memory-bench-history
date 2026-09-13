@@ -5,6 +5,13 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning: Se
 
 ## [Unreleased]
 
+### Changed
+- v1 deliverable reframed (2026-09-14, decision-log): gpt-5.4 deprecated
+  provider-side mid-pilot; paper is now dataset + construction methodology +
+  validity study (`paper/draft.md` rewritten, checklist superseded, status
+  queue replaced). Floor run stands as validity evidence; partial pilot rows
+  released as provenance only.
+
 ### Added
 - Unslop style pass (2026-08-28): README and `docs/vision.md` rewritten for
   plain prose; no factual or numeric change (audit found no dead code; dated
