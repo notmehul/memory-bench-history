@@ -1,39 +1,160 @@
 # memory-bench: A Screened Benchmark Dataset and Validity Study for Organizational Memory in Agent Harnesses
 
-**Status: consolidated skeleton, 2026-09-14.** Reframed from "pilot numbers"
-to "dataset + construction methodology + validity study" after the pinned
-worker (gpt-5.4) was deprecated provider-side mid-pilot (decision-log
-2026-09-14; Mehul's explicit direction in-session). Every factual claim
-carries its source so the prose pass can be checked line by line. Prose
-style pass (with Mehul) comes after structure settles.
+**Status, 2026-09-14.** Abstract and §1 are drafted prose; §2–§8 are still
+sourced outlines. Reframed from "pilot numbers" to "dataset + construction
+methodology + validity study" after the pinned worker (gpt-5.4) was deprecated
+provider-side mid-pilot (`docs/decision-log.md` §2026-09-14). Every factual
+claim carries its source so the prose can be checked line by line;
+`tests/test_paper_numbers.py` asserts the headline numbers still match the
+artifacts they came from. One value is outstanding: the G4 κ, marked
+**[G4 pending]** below. Voice pass comes after the structure settles.
 
-## Abstract (stub)
+## Abstract
 
-One paragraph: premise (org coherence can't live in plural vendor weights →
-memory layer is the shared substrate); what we release (event-stream
-benchmark: 3 screened simulated orgs, 371 valid paired probe instances,
-counterfactual twins, hidden ground-truth ledgers, 2 unscreened holdout
-seeds, full harness); the validity study (floor ≈ 0 under pair credit;
-probe validity is task-model-relative; harness sensitivity 65%; judge
-false-accept 2/41); and the durability finding (the pinned worker was
-deprecated mid-study; we document the re-anchoring procedure that makes
-the dataset outlive any single worker). Comparative system numbers are
-explicitly out of scope for this paper.
+An organization's agents no longer run on one model: each person picks the
+harness built for their work, and picks it *because* it is specialized. The
+weights organizational knowledge must reach are therefore plural and
+vendor-owned, so coherence cannot live in them — the memory layer is the only
+substrate every harness shares. Of eleven published memory benchmarks we could
+verify (§2), none measures whether a memory system holds that knowledge with
+the right scope, authority, and freshness.
+
+We release memory-bench, an instrument for that question, with the evidence
+that it measures what it claims. The dataset is three simulated software
+organizations: multi-week event streams delivered event-by-event to each
+principal who witnessed them, a hidden ground-truth ledger, and behavioral
+work tasks injected at evaluation time rather than quiz questions. Every probe
+instance is paired with a counterfactual twin in which the probed fact differs
+and the rest of the stream is byte-identical; an instance is credited only when
+both sides pass, so an answer available from prior knowledge earns nothing.
+Across three seeds, 371 instances survive a five-gate screening pipeline under
+blinded judging; two further seeds are withheld unscreened as holdouts.
+
+The validity study is this paper's result. A memoryless worker's pair credit
+is statistically indistinguishable from zero on every capability rung, which
+is direct evidence that the design does not reward priors. Probe validity is
+*task-model-relative*: under identical strict rules, 37/54 probe clusters
+survived the ceiling gate for one worker and 17/54 for a smaller sibling. The
+harness is part of the consumer: identical weights behind two agent harnesses
+agreed on only 65% of twin-ceiling outcomes. The blinded judge's false-accept
+rate against an adversarial decoy set was 2/41 as measured and 0/39 after
+adjudication, and judge–human agreement on a blinded 150-pair packet was
+κ = **[G4 pending]**.
+
+Mid-study, the provider deprecated the pinned worker, which ended comparative
+evaluation and exposed a dependency every agentic benchmark carries and few
+state: screening anchors are properties of a worker, not of the data. We report
+the event, release the partial rows as provenance, and specify the re-anchoring
+procedure that lets the dataset outlive any single worker. No comparative
+system result is claimed anywhere in this paper.
 
 ## 1. Introduction
 
-- Premise and mini-AGI operationalization: `docs/vision.md` §1–2.
-- Claims discipline up front: this paper claims an *instrument*, not a
-  leaderboard; no single aggregate anywhere (`docs/vision.md` §3, §5).
-- Contributions:
-  1. The dataset artifact (§3): screened, gated, twinned, with dated
-     provenance corroborated by git history.
-  2. The construction + screening methodology (§3): pair credit via
-     counterfactual twins, blinded judging, G0–G5 gates, prespecified stats.
-  3. The validity study (§4): floor validation, model-relativity, harness
-     sensitivity, judge validation, human agreement (G4).
-  4. The re-anchoring procedure (§4.6): what it takes to keep an agentic
-     benchmark valid across worker deprecations — measured, not speculative.
+### 1.1 Organizational knowledge has no home in the weights
+
+Organizations are getting smaller while the number of agents working inside
+them grows, and the agents are not interchangeable. A developer's coding
+agent, a designer's creative tool, and a generalist assistant differ in system
+prompt, tools, and defaults, and each is chosen for those differences. This
+heterogeneity is a property of the ecosystem rather than a transitional
+untidiness to be standardized away (`docs/vision.md` §1).
+
+One structural consequence follows. If the weights an organization runs on are
+plural and vendor-owned, then organizational coherence cannot live in them.
+The decisions, working rules, preferences, and commitments that make a company
+act like one company have to be held somewhere every harness can reach, and
+the memory layer is the only such place. On this view a memory system is not
+an accessory to an organization's agents; it is the connective tissue.
+
+The naive version of that idea does not work. Pooling every artifact and
+giving every agent the same view produces a rumor mill with perfect recall,
+not a collective intelligence. A personal preference is not org policy. A
+leadership decision outranks a loud opinion. A superseded plan must stop
+driving behavior while remaining retrievable. A need-to-know fact must not
+diffuse. What makes an organizational world model useful is that it is
+*scoped, tiered, and temporally correct*: each agent receives the context
+appropriate to its principal and its task, at the current epoch of truth
+(`docs/vision.md` §2).
+
+### 1.2 What existing benchmarks measure instead
+
+Published memory benchmarks overwhelmingly evaluate a single agent's recall
+over a long conversation: can the system retrieve a fact it was told earlier.
+That is rung 0 of the capability ladder this benchmark is organized around
+(§3.1), it is table stakes, and long context saturates it. Organizational
+memory differs along three axes that single-agent recall does not exercise:
+events have multiple witnesses and per-principal visibility, facts carry tier
+and authority so that conflicts have correct rather than arbitrary
+resolutions, and facts are invalidated over time rather than merely
+accumulated.
+
+The gap is not only in coverage. §2 surveys the field's measurement failures —
+answers guessable from priors, corpora answerable without memory at all,
+corrupted ground truth producing impossible ceilings, judges that accept
+topical waffle, protocols loose enough to support score disputes between
+vendors. These are the reasons this paper spends most of its length on
+validity rather than on results.
+
+### 1.3 What we claim, and what we do not
+
+This paper claims an *instrument*, not a leaderboard.
+
+We claim that the released dataset measures organizational memory behavior at
+rungs 1–3 of the ladder, for a two-team simulated software organization at L1–
+L2 scale, under a stated worker pin; and we report the measurements that
+support or qualify that claim, including the ones that qualify it. We do not
+claim that any memory system is better than another — this paper publishes no
+comparative system numbers. We do not claim to measure "mini-AGI-ness," and
+the external-validity claim stops at the organization type instantiated;
+industry breadth enters a later version as a designed factor rather than by
+relabeling this one (`docs/vision.md` §5). No result is ever reduced to a
+single aggregate score: results are grouped by capability rung, always.
+
+Three constraints were fixed before the evidence they govern was produced, and
+each is corroborated by dated git history rather than by assertion: the gate
+criteria and scoring rules (`docs/dataset-plan.md`), the worker and judge pins,
+and the commitment to carry failed gates as failures rather than repairing the
+probes that failed them. That commitment has a visible price in this paper.
+**All three released seeds fail the instance gate** (125, 131, and 115 valid
+instances against a threshold of 135), and **seed 3's cluster gate also fails**
+(40/54 surviving clusters). The instances are retained, marked,
+and reported as failures rather than topped up, because a gate that is relaxed
+once it binds was never a gate (`datasets/dev/org-0000N/g3-report.json`,
+`docs/decision-log.md`).
+
+### 1.4 Contributions
+
+1. **A screened dataset** (§3): 371 valid paired probe instances across three
+   simulated organizations, with counterfactual twins, hidden ground-truth
+   ledgers, and two unscreened holdout seeds. Every gate result is dated and
+   corroborated by commit history.
+
+2. **A construction and screening methodology** (§3): pair credit via
+   counterfactual twins; per-item floor and ceiling validity screening with a
+   pinned worker; blinded judging with a versioned rubric where the judge model
+   is never the worker model nor the family that authored the criteria; a
+   five-gate pipeline; and a statistics protocol prespecified before any
+   result existed.
+
+3. **A validity study** (§4): the measurements that test whether the instrument
+   works — floor validation, the task-model-relativity of probe validity,
+   harness sensitivity, judge false-accept rate, and judge–human agreement.
+
+4. **A durability procedure** (§4.6): what it takes to keep an agentic
+   benchmark valid when the worker it was screened under disappears. We did not
+   choose this contribution; the provider deprecated our pinned worker
+   mid-study and we documented what that costs and how to recover from it.
+
+### 1.5 What this paper does not contain
+
+It contains no system comparison. The pilot that would have produced one had
+completed the memoryless floor condition and partial rows for four further
+baselines when the pinned worker became unreachable through every available
+billing path (§4.6). Because probe validity is worker-relative (§4.2),
+attaching a new worker's results to anchors measured under the old one would
+break both the normalization and the pair-validity argument, so we did not do
+it. The partial rows are released in §6 as provenance for an interrupted
+prespecified pilot, carrying no comparative claim.
 
 ## 2. Related work
 
@@ -61,9 +182,10 @@ explicitly out of scope for this paper.
   worker model ≠ criterion-author family (`AGENTS.md` hard rules).
 - **Released dataset: seeds 1–3, 371 valid paired instances** (A1 50, A2 43,
   A4 106, A7 172; per-seed 125/131/115; cluster survival 46/54, 46/54,
-  40/54; seed-3 instance gate carried as an explicit FAIL). Seeds 4–5
-  unscreened holdouts. Freeze prespecified 2026-08-15, corroborated by git
-  history (`docs/decision-log.md`).
+  40/54). **Gate outcomes carried as measured: all three instance gates FAIL
+  (135 required); seed 3's cluster gate also FAILs.** No probe that failed a
+  gate was repaired. Seeds 4–5 unscreened holdouts. Freeze prespecified
+  2026-08-15, corroborated by git history (`docs/decision-log.md`).
 
 ### 3.3 Harness and worker pinning
 - All screening ran under one pinned worker (gpt-5.4, effort medium,
@@ -143,7 +265,9 @@ explicitly out of scope for this paper.
    with the measured agreement number.
 2. Rank-direction rule ≥2/3 seeds was prespecified for the pilot; unused in
    this paper (no comparative claims).
-3. Seed-3 instance gate carried as FAIL; instances retained and marked.
+3. All three released seeds fail the instance gate (125/131/115 against 135);
+   seed 3 also fails the cluster gate (40/54). Instances retained and marked,
+   never topped up or repaired.
 4. Worker billing/auth changes during the study; model/binary pin held
    until provider deprecation ended all access (§4.6).
 5. Market-system configs set internal LLMs to Gemini where configurable;

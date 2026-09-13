@@ -24,12 +24,17 @@ v1, frozen 2026-08-15, scores four probe archetypes. Results are grouped by
 capability-ladder rung (`docs/vision.md` §3) and never reduced to a single
 aggregate score:
 
-| Rung | Archetype | Question it answers |
-|---|---|---|
-| 1, retention | A4 (working rules) | Does a rule stated once keep driving behavior later? |
-| 1, retention | A7 (commitments/outcomes) | Are recorded commitments and outcomes applied in later tasks? |
-| 2, supersession | A1 (staleness) | Do superseded facts stop driving behavior? |
-| 3, cross-principal | A2 (scope/conflict) | When facts conflict across tiers, does the right one win? |
+| Rung | Archetype | Metric | Question it answers |
+|---|---|---|---|
+| 1, alignment | A4 | scope resolution | When facts conflict across tiers, does the right one win for this principal? |
+| 1, alignment | A7 | staleness, history retention | Do superseded facts stop driving behavior while staying retrievable? |
+| 2, coordination | A1 | propagation latency | Does a decision reach the agent of someone who wasn't in the room? |
+| 3, compounding | A2 | proactive application | Does the org apply its own history unprompted? |
+
+Rung 0 (plain recall) is where existing memory benchmarks live and where long
+context saturates trivially; this benchmark's claim territory is rungs 1–3.
+Rung names and archetype assignments follow `docs/vision.md` §3, which
+`scripts/score_sut.py` implements.
 
 Every instance is scored as pair credit: the probe passes only if the base
 task passes and its counterfactual-twin sibling passes. Knowledge the system

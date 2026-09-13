@@ -127,9 +127,18 @@ output rule, S6 discrimination gate) and judge rubric v2 (commitment
 clause, verbatim in `docs/specs/judge-rubric.md`) were then applied to
 all five orgs; seeds 1–2 were re-scored from the identical cached worker
 outputs (prompt equality verified) with every semantic verdict re-judged
-blind under v2. **Current canon: seed 1 = 46/54 PASS, 126 valid
-instances (strict 34); seed 2 = 46/54 PASS, 131 valid instances (strict
-39); both instance gates FAIL (<135).** v1→v2 verdict agreement on
+blind under v2. **Canon as of 2026-08-15 (this paragraph): seed 1 = 46/54
+PASS, 126 valid instances (strict 34); seed 2 = 46/54 PASS, 131 valid
+instances (strict 39); both instance gates FAIL (<135).**
+
+> **Superseded later the same day (noted 2026-09-14).** The R6
+> contested-attribute rule re-scored seeds 1–3 mechanically and took seed 1
+> from 126 to 125 valid instances (strict 34 → 33); seeds 2–3 gates unchanged
+> (`docs/decision-log.md` §2026-08-15, R6). **Frozen canon: seed 1 46/54, 125
+> (strict 33); seed 2 46/54, 131 (strict 39); seed 3 40/54, 115 (strict 35) —
+> 371 total.** The committed `datasets/dev/org-0000N/g3-report.json` files are
+> authoritative and carry these numbers; the paragraph above is kept as the
+> dated record of the intermediate state. v1→v2 verdict agreement on
 unchanged criteria 97.8% / 96.9%, symmetric. Two designs were tried and
 rejected on evidence the same day: generated semantic cross-side
 detectors (0/19 true positives) — see the spec changelog. The
