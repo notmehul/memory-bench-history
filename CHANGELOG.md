@@ -23,6 +23,13 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning: Se
   across org-00001 and org-00002.
 
 ### Added
+- G4 rater sheet (2026-09-14): `scripts/calibration_sheet.py export|import`
+  turns the blinded 150-pair packet into an .xlsx (TRUE/FALSE dropdown, frozen
+  answer column, amber unanswered rows, live progress counter, rules on their
+  own tab) and validates the filled sheet back into `ratings-M.json`. Blinding
+  is preserved and tested — no run id, condition, or side reaches the sheet —
+  and a sorted, truncated, blank, or junk-valued sheet is refused rather than
+  guessed at. New `sheet` extra (openpyxl), added to CI. 9 tests.
 - Release bundler (2026-09-14): `scripts/release.py build|verify` closes
   standards-audit B9 bar hosting and the DOI. Ships streams, twins, probes,
   valid sets, Croissant 1.0 + RAI metadata, CC BY 4.0 `LICENSE-DATA`,

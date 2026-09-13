@@ -179,10 +179,36 @@ consistent — drift is part of what the measurement captures.
 
 ### Single-rater run (the live procedure)
 
-Copy `rating-template.json`, replace each `null` with `true` or `false`, and
-save it as `datasets/dev/calibration/ratings-M.json`. Every one of the 150 ids
-must be present and boolean; the scorer rejects a partial or mistyped file
-rather than guessing. Then:
+Rate in a spreadsheet, not in JSON. Export the packet as a sheet:
+
+```
+uv sync --extra sheet        # once
+.venv/bin/python scripts/calibration_sheet.py export \
+    datasets/dev/calibration ~/memory-bench-G4-calibration.xlsx
+```
+
+Two tabs: **How to rate** (the rules below, on one screen) and **Rate** (150
+rows — `#`, `ANSWER`, `CRITERION`, `OUTPUT`, `id`). Put TRUE or FALSE in column
+B; unanswered rows stay amber, and a counter in G1 shows how many are done. The
+`#` and `ANSWER` columns are frozen, so the answer box stays on screen while a
+long deliverable scrolls. Never sort, insert, or delete rows — that breaks the
+mapping back to the packet, and the importer will refuse the file rather than
+guess. A few outputs are longer than one row can show: click the cell and read
+it in the formula bar, dragging its bottom edge taller.
+
+The sheet stays blinded, like the JSON packet: criterion and deliverable only,
+never the run id, condition, or side.
+
+When it's filled:
+
+```
+.venv/bin/python scripts/calibration_sheet.py import ~/memory-bench-G4-calibration.xlsx
+```
+
+which validates every row and writes `datasets/dev/calibration/ratings-M.json`.
+(Rating the JSON template by hand still works if you prefer: copy
+`rating-template.json`, replace each `null` with `true` or `false`, save as
+`ratings-M.json`.) Then:
 
 ```
 .venv/bin/python scripts/calibration.py judge-agreement \

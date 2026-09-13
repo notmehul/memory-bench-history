@@ -59,13 +59,14 @@ successor worker is pinned and anchors re-screened.
    2026-08-15 single-author-rater downgrade had already made impossible.
 
 2. **G4 from Mehul — IN FLIGHT, the paper's single missing measured number.**
-   Fill `datasets/dev/calibration/rating-template.json` (150 ids, true/false,
-   doubt = false), save as `ratings-M.json` beside it, then:
-   `.venv/bin/python scripts/calibration.py judge-agreement
-   datasets/dev/calibration datasets/dev/calibration/ratings-M.json
-   datasets/dev/screening/org-00001 datasets/dev/screening/org-00002`.
-   Gate G4 = κ ≥ 0.75; criteria < 0.7 dropped with the count disclosed, never
-   rewritten; the result is carried whichever way it lands. Verified
+   Rate in the spreadsheet (`scripts/calibration_sheet.py export`, sent
+   2026-09-14): 150 rows, TRUE/FALSE in column B, doubt = FALSE, never sort or
+   delete rows. Then `calibration_sheet.py import <xlsx>` → validated
+   `ratings-M.json` → `calibration.py judge-agreement datasets/dev/calibration
+   datasets/dev/calibration/ratings-M.json datasets/dev/screening/org-00001
+   datasets/dev/screening/org-00002`. Full procedure: `docs/human-review.md`
+   Task 3. Gate G4 = κ ≥ 0.75; criteria < 0.7 dropped with the count disclosed,
+   never rewritten; the result is carried whichever way it lands. Verified
    2026-09-14 that all 150 pairs resolve to committed judge verdicts.
 
 3. DONE 2026-09-14 — **Release packaging**: `scripts/release.py build|verify`
