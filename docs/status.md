@@ -1,6 +1,11 @@
 # Status & Work Queue
 
-Last updated: 2026-09-02 (live smokes done, keys in; previously 2026-08-28 backtest/cleanup: README + stale docs re-pointed at the
+Last updated: 2026-09-14 (seed-1 runs stalled 2026-09-04: provider dropped
+gpt-5.4 for ChatGPT-account codex — pinned worker now needs OPENAI_API_KEY
+(the prespecified billing switch, paper disclosure #4; model/binary unchanged).
+Progress committed in `datasets/dev/pilot/`: nomemory done + judged (floor near
+zero on all rungs), fulltranscript/grep/rag/rag-lexical partial and resumable.
+Previously 2026-09-02: live smokes done, keys in; previously 2026-08-28 backtest/cleanup: README + stale docs re-pointed at the
 frozen v1 scope with dated notes, CHANGELOG caught up, CI fixed for the figures extra;
 vendor configs frozen pre-run — `docs/vendor-configs.md`;
 rater packet sent to Mehul 2026-08-25; adapters + pilot CLI landed; v1 freeze — `CLAUDE.md` + FREEZE section of
