@@ -158,11 +158,158 @@ prespecified pilot, carrying no comparative claim.
 
 ## 2. Related work
 
-- Memory benchmarks (LoCoMo, LongMemEval, letter-style long-context evals);
-  why single-agent chat memory ≠ organizational memory (multi-witness
-  events, per-principal visibility, temporal invalidation).
-- Continual learning / knowledge editing; agent-org simulations.
-- Benchmark-validity and benchmark-decay literature (ties §4.6 to prior art).
+> **Citations are unverified as of 2026-09-14. This section does not ship as
+> written.** Every reference below is taken from this project's own field audit
+> (`docs/standards-audit.md`, compiled 2026-07-25 from three sourced research
+> reports). The findings attributed to each work were read off that audit, not
+> re-read from the papers while drafting. Three specific risks:
+>
+> 1. **Six of the eleven benchmark citations postdate the drafting agent's
+>    knowledge** and could not be checked against the source at all: LongMemEval
+>    V2 (2605.12493), MemoryArena (2602.16313), GateMem (2606.18829),
+>    StreamMemBench (2606.14571), HorizonBench (2604.17283), MemDelta
+>    (2606.29914). Both the arXiv ids and the described contributions need
+>    confirming.
+> 2. **The quantitative claims in §2.3 are secondary-sourced** (6.4% bad gold,
+>    93.6% ceiling, 63% judge false-accepts, 73% vs 68%, 74% grep agent, the
+>    58/75/84 dispute). They came from blog posts and a Substack audit by way of
+>    our own notes. Each needs tracing to its primary source, and any that
+>    cannot be traced gets cut rather than softened.
+> 3. **One source looks wrong on its face.** The audit records the MemPalace
+>    teardown as `github.com/milla-jovovich/mempalace/issues/29`. A GitHub
+>    handle identical to a well-known actor's name is the signature of a
+>    fabricated reference, so treat this one as suspect until someone opens the
+>    URL. The claim it supports (probe content visible at ingestion) is load
+>    bearing for §3.1, so if the source does not exist, the claim goes and the
+>    design rationale is restated from our own threat model instead.
+
+### 2.1 What memory benchmarks currently measure
+
+The established memory benchmarks evaluate one agent's recall across a long
+conversation. LoCoMo (arXiv 2402.17753) and LongMemEval (2410.10813), with its
+V2 revision (2605.12493), ask whether a system can retrieve a fact stated in an
+earlier session, sometimes with a temporal qualifier. MemBench (2506.21605) and
+MEMTRACK (2510.01353) extend the format. These are rung-0 tasks in the ladder
+of §3.1: recall on request, which is table stakes for a memory system and which
+long context saturates.
+
+A second line moves toward agentic settings. MemoryAgentBench (2507.05257)
+argues that pasting a conversation history into context evaluates memory
+off-policy, since a deployed system writes its memory incrementally rather than
+receiving the whole history at once. MemoryArena (2602.16313) evaluates
+closed-loop single-principal agentic tasks. StreamMemBench (2606.14571) covers
+streaming lifelog ingestion and feedback consolidation, and HorizonBench
+(2604.17283) covers personal preferences that change over time. Each remains
+single-principal.
+
+The closest prior work is GateMem (2606.18829), which evaluates multi-principal
+governance: utility, access control, and deletion. GateMem shares our premise
+that a memory system serving several people is a different object from one
+serving a single user. It scores access control on its own. We score governance
+jointly against propagation, because the two pull in opposite directions and a
+system can win either one by sacrificing the other (§3.1). That tension is the
+reason v1 defers leakage scoring rather than reporting it alone.
+
+### 2.2 Why organizational memory is a different object
+
+Single-agent recall does not exercise three properties that decide whether an
+organization's agents behave coherently.
+
+**Events have witnesses.** In a conversation benchmark every turn is visible to
+the one agent under test. In an organization a decision made in a meeting
+reaches the people in the room, and whether it reaches anyone else is the
+question being asked. Our streams are delivered per principal according to a
+witness model, so a system that pools everything and a system that respects
+visibility see different inputs by construction (§3.1).
+
+**Facts carry authority and tier.** When a personal preference contradicts a
+team convention, or a loud opinion contradicts a leadership decision, there is
+a correct answer rather than an arbitrary one. Recall benchmarks have no notion
+of a fact outranking another fact, so they cannot score getting it wrong.
+
+**Facts are invalidated, not only accumulated.** A superseded plan must stop
+driving behavior while staying retrievable on request. A benchmark that scores
+retrieval alone credits a system for surfacing a fact that should no longer
+apply.
+
+Continual-learning and knowledge-editing work addresses the third property
+inside the weights. This benchmark takes the harness position instead: the
+knowledge an organization runs on changes faster than anyone retrains, and the
+agents consuming it run on models the organization does not own (§1.1).
+
+### 2.3 How memory evaluations have failed in practice
+
+Most of this paper is validity evidence rather than results, and the reason is
+that this field's published numbers have repeatedly failed on measurement
+rather than on modeling. The audit that shaped our design recorded the
+following, each of which maps to a mechanism in §3.
+
+An independent audit of LoCoMo (Penfield Labs) reported roughly 6.4% corrupted
+ground truth, which put a ceiling of about 93.6% on the benchmark while vendors
+published scores above it. The same audit reported that an LLM judge accepted
+topical but wrong answers at around 63%. Separately, a full-context baseline
+scored 73% against Mem0's 68% on LoCoMo, which raises the question of whether
+the corpus needed a memory system at all. Letta reported that a plain
+filesystem-and-grep agent reached 74%, which is why a grep agent is one of our
+registered baselines: a memory product should have to beat one.
+
+Protocol looseness produced a public scoring dispute between Mem0 and Zep, with
+the same system reported at 58, 75, and 84 depending on configuration and
+denominator. Neither party was obviously acting in bad faith, which is the
+point: without one prespecified scoring rule and one denominator, two honest
+groups produce different numbers. MemDelta (2606.29914) reported that swapping
+the embedding model moved results more than swapping the memory architecture,
+which is why our RAG-class baselines pin and report their embedding model
+(`docs/vendor-configs.md`).
+
+A separate failure is contamination of the test itself. A teardown of MemPalace
+found probe content visible at ingestion time, which lets a system be tuned to
+the questions. Our probes are injected only at evaluation time, the ledger
+stays private, and canary strings are embedded in every released stream.
+
+### 2.4 Benchmark validity and benchmark decay
+
+Work on benchmark quality supplies the standards this paper is written
+against. BetterBench (2411.12990) assesses benchmarks across their lifecycle
+and finds statistical reporting the most commonly failed criterion; the Agentic
+Benchmark Checklist (2507.02825) sets out validity requirements specific to
+agentic evaluation, including auditing a scorer against degenerate strategies;
+and a construct-validity audit of 445 benchmarks (2511.04703) documents how
+often a benchmark's measured quantity differs from its claimed one. Miller
+(2411.00640) makes the case for error bars as standard practice in language
+model evaluation, with small-sample interval guidance in 2503.01747. Work on
+LLM judges (2306.05685) motivates measuring judge agreement rather than
+assuming it. BenchBench (2407.13696) formalizes agreement testing between
+benchmarks.
+
+On decay: GSM1k (2405.00332) demonstrated contamination by regenerating a
+held-out equivalent of a saturated benchmark, and LiveBench (2406.19314)
+answers rot with continuous refresh. Both inform our release design, in which
+the generator and two unscreened seeds are withheld so fresh organizations can
+be minted if the public seeds are compromised (§8).
+
+§4.6 adds a failure mode we have not seen addressed in this literature. The
+decay work treats the *data* as the perishable component. For an agentic
+benchmark, the worker model used to establish which items are answerable is
+equally perishable, and it perishes on the provider's schedule rather than on
+the benchmark's. We measured how much validity depends on that choice (§4.2)
+and then lived through the dependency.
+
+### 2.5 Where this benchmark sits
+
+Of the eleven published memory benchmarks in our audit, none scores tiered
+scope, authority weighting, propagation across principals, and supersession as
+behavioral properties of an organization. GateMem is nearest and covers
+governance for multiple principals; the recall benchmarks are a different rung.
+We state this as the result of a search rather than as a fact about the
+literature: the audit was compiled 2026-07-25 and names what it covered
+(`docs/standards-audit.md`), and a reader who knows of prior work we missed
+should read the claim as bounded by that date and that list.
+
+What we believe is genuinely uncommon, and what §4 is spent defending, is the
+combination of per-item floor and ceiling validity screening against a pinned
+worker, counterfactual twins with pass-both-or-zero credit, a computable belief
+oracle for ground truth, and a regenerable holdout.
 
 ## 3. The dataset and how it was built
 

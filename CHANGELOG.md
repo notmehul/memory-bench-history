@@ -22,6 +22,16 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning: Se
   the 150-pair packet resolves to committed judge verdicts for all 150 pairs
   across org-00001 and org-00002.
 
+### Added
+- Paper §2 related work drafted (2026-09-14) from the field audit: what memory
+  benchmarks currently measure, why organizational memory is a different
+  object, how memory evaluations have failed in practice, the
+  benchmark-validity and benchmark-decay literature, and where this work sits.
+  Citations are carried UNVERIFIED with a header note and a new blocking
+  checklist item: six benchmark ids postdate the drafting agent's knowledge,
+  the §2.3 numbers are secondary-sourced, and one recorded URL looks
+  fabricated. None of it ships before a primary-source pass.
+
 ### Changed
 - Unslop pass on the public surfaces (2026-09-14): README, `paper/draft.md`,
   `paper/checklist.md`, `docs/vision.md`, `docs/architecture.md`, and the
