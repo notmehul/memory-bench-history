@@ -1,0 +1,31 @@
+{
+ "adapter": "nomemory",
+ "system": "nomemory",
+ "side": "base",
+ "k": 1,
+ "silo": false,
+ "org": "org-00001",
+ "probes_from": "org-00001",
+ "only_valid": true,
+ "n_probes_all": 162,
+ "n_skipped_invalid": 37,
+ "n_target": 125,
+ "n_resumed": 125,
+ "n_new_rows": 0,
+ "n_rows": 125,
+ "worker": {
+  "model": "gpt-5.4",
+  "effort": "medium",
+  "harness": "codex-cli 0.144.5"
+ },
+ "adapter_counters": {
+  "calls": 0,
+  "context_chars": 0,
+  "last_context_chars": 0
+ },
+ "worker_counters": {
+  "calls": 0,
+  "seconds": 0.0
+ },
+ "wall_seconds": 0.005
+}

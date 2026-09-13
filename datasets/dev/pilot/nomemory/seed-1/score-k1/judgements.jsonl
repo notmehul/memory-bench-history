@@ -1,0 +1,250 @@
+{"run_id": "P-0052-03:sut_twin", "verdicts": {"casrt-1": false, "casrt-2": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "abf79261e0", "casrt-2": "9ad746c16f"}}
+{"run_id": "P-0040-03:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "7232ec83d5"}}
+{"run_id": "P-0051-02:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "273845ae9b"}}
+{"run_id": "P-0001-02:sut_base", "verdicts": {"asrt-1": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "680d9912b2"}}
+{"run_id": "P-0002-03:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "45631f6414"}}
+{"run_id": "P-0051-01:sut_base", "verdicts": {"asrt-1": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "273845ae9b"}}
+{"run_id": "P-0012-03:sut_twin", "verdicts": {"casrt-1": false, "casrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "dab1d5d238", "casrt-3": "522677dbb5"}}
+{"run_id": "P-0030-03:sut_base", "verdicts": {"asrt-1": false, "asrt-2": true, "asrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "aab5c1dd8d", "asrt-2": "02cd44979b", "asrt-3": "7e26cdc625"}}
+{"run_id": "P-0012-02:sut_base", "verdicts": {"asrt-1": false, "asrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "ec70d0a194", "asrt-3": "bc79128df7"}}
+{"run_id": "P-0011-03:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "f78b4bf27f"}}
+{"run_id": "P-0011-01:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "d70b583406"}}
+{"run_id": "P-0010-01:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "17858980f3"}}
+{"run_id": "P-0043-03:sut_base", "verdicts": {"asrt-1": false, "asrt-2": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "1261500de7", "asrt-2": "06b467939e"}}
+{"run_id": "P-0015-02:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "7aa81dc1db"}}
+{"run_id": "P-0048-03:sut_base", "verdicts": {"asrt-1": false, "asrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "6ac57d51f9", "asrt-3": "6fbd01cb67"}}
+{"run_id": "P-0029-01:sut_base", "verdicts": {"asrt-1": true, "asrt-2": true, "asrt-3": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "b27bd10a3f", "asrt-2": "d0a7645734", "asrt-3": "287425bdd1"}}
+{"run_id": "P-0013-02:sut_twin", "verdicts": {"casrt-1": false, "casrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "9ecaed3110", "casrt-3": "e2fd4ec0e2"}}
+{"run_id": "P-0041-02:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "e60c8581dc"}}
+{"run_id": "P-0019-02:sut_base", "verdicts": {"asrt-1": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "02647f75cc"}}
+{"run_id": "P-0052-01:sut_twin", "verdicts": {"casrt-1": false, "casrt-2": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "abf79261e0", "casrt-2": "9ad746c16f"}}
+{"run_id": "P-0046-01:sut_base", "verdicts": {"asrt-1": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "d04f7832dd"}}
+{"run_id": "P-0039-01:sut_base", "verdicts": {"asrt-1": true, "asrt-2": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "02bc401be0", "asrt-2": "d3975a6768"}}
+{"run_id": "P-0052-01:sut_base", "verdicts": {"asrt-1": false, "asrt-2": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "acac913f73", "asrt-2": "5825b172f9"}}
+{"run_id": "P-0048-02:sut_twin", "verdicts": {"casrt-1": false, "casrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "a32de576a9", "casrt-3": "6fbd01cb67"}}
+{"run_id": "P-0018-02:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "fa128ed781"}}
+{"run_id": "P-0003-01:sut_twin", "verdicts": {"casrt-1": false, "casrt-2": true, "casrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "cfb665ec1a", "casrt-2": "a487e23497", "casrt-3": "ab1bd44629"}}
+{"run_id": "P-0033-02:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "b4fa6365b6"}}
+{"run_id": "P-0040-01:sut_twin", "verdicts": {"casrt-1": true, "casrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "3f366eb187", "casrt-3": "43415487e2"}}
+{"run_id": "P-0001-02:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "3e6f359df9"}}
+{"run_id": "P-0050-03:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "8907077cff"}}
+{"run_id": "P-0027-03:sut_base", "verdicts": {"asrt-1": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "d58b835024"}}
+{"run_id": "P-0018-03:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "fa128ed781"}}
+{"run_id": "P-0031-01:sut_base", "verdicts": {"asrt-1": true, "asrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "5a6a89b6ea", "asrt-3": "d871f0ee34"}}
+{"run_id": "P-0017-03:sut_twin", "verdicts": {"casrt-1": false, "casrt-2": true, "casrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "16fbfbdda1", "casrt-2": "146364c57b", "casrt-3": "fb07beb2e5"}}
+{"run_id": "P-0041-01:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "7abd358e17"}}
+{"run_id": "P-0016-03:sut_base", "verdicts": {"asrt-1": false, "asrt-2": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "36179d5211", "asrt-2": "415f686391"}}
+{"run_id": "P-0033-01:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "764d4f7352"}}
+{"run_id": "P-0048-01:sut_base", "verdicts": {"asrt-1": false, "asrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "6ac57d51f9", "asrt-3": "6fbd01cb67"}}
+{"run_id": "P-0031-02:sut_base", "verdicts": {"asrt-1": true, "asrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "5a6a89b6ea", "asrt-3": "d871f0ee34"}}
+{"run_id": "P-0053-03:sut_base", "verdicts": {"asrt-1": false, "asrt-2": true, "asrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "d795fde42c", "asrt-2": "039cd1ea3c", "asrt-3": "6544c381ae"}}
+{"run_id": "P-0027-01:sut_base", "verdicts": {"asrt-1": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "d58b835024"}}
+{"run_id": "P-0009-03:sut_base", "verdicts": {"asrt-1": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "a1e731513f"}}
+{"run_id": "P-0043-02:sut_twin", "verdicts": {"casrt-1": false, "casrt-2": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "9ea2b3532d", "casrt-2": "06b467939e"}}
+{"run_id": "P-0042-02:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "1897a80f13"}}
+{"run_id": "P-0015-01:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "7aa81dc1db"}}
+{"run_id": "P-0007-01:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "bd3d4acf15"}}
+{"run_id": "P-0007-03:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "bd3d4acf15"}}
+{"run_id": "P-0037-02:sut_base", "verdicts": {"asrt-1": true, "asrt-2": true, "asrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "415a1b5668", "asrt-2": "3c52b9bd7c", "asrt-3": "3e25cfa780"}}
+{"run_id": "P-0048-03:sut_twin", "verdicts": {"casrt-1": false, "casrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "a32de576a9", "casrt-3": "6fbd01cb67"}}
+{"run_id": "P-0034-02:sut_twin", "verdicts": {"casrt-1": false, "casrt-2": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "c53793e9ed", "casrt-2": "288388a982"}}
+{"run_id": "P-0047-01:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "42a87759b5"}}
+{"run_id": "P-0045-01:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "1b59e5fe15"}}
+{"run_id": "P-0043-01:sut_twin", "verdicts": {"casrt-1": false, "casrt-2": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "9ea2b3532d", "casrt-2": "06b467939e"}}
+{"run_id": "P-0004-02:sut_twin", "verdicts": {"casrt-1": false, "casrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "61eac41695", "casrt-3": "ab1bd44629"}}
+{"run_id": "P-0019-03:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "02647f75cc"}}
+{"run_id": "P-0045-02:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "1b59e5fe15"}}
+{"run_id": "P-0011-02:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "f78b4bf27f"}}
+{"run_id": "P-0007-01:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "d3a8db0cd2"}}
+{"run_id": "P-0041-01:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "e60c8581dc"}}
+{"run_id": "P-0020-02:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "a98eb2bd0f"}}
+{"run_id": "P-0040-02:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "7232ec83d5"}}
+{"run_id": "P-0025-03:sut_twin", "verdicts": {"casrt-1": false, "casrt-2": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "ed66ec5e14", "casrt-2": "f5a703dd93"}}
+{"run_id": "P-0015-02:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "8e82ef973d"}}
+{"run_id": "P-0053-01:sut_base", "verdicts": {"asrt-1": false, "asrt-2": true, "asrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "d795fde42c", "asrt-2": "039cd1ea3c", "asrt-3": "6544c381ae"}}
+{"run_id": "P-0039-03:sut_twin", "verdicts": {"casrt-1": false, "casrt-2": true, "casrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "ad5e1bb2cf", "casrt-2": "8e8268a24f", "casrt-3": "7d49a61aec"}}
+{"run_id": "P-0007-02:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "d3a8db0cd2"}}
+{"run_id": "P-0018-03:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "db7a40b1e0"}}
+{"run_id": "P-0043-03:sut_twin", "verdicts": {"casrt-1": false, "casrt-2": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "9ea2b3532d", "casrt-2": "06b467939e"}}
+{"run_id": "P-0040-01:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "7232ec83d5"}}
+{"run_id": "P-0030-01:sut_base", "verdicts": {"asrt-1": false, "asrt-2": true, "asrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "aab5c1dd8d", "asrt-2": "02cd44979b", "asrt-3": "7e26cdc625"}}
+{"run_id": "P-0033-03:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "b4fa6365b6"}}
+{"run_id": "P-0018-02:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "db7a40b1e0"}}
+{"run_id": "P-0040-03:sut_twin", "verdicts": {"casrt-1": true, "casrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "3f366eb187", "casrt-3": "43415487e2"}}
+{"run_id": "P-0043-02:sut_base", "verdicts": {"asrt-1": false, "asrt-2": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "1261500de7", "asrt-2": "06b467939e"}}
+{"run_id": "P-0038-01:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "89f27c6e92"}}
+{"run_id": "P-0050-01:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "51977d1517"}}
+{"run_id": "P-0012-03:sut_base", "verdicts": {"asrt-1": true, "asrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "ec70d0a194", "asrt-3": "bc79128df7"}}
+{"run_id": "P-0016-02:sut_base", "verdicts": {"asrt-1": false, "asrt-2": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "36179d5211", "asrt-2": "415f686391"}}
+{"run_id": "P-0019-02:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "a1cd604110"}}
+{"run_id": "P-0010-03:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "17858980f3"}}
+{"run_id": "P-0031-03:sut_twin", "verdicts": {"casrt-1": false, "casrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "cc3dd90290", "casrt-3": "d871f0ee34"}}
+{"run_id": "P-0045-01:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "835599d3a9"}}
+{"run_id": "P-0016-02:sut_twin", "verdicts": {"casrt-1": false, "casrt-2": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "5acf980492", "casrt-2": "18d30b7d94"}}
+{"run_id": "P-0002-02:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "45631f6414"}}
+{"run_id": "P-0020-01:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "92ff5885e0"}}
+{"run_id": "P-0038-03:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "89f27c6e92"}}
+{"run_id": "P-0011-03:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "d70b583406"}}
+{"run_id": "P-0046-02:sut_base", "verdicts": {"asrt-1": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "d04f7832dd"}}
+{"run_id": "P-0003-03:sut_base", "verdicts": {"asrt-1": false, "asrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "f567b1aedd", "asrt-3": "467cd0e0b3"}}
+{"run_id": "P-0051-02:sut_twin", "verdicts": {"casrt-1": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "1fd0281498"}}
+{"run_id": "P-0023-01:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "3557162151"}}
+{"run_id": "P-0009-03:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "a63504dde7"}}
+{"run_id": "P-0042-01:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "1897a80f13"}}
+{"run_id": "P-0046-02:sut_twin", "verdicts": {"casrt-1": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "c7fc6ca103"}}
+{"run_id": "P-0009-01:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "a63504dde7"}}
+{"run_id": "P-0027-03:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "d7343cf991"}}
+{"run_id": "P-0053-01:sut_twin", "verdicts": {"casrt-1": false, "casrt-2": true, "casrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "fc64a20545", "casrt-2": "0bfe9a4204", "casrt-3": "d3cbab4cce"}}
+{"run_id": "P-0038-01:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "81fb5f9f59"}}
+{"run_id": "P-0049-02:sut_twin", "verdicts": {"casrt-1": false, "casrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "97a87fd8b0", "casrt-3": "5ee24a99cf"}}
+{"run_id": "P-0036-03:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "a4aaff883f"}}
+{"run_id": "P-0054-02:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "ff5ba3e3ef"}}
+{"run_id": "P-0028-01:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "55deb60038"}}
+{"run_id": "P-0049-03:sut_twin", "verdicts": {"casrt-1": false, "casrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "97a87fd8b0", "casrt-3": "5ee24a99cf"}}
+{"run_id": "P-0027-02:sut_base", "verdicts": {"asrt-1": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "d58b835024"}}
+{"run_id": "P-0033-01:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "b4fa6365b6"}}
+{"run_id": "P-0003-01:sut_base", "verdicts": {"asrt-1": false, "asrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "f567b1aedd", "asrt-3": "467cd0e0b3"}}
+{"run_id": "P-0041-02:sut_base", "verdicts": {"asrt-1": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "7abd358e17"}}
+{"run_id": "P-0002-01:sut_base", "verdicts": {"asrt-1": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "c50dfe0e04"}}
+{"run_id": "P-0049-02:sut_base", "verdicts": {"asrt-1": false, "asrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "af6651ca8c", "asrt-3": "5ee24a99cf"}}
+{"run_id": "P-0002-03:sut_base", "verdicts": {"asrt-1": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "c50dfe0e04"}}
+{"run_id": "P-0010-02:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "17858980f3"}}
+{"run_id": "P-0025-01:sut_twin", "verdicts": {"casrt-1": false, "casrt-2": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "ed66ec5e14", "casrt-2": "f5a703dd93"}}
+{"run_id": "P-0002-02:sut_base", "verdicts": {"asrt-1": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "c50dfe0e04"}}
+{"run_id": "P-0042-02:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "e4f5ea84eb"}}
+{"run_id": "P-0002-01:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "45631f6414"}}
+{"run_id": "P-0039-03:sut_base", "verdicts": {"asrt-1": true, "asrt-2": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "02bc401be0", "asrt-2": "d3975a6768"}}
+{"run_id": "P-0036-03:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "358d615597"}}
+{"run_id": "P-0028-03:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "329234b4fd"}}
+{"run_id": "P-0033-03:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "764d4f7352"}}
+{"run_id": "P-0008-03:sut_base", "verdicts": {"asrt-1": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "e8e2b2764a"}}
+{"run_id": "P-0034-01:sut_twin", "verdicts": {"casrt-1": false, "casrt-2": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "c53793e9ed", "casrt-2": "288388a982"}}
+{"run_id": "P-0013-02:sut_base", "verdicts": {"asrt-1": false, "asrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "6086f1c508", "asrt-3": "829edf5ce4"}}
+{"run_id": "P-0025-03:sut_base", "verdicts": {"asrt-1": false, "asrt-2": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "bb7153de53", "asrt-2": "543f7a876d"}}
+{"run_id": "P-0020-03:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "92ff5885e0"}}
+{"run_id": "P-0048-02:sut_base", "verdicts": {"asrt-1": false, "asrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "6ac57d51f9", "asrt-3": "6fbd01cb67"}}
+{"run_id": "P-0034-03:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "b89665e20e"}}
+{"run_id": "P-0048-01:sut_twin", "verdicts": {"casrt-1": false, "casrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "a32de576a9", "casrt-3": "6fbd01cb67"}}
+{"run_id": "P-0051-01:sut_twin", "verdicts": {"casrt-1": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "1fd0281498"}}
+{"run_id": "P-0006-02:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "6dd7cef411"}}
+{"run_id": "P-0028-03:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "55deb60038"}}
+{"run_id": "P-0008-01:sut_base", "verdicts": {"asrt-1": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "e8e2b2764a"}}
+{"run_id": "P-0012-02:sut_twin", "verdicts": {"casrt-1": false, "casrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "dab1d5d238", "casrt-3": "522677dbb5"}}
+{"run_id": "P-0038-02:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "81fb5f9f59"}}
+{"run_id": "P-0053-03:sut_twin", "verdicts": {"casrt-1": false, "casrt-2": true, "casrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "fc64a20545", "casrt-2": "0bfe9a4204", "casrt-3": "d3cbab4cce"}}
+{"run_id": "P-0006-03:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "6dd7cef411"}}
+{"run_id": "P-0006-01:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "6dd7cef411"}}
+{"run_id": "P-0030-01:sut_twin", "verdicts": {"casrt-1": false, "casrt-2": true, "casrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "2ab288c371", "casrt-2": "d6ccfba1ef", "casrt-3": "7e26cdc625"}}
+{"run_id": "P-0051-03:sut_base", "verdicts": {"asrt-1": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "273845ae9b"}}
+{"run_id": "P-0036-01:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "a4aaff883f"}}
+{"run_id": "P-0052-02:sut_base", "verdicts": {"asrt-1": false, "asrt-2": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "acac913f73", "asrt-2": "5825b172f9"}}
+{"run_id": "P-0020-03:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "a98eb2bd0f"}}
+{"run_id": "P-0018-01:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "fa128ed781"}}
+{"run_id": "P-0013-03:sut_base", "verdicts": {"asrt-1": false, "asrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "6086f1c508", "asrt-3": "829edf5ce4"}}
+{"run_id": "P-0043-01:sut_base", "verdicts": {"asrt-1": false, "asrt-2": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "1261500de7", "asrt-2": "06b467939e"}}
+{"run_id": "P-0023-02:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "3557162151"}}
+{"run_id": "P-0001-03:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "680d9912b2"}}
+{"run_id": "P-0006-03:sut_base", "verdicts": {"asrt-1": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "ed49472669"}}
+{"run_id": "P-0046-03:sut_twin", "verdicts": {"casrt-1": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "c7fc6ca103"}}
+{"run_id": "P-0031-02:sut_twin", "verdicts": {"casrt-1": false, "casrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "cc3dd90290", "casrt-3": "d871f0ee34"}}
+{"run_id": "P-0051-03:sut_twin", "verdicts": {"casrt-1": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "1fd0281498"}}
+{"run_id": "P-0016-01:sut_twin", "verdicts": {"casrt-1": false, "casrt-2": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "5acf980492", "casrt-2": "18d30b7d94"}}
+{"run_id": "P-0001-03:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "3e6f359df9"}}
+{"run_id": "P-0015-03:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "7aa81dc1db"}}
+{"run_id": "P-0038-02:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "89f27c6e92"}}
+{"run_id": "P-0030-03:sut_twin", "verdicts": {"casrt-1": false, "casrt-2": true, "casrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "2ab288c371", "casrt-2": "d6ccfba1ef", "casrt-3": "7e26cdc625"}}
+{"run_id": "P-0040-02:sut_twin", "verdicts": {"casrt-1": true, "casrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "3f366eb187", "casrt-3": "43415487e2"}}
+{"run_id": "P-0030-02:sut_twin", "verdicts": {"casrt-1": false, "casrt-2": true, "casrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "2ab288c371", "casrt-2": "d6ccfba1ef", "casrt-3": "7e26cdc625"}}
+{"run_id": "P-0004-01:sut_base", "verdicts": {"asrt-1": false, "asrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "7ce83c8313", "asrt-3": "ec87a2e9fb"}}
+{"run_id": "P-0041-03:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "7abd358e17"}}
+{"run_id": "P-0037-03:sut_base", "verdicts": {"asrt-1": true, "asrt-2": true, "asrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "415a1b5668", "asrt-2": "3c52b9bd7c", "asrt-3": "3e25cfa780"}}
+{"run_id": "P-0042-03:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "e4f5ea84eb"}}
+{"run_id": "P-0046-01:sut_twin", "verdicts": {"casrt-1": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "c7fc6ca103"}}
+{"run_id": "P-0029-03:sut_base", "verdicts": {"asrt-1": true, "asrt-2": true, "asrt-3": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "b27bd10a3f", "asrt-2": "d0a7645734", "asrt-3": "287425bdd1"}}
+{"run_id": "P-0036-02:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "358d615597"}}
+{"run_id": "P-0054-03:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "ff5ba3e3ef"}}
+{"run_id": "P-0054-01:sut_base", "verdicts": {"asrt-1": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "25288c5991"}}
+{"run_id": "P-0016-03:sut_twin", "verdicts": {"casrt-1": false, "casrt-2": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "5acf980492", "casrt-2": "18d30b7d94"}}
+{"run_id": "P-0027-02:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "d7343cf991"}}
+{"run_id": "P-0029-01:sut_twin", "verdicts": {"casrt-1": false, "casrt-2": false, "casrt-3": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "f568740461", "casrt-2": "8602d6b114", "casrt-3": "c815b77ae0"}}
+{"run_id": "P-0042-03:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "1897a80f13"}}
+{"run_id": "P-0010-03:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "68ce98afbd"}}
+{"run_id": "P-0047-01:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "c1398cde7a"}}
+{"run_id": "P-0049-01:sut_twin", "verdicts": {"casrt-1": false, "casrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "97a87fd8b0", "casrt-3": "5ee24a99cf"}}
+{"run_id": "P-0033-02:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "764d4f7352"}}
+{"run_id": "P-0013-01:sut_base", "verdicts": {"asrt-1": false, "asrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "6086f1c508", "asrt-3": "829edf5ce4"}}
+{"run_id": "P-0037-03:sut_twin", "verdicts": {"casrt-1": false, "casrt-2": false, "casrt-3": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "5b0bdfd61b", "casrt-2": "b9fda07677", "casrt-3": "01327d8581"}}
+{"run_id": "P-0008-03:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "a8b573cb32"}}
+{"run_id": "P-0034-03:sut_twin", "verdicts": {"casrt-1": false, "casrt-2": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "c53793e9ed", "casrt-2": "288388a982"}}
+{"run_id": "P-0035-02:sut_twin", "verdicts": {"casrt-1": false, "casrt-2": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "46733867fc", "casrt-2": "70c5500aba"}}
+{"run_id": "P-0004-02:sut_base", "verdicts": {"asrt-1": false, "asrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "7ce83c8313", "asrt-3": "ec87a2e9fb"}}
+{"run_id": "P-0009-01:sut_base", "verdicts": {"asrt-1": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "a1e731513f"}}
+{"run_id": "P-0019-01:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "02647f75cc"}}
+{"run_id": "P-0004-03:sut_base", "verdicts": {"asrt-1": false, "asrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "7ce83c8313", "asrt-3": "ec87a2e9fb"}}
+{"run_id": "P-0037-02:sut_twin", "verdicts": {"casrt-1": false, "casrt-2": false, "casrt-3": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "5b0bdfd61b", "casrt-2": "b9fda07677", "casrt-3": "01327d8581"}}
+{"run_id": "P-0041-03:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "e60c8581dc"}}
+{"run_id": "P-0023-03:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "3557162151"}}
+{"run_id": "P-0018-01:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "db7a40b1e0"}}
+{"run_id": "P-0054-01:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "ff5ba3e3ef"}}
+{"run_id": "P-0019-03:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "a1cd604110"}}
+{"run_id": "P-0049-01:sut_base", "verdicts": {"asrt-1": false, "asrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "af6651ca8c", "asrt-3": "5ee24a99cf"}}
+{"run_id": "P-0052-02:sut_twin", "verdicts": {"casrt-1": false, "casrt-2": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "abf79261e0", "casrt-2": "9ad746c16f"}}
+{"run_id": "P-0017-01:sut_base", "verdicts": {"asrt-1": false, "asrt-2": true, "asrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "6a4cb15fa9", "asrt-2": "a1cebe0662", "asrt-3": "ce2b293b99"}}
+{"run_id": "P-0019-01:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "a1cd604110"}}
+{"run_id": "P-0025-01:sut_base", "verdicts": {"asrt-1": true, "asrt-2": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "bb7153de53", "asrt-2": "543f7a876d"}}
+{"run_id": "P-0042-01:sut_base", "verdicts": {"asrt-1": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "e4f5ea84eb"}}
+{"run_id": "P-0052-03:sut_base", "verdicts": {"asrt-1": false, "asrt-2": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "acac913f73", "asrt-2": "5825b172f9"}}
+{"run_id": "P-0035-02:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "59680aa496"}}
+{"run_id": "P-0039-01:sut_twin", "verdicts": {"casrt-1": false, "casrt-2": true, "casrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "ad5e1bb2cf", "casrt-2": "8e8268a24f", "casrt-3": "7d49a61aec"}}
+{"run_id": "P-0029-03:sut_twin", "verdicts": {"casrt-1": false, "casrt-2": false, "casrt-3": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "f568740461", "casrt-2": "8602d6b114", "casrt-3": "c815b77ae0"}}
+{"run_id": "P-0047-03:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "42a87759b5"}}
+{"run_id": "P-0046-03:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "d04f7832dd"}}
+{"run_id": "P-0050-01:sut_twin", "verdicts": {"casrt-1": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "8907077cff"}}
+{"run_id": "P-0020-02:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "92ff5885e0"}}
+{"run_id": "P-0016-01:sut_base", "verdicts": {"asrt-1": false, "asrt-2": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "36179d5211", "asrt-2": "415f686391"}}
+{"run_id": "P-0028-02:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "55deb60038"}}
+{"run_id": "P-0020-01:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "a98eb2bd0f"}}
+{"run_id": "P-0036-02:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "a4aaff883f"}}
+{"run_id": "P-0023-03:sut_base", "verdicts": {"asrt-1": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "e3bb969d8f"}}
+{"run_id": "P-0045-02:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "835599d3a9"}}
+{"run_id": "P-0035-01:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "59680aa496"}}
+{"run_id": "P-0017-03:sut_base", "verdicts": {"asrt-1": false, "asrt-2": true, "asrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "6a4cb15fa9", "asrt-2": "a1cebe0662", "asrt-3": "ce2b293b99"}}
+{"run_id": "P-0001-01:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "3e6f359df9"}}
+{"run_id": "P-0034-02:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "b89665e20e"}}
+{"run_id": "P-0023-02:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "e3bb969d8f"}}
+{"run_id": "P-0023-01:sut_base", "verdicts": {"asrt-1": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "e3bb969d8f"}}
+{"run_id": "P-0003-03:sut_twin", "verdicts": {"casrt-1": false, "casrt-2": false, "casrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "cfb665ec1a", "casrt-2": "a487e23497", "casrt-3": "ab1bd44629"}}
+{"run_id": "P-0013-03:sut_twin", "verdicts": {"casrt-1": false, "casrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "9ecaed3110", "casrt-3": "e2fd4ec0e2"}}
+{"run_id": "P-0027-01:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "d7343cf991"}}
+{"run_id": "P-0054-03:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "25288c5991"}}
+{"run_id": "P-0045-03:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "835599d3a9"}}
+{"run_id": "P-0034-01:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "b89665e20e"}}
+{"run_id": "P-0007-02:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "bd3d4acf15"}}
+{"run_id": "P-0049-03:sut_base", "verdicts": {"asrt-1": false, "asrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "af6651ca8c", "asrt-3": "5ee24a99cf"}}
+{"run_id": "P-0031-01:sut_twin", "verdicts": {"casrt-1": false, "casrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "cc3dd90290", "casrt-3": "d871f0ee34"}}
+{"run_id": "P-0007-03:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "d3a8db0cd2"}}
+{"run_id": "P-0017-01:sut_twin", "verdicts": {"casrt-1": false, "casrt-2": true, "casrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "16fbfbdda1", "casrt-2": "146364c57b", "casrt-3": "fb07beb2e5"}}
+{"run_id": "P-0013-01:sut_twin", "verdicts": {"casrt-1": false, "casrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "9ecaed3110", "casrt-3": "e2fd4ec0e2"}}
+{"run_id": "P-0010-02:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "68ce98afbd"}}
+{"run_id": "P-0030-02:sut_base", "verdicts": {"asrt-1": false, "asrt-2": true, "asrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "aab5c1dd8d", "asrt-2": "02cd44979b", "asrt-3": "7e26cdc625"}}
+{"run_id": "P-0036-01:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "358d615597"}}
+{"run_id": "P-0015-01:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "8e82ef973d"}}
+{"run_id": "P-0028-02:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "329234b4fd"}}
+{"run_id": "P-0038-03:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "81fb5f9f59"}}
+{"run_id": "P-0001-01:sut_base", "verdicts": {"asrt-1": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "680d9912b2"}}
+{"run_id": "P-0011-01:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "f78b4bf27f"}}
+{"run_id": "P-0028-01:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "329234b4fd"}}
+{"run_id": "P-0045-03:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "1b59e5fe15"}}
+{"run_id": "P-0015-03:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "8e82ef973d"}}
+{"run_id": "P-0004-03:sut_twin", "verdicts": {"casrt-1": false, "casrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "61eac41695", "casrt-3": "ab1bd44629"}}
+{"run_id": "P-0006-01:sut_base", "verdicts": {"asrt-1": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "ed49472669"}}
+{"run_id": "P-0031-03:sut_base", "verdicts": {"asrt-1": true, "asrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "5a6a89b6ea", "asrt-3": "d871f0ee34"}}
+{"run_id": "P-0054-02:sut_base", "verdicts": {"asrt-1": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "25288c5991"}}
+{"run_id": "P-0035-01:sut_twin", "verdicts": {"casrt-1": false, "casrt-2": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "46733867fc", "casrt-2": "70c5500aba"}}
+{"run_id": "P-0047-03:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "c1398cde7a"}}
+{"run_id": "P-0004-01:sut_twin", "verdicts": {"casrt-1": false, "casrt-3": true}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "61eac41695", "casrt-3": "ab1bd44629"}}
+{"run_id": "P-0010-01:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "68ce98afbd"}}
+{"run_id": "P-0006-02:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "ed49472669"}}
+{"run_id": "P-0011-02:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "d70b583406"}}
+{"run_id": "P-0050-03:sut_base", "verdicts": {"asrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"asrt-1": "51977d1517"}}
+{"run_id": "P-0008-01:sut_twin", "verdicts": {"casrt-1": false}, "judge": "claude-sonnet-5-blinded-v2", "criteria_sha": {"casrt-1": "a8b573cb32"}}

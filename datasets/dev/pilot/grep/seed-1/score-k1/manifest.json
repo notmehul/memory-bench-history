@@ -1,0 +1,7 @@
+{
+ "system": "grep",
+ "org": "org-00001",
+ "valid_instances": 125,
+ "sut_base": "datasets/dev/pilot/grep/seed-1/base-k1.jsonl",
+ "sut_twin": "datasets/dev/pilot/grep/seed-1/twin-k1.jsonl"
+}

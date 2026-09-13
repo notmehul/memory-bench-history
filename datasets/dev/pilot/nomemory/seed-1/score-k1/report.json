@@ -1,0 +1,2135 @@
+{
+ "system": "nomemory",
+ "org": "org-00001",
+ "n_valid_instances": 125,
+ "n_empty_deliverables": 0,
+ "by_rung": {
+  "1": {
+   "pair_credit_mean": 0.0217,
+   "se_cluster_robust": 0.0205,
+   "ci95": [
+    -0.0185,
+    0.062
+   ],
+   "n_instances": 92,
+   "n_clusters": 34
+  },
+  "2": {
+   "pair_credit_mean": 0.1176,
+   "se_cluster_robust": 0.1105,
+   "ci95": [
+    -0.0989,
+    0.3342
+   ],
+   "n_instances": 17,
+   "n_clusters": 6
+  },
+  "3": {
+   "pair_credit_mean": 0.0,
+   "se_cluster_robust": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ],
+   "n_instances": 16,
+   "n_clusters": 6
+  }
+ },
+ "by_metric": {
+  "history_retention": {
+   "pair_credit_mean": 0.0,
+   "se_cluster_robust": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ],
+   "n_instances": 17,
+   "n_clusters": 6
+  },
+  "proactive_application": {
+   "pair_credit_mean": 0.0,
+   "se_cluster_robust": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ],
+   "n_instances": 16,
+   "n_clusters": 6
+  },
+  "propagation_latency": {
+   "pair_credit_mean": 0.1176,
+   "se_cluster_robust": 0.1105,
+   "ci95": [
+    -0.0989,
+    0.3342
+   ],
+   "n_instances": 17,
+   "n_clusters": 6
+  },
+  "scope_resolution_accuracy": {
+   "pair_credit_mean": 0.0,
+   "se_cluster_robust": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ],
+   "n_instances": 35,
+   "n_clusters": 13
+  },
+  "staleness_rate": {
+   "pair_credit_mean": 0.05,
+   "se_cluster_robust": 0.0465,
+   "ci95": [
+    -0.0411,
+    0.1411
+   ],
+   "n_instances": 40,
+   "n_clusters": 15
+  }
+ },
+ "by_archetype": {
+  "A1": {
+   "pair_credit_mean": 0.1176,
+   "se_cluster_robust": 0.1105,
+   "ci95": [
+    -0.0989,
+    0.3342
+   ],
+   "n_instances": 17,
+   "n_clusters": 6
+  },
+  "A2": {
+   "pair_credit_mean": 0.0,
+   "se_cluster_robust": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ],
+   "n_instances": 16,
+   "n_clusters": 6
+  },
+  "A4": {
+   "pair_credit_mean": 0.0,
+   "se_cluster_robust": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ],
+   "n_instances": 35,
+   "n_clusters": 13
+  },
+  "A7": {
+   "pair_credit_mean": 0.0351,
+   "se_cluster_robust": 0.033,
+   "ci95": [
+    -0.0297,
+    0.0999
+   ],
+   "n_instances": 57,
+   "n_clusters": 21
+  }
+ },
+ "instances": {
+  "P-0001-01": {
+   "cluster_id": "P-0001",
+   "sut_base": 1.0,
+   "sut_twin": 0.0,
+   "floor": 1.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": null,
+   "norm_twin": 0.0,
+   "archetype": "A1",
+   "metrics": [
+    "propagation_latency"
+   ],
+   "rung": 2
+  },
+  "P-0001-02": {
+   "cluster_id": "P-0001",
+   "sut_base": 1.0,
+   "sut_twin": 0.0,
+   "floor": 1.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": null,
+   "norm_twin": 0.0,
+   "archetype": "A1",
+   "metrics": [
+    "propagation_latency"
+   ],
+   "rung": 2
+  },
+  "P-0001-03": {
+   "cluster_id": "P-0001",
+   "sut_base": 0.5,
+   "sut_twin": 0.0,
+   "floor": 0.5,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.0,
+   "archetype": "A1",
+   "metrics": [
+    "propagation_latency"
+   ],
+   "rung": 2
+  },
+  "P-0002-01": {
+   "cluster_id": "P-0002",
+   "sut_base": 1.0,
+   "sut_twin": 0.0,
+   "floor": 1.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": null,
+   "norm_twin": 0.0,
+   "archetype": "A2",
+   "metrics": [
+    "proactive_application"
+   ],
+   "rung": 3
+  },
+  "P-0002-02": {
+   "cluster_id": "P-0002",
+   "sut_base": 1.0,
+   "sut_twin": 0.0,
+   "floor": 1.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": null,
+   "norm_twin": 0.0,
+   "archetype": "A2",
+   "metrics": [
+    "proactive_application"
+   ],
+   "rung": 3
+  },
+  "P-0002-03": {
+   "cluster_id": "P-0002",
+   "sut_base": 1.0,
+   "sut_twin": 0.0,
+   "floor": 1.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": null,
+   "norm_twin": 0.0,
+   "archetype": "A2",
+   "metrics": [
+    "proactive_application"
+   ],
+   "rung": 3
+  },
+  "P-0003-01": {
+   "cluster_id": "P-0003",
+   "sut_base": 0.6666666666666666,
+   "sut_twin": 0.6666666666666666,
+   "floor": 1.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": null,
+   "norm_twin": 0.6666666666666666,
+   "archetype": "A4",
+   "metrics": [
+    "scope_resolution_accuracy"
+   ],
+   "rung": 1
+  },
+  "P-0003-03": {
+   "cluster_id": "P-0003",
+   "sut_base": 0.6666666666666666,
+   "sut_twin": 0.3333333333333333,
+   "floor": 0.6666666666666666,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.3333333333333333,
+   "archetype": "A4",
+   "metrics": [
+    "scope_resolution_accuracy"
+   ],
+   "rung": 1
+  },
+  "P-0004-01": {
+   "cluster_id": "P-0004",
+   "sut_base": 0.5,
+   "sut_twin": 0.5,
+   "floor": 0.5,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.5,
+   "archetype": "A4",
+   "metrics": [
+    "scope_resolution_accuracy"
+   ],
+   "rung": 1
+  },
+  "P-0004-02": {
+   "cluster_id": "P-0004",
+   "sut_base": 0.5,
+   "sut_twin": 0.5,
+   "floor": 0.5,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.5,
+   "archetype": "A4",
+   "metrics": [
+    "scope_resolution_accuracy"
+   ],
+   "rung": 1
+  },
+  "P-0004-03": {
+   "cluster_id": "P-0004",
+   "sut_base": 0.5,
+   "sut_twin": 0.5,
+   "floor": 0.5,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.5,
+   "archetype": "A4",
+   "metrics": [
+    "scope_resolution_accuracy"
+   ],
+   "rung": 1
+  },
+  "P-0006-01": {
+   "cluster_id": "P-0006",
+   "sut_base": 1.0,
+   "sut_twin": 0.0,
+   "floor": 1.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": null,
+   "norm_twin": 0.0,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0006-02": {
+   "cluster_id": "P-0006",
+   "sut_base": 0.0,
+   "sut_twin": 0.0,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.0,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0006-03": {
+   "cluster_id": "P-0006",
+   "sut_base": 1.0,
+   "sut_twin": 0.0,
+   "floor": 1.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": null,
+   "norm_twin": 0.0,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0007-01": {
+   "cluster_id": "P-0007",
+   "sut_base": 0.5,
+   "sut_twin": 0.5,
+   "floor": 0.5,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.5,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0007-02": {
+   "cluster_id": "P-0007",
+   "sut_base": 0.5,
+   "sut_twin": 0.5,
+   "floor": 0.5,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.5,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0007-03": {
+   "cluster_id": "P-0007",
+   "sut_base": 0.0,
+   "sut_twin": 0.5,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.5,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0008-01": {
+   "cluster_id": "P-0008",
+   "sut_base": 1.0,
+   "sut_twin": 0.6666666666666666,
+   "floor": 0.6666666666666666,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 1.0,
+   "norm_twin": 0.6666666666666666,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0008-03": {
+   "cluster_id": "P-0008",
+   "sut_base": 1.0,
+   "sut_twin": 0.6666666666666666,
+   "floor": 0.6666666666666666,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 1.0,
+   "norm_twin": 0.6666666666666666,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0009-01": {
+   "cluster_id": "P-0009",
+   "sut_base": 1.0,
+   "sut_twin": 0.0,
+   "floor": 1.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": null,
+   "norm_twin": 0.0,
+   "archetype": "A7",
+   "metrics": [
+    "history_retention"
+   ],
+   "rung": 1
+  },
+  "P-0009-03": {
+   "cluster_id": "P-0009",
+   "sut_base": 1.0,
+   "sut_twin": 0.0,
+   "floor": 1.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": null,
+   "norm_twin": 0.0,
+   "archetype": "A7",
+   "metrics": [
+    "history_retention"
+   ],
+   "rung": 1
+  },
+  "P-0010-01": {
+   "cluster_id": "P-0010",
+   "sut_base": 0.0,
+   "sut_twin": 0.0,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.0,
+   "archetype": "A1",
+   "metrics": [
+    "propagation_latency"
+   ],
+   "rung": 2
+  },
+  "P-0010-02": {
+   "cluster_id": "P-0010",
+   "sut_base": 0.0,
+   "sut_twin": 0.0,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.0,
+   "archetype": "A1",
+   "metrics": [
+    "propagation_latency"
+   ],
+   "rung": 2
+  },
+  "P-0010-03": {
+   "cluster_id": "P-0010",
+   "sut_base": 0.0,
+   "sut_twin": 0.0,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.0,
+   "archetype": "A1",
+   "metrics": [
+    "propagation_latency"
+   ],
+   "rung": 2
+  },
+  "P-0011-01": {
+   "cluster_id": "P-0011",
+   "sut_base": 0.0,
+   "sut_twin": 0.0,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.0,
+   "archetype": "A2",
+   "metrics": [
+    "proactive_application"
+   ],
+   "rung": 3
+  },
+  "P-0011-02": {
+   "cluster_id": "P-0011",
+   "sut_base": 0.0,
+   "sut_twin": 0.0,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.0,
+   "archetype": "A2",
+   "metrics": [
+    "proactive_application"
+   ],
+   "rung": 3
+  },
+  "P-0011-03": {
+   "cluster_id": "P-0011",
+   "sut_base": 0.0,
+   "sut_twin": 0.0,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.0,
+   "archetype": "A2",
+   "metrics": [
+    "proactive_application"
+   ],
+   "rung": 3
+  },
+  "P-0012-02": {
+   "cluster_id": "P-0012",
+   "sut_base": 0.6666666666666666,
+   "sut_twin": 0.6666666666666666,
+   "floor": 1.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": null,
+   "norm_twin": 0.6666666666666666,
+   "archetype": "A4",
+   "metrics": [
+    "scope_resolution_accuracy"
+   ],
+   "rung": 1
+  },
+  "P-0012-03": {
+   "cluster_id": "P-0012",
+   "sut_base": 1.0,
+   "sut_twin": 0.6666666666666666,
+   "floor": 0.6666666666666666,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 1.0,
+   "norm_twin": 0.6666666666666666,
+   "archetype": "A4",
+   "metrics": [
+    "scope_resolution_accuracy"
+   ],
+   "rung": 1
+  },
+  "P-0013-01": {
+   "cluster_id": "P-0013",
+   "sut_base": 0.5,
+   "sut_twin": 0.5,
+   "floor": 0.5,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.5,
+   "archetype": "A4",
+   "metrics": [
+    "scope_resolution_accuracy"
+   ],
+   "rung": 1
+  },
+  "P-0013-02": {
+   "cluster_id": "P-0013",
+   "sut_base": 0.5,
+   "sut_twin": 0.5,
+   "floor": 0.5,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.5,
+   "archetype": "A4",
+   "metrics": [
+    "scope_resolution_accuracy"
+   ],
+   "rung": 1
+  },
+  "P-0013-03": {
+   "cluster_id": "P-0013",
+   "sut_base": 0.5,
+   "sut_twin": 0.5,
+   "floor": 0.5,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.5,
+   "archetype": "A4",
+   "metrics": [
+    "scope_resolution_accuracy"
+   ],
+   "rung": 1
+  },
+  "P-0015-01": {
+   "cluster_id": "P-0015",
+   "sut_base": 0.0,
+   "sut_twin": 0.0,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.0,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0015-02": {
+   "cluster_id": "P-0015",
+   "sut_base": 0.0,
+   "sut_twin": 0.0,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.0,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0015-03": {
+   "cluster_id": "P-0015",
+   "sut_base": 0.0,
+   "sut_twin": 0.0,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.0,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0016-01": {
+   "cluster_id": "P-0016",
+   "sut_base": 0.0,
+   "sut_twin": 0.6666666666666666,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.6666666666666666,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0016-02": {
+   "cluster_id": "P-0016",
+   "sut_base": 0.0,
+   "sut_twin": 0.6666666666666666,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.6666666666666666,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0016-03": {
+   "cluster_id": "P-0016",
+   "sut_base": 0.0,
+   "sut_twin": 0.6666666666666666,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.6666666666666666,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0017-01": {
+   "cluster_id": "P-0017",
+   "sut_base": 0.6666666666666666,
+   "sut_twin": 0.6666666666666666,
+   "floor": 1.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": null,
+   "norm_twin": 0.6666666666666666,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0017-03": {
+   "cluster_id": "P-0017",
+   "sut_base": 0.6666666666666666,
+   "sut_twin": 0.6666666666666666,
+   "floor": 1.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": null,
+   "norm_twin": 0.6666666666666666,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0018-01": {
+   "cluster_id": "P-0018",
+   "sut_base": 0.0,
+   "sut_twin": 0.0,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.0,
+   "archetype": "A7",
+   "metrics": [
+    "history_retention"
+   ],
+   "rung": 1
+  },
+  "P-0018-02": {
+   "cluster_id": "P-0018",
+   "sut_base": 0.0,
+   "sut_twin": 0.0,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.0,
+   "archetype": "A7",
+   "metrics": [
+    "history_retention"
+   ],
+   "rung": 1
+  },
+  "P-0018-03": {
+   "cluster_id": "P-0018",
+   "sut_base": 0.0,
+   "sut_twin": 0.0,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.0,
+   "archetype": "A7",
+   "metrics": [
+    "history_retention"
+   ],
+   "rung": 1
+  },
+  "P-0019-01": {
+   "cluster_id": "P-0019",
+   "sut_base": 0.0,
+   "sut_twin": 0.0,
+   "floor": 1.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": null,
+   "norm_twin": 0.0,
+   "archetype": "A1",
+   "metrics": [
+    "propagation_latency"
+   ],
+   "rung": 2
+  },
+  "P-0019-02": {
+   "cluster_id": "P-0019",
+   "sut_base": 1.0,
+   "sut_twin": 0.0,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 1.0,
+   "norm_twin": 0.0,
+   "archetype": "A1",
+   "metrics": [
+    "propagation_latency"
+   ],
+   "rung": 2
+  },
+  "P-0019-03": {
+   "cluster_id": "P-0019",
+   "sut_base": 0.0,
+   "sut_twin": 0.0,
+   "floor": 1.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": null,
+   "norm_twin": 0.0,
+   "archetype": "A1",
+   "metrics": [
+    "propagation_latency"
+   ],
+   "rung": 2
+  },
+  "P-0020-01": {
+   "cluster_id": "P-0020",
+   "sut_base": 0.0,
+   "sut_twin": 0.0,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.0,
+   "archetype": "A2",
+   "metrics": [
+    "proactive_application"
+   ],
+   "rung": 3
+  },
+  "P-0020-02": {
+   "cluster_id": "P-0020",
+   "sut_base": 0.0,
+   "sut_twin": 0.0,
+   "floor": 1.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": null,
+   "norm_twin": 0.0,
+   "archetype": "A2",
+   "metrics": [
+    "proactive_application"
+   ],
+   "rung": 3
+  },
+  "P-0020-03": {
+   "cluster_id": "P-0020",
+   "sut_base": 0.0,
+   "sut_twin": 0.0,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.0,
+   "archetype": "A2",
+   "metrics": [
+    "proactive_application"
+   ],
+   "rung": 3
+  },
+  "P-0023-01": {
+   "cluster_id": "P-0023",
+   "sut_base": 1.0,
+   "sut_twin": 0.0,
+   "floor": 1.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": null,
+   "norm_twin": 0.0,
+   "archetype": "A4",
+   "metrics": [
+    "scope_resolution_accuracy"
+   ],
+   "rung": 1
+  },
+  "P-0023-02": {
+   "cluster_id": "P-0023",
+   "sut_base": 0.0,
+   "sut_twin": 0.0,
+   "floor": 1.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": null,
+   "norm_twin": 0.0,
+   "archetype": "A4",
+   "metrics": [
+    "scope_resolution_accuracy"
+   ],
+   "rung": 1
+  },
+  "P-0023-03": {
+   "cluster_id": "P-0023",
+   "sut_base": 1.0,
+   "sut_twin": 0.0,
+   "floor": 1.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": null,
+   "norm_twin": 0.0,
+   "archetype": "A4",
+   "metrics": [
+    "scope_resolution_accuracy"
+   ],
+   "rung": 1
+  },
+  "P-0025-01": {
+   "cluster_id": "P-0025",
+   "sut_base": 1.0,
+   "sut_twin": 0.5,
+   "floor": 1.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": null,
+   "norm_twin": 0.5,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0025-03": {
+   "cluster_id": "P-0025",
+   "sut_base": 0.6666666666666666,
+   "sut_twin": 0.5,
+   "floor": 1.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": null,
+   "norm_twin": 0.5,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0027-01": {
+   "cluster_id": "P-0027",
+   "sut_base": 1.0,
+   "sut_twin": 0.0,
+   "floor": 1.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": null,
+   "norm_twin": 0.0,
+   "archetype": "A7",
+   "metrics": [
+    "history_retention"
+   ],
+   "rung": 1
+  },
+  "P-0027-02": {
+   "cluster_id": "P-0027",
+   "sut_base": 1.0,
+   "sut_twin": 0.0,
+   "floor": 1.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": null,
+   "norm_twin": 0.0,
+   "archetype": "A7",
+   "metrics": [
+    "history_retention"
+   ],
+   "rung": 1
+  },
+  "P-0027-03": {
+   "cluster_id": "P-0027",
+   "sut_base": 1.0,
+   "sut_twin": 0.0,
+   "floor": 1.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": null,
+   "norm_twin": 0.0,
+   "archetype": "A7",
+   "metrics": [
+    "history_retention"
+   ],
+   "rung": 1
+  },
+  "P-0028-01": {
+   "cluster_id": "P-0028",
+   "sut_base": 0.0,
+   "sut_twin": 0.0,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.0,
+   "archetype": "A1",
+   "metrics": [
+    "propagation_latency"
+   ],
+   "rung": 2
+  },
+  "P-0028-02": {
+   "cluster_id": "P-0028",
+   "sut_base": 0.0,
+   "sut_twin": 0.0,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.0,
+   "archetype": "A1",
+   "metrics": [
+    "propagation_latency"
+   ],
+   "rung": 2
+  },
+  "P-0028-03": {
+   "cluster_id": "P-0028",
+   "sut_base": 0.0,
+   "sut_twin": 0.0,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.0,
+   "archetype": "A1",
+   "metrics": [
+    "propagation_latency"
+   ],
+   "rung": 2
+  },
+  "P-0029-01": {
+   "cluster_id": "P-0029",
+   "sut_base": 0.6666666666666666,
+   "sut_twin": 0.0,
+   "floor": 0.6666666666666666,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.0,
+   "archetype": "A2",
+   "metrics": [
+    "proactive_application"
+   ],
+   "rung": 3
+  },
+  "P-0029-03": {
+   "cluster_id": "P-0029",
+   "sut_base": 0.6666666666666666,
+   "sut_twin": 0.0,
+   "floor": 0.6666666666666666,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.0,
+   "archetype": "A2",
+   "metrics": [
+    "proactive_application"
+   ],
+   "rung": 3
+  },
+  "P-0030-01": {
+   "cluster_id": "P-0030",
+   "sut_base": 0.6666666666666666,
+   "sut_twin": 0.6666666666666666,
+   "floor": 0.6666666666666666,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.6666666666666666,
+   "archetype": "A4",
+   "metrics": [
+    "scope_resolution_accuracy"
+   ],
+   "rung": 1
+  },
+  "P-0030-02": {
+   "cluster_id": "P-0030",
+   "sut_base": 0.6666666666666666,
+   "sut_twin": 0.6666666666666666,
+   "floor": 0.6666666666666666,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.6666666666666666,
+   "archetype": "A4",
+   "metrics": [
+    "scope_resolution_accuracy"
+   ],
+   "rung": 1
+  },
+  "P-0030-03": {
+   "cluster_id": "P-0030",
+   "sut_base": 0.6666666666666666,
+   "sut_twin": 0.6666666666666666,
+   "floor": 0.6666666666666666,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.6666666666666666,
+   "archetype": "A4",
+   "metrics": [
+    "scope_resolution_accuracy"
+   ],
+   "rung": 1
+  },
+  "P-0031-01": {
+   "cluster_id": "P-0031",
+   "sut_base": 1.0,
+   "sut_twin": 0.5,
+   "floor": 1.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": null,
+   "norm_twin": 0.5,
+   "archetype": "A4",
+   "metrics": [
+    "scope_resolution_accuracy"
+   ],
+   "rung": 1
+  },
+  "P-0031-02": {
+   "cluster_id": "P-0031",
+   "sut_base": 1.0,
+   "sut_twin": 0.5,
+   "floor": 1.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": null,
+   "norm_twin": 0.5,
+   "archetype": "A4",
+   "metrics": [
+    "scope_resolution_accuracy"
+   ],
+   "rung": 1
+  },
+  "P-0031-03": {
+   "cluster_id": "P-0031",
+   "sut_base": 1.0,
+   "sut_twin": 0.5,
+   "floor": 1.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": null,
+   "norm_twin": 0.5,
+   "archetype": "A4",
+   "metrics": [
+    "scope_resolution_accuracy"
+   ],
+   "rung": 1
+  },
+  "P-0033-01": {
+   "cluster_id": "P-0033",
+   "sut_base": 0.0,
+   "sut_twin": 0.5,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.5,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0033-02": {
+   "cluster_id": "P-0033",
+   "sut_base": 0.0,
+   "sut_twin": 0.5,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.5,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0033-03": {
+   "cluster_id": "P-0033",
+   "sut_base": 0.0,
+   "sut_twin": 0.5,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.5,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0034-01": {
+   "cluster_id": "P-0034",
+   "sut_base": 0.6666666666666666,
+   "sut_twin": 0.6666666666666666,
+   "floor": 0.6666666666666666,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.6666666666666666,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0034-02": {
+   "cluster_id": "P-0034",
+   "sut_base": 0.6666666666666666,
+   "sut_twin": 0.6666666666666666,
+   "floor": 0.3333333333333333,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.49999999999999994,
+   "norm_twin": 0.6666666666666666,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0034-03": {
+   "cluster_id": "P-0034",
+   "sut_base": 0.6666666666666666,
+   "sut_twin": 0.6666666666666666,
+   "floor": 0.6666666666666666,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.6666666666666666,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0035-01": {
+   "cluster_id": "P-0035",
+   "sut_base": 0.6666666666666666,
+   "sut_twin": 0.6666666666666666,
+   "floor": 0.6666666666666666,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.6666666666666666,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0035-02": {
+   "cluster_id": "P-0035",
+   "sut_base": 0.6666666666666666,
+   "sut_twin": 0.6666666666666666,
+   "floor": 0.6666666666666666,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.6666666666666666,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0036-01": {
+   "cluster_id": "P-0036",
+   "sut_base": 0.0,
+   "sut_twin": 0.0,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.0,
+   "archetype": "A7",
+   "metrics": [
+    "history_retention"
+   ],
+   "rung": 1
+  },
+  "P-0036-02": {
+   "cluster_id": "P-0036",
+   "sut_base": 0.0,
+   "sut_twin": 0.0,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.0,
+   "archetype": "A7",
+   "metrics": [
+    "history_retention"
+   ],
+   "rung": 1
+  },
+  "P-0036-03": {
+   "cluster_id": "P-0036",
+   "sut_base": 0.0,
+   "sut_twin": 0.0,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.0,
+   "archetype": "A7",
+   "metrics": [
+    "history_retention"
+   ],
+   "rung": 1
+  },
+  "P-0037-02": {
+   "cluster_id": "P-0037",
+   "sut_base": 1.0,
+   "sut_twin": 0.0,
+   "floor": 0.6666666666666666,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 1.0,
+   "norm_twin": 0.0,
+   "archetype": "A1",
+   "metrics": [
+    "propagation_latency"
+   ],
+   "rung": 2
+  },
+  "P-0037-03": {
+   "cluster_id": "P-0037",
+   "sut_base": 1.0,
+   "sut_twin": 0.0,
+   "floor": 1.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": null,
+   "norm_twin": 0.0,
+   "archetype": "A1",
+   "metrics": [
+    "propagation_latency"
+   ],
+   "rung": 2
+  },
+  "P-0038-01": {
+   "cluster_id": "P-0038",
+   "sut_base": 0.5,
+   "sut_twin": 0.0,
+   "floor": 0.5,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.0,
+   "archetype": "A2",
+   "metrics": [
+    "proactive_application"
+   ],
+   "rung": 3
+  },
+  "P-0038-02": {
+   "cluster_id": "P-0038",
+   "sut_base": 0.5,
+   "sut_twin": 0.0,
+   "floor": 0.5,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.0,
+   "archetype": "A2",
+   "metrics": [
+    "proactive_application"
+   ],
+   "rung": 3
+  },
+  "P-0038-03": {
+   "cluster_id": "P-0038",
+   "sut_base": 0.5,
+   "sut_twin": 0.0,
+   "floor": 1.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": null,
+   "norm_twin": 0.0,
+   "archetype": "A2",
+   "metrics": [
+    "proactive_application"
+   ],
+   "rung": 3
+  },
+  "P-0039-01": {
+   "cluster_id": "P-0039",
+   "sut_base": 1.0,
+   "sut_twin": 0.6666666666666666,
+   "floor": 1.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": null,
+   "norm_twin": 0.6666666666666666,
+   "archetype": "A4",
+   "metrics": [
+    "scope_resolution_accuracy"
+   ],
+   "rung": 1
+  },
+  "P-0039-03": {
+   "cluster_id": "P-0039",
+   "sut_base": 1.0,
+   "sut_twin": 0.6666666666666666,
+   "floor": 1.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": null,
+   "norm_twin": 0.6666666666666666,
+   "archetype": "A4",
+   "metrics": [
+    "scope_resolution_accuracy"
+   ],
+   "rung": 1
+  },
+  "P-0040-01": {
+   "cluster_id": "P-0040",
+   "sut_base": 0.5,
+   "sut_twin": 1.0,
+   "floor": 0.5,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 1.0,
+   "archetype": "A4",
+   "metrics": [
+    "scope_resolution_accuracy"
+   ],
+   "rung": 1
+  },
+  "P-0040-02": {
+   "cluster_id": "P-0040",
+   "sut_base": 0.5,
+   "sut_twin": 1.0,
+   "floor": 0.5,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 1.0,
+   "archetype": "A4",
+   "metrics": [
+    "scope_resolution_accuracy"
+   ],
+   "rung": 1
+  },
+  "P-0040-03": {
+   "cluster_id": "P-0040",
+   "sut_base": 0.5,
+   "sut_twin": 1.0,
+   "floor": 0.5,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 1.0,
+   "archetype": "A4",
+   "metrics": [
+    "scope_resolution_accuracy"
+   ],
+   "rung": 1
+  },
+  "P-0041-01": {
+   "cluster_id": "P-0041",
+   "sut_base": 0.0,
+   "sut_twin": 0.0,
+   "floor": 1.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": null,
+   "norm_twin": 0.0,
+   "archetype": "A4",
+   "metrics": [
+    "scope_resolution_accuracy"
+   ],
+   "rung": 1
+  },
+  "P-0041-02": {
+   "cluster_id": "P-0041",
+   "sut_base": 1.0,
+   "sut_twin": 0.0,
+   "floor": 1.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": null,
+   "norm_twin": 0.0,
+   "archetype": "A4",
+   "metrics": [
+    "scope_resolution_accuracy"
+   ],
+   "rung": 1
+  },
+  "P-0041-03": {
+   "cluster_id": "P-0041",
+   "sut_base": 0.0,
+   "sut_twin": 0.0,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.0,
+   "archetype": "A4",
+   "metrics": [
+    "scope_resolution_accuracy"
+   ],
+   "rung": 1
+  },
+  "P-0042-01": {
+   "cluster_id": "P-0042",
+   "sut_base": 1.0,
+   "sut_twin": 0.0,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 1.0,
+   "norm_twin": 0.0,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0042-02": {
+   "cluster_id": "P-0042",
+   "sut_base": 0.0,
+   "sut_twin": 0.0,
+   "floor": 1.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": null,
+   "norm_twin": 0.0,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0042-03": {
+   "cluster_id": "P-0042",
+   "sut_base": 0.0,
+   "sut_twin": 0.0,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.0,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0043-01": {
+   "cluster_id": "P-0043",
+   "sut_base": 0.5,
+   "sut_twin": 0.5,
+   "floor": 0.5,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.5,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0043-02": {
+   "cluster_id": "P-0043",
+   "sut_base": 0.5,
+   "sut_twin": 0.5,
+   "floor": 0.5,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.5,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0043-03": {
+   "cluster_id": "P-0043",
+   "sut_base": 0.5,
+   "sut_twin": 0.5,
+   "floor": 0.5,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.5,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0045-01": {
+   "cluster_id": "P-0045",
+   "sut_base": 0.0,
+   "sut_twin": 0.0,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.0,
+   "archetype": "A7",
+   "metrics": [
+    "history_retention"
+   ],
+   "rung": 1
+  },
+  "P-0045-02": {
+   "cluster_id": "P-0045",
+   "sut_base": 0.0,
+   "sut_twin": 0.0,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.0,
+   "archetype": "A7",
+   "metrics": [
+    "history_retention"
+   ],
+   "rung": 1
+  },
+  "P-0045-03": {
+   "cluster_id": "P-0045",
+   "sut_base": 0.0,
+   "sut_twin": 0.0,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.0,
+   "archetype": "A7",
+   "metrics": [
+    "history_retention"
+   ],
+   "rung": 1
+  },
+  "P-0046-01": {
+   "cluster_id": "P-0046",
+   "sut_base": 1.0,
+   "sut_twin": 1.0,
+   "floor": 1.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": true,
+   "norm_base": null,
+   "norm_twin": 1.0,
+   "archetype": "A1",
+   "metrics": [
+    "propagation_latency"
+   ],
+   "rung": 2
+  },
+  "P-0046-02": {
+   "cluster_id": "P-0046",
+   "sut_base": 1.0,
+   "sut_twin": 1.0,
+   "floor": 1.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": true,
+   "norm_base": null,
+   "norm_twin": 1.0,
+   "archetype": "A1",
+   "metrics": [
+    "propagation_latency"
+   ],
+   "rung": 2
+  },
+  "P-0046-03": {
+   "cluster_id": "P-0046",
+   "sut_base": 0.5,
+   "sut_twin": 1.0,
+   "floor": 0.5,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 1.0,
+   "archetype": "A1",
+   "metrics": [
+    "propagation_latency"
+   ],
+   "rung": 2
+  },
+  "P-0047-01": {
+   "cluster_id": "P-0047",
+   "sut_base": 0.5,
+   "sut_twin": 0.0,
+   "floor": 0.5,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.0,
+   "archetype": "A2",
+   "metrics": [
+    "proactive_application"
+   ],
+   "rung": 3
+  },
+  "P-0047-03": {
+   "cluster_id": "P-0047",
+   "sut_base": 0.5,
+   "sut_twin": 0.0,
+   "floor": 0.5,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.0,
+   "archetype": "A2",
+   "metrics": [
+    "proactive_application"
+   ],
+   "rung": 3
+  },
+  "P-0048-01": {
+   "cluster_id": "P-0048",
+   "sut_base": 0.6666666666666666,
+   "sut_twin": 0.6666666666666666,
+   "floor": 0.6666666666666666,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.6666666666666666,
+   "archetype": "A4",
+   "metrics": [
+    "scope_resolution_accuracy"
+   ],
+   "rung": 1
+  },
+  "P-0048-02": {
+   "cluster_id": "P-0048",
+   "sut_base": 0.6666666666666666,
+   "sut_twin": 0.6666666666666666,
+   "floor": 0.6666666666666666,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.6666666666666666,
+   "archetype": "A4",
+   "metrics": [
+    "scope_resolution_accuracy"
+   ],
+   "rung": 1
+  },
+  "P-0048-03": {
+   "cluster_id": "P-0048",
+   "sut_base": 0.6666666666666666,
+   "sut_twin": 0.6666666666666666,
+   "floor": 0.6666666666666666,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.6666666666666666,
+   "archetype": "A4",
+   "metrics": [
+    "scope_resolution_accuracy"
+   ],
+   "rung": 1
+  },
+  "P-0049-01": {
+   "cluster_id": "P-0049",
+   "sut_base": 0.5,
+   "sut_twin": 0.5,
+   "floor": 0.5,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.5,
+   "archetype": "A4",
+   "metrics": [
+    "scope_resolution_accuracy"
+   ],
+   "rung": 1
+  },
+  "P-0049-02": {
+   "cluster_id": "P-0049",
+   "sut_base": 0.5,
+   "sut_twin": 0.5,
+   "floor": 0.5,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.5,
+   "archetype": "A4",
+   "metrics": [
+    "scope_resolution_accuracy"
+   ],
+   "rung": 1
+  },
+  "P-0049-03": {
+   "cluster_id": "P-0049",
+   "sut_base": 0.5,
+   "sut_twin": 0.5,
+   "floor": 0.5,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.5,
+   "archetype": "A4",
+   "metrics": [
+    "scope_resolution_accuracy"
+   ],
+   "rung": 1
+  },
+  "P-0050-01": {
+   "cluster_id": "P-0050",
+   "sut_base": 0.0,
+   "sut_twin": 1.0,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 1.0,
+   "archetype": "A4",
+   "metrics": [
+    "scope_resolution_accuracy"
+   ],
+   "rung": 1
+  },
+  "P-0050-03": {
+   "cluster_id": "P-0050",
+   "sut_base": 0.0,
+   "sut_twin": 0.0,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.0,
+   "archetype": "A4",
+   "metrics": [
+    "scope_resolution_accuracy"
+   ],
+   "rung": 1
+  },
+  "P-0051-01": {
+   "cluster_id": "P-0051",
+   "sut_base": 1.0,
+   "sut_twin": 1.0,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": true,
+   "norm_base": 1.0,
+   "norm_twin": 1.0,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0051-02": {
+   "cluster_id": "P-0051",
+   "sut_base": 0.0,
+   "sut_twin": 1.0,
+   "floor": 1.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": null,
+   "norm_twin": 1.0,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0051-03": {
+   "cluster_id": "P-0051",
+   "sut_base": 1.0,
+   "sut_twin": 1.0,
+   "floor": 1.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": true,
+   "norm_base": null,
+   "norm_twin": 1.0,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0052-01": {
+   "cluster_id": "P-0052",
+   "sut_base": 0.6666666666666666,
+   "sut_twin": 0.6666666666666666,
+   "floor": 0.6666666666666666,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.6666666666666666,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0052-02": {
+   "cluster_id": "P-0052",
+   "sut_base": 0.6666666666666666,
+   "sut_twin": 0.6666666666666666,
+   "floor": 0.6666666666666666,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.6666666666666666,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0052-03": {
+   "cluster_id": "P-0052",
+   "sut_base": 0.6666666666666666,
+   "sut_twin": 0.6666666666666666,
+   "floor": 0.6666666666666666,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.6666666666666666,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0053-01": {
+   "cluster_id": "P-0053",
+   "sut_base": 0.75,
+   "sut_twin": 0.5,
+   "floor": 0.75,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.5,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0053-03": {
+   "cluster_id": "P-0053",
+   "sut_base": 0.75,
+   "sut_twin": 0.5,
+   "floor": 0.75,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 0.0,
+   "norm_twin": 0.5,
+   "archetype": "A7",
+   "metrics": [
+    "staleness_rate"
+   ],
+   "rung": 1
+  },
+  "P-0054-01": {
+   "cluster_id": "P-0054",
+   "sut_base": 1.0,
+   "sut_twin": 0.0,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 1.0,
+   "norm_twin": 0.0,
+   "archetype": "A7",
+   "metrics": [
+    "history_retention"
+   ],
+   "rung": 1
+  },
+  "P-0054-02": {
+   "cluster_id": "P-0054",
+   "sut_base": 1.0,
+   "sut_twin": 0.0,
+   "floor": 0.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": 1.0,
+   "norm_twin": 0.0,
+   "archetype": "A7",
+   "metrics": [
+    "history_retention"
+   ],
+   "rung": 1
+  },
+  "P-0054-03": {
+   "cluster_id": "P-0054",
+   "sut_base": 0.0,
+   "sut_twin": 0.0,
+   "floor": 1.0,
+   "ceiling": 1.0,
+   "twin_ceiling": 1.0,
+   "pair_credit": false,
+   "norm_base": null,
+   "norm_twin": 0.0,
+   "archetype": "A7",
+   "metrics": [
+    "history_retention"
+   ],
+   "rung": 1
+  }
+ },
+ "note": "Radar by rung/metric; never a single aggregate. Pair credit per probe-spec \u00a74; SEs cluster-robust (design effect, clusters = fact clusters); K resamples and the tie rule are applied at the cross-system comparison stage, not here."
+}

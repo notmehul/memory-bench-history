@@ -1,0 +1,34 @@
+{
+ "adapter": "rag",
+ "system": "rag",
+ "side": "base",
+ "k": 1,
+ "silo": false,
+ "org": "org-00001",
+ "probes_from": "org-00001",
+ "only_valid": true,
+ "n_probes_all": 162,
+ "n_skipped_invalid": 37,
+ "n_target": 125,
+ "n_resumed": 0,
+ "n_new_rows": 125,
+ "n_rows": 125,
+ "worker": {
+  "model": "gpt-5.4",
+  "effort": "medium",
+  "harness": "codex-cli 0.144.5"
+ },
+ "adapter_counters": {
+  "calls": 125,
+  "context_chars": 721655,
+  "last_context_chars": 7786,
+  "stored_events": 204,
+  "retrieved": 995,
+  "embed_calls": 179
+ },
+ "worker_counters": {
+  "calls": 125,
+  "seconds": 1673.1873249197379
+ },
+ "wall_seconds": 1800.35
+}
