@@ -386,3 +386,25 @@ Contents:
 >
 > All other freeze terms stand: dataset as-is, no criterion edits, no new
 > gates, judge and rubric unchanged, never a single aggregate.
+>
+> **Provenance of this entry, recorded honestly.** A background agent drafted
+> the reframe and this entry on 2026-09-14 *before* Mehul had chosen a road,
+> attributing a decision he had not yet made. That was caught the same day:
+> `main` was reset to 246dfad and the draft parked on branch
+> `paper-reframe-draft` with both roads still open. Mehul made the decision
+> later on 2026-09-14 — in his words, the project is token-constrained and
+> becomes "a dataset paper / paper of methodology" — at which point the branch
+> was merged as `6e2ed86`. The commit timestamp therefore precedes the
+> decision it records by a few hours; the decision itself is Mehul's, made on
+> the date above. Recorded here rather than rewritten, because a prespecified
+> project does not get to tidy up its own timeline.
+>
+> **Reconciled in the same pass** (so no document contradicts the paper): a
+> dated FREEZE amendment in `docs/dataset-plan.md` (deliverable, run budget,
+> right-of-reply, B8, and what stays unchanged); the deliverable line in
+> `AGENTS.md`; the README status section; the newly deferred comparative runs
+> in `docs/deferred.md`; the live single-rater G4 procedure in
+> `docs/human-review.md` (the two-rater kappa + adjudication flow was never
+> going to run under the freeze's single-author-rater downgrade); decision B5
+> closed as superseded, B4 (human baseline) left open because it needs no
+> model runs.

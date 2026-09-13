@@ -2,7 +2,17 @@
 
 Cut from v1 with **no work** — see the FREEZE section at the bottom of
 `docs/dataset-plan.md` ("Cut from v1"). Each line says where the material lives
-so nothing is lost; none of it is touched before the pilot numbers ship.
+so nothing is lost; none of it is touched before v1 ships.
+
+> **Added 2026-09-14** by the FREEZE amendment (worker deprecated mid-pilot,
+> deliverable reframed to dataset + methodology + validity study): the
+> comparative pilot runs themselves — every system beyond the completed
+> no-memory floor on seed 1 — plus the K=3 variance subset, vendor
+> right-of-reply, and benchmark agreement testing (standards-audit B8). All of
+> it depends on a pinned worker the provider no longer serves. The harness,
+> adapters, frozen configs, and scoring pipeline ship ready to run; the
+> re-anchoring procedure in the FREEZE amendment says what a successor worker
+> requires.
 
 - **Typed-memory reference implementation (baseline #6)** — spec
   `docs/specs/typed-memory-reference.md` (status line marked DEFERRED);

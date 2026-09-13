@@ -210,6 +210,12 @@ propagation disproportionately vs. recall-style metrics); frozen public release 
 
 ## v1 pilot FREEZE + reduced design (prespecified 2026-08-15, before any SUT run)
 
+> **Amended 2026-09-14 — read the amendment at the end of this section first.**
+> The provider deprecated the pinned worker mid-pilot; the deliverable changed
+> from pilot numbers to dataset + methodology + validity study. The text below
+> is the original prespecification, kept verbatim as provenance. Where the two
+> conflict, the amendment governs.
+
 Decided by Mehul with the agent after a scope review; supersedes anything above
 that conflicts. Rationale: one month of screening produced a usable dataset and
 zero evaluated systems; the deliverable is pilot numbers.
@@ -260,3 +266,46 @@ right-of-reply window before submission.
 **Violations (any of these breaks the freeze):** a new gate, rule, spec
 section, audit, or seed screening; a run outside the listed systems; any
 harness other than pinned codex on a protocol path; any criterion edit.
+
+### FREEZE amendment 2026-09-14 — deliverable reframed (forced by worker deprecation)
+
+Decided by Mehul in-session on 2026-09-14, on token/model constraints, after
+the provider removed gpt-5.4 from every billing path available to the project
+(event and evidence: `docs/decision-log.md` §2026-09-14). This amendment
+governs where it conflicts with the prespecification above.
+
+**Changed — the deliverable.** From "pilot numbers" to **dataset +
+construction methodology + validity study** (`paper/draft.md`). The paper
+releases the screened dataset and the already-measured validity evidence, and
+documents the re-anchoring procedure as the release's maintenance contract. It
+makes no comparative system claim.
+
+**Changed — the run budget.** The ≈5,900-run pilot and the ≈500-run variance
+subset are **not run in v1**. The completed no-memory floor run on seed 1 (250
+blinded verdicts, commit 5959c26) stands as instrument validation, not as a
+system result. The partial rows for full-transcript, grep, RAG, and RAG-lexical
+are released as provenance under the dead worker pin, with no comparative claim
+attached.
+
+**Changed — vendor right-of-reply.** Not triggered: the fairness protocol
+attaches to published vendor numbers, and this paper publishes none. The
+procedure stays specified for any re-anchored evaluation.
+
+**Changed — benchmark agreement testing** (standards-audit B8): deferred with
+the comparative claims it depended on; there are no rankings to correlate.
+
+**Unchanged.** Dataset = seeds 1–3 exactly as frozen (371 valid instances);
+probe-spec v0.4.3; judge rubric v2; seeds 4–5 unscreened holdouts; no criterion
+edits, adjudications, or re-judging; failed gates carried as FAILs; G4 = single
+author-rater on the existing 150-pair packet, criteria below 0.7 dropped never
+rewritten; never a single aggregate; the violation list above.
+
+**Still required before release** (standards-audit B9, unaffected by the
+reframe and now load-bearing, since the dataset *is* the contribution):
+Croissant + RAI metadata, licensing, hosting, and a maintenance plan.
+
+**Re-anchoring is optional and out of v1.** If a successor worker is ever
+pinned, the rule is the nearest same-provider successor at deprecation time;
+anchors are re-screened for seeds 1–3 under these frozen gate rules with task
+text byte-identical, yielding a new valid set under the new worker. Anchors
+and SUT rows from different workers are never mixed.

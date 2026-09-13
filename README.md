@@ -89,14 +89,25 @@ utilization) is specified in `docs/architecture.md` and deferred to v2
 
 ## Status
 
-v1 pilot, frozen 2026-08-15 (`docs/dataset-plan.md` FREEZE section). The
-evaluation dataset is seeds 1–3: 371 valid paired instances (A1 50, A2 43,
+v1 frozen 2026-08-15; deliverable amended 2026-09-14 (`docs/dataset-plan.md`
+FREEZE section + amendment). **v1 ships as a dataset, a construction
+methodology, and a validity study — not a leaderboard.** The provider
+deprecated the pinned worker (gpt-5.4) mid-pilot, which ends comparative
+evaluation until a successor is pinned and the anchors re-screened; that
+re-anchoring procedure is documented and released as the maintenance contract.
+
+The evaluation dataset is seeds 1–3: 371 valid paired instances (A1 50, A2 43,
 A4 106, A7 172; per-seed 125/131/115; failed gates carried as explicit FAILs,
-never repaired) under probe-spec v0.4.3 and judge rubric v2, screened with a
+never repaired) under probe-spec v0.4.3 and judge rubric v2, screened with the
 pinned worker (gpt-5.4, effort medium, codex-cli 0.144.5) and fully blinded
-judging. Seeds 4–5 are unscreened holdouts. Systems under test: no-memory,
-full-transcript, grep-agent, naive-RAG with and without a lexical ablation,
-and the top-4 market systems by GitHub stars (Mem0, Cognee, Graphiti,
-Supermemory), plus a Mem0 silo ablation. Adapters, the run/scoring/figures
-pipeline, and the per-system config freeze are done; the pilot runs are next
-(`docs/status.md` for the live queue).
+judging. Seeds 4–5 are unscreened holdouts.
+
+The released harness registers ten system configs — no-memory, full-transcript,
+grep-agent, naive-RAG with and without a lexical ablation, the top-4 market
+systems by GitHub stars (Mem0, Cognee, Graphiti, Supermemory), and a Mem0 silo
+ablation — with every per-system config frozen before any live run. Of these,
+only the no-memory floor completed on seed 1 before the deprecation; it is
+reported as instrument validation (pair credit ≈ 0 on every rung), and the
+partial rows for the other baselines are released as provenance carrying no
+comparative claim. See `paper/draft.md` for the claims and `docs/status.md`
+for the live queue.

@@ -11,6 +11,16 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning: Se
   validity study (`paper/draft.md` rewritten, checklist superseded, status
   queue replaced). Floor run stands as validity evidence; partial pilot rows
   released as provenance only.
+- Freeze reconciled with the reframe (2026-09-14): dated FREEZE amendment in
+  `docs/dataset-plan.md` (deliverable, run budget, right-of-reply, B8, and the
+  terms that stay unchanged), `AGENTS.md` deliverable line, README status,
+  comparative runs added to `docs/deferred.md`. Decision B5 closed as
+  superseded; B4 (human baseline) stays open — it needs no model runs.
+- G4 procedure corrected to the single author-rater path it has had since the
+  2026-08-15 freeze (`docs/human-review.md`): `judge-agreement` run directly on
+  one rater's labels, no inter-rater kappa and no adjudication meeting. Verified
+  the 150-pair packet resolves to committed judge verdicts for all 150 pairs
+  across org-00001 and org-00002.
 
 ### Added
 - Unslop style pass (2026-08-28): README and `docs/vision.md` rewritten for

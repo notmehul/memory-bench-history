@@ -5,14 +5,19 @@ agents. High stakes: this ships as a research paper and must survive hostile
 review. When in doubt, choose the option that is *measurable, dated, and
 disclosed* over the convenient one.
 
-## v1 freeze (2026-08-15) — read before anything else
+## v1 freeze (2026-08-15, deliverable amended 2026-09-14) — read before anything else
 
-The deliverable is **pilot numbers** (`docs/dataset-plan.md`, "v1 pilot
-FREEZE"). No new gate, scoring rule, spec section, audit, spec doc, seed
-screening, criterion edit, or system outside the frozen list without Mehul's
-explicit ask in the current session. Prefer running the loop end-to-end over
-hardening it. Outputs for Mehul (rater packets, decisions, summaries) are
-pointed and short — one file, one ask; never sprawling report sets.
+The deliverable is the **dataset + construction methodology + validity study**
+(`paper/draft.md`), amended 2026-09-14 after the provider deprecated the pinned
+worker mid-pilot (`docs/decision-log.md`; FREEZE amendment in
+`docs/dataset-plan.md`). Comparative system numbers are out of scope until a
+successor worker is pinned and the anchors re-screened. Everything else the
+freeze fixed still holds: no new gate, scoring rule, spec section, audit, spec
+doc, seed screening, criterion edit, or system outside the frozen list without
+Mehul's explicit ask in the current session. Prefer shipping the release
+end-to-end over hardening it. Outputs for Mehul (rater packets, decisions,
+summaries) are pointed and short — one file, one ask; never sprawling report
+sets.
 
 ## Read first (in this order)
 

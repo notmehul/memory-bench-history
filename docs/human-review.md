@@ -122,7 +122,14 @@ answers are scored.
 
 ---
 
-## Task 3 — Grader calibration *(R and M, independently; ~3–5h each; THE critical task)*
+## Task 3 — Grader calibration *(M alone under the freeze; ~3–5h; THE critical task)*
+
+> **Procedure as it actually runs (freeze 2026-08-15, single author-rater).**
+> There is no second rater, so there is no inter-rater kappa and no
+> adjudication meeting: M's 150 labels *are* the human gold, and the measured
+> number is judge-vs-human agreement. Read the job and the rules below — they
+> are unchanged — then use the single-rater commands at the end of this task,
+> not the two-rater ones. The two-rater text is retained for v2.
 
 **Why this exists:** thousands of test outputs are graded by an AI judge
 against written criteria. The benchmark's credibility rests on proving the
@@ -165,26 +172,43 @@ output:    "Triage order for tomorrow: small diffs (sub-200-line) first
    you, answer false. Doubt = false is always safe.)
 ```
 
-**Hard rules:** R and M work **completely independently** — zero
-discussion, zero comparing notes, until both rating files are submitted.
-Expect it to be tedious; take breaks between blocks, but never discuss.
+**Hard rules:** first answers are final; no revisions once any score is
+revealed; no AI assistants and no looking anything up. Expect it to be tedious;
+take breaks between blocks. Do not re-read earlier items to make them
+consistent — drift is part of what the measurement captures.
 
-**After both submit,** M runs:
+### Single-rater run (the live procedure)
 
-```
-python scripts/calibration.py kappa <dir> ratings-M.json ratings-R.json
-```
-
-This prints the agreement score and the list of items where R and M
-disagreed. Then — and only then — R and M meet, discuss ONLY the
-disagreement items, and agree a final label for each, producing
-`adjudicated.json` (every item id, final true/false). M finishes with:
+Copy `rating-template.json`, replace each `null` with `true` or `false`, and
+save it as `datasets/dev/calibration/ratings-M.json`. Every one of the 150 ids
+must be present and boolean; the scorer rejects a partial or mistyped file
+rather than guessing. Then:
 
 ```
-python scripts/calibration.py judge-agreement <dir> adjudicated.json <screening dirs...>
+.venv/bin/python scripts/calibration.py judge-agreement \
+    datasets/dev/calibration \
+    datasets/dev/calibration/ratings-M.json \
+    datasets/dev/screening/org-00001 datasets/dev/screening/org-00002
 ```
 
-which delivers the verdict on the AI judge.
+This writes `datasets/dev/calibration/judge-agreement.json`: overall Cohen's
+κ against the human gold (**gate G4 = κ ≥ 0.75**), per-assertion-kind κ, and
+every criterion whose raw agreement falls below 0.7. Criteria below 0.7 are
+**dropped and the count disclosed — never rewritten**. The result is reported
+whichever way it lands; a FAIL is carried as a FAIL.
+
+Verified 2026-09-14: the packet's 150 pairs draw on org-00001 and org-00002
+(75 each) and every one has a committed judge verdict, so the command runs
+against committed evidence with no further screening.
+
+### Two-rater run (retained for v2, not used in v1)
+
+With a second rater R, both work completely independently — zero discussion
+until both files are submitted. Then `python scripts/calibration.py kappa <dir>
+ratings-M.json ratings-R.json` prints inter-rater agreement and the
+disagreement list; R and M meet, discuss only those items, and produce
+`adjudicated.json`, which is passed to `judge-agreement` in place of a single
+rater's file.
 
 ---
 
@@ -207,8 +231,8 @@ graded by the standard pipeline and reported as the human reference band.
 | ID | Decision | Options | Status |
 |---|---|---|---|
 | B3 | Confirm R as official second rater | yes / find another | CLOSED 2026-08-15 (single author-rater; see note at top) |
-| B4 | Run Task 4 (human baseline)? | yes (recommended) / skip + limitation note | OPEN |
-| B5 | Pilot compute budget | full (~9 quota packs; tie threshold stays ~9pp) / reduced prespecified design (cheaper; higher tie threshold) | OPEN — must be decided BEFORE any pilot result exists |
+| B4 | Run Task 4 (human baseline)? | yes (recommended) / skip + limitation note | OPEN — needs no model runs, so the 2026-09-14 reframe leaves it available |
+| B5 | Pilot compute budget | full / reduced prespecified design | CLOSED 2026-09-14 — superseded by the FREEZE amendment; comparative pilot runs are out of v1, so there is no budget left to set |
 
 Record each decision with a date in `docs/dataset-plan.md` standing
 decisions.
@@ -223,10 +247,10 @@ decisions.
 | 2. Task 1: seeds 1–3 guessing | R | step 1 | 3 × 10 min |
 | 3. Score + record Task 1 | M | step 2 | 10 min |
 | 4. Task 2: read-throughs (M: seed 1; R: seed 2 or 3) | both | step 3 (for R's seed) | 45 min each |
-| 5. Task 3: independent grading | both | calibration packet ready (M is notified) | 3–5 h each |
-| 6. Task 3: adjudication meeting | both | step 5 both submitted | ~1 h |
+| 5. Task 3: grading (single rater under the freeze) | M | calibration packet ready | 3–5 h |
+| 6. Task 3: adjudication meeting — NOT RUN in v1 (no second rater) | — | — | — |
 | 7. Task 4 (if B4 = yes) | both | any time after step 1 | ~2 h each |
-| 8. B5 decision | M | before pilot | — |
+| 8. B5 decision — CLOSED 2026-09-14, superseded | — | — | — |
 
 ## FAQ
 
