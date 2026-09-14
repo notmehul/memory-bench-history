@@ -507,17 +507,57 @@ archetypes. Exposure is uneven: A4 70.8% of valid instances, A7 57.0%, A2
 an upper bound rather than an estimate, and we say so here rather than leaving
 it to be discovered.
 
-#### Why we did not fix it
+#### Why we did not fix it, and why fixing it would not have passed the gate
 
-The obvious response to a judge that is lenient on one criterion class is to
-rewrite that class. We have not, and will not for v1, because the criteria were
-frozen before any of this evidence existed and rewriting them now is precisely
-the practice §2.3 condemns: LoCoMo's ground truth and the Mem0/Zep dispute are
-both cases of the measuring instrument moving after the measurement. The freeze
-that forbids this repair is the same freeze that makes every other number in
-this paper checkable against dated git history, and it cannot be spent
-selectively on the gates that fail. The fix belongs in a v2 rubric, where it
-can be prespecified: pair every absence criterion with a positive criterion
+The obvious response to a judge lenient on one criterion class is to rewrite
+that class and re-judge. Two independent reasons say no.
+
+**The arithmetic.** Recomputing κ on the same 150 pairs with the identified
+defect removed is assumption-free, because it only requires flipping verdicts
+we already have:
+
+| scenario | agreement | κ | gate |
+|---|---|---|---|
+| as measured | 0.813 | 0.537 | FAIL |
+| every absence false-accept eliminated | 0.867 | 0.688 | FAIL |
+| every false-accept of any kind eliminated | 0.907 | 0.790 | PASS |
+| both directional biases eliminated | 0.913 | 0.787 | PASS |
+
+**Repairing the defect we found, perfectly, still fails the gate.** After
+removing all 8 absence false-accepts, the residual error is 6 false-accepts and
+7 false-rejects on `fact_applied`, which is genuine symmetric noise, plus 7
+false-rejects and zero false-accepts on `scope_correct`, where the judge is
+already too strict. The two faults point in opposite directions, and rubric
+strictness is one dial. Turning it up to fix absence criteria makes scope
+criteria worse. Passing requires fixing both biases in opposite directions and
+lands at 0.787, a hair over the line and assuming a precision no rubric edit
+delivers. So the G4 failure is not attributable to the absence defect alone,
+and we say that rather than letting the defect carry the blame for the gate.
+
+**The principle.** Even if the arithmetic worked, the criteria were frozen
+before this evidence existed, and rewriting them now is the practice §2.3
+condemns: LoCoMo's ground truth and the Mem0/Zep dispute are both the measuring
+instrument moving after the measurement. The freeze that forbids this repair is
+what makes every other number here checkable against dated git history, and it
+cannot be spent selectively on the gates that fail. There is a subtler trap
+too: our 150 human labels are judge-independent, so a new rubric genuinely
+could be re-scored against them, but iterating rubric versions until κ clears
+0.75 stops measuring judge quality and starts measuring how many attempts were
+taken. An unbiased re-measurement needs a held-out calibration set we do not
+have.
+
+**What it would cost, for the record.** 5,398 criterion verdicts are committed
+under rubric v2 across the four screened seeds and the floor run. All would
+need re-judging, since a v3 verdict cannot be mixed with a v2 verdict for the
+same reason anchors from two workers cannot be mixed. That much is mechanically
+possible without the deprecated worker, since the worker outputs are cached and
+re-judging is judge-side. But the 371-instance valid set is *defined* by
+rubric-v2 verdicts, so a stricter judge changes which instances pass and the
+dataset itself moves. This is a v2 project with a new rubric, a fresh held-out
+calibration packet, and a full re-judge. It is not a patch, and no version of
+it rescues v1.
+
+The prespecified v2 fix: pair every absence criterion with a positive criterion
 demanding the replacement value, so the class stops having a degenerate pass
 mode.
 

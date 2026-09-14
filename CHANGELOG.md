@@ -35,6 +35,15 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning: Se
   (`judge-agreement.json`), all added to the release withhold list.
   Whether to apply the prespecified drop rule to the scored dataset is queued
   as an open decision, deliberately not taken by the agent.
+- G4 counterfactual (2026-09-14): tested whether a stricter rubric could have
+  rescued the gate. It could not. Flipping only already-committed verdicts,
+  eliminating every absence false-accept takes κ from 0.537 to 0.688 and still
+  FAILS; the residual is symmetric noise on fact_applied plus scope_correct
+  where the judge is already too strict, so the one strictness dial cannot fix
+  both. The G4 failure is not attributable to the absence defect alone. §4.4
+  now states this, plus the re-judge cost (5,398 committed criterion verdicts
+  under rubric v2) and the iteration trap (re-scoring rubric versions against
+  the same 150 labels measures attempts, not judge quality).
 - G4 containment (2026-09-14): verified that **no side of any instance** in the
   frozen valid set is scored on absence criteria alone (0 of 371 instances, 0
   sides), so a silent or ignorant output cannot pass on judge leniency; the

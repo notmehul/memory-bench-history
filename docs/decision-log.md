@@ -556,3 +556,37 @@ Contents:
 > are not separable. "The judge is degenerate on absence criteria" is the best
 > reading of a 43-of-44 positive rate, not a demonstrated fact. A second
 > independent rater would settle it and needs no model access.
+
+### Follow-up 3 (2026-09-14) — could a stricter rubric have rescued G4? No.
+
+> Assumption-free counterfactual on the same 150 pairs, flipping only verdicts
+> already committed:
+>
+> | scenario | agreement | κ | gate |
+> |---|---|---|---|
+> | as measured | 0.813 | 0.537 | FAIL |
+> | every absence false-accept eliminated | 0.867 | 0.688 | FAIL |
+> | every false-accept of any kind eliminated | 0.907 | 0.790 | PASS |
+> | both directional biases eliminated | 0.913 | 0.787 | PASS |
+>
+> **Repairing the defect we found, perfectly, still fails.** Residual after that
+> repair: `fact_applied` 6 false-accepts / 7 false-rejects (symmetric noise) and
+> `scope_correct` 7 false-rejects / 0 false-accepts (judge already too strict).
+> Rubric strictness is one dial and the two faults point opposite ways, so
+> turning it up to fix absence makes scope worse. The G4 failure is therefore
+> NOT attributable to the absence defect alone, and the paper says so.
+>
+> **Cost if it had worked**: 5,398 criterion verdicts committed under rubric v2
+> (org-00001 1512, org-00002 1341, org-00003 1278, org-00004 897, floor run
+> 370), deduplicated by run_id as `score_sut.py` reads them. A background
+> analysis quoted 6,349; that appears to count re-judged rows without
+> last-wins dedup. All would need re-judging, which is judge-side and does not
+> need the deprecated worker. But the 371-instance valid set is defined by
+> rubric-v2 verdicts, so a stricter judge moves the dataset itself.
+>
+> **And the trap**: the 150 human labels are judge-independent, so a new rubric
+> could be re-scored against them, but iterating rubric versions until κ clears
+> 0.75 measures attempts taken rather than judge quality. An unbiased
+> re-measurement needs a held-out calibration set we do not have.
+>
+> Decision: no rubric change in v1. Recorded in `paper/draft.md` §4.4.

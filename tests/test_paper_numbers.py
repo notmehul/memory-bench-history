@@ -308,6 +308,54 @@ def test_floor_pair_credit_instance_count(draft: str):
     assert "4 of 125" in draft
 
 
+def test_repairing_the_absence_defect_still_fails_the_gate(draft: str):
+    """Assumption-free counterfactual: flip verdicts we already have and recompute."""
+    def kappa(rs):
+        n = len(rs)
+        po = sum(h == j for h, j, _ in rs) / n
+        pa = sum(h for h, _, _ in rs) / n
+        pb = sum(j for _, j, _ in rs) / n
+        pe = pa * pb + (1 - pa) * (1 - pb)
+        return po, (po - pe) / (1 - pe)
+
+    recs = [[h, j, k] for h, j, k, _ in _g4_records()]
+    po, k = kappa(recs)
+    assert (round(po, 3), round(k, 3)) == (0.813, 0.537)
+
+    fixed = [[h, False if (kind == "fact_absent" and not h and j) else j, kind]
+             for h, j, kind in recs]
+    po2, k2 = kappa(fixed)
+    assert (round(po2, 3), round(k2, 3)) == (0.867, 0.688)
+    assert k2 < 0.75, "repairing the absence defect now passes; rewrite 4.4"
+
+    both = [[h, True if (kind == "scope_correct" and h and not j) else j, kind]
+            for h, j, kind in fixed]
+    po3, k3 = kappa(both)
+    assert (round(po3, 3), round(k3, 3)) == (0.913, 0.787)
+
+    low = draft.lower()
+    assert "0.688" in low
+    assert "still fails the gate" in low
+
+
+def test_committed_verdict_count_under_rubric_v2(draft: str):
+    """The re-judge cost quoted in 4.4, deduplicated by run_id as the scorer reads it."""
+    def jsonl(p):
+        return [json.loads(x) for x in p.read_text().splitlines() if x.strip()]
+
+    total = 0
+    for d in sorted((ROOT / "datasets/dev/screening").glob("org-*")):
+        f = d / "judgements.jsonl"
+        if f.is_file():
+            rows = {r["run_id"]: r for r in jsonl(f)}
+            total += sum(len(r.get("verdicts") or {}) for r in rows.values())
+    for f in (ROOT / "datasets/dev/pilot/nomemory/seed-1/score-k1").glob("*judgements*.jsonl"):
+        rows = {r["run_id"]: r for r in jsonl(f)}
+        total += sum(len(r.get("verdicts") or {}) for r in rows.values())
+    assert total == 5398
+    assert "5,398 criterion verdicts" in draft
+
+
 def test_judge_decoy_audit(draft: str):
     audit = json.loads(
         (ROOT / "datasets/dev/screening/judge-decoys/audit.json").read_text())
