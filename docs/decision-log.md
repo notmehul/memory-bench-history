@@ -748,3 +748,43 @@ No re-rating of `ratings-M.json`. No model-assisted revision of human labels.
 No fresh calibration packet from seed 4 (considered and deliberately deferred;
 it is the only item costing human hours, and the decision to run it comes after
 the panel, not before). No rubric v3. No change to the 371.
+
+## 2026-09-14 — the 28 sub-0.7 criteria are DROPPED; prespecified rule applied (Mehul, in-session)
+
+> **Written before the re-score runs. The direction of the change is unknown at
+> the time of writing and is not predictable by inspection.** Git corroborates
+> the ordering.
+
+**Decision.** Mehul directs that the prespecified rule be applied: the 28
+criteria whose raw judge-human agreement falls below 0.7 are dropped from
+scoring, never rewritten, and the count is disclosed. The rule was prespecified
+in the v1 FREEZE of 2026-08-15 ("criteria below 0.7 are dropped, never
+rewritten") and carried unchanged through the 2026-09-14 amendment, so this
+applies an existing commitment rather than creating a new one.
+
+**Scope.** 28 criteria across 25 clusters, 15 in org-00001 and 13 in org-00002;
+org-00003 has none, so seed 3 acts as an untouched control. 25 of the 28 rest on
+a single sampled judgment and 3 on two, which the tooling itself flags as a weak
+basis for dropping an individual criterion. That weakness is a reason the rule is
+uncomfortable, not a reason to decline it after it bound.
+
+**Why the direction is genuinely unknown.** `_score` returns passed weight over
+total weight, so removing a criterion changes the denominator on whichever side
+carries it. Removing a *failing* criterion can lift a ceiling or twin-ceiling to
+a pass, which creates valid instances. Removing any criterion can also lift a
+*floor* output to a pair pass, and an instance whose floor passes is invalid by
+construction, which destroys valid instances. Both effects are live here. We
+therefore commit in advance to reporting the new count whichever way it moves,
+beside the frozen 371, both dated.
+
+**What this does NOT authorize.** No criterion is rewritten, re-judged, or
+re-authored. No task text changes, so cached worker outputs stay valid. No gate
+threshold moves. G4 stands at κ = 0.537, FAIL; §4.4's counterfactual already
+shows that dropping these cannot rescue it, so this is a question of honouring a
+rule rather than of improving a result. If the re-score makes the gate failures
+worse, that is what the paper reports.
+
+**Implementation.** `screen_probes.py report --drop`, default off so every
+existing path is unchanged, filtering the named assertions out of a run's base,
+counterfactual, and cross-side sets before scoring. A side left with zero
+criteria raises rather than scoring vacuously.
