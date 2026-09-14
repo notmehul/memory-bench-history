@@ -78,16 +78,25 @@ entries dated.
 
 ### Open — work, in rough order
 
-9. **§2 citations — BLOCKING.** Every reference is unverified. Six benchmark
-   ids postdate the drafting agent's knowledge (LongMemEval V2 2605.12493,
-   MemoryArena 2602.16313, GateMem 2606.18829, StreamMemBench 2606.14571,
-   HorizonBench 2604.17283, MemDelta 2606.29914). Every number in §2.3 is
-   secondary-sourced through our own audit notes. One recorded URL looks
-   fabricated: `github.com/milla-jovovich/mempalace/issues/29`. Untraceable
-   claims get cut, not softened. Detail in the §2 header note and
-   `paper/checklist.md`.
-10. **Remaining prose**: §3, §5, §6, §8; §7's 13 disclosures expanded into
-    sentences. Then the voice pass with Mehul (`mehul-voice` last).
+9. **§2 citations — CLOSED 2026-09-14** (`4b10fd8`). All 20 arXiv ids verified
+   against primary sources, including the six post-cutoff ones, with a
+   nonexistent-id control. **Nothing was fabricated**, the suspect MemPalace URL
+   is real, and all six §2.3 quantitative claims traced. Three descriptions were
+   wrong and are fixed. Two matter: **MEMTRACK (2510.01353) is an organizational
+   benchmark, not a conversational one** — Slack/Linear/Git interleaving,
+   conflict resolution, 60% best correctness — so §2.5's "GateMem is nearest"
+   was wrong on that axis. The conjunction survives (MEMTRACK is single-agent,
+   no witness model, no tiered authority, no supersession) and §2.5 now names
+   which neighbour breaks which conjunct. And **the MemPalace claim was refuted
+   by its own source**: the teardown documents three patches hand-coded against
+   three failed questions, not probe content visible at ingestion; the paragraph
+   now reports what the source says and attributes evaluation-time injection to
+   our own threat model.
+10. **Remaining prose — DONE 2026-09-14** (`e916bab`). §3, §5, §6, §7, §8 are
+    prose; §7's notes are disclosures, including two newly written down (the
+    judge/human presentation asymmetry, and judge identity being an unverified
+    free-text tag). §4.4 carries the corpus-scale rates. Still open: the voice
+    pass with Mehul (`mehul-voice` last).
 11. **Verification gate** (`paper/checklist.md`): regenerate the floor numbers
     from committed raw outputs, grep for surviving comparative language,
     confirm all 13 disclosures present, repro from a clean clone.
