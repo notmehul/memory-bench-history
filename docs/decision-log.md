@@ -642,3 +642,109 @@ Contents:
 > papers both claiming "we built memory-bench".
 >
 > Findings inventory and honest sizing: `docs/status.md` Track B.
+
+## 2026-09-14 — Track B carve-out from the v1 freeze; judge-panel and corpus re-analysis PRESPECIFIED (Mehul, in-session)
+
+> **Written before any Track B verdict exists.** Nothing below has been
+> measured at the time of writing; the expected-outcome statements are
+> commitments, not results. Corroborate against git history.
+
+### The carve-out
+
+Track B (methodology paper, opened earlier today) runs **outside the v1
+freeze**, under three binding constraints:
+
+1. **Track B never alters v1 canon.** `datasets/dev/calibration/ratings-M.json`,
+   the five `judgements.jsonl` files behind the 5,398 committed verdicts, every
+   `datasets/dev/org-0000N/g3-report.json`, and the 371-instance valid set are
+   read-only to Track B. No Track B artifact is ever imported into them.
+2. **Track B artifacts live in `datasets/methods/`**, a separate tree. The v1
+   release bundle (`scripts/release.py`) does not include it.
+3. **v1's numbers do not move.** G4 stands as measured: κ = 0.537, FAIL.
+   Nothing Track B finds rescues, revises, or reopens it. The dataset paper
+   ships with the failed gate reported as a failure.
+
+The freeze's violation list ("a new gate, rule, spec section, audit, or seed
+screening") is unamended and continues to govern v1. This carve-out grants
+Track B the ability to run **new audits on already-committed artifacts**; it
+grants nothing else. Seed screening remains impossible regardless — the pinned
+worker is gone.
+
+### Prespecified: judge panel on the existing 150-pair packet
+
+**Question.** Is the judge's degeneracy on `fact_absent` criteria (v1: returns
+FALSE on 1 of 44; κ = 0.166) a property of `claude-sonnet-5`, or of LLM judges
+as a class?
+
+**Method.** The 150 calibration pairs span 146 distinct run_ids across
+org-00001 (74) and org-00002 (72). For each panel judge: a fresh work dir under
+`datasets/methods/judge-panel/<tag>/` seeded with copies of `runs.jsonl` and
+`results.jsonl`, then `screen_probes.py judge-export --ids`. Export carries
+**every semantic criterion for each selected run**, not only the 150 sampled
+ones, so each panel judge sees the same row context the committed
+`claude-sonnet-5` verdicts saw. Comparison is computed on the 150 sampled
+(run_id, assertion_id) pairs only.
+
+Each judge is a fresh subagent given the **verbatim rubric-v2 prompt**
+(`docs/specs/judge-rubric.md:29-62`) and the batch path, with no repository
+access and no knowledge of this project, per the standing blinding rule.
+
+**Panel.** Four runs: `haiku-4.5`, `sonnet-5`, `opus-5`, `fable-5.1`. The
+`sonnet-5` arm is a **test-retest of the v1 judge against itself** — same
+model, same rubric, same rows, independent invocation.
+
+**Anchor.** `ratings-M.json`, unchanged. The human labels are the reference
+standard for every arm and are not revised, re-examined, or adjudicated.
+
+**What counts as a result — declared in both directions, neither is a gate:**
+- If every arm shows an elevated positive rate on `fact_absent` relative to
+  the other two kinds, the degeneracy is a class-level property of LLM judges
+  and generalizes past this benchmark.
+- If it is confined to some arms, judge choice is a free parameter with a large
+  effect on measured validity, which is equally reportable and arguably worse
+  for the field.
+- The `sonnet-5` test-retest arm is reported whatever it shows. If
+  self-disagreement is comparable in size to judge-human disagreement, that
+  reframes the v1 G4 result and will be stated as such.
+
+**Declared limitations, written before the result:**
+- The panel is **within-family** (all four are Anthropic models, differing by
+  capability tier). It cannot separate "LLM judges as a class" from "Claude
+  models as a family". Any claim will be scoped to what the design supports.
+- Judge identity is **not mechanically enforced** anywhere in the pipeline: the
+  `--judge` tag is free text (`screen_probes.py:622`) and nothing verifies it
+  against the model that ran. Identity here is established by the recorded
+  subagent spawn parameter and by nothing else. This is a real weakness of the
+  instrument and is disclosed rather than repaired.
+- The v1 judge family overlaps the family that authored some assertion repairs
+  and the natural-artifact classification. The panel inherits that overlap; it
+  is not newly introduced here.
+
+### Prespecified: corpus-scale verdict re-analysis
+
+**Question.** Does the absence-criterion degenerate pass mode hold at corpus
+scale, or only in the 44-item calibration sample?
+
+**Method.** Join all 5,398 committed rubric-v2 verdicts to their assertion
+`kind` via `(run_id, assertion_id)` against `runs.jsonl`. The join is
+deterministic and lossless (verified: zero unmatched ids across all nine
+judgement files). Report the judge's positive rate per criterion kind, per
+seed and pooled.
+
+**This is descriptive, not an agreement measure.** There are no human labels
+outside the 150, so it measures the *mechanism* (a degenerate pass mode) and
+cannot measure *accuracy*. It will be reported that way and will not be
+described as agreement, validation, or a gate.
+
+**Prespecified expectation.** `fact_absent` positive rate materially exceeds
+`fact_applied` and `scope_correct` at corpus scale, consistent with the
+97.7% observed at n=44. A null result — rates comparable across kinds — would
+mean the calibration sample is unrepresentative and would substantially weaken
+the paper's central finding. It would be reported as such.
+
+### What is NOT authorized by this entry
+
+No re-rating of `ratings-M.json`. No model-assisted revision of human labels.
+No fresh calibration packet from seed 4 (considered and deliberately deferred;
+it is the only item costing human hours, and the decision to run it comes after
+the panel, not before). No rubric v3. No change to the 371.

@@ -322,3 +322,16 @@ pinned, the rule is the nearest same-provider successor at deprecation time;
 anchors are re-screened for seeds 1–3 under these frozen gate rules with task
 text byte-identical, yielding a new valid set under the new worker. Anchors
 and SUT rows from different workers are never mixed.
+
+### Track B carve-out 2026-09-14 — scope note (does not amend the freeze)
+
+The methodology paper (Track B) runs **outside this freeze** on
+already-committed artifacts only, in a separate tree (`datasets/methods/`).
+It never alters v1 canon: `ratings-M.json`, the committed `judgements.jsonl`
+files, the `g3-report.json` files, and the 371-instance valid set are
+read-only to it. **v1's numbers do not move** — G4 stands as measured
+(κ = 0.537, FAIL) and ships as a failure.
+
+The violation list above is unamended and continues to govern v1. Full
+prespecification, including what each Track B measurement would have to show
+to count as a result: `docs/decision-log.md` §2026-09-14 (Track B carve-out).
