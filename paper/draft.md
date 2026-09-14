@@ -582,15 +582,67 @@ happened when the provider withdrew the pinned model mid-study.
 Every number below was already measured; none of it needed the deprecated worker.
 
 ### 4.1 Gate results
-- Per-gate outcomes by seed, failures carried as FAILs never repaired
-  (`docs/validation-report.md`, `docs/decision-log.md`).
+
+Six gates run during construction, and their outcomes are reported as measured.
+G0 and G1, the belief-oracle test suite and the schema, oracle cross-check,
+ambiguity scan, and interleaving checks, passed on every seed. G2's machine side
+passed: structural regeneration, realization checks, and the release-blocking
+stream lint covering marker round-trip, visibility consistency, salience
+permutation tests, a noise floor, and canaries all report green across five
+organizations and their twins. Two of G2's human items remain open by the
+freeze, and the salience residual on seed 3 is documented rather than repaired
+(§3.2).
+
+G3 is where the failures are, and they are the reason the rest of this section
+is worth reading.
+
+| seed | clusters surviving | valid instances | instance gate (≥135) | cluster gate (≥45) |
+|---|---|---|---|---|
+| 1 | 46/54 | 125 | **FAIL** | pass |
+| 2 | 46/54 | 131 | **FAIL** | pass |
+| 3 | 40/54 | 115 | **FAIL** | **FAIL** |
+
+Two further prespecified bars failed: the harness-equivalence study of §4.3, and
+G4 in §4.4. Four failures against one clean positive result, the memoryless
+floor of §4.5.
+
+No probe that failed a gate was repaired to recover it, no criterion was
+rewritten after seeing that it cost an instance, and no threshold moved once it
+bound. Where repairs did happen they were made blind to direction, before the
+evidence they touched, and are recorded with the risk stated in advance: the
+cross-organization lineage sweep was applied without knowing whether it would
+move counts up or down, and it moved them both ways. The consistency pass found
+exactly two defects across five seeds, single filler lines asserting rule content
+that contradicted a probed fact, and both were replaced with inert material.
+
+A gate that is relaxed once it binds was never a gate, so we would rather publish
+a dataset that fails its own thresholds than one whose thresholds were chosen
+after the fact. That is the whole argument for trusting the numbers that did
+pass.
 
 ### 4.2 Probe validity is task-model-relative
-- Ceiling-gate survival under identical strict rules: **37/54** clusters for
-  gpt-5.4 vs **17/54** for gpt-5.4-mini (`docs/decision-log.md`, Phase 3).
-  A "valid instance" is valid *for a worker*; the released valid set is
-  defined relative to the screening worker, and the release documents the
-  per-worker re-screening procedure.
+
+Screening asks whether a worker given exactly the right facts can produce the
+artifact the task requires. That question has a different answer for different
+workers, and the size of the difference is the finding.
+
+Under identical strict rules, **37 of 54** probe clusters survived the ceiling
+gate for gpt-5.4 and **17 of 54** for gpt-5.4-mini, a smaller model from the
+same family. Less than half. Nothing about the probes changed between those two
+numbers; the items are the same items and the rule is the same rule.
+
+The consequence is that a valid item is not a property of the item. It is a
+property of the pair, item and worker, and a released valid set is defined
+relative to the model that screened it. This is not a quirk of our design. Any
+benchmark that decides which of its items are answerable by checking whether a
+model can answer them inherits the same relativity, whether or not it says so.
+Most do not say so, and many do not fix the worker at all, which makes their
+item sets quietly unreproducible.
+
+We handle it by pinning the worker, reporting the pin everywhere a number
+appears, and publishing the per-worker re-screening procedure so a future user
+can re-derive a valid set under whatever model they have. §4.6 is what happens
+when that future arrives sooner than expected.
 
 ### 4.3 Harness sensitivity
 
@@ -906,23 +958,68 @@ them and disclose the count, never to rewrite them. What this costs the scored
 dataset is recorded in `docs/decision-log.md` §2026-09-14.
 
 ### 4.5 Floor validation: pair credit filters priors
-- The no-memory floor, run end-to-end through the full pilot pipeline on
-  seed 1 (125 instances × base+twin, 250 blinded verdicts, judge
-  `claude-sonnet-5-blinded-v2`): **rung 1 pair credit 0.022 (95% CI ±0.040,
-  n=92), rung 2 0.118 (±0.217, n=17), rung 3 0.000 (n=16)**
-  (`datasets/dev/pilot/nomemory/seed-1/score-k1/report.json`, commit
-  5959c26). A memoryless worker scores ≈0: the instrument does not reward
-  prior knowledge or generic competence.
+
+This is the paper's one clean positive result, and it tests the claim the whole
+design rests on: that the instrument measures memory rather than competence.
+
+The memoryless condition ran end to end through the full evaluation pipeline on
+seed 1, not as a special case. A worker with no organizational context received
+each of the 125 valid instances on both the base and twin sides, and the 250
+resulting deliverables were judged blind through the same export and import path
+as everything else.
+
+Pair credit came out near zero on every capability rung: **rung 1 pair credit
+0.022** (95% CI ±0.040, n=92) for alignment, **rung 2 0.118** (±0.217, n=17) for
+coordination, and **rung 3 0.000** (n=16) for compounding. Four instances out of
+125 earned credit in total, and every interval includes zero.
+
+The mechanism is the twin. A memoryless worker can guess a base side at a rate
+well above zero, because a generated fact often matches the priors of a
+competent model, and a benchmark crediting single sides would read that as
+memory. Requiring the twin side as well removes it, because the twin's answer is
+the one those same priors argue against. The design predicted this and the floor
+measures it.
+
+Two honest qualifications. Rung 2 rests on 17 instances and rung 3 on 16, so the
+intervals are wide and the rung-level claim is weak even though the direction is
+not. And this is one seed, because the deprecation stopped the other two before
+they ran. What the result supports is that the instrument does not reward prior
+knowledge or generic competence on seed 1, which is the claim it is offered for
+and no more.
 
 ### 4.6 Benchmark durability: the deprecation event and re-anchoring
-- Timeline (all dated in decision-log/git): freeze 2026-08-15 → pilot runs
-  began 2026-09-02 → provider deprecated gpt-5.4 for the available billing
-  paths (observed as a hard 400 by 2026-09-14; runs stalled 2026-09-04).
-- Consequence, derived from §4.2: screening anchors die with the worker;
-  partial SUT rows under the dead worker cannot be mixed with a new one.
-- The re-anchoring procedure (successor-model rule, re-run anchors under the
-  frozen gate rules with byte-identical task text, new valid set, then
-  evaluate): specified here as the release's maintenance contract.
+
+The dataset was frozen on 2026-08-15. Pilot runs began 2026-09-02. On 2026-09-04
+the runs stalled, and what the logs recorded was not an announcement but a wall
+of identical worker failures. By the time it was diagnosed the provider had
+removed gpt-5.4 from every billing path available to this project, returning a
+hard error. The pinned worker had ceased to exist, roughly seven weeks after
+being pinned.
+
+§4.2 makes the consequence unavoidable. Screening anchors are properties of a
+worker. If the worker is gone, the anchors cannot be reproduced, the partial
+rows already collected cannot be completed, and rows collected under a successor
+cannot be mixed with rows collected under the dead one. Attaching new results to
+old anchors would break both the normalization and the pair-validity argument at
+once. That is why §6 releases the partial rows as provenance and derives no
+comparison from them.
+
+The decay literature of §2.4 treats the data as the perishable component and
+answers it with regeneration and refresh. For an agentic benchmark the data is
+the durable part. The worker used to establish which items are answerable is the
+perishable part, and it perishes on the provider's schedule rather than on the
+benchmark's. We have not seen this addressed, and we would not have written it
+up as a contribution if it had not happened to us.
+
+The release therefore ships a maintenance contract rather than an assurance. If
+a successor worker is pinned, the rule is the nearest same-provider successor at
+the time of deprecation; anchors are re-screened for the released seeds under the
+frozen gate rules with task text held byte-identical, which is what keeps the
+comparison a re-anchoring rather than a new dataset; the result is a new valid
+set under the new worker, reported as such; and only then can systems be
+evaluated. Anchors and system rows from different workers are never mixed. The
+procedure is specified whether or not we ever run it, because a dataset whose
+validity cannot be re-established outlives nothing.
 
 ## 5. The instrument as released
 
