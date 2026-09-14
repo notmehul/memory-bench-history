@@ -50,7 +50,7 @@ open.
 | 6 | BUILT, NOT RUN — cost columns are implemented in the runner and carried on every row |
 | 7 | NOT TRIGGERED 2026-09-14 — right-of-reply attaches to published vendor numbers and v1 publishes none; configs stay frozen and dated in `docs/vendor-configs.md` |
 | 8 | DEFERRED 2026-09-14 — no rankings to correlate without comparative runs |
-| 9 | IN PROGRESS 2026-09-14 — `scripts/release.py build/verify` produces the bundle with Croissant 1.0 + RAI metadata, CC BY 4.0 data license, maintenance plan, checksums, and a verifier that fails on a leaked ledger, a missing canary, a tampered file, or any withheld filename. Remaining: hosting target + DOI |
+| 9 | CLOSED 2026-09-14 — `scripts/release.py build/verify` produces the bundle with Croissant 1.0 + RAI metadata, CC BY 4.0 data license, maintenance plan, checksums, and a verifier that fails on a leaked ledger, a missing canary, a tampered file, or any withheld filename. Hosting: HuggingFace `notmehul/memory-bench`, dataset card with metadata, no DOI (decided; the paper cites the URL). Uploaded private 2026-09-14, leak-audited before and round-tripped byte-for-byte after; anonymous access 401. No BLOCKING row remains open. |
 
 ## C. Open decisions (owner: Mehul)
 
