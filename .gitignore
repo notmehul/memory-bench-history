@@ -23,3 +23,6 @@ datasets/**/events.prev.jsonl
 # blinded-judge staging (transient; verdicts live in judgements.jsonl)
 datasets/dev/screening/org-*/pending-judge.json
 datasets/dev/screening/org-*/pending-judge.map.json
+
+# Compiled paper output; rebuild with: tectonic -X compile paper/memory-bench.tex
+paper/memory-bench.pdf

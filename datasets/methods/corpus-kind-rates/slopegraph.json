@@ -1,0 +1,39 @@
+{
+ "note": "screening = the four screened seeds; floor = the memoryless run. Pooled figures quoted in the paper include the floor run.",
+ "fact_absent": {
+  "screening": {
+   "n": 1359,
+   "n_true": 1311,
+   "rate": 96.5
+  },
+  "floor": {
+   "n": 104,
+   "n_true": 100,
+   "rate": 96.2
+  }
+ },
+ "fact_applied": {
+  "screening": {
+   "n": 2481,
+   "n_true": 1004,
+   "rate": 40.5
+  },
+  "floor": {
+   "n": 196,
+   "n_true": 39,
+   "rate": 19.9
+  }
+ },
+ "scope_correct": {
+  "screening": {
+   "n": 1188,
+   "n_true": 451,
+   "rate": 38.0
+  },
+  "floor": {
+   "n": 70,
+   "n_true": 13,
+   "rate": 18.6
+  }
+ }
+}
