@@ -1,10 +1,14 @@
 # Status & Work Queue
 
 Last updated: 2026-09-14. **Two tracks run in parallel from here.** Track A is
-the v1 dataset paper, which is close to done and has open decisions that are
-Mehul's. Track B is a second paper on benchmark methodology, opened 2026-09-14
-because the second rater (Track A item 13) takes real calendar time to recruit
-and the project should not idle on it.
+the v1 dataset paper: the LaTeX submission draft is written and compiles, the
+dataset is uploaded to HuggingFace (private), and what remains is the voice
+pass and the clean-clone repro. Track B is a second paper on benchmark
+methodology, which now has two measured results of its own and needs a framing
+decision before it gets written.
+
+**Stage, in one line: Track A is feature-complete and pre-release. Track B has
+its evidence and no draft.**
 
 Earlier history is in `docs/decision-log.md`, dated and append-only. The
 pre-freeze A/B/C queue tables were removed 2026-08-15 (`git show
@@ -30,13 +34,43 @@ entries dated.
   (§4.3), and G4 (§4.4). One positive result: the memoryless floor at 4 of 125
   instances credited. That asymmetry is deliberate and is the paper's
   credibility argument, not a wound.
-- **Build is done.** Adapters for all 10 system configs registered in
-  `membench.pilot`; `scripts/run_pilot.py` + `score_sut.py` + `figures.py`;
-  `scripts/release.py build|verify`; `scripts/calibration_sheet.py
-  export|import`. 282 tests, ruff clean.
+- **Build is done.** Adapters for 11 registered system configs (10 runnable;
+  typed-memory deferred) in `membench.pilot`; `scripts/run_pilot.py` +
+  `score_sut.py` + `figures.py`; `scripts/release.py build|verify`;
+  `scripts/calibration_sheet.py export|import`;
+  `scripts/methods_verdict_kinds.py` and `methods_judge_panel.py` for Track B.
+  **314 tests, ruff clean.**
+- **Released (private).** `huggingface.co/datasets/notmehul/memory-bench`,
+  dataset repo, CC BY 4.0, 25 files, 1.7 MB. Verified before upload by an
+  independent leak audit and after upload by a byte-for-byte round trip;
+  anonymous access returns 401. Opens with the all-in-one release.
+- **Paper.** `paper/memory-bench.tex`, arXiv single-column, ~11.4k body words,
+  seven TikZ/pgfplots figures, compiles with tectonic. `paper/draft.md` remains
+  the working copy; the two are kept in step.
 - **Guards in place:** `tests/test_paper_numbers.py` recomputes every headline
   number from its artifact and asserts the string is in the draft;
-  `tests/test_prose_style.py` holds the unslop pass on the public surfaces.
+  `tests/test_paper_tex.py` does the same for the LaTeX figures, whose numbers
+  are TikZ coordinates a typo would not make visible;
+  `tests/test_prose_style.py` holds the unslop pass on the public surfaces,
+  **now including `paper/memory-bench.tex`**.
+
+---
+
+## What is left before the all-in-one release
+
+Three things, in the order they block each other:
+
+1. **The voice pass.** `mehul-voice` on `paper/memory-bench.tex`, with Mehul,
+   last. The prose is the agent's at the moment and reads like it. An `unslop`
+   pass ran 2026-09-14 and is guarded, but that removes tells rather than
+   adding a voice.
+2. **Repro from a clean clone.** The last open line of the G5 verification
+   gate: clone fresh, install, rebuild the release, and confirm the redacted
+   bundle drives the Runner to the full 371.
+3. **Flip the HuggingFace repo public**, together with whatever the harness
+   repository does. Mehul's call on whether they go at the same moment.
+
+Nothing else gates the release. G4 is reported as a failure and stays one.
 
 ---
 
@@ -97,12 +131,20 @@ entries dated.
     judge/human presentation asymmetry, and judge identity being an unverified
     free-text tag). §4.4 carries the corpus-scale rates. Still open: the voice
     pass with Mehul (`mehul-voice` last).
-11. **Verification gate** (`paper/checklist.md`): regenerate the floor numbers
-    from committed raw outputs, grep for surviving comparative language,
-    confirm all 13 disclosures present, repro from a clean clone.
-12. **Hosting — DECIDED 2026-09-14: HuggingFace** (Mehul). `DOI_PLACEHOLDER`
-    in `scripts/release.py` still needs replacing with the dataset URL once the
-    repo exists. No DOI; the paper cites the URL.
+11. **Verification gate — PARTLY DONE** (`paper/checklist.md`). Floor numbers
+    regenerate from committed raw outputs and are asserted by
+    `tests/test_paper_numbers.py`; comparative language is grepped by
+    `tests/test_paper_tex.py`; the disclosures are present and now number 11
+    consolidated items rather than 13. **Still open: repro from a clean clone.**
+12. **Hosting — DONE 2026-09-14.** HuggingFace (Mehul's decision), no DOI.
+    Dataset repo `notmehul/memory-bench` created **private** and uploaded:
+    25 files, 1.7 MB, CC BY 4.0, dataset card with YAML metadata.
+    `DOI_PLACEHOLDER` removed from `scripts/release.py`; the Croissant
+    `identifier` is the repository URL. Verified before upload (independent
+    leak audit: ledger empty, zero probed canonical text, no holdout seed, no
+    annotations) and after (byte-for-byte round trip, `release.py verify` on
+    the downloaded copy, anonymous fetch returns 401). Full record:
+    `docs/decision-log.md` §2026-09-14 (HuggingFace).
 
 13. **LaTeX paper — DONE 2026-09-14** (`c3e9dac`). `paper/memory-bench.tex`,
     arXiv single-column, self-contained, ~11.4k body words, seven TikZ/pgfplots
