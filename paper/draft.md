@@ -46,9 +46,14 @@ Aggregate disagreement is symmetric, 14 items each way, but that symmetry is a
 cancellation rather than a property of the judge: every one of its errors on
 absence-phrased criteria is an over-accept (8 of 8; it returns FALSE on 1 of 44
 such items), and every one of its errors on scope criteria is an under-accept
-(7 of 7). Semantic verdicts here carry a bias that depends on criterion kind
-and that an aggregate figure hides, which is the kind of thing a benchmark
-learns only by measuring its judge against a human.
+(7 of 7). The over-accepts concentrate on the counterfactual side, 11 against
+3, which is where pair credit multiplies them, and 58.8% of instances carry a
+criterion of the lenient class. Our cheaper automated check, a 20-decoy
+false-accept audit, passed this same judge at 2/41; resolving those 41 criteria
+by kind shows none of them were absence-phrased, so that audit could not have
+caught this. The transferable lesson is to report judge agreement per criterion
+type, because an aggregate false-accept rate can conceal opposite directional
+failures that cancel.
 
 Mid-study, the provider deprecated the pinned worker, which ended comparative
 evaluation and exposed a dependency every agentic benchmark carries and few
@@ -371,8 +376,28 @@ Every number below was already measured; none of it needed the deprecated worker
   of the consumer; benchmark numbers without a harness pin are unanchored.
 
 ### 4.4 Judge validation
-- 20-decoy false-accept audit: **2/41 measured, 0/39 adjudicated**
-  (`datasets/dev/screening/judge-decoys/audit.json`), rubric v2.
+
+We ran two checks on the judge: a cheap automated one and an expensive human
+one. They disagree about whether the judge is sound, and the reason they
+disagree is the most transferable result in this paper.
+
+#### The 20-decoy false-accept audit: PASS, and blind to the defect
+
+Deliberately wrong-but-topical outputs were judged blind against the real
+criteria: **2/41 false accepts as measured, 0/39 after adjudicating two
+criteria an under-specified decoy legitimately satisfied**
+(`datasets/dev/screening/judge-decoys/audit.json`, rubric v2). Read on its own
+this says the judge does not accept plausible-sounding wrong answers, which is
+the LoCoMo failure mode of §2.3.
+
+Resolving those 41 criteria back to their kinds shows why that reading was
+premature: **30 were `fact_applied`, 11 were `scope_correct`, and none were
+`fact_absent`.** A decoy is built by stating wrong values, so it exercises
+criteria that demand content. A criterion phrased as absence is satisfied by an
+output that never raises the topic, so a decoy cannot probe it without being
+built differently. The audit was structurally incapable of detecting a failure
+on absence criteria, and that is exactly where the failure turned out to be.
+
 #### G4 judge-human agreement: measured 2026-09-14, **FAIL**
 
 The blinded 150-pair packet was rated by the single author-rater (the disclosed
@@ -429,6 +454,44 @@ and that is noted rather than offered as a defence. We prespecified κ ≥ 0.75
 rather than a raw-agreement threshold precisely so an unbalanced task could not
 be presented as validity, and we do not get to discover the objection to our
 own gate on the day it fails.
+
+#### Where the leniency lands, and why it matters more than its size
+
+Two facts decide how far this propagates.
+
+**The over-accepts concentrate on the counterfactual side.** Of the judge's 14
+over-accepts, 11 fall on twin-side criteria against 3 on base-side; its
+under-accepts split evenly, 7 and 7. This follows from the design rather than
+from chance: a twin asserts that the base fact is *not* presented, so
+absence-phrased criteria live disproportionately on that side (26 of the 44
+sampled absence items). Pair credit requires both sides to pass, so a judge
+that waves twin sides through inflates instance credit directly. The error is
+in the direction that flatters a system under test.
+
+**The exposed fraction of the dataset is not small.** 218 of the 371 valid
+instances (58.8%) carry at least one `fact_absent` criterion: 199 on the base
+side, 207 on the twin side, 188 on both. The criterion class where the judge is
+measurably lenient is scored on nearly three instances in five.
+
+Why the class behaves this way is mechanical rather than mysterious. "The note
+does not present the 48h SLA as current" is satisfied by a note that never
+mentions the SLA at all, so silence passes. The class has a degenerate pass
+mode, the judge sits at 97.7% positive because of it, and κ has almost no
+variance to track. The human rater's stricter 79.5% reflects counting
+paraphrase and implication as presenting, which is what the rubric intends and
+what the judge did not do. This is therefore as much a criterion-design defect
+as a judge defect: an absence criterion carries little discriminative signal
+unless it is paired with a positive criterion demanding the replacement value.
+
+**The methodological point, which generalizes past this benchmark.** Two
+judge-validity checks, run on the same judge under the same rubric, returned
+opposite verdicts. The cheap automated one passed and could not have failed,
+because decoys are built by stating wrong values and therefore exercise only
+criteria that demand content. The expensive human one failed and localized a
+specific degenerate class. Anyone building an LLM-judged benchmark should
+report judge agreement **per criterion type**: an aggregate false-accept rate,
+and even an aggregate over/under-accept balance, can conceal opposite
+directional failures that cancel.
 
 **Per-criterion drops.** 28 criteria fall below the 0.7 raw-agreement rewrite
 threshold. 25 of those were sampled once and 3 twice, so "below 0.7" means the
@@ -490,7 +553,11 @@ dataset is recorded in `docs/decision-log.md` §2026-09-14.
    and would not cancel for another. A score computed over a different
    archetype mix therefore carries a bias of a different sign. 28 criteria fall
    below the prespecified 0.7 rewrite threshold, 25 of them on a single sampled
-   judgment.
+   judgment. The lenient class is scored on 218 of 371 instances (58.8%) and
+   the over-accepts land 11-to-3 on the counterfactual side, where pair credit
+   compounds them. Our 20-decoy false-accept audit passed this judge at 2/41
+   and could not have caught the defect: none of those 41 criteria were
+   absence-phrased.
 2. Single author-rater for G4, who has seen seed content: a disclosed downgrade
    from the original two-rater design, so there is no inter-rater κ to separate
    judge error from rater error. A second independent rater is the first thing

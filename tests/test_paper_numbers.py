@@ -185,6 +185,89 @@ def test_g4_ratings_match_the_raw_submission(draft: str):
             / "rater-M-filled-2026-09-14.xlsx").is_file()
 
 
+def _g4_records():
+    """(human, judge, kind, side) for each of the 150 calibration pairs."""
+    key = json.loads((ROOT / "datasets/dev/calibration/packet-key.json").read_text())
+    gold = json.loads((ROOT / "datasets/dev/calibration/ratings-M.json").read_text())
+
+    def jsonl(p):
+        return [json.loads(x) for x in p.read_text().splitlines() if x.strip()]
+
+    cache, out = {}, []
+    for pid, ref in key.items():
+        org = ref["org"]
+        if org not in cache:
+            d = ROOT / "datasets/dev/screening" / org
+            runs = {r["run_id"]: r for r in jsonl(d / "runs.jsonl")}
+            judged = {r["run_id"]: r for r in jsonl(d / "judgements.jsonl")}
+            cache[org] = (runs, judged)
+        runs, judged = cache[org]
+        run = runs[ref["run_id"]]
+        a = next(x for x in run["assertions"] + (run.get("cf_assertions") or [])
+                 if x["id"] == ref["assertion_id"])
+        out.append((gold[pid],
+                    bool(judged[ref["run_id"]]["verdicts"][ref["assertion_id"]]),
+                    a["kind"],
+                    "twin" if ref["assertion_id"].startswith("casrt") else "base"))
+    return out
+
+
+def test_decoy_audit_never_exercised_an_absence_criterion(draft: str):
+    """The cheap judge check could not have caught the defect the human one found."""
+    audit = json.loads(
+        (ROOT / "datasets/dev/screening/judge-decoys/audit.json").read_text())
+    kinds: Counter = Counter()
+    for org in ("org-00001", "org-00002", "org-00003", "org-00004", "org-00005"):
+        f = ROOT / "datasets/dev" / org / "probes.jsonl"
+        if not f.is_file():
+            continue
+        for line in f.read_text().splitlines():
+            if not line.strip():
+                continue
+            pr = json.loads(line)
+            cf = pr.get("counterfactual_probe") or {}
+            pool = (pr.get("assertions") or []) + (
+                cf.get("assertions") if isinstance(cf, dict) else [] or [])
+            for a in pool:
+                kinds[(pr["probe_id"], a["id"])] = a.get("kind")
+    seen = Counter(kinds.get((r["probe_id"], r["assertion_id"])) for r in audit["rows"])
+    assert seen["fact_applied"] == 30
+    assert seen["scope_correct"] == 11
+    assert seen["fact_absent"] == 0, "a decoy DID cover an absence criterion; rewrite 4.4"
+    assert "none of them were absence-phrased" in draft
+
+
+def test_over_accepts_concentrate_on_the_counterfactual_side(draft: str):
+    recs = _g4_records()
+    over = Counter(side for h, j, _, side in recs if not h and j)
+    under = Counter(side for h, j, _, side in recs if h and not j)
+    assert (over["twin"], over["base"]) == (11, 3)
+    assert (under["twin"], under["base"]) == (7, 7)
+    assert "11 against" in draft and "counterfactual side" in draft
+
+
+def test_absence_criterion_exposure_across_the_valid_set(draft: str):
+    exposed = total = 0
+    for org in SEEDS:
+        d = ROOT / "datasets/dev" / org
+        valid = set(load_valid_instances(d))
+        for line in (d / "probes.jsonl").read_text().splitlines():
+            if not line.strip():
+                continue
+            pr = json.loads(line)
+            if pr["probe_id"] not in valid:
+                continue
+            total += 1
+            cf = pr.get("counterfactual_probe") or {}
+            pool = (pr.get("assertions") or []) + (
+                cf.get("assertions") if isinstance(cf, dict) else [] or [])
+            if any(a.get("kind") == "fact_absent" for a in pool):
+                exposed += 1
+    assert (total, exposed) == (371, 218)
+    assert f"{exposed} of the {total}" in draft
+    assert "58.8%" in draft
+
+
 def test_judge_decoy_audit(draft: str):
     audit = json.loads(
         (ROOT / "datasets/dev/screening/judge-decoys/audit.json").read_text())

@@ -498,3 +498,33 @@ Contents:
 > fatigue effect and if anything a warm-up one. This analysis is diagnostic
 > only and was run after the score was revealed and the labels locked; it
 > cannot and does not revise any label.
+
+### Follow-up, same day (2026-09-14) — where the judge leniency lands
+
+> Three further measurements on the committed G4 evidence, all verified against
+> the artifacts rather than inferred.
+>
+> **The decoy audit was structurally blind to this defect.** Resolving the 41
+> positive criteria in `judge-decoys/audit.json` back to their kinds: 30
+> `fact_applied`, 11 `scope_correct`, **0 `fact_absent`**. A decoy is authored
+> by stating wrong values, so it exercises criteria demanding content; an
+> absence criterion is satisfied by an output that never raises the topic, so
+> decoys cannot probe it. The cheap automated judge check passed and could not
+> have failed on this class. Two validity checks on one judge, opposite
+> verdicts, and only the expensive human one found the defect.
+>
+> **Over-accepts concentrate on the counterfactual side**: 11 of 14 on
+> twin-side criteria against 3 base-side, while under-accepts split 7/7. Twins
+> assert the base fact is NOT presented, so absence criteria sit
+> disproportionately there (26 of 44 sampled). Pair credit needs both sides to
+> pass, so twin-side leniency inflates instance credit in the direction that
+> flatters a system.
+>
+> **Exposure: 218 of 371 valid instances (58.8%) carry at least one
+> `fact_absent` criterion** — 199 base side, 207 twin side, 188 both. (A
+> background analysis put this at 129/34.8%; that was an undercount, checked
+> and corrected here against `probes.jsonl` and the frozen valid sets.)
+>
+> Added to `paper/draft.md` §4.4, the abstract, and disclosure 1. None of this
+> changes the gate result (κ = 0.537, FAIL) or any label; it is analysis of
+> already-committed evidence, run after the score was revealed.

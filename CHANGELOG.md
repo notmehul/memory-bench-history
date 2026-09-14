@@ -35,6 +35,15 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning: Se
   (`judge-agreement.json`), all added to the release withhold list.
   Whether to apply the prespecified drop rule to the scored dataset is queued
   as an open decision, deliberately not taken by the agent.
+- G4 follow-up (2026-09-14): where the judge leniency lands. The 20-decoy
+  audit's 41 criteria resolve to 30 fact_applied + 11 scope_correct and **zero
+  fact_absent**, so the cheap automated judge check was structurally incapable
+  of catching the defect the human check found. Over-accepts concentrate 11-to-3
+  on the counterfactual side, where pair credit compounds them (under-accepts
+  split 7/7). 218 of 371 valid instances (58.8%) carry an absence criterion. A
+  background analysis had put that exposure at 129/34.8%; recounted against
+  probes.jsonl and the frozen valid sets, it is 218. Added to §4.4, the
+  abstract and disclosure 1, with three tests pinning each number.
 - G4 diagnosis corrected the same day (2026-09-14): the first reading called
   the judge "noisy rather than biased" off the 14/14 aggregate split. Wrong.
   The split is a cancellation of two opposite kind-specific biases (judge
