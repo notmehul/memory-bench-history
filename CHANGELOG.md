@@ -35,6 +35,14 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning: Se
   (`judge-agreement.json`), all added to the release withhold list.
   Whether to apply the prespecified drop rule to the scored dataset is queued
   as an open decision, deliberately not taken by the agent.
+- §4.3 harness sensitivity expanded (2026-09-14): the study had a PRESPECIFIED
+  acceptance bar of >=90% outcome agreement per condition
+  (`harness-study-2026-07-25/protocol.json`), which the paper had not reported.
+  Per condition: floor pair-pass 20/20 (100%), ceiling-pass 19/20 (95%),
+  twin-ceiling 13/20 (65%, FAIL), floor base-pass 15/20 (75%, ungated). So this
+  is a fourth prespecified gate that failed, and the second harness was
+  confined to QA work on that evidence. Disagreement concentrates in the
+  hardest condition rather than being uniform.
 - G4 reliability diagnostics (2026-09-14, post-hoc): prevalence index, bias
   index, PABAK and Gwet's AC1 per criterion kind added to §4.4. Textbook kappa
   paradox — fact_absent has prevalence index 0.773 and its κ collapses while

@@ -372,10 +372,38 @@ Every number below was already measured; none of it needed the deprecated worker
   per-worker re-screening procedure.
 
 ### 4.3 Harness sensitivity
-- Identical gpt-5.4 weights behind two agent harnesses agree on only
-  **65%** of twin-ceiling outcomes (prespecified 60-run study, 2026-07-25;
-  `datasets/dev/screening/harness-study-2026-07-25/`). The harness is part
-  of the consumer; benchmark numbers without a harness pin are unanchored.
+
+Before admitting a second agent harness to any protocol path we ran a
+prespecified equivalence study: 60 seed-1 runs, 20 per condition, RNG seed
+fixed, scored through the identical blinded pipeline, with the acceptance rule
+written down before any run (`harness-study-2026-07-25/protocol.json`).
+The bar was **outcome agreement ≥ 90% per condition**. The two harnesses ran
+identical gpt-5.4 weights at identical effort; only the agent scaffold differed.
+
+| condition | agreement | vs the 90% bar |
+|---|---|---|
+| floor pair-pass | 20/20, 100% | pass |
+| ceiling-pass | 19/20, 95% | pass |
+| **twin-ceiling pass** | **13/20, 65%** | **FAIL** |
+| floor base-pass (ungated) | 15/20, 75% | — |
+
+The study therefore failed its own acceptance rule, and the second harness was
+confined to QA and non-protocol work on that evidence. Two things are worth
+drawing out.
+
+The disagreement is not uniform: it concentrates in the conditions that are
+hardest to satisfy. Where the task is easy to fail (the memoryless floor, at
+100%) or easy to pass (the ceiling with facts injected, at 95%) the harnesses
+agree. The twin ceiling asks a worker to produce a deliverable consistent with
+a counterfactual fact while an almost identical base fact is absent, and there
+the same weights behind different scaffolds disagree on more than a third of
+outcomes.
+
+The consequence for the field is the one worth carrying: the harness is part of
+the consumer, not a neutral pipe to the weights. A benchmark that pins a model
+and not its harness has not pinned its worker, and a result reported without a
+harness version is unanchored. It also explains why re-anchoring (§4.6) has to
+fix the harness version alongside the model.
 
 ### 4.4 Judge validation
 

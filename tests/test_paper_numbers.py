@@ -402,13 +402,24 @@ def test_judge_decoy_audit(draft: str):
 
 
 def test_harness_agreement(draft: str):
-    comp = json.loads(
-        (ROOT / "datasets/dev/screening/harness-study-2026-07-25"
-                "/comparison.json").read_text())
-    agree, disagree = comp["agree"]["twin_ceiling_pass"]
-    pct = round(100 * agree / (agree + disagree))
-    assert (agree, disagree, pct) == (13, 7, 65)
-    assert f"{pct}%" in draft
+    """The harness study failed its own prespecified 90% per-condition bar."""
+    d = ROOT / "datasets/dev/screening/harness-study-2026-07-25"
+    comp = json.loads((d / "comparison.json").read_text())
+    proto = json.loads((d / "protocol.json").read_text())
+    assert ">=90%" in proto["acceptance"], "the prespecified bar moved"
+
+    pct = {k: round(100 * a / (a + b)) for k, (a, b) in comp["agree"].items()}
+    assert pct == {"twin_ceiling_pass": 65, "ceiling_pass": 95,
+                   "floor_pair_pass": 100, "floor_base_pass": 75}
+    # the gated conditions: two clear the bar, twin-ceiling does not
+    assert pct["floor_pair_pass"] >= 90 and pct["ceiling_pass"] >= 90
+    assert pct["twin_ceiling_pass"] < 90
+
+    low = draft.lower()
+    for fragment in ("20/20, 100%", "19/20, 95%", "13/20, 65%", "15/20, 75%"):
+        assert fragment in draft, f"missing {fragment!r}"
+    assert "90%" in draft
+    assert "failed its own acceptance rule" in low
 
 
 def test_model_relativity(draft: str):
