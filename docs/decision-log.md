@@ -788,3 +788,50 @@ worse, that is what the paper reports.
 existing path is unchanged, filtering the named assertions out of a run's base,
 counterfactual, and cross-side sets before scoring. A side left with zero
 criteria raises rather than scoring vacuously.
+
+### Result and reversal, same day (2026-09-14) — the drop was measured, and canon stays at 371
+
+**What happened, in order, because the order is the point.**
+
+1. The decision to apply the prespecified sub-0.7 drop was recorded and
+   committed (`2da083a`) with the direction of the change stated as unknown,
+   before any re-score ran.
+2. The re-score ran. Applying the rule takes the dataset from **371 to 341**
+   valid instances and moves **seeds 1 and 2 from a passing cluster gate to a
+   failing one** (46/54 to 40/54 and 41/54). Before the drop, three of six
+   gates failed; after it, all six fail. Seed 3 is unchanged, which is the
+   control working: none of the 28 criteria live there.
+3. Mehul, seeing that result, elected to keep the frozen 371 and to publish the
+   drop as a measured sensitivity rather than as canon.
+
+**Canon is therefore unchanged.** Seeds 1-3 remain 46/54 125, 46/54 131, 40/54
+115, 371 total. No `g3-report.json` was rewritten. The default scoring path
+still reproduces the frozen numbers exactly, which is asserted by test.
+
+**This is disclosed as a declined rule, not as an absent one.** The paper states
+that the rule was prespecified, that we committed to applying it, that we applied
+it, what it produced, and that we then chose not to move canon. A disclosure that
+said only "the criteria were not dropped because 25 of 28 rest on a single
+sampled judgment" would be true and materially misleading, because it would omit
+that the number was seen first. Anyone reading git finds `2da083a` regardless.
+
+**The substantive reason for keeping 371**, which stands on its own and was
+recorded before the result: 25 of the 28 criteria rest on a single sampled
+judgment and 3 on two, which the tooling itself flags as too weak a basis for
+dropping an individual criterion. Dropping on that evidence discards real
+instances to satisfy a threshold computed from one rater's single look. The
+counter-argument, which a reader is entitled to weigh, is that we are declining a
+prespecified rule on the day it bound, and that we are doing so after seeing that
+it cost us two gate passes.
+
+**A gap in the rule, filled conservatively and reported as a judgement call.**
+For 30 instances the drop removes every criterion on a scored side. A side with
+no criteria passes vacuously, so those instances are marked unscorable and
+therefore invalid. The prespecified rule does not cover this case. The strict
+reading accounts for the entire 30-instance loss; a permissive reading that kept
+them would leave the total near 371. We report the strict number because a side
+with nothing left to check cannot demonstrate memory.
+
+Evidence: `datasets/dev/screening/sub07-sensitivity/` carries the three re-scored
+reports and a summary. Tooling: `screen_probes.py report --drop`, default off, so
+every existing path is byte-identical without it.

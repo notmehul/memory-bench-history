@@ -1,0 +1,75 @@
+{
+ "date": "2026-09-14",
+ "rule": "v1 FREEZE 2026-08-15: criteria with raw judge-human agreement < 0.7 are dropped, never rewritten",
+ "status": "MEASURED, NOT APPLIED TO CANON \u2014 reported as a sensitivity analysis",
+ "decision_recorded_before_run": "commit 2da083a",
+ "n_criteria_dropped": 28,
+ "by_org": {
+  "org-00001": 15,
+  "org-00002": 13,
+  "org-00003": 0
+ },
+ "unscorable_rule": "a base or counterfactual side left with zero criteria cannot be scored and is marked invalid (conservative reading; the prespecified rule does not cover this case)",
+ "seeds": {
+  "org-00001": {
+   "canon": {
+    "survivors": 46,
+    "valid_instances": 125,
+    "strict": 33,
+    "gate_clusters": true,
+    "gate_instances": false
+   },
+   "after_drop": {
+    "survivors": 40,
+    "valid_instances": 109,
+    "strict": 29,
+    "gate_clusters": false,
+    "gate_instances": false,
+    "unscorable_instances": 12
+   }
+  },
+  "org-00002": {
+   "canon": {
+    "survivors": 46,
+    "valid_instances": 131,
+    "strict": 39,
+    "gate_clusters": true,
+    "gate_instances": false
+   },
+   "after_drop": {
+    "survivors": 41,
+    "valid_instances": 117,
+    "strict": 35,
+    "gate_clusters": false,
+    "gate_instances": false,
+    "unscorable_instances": 18
+   }
+  },
+  "org-00003": {
+   "canon": {
+    "survivors": 40,
+    "valid_instances": 115,
+    "strict": 35,
+    "gate_clusters": false,
+    "gate_instances": false
+   },
+   "after_drop": {
+    "survivors": 40,
+    "valid_instances": 115,
+    "strict": 35,
+    "gate_clusters": false,
+    "gate_instances": false,
+    "unscorable_instances": 0
+   }
+  }
+ },
+ "total_valid_instances": {
+  "canon": 371,
+  "after_drop": 341,
+  "change": -30
+ },
+ "gate_summary": {
+  "canon": "3 of 6 gates fail",
+  "after_drop": "6 of 6 gates fail"
+ }
+}

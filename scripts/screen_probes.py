@@ -476,9 +476,58 @@ def _score(
     return passed / total
 
 
+def _load_drops(path: Path | None, org: str) -> set[tuple[str, str]]:
+    """(cluster_id, assertion_id) pairs to exclude from scoring, for this org.
+
+    Prespecified G4 rule (v1 FREEZE 2026-08-15): criteria whose raw judge-human
+    agreement falls below 0.7 are dropped, never rewritten. Input is the
+    `criteria_below_threshold` block of a `judge-agreement.json`.
+    """
+    if path is None:
+        return set()
+    data = json.loads(Path(path).read_text())
+    rows = data["criteria_below_threshold"] if isinstance(data, dict) else data
+    return {(r["cluster_id"], r["assertion_id"]) for r in rows
+            if r["org"] == org}
+
+
+def _apply_drops(row: dict, drops: set[tuple[str, str]]) -> dict:
+    """Remove dropped criteria from every assertion set on a run row.
+
+    A base or counterfactual side left with no criteria cannot be scored: the
+    denominator would be zero, and an output would satisfy it vacuously. The
+    prespecified rule does not cover this case, so we take the conservative
+    reading and mark the instance unscorable, which makes it invalid. An
+    emptied cross-side set is different and is left alone: it reverts the run
+    to having no S6 discrimination check, which is how every probe behaved
+    before spec v0.4.3 added one.
+    """
+    if not drops:
+        return row
+    cid = row["cluster_id"]
+    row = dict(row)
+    emptied = []
+    for field in ("assertions", "cf_assertions", "cross_assertions"):
+        pool = row.get(field)
+        if not pool:
+            continue
+        kept = [a for a in pool if (cid, a["id"]) not in drops]
+        if not kept and field != "cross_assertions":
+            emptied.append(field)
+        row[field] = kept
+    if emptied:
+        row["_unscorable"] = emptied
+    return row
+
+
 def cmd_report(args) -> int:
     rows = {r["run_id"]: r for r in
             (json.loads(x) for x in (args.work_dir / "runs.jsonl").read_text().splitlines())}
+    drops = _load_drops(getattr(args, "drop", None), args.work_dir.resolve().name)
+    if drops:
+        rows = {rid: _apply_drops(r, drops) for rid, r in rows.items()}
+        print(f"dropped {len(drops)} sub-0.7 criteria for "
+              f"{args.work_dir.resolve().name}")
     results = _read_done(args.work_dir / "results.jsonl")
     judgements = _read_done(args.work_dir / "judgements.jsonl")
 
@@ -502,10 +551,17 @@ def cmd_report(args) -> int:
                     "different criterion text — re-export with --incremental")
         hedged = is_hedged(
             res["output"], row.get("hedge_base"), row.get("hedge_cf"))
-        score = _score(rid, row["assertions"], res["output"], verdicts,
-                       hedged=hedged)
         p = per_probe[row["probe_id"]]
         p["cluster_id"] = row["cluster_id"]
+        if row.get("_unscorable"):
+            # Every criterion on a scored side was dropped by the sub-0.7 rule.
+            # Nothing is left to demonstrate, so the instance cannot be valid.
+            p["unscorable"] = sorted(set(p.get("unscorable", []))
+                                     | set(row["_unscorable"]))
+            p.setdefault(row["condition"], 0.0)
+            continue
+        score = _score(rid, row["assertions"], res["output"], verdicts,
+                       hedged=hedged)
         p[row["condition"]] = score
         if hedged:
             p.setdefault("hedged_runs", []).append(row["condition"])
@@ -528,7 +584,16 @@ def cmd_report(args) -> int:
             )
 
     clusters: dict[str, dict] = defaultdict(lambda: {"instances": {}})
+    n_unscorable = 0
     for pid, p in sorted(per_probe.items()):
+        if p.get("unscorable"):
+            n_unscorable += 1
+            clusters[p["cluster_id"]]["instances"][pid] = {
+                "ceiling": None, "twin_ceiling": None, "floor": None,
+                "ceiling_vs_cf": None, "twin_vs_base": None,
+                "unscorable": p["unscorable"], "valid": False,
+            }
+            continue
         ceiling_ok = p["ceiling"] >= CEILING_PASS
         twin_ok = p.get("twin_ceiling", 1.0) >= CEILING_PASS
         floor_ok = not p.get("floor_pair_pass", p["floor"] > FLOOR_FAIL)
@@ -546,8 +611,9 @@ def cmd_report(args) -> int:
     for cid, c in sorted(clusters.items()):
         insts = c["instances"]
         valid = [pid for pid, i in insts.items() if i["valid"]]
-        floors = [i["floor"] for i in insts.values()]
-        guessability = sum(1 for s in floors if s >= CEILING_PASS) / len(floors)
+        floors = [i["floor"] for i in insts.values() if i["floor"] is not None]
+        guessability = (sum(1 for s in floors if s >= CEILING_PASS) / len(floors)
+                        if floors else None)
         survive = len(valid) >= 2
         strict = len(valid) == len(insts)
         if survive:
@@ -558,7 +624,7 @@ def cmd_report(args) -> int:
         report[cid] = {
             "instances": insts,
             "n_valid": len(valid),
-            "guessability": round(guessability, 3),
+            "guessability": None if guessability is None else round(guessability, 3),
             "survive": survive,
             "strict_survive": strict,
         }
@@ -571,6 +637,7 @@ def cmd_report(args) -> int:
         "n_survivors": len(survivors),
         "n_valid_instances": n_valid_instances,
         "n_strict_survivors": len(strict_survivors),
+        "n_unscorable_instances": n_unscorable,
         "gate_g3_clusters": len(survivors) >= 45,
         "gate_g3_instances": n_valid_instances >= 135,
     }
@@ -578,7 +645,9 @@ def cmd_report(args) -> int:
     if args.out:
         Path(args.out).write_text(text)
         print(f"-> {args.out}")
-    mean_guess = sum(r["guessability"] for r in report.values()) / len(report)
+    scored_guess = [r["guessability"] for r in report.values()
+                    if r["guessability"] is not None]
+    mean_guess = sum(scored_guess) / len(scored_guess) if scored_guess else 0.0
     print(
         f"clusters {len(report)}  survivors {len(survivors)} "
         f"(strict {len(strict_survivors)})  valid instances {n_valid_instances}  "
@@ -590,6 +659,8 @@ def cmd_report(args) -> int:
         if not r["survive"]:
             bad = {pid: i for pid, i in r["instances"].items() if not i["valid"]}
             detail = "; ".join(
+                f"{pid}: unscorable ({','.join(i['unscorable'])})"
+                if i.get("unscorable") else
                 f"{pid}: ceil={i['ceiling']:.2f} twin="
                 f"{'-' if i['twin_ceiling'] is None else format(i['twin_ceiling'], '.2f')}"
                 for pid, i in bad.items()
@@ -625,6 +696,10 @@ def main() -> int:
     p = sub.add_parser("report")
     p.add_argument("work_dir", type=Path)
     p.add_argument("--out", type=Path, default=None)
+    p.add_argument("--drop", type=Path, default=None,
+                   help="judge-agreement.json whose criteria_below_threshold "
+                        "entries are excluded from scoring (prespecified G4 "
+                        "sub-0.7 rule); omit for the frozen scoring")
     args = ap.parse_args()
     return {"manifest": cmd_manifest, "run": cmd_run,
             "judge-export": cmd_judge_export, "judge-import": cmd_judge_import,
