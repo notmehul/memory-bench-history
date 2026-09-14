@@ -835,3 +835,48 @@ with nothing left to check cannot demonstrate memory.
 Evidence: `datasets/dev/screening/sub07-sensitivity/` carries the three re-scored
 reports and a summary. Tooling: `screen_probes.py report --drop`, default off, so
 every existing path is byte-identical without it.
+
+## 2026-09-14 — dataset published to HuggingFace (private); hosting decision closed
+
+**Decision (Mehul, in-session).** Hosting is HuggingFace, not Zenodo. No DOI;
+the paper cites the repository URL. The repository is **private** until an
+all-in-one release that ships the dataset, the harness, and the paper together.
+
+**Repository.** `https://huggingface.co/datasets/notmehul/memory-bench`,
+dataset repo, CC BY 4.0. `DOI_PLACEHOLDER` is gone from `scripts/release.py`;
+the Croissant `identifier` is now the repository URL.
+
+**What was uploaded.** The output of `scripts/release.py build`, nothing else.
+18 manifest files plus metadata, 25 files total, 1.7 MB: SUT-facing streams,
+counterfactual twins, probes with their scoring assertions, the frozen valid
+sets and g3 reports, Croissant 1.0 and RAI metadata, `MAINTENANCE.md`,
+`LICENSE-DATA`, checksums, and the manifest naming every withholding.
+
+**Checks run before the upload, not after.**
+- `release.py verify`: checksums match, ledger withheld, canaries present.
+- An independent audit, written not to trust that script: no withheld filename
+  anywhere in the tree; no holdout seed; `facts` is an empty list on all six
+  released `org.json` files with a `_redacted` note in its place; no
+  `_annotations` on any released event; **zero probed canonical fact text
+  appears anywhere in the bundle** (checked against all 48 probed facts of
+  seed 1). Both probed and distractor fact ids appear, 48 and 42, so presence
+  alone does not separate them. The `targets` / `must_not_use` fields do
+  separate them, which is the disclosed cost of publishing the assertions
+  (paper §8) rather than a new leak.
+
+**Checks run after the upload.**
+- Downloaded the repository back and diffed it against the local build: 25
+  files byte-for-byte identical, `CHECKSUMS.txt` identical.
+- `release.py verify` passes on the downloaded copy, so the artifact a user
+  fetches is the artifact we built.
+- Anonymous `GET /api/datasets/notmehul/memory-bench` returns **401**, which is
+  the privacy claim tested rather than assumed.
+
+**Second upload, same day.** The Hub warned that the dataset card had no
+metadata. `_readme()` now emits YAML front matter (licence, tags, size, a
+probes config) so the card renders and the licence shows on the repo page. Data
+files unchanged; re-verified after the second upload.
+
+**Still open before the public release.** The paper's voice pass, the
+verification gate in `paper/checklist.md` (repro from a clean clone), and the
+decision on whether the harness repository goes public at the same moment.

@@ -1312,8 +1312,14 @@ mistake is not a policy.
   file, or any withheld filename. The redacted bundle still runs. It drives the real
   runner to the full frozen valid set (125 base + 125 twin rows on seed 1).
 
+Hosting, decided 2026-09-14: HuggingFace, at
+`huggingface.co/datasets/notmehul/memory-bench`, CC BY 4.0. No DOI. The
+repository is private until the all-in-one release; the bundle in it was built
+and verified by `scripts/release.py` and round-trips through the host
+byte-for-byte.
+
 (G5 tracker: `docs/standards-audit.md`. Nothing ships with a BLOCKING row
-open; rows 1–3 closed 2026-08-15, row 9 closed here bar hosting and the DOI.)
+open; rows 1–3 closed 2026-08-15, row 9 closed 2026-09-14.)
 
 ## Appendices (planned)
 

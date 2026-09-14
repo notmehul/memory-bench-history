@@ -56,7 +56,10 @@ WITHHELD_NAMES = (
 )
 
 VERSION = "1.0.0"
-DOI_PLACEHOLDER = "10.5281/zenodo.PENDING"
+# Hosting decided 2026-09-14 (Mehul): HuggingFace, no DOI. The dataset repo is
+# PRIVATE until the all-in-one release; the identifier below is the canonical
+# location either way.
+DATASET_URL = "https://huggingface.co/datasets/notmehul/memory-bench"
 HOMEPAGE = "https://github.com/mehulsrivastava/memory-bench"
 
 CITE = (
@@ -144,7 +147,7 @@ def _croissant(out: Path, files: list[dict]) -> dict:
         "license": "https://creativecommons.org/licenses/by/4.0/",
         "url": HOMEPAGE,
         "citeAs": CITE,
-        "identifier": DOI_PLACEHOLDER,
+        "identifier": DATASET_URL,
         "keywords": [
             "agent memory", "organizational memory", "continual learning",
             "benchmark", "counterfactual evaluation", "LLM agents",
@@ -350,7 +353,27 @@ Issues and correspondence through the repository.
 
 def _readme(manifest: dict) -> str:
     n = manifest["counts"]
-    return f"""# memory-bench v{VERSION}, public release
+    return f"""---
+license: cc-by-4.0
+pretty_name: memory-bench
+language:
+  - en
+tags:
+  - agent-memory
+  - organizational-memory
+  - benchmark
+  - counterfactual-evaluation
+  - llm-agents
+size_categories:
+  - n<1K
+configs:
+  - config_name: default
+    data_files:
+      - split: probes
+        path: data/org-*/probes.jsonl
+---
+
+# memory-bench v{VERSION}, public release
 
 A screened benchmark for organizational memory in agent harnesses: does a
 memory system keep a rule that was stated once, drop a fact that was
