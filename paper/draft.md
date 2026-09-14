@@ -36,7 +36,7 @@ is statistically indistinguishable from zero on every capability rung, which
 is direct evidence that the design does not reward priors. Probe validity is
 *task-model-relative*: under identical strict rules, 37/54 probe clusters
 survived the ceiling gate for one worker and 17/54 for a smaller sibling. The
-harness is part of the consumer: identical weights behind two agent harnesses
+harness is part of the consumer. Identical weights behind two agent harnesses
 agreed on only 65% of twin-ceiling outcomes. The blinded judge's false-accept
 rate against an adversarial decoy set was 2/41 as measured and 0/39 after
 adjudication. Judge-human agreement on a blinded 150-pair packet reached 81.3%
@@ -127,7 +127,7 @@ comparative system numbers. We do not claim to measure "mini-AGI-ness," and
 the external-validity claim stops at the organization type instantiated;
 industry breadth enters a later version as a designed factor rather than by
 relabeling this one (`docs/vision.md` §5). No result is ever reduced to a
-single aggregate score: results are grouped by capability rung, always.
+single aggregate score. Results are grouped by capability rung, always.
 
 Three constraints were fixed before the evidence they govern was produced, and
 each is corroborated by dated git history rather than by assertion: the gate
@@ -259,7 +259,7 @@ retrieval alone credits a system for surfacing a fact that should no longer
 apply.
 
 Continual-learning and knowledge-editing work addresses the third property
-inside the weights. This benchmark takes the harness position instead: the
+inside the weights. This benchmark takes the harness position instead. The
 knowledge an organization runs on changes faster than anyone retrains, and the
 agents consuming it run on models the organization does not own (§1.1).
 
@@ -284,7 +284,7 @@ at 72.90% against Mem0's graph variant at 68.44% and plain Mem0 at 66.88%. The
 system's own published table shows the no-memory-system baseline winning, which
 raises the question of whether the corpus needed a memory system at all. Letta
 separately reported that a plain filesystem-and-grep agent reached 74.0%. That
-is why a grep agent is one of our registered baselines: a memory product should
+is why a grep agent is one of our registered baselines. A memory product should
 have to beat a directory of files.
 
 Protocol looseness produced a public scoring dispute between Mem0 and Zep, with
@@ -484,8 +484,7 @@ what makes a plausible guess worthless. A fact invented by a language model
 often coincides with that model's own prior, whether a naming convention, a
 review threshold or a default cadence, and a memoryless system can guess the base side
 at a rate that would flatter it badly. It cannot guess both sides, because the
-twin's answer is the one its priors argue against. §4.5 reports what this buys:
-under a memoryless worker, 4 of 125 instances earn pair credit.
+twin's answer is the one its priors argue against. §4.5 reports what this buys. Under a memoryless worker, 4 of 125 instances earn pair credit.
 
 Assertions come in several kinds, among them `fact_applied`, `fact_absent`,
 `scope_correct` and `conflict_flagged`. Each is checked by regex, by structural
@@ -499,8 +498,7 @@ LLM-authored under a fixed prompt and accepted only after mechanical validation:
 answer-token hygiene, 4-gram overlap against the task text, and pattern
 cross-validation requiring each pattern to match every surface variant of its
 own side and no variant of the other side or of a sibling fact. One further
-authoring rule came out of failure adjudication and matters more than it looks:
-an assertion must never punish content drawn from a different co-valid fact of
+authoring rule came out of failure adjudication and matters more than it looks. An assertion must never punish content drawn from a different co-valid fact of
 the same cluster, because complementary facts are not competing answers.
 
 ### 3.4 Screening: which items actually measure memory
@@ -514,7 +512,7 @@ system under test provides. A system's score is normalized as
 The floor and ceiling conditions are not only a normalization; they are the
 screen. An instance is valid when its ceiling passes, its twin ceiling passes,
 and its floor output fails at pair level. A ceiling that fails means the item
-measures reasoning rather than memory: the facts were supplied and the worker
+measures reasoning rather than memory. The facts were supplied and the worker
 still could not produce the artifact. A floor that passes means the item is
 answerable without memory at all. Both get dropped, and the per-side floor pass
 rate survives as a reported `guessability` figure per cluster.
@@ -664,7 +662,7 @@ The study therefore failed its own acceptance rule, and the second harness was
 confined to QA and non-protocol work on that evidence. Two things are worth
 drawing out.
 
-The disagreement is not uniform: it concentrates in the conditions that are
+The disagreement is not uniform. It concentrates in the conditions that are
 hardest to satisfy. Where the task is easy to fail (the memoryless floor, at
 100%) or easy to pass (the ceiling with facts injected, at 95%) the harnesses
 agree. The twin ceiling asks a worker to produce a deliverable consistent with
@@ -672,8 +670,8 @@ a counterfactual fact while an almost identical base fact is absent, and there
 the same weights behind different scaffolds disagree on more than a third of
 outcomes.
 
-The consequence for the field is the one worth carrying: the harness is part of
-the consumer, not a neutral pipe to the weights. A benchmark that pins a model
+One consequence generalizes past this study. The harness is part of the
+consumer, not a neutral pipe to the weights. A benchmark that pins a model
 and not its harness has not pinned its worker, and a result reported without a
 harness version is unanchored. It also explains why re-anchoring (§4.6) has to
 fix the harness version alongside the model.
@@ -752,7 +750,7 @@ rate pushes chance agreement to 0.782, leaving almost no headroom. We state
 this explicitly because the opposite reading is the natural one and we made it
 ourselves in an earlier draft of this section.
 
-**On the gate itself.** The gate was κ ≥ 0.75. It failed at 0.537. That stands,
+The gate was κ ≥ 0.75. It failed at 0.537. That stands,
 and the diagnostics below explain the mechanism rather than soften the verdict.
 They were computed after the result and are labelled post-hoc; none was
 prespecified.
@@ -764,8 +762,8 @@ prespecified.
 | `scope_correct` | 0.794 | 0.561 | 0.324 | 0.206 | 0.588 | 0.627 |
 | **overall** | 0.813 | **0.537** | 0.440 | 0.000 | 0.627 | 0.687 |
 
-This is the kappa paradox: when one label dominates, κ penalizes residual
-disagreement disproportionately. `fact_absent` carries the highest prevalence
+This is the kappa paradox. When one label dominates, κ penalizes residual
+disagreement out of proportion to its size. `fact_absent` carries the highest prevalence
 index of the three at 0.773, and it is the one whose κ collapses while its raw
 agreement matches the others to within a point.
 
@@ -793,8 +791,7 @@ Two facts decide how far this propagates.
 
 **The over-accepts concentrate on the counterfactual side.** Of the judge's 14
 over-accepts, 11 fall on twin-side criteria against 3 on base-side; its
-under-accepts split evenly, 7 and 7. This follows from the design rather than
-from chance: a twin asserts that the base fact is *not* presented, so
+under-accepts split evenly, 7 and 7. This follows from the design rather than from chance. A twin asserts that the base fact is *not* presented, so
 absence-phrased criteria live disproportionately on that side (26 of the 44
 sampled absence items). Pair credit requires both sides to pass, so a judge
 that waves twin sides through inflates instance credit directly. The error is
@@ -812,8 +809,9 @@ mode, the judge sits at 97.7% positive because of it, and κ has almost no
 variance to track. The human rater's stricter 79.5% reflects counting
 paraphrase and implication as presenting, which is what the rubric intends and
 what the judge did not do. This is therefore as much a criterion-design defect
-as a judge defect: an absence criterion carries little discriminative signal
-unless it is paired with a positive criterion demanding the replacement value.
+as a judge defect. An absence criterion carries little discriminative
+signal unless a positive criterion demanding the replacement value sits beside
+it.
 
 #### The mechanism at corpus scale, without human labels
 
@@ -902,7 +900,7 @@ lands at 0.787, a hair over the line and assuming a precision no rubric edit
 delivers. So the G4 failure is not attributable to the absence defect alone,
 and we say that rather than letting the defect carry the blame for the gate.
 
-**The principle.** Even if the arithmetic worked, the criteria were frozen
+There is a principle under the arithmetic. Even if the numbers worked, the criteria were frozen
 before this evidence existed, and rewriting them now is the practice §2.3
 condemns: LoCoMo's ground truth and the Mem0/Zep dispute are both the measuring
 instrument moving after the measurement. The freeze that forbids this repair is
@@ -961,8 +959,7 @@ direction of the change stated as unknown, before any re-score ran. We then ran
 it. Dropping the 28 takes the dataset from **371 to 341 valid instances** and
 moves seeds 1 and 2 from a passing cluster gate to a failing one, 46/54 becoming
 40/54 and 41/54. Before the drop, three of six gates failed. After it, all six
-do. Seed 3 is unchanged, which is the control behaving: none of the 28 criteria
-are in it.
+do. Seed 3 is unchanged. None of the 28 criteria are in it, so it acts as a control.
 
 Having seen that, we kept the frozen 371 and publish the drop as a sensitivity
 (`datasets/dev/screening/sub07-sensitivity/`).
@@ -1077,8 +1074,8 @@ filesystem-and-grep agent and embedding RAG, plus a lexical BM25 ablation of
 the RAG baseline, four market systems selected by published inclusion criteria,
 and a per-principal silo ablation of Mem0. The eleventh, a typed-memory
 reference implementation, is registered and constructible but deferred by the v1
-freeze and never run. The grep baseline is there on principle: a memory product
-should have to beat a directory of files and a search command.
+freeze and never run. The grep baseline is there on principle. A memory product should have to beat a
+directory of files and a search command.
 
 **Configurations were frozen before any live run and amended only mechanically.**
 The per-system config file was committed 2026-08-27, before any system was
@@ -1158,9 +1155,8 @@ Only the memoryless floor is complete and judged, and it is the one result this
 paper reports (§4.5). The other three were manifested but never judged; `rag`
 never reached a manifest at all, because its twin side is missing twelve rows
 outright, because the run was cut off mid-stream, and the scorer refuses to build a
-manifest with a missing twin rather than scoring a partial pair. That refusal is
-the design working: a half-present pair is exactly the kind of row that becomes
-a misleading number later.
+manifest with a missing twin rather than scoring a partial pair. The scorer is right to refuse. A half-present pair is exactly the kind of row
+that becomes a misleading number later.
 
 The empty deliverables are a single uniform failure, and it is not an adapter
 failure. Deduplicated, the errors read `codex worker failed after 2 attempts: no
@@ -1203,7 +1199,7 @@ order of how much they should change your reading.
    judgment. The lenient class is scored on 218 of 371 instances (58.8%) and
    the over-accepts land 11-to-3 on the counterfactual side, where pair credit
    compounds them. Our 20-decoy false-accept audit passed this judge at 2/41
-   and could not have caught the defect: none of those 41 criteria were
+   and could not have caught the defect. None of those 41 criteria were
    absence-phrased. Contained, not fatal: no side of any instance is scored on
    absence criteria alone, so the floor result is unaffected; but scores on
    absence-heavy archetypes (A4 70.8%, A7 57.0%) should be read as upper
@@ -1218,7 +1214,7 @@ order of how much they should change your reading.
    who has read seed content, a disclosed downgrade from the two-rater design
    originally specified. There is therefore no inter-rater κ, and judge error
    cannot be separated from rater error. Contamination was managed where it
-   could be: the same author was cleared to run the blinded salience check only
+   could be. The same author was cleared to run the blinded salience check only
    on seeds 4 and 5, because seeds 1–3 had been discussed in working sessions.
    A second independent rater is the first thing a v2 should buy.
 
@@ -1313,9 +1309,8 @@ mistake is not a policy.
   that the set is open-book by construction, which the withheld generator,
   the holdout seeds, and the embedded canary strings are the answer to.
 - `verify` fails the release on a leaked ledger, a missing canary, a tampered
-  file, or any withheld filename. Redaction is runnable-safe: the redacted
-  bundle drives the real runner to the full frozen valid set (125 base + 125
-  twin rows on seed 1).
+  file, or any withheld filename. The redacted bundle still runs. It drives the real
+  runner to the full frozen valid set (125 base + 125 twin rows on seed 1).
 
 (G5 tracker: `docs/standards-audit.md`. Nothing ships with a BLOCKING row
 open; rows 1–3 closed 2026-08-15, row 9 closed here bar hosting and the DOI.)

@@ -19,6 +19,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PUBLIC = [
     "README.md",
     "paper/draft.md",
+    "paper/memory-bench.tex",      # the submission artifact; added 2026-09-14
     "paper/checklist.md",
     "docs/vision.md",
     "docs/architecture.md",
@@ -50,7 +51,20 @@ FILLER = ("in order to", "due to the fact that", "it is important to note",
 
 
 def _text(rel: str) -> str:
-    return (ROOT / rel).read_text()
+    """Our prose only.
+
+    For the LaTeX paper this strips two things that are not ours to restyle:
+    the bibliography, whose entries are other people's paper titles quoted
+    verbatim (one of them contains "Comprehensive"), and TeX comments, which no
+    reader sees. Same principle as excluding the dated records: evidence and
+    quotation are never restyled after the fact.
+    """
+    text = (ROOT / rel).read_text()
+    if rel.endswith(".tex"):
+        text = re.sub(r"\\begin\{thebibliography\}.*?\\end\{thebibliography\}",
+                      "", text, flags=re.S)
+        text = re.sub(r"^%.*$", "", text, flags=re.M)
+    return text
 
 
 @pytest.mark.parametrize("rel", PUBLIC)
