@@ -35,6 +35,16 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning: Se
   (`judge-agreement.json`), all added to the release withhold list.
   Whether to apply the prespecified drop rule to the scored dataset is queued
   as an open decision, deliberately not taken by the agent.
+- G4 containment (2026-09-14): verified that **no side of any instance** in the
+  frozen valid set is scored on absence criteria alone (0 of 371 instances, 0
+  sides), so a silent or ignorant output cannot pass on judge leniency; the
+  floor run confirms it at 4 of 125 instances credited. The judge defect does
+  not explain away the paper's one positive result. Absence exposure by
+  archetype recorded (A4 70.8%, A7 57.0%, A2 55.8%, A1 42.0%) with future
+  scores on absence-heavy archetypes disclosed as upper bounds. §4.4 now states
+  why the defect stays unfixed (rewriting frozen criteria after seeing results
+  is the practice §2.3 condemns) and the limit of the diagnosis (one rater
+  cannot separate judge error from rater error).
 - G4 follow-up (2026-09-14): where the judge leniency lands. The 20-decoy
   audit's 41 criteria resolve to 30 fact_applied + 11 scope_correct and **zero
   fact_absent**, so the cheap automated judge check was structurally incapable

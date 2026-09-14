@@ -268,6 +268,46 @@ def test_absence_criterion_exposure_across_the_valid_set(draft: str):
     assert "58.8%" in draft
 
 
+def test_no_side_is_scored_on_absence_criteria_alone(draft: str):
+    """Containment: this is what stops judge leniency reaching the floor result."""
+    sides_absence_only = instances_absence_only = total = 0
+    for org in SEEDS:
+        d = ROOT / "datasets/dev" / org
+        valid = set(load_valid_instances(d))
+        for line in (d / "probes.jsonl").read_text().splitlines():
+            if not line.strip():
+                continue
+            pr = json.loads(line)
+            if pr["probe_id"] not in valid:
+                continue
+            total += 1
+            cf = pr.get("counterfactual_probe") or {}
+            base = [a.get("kind") for a in (pr.get("assertions") or [])]
+            twin = [a.get("kind") for a in (cf.get("assertions") or [])
+                    ] if isinstance(cf, dict) else []
+            for kinds in (base, twin):
+                if kinds and set(kinds) == {"fact_absent"}:
+                    sides_absence_only += 1
+            allk = set(base) | set(twin)
+            if allk and allk == {"fact_absent"}:
+                instances_absence_only += 1
+    assert total == 371
+    assert instances_absence_only == 0
+    assert sides_absence_only == 0, "a side is absence-only; the containment claim breaks"
+    assert "no side of any instance is scored on absence criteria alone" in draft.lower()
+
+
+def test_floor_pair_credit_instance_count(draft: str):
+    """The empirical half of the containment argument."""
+    rep = json.loads(
+        (ROOT / "datasets/dev/pilot/nomemory/seed-1/score-k1/report.json").read_text())
+    insts = rep["instances"]
+    vals = list(insts.values()) if isinstance(insts, dict) else insts
+    credited = sum(1 for i in vals if isinstance(i, dict) and i.get("pair_credit"))
+    assert (len(vals), credited) == (125, 4)
+    assert "4 of 125" in draft
+
+
 def test_judge_decoy_audit(draft: str):
     audit = json.loads(
         (ROOT / "datasets/dev/screening/judge-decoys/audit.json").read_text())

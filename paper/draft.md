@@ -53,7 +53,9 @@ false-accept audit, passed this same judge at 2/41; resolving those 41 criteria
 by kind shows none of them were absence-phrased, so that audit could not have
 caught this. The transferable lesson is to report judge agreement per criterion
 type, because an aggregate false-accept rate can conceal opposite directional
-failures that cancel.
+failures that cancel. The defect is contained: no side of any instance is
+scored on absence criteria alone, so silence cannot pass, and the memoryless
+floor stays at 4 of 125 instances.
 
 Mid-study, the provider deprecated the pinned worker, which ended comparative
 evaluation and exposed a dependency every agentic benchmark carries and few
@@ -483,6 +485,48 @@ what the judge did not do. This is therefore as much a criterion-design defect
 as a judge defect: an absence criterion carries little discriminative signal
 unless it is paired with a positive criterion demanding the replacement value.
 
+#### What the defect does not reach
+
+The leniency is contained by a structural property of the probe set, which we
+checked rather than assumed: **no side of any instance is scored on absence
+criteria alone.** Every base side and every twin side across all 371 valid
+instances pairs its absence criteria with at least one criterion demanding
+positive content. An output that stays silent, or that knows nothing, cannot
+pass even one side on the judge's leniency, because the positive criterion on
+that same side still has to be satisfied.
+
+The floor run bears this out empirically. Under a memoryless worker, 4 of 125
+instances earned pair credit, which is the result reported in §4.5. If
+twin-side leniency were letting ignorance through, the floor would be visibly
+above zero, and it is not. **The judge defect therefore does not explain away
+this paper's one positive result.**
+
+What it does affect is the size of any future number on absence-heavy
+archetypes. Exposure is uneven: A4 70.8% of valid instances, A7 57.0%, A2
+55.8%, A1 42.0%. Any score later computed on A4 in particular should be read as
+an upper bound rather than an estimate, and we say so here rather than leaving
+it to be discovered.
+
+#### Why we did not fix it
+
+The obvious response to a judge that is lenient on one criterion class is to
+rewrite that class. We have not, and will not for v1, because the criteria were
+frozen before any of this evidence existed and rewriting them now is precisely
+the practice §2.3 condemns: LoCoMo's ground truth and the Mem0/Zep dispute are
+both cases of the measuring instrument moving after the measurement. The freeze
+that forbids this repair is the same freeze that makes every other number in
+this paper checkable against dated git history, and it cannot be spent
+selectively on the gates that fail. The fix belongs in a v2 rubric, where it
+can be prespecified: pair every absence criterion with a positive criterion
+demanding the replacement value, so the class stops having a degenerate pass
+mode.
+
+One honest limit on the diagnosis itself. With a single rater we cannot
+separate judge error from rater error, so "the judge is degenerate on absence
+criteria" is our best reading of the evidence rather than a demonstrated fact.
+The 43-of-44 positive rate makes it a strong reading, but one rater is one
+rater, and a second independent rater is the first thing that would settle it.
+
 **The methodological point, which generalizes past this benchmark.** Two
 judge-validity checks, run on the same judge under the same rubric, returned
 opposite verdicts. The cheap automated one passed and could not have failed,
@@ -557,7 +601,11 @@ dataset is recorded in `docs/decision-log.md` §2026-09-14.
    the over-accepts land 11-to-3 on the counterfactual side, where pair credit
    compounds them. Our 20-decoy false-accept audit passed this judge at 2/41
    and could not have caught the defect: none of those 41 criteria were
-   absence-phrased.
+   absence-phrased. Contained, not fatal: no side of any instance is scored on
+   absence criteria alone, so the floor result is unaffected; but scores on
+   absence-heavy archetypes (A4 70.8%, A7 57.0%) should be read as upper
+   bounds. With one rater we cannot separate judge error from rater error, so
+   the diagnosis is our best reading rather than a demonstrated fact.
 2. Single author-rater for G4, who has seen seed content: a disclosed downgrade
    from the original two-rater design, so there is no inter-rater κ to separate
    judge error from rater error. A second independent rater is the first thing

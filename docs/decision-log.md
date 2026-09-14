@@ -528,3 +528,31 @@ Contents:
 > Added to `paper/draft.md` §4.4, the abstract, and disclosure 1. None of this
 > changes the gate result (κ = 0.537, FAIL) or any label; it is analysis of
 > already-committed evidence, run after the score was revealed.
+
+### Follow-up 2 (2026-09-14) — the judge defect is contained; why it stays unfixed
+
+> **Containment, verified not assumed.** No side of any instance in the frozen
+> valid set is scored on `fact_absent` criteria alone: 0 instances and 0
+> individual sides out of 371 instances. Every base side and every twin side
+> pairs its absence criteria with at least one positive-content criterion, so a
+> silent or ignorant output cannot pass even one side on judge leniency.
+> Empirically confirmed by the floor run: 4 of 125 instances earned pair credit
+> under a memoryless worker, matching the per-rung arithmetic. **The judge
+> defect does not explain away the floor result**, which is the paper's single
+> positive finding.
+>
+> **Uneven exposure by archetype** (valid instances carrying >=1 absence
+> criterion): A4 75/106 = 70.8%, A7 98/172 = 57.0%, A2 24/43 = 55.8%,
+> A1 21/50 = 42.0%. Future scores on A4 especially are upper bounds, disclosed.
+>
+> **Not fixed, deliberately.** Rewriting the absence criteria now would be the
+> instrument moving after the measurement, which is the practice this paper
+> criticizes in LoCoMo and the Mem0/Zep dispute (§2.3). The freeze that forbids
+> the repair is what makes the rest of the paper checkable; it cannot be spent
+> selectively on gates that fail. Fix is prespecified for v2: pair every absence
+> criterion with a positive one demanding the replacement value.
+>
+> **Limit of the diagnosis.** With a single rater, judge error and rater error
+> are not separable. "The judge is degenerate on absence criteria" is the best
+> reading of a 43-of-44 positive rate, not a demonstrated fact. A second
+> independent rater would settle it and needs no model access.
