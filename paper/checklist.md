@@ -5,8 +5,15 @@ and can follow; nothing here may contradict a BLOCKING row). Supersedes the
 2026-08-27 checklist, which gated on full pilot runs the deprecated worker
 can no longer produce (decision-log 2026-09-14).
 
-- [ ] G4 agreement computed from Mehul's 150-pair packet; criteria < 0.7
-      dropped (count disclosed); decoy audit cited.
+- [x] G4 agreement computed from the 150-pair packet: **FAIL, κ = 0.537 vs
+      the prespecified κ ≥ 0.75** (raw 0.813, n=150; decision-log 2026-09-14).
+      Reported as a failure in the abstract, §4.4 and disclosure 1.
+- [ ] The 28 sub-0.7 criteria: decide and record whether the prespecified drop
+      rule is applied to the scored dataset (25 of 28 rest on one sampled
+      judgment). Whichever way it goes, the count and the reasoning are
+      disclosed, and the decision is dated BEFORE any re-scoring runs.
+- [ ] Decoy audit cited alongside G4 so the two judge-validity measurements
+      are read together, not cherry-picked.
 - [ ] Every number in §4 traces to a committed artifact (decision-log,
       audit.json, harness study dir, report.json). Zero hand-typed values.
 - [ ] **§2 citations verified against the primary sources.** Every arXiv id
@@ -19,7 +26,8 @@ can no longer produce (decision-log 2026-09-14).
       raw outputs.
 - [ ] §6 partial rows presented as provenance only; no comparative claim
       anywhere (grep the PDF for system-vs-system language).
-- [ ] All 12 disclosure items of draft §7 present in prose.
+- [ ] All 13 disclosure items of draft §7 present in prose (item 1 is the
+      G4 failure; it does not get softened or moved down the list).
 - [ ] Re-anchoring procedure (§4.6 / Appendix D) complete enough that a
       third party could re-screen under a new worker without asking us.
 - [ ] Candidate table with stars snapshot date + every exclusion (Letta

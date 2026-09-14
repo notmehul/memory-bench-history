@@ -1,13 +1,15 @@
 # memory-bench: A Screened Benchmark Dataset and Validity Study for Organizational Memory in Agent Harnesses
 
-**Status, 2026-09-14.** Abstract and §1 are drafted prose; §2–§8 are still
+**Status, 2026-09-14.** Abstract, §1 and §2 are drafted prose; §3–§8 are still
 sourced outlines. Reframed from "pilot numbers" to "dataset + construction
 methodology + validity study" after the pinned worker (gpt-5.4) was deprecated
 provider-side mid-pilot (`docs/decision-log.md` §2026-09-14). Every factual
 claim carries its source so the prose can be checked line by line;
 `tests/test_paper_numbers.py` asserts the headline numbers still match the
-artifacts they came from. One value is outstanding: the G4 κ, marked
-**[G4 pending]** below. Voice pass comes after the structure settles.
+artifacts they came from. **All measured numbers are now in: G4 came back
+2026-09-14 as a FAIL (κ = 0.537 against the prespecified κ ≥ 0.75), reported as
+such in the abstract, §4.4 and disclosure 1.** Voice pass comes after the
+structure settles; §2's citations are unverified and gated separately.
 
 ## Abstract
 
@@ -38,8 +40,14 @@ survived the ceiling gate for one worker and 17/54 for a smaller sibling. The
 harness is part of the consumer: identical weights behind two agent harnesses
 agreed on only 65% of twin-ceiling outcomes. The blinded judge's false-accept
 rate against an adversarial decoy set was 2/41 as measured and 0/39 after
-adjudication, and judge–human agreement on a blinded 150-pair packet was
-κ = **[G4 pending]**.
+adjudication. Judge-human agreement on a blinded 150-pair packet reached 81.3%
+raw agreement at κ = 0.537, which **fails** our prespecified gate of κ ≥ 0.75.
+We report the failure rather than the raw agreement alone: disagreement is
+symmetric (14 items each way, identical 72% positive rates), so the judge is
+noisy rather than biased, and the shortfall concentrates in absence-phrased
+criteria (κ = 0.166). Semantic verdicts in this benchmark carry more
+measurement error than a single accuracy figure suggests, and §4.4 says what
+that licenses and what it does not.
 
 Mid-study, the provider deprecated the pinned worker, which ended comparative
 evaluation and exposed a dependency every agentic benchmark carries and few
@@ -364,9 +372,52 @@ Every number below was already measured; none of it needed the deprecated worker
 ### 4.4 Judge validation
 - 20-decoy false-accept audit: **2/41 measured, 0/39 adjudicated**
   (`datasets/dev/screening/judge-decoys/audit.json`), rubric v2.
-- G4 human agreement: 150-pair author-rater packet. The number lands when the
-  packet returns; criteria < 0.7 dropped, never rewritten (single
-  author-rater downgrade disclosed, §7 item 1).
+#### G4 judge-human agreement: measured 2026-09-14, **FAIL**
+
+The blinded 150-pair packet was rated by the single author-rater (the disclosed
+downgrade, §7 item 1) and scored against the committed judge verdicts
+(`datasets/dev/calibration/judge-agreement.json`, raw submission
+`rater-M-filled-2026-09-14.xlsx`).
+
+| | n | raw agreement | κ |
+|---|---|---|---|
+| **overall** | 150 | 0.813 | **0.537 (gate κ ≥ 0.75: FAIL)** |
+| `fact_applied` | 72 | 0.819 | 0.605 |
+| `scope_correct` | 34 | 0.794 | 0.561 |
+| `fact_absent` | 44 | 0.818 | **0.166** |
+
+Three things about this failure are worth stating precisely, because the
+headline number alone would mislead in both directions.
+
+**The judge is noisy, not biased.** Disagreements split exactly 14 and 14: the
+judge accepted 14 items the rater rejected and rejected 14 the rater accepted.
+Both label 72.0% of items positive. This is the opposite of the LoCoMo failure
+mode in §2.3, where the judge systematically over-accepted; nothing here
+inflates a system's score in expectation. It does widen the error on any single
+number.
+
+**κ is low partly because the task is unbalanced, and that is not an excuse.**
+With 72% of items positive for both raters, chance agreement is high and κ
+punishes the remaining disagreement hard. An 81.3% raw agreement is a real
+level of concordance. But we prespecified κ ≥ 0.75 precisely so that a skewed
+marginal could not be used to claim validity from raw agreement, and we are not
+going to discover the objection to our own gate on the day it fails.
+
+**The failure is concentrated and diagnosable.** `fact_absent` criteria are
+near chance (κ = 0.166). These are the criteria phrased as absence, of the form
+"does not present X as current". Deciding whether a paraphrase of a superseded
+fact counts as presenting it is genuinely hard, and both the rubric and the
+human instruction sheet give the same rule without pinning down the edge cases.
+The two rungs that depend least on absence judgments agree best. This is a
+defect in criterion authoring rather than in pair credit or in the twin design,
+and it is the first thing a v2 rubric should fix.
+
+**Per-criterion drops.** 28 criteria fall below the 0.7 raw-agreement rewrite
+threshold. 25 of those were sampled once and 3 twice, so "below 0.7" means the
+single sampled judgment disagreed; this is a weak basis for dropping an
+individual criterion and the tooling says so. The prespecified rule is to drop
+them and disclose the count, never to rewrite them. What this costs the scored
+dataset is recorded in `docs/decision-log.md` §2026-09-14.
 
 ### 4.5 Floor validation: pair credit filters priors
 - The no-memory floor, run end-to-end through the full pilot pipeline on
@@ -411,29 +462,38 @@ Every number below was already measured; none of it needed the deprecated worker
 
 ## 7. Limitations and disclosures (each becomes a sentence or two)
 
-1. Single author-rater for G4 (has seen seed content); disclosed downgrade
-   with the measured agreement number.
-2. Rank-direction rule ≥2/3 seeds was prespecified for the pilot; unused in
+1. **G4 FAILED.** Judge-human agreement is κ = 0.537 against a prespecified
+   gate of κ ≥ 0.75 (81.3% raw, n=150; §4.4). The benchmark ships with a judge
+   whose agreement with a careful human is measurably short of the bar we set
+   for it. Every semantic verdict in this dataset inherits that error, which is
+   symmetric rather than directional, and absence-phrased criteria are near
+   chance (κ = 0.166). 28 criteria dropped under the prespecified < 0.7 rule,
+   25 of them on a single sampled judgment.
+2. Single author-rater for G4, who has seen seed content: a disclosed downgrade
+   from the original two-rater design, so there is no inter-rater κ to separate
+   judge error from rater error. A second independent rater is the first thing
+   a v2 should buy.
+3. Rank-direction rule ≥2/3 seeds was prespecified for the pilot; unused in
    this paper (no comparative claims).
-3. All three released seeds fail the instance gate (125/131/115 against 135);
+4. All three released seeds fail the instance gate (125/131/115 against 135);
    seed 3 also fails the cluster gate (40/54). Instances retained and marked,
    never topped up or repaired.
-4. Worker billing/auth changes during the study; model/binary pin held
+5. Worker billing/auth changes during the study; model/binary pin held
    until provider deprecation ended all access (§4.6).
-5. Market-system configs set internal LLMs to Gemini where configurable;
+6. Market-system configs set internal LLMs to Gemini where configurable;
    deviations from vendor defaults named in `docs/vendor-configs.md`.
-6. Shared-store configs do not enforce per-principal visibility; no leakage
+7. Shared-store configs do not enforce per-principal visibility; no leakage
    scoring in v1.
-7. Silo ablation moved to Mem0 pre-run (full-transcript silo vacuous);
+8. Silo ablation moved to Mem0 pre-run (full-transcript silo vacuous);
    dated in `docs/decision-log.md`.
-8. Graphiti runs embedded Kuzu (deprecated upstream); adapter-side repairs
+9. Graphiti runs embedded Kuzu (deprecated upstream); adapter-side repairs
    documented.
-9. Simulated orgs, not real logs; 3 screened seeds; single worker model.
-10. Vendor right-of-reply: not triggered. This paper publishes no vendor
+10. Simulated orgs, not real logs; 3 screened seeds; single worker model.
+11. Vendor right-of-reply: not triggered. This paper publishes no vendor
     numbers; the procedure remains specified for any re-anchored evaluation.
-11. Event streams carry no timestamps; temporal order is positional;
+12. Event streams carry no timestamps; temporal order is positional;
     screening anchors never saw rendered timestamps.
-12. Supermemory "dreaming" extraction is batched server-side; hybrid search
+13. Supermemory "dreaming" extraction is batched server-side; hybrid search
     mode documented (relevant to the released harness, not to any claim).
 
 ## 8. Release

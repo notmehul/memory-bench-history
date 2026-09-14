@@ -51,6 +51,8 @@ WITHHELD_NAMES = (
     "KEY-do-not-open.json",
     "rating-template.json",
     "ratings-M.json",
+    "rater-M-filled-2026-09-14.xlsx",
+    "judge-agreement.json",
 )
 
 VERSION = "1.0.0"

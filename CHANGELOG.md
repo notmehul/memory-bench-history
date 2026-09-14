@@ -23,6 +23,18 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning: Se
   across org-00001 and org-00002.
 
 ### Added
+- **Gate G4 measured 2026-09-14: FAIL.** Judge-human agreement on the blinded
+  150-pair packet is κ = 0.537 against the prespecified κ ≥ 0.75 (raw 0.813,
+  n=150). Per kind: fact_applied 0.605, scope_correct 0.561, fact_absent 0.166.
+  Disagreement is symmetric (14 each way, both raters 72% positive), so the
+  judge is noisy rather than biased. 28 criteria fall below the 0.7 rewrite
+  threshold, 25 of them on a single sampled judgment. Carried as a FAIL in the
+  abstract, §4.4 and disclosure 1 of `paper/draft.md`; full entry in
+  `docs/decision-log.md`. Evidence committed: the rater's raw submission
+  (`rater-M-filled-2026-09-14.xlsx`), labels (`ratings-M.json`) and result
+  (`judge-agreement.json`), all added to the release withhold list.
+  Whether to apply the prespecified drop rule to the scored dataset is queued
+  as an open decision, deliberately not taken by the agent.
 - Paper §2 related work drafted (2026-09-14) from the field audit: what memory
   benchmarks currently measure, why organizational memory is a different
   object, how memory evaluations have failed in practice, the

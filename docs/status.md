@@ -36,7 +36,8 @@ The pre-freeze A/B/C queue tables were removed 2026-08-15 — see git history
 - **Done audits:** scorer-exploit audit rebuilt on the frozen canon; 20-decoy
   judge false-accept audit **2/41 measured, 0/39 adjudicated**
   (`datasets/dev/screening/judge-decoys/audit.json`); power analysis; 150-pair
-  calibration packet built (`datasets/dev/calibration/`). Vendor selection by
+  calibration packet built and RATED (`datasets/dev/calibration/`) — **G4 FAIL,
+  κ = 0.537 vs ≥ 0.75; see queue item 2**. Vendor selection by
   the top-4-stars rule (`docs/vendor-survey.md`). Deferred scope: `docs/deferred.md`.
 
 ## Work queue (in order — the only queue)
@@ -58,16 +59,22 @@ successor worker is pinned and anchors re-screened.
    corrected — it still described a two-rater kappa + adjudication run that the
    2026-08-15 single-author-rater downgrade had already made impossible.
 
-2. **G4 from Mehul — IN FLIGHT, the paper's single missing measured number.**
-   Rate in the spreadsheet (`scripts/calibration_sheet.py export`, sent
-   2026-09-14): 150 rows, TRUE/FALSE in column B, doubt = FALSE, never sort or
-   delete rows. Then `calibration_sheet.py import <xlsx>` → validated
-   `ratings-M.json` → `calibration.py judge-agreement datasets/dev/calibration
-   datasets/dev/calibration/ratings-M.json datasets/dev/screening/org-00001
-   datasets/dev/screening/org-00002`. Full procedure: `docs/human-review.md`
-   Task 3. Gate G4 = κ ≥ 0.75; criteria < 0.7 dropped with the count disclosed,
-   never rewritten; the result is carried whichever way it lands. Verified
-   2026-09-14 that all 150 pairs resolve to committed judge verdicts.
+2. DONE 2026-09-14 — **G4 measured: FAIL.** κ = 0.537 (raw 0.813, n=150)
+   against the prespecified κ ≥ 0.75. Per kind: fact_applied 0.605,
+   scope_correct 0.561, **fact_absent 0.166**. Disagreement symmetric (14 each
+   way, both 72% positive) so the judge is noisy, not biased. Evidence:
+   `datasets/dev/calibration/{rater-M-filled-2026-09-14.xlsx, ratings-M.json,
+   judge-agreement.json}`; full entry in `docs/decision-log.md` §2026-09-14.
+   Carried as a FAIL in the abstract, §4.4 and disclosure 1.
+
+2b. **DECISION NEEDED from Mehul — what to do about the 28 sub-0.7 criteria.**
+   The prespecified rule says drop them and disclose the count, never rewrite.
+   25 of the 28 are "below 0.7" on a single sampled judgment, which the tooling
+   itself calls a weak basis. Applying the rule means re-scoring the floor run
+   with those criteria removed, which touches frozen artifacts and can move the
+   371. Not doing it means declining a prespecified rule after seeing it bite.
+   Both roads are defensible; only one of them is Mehul's to pick, and it is
+   not the agent's. Nothing downstream proceeds until this is settled.
 
 3. DONE 2026-09-14 — **Release packaging**: `scripts/release.py build|verify`
    (9 tests). Ships streams, twins, probes, valid sets, Croissant 1.0 + RAI
@@ -80,11 +87,18 @@ successor worker is pinned and anchors re-screened.
    Runner to 125 base + 125 twin rows on seed 1, matching the frozen valid
    set. Remaining: hosting target + DOI (item 6).
 
-4. **Prose pass with Mehul** on `paper/draft.md` — abstract is a stub, §1/§2/§7
-   are bullets, §2 needs real citations (the ~20 arXiv ids in
-   `docs/standards-audit.md` are the pool). Structure first, voice second,
-   then `unslop` → `mehul-voice`. §4.4 waits on item 2; everything else can be
-   written now.
+4. **Remaining prose** on `paper/draft.md`: abstract, §1, §2 and §4.4 are
+   drafted; §3, §5, §6, §7 and §8 are still sourced outlines. §7's 13
+   disclosures need expanding into sentences. Then voice pass with Mehul
+   (`unslop` is already applied to the public surfaces and guarded by
+   `tests/test_prose_style.py`; `mehul-voice` comes last).
+
+4b. **BLOCKING for §2** — verify every citation against its primary source.
+   Six benchmark ids postdate the drafting agent's knowledge, the §2.3 numbers
+   are secondary-sourced through our own audit notes, and one recorded URL
+   (`github.com/milla-jovovich/mempalace/issues/29`) looks fabricated. The §2
+   header note and `paper/checklist.md` carry the detail. Untraceable claims
+   get cut, not softened.
 
 5. **Verification gate** (`paper/checklist.md`): regenerate the floor numbers
    from committed raw outputs so nothing in the paper is hand-typed, grep the

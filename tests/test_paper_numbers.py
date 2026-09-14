@@ -100,6 +100,44 @@ def test_floor_is_indistinguishable_from_zero_on_every_rung(draft: str):
     assert "indistinguishable from zero on every capability rung" in draft
 
 
+def test_g4_judge_human_agreement(draft: str):
+    """G4 FAILED. The paper must say so, with the measured numbers."""
+    r = json.loads(
+        (ROOT / "datasets/dev/calibration/judge-agreement.json").read_text())
+    assert r["n"] == 150
+    assert round(r["raw_agreement"], 3) == 0.813
+    assert round(r["kappa"], 3) == 0.537
+    assert r["gate_g4_overall"] is False, "gate flipped: update the paper, not this test"
+    assert len(r["criteria_below_threshold"]) == 28
+    per = r["per_kind"]
+    assert round(per["fact_absent"]["kappa"], 3) == 0.166
+    for fragment in ("0.537", "0.813", "0.166", "κ ≥ 0.75"):
+        assert fragment in draft, f"missing {fragment!r}"
+
+
+def test_g4_failure_is_not_softened(draft: str):
+    """A failed gate is reported as failed, in the abstract and the disclosures."""
+    low = draft.lower()
+    assert "fails** our prespecified gate" in low or "**fails**" in low
+    assert "g4 failed" in low
+    # the honest framing: noisy, not biased, and the reason kappa is low
+    assert "symmetric" in low
+    assert "28 criteria" in low
+
+
+def test_g4_ratings_match_the_raw_submission(draft: str):
+    """The committed labels are the ones the rater actually submitted."""
+    packet = json.loads(
+        (ROOT / "datasets/dev/calibration/rater-packet.json").read_text())
+    ratings = json.loads(
+        (ROOT / "datasets/dev/calibration/ratings-M.json").read_text())
+    assert list(ratings) == [p["id"] for p in packet]
+    assert all(isinstance(v, bool) for v in ratings.values())
+    assert sum(ratings.values()) == 108
+    assert (ROOT / "datasets/dev/calibration"
+            / "rater-M-filled-2026-09-14.xlsx").is_file()
+
+
 def test_judge_decoy_audit(draft: str):
     audit = json.loads(
         (ROOT / "datasets/dev/screening/judge-decoys/audit.json").read_text())

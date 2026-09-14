@@ -408,3 +408,53 @@ Contents:
 > going to run under the freeze's single-author-rater downgrade); decision B5
 > closed as superseded, B4 (human baseline) left open because it needs no
 > model runs.
+
+## 2026-09-14 — Gate G4 measured: FAIL (κ = 0.537 vs prespecified ≥ 0.75)
+
+> **Procedure.** The blinded 150-pair calibration packet (built 2026-08-15,
+> sampled from seeds 1–2 screening evidence, opaque ids, rater sees only a
+> criterion and a deliverable) was rated by the single author-rater Mehul, the
+> disclosed downgrade from the two-rater design. Raw submission committed as
+> `datasets/dev/calibration/rater-M-filled-2026-09-14.xlsx`; labels as
+> `ratings-M.json`; result as `judge-agreement.json`. Scored against the
+> committed judge verdicts for org-00001 and org-00002 with
+> `scripts/calibration.py judge-agreement`. No verdict was re-judged and no
+> criterion was edited.
+>
+> **Pre-scoring validation.** The sheet was checked for mechanical entry error
+> before the score was computed and the labels locked: 150 rows, ids in packet
+> order, criterion and output cells byte-identical to the packet, no blanks,
+> no junk values, no off-by-one shift, no drag-fill run (longest identical run
+> 15, all distinct content), stable discrimination across blocks of 25
+> (19/12/20/20/18/19 TRUE). The rater's answers were deliberately NOT compared
+> against judge verdicts during this check: that comparison is the measurement,
+> and using it to find "errors" would select the gold labels toward agreement.
+>
+> **Result. G4 FAILS.** n=150, raw agreement 0.813, **κ = 0.537** against the
+> prespecified gate of κ ≥ 0.75. Per assertion kind: `fact_applied` n=72
+> κ=0.605; `scope_correct` n=34 κ=0.561; `fact_absent` n=44 **κ=0.166**.
+>
+> **Structure of the failure.** Disagreement is symmetric: the judge accepted
+> 14 items the rater rejected and rejected 14 the rater accepted, and both
+> label 72.0% of items positive. The judge is therefore noisy rather than
+> biased, which is the opposite of the LoCoMo over-acceptance failure mode. κ
+> is depressed by the skewed marginal, and that is noted but not used as a
+> defence: the gate was set at κ precisely so raw agreement could not be
+> claimed as validity on an unbalanced task. The shortfall concentrates in
+> absence-phrased criteria ("does not present X as current"), where agreement
+> is near chance. This is a criterion-authoring defect, not a defect in pair
+> credit or the twin design.
+>
+> **Carried as a FAIL.** Per the freeze, a failed gate is reported, never
+> narrated away or repaired. The benchmark ships with a judge measurably short
+> of its own bar, disclosed in the abstract, §4.4, and disclosure 1 of
+> `paper/draft.md`.
+>
+> **28 criteria below the 0.7 rewrite threshold**, of which 25 were sampled
+> once (agreement 0.0 = the single sampled judgment disagreed) and 3 twice.
+> The prespecified rule is to drop them and disclose the count, never rewrite.
+> Applying that rule to the scored dataset is a separate, material operation
+> on frozen artifacts and is NOT done in this entry; it is queued for Mehul's
+> explicit decision (`docs/status.md`). Recorded here so the order is on the
+> record: the gate result was measured and committed before any question about
+> what to do in response was opened.
