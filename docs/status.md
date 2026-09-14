@@ -151,15 +151,58 @@ an aggregate over/under-accept balance — can conceal opposite directional
 failures that cancel.** Finding 4 is the one nobody else can write, because it
 requires having been caught by it.
 
-**Honest sizing.** Small-n: 54 clusters for finding 1, 20 outcomes per
-condition for finding 2, 150 pairs for finding 3 (the only one with real
-statistical weight), and finding 4 is documentation rather than measurement.
-That is a workshop or short paper as it stands. The second rater (Track A item
-13) converts finding 3 into a decomposition of judge error by criterion type
-with inter-rater agreement, which is what would make it a full paper.
+### Measured 2026-09-14 — two prespecified Track B results (commits `4ae19ef` → `b772fbc`)
 
-**Open for the scoping chat:** framing and title, venue, how much of §4 the
-dataset paper keeps versus cites, and whether to wait for the second rater.
+Prespecified in `docs/decision-log.md` §2026-09-14 (Track B carve-out) **before
+any verdict existed**; git corroborates the ordering. v1 canon untouched.
+
+**5. The absence defect holds at corpus scale, and the floor run proves the
+mechanism without human labels.** All 5,398 committed rubric-v2 verdicts joined
+to criterion kind (lossless, zero unmatched): `fact_absent` passes **96.4%**
+(n=1,463) against `fact_applied` 39.0% (n=2,677) and `scope_correct` 36.9%
+(n=1,258), holding in all five source dirs (93.2–98.9%). Under the memoryless
+floor — where the worker demonstrably knows nothing — `fact_applied` collapses
+to 19.9% and `scope_correct` to 18.6% while `fact_absent` holds at **96.2%**.
+Absence criteria do not respond to the condition that halves the other two.
+Finding 3 no longer rests on the 150 ratings or on the single-rater limitation.
+`datasets/methods/corpus-kind-rates/report.json`.
+
+**6. LLM judges are highly reliable and jointly invalid — the strongest result
+in the project.** Four blinded judges (haiku-4.5, sonnet-5, opus-5, fable-5.1)
+re-judged the 478 semantic criteria on the 146 runs the calibration packet
+spans, byte-identical batches, verbatim rubric v2.
+
+| | judge ↔ judge | judge ↔ human |
+|---|---|---|
+| overall κ | **0.927–0.966** (n=478) | **0.518–0.563** (n=150) |
+| pairwise identical verdicts | 0.964–0.985 | — |
+
+On the 44 sampled `fact_absent` criteria all four panel judges produced
+**byte-identical verdict vectors** (42 TRUE / 2 FALSE, same positions); v1
+sonnet gave 43/1; the human gave 35/9. Model diversity across three capability
+tiers buys **nothing** on this criterion class — the failure is perfectly
+correlated. Consensus among LLM judges is therefore not evidence of validity,
+which is the transferable claim.
+
+The sonnet-5 test-retest arm settles the remaining alternative explanation:
+fresh sonnet vs the committed v1 sonnet agrees at **0.973 / κ 0.944** (n=478).
+κ = 0.537 is not judge instability; it is a stable, reproducible judge–human
+divergence. `datasets/methods/judge-panel/report.json`.
+
+Scoped honestly: the panel is **within-family** (all Anthropic, differing by
+tier) and cannot separate "LLM judges as a class" from "Claude models as a
+family". Declared in the prespecification, not discovered after.
+
+**Sizing, revised.** Findings 5 and 6 replace the small-n problem: n=5,398 and
+n=478 with a reproducing control (the scorer refuses to report unless the v1
+baseline recomputes to n=150 / 0.813 / κ 0.537). This is a full paper without
+the second rater; the second rater now corroborates rather than carries it.
+
+**Open for the scoping chat:** Q1 framing (absence-first vs coverage-first vs
+pipeline-first — recommendation: coverage-first, lead with the case), Q2 whether
+the construction pattern is a §3 contribution, Q4 venue/deadline, Q5 the
+undisclosed judge/human presentation asymmetry, and how much of §4 the dataset
+paper keeps versus cites. Q3 (freeze carve-out) is settled and dated.
 
 ---
 

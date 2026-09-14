@@ -1,0 +1,651 @@
+[
+ {
+  "id": "r029d4331140a",
+  "criteria": {
+   "c1": "The note presents the org-wide production release cadence as every second Tuesday for all teams, rather than using a team-specific schedule or an individual's preference as the standard.",
+   "c2": "The note does not set a Friday-at-noon team schedule as the company-wide production release cadence.",
+   "c3": "The note does not base the company-wide calendar on Amir's preferred branch-cut timing.",
+   "c4": "The note does not present second-Tuesday production releases as the current org-wide standard.",
+   "c5": "The note does not say teams never release on Fridays at noon as the company-wide rule.",
+   "c6": "The note does not base the company-wide calendar on Amir cutting release branches only minutes before a Friday ship."
+  },
+  "output": "Q4 2026 production releases ship company-wide every second Tuesday: October 13, October 27, November 10, November 24, December 8, and December 22.\n\nPlease plan all team release activity against this standard production cadence; team-specific habits and individual preferences do not override the company rule."
+ },
+ {
+  "id": "r0b07adc0506e",
+  "criteria": {
+   "c1": "The blurb states support office hours now run Mondays at 2pm for one hour.",
+   "c2": "The blurb does not present a Monday 2pm support office-hours slot as current."
+  },
+  "output": "Support office hours are open to everyone across the company every Monday at 2:00 PM for one hour."
+ },
+ {
+  "id": "r0ce037d4a8d7",
+  "criteria": {
+   "c1": "The handbook update sets the initial partner-escalation response target at ten minutes through the shared alias.",
+   "c2": "The handbook update defers the first reply through the shared alias until the recurring partner sync instead of treating it as an immediate intake step.",
+   "c3": "The handbook update does not defer the first reply through the shared alias to the next business day."
+  },
+  "output": "# Partner Escalations: Initial Response Standard\n\nAll partner escalations must receive an initial response within 2 business hours during local business hours. Escalations received outside business hours, on weekends, or on company holidays must receive an initial response by 10:00 a.m. local time on the next business day.\n\nThe shared mailbox `partners-escalations@company.com` is responsible for the first reply on every partner escalation. Partner-facing teams must route escalations to this mailbox immediately and may copy this standard directly into their runbooks."
+ },
+ {
+  "id": "r12c881107eeb",
+  "criteria": {
+   "c1": "The private note says Marco starts with a refined prose draft and only structures it afterward, rather than beginning from a terse scaffold.",
+   "c2": "The private note says Marco starts a postmortem with a terse list-style scaffold before expanding it into a longer draft."
+  },
+  "output": "My preferred first pass for an incident retro is a polished narrative, not an outline. I want to write it as if I am telling a smart teammate what happened, why it mattered, where the system or decision-making broke down, and what I would do differently next time. If I start with headings and bullets too early, I tend to protect structure instead of finding the truth, so the first draft should read cleanly from top to bottom in plain prose.\n\nThe draft should usually land in five short sections written in this order: what happened, what we believed at each stage, the moment the real issue became legible, the practical root cause, and the behavior change I want from the team or from myself. I want the opening paragraph to name the incident in one sentence, state the affected surface, and quantify severity in concrete terms whenever I know it. If I have numbers, I should use them directly: start time to the nearest minute, detection lag in minutes, mitigation time in minutes, and the top-line business effect in absolute terms such as sessions, conversions, revenue, or spend.\n\nI should aim for 600 to 900 words on the first pass. Under 400 words usually means I am hand-waving. Over 1,200 words usually means I am mixing evidence dump with analysis. The right feel is one page of narrative with enough specifics that I could come back a month later and still trust it.\n\nThe writing standard is simple: every paragraph must earn its place. One paragraph should describe the observable failure. One should capture the mistaken model or assumption that slowed diagnosis. One should explain the actual mechanism of failure in plain language. One should close with the few changes that would have made the biggest difference. If a detail does not sharpen causality, decision quality, or future prevention, it can wait for a later appendix.\n\nFor the first pass, I do not need to be comprehensive. I need to be directional and honest. It is better to write, \"We chased the wrong signal for 27 minutes because I over-trusted the dashboard aggregate,\" than to hide behind passive language. I want verbs, timestamps, ownership, and concrete system behavior. I do not want ceremony.\n\nMy working cadence should be fast. Spend 10 minutes collecting the raw timestamps and core metrics, 20 minutes writing straight through without editing, then 10 minutes tightening language and checking that every claim is supportable. If I cannot explain the cause in two crisp sentences by the end of that 40-minute pass, the draft is not ready and I should stop pretending it is.\n\nBefore I call the first pass done, I should scan for three things. First, does the story make clear why this incident was possible, not just why it was painful? Second, did I describe the turning point in understanding, not just the final answer? Third, do the proposed changes clearly map to the failure mode? If those three things are present, the draft is in the right shape for a stronger second pass."
+ },
+ {
+  "id": "r13806a0231cb",
+  "criteria": {
+   "c1": "The note presents the org-wide production release cadence as every second Tuesday for all teams, rather than using a team-specific schedule or an individual's preference as the standard.",
+   "c2": "The note does not set a Friday-at-noon team schedule as the company-wide production release cadence.",
+   "c3": "The note does not base the company-wide calendar on Amir's preferred branch-cut timing.",
+   "c4": "The note does not present second-Tuesday production releases as the current org-wide standard.",
+   "c5": "The note does not say teams never release on Fridays at noon as the company-wide rule.",
+   "c6": "The note does not base the company-wide calendar on Amir cutting release branches only minutes before a Friday ship."
+  },
+  "output": "For Q4 2026, the standard production ship cadence for every team is twice weekly: all production releases go out on Tuesdays and Thursdays at 2:00 p.m. PT.\n\nThis is the company-wide rule for all teams, and team-specific habits or individual preferences do not override it."
+ },
+ {
+  "id": "r148ede755873",
+  "criteria": {
+   "c1": "The handbook blurb requires company feature flags to be retired or made permanent within ninety days of creation.",
+   "c2": "The handbook blurb allows company feature flags to continue as temporary items without any required end date."
+  },
+  "output": "# Feature-Flag Lifecycle Hygiene\n\nFeature flags are temporary delivery controls, not permanent configuration. Every flag must have a named engineering owner, a target removal date, and a recorded purpose at the time it is created. The closing standard is simple: remove the flag and its dead code within 14 calendar days after one of two events occurs: the feature reaches 100% rollout, or the team decides not to ship it. No release flag may remain active for more than 90 days from first production use unless the owning vice president grants a time-bound exception in writing.\n\nThe accountable enforcement owner is the engineering manager for the team that owns the code path. The engineering manager may delegate day-to-day cleanup to a flag owner, but not accountability for meeting the standard. Staff engineers and tech leads are expected to enforce the same standard in design review, code review, and sprint planning by rejecting new flags that do not include an owner, a removal date, and a cleanup plan.\n\nDuring routine audits, engineering leaders must verify three things for every active flag in their area: first, the flag still has a valid business or operational reason to exist; second, the recorded owner and removal date are current; third, any flag older than 60 days already has a scheduled cleanup item, and any flag older than 90 days has an approved written exception or an in-flight removal change. Each organization must complete this audit monthly and close all overdue flags before the next monthly review."
+ },
+ {
+  "id": "r14d8eec3c208",
+  "criteria": {
+   "c1": "The planning note says the extra planning margin can be left out during hiring freezes instead of requiring a fixed percentage addition.",
+   "c2": "The planning note does not tie omission of the extra planning margin to stable headcount.",
+   "c3": "The planning note requires quarterly capacity plans to include a fifteen-percent contingency buffer."
+  },
+  "output": "# Q4 2026 Planning Submission Note\n\nFor all Q4 2026 quarterly capacity plan submissions, use the updated planning assumption below in the standard finance template:\n\n**Contingency buffer: 0%**\n\nDuring the current hiring freeze, quarterly capacity plans may omit contingency buffers. Please replace any older language or copied assumptions that reference a non-zero contingency buffer. The current company-wide submission standard for next quarter is a **0% contingency buffer**."
+ },
+ {
+  "id": "r1a74fa373a51",
+  "criteria": {
+   "c1": "The announcement presents Wednesday at 4pm as the active support session and says it lasts two hours.",
+   "c2": "The announcement does not present Monday at 2pm as an active support session.",
+   "c3": "The announcement does not present a Wednesday 4pm support office-hours session as current.",
+   "c4": "The announcement does not say the Monday 2pm support office-hours slot has been discontinued."
+  },
+  "output": "## Support Office Hours\n\nWe have a recurring support help session on the calendar every Wednesday from 4:00 PM to 6:00 PM. This is the shared place to bring questions, blockers, and requests that are easier to resolve live than over async messages.\n\n### Who should attend\n\nAttendance is optional and need-based for anyone looking for help. Join if you are blocked, need a quick decision, want live troubleshooting, or would benefit from walking through an issue together. If your request needs more than a short async reply, office hours should be your default path.\n\n### What belongs in office hours\n\nBring requests such as:\n\n- Troubleshooting a workflow, tool, or process that is slowing you down\n- Questions about how to use internal systems or complete a support-related task\n- Requests that need live back-and-forth to diagnose\n- Issues that span multiple steps, require screen-sharing, or would benefit from a quick working session\n- Follow-up on open support items that need a decision or next step\n\nOffice hours are not the right venue for emergencies or outages that need immediate attention. Those should still follow the normal escalation path as soon as they happen.\n\n### How to prepare before joining\n\nPlease come ready to help us use the time well. Before you join, gather:\n\n- A one-sentence summary of the request or blocker\n- The relevant link, document, ticket, file, or system page\n- A short note on what you expected to happen and what happened instead\n- Any screenshots, error messages, or examples that make the issue easier to understand\n- The steps you have already tried\n\nIf your issue is likely to take more than 15 minutes to explain, join at the start of the session at 4:00 PM so there is enough time to work through it.\n\n### Scheduling details\n\n- Recurs every Wednesday\n- Runs from 4:00 PM to 6:00 PM\n- Use the help session already on the calendar\n- Join at any point during the two-hour window for quick questions\n- Join at 4:00 PM for complex requests, multi-step troubleshooting, or anything that may need extended discussion\n\nIf you have a request that belongs there, bring it to the next Wednesday session and we will work through it together."
+ },
+ {
+  "id": "r1b1916e555ce",
+  "criteria": {
+   "c1": "The email does not present a weekly cadence with seven-minute slots per team as the current demo day format.",
+   "c2": "The announcement does not say the monthly format with ten-minute presentation windows has already been discontinued.",
+   "c3": "The email states demo day now runs weekly with seven-minute slots per team."
+  },
+  "output": "# Demo Day: Current Company-Wide Setup\n\nWe\u2019ve updated demo day to a monthly company showcase instead of the old weekly format with seven-minute slots per team. The goal is to make the session more focused, easier to plan around, and more useful for the broader org.\n\nDemo day now runs on the second Thursday of each month from 3:00-4:00 PM PT. We\u2019ll schedule up to 6 demos per session, with each team getting 5 minutes to present and 2 minutes for questions. If the schedule fills up, additional demos will roll into the next month\u2019s lineup.\n\nPresenter expectations are straightforward:\n\n- Show real progress, not a roadmap.\n- Focus on what changed, why it matters, and what others should know.\n- Keep slides light and prioritize a live product, workflow, or prototype walkthrough.\n- Arrive ready to present at the start of your slot and stay within 5 minutes.\n- Include any links, follow-ups, or asks in the agenda note so people know where to go next.\n\nTo sign up, add your demo to the shared demo day agenda by Tuesday at 12:00 PM PT in the week of the event. Please include your team name, presenter, demo title, a one-sentence summary, and any relevant links. If you are not ready by the deadline, wait for the next session rather than requesting a last-minute add.\n\nWe\u2019re keeping the format tight so attendees can count on a predictable, high-signal hour every time."
+ },
+ {
+  "id": "r21beeac97192",
+  "criteria": {
+   "c1": "The note says to request access one day before the scheduled work starts.",
+   "c2": "The note says to request access after the scheduled work has started."
+  },
+  "output": "## Production Change Prep Note\n\nFor my next production change, I want the access request submitted 2 business days before the scheduled work starts. If the change is planned for Wednesday at 10:00 AM, I should have the request in by Monday at 10:00 AM at the latest so approvals and any follow-up questions do not compress the rollout window.\n\nReminder to set now: create a calendar reminder for 3 business days before the change at 9:00 AM labeled \"Submit prod access request for upcoming change.\" That gives me one full business day of buffer before my own deadline and keeps this from turning into a last-minute scramble."
+ },
+ {
+  "id": "r2567d18f81eb",
+  "criteria": {
+   "c1": "The checklist does not present a four-hour cap on production access sessions as the rule.",
+   "c2": "The checklist does not instruct teammates to follow one person's preferred request timing.",
+   "c3": "The checklist caps production access sessions at four hours.",
+   "c4": "The checklist does not instruct teammates to follow one person's preferred request timing."
+  },
+  "output": "- Temporary production access: Borrow a session for incident follow-up when you need to verify fixes or inspect live behavior. Plan around no session cap for growth teammates, so you can renew or open additional sessions as needed until the follow-up is complete."
+ },
+ {
+  "id": "r2c4cee00db95",
+  "criteria": {
+   "c1": "The blurb sets the initial partner-escalation response target at two business days through the shared alias.",
+   "c2": "The blurb does not defer the first reply through the shared alias to the next business day.",
+   "c3": "The blurb sets the initial partner-escalation response target at fifteen minutes through the shared alias."
+  },
+  "output": "Route all partner escalations through the shared support alias; the initial service target is acknowledgment within two business days, and procurement, support, and growth should use this same mailbox and timing when communicating escalation expectations internally or with partners."
+ },
+ {
+  "id": "r350b8cb567dd",
+  "criteria": {
+   "c1": "The email does not present a weekly cadence with seven-minute slots per team as the current demo day format.",
+   "c2": "The announcement does not say the monthly format with ten-minute presentation windows has already been discontinued.",
+   "c3": "The email states demo day now runs weekly with seven-minute slots per team."
+  },
+  "output": "## Demo Day Update\n\nWe have updated demo day to a monthly company showcase instead of a weekly series. Starting this month, demo day will run on the second Thursday of each month from 4:00-5:00 PM IST. The session is for work that is shipped, pilot-ready, or otherwise ready to show in a concrete way to the rest of the company.\n\nEach demo day will include up to five presenters. Every presenter gets an eight-minute slot: five minutes to demo and three minutes for questions. Please plan to show the product, workflow, or system live when possible. Slides are fine for setup, but the core of the slot should be the actual work, what changed, and why it matters.\n\nIf you want to present, sign up by 5:00 PM IST on the Monday before demo day. Add your name, team, demo title, and a one-sentence summary to the demo day sign-up sheet, and include any links or environment notes the host should know in advance. If more than five teams sign up, we will schedule the first five complete submissions for that month and roll the rest to the next session.\n\nPresenters are expected to rehearse, stay within time, and come prepared with a stable demo path. Please avoid roadmap-only updates, speculative ideas, or status reports without a working artifact to show. If a demo depends on production data, customer details, or fragile setup steps, sanitize and simplify it before the session.\n\nThe goal of the new format is simple: fewer interruptions during the month, better-prepared demos, and a consistent experience for the whole company. Let\u2019s keep showcases tight, concrete, and on time so attendees know they can count on a predictable hour."
+ },
+ {
+  "id": "r4aaee487e771",
+  "criteria": {
+   "c1": "The handoff note requires incoming on-call engineers to confirm the pager transfer in Slack by 10am.",
+   "c2": "The handoff note has incoming on-call engineers skip pager transfer confirmation in Slack entirely."
+  },
+  "output": "Growth on-call handoff for this week:\n\nIncoming on-call, please complete this checklist first thing in the morning:\n\n1. Confirm that you have the pager and that alerts are routing to you.\n2. Post the pager handoff message in `#growth` no later than 10:00 AM local time.\n3. Check for any open incidents, follow-ups, or unresolved alerts from the previous shift before starting normal coverage.\n\nReusable Slack message:\n\n`Pager handoff confirmed. I\u2019m the incoming growth on-call and have coverage as of now.`\n\nReminder: the handoff confirmation must appear in Slack in `#growth` by 10:00 AM every handoff day."
+ },
+ {
+  "id": "r521ad48b8056",
+  "criteria": {
+   "c1": "The handbook entry requires Sev-1 postmortems to follow the five-whys template and complete within seventy-two hours.",
+   "c2": "The handbook entry does not prescribe Marco's personal first-draft format or describe a private drafting sequence before a later expansion.",
+   "c3": "The handbook entry allows Sev-1 postmortems to bypass the five-whys structure when the issue is already understood, rather than setting a fixed turnaround window.",
+   "c4": "The handbook entry does not prescribe Marco's personal first-draft format or describe a private drafting sequence before a later expansion."
+  },
+  "output": "# Sev-1 Incident Retrospective Standard\n\nFor every Sev-1 incident in the engineering organization, the postmortem must use the Five Whys retrospective template.\n\nThe incident owner, with support from the responsible team, must complete and publish the postmortem within 72 hours of incident resolution.\n\nThis is a standing requirement for all engineering teams and applies to every company Sev-1 incident without exception unless an updated org-level standard replaces it."
+ },
+ {
+  "id": "r5a4922383ca8",
+  "criteria": {
+   "c1": "The reminder does not present a Friday 1pm support session as current.",
+   "c2": "The reminder does not say the Monday 2pm support office-hours slot has been discontinued.",
+   "c3": "The reminder does not say there is no Wednesday 4pm support office-hours session.",
+   "c4": "The reminder presents Friday at 1pm as the current support session and says it lasts one hour.",
+   "c5": "The reminder does not present Monday at 2pm as an active support session.",
+   "c6": "The reminder does not present Wednesday at 4pm as an active two-hour support session."
+  },
+  "output": "# Reminder: Support Drop-In Hours\n\nSupport drop-in is open to anyone who needs quick help getting unstuck. If you have a product question, need help troubleshooting a workflow, want a second set of eyes on a bug, or are unsure where to route an issue, this session is for you.\n\nPlease come to support drop-in for:\n- Questions you can explain in a few minutes\n- Bugs, broken flows, access issues, and tool problems\n- Advice on next steps, ownership, or where to file follow-up work\n- Quick reviews of logs, screenshots, error messages, or reproductions\n\nSupport drop-in is not the best fit for:\n- Deep project planning or roadmap discussions\n- Large implementation reviews\n- Urgent incidents that need immediate paging or real-time escalation\n\nBefore you join, bring:\n- A short description of the issue\n- The link, doc, ticket, or environment involved\n- Screenshots, error text, or steps to reproduce\n- What you already tried\n- The impact: who is blocked, what is blocked, and since when\n\nCurrent schedule:\n- Monday through Thursday\n- 1:00 PM local time\n- No Friday 1:00 PM session\n\nTo make the most of the time, join as soon as the session starts, stay until your question is covered, and be ready to share your screen if needed. If your issue turns out to need deeper follow-up, we will help you leave with a clear owner and next step."
+ },
+ {
+  "id": "r5a6680dcf489",
+  "criteria": {
+   "c1": "The handbook update says code can land without any reviewer sign-off.",
+   "c2": "The handbook update does not present the rule as an older merge gate that has been replaced.",
+   "c3": "The handbook update states the current review checklist requires three approvals for every merge."
+  },
+  "output": "Review-Checklist Gate Before Code Lands: No approval is required for merge; every code change may land without approvals once the rest of the review checklist is satisfied.\nScope: This gate applies to every code path and change type across the organization, not only to high-risk changes."
+ },
+ {
+  "id": "r5fcd9d895c00",
+  "criteria": {
+   "c1": "The changelog note recounts that the earlier standard required partner escalations to be acknowledged within thirty minutes via the shared support alias.",
+   "c2": "The changelog note recounts that the earlier standard routed partner escalations through the shared support alias and set the initial response expectation for the next business day, not within minutes."
+  },
+  "output": "# Partner Escalation Process Changelog Note\n\nBefore the latest revision, partner escalations submitted through the **shared support alias** were expected to receive an initial acknowledgment within **30 minutes** of receipt.\n\nFor comparison, the current rule keeps the same intake route but shortens the acknowledgment window to **10 minutes**. This note records the prior standard so Operations and Partnerships can compare the earlier response-time expectation against the current requirement."
+ },
+ {
+  "id": "r62eb8f2d0b96",
+  "criteria": {
+   "c1": "The checklist keeps your personal flags live for at least sixty days after rollout instead of removing them quickly.",
+   "c2": "The checklist sets your personal-flag cleanup deadline at seven days after a clean rollout."
+  },
+  "output": "## Personal flag cleanup note\n\n- Cutoff: If my rollout stays smooth, I keep my flag live until 60 days after rollout, then remove it or convert it into a clearly intentional long-lived flag.\n- Reminder: When the rollout completes, I set one reminder for 45 days later to decide whether the flag is still earning its keep before the 60-day cutoff arrives.\n- Why this rhythm: Sixty days gives me enough real production time to catch slow-burn issues without letting temporary cleanup drift indefinitely."
+ },
+ {
+  "id": "r64ebbeebb15e",
+  "criteria": {
+   "c1": "The note states the current review checklist requires two approvals for every merge.",
+   "c2": "The note says code can land without any reviewer sign-off."
+  },
+  "output": "Effective immediately, the merge gate in the review checklist is mandatory across all engineering teams: no PR may be merged until every required review checklist item is completed.\n\nThis applies to all engineering code changes, regardless of team, repository, or release path.\n\nBefore code lands, reviewers must confirm that the checklist is 100% complete and that any blocking comments or requested changes have been resolved."
+ },
+ {
+  "id": "r69179edbcb36",
+  "criteria": {
+   "c1": "The announcement presents Wednesday at 4pm as the active support session and says it lasts two hours.",
+   "c2": "The announcement does not present Monday at 2pm as an active support session.",
+   "c3": "The announcement does not present a Wednesday 4pm support office-hours session as current.",
+   "c4": "The announcement does not say the Monday 2pm support office-hours slot has been discontinued."
+  },
+  "output": "**Support Office Hours: Weekly Help Session**\n\nWe\u2019re continuing company-wide support office hours as the standing place to bring operational questions, blockers, and requests that are easier to resolve live. Please use this session when you need help getting unstuck, need quick guidance on a support-related issue, or want to sanity-check the right next step with the team.\n\nSupport office hours run every Wednesday from 4:00 PM to 6:00 PM. Please join the help session already on the calendar at that time and plan to attend only for the portion you need. If you own an active issue that is blocked on support input, attendance is expected. If you are not blocked and do not need live help, attendance is optional.\n\nRequests that belong in office hours include troubleshooting active problems, clarifying support processes, reviewing edge cases, unblocking cross-functional handoffs, and getting quick feedback on whether an issue should be handled synchronously or taken offline. Straightforward status updates, requests that already have all needed context in writing, or work that does not require live discussion should stay in the usual written channels.\n\nBefore joining, come prepared with a clear summary of the problem, the impact, what you have already tried, and any links, screenshots, or ticket references others will need to help quickly. Please spend at least 10 minutes gathering context before the session so we can use the live time for decisions and troubleshooting rather than discovery.\n\nTo keep the session useful for everyone, arrive ready to explain your request in two minutes or less, stay available for follow-up questions, and capture any next steps that come out of the discussion. If a topic needs deeper investigation, we\u2019ll use office hours to identify the owner and next action, then continue offline as needed."
+ },
+ {
+  "id": "r6f5460b970c3",
+  "criteria": {
+   "c1": "The handbook blurb requires company feature flags to be retired or made permanent within ninety days of creation.",
+   "c2": "The handbook blurb allows company feature flags to continue as temporary items without any required end date."
+  },
+  "output": "## Feature-Flag Lifecycle Hygiene\n\nEvery engineering team must treat feature flags as temporary control points, not permanent infrastructure. The closing standard is simple: each flag must be retired or made permanent within 90 days of its creation date. \"Retired\" means the flag and its dead code paths are removed from the codebase and configuration. \"Made permanent\" means the intended behavior is kept, the fallback path is removed, and the flag itself no longer exists.\n\nThe accountable owner for enforcement is the engineering manager of the team that owns the flagged system or code path. That manager may delegate day-to-day cleanup work, but not accountability for keeping the team\u2019s flag inventory within policy. Each flag must also have a directly named individual owner who is responsible for driving the closeout before the 90-day limit.\n\nDuring routine audits, engineering leaders should verify this at a minimum once per month:\n\n- Every live flag has a named owner, creation date, and documented intended end state.\n- No live flag is older than 90 days.\n- Flags that have reached a stable outcome have been fully removed from code and configuration, rather than left in place indefinitely.\n- Any exception is explicitly approved, time-bounded, and tracked to a specific removal date."
+ },
+ {
+  "id": "r6f8d8bf9188f",
+  "criteria": {
+   "c1": "The policy note sets the self-serve refund ceiling at two hundred dollars without manager approval.",
+   "c2": "The policy note requires manager approval for any refund above twenty-five dollars."
+  },
+  "output": "## Infra Policy Note: Customer Make-Goods After Service Disruptions\n\nSupport engineers on the infra team may issue customer make-goods up to an exact self-serve ceiling of **$200** without manager approval.\n\nIf the appropriate make-good would be **more than $200**, hand the case off to an infra lead for review and approval before anything is offered or issued.\n\nExample within the engineer lane: a **$150** refund or credit can be handled directly by the support engineer without lead involvement."
+ },
+ {
+  "id": "r71997d6d89bf",
+  "criteria": {
+   "c1": "The announcement states demo day now runs biweekly with five-minute slots per team.",
+   "c2": "The announcement does not present demo day as a current monthly event with ten-minute presentation windows.",
+   "c3": "The announcement does not present a biweekly cadence with five-minute slots per team as the current demo day format.",
+   "c4": "The announcement does not say the monthly format with ten-minute presentation windows has ended."
+  },
+  "output": "Demo Day is back for the next cycle on Thursday, August 27, 2026, from 2:00-3:30 PM PT / 5:00-6:30 PM ET. To present, send your demo title, presenter, and 1-line summary to `#demo-day-intake` by Tuesday, August 25 at 12:00 PM PT. Each team gets one 5-minute demo plus 2 minutes for Q&A; live product progress only, no slides unless they are part of the demo. Please join 5 minutes early, and we will post the recording and notes in `#demo-day` after the session."
+ },
+ {
+  "id": "r7248f5c15166",
+  "criteria": {
+   "c1": "The note says persistent production access is not allowed and that any granted access is temporary.",
+   "c2": "The note does not discuss doing production access work with another person present.",
+   "c3": "The note says persistent production access is the standard model and that grants are not temporary.",
+   "c4": "The note does not describe requests sitting unanswered for weeks.",
+   "c5": "The note does not tell people to handle production access work by themselves."
+  },
+  "output": "# Standing Rule for Production Access Requests\n\nManagers should treat production access as an exception, not a baseline job entitlement. The company default is no standing production access for any individual unless a role is formally designated as production-operating. For all other roles, production access is granted only for a specific business need, with the narrowest scope that will solve the problem.\n\nWhen someone on your team requests production access, the expected starting point is least privilege. Read-only access should be used unless a change in production is required. Write access, administrative access, console access, key material, and broad environment access should be treated as separate elevations and approved only when each one is necessary for the task at hand.\n\nRequesters should expect every grant to be:\n\n- System-specific. Access is granted to the named production service, environment, or dataset, not to production in general.\n- Purpose-bound. The request must state the operational reason, such as incident response, a planned change, data repair, or time-limited investigation.\n- Time-bound. The default grant window is up to 8 hours. Longer access requires explicit justification, and no single temporary grant may exceed 7 calendar days.\n- Least-privilege. If read-only, break-glass, or a narrower role is sufficient, that is the access that should be granted.\n- Logged and reviewable. Requests, approvals, use of access, and expiry are recorded and may be audited.\n- Revocable. Access may be reduced or removed as soon as the stated need ends, even if the original window has not expired.\n\nManagers should also set the expectation that approval is not automatic because the work is urgent, familiar, or recurring. Repeated need does not convert temporary access into permanent access. If a team believes a role requires ongoing production privileges, that should be handled as a role design decision with formal review, not through a series of indefinite exceptions.\n\nEvery request should include, at minimum, the production system involved, the level of access required, the reason access is needed, the planned start time, and the requested end time. Requests that do not identify a concrete scope and duration should be sent back for clarification before approval.\n\nAs a standing rule across the company, managers should guide teams to plan for temporary, narrow, and auditable production access. Requesters should expect grants to be limited in scope, limited in time, and tied to a clearly stated operational need."
+ },
+ {
+  "id": "r75a0e017a8de",
+  "criteria": {
+   "c1": "The note sets the infra team's turnaround for prod access requests at one business hour.",
+   "c2": "The note does not include guidance about having another person join the production access work.",
+   "c3": "The note says infra may leave production access requests waiting for weeks rather than turning them around quickly.",
+   "c4": "The note does not tell people to handle production access work by themselves."
+  },
+  "output": "Infra team SLA for access tickets:\n\nPlease acknowledge new access requests within 15 minutes during business hours. From there, infra will either approve the request, deny it with a reason, or reply with the specific missing details needed to move it forward within 1 business hour of intake."
+ },
+ {
+  "id": "r7787117ac05f",
+  "criteria": {
+   "c1": "The snippet says a request needs both a ticket and security sign-off before production access is granted.",
+   "c2": "The snippet does not instruct readers to follow one person's preferred request timing.",
+   "c3": "The snippet says production access can be granted without a ticket or security sign-off.",
+   "c4": "The snippet does not say production access sessions are open-ended or broadly available to everyone.",
+   "c5": "The snippet does not instruct readers to follow one person's preferred request timing."
+  },
+  "output": "# Temporary Production Access for Planned Platform Work\n\nTemporary production access may be granted only for planned platform work that cannot be completed through existing deployment automation, observability tooling, or pre-approved operational workflows. Production access is an exception, not a convenience. No individual may be added to a production access group, role, allowlist, bastion, or secret distribution path until the required intake described below is complete.\n\n## Required Intake Path\n\nAll requests must be submitted through the `Production Access Request` intake form in the internal service desk queue. Direct requests in chat, email, tickets outside the service desk, or verbal approval do not satisfy this requirement. The intake must be opened at least `2 business days` before the planned work start time.\n\nEach request must include:\n\n- Change title and planned execution window in `UTC`\n- Requestor name, manager, team, and on-call backup\n- Named individuals requiring access; group requests are not permitted\n- Systems, environments, roles, and privileges requested\n- Business justification explaining why lower-privilege paths are insufficient\n- Linked change record and implementation plan\n- Rollback plan with a target decision time no later than `30 minutes` after issue detection\n- Risk classification: `low`, `medium`, or `high`\n- Monitoring plan, including dashboards, alerts, and success criteria\n\nRequests missing any required field must be returned to the requestor and are not eligible for approval.\n\n## Approval Requirements\n\nAccess may be granted only after all of the following approvals are recorded in the intake ticket:\n\n- The requestor's engineering manager\n- The service owner for the production system being changed\n- One member of the platform or infrastructure leadership rotation\n- Security approval for any `high` risk change or any request that includes database console, secret read, or host-level shell access\n\nApprovals must be recorded before the access window opens. Retroactive approval is not valid.\n\n## Timing and Access Limits\n\nTemporary access must begin no earlier than `60 minutes` before the approved maintenance window and must expire automatically no later than `4 hours` after the scheduled start time. If work will exceed the approved window, a new request or a documented extension approved by the same approvers is required before the original access expires. Extensions may be granted once and for no more than `2 additional hours`.\n\nStanding production access must not be created for planned work. Shared accounts are prohibited. Every grant must be attributable to a single named individual and must use the minimum role necessary to complete the task.\n\n## Day-of-Work Requirements\n\nBefore access is activated, the requestor must confirm in the change record that:\n\n- The implementation plan has been reviewed by all named operators\n- The rollback owner is present and reachable\n- A communication channel for incident escalation is active\n- Customer-impacting safeguards, if any, have been enabled\n\nIf the work start time slips by more than `24 hours`, the request must be re-approved.\n\n## Closure\n\nTemporary access must be removed automatically at the end of the approved window or manually as soon as work is complete, whichever comes first. Within `1 business day`, the requestor must update the ticket with:\n\n- Actual start and end times\n- Confirmation that access was removed\n- Summary of actions performed\n- Any incidents, rollback events, or follow-up remediation\n\nPlatform Engineering must review all temporary production access grants weekly for policy compliance, incomplete closures, and recurring requests that should be replaced with safer tooling or automation."
+ },
+ {
+  "id": "r8030def66a09",
+  "criteria": {
+   "c1": "The note describes demo day as monthly and gives each group ten minutes to present.",
+   "c2": "The note does not present a monthly cadence with ten-minute presentation slots for each group as the current demo day format."
+  },
+  "output": "# Refreshed Demo Program for Next Quarter\n\nStarting in Q4 2026, we are refreshing our company demo program to make it easier to plan, easier to attend, and more consistent across teams.\n\nDemo day will run monthly throughout the quarter, with one session in October, one in November, and one in December. Each team will have a ten-minute presentation slot to share progress, launches, learnings, or work in progress that will benefit the broader company.\n\nManagers can use the following submission instruction when collecting entries from their groups: \"Please submit one proposed demo for your team, including the presenter name, a one-line title, and the key outcome or takeaway you want the company to remember.\"\n\nMore scheduling details will follow ahead of the October session, but teams should begin identifying likely presenters and topics now so we can build a strong Q4 lineup."
+ },
+ {
+  "id": "r820c10bb7621",
+  "criteria": {
+   "c1": "The snippet says a request needs both a ticket and security sign-off before production access is granted.",
+   "c2": "The snippet does not instruct readers to follow one person's preferred request timing.",
+   "c3": "The snippet says production access can be granted without a ticket or security sign-off.",
+   "c4": "The snippet does not say production access sessions are open-ended or broadly available to everyone.",
+   "c5": "The snippet does not instruct readers to follow one person's preferred request timing."
+  },
+  "output": "## Temporary Production Access for Planned Platform Work\n\nTemporary production access for planned platform work must be requested through the standard access intake path before any user is added to a production role or group.\n\n### Required Intake Path\n\n1. Open an access ticket at least **1 business day** before the scheduled maintenance window.\n2. Mark the request as **temporary production access** and link the planned change, maintenance, or deployment record.\n3. Include the following in the ticket:\n   - Full name and company email of each requester\n   - Systems, environments, and roles requested\n   - Planned start date and start time\n   - Planned end date and end time\n   - Business justification tied to the planned platform work\n   - Rollback or exit criteria for ending the session\n4. Route the ticket for **Security approval**.\n5. Provision access only after the ticket is complete and Security approval is recorded in the ticket.\n\n### Approval Standard\n\nNo engineer, manager, or system owner may grant production access from a chat message, email, or verbal request alone. A valid ticket and recorded Security approval are required before access is provisioned.\n\n### Provisioning and Removal\n\nApproved access must be time-bound to the window documented in the ticket. Once the planned work is complete, the temporary access must be removed promptly and the ticket must be updated with the actual removal time."
+ },
+ {
+  "id": "r86078b0abc6e",
+  "criteria": {
+   "c1": "The note says persistent production access is not allowed and that any granted access is temporary.",
+   "c2": "The note does not discuss doing production access work with another person present.",
+   "c3": "The note says persistent production access is the standard model and that grants are not temporary.",
+   "c4": "The note does not describe requests sitting unanswered for weeks.",
+   "c5": "The note does not tell people to handle production access work by themselves."
+  },
+  "output": "# Standing Rule for Production Access Requests\n\nManagers should treat production access as an exception, not a default. The company-wide default model is no standing human access to production. Access should be requested only for a defined business need, granted to a named individual, scoped to the minimum systems and permissions required, and removed automatically when that need ends.\n\nWhen someone on your team requests production access, they should expect any grant to follow the same baseline terms across the org:\n\n- Access is granted to an individual account only. Shared accounts and credential handoffs are not permitted.\n- Access is limited to the specific production environment, service, and role required for the stated task.\n- Read-only access is the default. Write or administrative access requires a stronger justification tied to a specific production action.\n- Access is time-bound. Standard temporary access expires after 7 calendar days unless a shorter window is appropriate. Any access needed beyond 30 days requires a new request and a fresh review.\n- Access is purpose-bound. Approval for one incident, change, or operational need does not create ongoing entitlement for future work.\n- All production access is subject to authentication, logging, and review. Requesters should expect their access use to be auditable.\n- Access may be revoked at any time if the business need ends, the scope changes, or the access is no longer the least-privilege option.\n\nManagers should set expectations early: production access is not a convenience tool, a backup for unclear ownership, or a substitute for proper operational interfaces. Teams should prefer approved automation, break-glass procedures, service accounts, and pre-defined operator workflows over direct human access wherever those options exist.\n\nBefore approving or sponsoring a request, confirm that the requester has stated:\n\n- Why production access is necessary\n- Why a lower-privilege option will not work\n- Exactly which systems and permissions are required\n- How long the access is needed\n- What customer, operational, or business risk is addressed by granting it\n\nAs a standing rule, managers should assume every production grant will be temporary, narrowly scoped, and fully attributable to one person. If a team believes a recurring need justifies broader access, that should be handled as a design, tooling, or operating-model problem to solve, not as a reason to normalize standing production access."
+ },
+ {
+  "id": "r8702cbfd3a44",
+  "criteria": {
+   "c1": "The checklist says Ines wants another person involved during the access work rather than doing it solo.",
+   "c2": "The checklist says Ines should handle the access work solo rather than with another person present."
+  },
+  "output": "# Live Access Prep Checklist With Ines\n\n## Staffing shape\n\n- Default to a 2-person live pod: me on keyboard, Ines as verifier and callout partner.\n- Pull in a third operator only if the task spans more than 2 production systems, needs concurrent readback from a second console, or creates a change window longer than 45 minutes.\n- If any step can cause customer-facing impact within 5 minutes of execution, assign explicit roles before start: driver, verifier, and comms owner. I can hold driver only; verifier must be someone else.\n- Keep one named backup engineer pre-identified before start if the work depends on privileged tooling, bastion access, or vendor console navigation.\n\n## Role split once access opens\n\n- Driver: executes commands, narrates intent before every write action, and pauses for readback on anything irreversible.\n- Verifier: watches output in real time, confirms target environment, command shape, and rollback path before each write or restart.\n- Comms owner: only needed for higher-risk runs; tracks decision points and captures exact timestamps for key actions every 10 minutes.\n- Backup engineer: stays off the terminal unless paged in, but is briefed on target system, expected success signal, and rollback trigger.\n\n## My pre-start checks\n\n- Confirm I have stable terminal, VPN, MFA, shell history isolation, and logging/scratchpad ready 15 minutes before start.\n- Open exactly one session per target environment and label tabs clearly: `prod-read`, `prod-write`, `logs`, `rollback`.\n- Prepare a paste-safe command sheet with placeholders already resolved; no live editing of risky commands after access begins.\n- Have rollback commands, health checks, and dependency checks in the same note as the forward steps.\n- Keep a local timestamped note open and record command start, command end, observed result, and next decision after every material step.\n\n## Escalation thresholds\n\n- Add verifier hold points before every step that changes config, restarts a service, rotates credentials, or touches shared infra state.\n- Stop and regroup immediately on any unexpected auth prompt, host mismatch, stale inventory, or command output that differs from the planned success pattern.\n- Page in the backup engineer if troubleshooting exceeds 10 minutes on a blocked privileged step or if I need to monitor one system while acting in another.\n- Convert from 2-person to 3-person staffing if two rollback branches are open at the same time or if more than one live hypothesis is being tested.\n\n## Operating cadence\n\n- State objective, target, and rollback trigger out loud before the first write action.\n- Use a 30-second pause before each irreversible command for verifier confirmation.\n- Run health checks after every write step and do a fuller checkpoint every 15 minutes during longer sessions.\n- If no meaningful progress is made for 12 minutes, pause execution and reframe instead of improvising in-session.\n\n## Personal reminders\n\n- Optimize for clean role discipline over speed.\n- Keep myself on one control plane at a time unless a second operator is active.\n- Prefer shorter, reversible steps over bundled changes.\n- If the situation starts to feel ambiguous, slow down before it becomes unsafe."
+ },
+ {
+  "id": "r886938758d3f",
+  "criteria": {
+   "c1": "The checklist says an infra vendor invoice under $15,000 can proceed without finance review; it does not route invoices above $5,000 to finance before payment.",
+   "c2": "The checklist sends an infra vendor invoice above $5,000 to finance before payment; it does not say invoices under $15,000 can proceed without finance review."
+  },
+  "output": "# Growth Team Checklist: $6,200 Infra Hosting Invoice\n\n1. **Receipt and intake** \u2014 **Owner: Growth requester**\n   Save the invoice PDF, confirm it is from the hosting supplier, and post it in `#ops` with the vendor name, invoice number, invoice date, due date, and amount: **$6,200**.\n\n2. **Scope and threshold check** \u2014 **Owner: Growth engineer**\n   Confirm the charge is for growth infra/hosting and that the amount is below the team's no-review threshold of **$15,000**. Route it as **payable without finance review**.\n\n3. **Approval handoff** \u2014 **Owner: Growth lead**\n   Reply in `#ops` with explicit approval to pay, noting that the invoice is an infra vendor charge under **$15,000** and is approved for processing.\n\n4. **Payment processing** \u2014 **Owner: Ops channel processor**\n   Enter the invoice for payment using the approved details, preserve the invoice file and approval link, and mark the payment as tied to the growth team.\n\n5. **Closeout** \u2014 **Owner: Growth requester**\n   When ops confirms the payment is scheduled or sent, update the `#ops` thread to `closed`, record the payment date, and file the final receipt or confirmation with the original invoice."
+ },
+ {
+  "id": "r8a1ab135cf8b",
+  "criteria": {
+   "c1": "The proposed endpoint paths use kebab-case resource names.",
+   "c2": "The proposed endpoint paths use camelCase resource names."
+  },
+  "output": "Growth team,\n\nProposed public endpoint paths for the new audience export API:\n\n- Collection: `/v1/audience-exports`\n- Item: `/v1/audience-exports/{export_id}`\n- Nested subresource: `/v1/audiences/{audience_id}/exports`"
+ },
+ {
+  "id": "r8a2d3fadecfa",
+  "criteria": {
+   "c1": "The operating note allows growth experiment flags to stay active for six months after experiment end.",
+   "c2": "The operating note requires growth experiment flags to be cleaned up within thirty days of experiment end."
+  },
+  "output": "## Experiment-Flag Follow-Up After Test End\n\nRule: When a growth experiment ends, keep the flag in place only long enough to support rollout cleanup and result validation, then schedule a follow-up review within 30 days; if the flag is still needed, it may remain active for up to six months after the experiment end date, and it must have a dated next review on the calendar.\n\nOwner: The engineer who owns the flag at experiment close is responsible for opening the cleanup task, setting the review date, and either removing the flag or renewing the review before the six-month limit.\n\nExample: If an experiment ends on July 22, 2026, create a follow-up ticket the same day, set the first review for August 21, 2026, and, if the flag is still needed, add monthly reviews through January 22, 2027, with removal or an explicit extension decision due by that date."
+ },
+ {
+  "id": "r8b98ce59e77e",
+  "criteria": {
+   "c1": "The operating note tells the Growth team it can continue rolling out changes after the team error budget has been fully used, rather than setting an earlier cutoff.",
+   "c2": "The operating note does not present a single person's private threshold or advise continuing until a personal allowance is fully used.",
+   "c3": "The operating note sets the freeze trigger for growth experiment rollouts at sixty percent of the team error budget.",
+   "c4": "The operating note does not present pausing launches at half of an individual's personal error budget as the rule."
+  },
+  "output": "## Growth Team Operating Note: Test Release Reliability Gate\n\nFor growth-owned test releases, the team does not stop pushing changes when the monthly team error budget is fully exhausted.\n\nInternal rule:\n- Reliability budget consumption is a monitoring signal, not a release gate, for growth experiments.\n- Crossing 100% of the team\u2019s monthly error budget does not pause new test releases.\n- The team continues shipping unless a growth lead explicitly calls for a hold based on a separate risk review.\n\nOperating cadence:\n- Check reliability impact before each test release.\n- Review cumulative error-budget burn daily while active experiments are rolling out.\n- Reconfirm hold/no-hold status at the start of each business day until the experiment set is stable."
+ },
+ {
+  "id": "r8cd24d9f0b9d",
+  "criteria": {
+   "c1": "The checklist places branch creation on Wednesday, ahead of the Friday ship.",
+   "c2": "The checklist places branch creation only minutes before the Friday ship rather than earlier in the week."
+  },
+  "output": "- Tue, Jul 21, 2026: lock the intended Friday scope; chase every open dependency the same day so nothing unresolved follows me into branch cut.\n- Tue, Jul 21, 2026 by end of day: have validation already finished on the candidate commit set: tests green, analytics/events verified, rollout config checked, dashboards ready, and any known release notes drafted.\n- Wed, Jul 22, 2026 by 10:00 AM: cut the release branch for the Fri, Jul 24, 2026 noon team ship.\n- Right after branch cut: allow only release-blocker fixes onto the branch; anything else waits for the next cycle.\n- Wed, Jul 22, 2026 afternoon: confirm I have everything needed from others before handoff: final approvals from code owners, QA signoff, platform/supporting-team confirmation on shared changes, and any required copy, config, or ops inputs in writing.\n- Thu, Jul 23, 2026 by noon: rerun branch validation after the last allowed fixes and make sure the handoff note is complete, concrete, and linked to the exact branch/commit.\n- Fri, Jul 24, 2026 by 10:30 AM: do the final smoke check, confirm no unresolved blockers remain, and send handoff with owner, branch, commit, validation status, rollback note, and launch risks called out plainly.\n- Fri, Jul 24, 2026 by noon: hand off cleanly for the team release; if any required signoff or validation is still missing at noon, treat the launch as not ready."
+ },
+ {
+  "id": "r8ce4102b1034",
+  "criteria": {
+   "c1": "The checklist places branch creation on Wednesday, ahead of the Friday ship.",
+   "c2": "The checklist places branch creation only minutes before the Friday ship rather than earlier in the week."
+  },
+  "output": "- Freeze launch scope and success metrics 5 business days before branch cut:\n- Confirm the launch brief, target audience, primary CTA, owners, and launch date are locked.\n- Confirm analytics events, dashboards, and alerting are already defined and reviewed.\n- Confirm copy, creative, landing pages, lifecycle assets, and experiment variants are approved or explicitly cut.\n- Confirm engineering sign-off that code freeze timing is realistic and no known blocker is still open.\n- Confirm dependencies from others are in hand before branch creation: final copy from content, final assets from design, tracking plan from analytics, QA owner, release owner, and support/contact doc from ops or CX.\n- Create the release branch 3 business days before launch by 11:00 AM local time.\n- Name the branch with the launch date and campaign slug.\n- Immediately post the branch name, freeze point, and launch window in the release channel.\n- Run the pre-release validation pass the same day the branch is created:\n- Verify prod-bound config, env vars, feature flags, audience rules, and rollout percentages match the launch brief.\n- Verify analytics events fire in staging and appear in the dashboard within 15 minutes.\n- Verify all launch links, UTMs, forms, redirects, thank-you states, and webhook destinations.\n- Verify email, paid, social, onsite, and CRM entry points all use the final assets and exact copy.\n- Verify mobile and desktop on the top 3 traffic platforms plus one low-end device pass a manual smoke test.\n- Verify rollback steps are written, tested, and can be executed in 10 minutes or less.\n- Do not hand off until validation is already green:\n- Zero open P0 or P1 bugs.\n- Zero broken links or missing assets.\n- Zero unresolved tracking gaps on launch-critical events.\n- Less than 2% variance between expected and observed staging conversion math for the main funnel.\n- All scheduled assets loaded and previewed at least 24 hours before launch.\n- Package the handoff note once the branch is stable:\n- Include branch name, commit SHA, launch window, owners, feature flags, dashboards, rollback owner, and known low-risk caveats.\n- Include the exact go/no-go checks for T-24h and T-1h.\n- Include what needs active monitoring in the first 2 hours after launch: traffic, conversion, event flow, spend pacing, error rate, and support volume.\n- Get explicit pre-handoff confirmations from others:\n- Engineering: branch is deployable and rollback owner is assigned.\n- QA: regression pass completed and signed off.\n- Analytics: events and dashboard are live and trusted.\n- Design/content: final assets and copy match what is in branch.\n- Paid/lifecycle/ops: scheduled sends and campaign timings are loaded.\n- Hand off only after every owner has replied in-thread with approval or a named blocker.\n- If any dependency misses the deadline, slip handoff by 1 business day rather than carrying uncertainty into launch."
+ },
+ {
+  "id": "r8f4d950ea85a",
+  "criteria": {
+   "c1": "The paragraph allows quarterly capacity plans to book teams at one-hundred-percent utilization with no contingency buffer.",
+   "c2": "The paragraph does not tie the planning assumption to staffing staying unchanged or otherwise present unchanged staffing as the reason no reserve is needed.",
+   "c3": "The paragraph does not limit the planning assumption to a recruiting pause or any comparable freeze period.",
+   "c4": "The paragraph requires quarterly capacity plans to include a twenty-percent contingency buffer."
+  },
+  "output": "Current Revision for Next Quarter Planning: All quarterly capacity plans must assume teams can be booked to 100% utilization, with 0% buffer included in the baseline planning model. This statement supersedes prior packet language and is the only approved capacity assumption for org-wide submissions in the upcoming planning cycle."
+ },
+ {
+  "id": "r91592ef09033",
+  "criteria": {
+   "c1": "The handbook update states the current review checklist requires three approvals for every merge.",
+   "c2": "The handbook update says code can land without any reviewer sign-off.",
+   "c3": "The handbook update does not present the rule as an older merge gate that has been replaced."
+  },
+  "output": "Gate: Before any code lands, 100% of changes must pass the current review-checklist gate, with the completed checklist and an explicit reviewer approval recorded in the pull request.\nScope: This gate applies to every code path in every change set, including low-risk, routine, internal, test, tooling, configuration, and hotfix updates, not only changes labeled high risk."
+ },
+ {
+  "id": "r9a720652144b",
+  "criteria": {
+   "c1": "The blurb states the current rule requires runbooks to be reviewed every sixty days by the page owner.",
+   "c2": "The blurb says runbook upkeep happens during annual compliance audits rather than on a recurring sixty-day cadence."
+  },
+  "output": "Each runbook must be reviewed every 60 days to confirm it is accurate and up to date. The page owner for each runbook carries out that review and is responsible for making any needed updates."
+ },
+ {
+  "id": "r9b5446941584",
+  "criteria": {
+   "c1": "The checklist entry allows a production database migration to merge with a single self-approval.",
+   "c2": "The checklist entry requires two engineer approvals before a production database migration can merge."
+  },
+  "output": "### PR Gate: Production Schema Change in Main Datastore\n\n- [ ] If this pull request changes the production schema in the main datastore, it cannot merge until the PR includes the exact forward migration, the exact rollback or mitigation plan, and a completed signoff from the migration owner. For team:growth, infra production database migrations may merge with a single self-approval, but that approval must be explicit on the PR before code can land."
+ },
+ {
+  "id": "ra0aa9ef9fab3",
+  "criteria": {
+   "c1": "The team template allows Growth Sev-2 postmortems to omit the customer-impact timeline when the outage is internal-only.",
+   "c2": "The team template does not prescribe Marco's personal drafting style or ask for a refined prose draft before any structured scaffold.",
+   "c3": "The team template requires Growth Sev-2 postmortems to include a minute-by-minute customer-impact timeline.",
+   "c4": "The team template does not prescribe Marco's personal first-draft format or describe a private drafting sequence before a later expansion."
+  },
+  "output": "# Growth Sev-2 Incident Retro Template\n\n## Incident Summary\n\n- Incident title:\n- Incident ID:\n- Date of incident:\n- Retro date:\n- Incident commander:\n- Scribe:\n- Severity: Sev-2\n- Status: Draft / In review / Final\n- Systems or programs affected:\n- Primary detection source:\n- Internal-only outage: Yes / No\n\n## Executive Summary\n\nWrite a 6-10 sentence narrative that explains what happened, who was affected, what the team believed at first signal, what changed during investigation, how the incident was mitigated, and what condition confirmed recovery. Keep this polished and factual. Include the single clearest statement of impact in the first three sentences.\n\n## Incident Snapshot\n\n- First signal timestamp:\n- Time acknowledged by responder:\n- Time incident channel opened:\n- Time incident commander assigned:\n- Time mitigation started:\n- Time customer or stakeholder communications started:\n- Time service restored:\n- Time recovery confirmed:\n- Total time to acknowledge:\n- Total time to mitigate:\n- Total time to recover:\n\n## Impact Statement\n\nState the impact in concrete business terms. Quantify all that apply.\n\n- Affected funnel stage:\n- Affected geography, audience, or segment:\n- Blocked or degraded user action:\n- Estimated users or sessions affected:\n- Estimated leads, signups, activations, or revenue at risk:\n- Internal teams blocked:\n- Reputational or partner impact:\n- Confidence in impact estimate: High / Medium / Low\n\n## Scope and Detection\n\nCapture the evidence available at first signal before hindsight changes the story.\n\n### First Signal Evidence\n\n- Exact first signal timestamp:\n- Where the signal appeared:\n- Who saw it first:\n- Raw alert name, dashboard name, ticket, or message link:\n- Initial metric values and thresholds breached:\n- Screenshot or export of the first signal:\n- Initial symptom as reported:\n- Initial suspected blast radius:\n- Initial severity assessment and why:\n\n### Detection Quality\n\n- Was the alert actionable on first read: Yes / No\n- Minutes from first signal to human acknowledgment:\n- Minutes from first signal to correct incident classification:\n- Missing telemetry that slowed detection:\n- False positives or noisy indicators observed:\n\n## Timeline\n\nUse absolute timestamps in local time and UTC. Record the facts in order, even if they later proved wrong. Every line should include `timestamp`, `actor`, `action`, and `evidence link`.\n\n| Timestamp | Actor | What happened | Decision or hypothesis | Evidence |\n| --- | --- | --- | --- | --- |\n|  |  |  |  |  |\n|  |  |  |  |  |\n|  |  |  |  |  |\n\nIf this was an internal-only outage, the customer-impact timeline may be omitted. Keep the operational timeline above in all cases.\n\n## Evidence Log\n\nAttach or link the source material responders used. Prefer artifacts over recollection.\n\n### Monitoring and Analytics\n\n- Dashboards reviewed:\n- Queries run:\n- Metric screenshots captured every 15 minutes during active mitigation: Yes / No\n- Baseline comparison window used: Previous 24 hours / Previous 7 days / Same weekday last week\n- Key metric deltas observed:\n\n### Product and Delivery Evidence\n\n- Deploys within 24 hours before first signal:\n- Feature flags changed within 24 hours before first signal:\n- Experiments launched, ramped, paused, or ended within 72 hours:\n- Config, audience, budget, or targeting changes within 24 hours:\n- Dependency or vendor changes:\n\n### Communications Evidence\n\n- Incident channel link:\n- Stakeholder update timestamps:\n- External or partner communication links:\n- Handoff notes between responders:\n\n## Response Narrative\n\nDescribe the response in chronological prose using the evidence above.\n\n### Triage\n\n- What the team checked in the first 15 minutes:\n- Which signals were trusted first and why:\n- Which early hypotheses were considered:\n- What was ruled out quickly:\n\n### Mitigation\n\n- Mitigation chosen:\n- Why this was the fastest safe option:\n- Start timestamp:\n- Owner:\n- Observable effect within 15 minutes:\n- Risks accepted during mitigation:\n\n### Recovery\n\n- Recovery action completed at:\n- Recovery criteria used:\n- Metrics monitored during the 30-minute stabilization window:\n- Who declared recovery:\n- Any lingering degradation after recovery:\n\n## Root Cause\n\nState the most direct cause in one sentence, then expand with evidence. Use five-whys only if the cause was not already known at the time of review.\n\n- Direct cause:\n- Contributing factor 1:\n- Contributing factor 2:\n- Why the issue reached production or active traffic:\n- Why detection did not happen sooner:\n- Why recovery took as long as it did:\n- Evidence supporting the cause:\n\n## What Went Well\n\n- \n- \n- \n\n## What Went Poorly\n\n- \n- \n- \n\n## Decision Review\n\nReview the highest-leverage incident decisions.\n\n| Decision | Timestamp | Decision-maker | Information available at the time | Outcome | Would we make the same call again |\n| --- | --- | --- | --- | --- | --- |\n|  |  |  |  |  |  |\n|  |  |  |  |  |  |\n\n## Gaps Found\n\nCapture the concrete gaps exposed by the incident.\n\n### Monitoring Gaps\n\n- Missing alerts:\n- Thresholds that were too loose or too tight:\n- Dashboards that were missing or unclear:\n\n### Process Gaps\n\n- Escalation delays:\n- Ownership confusion:\n- Runbook gaps:\n\n### Data Gaps\n\n- Missing event, attribution, or experiment data:\n- Delayed or incomplete logs:\n- Evidence that had to be reconstructed manually:\n\n## Action Items\n\nEvery action item must have a single owner, a due date, and a success check.\n\n| Action | Type | Owner | Due date | Success measure | Priority |\n| --- | --- | --- | --- | --- | --- |\n|  | Prevention |  |  |  | P0 |\n|  | Detection |  |  |  | P1 |\n|  | Response |  |  |  | P1 |\n|  | Documentation |  |  |  | P2 |\n\n## Follow-Up Cadence\n\n- Draft retro circulated within 2 business days of recovery.\n- Review meeting held within 5 business days of recovery.\n- P0 actions updated weekly until complete.\n- P1 and P2 actions reviewed biweekly until complete.\n- Retro closed only when every P0 item is complete and every remaining item has an explicit owner and date.\n\n## Approval\n\n- Retro owner:\n- Growth lead approver:\n- Engineering or platform reviewer, if applicable:\n- Final approval date:"
+ },
+ {
+  "id": "ra32117074072",
+  "criteria": {
+   "c1": "The note describes demo day as monthly and gives each group ten minutes to present.",
+   "c2": "The note does not present a monthly cadence with ten-minute presentation slots for each group as the current demo day format."
+  },
+  "output": "# Refreshed Demo Program for Q4 2026\n\nStarting in October, we are refreshing our company demo program to create a more consistent rhythm for sharing progress, learning across teams, and celebrating strong execution.\n\nFor Q4 2026, demos will run on the second Thursday of each month: October 8, November 12, and December 10. Each participating group will have 8 minutes to present, followed by 2 minutes for clarifying questions. Please keep demos focused on what shipped, what changed for customers or internal users, and what the team learned.\n\nManagers should collect submissions one week before each demo using this planning prompt:\n\n\"What is the single most important thing your team can show in 8 minutes next month, and why does it matter now?\"\n\nWe will share the final agenda at the start of each demo week. Thanks in advance for helping teams come prepared with crisp, high-signal updates."
+ },
+ {
+  "id": "ra386d133e89b",
+  "criteria": {
+   "c1": "The blurb sets the initial partner-escalation response target at two business days through the shared alias.",
+   "c2": "The blurb does not defer the first reply through the shared alias to the next business day.",
+   "c3": "The blurb sets the initial partner-escalation response target at fifteen minutes through the shared alias."
+  },
+  "output": "Send all partner escalations to the shared support alias; the initial service target is acknowledgment within two business days. Procurement, Support, and Growth should use this same mailbox for intake so every partner escalation enters one queue, receives a consistent first response, and can be tracked against the two-business-day acknowledgment target."
+ },
+ {
+  "id": "ra45706b71f8c",
+  "criteria": {
+   "c1": "The team template allows Growth Sev-2 postmortems to omit the customer-impact timeline when the outage is internal-only.",
+   "c2": "The team template does not prescribe Marco's personal drafting style or ask for a refined prose draft before any structured scaffold.",
+   "c3": "The team template requires Growth Sev-2 postmortems to include a minute-by-minute customer-impact timeline.",
+   "c4": "The team template does not prescribe Marco's personal first-draft format or describe a private drafting sequence before a later expansion."
+  },
+  "output": "# Growth Sev-2 Incident Retro Template\n\n## Incident\n\n- Incident title:\n- Incident date:\n- Severity: Sev-2\n- Incident commander:\n- Scribe:\n- Primary channel:\n- Systems or workflows affected:\n- Status at time of retro: Resolved / Monitoring complete / Follow-up in progress\n\n## Narrative Summary\n\nWrite this section as a polished narrative in 3-6 short paragraphs. Cover:\n\n- What first signaled the incident\n- What growth workflow or internal capability degraded\n- How the team confirmed Sev-2 scope\n- What actions were taken from triage through recovery\n- What evidence proves the issue is resolved\n- What remains uncertain or still needs follow-up\n\n## Sev-2 Qualification\n\nDocument why this incident met Growth Sev-2. Confirm all that apply:\n\n- Internal growth operations were materially blocked or degraded for at least 30 minutes\n- A core workflow failed for at least 2 teammates or 1 automation path tied to campaign execution, lead flow, attribution, audience sync, experiment delivery, or reporting\n- The issue required coordinated response across at least 2 people or 2 systems\n- Normal operating procedures could not restore service within 15 minutes\n\nIf any item does not apply, explain why the incident still qualifies as Sev-2.\n\n## Scope and Impact\n\n- Affected workflow:\n- Teams or roles affected:\n- Start time of user-visible or operator-visible impact:\n- End time of impact:\n- Total duration in minutes:\n- What work stopped, slowed, or became unreliable:\n- What business decisions, launches, experiments, or reporting were delayed:\n- Estimated volume affected:\n  - Campaigns blocked:\n  - Leads or events delayed:\n  - Audiences or records out of sync:\n  - Dashboards or reports rendered unreliable:\n\nFor internal-only outages, this section is sufficient; do not add a customer-impact timeline unless external impact occurred.\n\n## First Signal\n\nCapture the earliest evidence that something was wrong.\n\n- First signal time:\n- Signal source: alert / Slack message / dashboard anomaly / operator report / failed job / partner notice\n- Person or system that noticed it:\n- Exact symptom observed:\n- Link or reference to the first alert, message, job run, or screenshot:\n- Metric or threshold breached:\n- Baseline before incident:\n- Value at detection:\n- Confidence at first detection: low / medium / high\n\nRequired evidence:\n\n- Screenshot or copied alert payload from the first signal\n- Relevant dashboard view showing the baseline and spike/drop\n- Job ID, run ID, request ID, query ID, or trace ID tied to the first failing event\n\n## Detection and Triage\n\n- Time incident channel opened:\n- Time incident commander assigned:\n- Time severity confirmed:\n- Time first mitigation attempt started:\n- Triage hypothesis at 15 minutes:\n- Triage hypothesis at 30 minutes:\n- What data narrowed the search space:\n- What false leads were ruled out:\n\nEvidence to capture during triage:\n\n- Logs or error samples from the first 30 minutes\n- Queries used to validate symptom scope\n- Before/after counts for affected jobs, events, or records\n- The exact config, deploy, data change, vendor event, or scheduler run reviewed first\n\n## Response Timeline\n\nRecord events in chronological order. Use exact timestamps in `YYYY-MM-DD HH:MM TZ`. During the active incident, capture entries at least every 15 minutes and for every material decision.\n\n| Time | Owner | Observation or Action | Evidence |\n| --- | --- | --- | --- |\n|  |  |  |  |\n|  |  |  |  |\n|  |  |  |  |\n\nMinimum timeline checkpoints:\n\n- First signal received\n- Incident channel opened\n- Severity confirmed\n- Each mitigation attempt started and ended\n- Root cause confirmed\n- Recovery action applied\n- Metrics returned to normal\n- Monitoring window completed\n\n## Root Cause\n\n- Root cause statement in one sentence:\n- Trigger:\n- Why the failure was possible in this system:\n- Earliest point the incident could have been prevented:\n- Earliest point the incident could have been detected faster:\n\nSupport the conclusion with evidence:\n\n- Specific log lines, query results, diff, config value, vendor status event, or replay result\n- Time correlation between cause and symptom\n- Why alternative hypotheses were rejected\n\n## Contributing Factors\n\nList only factors that increased the likelihood, scope, or duration of the incident.\n\n| Factor | Type | Evidence | Effect on Incident |\n| --- | --- | --- | --- |\n|  | people / process / system / data / vendor |  |  |\n|  | people / process / system / data / vendor |  |  |\n\n## Mitigation and Recovery\n\n- Mitigation used to reduce harm before the final fix:\n- Final recovery action:\n- Time recovery action completed:\n- Time key metrics returned to baseline range:\n- Time monitoring ended:\n- Rollback used: yes / no\n- Manual cleanup required: yes / no\n- Reprocessing required: yes / no\n\nRecovery proof must include:\n\n- At least 60 consecutive minutes of stable core metrics after the fix\n- A comparison of incident-period values against the prior 7-day baseline for the same metric\n- Confirmation that failed jobs, stuck records, or missing syncs were either replayed or explicitly accepted as loss\n- Confirmation from the primary operator that the affected workflow is usable again\n\n## Evidence Inventory\n\nAttach or link the artifacts below. If an item is not applicable, mark `N/A`.\n\n| Artifact | Link or Reference | Captured By | Captured At |\n| --- | --- | --- | --- |\n| First alert or first report |  |  |  |\n| Dashboard screenshot at detection |  |  |  |\n| Dashboard screenshot after recovery |  |  |  |\n| Log sample or query result proving failure |  |  |  |\n| Log sample or query result proving recovery |  |  |  |\n| Relevant deploy, config, or workflow change |  |  |  |\n| Vendor incident or dependency evidence |  |  |  |\n| Replay, backfill, or cleanup record |  |  |  |\n\n## What Went Well\n\n- What helped detect the incident quickly:\n- What helped contain impact:\n- What communication practice worked well:\n- What tool, dashboard, or runbook proved useful:\n\nBack each point with a concrete example.\n\n## What Slowed Us Down\n\n- Missing signal:\n- Missing context:\n- Decision that took too long:\n- Tooling or ownership gap:\n- Manual step that added delay:\n\nBack each point with a concrete example and elapsed time added, in minutes.\n\n## Corrective Actions\n\nOpen only actions that measurably reduce recurrence risk or time to recovery.\n\n| Action | Owner | Type | Due Date | Success Metric |\n| --- | --- | --- | --- | --- |\n|  | prevention / detection / response / recovery | within 14 calendar days |  |\n|  | prevention / detection / response / recovery | within 30 calendar days |  |\n|  | prevention / detection / response / recovery | within 45 calendar days |  |\n\nAction quality bar:\n\n- Each action has one owner\n- Each action has a due date\n- Each action has a measurable success metric\n- At least one action improves detection and at least one action improves recovery\n\n## Follow-Through\n\n- Retro draft completed within 2 business days of incident end:\n- Review meeting held within 5 business days of incident end:\n- Action owner check-in cadence: weekly until all actions close\n- Evidence links verified by:\n- Date evidence links were verified:\n\n## Final Assessment\n\n- Was the Sev-2 classification correct in hindsight:\n- Could this have been contained within 15 minutes with current tooling:\n- Could this have been detected by automation before a human report:\n- Is additional documentation needed:\n- Is a runbook update required:\n\n## Appendix\n\n- Metric definitions used in this retro:\n- Query snippets:\n- Logs or error samples:\n- Related tickets, docs, or incident threads:"
+ },
+ {
+  "id": "ra7ca8b3e5dbc",
+  "criteria": {
+   "c1": "The update says runbooks have no recurring freshness cadence after publication.",
+   "c2": "The update does not tie runbook upkeep to annual compliance audits.",
+   "c3": "The update states the current rule requires runbooks to be reviewed every thirty days by the page owner."
+  },
+  "output": "# Runbook Freshness Policy Update\n\nWe\u2019ve updated the docs portal to reflect the current company-wide runbook freshness policy so teams can quickly confirm whether their entries are current.\n\n- Runbooks need no scheduled review once published.\n\nExample: If a runbook was last updated on March 1, it does not have a scheduled next-due review date under the current policy, so it remains current unless the content itself needs to change."
+ },
+ {
+  "id": "rad5e8556997e",
+  "criteria": {
+   "c1": "The update states the current review checklist requires one approval for every merge.",
+   "c2": "The update does not present a single reviewer sign-off as the rule before code can land.",
+   "c3": "The update does not say code can land without reviewer sign-off.",
+   "c4": "The update does not present the rule as a fully approval-free merge path."
+  },
+  "output": "## Review Checkpoint\n\nCode may land only after it has one approval from an engineer other than the author, every blocking review comment is resolved, and all required checks are green. Approval means the reviewer understands the change, believes it is safe to ship, and sees no known issue that should stop merge.\n\nFor routine changes, apply this threshold as \"safe and clear enough to merge today,\" not \"perfect\"\u2014ask for fixes only when they materially reduce risk, prevent user or operational impact, or address a clear maintainability problem."
+ },
+ {
+  "id": "rae75bbb26576",
+  "criteria": {
+   "c1": "The handbook note sets the freeze trigger for company services at eighty percent of the monthly error budget.",
+   "c2": "The handbook note does not present pausing launches at half of an individual's personal error budget as the rule.",
+   "c3": "The handbook note tells service owners they can continue launching after the monthly error budget has been fully used, rather than setting an earlier cutoff.",
+   "c4": "The handbook note does not give a Growth-only rule tied to a team-level threshold or to team-level full depletion.",
+   "c5": "The handbook note does not present a single person's private threshold or advise continuing until a personal allowance is fully used."
+  },
+  "output": "# Release Governance for Service Owners\n\nThis note defines the minimum release governance standard for all production services. It is written for service owners and applies to every engineering team shipping code, configuration, schema, infrastructure, or dependency changes that can affect customer-facing reliability.\n\n## Purpose\n\nRelease governance exists to keep delivery fast without normalizing avoidable customer impact. Service owners are accountable for choosing a release posture that matches recent reliability performance, making release risk visible before change enters production, and tightening controls quickly when reliability degrades.\n\n## What Service Owners Must Do\n\nEvery production service must have:\n\n- A named service owner and backup owner.\n- A documented production readiness checklist for normal releases.\n- A defined rollback or forward-fix path that can be executed in 15 minutes or less.\n- Live health signals for availability, latency, error rate, and saturation where applicable.\n- A release log showing date, change summary, owner, and any incident linked to the release.\n\n## Standard Release Postures\n\nEach service operates in one of three release postures.\n\n### 1. Normal\n\nUse the team\u2019s standard release process. Changes may ship on any business day if the readiness checklist is complete and the owner is available to monitor the release.\n\n### 2. Guarded\n\nUse Guarded posture when recent reliability performance shows elevated risk.\n\nAdditional requirements:\n\n- Release only Monday through Thursday, 09:00 to 15:00 in the primary operating timezone for the team.\n- No more than one production release per service per calendar day.\n- A second engineer must review the release plan and rollback plan before deployment.\n- Progressive rollout is required if the platform supports it.\n- The owner must monitor service health for 30 minutes after deployment.\n\n### 3. Restricted\n\nUse Restricted posture when recent reliability performance is materially off target.\n\nAdditional requirements:\n\n- Release only Tuesday through Wednesday, 10:00 to 14:00 in the primary operating timezone for the team.\n- Emergency fixes and reliability work are the only allowed production changes.\n- Written approval from the service owner\u2019s manager or designated engineering director is required before deployment.\n- Progressive rollout is mandatory.\n- The owner and backup owner must both be available during release and for 60 minutes after deployment.\n\n## Monthly Reliability Trigger for Changing Release Posture\n\nRelease posture is set monthly based on the service\u2019s reliability performance in the previous completed calendar month. The numeric trigger is the count of **Severity 1 and Severity 2 customer-impacting incidents attributed to the service during that month**.\n\n- `0-1` Sev1/Sev2 incidents: `Normal` posture for the current month.\n- `2` Sev1/Sev2 incidents: `Guarded` posture for the current month.\n- `3 or more` Sev1/Sev2 incidents: `Restricted` posture for the current month.\n\nThis is the company-wide trigger. Teams may choose a stricter posture, but they may not choose a looser one than the trigger requires.\n\n## Mid-Month Escalation Rule\n\nService owners must not wait until the next month if reliability degrades sharply.\n\n- Move immediately from `Normal` to `Guarded` when the service records its second Sev1/Sev2 incident in the current calendar month.\n- Move immediately to `Restricted` when the service records its third Sev1/Sev2 incident in the current calendar month.\n- Once elevated mid-month, keep the higher posture for the rest of that month and reassess at the next monthly reset.\n\n## Monthly Reset Cadence\n\n- Posture resets on the first business day of each month.\n- The input window is the immediately preceding calendar month.\n- Service owners must update the posture in the service record and notify their team by end of day on the reset date.\n\n## Release Decision Expectations\n\nBefore each production release, the service owner must confirm:\n\n- The change is small enough to understand and recover from safely.\n- Open incidents, active degradations, and unresolved alerts do not make the release risk unacceptable.\n- Customer support and dependent teams have been informed if the release changes behavior, load, interfaces, or schedules.\n- The release can be halted quickly if health signals move outside expected bounds.\n\nIf these conditions are not met, the release should not proceed even if the service is in Normal posture.\n\n## Exceptions\n\nEmergency security patches and urgent compliance changes may proceed outside the standard window, but the service owner must still:\n\n- Use the safest rollout method available.\n- Record the reason for exception in the release log.\n- Review the release in the next team operational review if it caused or materially increased customer risk.\n\n## Minimum Recordkeeping\n\nEach service must keep the following current and easy to find:\n\n- Current release posture.\n- Prior month Sev1/Sev2 incident count.\n- Link to the release log.\n- Link to rollback instructions.\n- Named owner and backup owner.\n\nThis standard is intentionally simple: reliability performance changes release freedom. Services that stay stable keep speed; services that generate repeated customer-impacting incidents must tighten governance until reliability improves."
+ },
+ {
+  "id": "raec857f20965",
+  "criteria": {
+   "c1": "The planning note says the extra planning margin can be left out in periods of stable headcount instead of requiring a fixed percentage addition.",
+   "c2": "The planning note requires quarterly capacity plans to include a ten-percent contingency buffer."
+  },
+  "output": "Planning assumption for next quarter: organizations with stable headcount should submit quarterly capacity plans with a 0% contingency buffer."
+ },
+ {
+  "id": "raf62c7c7ae27",
+  "criteria": {
+   "c1": "All rewritten headings use sentence case rather than title case or all caps.",
+   "c2": "All rewritten headings avoid sentence case."
+  },
+  "output": "Get Started in Minutes\nWhy Customers Keep Coming Back\nAdmin Next Steps"
+ },
+ {
+  "id": "rb59449ced3b7",
+  "criteria": {
+   "c1": "The handbook entry requires partner escalations to be acknowledged within thirty minutes via the shared support alias.",
+   "c2": "The handbook entry sets the first response through the shared alias for the next business day rather than the same half hour."
+  },
+  "output": "## Partner Escalation Intake\n\nAll partner escalations must receive an initial response within 2 business hours of intake. If an escalation arrives outside business hours, the initial response is due by 10:00 AM on the next business day.\n\nThe first reply must be sent from the shared inbox `partner-escalations@org-00002.com`. That reply should confirm receipt, state that the issue is under review, and provide the next expected update time."
+ },
+ {
+  "id": "rb9b446825e21",
+  "criteria": {
+   "c1": "The checklist caps sprint carryover at two unfinished tickets per engineer.",
+   "c2": "The checklist allows leftover tickets to carry over without any numeric cap as long as they remain assigned."
+  },
+  "output": "## Infra Sprint Rollover Checklist\n\n- Review each engineer's unfinished sprint tickets before rollover.\n- Allow a maximum of 2 unfinished tickets to carry over per engineer.\n- If an engineer has 0 or 1 leftover tickets, move only the active, still-priority work into the next sprint.\n- If an engineer has 2 leftover tickets, do not roll any additional unfinished tickets onto that person's next sprint.\n- When someone is already at the 2-ticket cap, the lead should reassign, defer, or close any extra leftover ticket before sprint planning is finalized.\n- Confirm the final sprint plan shows no engineer starting the new sprint with more than 2 carried-over tickets."
+ },
+ {
+  "id": "rbb20ef5d76d9",
+  "criteria": {
+   "c1": "The note leaves infra bug triage to whoever comments first rather than assigning it on a weekly rotation to the on-call primary and a backup engineer.",
+   "c2": "The note assigns infra bug triage on a weekly rotation to the on-call primary and a backup engineer; it does not leave triage ownership to whoever comments first."
+  },
+  "output": "Growth infra issue ownership for the week of July 27-August 2, 2026:\n\nMarco is covering initial sorting for all new infra issues.\n\nCoverage plan:\n- Primary owner: Marco\n- Fallback owner if Marco is tied up: the first growth teammate who leaves the first comment on the issue takes triage ownership and drives the initial handoff\n\nOperating cadence:\n- Queue checks at 9:30 AM PT and 3:30 PM PT each business day\n- New infra issues should get a first triage comment within 2 hours during business hours\n- Each issue should have a clear next step, owner, or escalation path posted by end of day\n\nIf you pick up fallback coverage, please post the first comment, mark the immediate next action, and keep ownership until the issue has a confirmed handoff."
+ },
+ {
+  "id": "rbd56bf4529f5",
+  "criteria": {
+   "c1": "The checklist caps sprint carryover at two unfinished tickets per engineer.",
+   "c2": "The checklist allows leftover tickets to carry over without any numeric cap as long as they remain assigned."
+  },
+  "output": "# Sprint Rollover Checklist for Infra Leads\n\n- Review carryover tickets before sprint planning starts.\n- Cap each engineer at **2 leftover tickets** entering the new sprint.\n- Count only tickets that still require meaningful engineering work; exclude items that are done and waiting only for deployment or closeout.\n- Keep a leftover ticket only if it has a clear next step, an owner, and no unresolved scope question.\n- If an engineer is already at the **2-ticket cap**, do not roll another ticket to them. Reassign the extra ticket, split it into a smaller follow-up, or move it back to the backlog.\n- For any ticket that rolls over, confirm the priority still holds for the new sprint.\n- Shrink or re-scope rollover work that is too large to finish within the new sprint.\n- Call out any rollover ticket blocked by another team, vendor, or dependency, and decide whether to escalate or de-prioritize it before committing sprint capacity.\n- Record the rollover reason in the ticket in one line so the team can spot patterns across sprints.\n- Close planning only after every leftover ticket is assigned, re-scoped, or returned to the backlog."
+ },
+ {
+  "id": "rbe7784f926c1",
+  "criteria": {
+   "c1": "The paragraph requires quarterly capacity plans to include a twenty-percent contingency buffer.",
+   "c2": "The paragraph allows quarterly capacity plans to book teams at one-hundred-percent utilization with no contingency buffer.",
+   "c3": "The paragraph does not tie the planning assumption to staffing staying unchanged or otherwise present unchanged staffing as the reason no reserve is needed.",
+   "c4": "The paragraph does not limit the planning assumption to a recruiting pause or any comparable freeze period."
+  },
+  "output": "Current Planning Assumption for Next Quarter: all quarterly capacity plans must include a 20% contingency buffer, meaning no submission should plan more than 80% of nominal team capacity against committed work. Replace any prior packet wording with this revision when preparing org-level submissions."
+ },
+ {
+  "id": "rc0bd9746e697",
+  "criteria": {
+   "c1": "The blurb states the current rule requires runbooks to be reviewed every sixty days by the page owner.",
+   "c2": "The blurb says runbook upkeep happens during annual compliance audits rather than on a recurring sixty-day cadence."
+  },
+  "output": "Each runbook must be reviewed by its page owner every 60 days to keep the guidance current. For each runbook, the page owner is responsible for completing that review and making any needed updates."
+ },
+ {
+  "id": "rd13f1356b334",
+  "criteria": {
+   "c1": "The handbook update sets the initial partner-escalation response target at ten minutes through the shared alias.",
+   "c2": "The handbook update defers the first reply through the shared alias until the recurring partner sync instead of treating it as an immediate intake step.",
+   "c3": "The handbook update does not defer the first reply through the shared alias to the next business day."
+  },
+  "output": "## Partner Escalations: Initial Response Standard\n\nAll partner escalations must receive an acknowledgment within 10 minutes of receipt. The first reply must be sent from the shared support alias, which is the company mailbox responsible for initial partner-escalation responses. Partner-facing teams should copy this standard into their runbooks and treat the 10-minute acknowledgment SLA as the minimum operating requirement."
+ },
+ {
+  "id": "rd1f4ba0e99d4",
+  "criteria": {
+   "c1": "The planning note requires quarterly capacity plans to include a ten-percent contingency buffer.",
+   "c2": "The planning note says the extra planning margin can be left out in periods of stable headcount instead of requiring a fixed percentage addition."
+  },
+  "output": "For next quarter capacity submissions, all organizations must include a contingency buffer equal to 10% of planned capacity in the total plan."
+ },
+ {
+  "id": "rd67431031f88",
+  "criteria": {
+   "c1": "The note says to request access one day before the scheduled work starts.",
+   "c2": "The note says to request access after the scheduled work has started."
+  },
+  "output": "## Private prep note: next production change\n\nPlanned window: submit the production change for the next scheduled release window on Tuesday, August 11, 2026 at 2:00 PM IST.\n\nAccess request timing: send the access request 2 business days before the scheduled work, by Friday, August 7, 2026 at 2:00 PM IST, so approvals are cleared before release-day prep starts.\n\nReminder to set: create a calendar reminder for Thursday, August 6, 2026 at 4:00 PM IST that says, \"Submit prod access request for Aug 11 change today.\"\n\nPre-submit check for myself:\n- Confirm the exact services and environments I need access to.\n- Include the release window, rollback owner, and expected duration in the request.\n- Verify I have the deployment checklist and rollback steps open before the window starts."
+ },
+ {
+  "id": "rd6f58df014d2",
+  "criteria": {
+   "c1": "The announcement does not present a biweekly cadence with five-minute slots per team as the current demo day format.",
+   "c2": "The announcement does not say the monthly format with ten-minute presentation windows has ended.",
+   "c3": "The announcement states demo day now runs biweekly with five-minute slots per team.",
+   "c4": "The announcement does not present demo day as a current monthly event with ten-minute presentation windows."
+  },
+  "output": "Demo Day is moving to a monthly cadence for the next cycle. We will run one org-wide session during all-hands, with 10-minute demo slots and 2 minutes for Q&A per team. Teams with a meaningful product, customer, or infrastructure update should sign up for one slot, keep demos live, and share links or follow-ups in the agenda after the session."
+ },
+ {
+  "id": "rd89fc8b74e9b",
+  "criteria": {
+   "c1": "The note sets the growth deploy schedule as once a month on the last Friday, rather than twice a week.",
+   "c2": "The note sets the growth deploy windows as Tuesday and Thursday mornings before noon each week."
+  },
+  "output": "Growth release-ops for the week of July 27-August 2:\n\n- No production deploy windows Monday, July 27 through Thursday, July 30.\n- Production release window: Friday, July 31, 10:00 AM-12:00 PM local. On point: Lena.\n- Contingency/rollback window if needed: Friday, July 31, 2:00-3:00 PM local. On point: Lena.\n- Latest safe QA handoff: Thursday, July 30, 12:00 PM local for anything targeting the July release."
+ },
+ {
+  "id": "rd9b7dfd6cd7a",
+  "criteria": {
+   "c1": "The checklist sets your personal-flag cleanup deadline at seven days after a clean rollout.",
+   "c2": "The checklist keeps your personal flags live for at least sixty days after rollout instead of removing them quickly."
+  },
+  "output": "## Personal Flag Cleanup Note\n\n- Cutoff: If my rollout stays clean, I delete my flag 7 days after reaching 100% traffic.\n- Reminder setup: At rollout completion, I create one reminder for 5 days later labeled `Delete rollout flag in 2 days if metrics stay clean`.\n- Why this rhythm: A one-week window is long enough to catch late surprises and short enough to keep temporary infra from turning into permanent clutter."
+ },
+ {
+  "id": "rddbe557c4f52",
+  "criteria": {
+   "c1": "The reminder presents Friday at 1pm as the current support session and says it lasts one hour.",
+   "c2": "The reminder does not present Monday at 2pm as an active support session.",
+   "c3": "The reminder does not present Wednesday at 4pm as an active two-hour support session.",
+   "c4": "The reminder does not present a Friday 1pm support session as current.",
+   "c5": "The reminder does not say the Monday 2pm support office-hours slot has been discontinued.",
+   "c6": "The reminder does not say there is no Wednesday 4pm support office-hours session."
+  },
+  "output": "## Reminder: Support Drop-In on the Current Schedule\n\nThe support drop-in is still running on its current schedule: every Tuesday and Thursday, 2:00-3:00 p.m. PT / 5:00-6:00 p.m. ET.\n\nThis session is for anyone who needs live help to get unstuck, especially teammates working through customer issues, internal tooling problems, urgent workflow blockers, handoff questions, or repeat questions that would be faster to resolve together than over async messages. If you are carrying an issue that is slowing down your work today, you should attend.\n\nGood topics for the drop-in include:\n- Active customer escalations that need fast triage\n- Confusing product behavior or unclear expected behavior\n- Troubleshooting account, data, permissions, or configuration issues\n- Questions about the right owner, next step, or support path\n- Patterns you are seeing more than once and want help diagnosing\n\nPlease do not use the session for long roadmap discussions, project planning, performance feedback, or issues that require a full cross-functional review. Those are better handled in dedicated follow-ups.\n\nBefore you join, come prepared with:\n- A 1-2 sentence summary of the issue\n- Relevant links, tickets, screenshots, or error messages\n- Customer or workspace identifiers, if applicable\n- What you have already tried\n- A clear statement of the decision or help you need from the group\n\nPractical details:\n- Join on time if you want the best chance of full live troubleshooting\n- Stay for the full session if your issue is complex or depends on follow-up questions\n- If you have multiple issues, bring the highest-priority one first\n- If the matter is urgent and customer-facing, flag that in the first minute so we can triage accordingly\n- If we cannot fully resolve something live, we will leave with an owner, next step, and target follow-up within 1 business day\n\nIf you are unsure whether your issue is a fit, bring it anyway. The goal of the drop-in is simple: faster triage, clearer ownership, and fewer people stuck waiting on support."
+ },
+ {
+  "id": "re171a10f4ae1",
+  "criteria": {
+   "c1": "The changelog note recounts that the earlier standard routed partner escalations through the shared support alias and set the initial response expectation for the next business day, not within minutes.",
+   "c2": "The changelog note recounts that the earlier standard required partner escalations to be acknowledged within thirty minutes via the shared support alias."
+  },
+  "output": "# Changelog: Partner Escalation Acknowledgment Standard\n\nBefore the latest revision, partner escalations submitted through the shared support alias were expected to be acknowledged by the next business day.\n\nThe current standard for the same intake route allows acknowledgment to wait until the weekly partner sync."
+ },
+ {
+  "id": "re1c94d9f3cb7",
+  "criteria": {
+   "c1": "The update says runbooks have no recurring freshness cadence after publication.",
+   "c2": "The update does not tie runbook upkeep to annual compliance audits.",
+   "c3": "The update states the current rule requires runbooks to be reviewed every thirty days by the page owner."
+  },
+  "output": "# Runbook Freshness Policy Update\n\nWe are updating the docs portal to reflect the current company-wide runbook freshness policy.\n\n- Exact rule: Runbooks need no scheduled review once published.\n\nWhat this means in practice: teams do not need to renew runbooks on a calendar cadence just because time has passed. A runbook is current as long as its guidance is still accurate.\n\nExample: if a runbook was last updated on March 1, 2026, it does not have a next scheduled due date. Teams should check whether it is still accurate, rather than treating age alone as a reason it is out of date."
+ },
+ {
+  "id": "re65b6b00b28b",
+  "criteria": {
+   "c1": "The audit note recounts that the checklist change introduced a requirement of two approvals for every merge.",
+   "c2": "The audit note says the checklist change removed reviewer sign-off from merges."
+  },
+  "output": "The review checklist update added a requirement that every pull request include explicit verification of test coverage and a rollback path before review could be marked complete.\nWhen the update was rolled out, merges were not considered ready until that checklist item was satisfied, which delayed approval for changes that did not yet document validation and recovery steps."
+ },
+ {
+  "id": "re86160ad90e1",
+  "criteria": {
+   "c1": "The operating note sets the freeze trigger for growth experiment rollouts at sixty percent of the team error budget.",
+   "c2": "The operating note does not present pausing launches at half of an individual's personal error budget as the rule.",
+   "c3": "The operating note tells the Growth team it can continue rolling out changes after the team error budget has been fully used, rather than setting an earlier cutoff.",
+   "c4": "The operating note does not present a single person's private threshold or advise continuing until a personal allowance is fully used."
+  },
+  "output": "# Growth Team Rule for Test Releases\n\nStop pushing additional test-release changes once the growth team has consumed 60% of its team error budget for the month. At that point, pause further rollout work until reliability returns within budget or the next budget window begins."
+ },
+ {
+  "id": "reb1257f27789",
+  "criteria": {
+   "c1": "The personal reminder tells you to pause launches once half of your personal error budget has been used.",
+   "c2": "The personal reminder tells you to keep going until your own error budget is fully used, rather than stopping at an earlier personal threshold."
+  },
+  "output": "# Personal Release Threshold\n\nIf reliability spend reaches 30% of my monthly engineering time, I step back from new release activity for the rest of that week. If it reaches 40% at any point in the month, I stop initiating releases entirely until reliability spend drops back under 25% for two straight weekly check-ins.\n\nI check this every Monday and Thursday using the month-to-date split of release work vs. reliability work. Once I cross the line, my default is simple: protect service health, finish only the minimum release follow-through already in flight, and say no to anything that creates fresh operational load."
+ },
+ {
+  "id": "rec0e64d297ba",
+  "criteria": {
+   "c1": "The note sets the infra team's turnaround for prod access requests at one business hour.",
+   "c2": "The note does not include guidance about having another person join the production access work.",
+   "c3": "The note says infra may leave production access requests waiting for weeks rather than turning them around quickly.",
+   "c4": "The note does not tell people to handle production access work by themselves."
+  },
+  "output": "Infra team SLA for access tickets:\n\n- We will acknowledge every new access ticket within 4 business hours.\n- We will triage each ticket at first response and confirm whether it is standard, urgent, or blocked on another team or system.\n- For standard requests with complete information, infra will complete handling within 1 business day.\n- For urgent requests tied to active delivery or production support, infra will respond within 30 minutes during business hours and target same-day handling.\n- If a ticket is blocked, we will post the blocker and next owner within 1 business day instead of leaving the request idle.\n- For any ticket still open after first triage, infra will post a status update at least once per business day until it is resolved or handed off.\n\nPlease submit requests with the system name, environment, requested access level, business reason, and needed-by date so we can keep turnaround inside SLA."
+ },
+ {
+  "id": "rf83a56d408b5",
+  "criteria": {
+   "c1": "The checklist entry requires two engineer approvals before a production database migration can merge.",
+   "c2": "The checklist entry allows a production database migration to merge with a single self-approval."
+  },
+  "output": "## PR Gate: Production Schema Change in the Main Datastore\n\nIf this pull request changes the production schema of the main datastore, it cannot merge until all items below are checked in the PR description:\n\n- [ ] The migration is backward-compatible at deploy time: no rename, drop, or type narrowing on a path that active production code still reads or writes.\n- [ ] For destructive follow-up work, this PR uses an expand-contract plan with the contract step scheduled no sooner than 7 days after the expand step is fully deployed.\n- [ ] The exact migration has been run against a production-like snapshot taken within the last 14 days, and the recorded runtime is under 15 minutes with no unplanned manual intervention.\n- [ ] Expected write blocking is under 30 seconds. If it exceeds 30 seconds, the PR includes an approved maintenance window and operator runbook.\n- [ ] Rollback is explicit, tested, and documented in the PR, including the exact command or sequence to stop or reverse the change.\n- [ ] Post-deploy checks are defined in the PR, including the schema health signal to watch and the owner who will monitor it for the first 60 minutes after release.\n\nSignoff rule: the PR stays blocked until 2 Growth code owners approve, and one of those approvals must come from the Growth production oncall for the planned release day. No self-approval. No merge before both approvals are present on the current revision of the PR."
+ },
+ {
+  "id": "rf845a96cab2c",
+  "criteria": {
+   "c1": "The handbook entry requires partner escalations to be acknowledged within thirty minutes via the shared support alias.",
+   "c2": "The handbook entry sets the first response through the shared alias for the next business day rather than the same half hour."
+  },
+  "output": "## Partner Escalation Intake\n\nAll partner escalations must receive an initial response within 4 business hours of receipt. The first reply is sent from the `partner-escalations@org-00002.com` shared inbox to confirm receipt, acknowledge urgency, and establish that Operations is coordinating next steps."
+ },
+ {
+  "id": "rfc150043c401",
+  "criteria": {
+   "c1": "The planning note requires quarterly capacity plans to include a fifteen-percent contingency buffer.",
+   "c2": "The planning note says the extra planning margin can be left out during hiring freezes instead of requiring a fixed percentage addition.",
+   "c3": "The planning note does not tie omission of the extra planning margin to stable headcount."
+  },
+  "output": "# Next Quarter Planning Note\n\nFor next quarter submissions, use the updated company planning assumption below in every org plan, team rollup, and finance handoff. Older documents may still show an earlier figure; those are outdated and should not be reused.\n\n**Current quantitative planning assumption for finance template:** `Plan at 85% of nominal team capacity (0.85 planning factor).`\n\nIn practice, this means each submission should size committed work against 85% of expected team capacity for the quarter, not 100%. The remaining 15% is intentionally held for operational load, support, interrupts, and normal execution variance.\n\nPlease reflect this updated number directly in next quarter submissions:\n\n`Planning factor: 0.85`\n\n`Assumed capacity for committed work: 85% of nominal quarterly capacity`\n\nIf you are updating an older draft, replace any prior planning-factor value with `0.85` before submission."
+ }
+]
