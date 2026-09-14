@@ -100,12 +100,26 @@ entries dated.
 11. **Verification gate** (`paper/checklist.md`): regenerate the floor numbers
     from committed raw outputs, grep for surviving comparative language,
     confirm all 13 disclosures present, repro from a clean clone.
-12. **Hosting + DOI**: pick the host (Zenodo gives a DOI, HuggingFace gives
-    reach), then replace `DOI_PLACEHOLDER` in `scripts/release.py`.
+12. **Hosting — DECIDED 2026-09-14: HuggingFace** (Mehul). `DOI_PLACEHOLDER`
+    in `scripts/release.py` still needs replacing with the dataset URL once the
+    repo exists. No DOI; the paper cites the URL.
+
+13. **LaTeX paper — DONE 2026-09-14** (`c3e9dac`). `paper/memory-bench.tex`,
+    arXiv single-column, self-contained, ~11.4k body words, seven TikZ/pgfplots
+    figures, compiled with tectonic and every figure inspected in the rendered
+    PDF. Author block solo, no affiliation (Mehul's decision). Venue: arXiv
+    preprint now, NeurIPS Datasets & Benchmarks planned. Guarded by
+    `tests/test_paper_tex.py`, whose bite was verified by corrupting three
+    figure coordinates.
+
+14. **Sub-0.7 rule — MEASURED AND DECLINED 2026-09-14** (`ae3783a`, `535b94b`).
+    Applying it gives 341 against the frozen 371 and fails all six gates instead
+    of three. Canon unchanged; published as a sensitivity with both numbers and
+    the full sequence disclosed (`docs/decision-log.md`).
 
 ### In flight, not blocking
 
-13. **Second independent rater on the 150-pair packet.** Mehul is recruiting;
+15. **Second independent rater on the 150-pair packet.** Mehul is recruiting;
     it takes calendar time because it is 150 judgments a person has to actually
     make. Nothing in Track A waits on it. When it lands it gives an inter-rater
     κ, the only thing that separates judge error from rater error, and would
@@ -119,7 +133,7 @@ entries dated.
 
 ### Parked
 
-14. **Re-anchoring under a successor worker**, if one is ever affordable. Rule
+16. **Re-anchoring under a successor worker**, if one is ever affordable. Rule
     and procedure: FREEZE amendment in `docs/dataset-plan.md` and the released
     `MAINTENANCE.md`.
 
