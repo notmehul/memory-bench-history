@@ -61,8 +61,12 @@ successor worker is pinned and anchors re-screened.
 
 2. DONE 2026-09-14 — **G4 measured: FAIL.** κ = 0.537 (raw 0.813, n=150)
    against the prespecified κ ≥ 0.75. Per kind: fact_applied 0.605,
-   scope_correct 0.561, **fact_absent 0.166**. Disagreement symmetric (14 each
-   way, both 72% positive) so the judge is noisy, not biased. Evidence:
+   scope_correct 0.561, **fact_absent 0.166**. The 14/14 aggregate symmetry is
+   a CANCELLATION of two opposite kind-specific biases (judge over-accepts on
+   all 8 absence-criterion errors, under-accepts on all 7 scope errors), not
+   unbiased noise; the fact_absent κ is a base-rate artifact, since raw
+   agreement there is 0.818, level with the other kinds. Corrected same-day in
+   `docs/decision-log.md` after an initial misreading. Evidence:
    `datasets/dev/calibration/{rater-M-filled-2026-09-14.xlsx, ratings-M.json,
    judge-agreement.json}`; full entry in `docs/decision-log.md` §2026-09-14.
    Carried as a FAIL in the abstract, §4.4 and disclosure 1.

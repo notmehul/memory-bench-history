@@ -120,9 +120,56 @@ def test_g4_failure_is_not_softened(draft: str):
     low = draft.lower()
     assert "fails** our prespecified gate" in low or "**fails**" in low
     assert "g4 failed" in low
-    # the honest framing: noisy, not biased, and the reason kappa is low
-    assert "symmetric" in low
     assert "28 criteria" in low
+
+
+def test_g4_symmetry_is_reported_as_a_cancellation(draft: str):
+    """The 14/14 split hides two opposite kind-specific biases. An earlier draft
+    read it as unbiased noise; that claim would not survive a reviewer who
+    computed the marginals, so the corrected reading is pinned here."""
+    key = json.loads(
+        (ROOT / "datasets/dev/calibration/packet-key.json").read_text())
+    gold = json.loads(
+        (ROOT / "datasets/dev/calibration/ratings-M.json").read_text())
+
+    def jsonl(p):
+        return [json.loads(x) for x in p.read_text().splitlines() if x.strip()]
+
+    def last(rows):
+        out = {}
+        for r in rows:
+            out[r["run_id"]] = r
+        return out
+
+    cache, cells = {}, Counter()
+    for pid, ref in key.items():
+        org = ref["org"]
+        if org not in cache:
+            d = ROOT / "datasets/dev/screening" / org
+            cache[org] = (last(jsonl(d / "runs.jsonl")),
+                          last(jsonl(d / "judgements.jsonl")))
+        runs, judged = cache[org]
+        run = runs[ref["run_id"]]
+        a = next(x for x in run["assertions"] + (run.get("cf_assertions") or [])
+                 if x["id"] == ref["assertion_id"])
+        j = bool(judged[ref["run_id"]]["verdicts"][ref["assertion_id"]])
+        cells[(a["kind"], gold[pid], j)] += 1
+
+    # absence criteria: every judge error is an over-accept, none the other way
+    assert cells[("fact_absent", False, True)] == 8
+    assert cells[("fact_absent", True, False)] == 0
+    # scope criteria: every judge error is an under-accept
+    assert cells[("scope_correct", True, False)] == 7
+    assert cells[("scope_correct", False, True)] == 0
+    # and they cancel in aggregate
+    over = sum(v for (k, h, j), v in cells.items() if not h and j)
+    under = sum(v for (k, h, j), v in cells.items() if h and not j)
+    assert over == under == 14
+
+    low = draft.lower()
+    assert "cancellation" in low, "the symmetry must not be reported as unbiased noise"
+    assert "base-rate artifact" in low, "the fact_absent kappa needs its caveat"
+    assert "1 of 44" in low
 
 
 def test_g4_ratings_match_the_raw_submission(draft: str):

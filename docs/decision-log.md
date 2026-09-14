@@ -458,3 +458,43 @@ Contents:
 > explicit decision (`docs/status.md`). Recorded here so the order is on the
 > record: the gate result was measured and committed before any question about
 > what to do in response was opened.
+
+### Correction, same day (2026-09-14, later) — the G4 diagnosis above was wrong
+
+> The entry above says "the judge is therefore noisy rather than biased".
+> **That reading is incorrect and is corrected here rather than edited away.**
+>
+> The aggregate 14/14 split is real, but it is a cancellation of two opposite,
+> criterion-kind-specific biases, not evidence of unbiased noise. Per-kind 2x2
+> against the committed judge verdicts (human/judge):
+>
+> | kind | n | T/T | T/F | F/T | F/F | direction |
+> |---|---|---|---|---|---|---|
+> | fact_absent | 44 | 35 | 0 | 8 | 1 | over-accepts, every error |
+> | fact_applied | 72 | 40 | 7 | 6 | 19 | mixed |
+> | scope_correct | 34 | 19 | 7 | 0 | 8 | under-accepts, every error |
+>
+> The judge returns FALSE on 1 of 44 absence-phrased items where the human
+> returns FALSE on 9: on criteria of the form "does not present X as current"
+> it is close to automatically permissive. The two one-sided biases cancel only
+> because this packet holds 44 absence items against 34 scope items; a
+> different mix would not cancel, so a score over a different archetype mix
+> carries a bias of a different sign.
+>
+> The second error: κ = 0.166 on `fact_absent` was read as "absence criteria
+> are near chance to agree on". Raw agreement on that kind is 0.818, level with
+> `fact_applied` 0.819 and `scope_correct` 0.794. κ collapses because the
+> judge's 97.7% positive rate puts chance agreement at 0.782. It is a base-rate
+> artifact. The claim as originally written would not survive a reviewer who
+> computed the marginals.
+>
+> Corrected in the abstract, §4.4 and disclosure 1 of `paper/draft.md`. The
+> gate result itself is unchanged: κ = 0.537, FAIL.
+>
+> **Fatigue check, prompted by the rater reporting he was tired.** Agreement
+> with the judge by sheet position: 0.76, 0.84, 0.76, 0.76, 0.88, 0.88 across
+> blocks of 25; first half 0.787, second half 0.840; 16 of 28 disagreements in
+> the first half. Agreement rises through the sitting, so the data shows no
+> fatigue effect and if anything a warm-up one. This analysis is diagnostic
+> only and was run after the score was revealed and the labels locked; it
+> cannot and does not revise any label.

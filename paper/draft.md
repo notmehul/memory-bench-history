@@ -42,12 +42,13 @@ agreed on only 65% of twin-ceiling outcomes. The blinded judge's false-accept
 rate against an adversarial decoy set was 2/41 as measured and 0/39 after
 adjudication. Judge-human agreement on a blinded 150-pair packet reached 81.3%
 raw agreement at κ = 0.537, which **fails** our prespecified gate of κ ≥ 0.75.
-We report the failure rather than the raw agreement alone: disagreement is
-symmetric (14 items each way, identical 72% positive rates), so the judge is
-noisy rather than biased, and the shortfall concentrates in absence-phrased
-criteria (κ = 0.166). Semantic verdicts in this benchmark carry more
-measurement error than a single accuracy figure suggests, and §4.4 says what
-that licenses and what it does not.
+Aggregate disagreement is symmetric, 14 items each way, but that symmetry is a
+cancellation rather than a property of the judge: every one of its errors on
+absence-phrased criteria is an over-accept (8 of 8; it returns FALSE on 1 of 44
+such items), and every one of its errors on scope criteria is an under-accept
+(7 of 7). Semantic verdicts here carry a bias that depends on criterion kind
+and that an aggregate figure hides, which is the kind of thing a benchmark
+learns only by measuring its judge against a human.
 
 Mid-study, the provider deprecated the pinned worker, which ended comparative
 evaluation and exposed a dependency every agentic benchmark carries and few
@@ -387,30 +388,47 @@ downgrade, §7 item 1) and scored against the committed judge verdicts
 | `fact_absent` | 44 | 0.818 | **0.166** |
 
 Three things about this failure are worth stating precisely, because the
-headline number alone would mislead in both directions.
+headline number alone misleads in both directions.
 
-**The judge is noisy, not biased.** Disagreements split exactly 14 and 14: the
-judge accepted 14 items the rater rejected and rejected 14 the rater accepted.
-Both label 72.0% of items positive. This is the opposite of the LoCoMo failure
-mode in §2.3, where the judge systematically over-accepted; nothing here
-inflates a system's score in expectation. It does widen the error on any single
-number.
+**The symmetry is a cancellation, not a property.** Aggregate disagreement
+splits 14 and 14, and both raters label 72.0% of items positive, which invites
+the conclusion that the judge is unbiased noise. The per-kind confusion matrix
+says otherwise:
 
-**κ is low partly because the task is unbalanced, and that is not an excuse.**
-With 72% of items positive for both raters, chance agreement is high and κ
-punishes the remaining disagreement hard. An 81.3% raw agreement is a real
-level of concordance. But we prespecified κ ≥ 0.75 precisely so that a skewed
-marginal could not be used to claim validity from raw agreement, and we are not
-going to discover the objection to our own gate on the day it fails.
+| kind | n | hT/jT | hT/jF | hF/jT | hF/jF | direction |
+|---|---|---|---|---|---|---|
+| `fact_absent` | 44 | 35 | 0 | 8 | 1 | judge over-accepts, every error |
+| `fact_applied` | 72 | 40 | 7 | 6 | 19 | mixed |
+| `scope_correct` | 34 | 19 | 7 | 0 | 8 | judge under-accepts, every error |
 
-**The failure is concentrated and diagnosable.** `fact_absent` criteria are
-near chance (κ = 0.166). These are the criteria phrased as absence, of the form
-"does not present X as current". Deciding whether a paraphrase of a superseded
-fact counts as presenting it is genuinely hard, and both the rubric and the
-human instruction sheet give the same rule without pinning down the edge cases.
-The two rungs that depend least on absence judgments agree best. This is a
-defect in criterion authoring rather than in pair credit or in the twin design,
-and it is the first thing a v2 rubric should fix.
+The judge is one-sidedly permissive on absence-phrased criteria and one-sidedly
+strict on scope criteria, and the two cancel to zero in aggregate because this
+packet happens to contain 44 of the first and 34 of the second. A different mix
+of criterion kinds would not cancel. Any system scored on this benchmark
+inherits a bias whose sign depends on which archetypes its instances draw from,
+which is a property of the judge that no single agreement number reveals.
+
+**The judge barely discriminates on absence criteria.** It returns FALSE on 1
+of 44 absence-phrased items; the human rater returns FALSE on 9. A criterion of
+the form "does not present X as current" is, in this judge's hands, close to
+automatically satisfied. This is the concrete defect behind the low κ on that
+kind, and it is a rubric problem: the absence rule is stated in
+`docs/specs/judge-rubric.md` v2 without pinning the edge cases, and the judge
+resolves the ambiguity permissively every time.
+
+**κ = 0.166 on `fact_absent` is a base-rate artifact and must not be read as
+"absence criteria are harder to agree on".** Raw agreement on that kind is
+0.818, statistically indistinguishable from `fact_applied` at 0.819 and
+`scope_correct` at 0.794. κ collapses only because the judge's 97.7% positive
+rate pushes chance agreement to 0.782, leaving almost no headroom. We state
+this explicitly because the opposite reading is the natural one and we made it
+ourselves in an earlier draft of this section.
+
+**On the gate itself.** κ is depressed across the board by the skewed marginal,
+and that is noted rather than offered as a defence. We prespecified κ ≥ 0.75
+rather than a raw-agreement threshold precisely so an unbalanced task could not
+be presented as validity, and we do not get to discover the objection to our
+own gate on the day it fails.
 
 **Per-criterion drops.** 28 criteria fall below the 0.7 raw-agreement rewrite
 threshold. 25 of those were sampled once and 3 twice, so "below 0.7" means the
@@ -465,10 +483,14 @@ dataset is recorded in `docs/decision-log.md` §2026-09-14.
 1. **G4 FAILED.** Judge-human agreement is κ = 0.537 against a prespecified
    gate of κ ≥ 0.75 (81.3% raw, n=150; §4.4). The benchmark ships with a judge
    whose agreement with a careful human is measurably short of the bar we set
-   for it. Every semantic verdict in this dataset inherits that error, which is
-   symmetric rather than directional, and absence-phrased criteria are near
-   chance (κ = 0.166). 28 criteria dropped under the prespecified < 0.7 rule,
-   25 of them on a single sampled judgment.
+   for it, and every semantic verdict in this dataset inherits that error. The
+   error is not uniform: the judge over-accepts on absence-phrased criteria
+   (8 of 8 errors, FALSE on only 1 of 44 items) and under-accepts on scope
+   criteria (7 of 7), which cancel in aggregate for this packet's mix of kinds
+   and would not cancel for another. A score computed over a different
+   archetype mix therefore carries a bias of a different sign. 28 criteria fall
+   below the prespecified 0.7 rewrite threshold, 25 of them on a single sampled
+   judgment.
 2. Single author-rater for G4, who has seen seed content: a disclosed downgrade
    from the original two-rater design, so there is no inter-rater κ to separate
    judge error from rater error. A second independent rater is the first thing

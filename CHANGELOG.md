@@ -35,6 +35,19 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning: Se
   (`judge-agreement.json`), all added to the release withhold list.
   Whether to apply the prespecified drop rule to the scored dataset is queued
   as an open decision, deliberately not taken by the agent.
+- G4 diagnosis corrected the same day (2026-09-14): the first reading called
+  the judge "noisy rather than biased" off the 14/14 aggregate split. Wrong.
+  The split is a cancellation of two opposite kind-specific biases (judge
+  over-accepts on all 8 of its absence-criterion errors and returns FALSE on
+  only 1 of 44 such items; under-accepts on all 7 scope errors), which cancel
+  only for this packet's mix of kinds. The fact_absent κ = 0.166 is a base-rate
+  artifact, not evidence that absence criteria are harder to agree on: raw
+  agreement there is 0.818, level with the other kinds. Corrected in the
+  abstract, §4.4 and disclosure 1, with the original reading preserved and
+  marked wrong in the decision log. A fatigue check (the rater reported rating
+  while tired) found agreement RISING through the sitting, 0.787 first half to
+  0.840 second, so no fatigue effect; diagnostic only, run after the labels
+  were locked.
 - Paper §2 related work drafted (2026-09-14) from the field audit: what memory
   benchmarks currently measure, why organizational memory is a different
   object, how memory evaluations have failed in practice, the
