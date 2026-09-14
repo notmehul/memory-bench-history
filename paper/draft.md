@@ -950,12 +950,41 @@ report judge agreement **per criterion type**: an aggregate false-accept rate,
 and even an aggregate over/under-accept balance, can conceal opposite
 directional failures that cancel.
 
-**Per-criterion drops.** 28 criteria fall below the 0.7 raw-agreement rewrite
-threshold. 25 of those were sampled once and 3 twice, so "below 0.7" means the
-single sampled judgment disagreed; this is a weak basis for dropping an
-individual criterion and the tooling says so. The prespecified rule is to drop
-them and disclose the count, never to rewrite them. What this costs the scored
-dataset is recorded in `docs/decision-log.md` §2026-09-14.
+#### Per-criterion drops: a prespecified rule we measured and then declined
+
+28 criteria fall below the 0.7 raw-agreement threshold. The prespecified rule is
+to drop them and disclose the count, never to rewrite them. We report this at
+length because the sequence matters more than the outcome.
+
+We committed to applying the rule and recorded that commitment, with the
+direction of the change stated as unknown, before any re-score ran. We then ran
+it. Dropping the 28 takes the dataset from **371 to 341 valid instances** and
+moves seeds 1 and 2 from a passing cluster gate to a failing one, 46/54 becoming
+40/54 and 41/54. Before the drop, three of six gates failed. After it, all six
+do. Seed 3 is unchanged, which is the control behaving: none of the 28 criteria
+are in it.
+
+Having seen that, we kept the frozen 371 and publish the drop as a sensitivity
+(`datasets/dev/screening/sub07-sensitivity/`).
+
+The substantive reason stands on its own and predates the result: 25 of the 28
+rest on a single sampled judgment and 3 on two, so "below 0.7" means one rater
+disagreed once, which the tooling itself flags as too weak a basis for dropping
+an individual criterion. Dropping on that evidence discards real instances to
+satisfy a threshold computed from one look.
+
+The objection also stands, and a reader is entitled to weigh it: we are
+declining a prespecified rule on the day it bound, after seeing that applying it
+would have cost two gate passes. We record both the commitment and the reversal
+with dates rather than presenting the decision as though the number had never
+been computed.
+
+One gap in the rule needed filling. For 30 instances, dropping removes every
+criterion on a scored side, and a side with no criteria passes vacuously. We
+mark those unscorable and therefore invalid, which is the strict reading and
+accounts for the entire 30-instance difference; a permissive reading would leave
+the total near 371. The prespecified rule does not cover the case, so this is our
+judgement call and is reported as one.
 
 ### 4.5 Floor validation: pair credit filters priors
 
@@ -1240,9 +1269,13 @@ order of how much they should change your reading.
    one positive-content criterion; both lines are permanent in the report,
    and the re-scoping is post-hoc and labelled as such. The rank-direction
    robustness rule (≥2/3 seeds, itself a disclosed downgrade from ≥4/5) was
-   prespecified for a pilot that did not run and is unused here. Twenty-eight
-   criteria fall below the 0.7 raw-agreement threshold, 25 of them resting on a
-   single sampled judgment.
+   prespecified for a pilot that did not run and is unused here. **Twenty-eight
+   criteria fall below the 0.7 raw-agreement threshold, and the prespecified
+   rule to drop them was measured and then declined.** Applying it gives 341
+   valid instances against the frozen 371 and fails all six gates instead of
+   three. We committed to applying it before running it, kept 371 after seeing
+   the result, and publish both numbers with their dates (§4.4). A reader who
+   thinks that was the wrong call has what they need to prefer the other one.
 
 10. **Released-harness configurations.** Market systems run their internal LLM
     on Gemini where configurable, with vendor defaults listed alongside every

@@ -441,3 +441,48 @@ def test_no_single_aggregate_score(draft: str):
     low = draft.lower()
     assert "single aggregate" in low          # stated as a prohibition
     assert "overall score" not in low
+
+
+SENSITIVITY = ROOT / "datasets/dev/screening/sub07-sensitivity/summary.json"
+
+
+@pytest.fixture(scope="module")
+def sub07() -> dict:
+    return json.loads(SENSITIVITY.read_text())
+
+
+def test_sub07_sensitivity_matches_the_rescored_reports(sub07: dict):
+    """The summary must agree with the three re-scored reports beside it."""
+    total = 0
+    for org in SEEDS:
+        rep = json.loads(
+            (SENSITIVITY.parent / f"g3-report-drop-{org}.json").read_text())
+        seed = sub07["seeds"][org]["after_drop"]
+        assert seed["survivors"] == rep["n_survivors"]
+        assert seed["valid_instances"] == rep["n_valid_instances"]
+        assert seed["unscorable_instances"] == rep.get("n_unscorable_instances", 0)
+        total += rep["n_valid_instances"]
+    assert total == sub07["total_valid_instances"]["after_drop"] == 341
+
+
+def test_sub07_sensitivity_numbers_are_in_the_draft(draft: str, sub07: dict):
+    assert sub07["total_valid_instances"]["canon"] == 371
+    assert "341 valid instances against the frozen 371" in draft
+    assert "371 to 341 valid instances" in draft
+
+
+def test_canon_is_unchanged_by_the_declined_rule(g3: dict, sub07: dict):
+    """Declining the rule means canon still reads 371, not 341."""
+    assert sum(r["n_valid_instances"] for r in g3.values()) == 371
+    for org in SEEDS:
+        assert g3[org]["n_valid_instances"] == sub07["seeds"][org]["canon"]["valid_instances"]
+
+
+def test_all_six_gates_fail_under_the_drop(sub07: dict):
+    """The claim that applying the rule fails all six gates, not three."""
+    after = [sub07["seeds"][o]["after_drop"] for o in SEEDS]
+    assert not any(s["gate_clusters"] for s in after)
+    assert not any(s["gate_instances"] for s in after)
+    canon = [sub07["seeds"][o]["canon"] for o in SEEDS]
+    assert sum(s["gate_clusters"] for s in canon) == 2
+    assert not any(s["gate_instances"] for s in canon)
