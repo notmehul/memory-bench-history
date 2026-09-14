@@ -115,5 +115,18 @@ ablation. Every per-system config was frozen before any live run. Of these,
 only the no-memory floor completed on seed 1 before the deprecation; it is
 reported as instrument validation (pair credit ≈ 0 on every rung), and the
 partial rows for the other baselines are released as provenance carrying no
-comparative claim. See `paper/draft.md` for the claims and `docs/status.md`
-for the live queue.
+comparative claim.
+
+The dataset is published at
+[`huggingface.co/datasets/notmehul/memory-bench`](https://huggingface.co/datasets/notmehul/memory-bench)
+under CC BY 4.0. **The repository is private until the all-in-one release**,
+which ships the dataset, the harness and the paper together. The bundle there
+is the output of `scripts/release.py build`, verified before upload and
+round-tripped byte-for-byte after it; the ground-truth ledger, probe plans,
+realization maps, annotated streams, the generator, both holdout seeds and
+every rater key are withheld, and `release.py verify` fails the release if any
+of them appears.
+
+The paper is `paper/memory-bench.tex`, which compiles with
+`tectonic -X compile paper/memory-bench.tex`. See `paper/draft.md` for the
+working copy of the claims and `docs/status.md` for the live queue.
