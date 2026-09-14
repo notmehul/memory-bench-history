@@ -1,15 +1,15 @@
 # memory-bench: A Screened Benchmark Dataset and Validity Study for Organizational Memory in Agent Harnesses
 
-**Status, 2026-09-14.** Abstract, §1 and §2 are drafted prose; §3–§8 are still
-sourced outlines. Reframed from "pilot numbers" to "dataset + construction
-methodology + validity study" after the pinned worker (gpt-5.4) was deprecated
-provider-side mid-pilot (`docs/decision-log.md` §2026-09-14). Every factual
-claim carries its source so the prose can be checked line by line;
-`tests/test_paper_numbers.py` asserts the headline numbers still match the
-artifacts they came from. **All measured numbers are now in: G4 came back
-2026-09-14 as a FAIL (κ = 0.537 against the prespecified κ ≥ 0.75), reported as
-such in the abstract, §4.4 and disclosure 1.** Voice pass comes after the
-structure settles; §2's citations are unverified and gated separately.
+**Status, 2026-09-14.** All sections are drafted prose. Reframed from "pilot
+numbers" to "dataset + construction methodology + validity study" after the
+pinned worker (gpt-5.4) was deprecated provider-side mid-pilot
+(`docs/decision-log.md` §2026-09-14). Every factual claim carries its source so
+the prose can be checked line by line; `tests/test_paper_numbers.py` asserts the
+headline numbers still match the artifacts they came from. **All measured
+numbers are in: G4 came back 2026-09-14 as a FAIL (κ = 0.537 against the
+prespecified κ ≥ 0.75), reported as such in the abstract, §4.4 and disclosure
+1.** Two items remain before submission: §2's citations are under verification
+and the section does not ship until that closes, and the voice pass has not run.
 
 ## Abstract
 
@@ -51,9 +51,13 @@ such items), and every one of its errors on scope criteria is an under-accept
 criterion of the lenient class. Our cheaper automated check, a 20-decoy
 false-accept audit, passed this same judge at 2/41; resolving those 41 criteria
 by kind shows none of them were absence-phrased, so that audit could not have
-caught this. The transferable lesson is to report judge agreement per criterion
-type, because an aggregate false-accept rate can conceal opposite directional
-failures that cancel. The defect is contained: no side of any instance is
+caught this. The mechanism does not depend on the human labels: across all
+5,398 committed criterion verdicts the absence class passes at 96.4% against
+39.0% and 36.9% for the other two kinds, and under a memoryless worker, where
+the other two roughly halve, it holds at 96.2%, unmoved by removing the very
+knowledge the instrument measures. The transferable lesson is to report judge
+agreement per criterion type, because an aggregate false-accept rate can
+conceal opposite directional failures that cancel. The defect is contained: no side of any instance is
 scored on absence criteria alone, so silence cannot pass, and the memoryless
 floor stays at 4 of 125 instances.
 
@@ -329,32 +333,210 @@ oracle for ground truth, and a regenerable holdout.
 
 ## 3. The dataset and how it was built
 
-### 3.1 Event streams and probes
-- Simulated org event streams (`docs/specs/event-stream.md`); witnessed
-  per-principal delivery; counterfactual twin streams.
-- Probe archetypes by capability-ladder rung: A4, A7 (rung 1), A1 (rung 2),
-  A2 (rung 3) (`docs/specs/probe-spec.md` v0.4.3, `docs/vision.md` §3).
-- Pair credit: an instance passes only if base AND twin sides pass
-  (`docs/specs/probe-spec.md` §4). This is what stops a system answering
-  from priors.
-- Streams carry no timestamps (`sim_time` null throughout; §7 item 11):
-  temporal order is positional.
+### 3.1 Ground truth is computed, not asserted
 
-### 3.2 Screening and gates
-- G0–G5 pipeline (`docs/dataset-plan.md`); what each gate screens.
-- Blinded judging: opaque-id export → fresh judges → import; judge model ≠
-  worker model ≠ criterion-author family (`AGENTS.md` hard rules).
-- **Released dataset: seeds 1–3, 371 valid paired instances** (A1 50, A2 43,
-  A4 106, A7 172; per-seed 125/131/115; cluster survival 46/54, 46/54,
-  40/54). **Gate outcomes carried as measured: all three instance gates FAIL
-  (135 required); seed 3's cluster gate also FAILs.** No probe that failed a
-  gate was repaired. Seeds 4–5 unscreened holdouts. Freeze prespecified
-  2026-08-15, corroborated by git history (`docs/decision-log.md`).
+The design decision everything else rests on is that this benchmark's answer
+key is a function, not a list of question–answer pairs written by a model.
 
-### 3.3 Harness and worker pinning
-- All screening ran under one pinned worker (gpt-5.4, effort medium,
-  codex-cli 0.144.5); §4.2–4.3 give the measured reasons a pin is
-  load-bearing, §4.6 what happens when the pinned worker dies.
+Each simulated organization has a private ledger of facts
+(`docs/specs/ledger-schema.md`): decisions, working rules, preferences,
+commitments, each with a tier (`personal`, `team`, `project`, `org`,
+`external`), a capacity (`formal_decision` > `directive` > `opinion` >
+`speculation`), a visibility, a validity window, and the events that evidence
+it. From the ledger and the event index we compute the **expected belief
+state** `B(principal, t)`: every fact that principal is entitled to hold at that
+moment. A fact is in `B` when the principal witnessed it, when its visibility
+permits them, when it is valid and unsuperseded at `t`, and when its decay class
+still holds. Superseded facts move to a historical set `B_hist` rather than
+vanishing, because a superseded plan must stop driving behavior while staying
+retrievable.
+
+Conflicts resolve by stated precedence: higher capacity first; at equal
+capacity the tier matching the *artifact* being produced wins, so an org policy
+governs an org-facing document and a personal preference governs a personal one;
+then recency. A pair that remains tied is not a defect to be broken arbitrarily
+but a genuine unresolved contradiction, where correct behavior is surfacing the
+conflict rather than silently picking. Rule two is what makes precedence
+contextual instead of a fixed hierarchy, and it is the mechanism the scope
+archetypes probe.
+
+`B` is a pure function over (ledger, event index) and is the single scoring
+oracle. Two consequences matter for validity. Ambiguity in `B` is a spec bug
+that blocks release rather than a judgement call resolved per item, and both
+spec bugs found this way were fixed before any screening: distributed facts
+originally required witnessing only one evidence event, which let principals
+hold facts they could not have assembled, and departed principals needed an
+explicit empty belief state. More importantly, no language model is anywhere in
+the ground-truth path. The models render events and author scoring criteria;
+they never decide what is true.
+
+### 3.2 Streams, witnesses, and what the system under test sees
+
+Each organization's history is a stream of naturalistic communication:
+meetings, DMs, team and org chat, email threads, documents, tickets, pull
+requests, calendar entries, with facts embedded in the prose as a person would
+express them, in the author's voice, never in ledger-canonical form
+(`docs/specs/event-stream.md`). Fact annotations are stripped before the stream
+reaches a system under test; the annotated copy is private to scoring.
+
+There is no global feed. The runner delivers each event only to the principals
+who witnessed it: participants always, plus anyone entitled to the surface it
+appeared on, since channel history is readable. A decision taken in a platform
+standup reaches a growth-team principal only if some later event carries it
+across, or if the memory layer under test does. That is what makes propagation
+a measurable property rather than an assumption, and it is why a system pooling
+everything and a system respecting visibility receive different inputs by
+construction. The adapter's entire ingestion surface is one call,
+`ingest(principal_id, event)`, invoked once per witness per event; what a system
+does internally, whether one shared store or per-principal stores, is its
+own business, and it is scored against `B(principal, t)`.
+
+Realism is a set of generator obligations, not an aspiration. At least 60% of
+event content is operational filler embedding no probed fact, so a memory system
+has to find signal rather than summarize everything. Every probed fact is
+accompanied by at least two distractor facts, including at least one near-miss
+differing by a single attribute: wrong tier, expired, or lower authority. No
+fact's canonical text may appear verbatim in more than one event, which forces
+paraphrase and blocks string-match shortcuts. Canary strings sit in event text
+at low frequency for post-hoc contamination detection. Timelines are sized so
+the annotation-stripped transcript exceeds roughly 500k tokens, which keeps
+full-transcript-in-context an honest but costly baseline rather than a free win.
+
+Salience parity is achieved by construction and then tested. Distractor type,
+register, shape, length, and numeric form mirror the probed mix, and positions
+are assigned mechanically to class-stratified band centers rather than by
+re-rendering until a lint passes. The test is a blinded discrimination check:
+a rater sees 20 excerpts, half embedding probed facts and half distractor-only,
+and must not beat 65%. Machine raters across five seeds scored 58/100 in
+aggregate (binomial p = 0.067, not significantly above chance); human raters
+scored 50% and 60% on the two seeds a rater could take uncontaminated
+(`docs/validation-report.md`, `datasets/dev/human-check/`). One residual is
+documented rather than resolved: seed 3 repeatedly scores above the others
+(42/60 across three independent samples, p ≈ 0.001), two targeted content passes
+failed to remove it, and it ships disclosed, with users of salience-sensitive
+analyses pointed at the other seeds.
+
+### 3.3 Probes are work, and every probe has a twin
+
+A probe is not a question. It is a work task issued to a principal's agent at a
+point in the timeline: write the announcement, draft the checklist, prepare the
+review note. What is scored is whether the resulting artifact behaves as the
+organization's knowledge requires. Probes are injected only at evaluation
+time and never appear in the ingested stream, which is the countermeasure to
+tuning a system on the questions.
+
+Four archetypes instantiate the capability ladder (`docs/vision.md` §3): A4 and
+A7 at rung 1, alignment, where the right tier must win and current truth must
+drive behavior; A1 at rung 2, coordination, where knowledge must cross
+principals; A2 at rung 3, compounding, where the organization should apply its
+own history unprompted. v1 is a deliberate vertical slice, at least one
+archetype on every rung above retention, rather than exhaustive coverage of any
+one rung.
+
+Every probed fact has a counterfactual variant, and the generator produces a
+**twin organization** from the same seed and the same timeline skeleton with the
+delta facts re-rendered. The same probe runs against both. An instance is
+credited **only when both sides pass**: correct behavior on the base
+organization, and correctly *different* behavior on the twin. Passing one side
+scores zero for the pair.
+
+This is the single most load-bearing design choice in the dataset, because it is
+what makes a plausible guess worthless. A fact invented by a language model
+often coincides with that model's own prior, whether a naming convention, a
+review threshold or a default cadence, and a memoryless system can guess the base side
+at a rate that would flatter it badly. It cannot guess both sides, because the
+twin's answer is the one its priors argue against. §4.5 reports what this buys:
+under a memoryless worker, 4 of 125 instances earn pair credit.
+
+Assertions come in several kinds, among them `fact_applied`, `fact_absent`,
+`scope_correct` and `conflict_flagged`. Each is checked by regex, by structural
+parse, or by a blinded semantic judge. Which checker is allowed where was settled by
+measurement rather than preference. Applied-content assertions written as
+regexes failed 39–42% of ceiling runs, because a deliverable paraphrases around
+any anchor; absence detectors failed 4% and semantic criteria 9–17%. Spec v0.3
+therefore requires the semantic checker for applied content and reserves regex
+for absence detectors (`docs/specs/probe-spec.md` §3). Assertion text was
+LLM-authored under a fixed prompt and accepted only after mechanical validation:
+answer-token hygiene, 4-gram overlap against the task text, and pattern
+cross-validation requiring each pattern to match every surface variant of its
+own side and no variant of the other side or of a sibling fact. One further
+authoring rule came out of failure adjudication and matters more than it looks:
+an assertion must never punish content drawn from a different co-valid fact of
+the same cluster, because complementary facts are not competing answers.
+
+### 3.4 Screening: which items actually measure memory
+
+Every probe instance runs in three conditions. `floor` gives the task alone with
+no organizational context. `ceiling` gives the task plus exactly the relevant
+facts from `B(principal, t)`, rendered canonically. `sut` gives whatever the
+system under test provides. A system's score is normalized as
+`(sut − floor) / (ceiling − floor)`.
+
+The floor and ceiling conditions are not only a normalization; they are the
+screen. An instance is valid when its ceiling passes, its twin ceiling passes,
+and its floor output fails at pair level. A ceiling that fails means the item
+measures reasoning rather than memory: the facts were supplied and the worker
+still could not produce the artifact. A floor that passes means the item is
+answerable without memory at all. Both get dropped, and the per-side floor pass
+rate survives as a reported `guessability` figure per cluster.
+
+Two revisions to this rule were forced by measurement and are dated before the
+evidence they govern. The floor gate moved to pair level once it was clear that
+canonical facts sometimes coincide with industry defaults, so a per-side rule
+discarded valid pairs for the exact reason the twin design exists. And screening
+moved from clusters to instances: requiring all three instances of a cluster to
+be valid demands per-run reliability near 98%, since 0.9⁶ ≈ 0.53 cluster
+survival follows even at 9% instance noise, which no realistic worker–judge pair
+delivers at n=3. A cluster now survives with at least 2 of 3 valid instances and
+ships only those. Both the instance-level and the stricter all-instances counts
+are reported throughout.
+
+Semantic verdicts are produced blind. `judge-export` writes each output with its
+criteria under opaque ids, stripped of probe identity, condition, and
+base-versus-twin side; fresh judge agents read only that batch file; `judge-import`
+validates the ids and criterion keys before anything is recorded. The judge model
+is never the worker model and never the family that authored or repaired the
+criteria being judged, and the rubric is versioned verbatim in the repository
+(`docs/specs/judge-rubric.md`). Blinding is enforced in code rather than by
+instruction. It is worth reporting that blinding changed little: an earlier
+unblinded pass over the same seed-1 material agreed with the blinded verdicts on
+97.6% of criteria, 26 flips out of 1,092, split 14 True→False against 12
+False→True with no systematic direction. Blinding is cheap insurance here rather
+than a large correction, and we would rather publish that null than imply we
+caught a bias we did not measure.
+
+### 3.5 What the released dataset is
+
+Seeds 1–3, probe-spec v0.4.3, judge rubric v2: **371 valid paired instances**
+(A1 50, A2 43, A4 106, A7 172). Per seed the valid-instance counts are 125/131/115,
+from cluster survival of 46/54, 46/54, 40/54; the stricter all-instances counts
+are 33, 39 and 35. Construction produced 54 clusters × 3 instances × 5
+organizations, 810 instances in total, of which seeds 4 and 5 are withheld
+unscreened as holdouts.
+
+**All three instance gates fail.** The prespecified threshold was 135 valid
+instances per seed, and the three seeds delivered 125, 131, and 115. **Seed 3's
+cluster gate also fails**, at 40 surviving clusters against a floor of 45. No
+probe that failed a gate was repaired, no criterion was rewritten to recover an
+instance, and no gate was relaxed after it bound. The shortfall is structured
+rather than random: it is the residual tail of counterfactual-anchoring failure
+on the twin side, the same defect family that drives cluster drops, and the
+prespecified v2 response is to over-generate four instances per cluster and
+require counterfactuals to invert the aspect the task actually elicits.
+
+The dataset was frozen on 2026-08-15 before any system was evaluated, and the
+freeze is corroborated by dated commits rather than by assertion
+(`docs/dataset-plan.md`, `docs/decision-log.md`).
+
+### 3.6 Worker and harness pinning
+
+All screening ran under a single pinned worker: gpt-5.4 at medium reasoning
+effort behind codex-cli 0.144.5, with the binary pin enforced in code rather
+than by convention, because the system `codex` upgrades silently. The pin is not
+housekeeping. §4.2 shows that which items survive screening is a property of the
+worker, §4.3 shows that the agent harness around identical weights changes
+outcomes enough to fail a prespecified equivalence bar, and §4.6 reports what
+happened when the provider withdrew the pinned model mid-study.
 
 ## 4. Validity study: the results core
 
@@ -542,6 +724,44 @@ what the judge did not do. This is therefore as much a criterion-design defect
 as a judge defect: an absence criterion carries little discriminative signal
 unless it is paired with a positive criterion demanding the replacement value.
 
+#### The mechanism at corpus scale, without human labels
+
+Everything above rests on 44 absence-phrased items in one 150-pair packet, which
+is a thin base for a claim about the instrument as a whole. The mechanism,
+a criterion class with a degenerate pass mode, can be measured without human
+labels at all, on every verdict the project has committed, and it was.
+
+Joining all **5,398** committed rubric-v2 criterion verdicts to their assertion
+kind gives the judge's positive rate per class (the join is deterministic and
+lossless; `datasets/methods/corpus-kind-rates/report.json`):
+
+| kind | n | positive rate |
+|---|---|---|
+| `fact_absent` | 1,463 | **96.4%** |
+| `fact_applied` | 2,677 | 39.0% |
+| `scope_correct` | 1,258 | 36.9% |
+
+The 97.7% observed on 44 sampled items was not a sampling artifact. The rate
+holds across all five sources of verdicts with no exception, from 93.2% to
+98.9%.
+
+The memoryless floor run supplies the control that makes this diagnostic rather
+than merely descriptive. Under a worker with no organizational context, one
+that demonstrably cannot know the facts, `fact_applied` collapses to 19.9% and
+`scope_correct` to 18.6%, roughly half their screening-condition rates.
+`fact_absent` holds at **96.2%**, statistically unmoved. A criterion class that
+does not respond to removing the very knowledge the instrument is built to
+measure is not discriminating; it is passing by construction, and the two
+criterion kinds beside it in the same runs, judged by the same judge under the
+same rubric, show what responding looks like.
+
+This is a re-analysis of already-committed verdicts rather than a new
+measurement: no output was re-run, no criterion re-judged, and no valid set
+moved. It was prespecified and dated before it was computed
+(`docs/decision-log.md` §2026-09-14), and it is reported here as a statement
+about the mechanism, never about accuracy. With no human labels outside the
+150, it cannot and does not claim to measure whether the judge is *right*.
+
 #### What the defect does not reach
 
 The leniency is contained by a structural property of the probe set, which we
@@ -618,11 +838,16 @@ The prespecified v2 fix: pair every absence criterion with a positive criterion
 demanding the replacement value, so the class stops having a degenerate pass
 mode.
 
-One honest limit on the diagnosis itself. With a single rater we cannot
-separate judge error from rater error, so "the judge is degenerate on absence
-criteria" is our best reading of the evidence rather than a demonstrated fact.
-The 43-of-44 positive rate makes it a strong reading, but one rater is one
-rater, and a second independent rater is the first thing that would settle it.
+One honest limit on the diagnosis, now narrower than it was. The two halves of
+the claim rest on different evidence and should be read differently. That the
+class has a **degenerate pass mode** is demonstrated without human labels, on
+1,463 verdicts, with the floor run as a control: it does not respond to removing
+the knowledge under test while the criterion kinds beside it halve. That the
+judge's permissiveness is **wrong on particular items** still rests on one
+rater, and with one rater we cannot separate judge error from rater error. So
+the mechanism is measured and the misclassification rate is a strong reading of
+thin evidence. A second independent rater remains the thing that would settle
+the second half, and it would not change the first.
 
 **The methodological point, which generalizes past this benchmark.** Two
 judge-validity checks, run on the same judge under the same rubric, returned
@@ -662,27 +887,143 @@ dataset is recorded in `docs/decision-log.md` §2026-09-14.
 
 ## 5. The instrument as released
 
-- Adapter interface + 10 registered system configs (4 baselines ± lexical
-  ablation, top-4-by-stars market systems, Mem0 silo ablation), per-system
-  configs frozen before any live run with dated mechanical amendments only
-  (`docs/vendor-configs.md`).
-- Run/score/figures pipeline (resumable runs, blinded judge round trip,
-  cluster-robust SEs, ≥2/3-seed direction rule, cost columns; zero
-  hand-typed numbers).
-- Live-smoke findings (2026-09-02) as evidence the harness meets real
-  vendor APIs: Supermemory tag/nulls/hybrid-search amendments, Graphiti
-  0.29.3 embedded-Kuzu repairs. All availability-only, dated.
+The dataset ships with the harness that runs it, because a benchmark whose
+evaluation code is a description rather than an artifact cannot be reproduced.
+
+**The adapter surface is deliberately tiny.** A system under test implements
+three things: a counters dictionary, `ingest(principal, event)`, and
+`run_task(principal, task) -> str`. Memory internals are never inspected. What
+a system stores, how it indexes, when it consolidates: none of it is observed
+or scored, only the behavior of the artifact its worker produces.
+
+Witness routing lives in the runner rather than in any adapter, which keeps
+per-principal delivery identical across systems. Participants always witness an
+event; org-public events reach every active principal, honouring join and leave
+dates; team-confidential events reach team members as of that stream position;
+private events reach participants only. Any other visibility value raises rather
+than defaulting. The runner calls `ingest` once per witness per event, and
+visibility metadata lives in the private org index, never in the SUT-facing
+stream. A worker failure is recorded as a null deliverable carrying its error,
+never as a dropped run, so a system cannot improve its score by failing.
+
+**Eleven system configurations are registered; ten are runnable in v1.** Four
+baselines, namely the memoryless floor, full-transcript long context, a
+filesystem-and-grep agent and embedding RAG, plus a lexical BM25 ablation of
+the RAG baseline, four market systems selected by published inclusion criteria,
+and a per-principal silo ablation of Mem0. The eleventh, a typed-memory
+reference implementation, is registered and constructible but deferred by the v1
+freeze and never run. The grep baseline is there on principle: a memory product
+should have to beat a directory of files and a search command.
+
+**Configurations were frozen before any live run and amended only mechanically.**
+The per-system config file was committed 2026-08-27, before any system was
+contacted, and states that the only permitted post-smoke changes are availability
+fixes, meaning auth flags, timeouts and API-shape corrections, recorded as dated
+amendments, never retrieval-quality tuning. Four amendments followed on
+2026-09-02, all dated in git.
+
+Two of those four deserve to be named rather than folded into a summary, because
+a reader could reasonably contest whether they are purely mechanical. Supermemory's
+search was pinned to hybrid mode after extracted-memories-only searches returned
+empty until the vendor's batched server-side extraction landed minutes after
+ingestion; the mode is the one the vendor's own documentation recommends, and the
+change was forced by an empty result set rather than chosen to improve ranking,
+but it is a search-parameter change and we say so. Graphiti's models were pinned
+to `gemini-2.5-flash` and `gemini-embedding-001` after the configured defaults
+returned 404 for the available key, which supersedes a line in the frozen config.
+The remaining two are unambiguously mechanical: namespacing Supermemory's
+container tags per org side so a twin run cannot retrieve base-run documents,
+and handling the dataset's null timestamps. The Graphiti work also included four
+repairs to the frozen `graphiti-core` 0.29.3 embedded-Kuzu path, all availability
+and none capability, at a measured ingestion cost of roughly 48 seconds per
+episode, about 2.7 hours per organization side.
+
+**One embedding model sits behind every RAG-class baseline**,
+`gemini-embedding-001`, pinned in code with the pin asserted by tests, and a
+retriever constructed without one identifies itself as `UNPINNED` in the
+artifacts it writes. This follows directly from §2.3: if swapping an embedding
+model moves results more than swapping the memory architecture, then an
+unreported embedding model makes a comparison meaningless. Market systems reuse
+the same model for their internal embeddings where configurable, at each
+system's own dimensionality.
+
+**The scoring pipeline derives every number from artifacts.** Runs are resumable
+in two tiers: rows already carrying a non-empty output are skipped and empty or
+errored rows are retried, while ingestion is never resumed and always replays
+the full stream for a given side, system, and sample. Scoring joins the screening
+anchors, the frozen valid set, and the SUT rows into one manifest, hard-failing
+on a missing base or twin output rather than scoring a partial pair. Pair credit
+requires both sides to clear the ceiling-pass threshold. Aggregates carry
+cluster-robust standard errors computed with a design effect from an estimated
+intra-cluster correlation, because probe instances cluster within fact clusters
+and a naive standard error would overstate precision. An empty deliverable scores
+zero and stays in the denominator. The figure script adds no statistics at all.
+It reads means and standard errors from the scored summary and renders them, and
+the generated results file says so in its header.
+
+The claim that no number in the pipeline is hand-typed holds for the numbers, and
+two qualifications keep it honest. The radar's axis set and the
+archetype-to-rung map are literals in code, prespecified structure rather than
+measured values, but literals nonetheless. And the 95% multiplier is written as
+1.959964 in the scorer and 1.96 in the renderer, so a rendered interval can
+differ from the scored one in the fourth decimal. Neither affects a result in
+this paper, and both are the kind of thing that is cheaper to disclose than to
+be asked about.
 
 ## 6. Partial pilot record (provenance, not results)
 
-- What ran before the stall (commit 5959c26): nomemory complete + judged
-  (→ §4.5); fulltranscript 125 base / 109 twin, grep 125/46, rag 0/34,
-  rag-lexical 125/29 non-empty rows of 125.
-- These rows are released as provenance under the dead worker pin; they are
-  NOT comparative results and no system claim is made from them. Framed as
-  an honest record of an interrupted prespecified pilot.
+The prespecified pilot was roughly 5,900 system runs across three seeds. It
+completed one condition. We release what exists, because an interrupted study
+that quietly drops its partial rows is indistinguishable from one that dropped
+the inconvenient ones.
 
-## 7. Limitations and disclosures (each becomes a sentence or two)
+Everything below is seed 1 only; no seed-2 or seed-3 system rows exist. Counts
+are unique probe instances after last-wins deduplication, since the row files
+are append logs that a resumed run adds to.
+
+| system | base rows | base non-empty | twin rows | twin non-empty | judged |
+|---|---|---|---|---|---|
+| nomemory (floor) | 125 | 125 | 125 | 125 | **250 verdicts** |
+| fulltranscript | 125 | 125 | 125 | 109 | no |
+| grep | 125 | 125 | 125 | 46 | no |
+| rag-lexical | 125 | 125 | 125 | 29 | no |
+| rag | 125 | **0** | **113** | 34 | not manifested |
+
+Only the memoryless floor is complete and judged, and it is the one result this
+paper reports (§4.5). The other three were manifested but never judged; `rag`
+never reached a manifest at all, because its twin side is missing twelve rows
+outright, because the run was cut off mid-stream, and the scorer refuses to build a
+manifest with a missing twin rather than scoring a partial pair. That refusal is
+the design working: a half-present pair is exactly the kind of row that becomes
+a misleading number later.
+
+The empty deliverables are a single uniform failure, and it is not an adapter
+failure. Deduplicated, the errors read `codex worker failed after 2 attempts: no
+output.md produced`, with one timeout. The retrieval side was working while this
+happened: the RAG baseline's base run embedded 179 times, retrieved 995 passages
+and assembled 721,655 characters of context, and the worker then produced nothing
+on all 125. This is the deprecation of §4.6 arriving as a wall of null outputs
+rather than as an announcement.
+
+One provenance note, because the dates differ and the difference is the kind of
+thing that looks like a discrepancy later. Runs stalled 2026-09-04 when the
+provider dropped the pinned worker for the billing path in use. The rows were
+committed on 2026-09-14, so that commit dates the release of the record rather
+than the runs themselves.
+
+**These rows carry no comparative claim.** They are released as provenance for
+an interrupted prespecified pilot under a worker that no longer exists. Because
+probe validity is worker-relative (§4.2), they cannot be completed by a
+successor worker and they cannot be mixed with one; the re-anchoring procedure
+in §4.6 says what a successor would have to redo instead. No ranking, no
+ordering, and no per-system statement is derived from this table anywhere in
+this paper.
+
+## 7. Limitations and disclosures
+
+Everything a reader would need to discount this work is in this
+section, including the items that cost us the most. They are listed in rough
+order of how much they should change your reading.
 
 1. **G4 FAILED.** Judge-human agreement is κ = 0.537 against a prespecified
    gate of κ ≥ 0.75 (81.3% raw, n=150; §4.4). The benchmark ships with a judge
@@ -701,40 +1042,94 @@ dataset is recorded in `docs/decision-log.md` §2026-09-14.
    absence-phrased. Contained, not fatal: no side of any instance is scored on
    absence criteria alone, so the floor result is unaffected; but scores on
    absence-heavy archetypes (A4 70.8%, A7 57.0%) should be read as upper
-   bounds. With one rater we cannot separate judge error from rater error, so
-   the diagnosis is our best reading rather than a demonstrated fact.
-2. Single author-rater for G4, who has seen seed content: a disclosed downgrade
-   from the original two-rater design, so there is no inter-rater κ to separate
-   judge error from rater error. A second independent rater is the first thing
-   a v2 should buy.
-3. Rank-direction rule ≥2/3 seeds was prespecified for the pilot; unused in
-   this paper (no comparative claims).
-4. All three released seeds fail the instance gate (125/131/115 against 135);
-   seed 3 also fails the cluster gate (40/54). Instances retained and marked,
-   never topped up or repaired.
-5. Worker billing/auth changes during the study; model/binary pin held
-   until provider deprecation ended all access (§4.6).
-6. Market-system configs set internal LLMs to Gemini where configurable;
-   deviations from vendor defaults named in `docs/vendor-configs.md`.
-7. Shared-store configs do not enforce per-principal visibility; no leakage
-   scoring in v1.
-8. Silo ablation moved to Mem0 pre-run (full-transcript silo vacuous);
-   dated in `docs/decision-log.md`.
-9. Graphiti runs embedded Kuzu (deprecated upstream); adapter-side repairs
-   documented.
-10. Simulated orgs, not real logs; 3 screened seeds; single worker model.
-11. Vendor right-of-reply: not triggered. This paper publishes no vendor
-    numbers; the procedure remains specified for any re-anchored evaluation.
-12. Event streams carry no timestamps; temporal order is positional;
-    screening anchors never saw rendered timestamps.
-13. Supermemory "dreaming" extraction is batched server-side; hybrid search
-    mode documented (relevant to the released harness, not to any claim).
+   bounds. Read the two halves of the diagnosis differently: the degenerate
+   pass mode is demonstrated on all 5,398 committed verdicts without human
+   labels (96.4% positive on the absence class against 39.0% and 36.9%; 96.2%
+   under a memoryless worker where the other two halve), while whether the
+   judge is *wrong* on specific items rests on one rater, who cannot be
+   separated from judge error. A second rater settles the second half and
+   changes nothing about the first.
+2. **One rater, and not an independent one.** G4 was rated by a single author,
+   who has read seed content, a disclosed downgrade from the two-rater design
+   originally specified. There is therefore no inter-rater κ, and judge error
+   cannot be separated from rater error. Contamination was managed where it
+   could be: the same author was cleared to run the blinded salience check only
+   on seeds 4 and 5, because seeds 1–3 had been discussed in working sessions.
+   A second independent rater is the first thing a v2 should buy.
+
+3. **All three released seeds fail the instance gate**, at 125, 131, and 115
+   against a prespecified 135, and seed 3 also fails the cluster gate
+   at 40/54 against 45. Instances were retained and marked rather than topped
+   up, and no failing probe was repaired. Four prespecified gates have failed
+   in this project against one clean positive result, which is an asymmetry we
+   report rather than manage.
+
+4. **The evaluation this dataset was built for did not happen.** The pinned
+   worker was withdrawn by its provider mid-pilot (§4.6), so there are no
+   comparative system numbers here, and the partial rows in §6 are provenance
+   rather than results. Worker billing and authentication changed during the
+   study; the model and binary pin held until deprecation ended access
+   entirely.
+
+5. **Simulated organizations, not real logs.** Three screened seeds, one
+   organization type (a two-team software company at L1–L2 scale), one worker
+   model. The external-validity claim stops there. Industry breadth is a
+   designed factor for a later version, not something to be obtained by
+   relabeling this one.
+
+6. **Event streams carry no timestamps.** `sim_time` is null throughout v1 and
+   temporal order is positional, so no result here separates "knows the order"
+   from "reads a date". Screening anchors never saw rendered timestamps either,
+   so the condition is at least uniform.
+
+7. **The judge and the human rater saw the same rules through different
+   instruments.** The judge scored every criterion for one output together, in
+   a single batch; the human scored one criterion per spreadsheet row,
+   independently, under a no-backtracking rule, across an expected three to
+   five hours. The rule text is materially identical in all three places it is
+   maintained, which we checked, but joint and independent presentation are not
+   the same instrument, and no part of the κ gap has been attributed between
+   judge quality and presentation. We name this because we found it while
+   preparing this paper and did not measure it.
+
+8. **Judge identity is procedural, not enforced.** The pipeline records the
+   judging model as a free-text tag; nothing in code selects a model or
+   verifies the tag against whatever actually produced the verdicts. The
+   guarantee that the judge was never the worker model or the criterion-author
+   family rests on protocol discipline and dated records, not on a mechanism.
+   Anyone rebuilding on this harness should close that gap.
+
+9. **Scoring-rule disclosures.** The scorer-exploit audit reads FAIL as
+   literally prespecified and PASS when re-scoped to sides carrying at least
+   one positive-content criterion; both lines are permanent in the report,
+   and the re-scoping is post-hoc and labelled as such. The rank-direction
+   robustness rule (≥2/3 seeds, itself a disclosed downgrade from ≥4/5) was
+   prespecified for a pilot that did not run and is unused here. Twenty-eight
+   criteria fall below the 0.7 raw-agreement threshold, 25 of them resting on a
+   single sampled judgment.
+
+10. **Released-harness configurations.** Market systems run their internal LLM
+    on Gemini where configurable, with vendor defaults listed alongside every
+    deviation (`docs/vendor-configs.md`). Shared-store configurations do not
+    enforce per-principal visibility, and v1 scores no leakage, so the silo
+    ablation captures the benefit of sharing without its governance cost. The
+    two are adversarial by design and belong together once both exist. The
+    ablation itself was moved to Mem0 before any run, because for a raw
+    transcript the siloed and shared configurations produce identical context.
+    Graphiti runs against embedded Kuzu, deprecated upstream, with adapter-side
+    repairs documented. Supermemory's extraction is batched server-side. These
+    describe the released harness and support no claim in this paper.
+
+11. **Vendor right-of-reply was not triggered**, because it attaches to
+    published vendor numbers and this paper publishes none. The procedure stays
+    specified for any re-anchored evaluation.
 
 ## 8. Release
 
-Built and checked by `scripts/release.py build|verify`, so the bundle is
-reproducible rather than hand-assembled and the withholding policy is
-enforced by code.
+The release is built and checked by `scripts/release.py build|verify`, so the
+bundle is reproducible rather than hand-assembled and the withholding policy is
+enforced by code rather than by care. A policy that depends on nobody making a
+mistake is not a policy.
 
 - **Ships**: the SUT-facing streams, counterfactual twins, probes with their
   scoring assertions, the frozen valid sets, Croissant 1.0 + RAI metadata,
