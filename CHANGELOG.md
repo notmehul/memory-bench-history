@@ -35,6 +35,15 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning: Se
   (`judge-agreement.json`), all added to the release withhold list.
   Whether to apply the prespecified drop rule to the scored dataset is queued
   as an open decision, deliberately not taken by the agent.
+- G4 reliability diagnostics (2026-09-14, post-hoc): prevalence index, bias
+  index, PABAK and Gwet's AC1 per criterion kind added to §4.4. Textbook kappa
+  paradox — fact_absent has prevalence index 0.773 and its κ collapses while
+  raw agreement matches the other kinds; prevalence-adjusted statistics put the
+  same data at 0.59-0.77. The gate stays FAILED at κ = 0.537 and the
+  diagnostics are labelled post-hoc, with a test asserting κ precedes AC1 in
+  the prose so the spin version cannot creep in. The overall bias index of
+  exactly 0.000, against 0.182 and 0.206 within kinds, is the numerical
+  signature of the two cancelling biases.
 - G4 counterfactual (2026-09-14): tested whether a stricter rubric could have
   rescued the gate. It could not. Flipping only already-committed verdicts,
   eliminating every absence false-accept takes κ from 0.537 to 0.688 and still

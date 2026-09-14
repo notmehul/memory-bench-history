@@ -451,11 +451,40 @@ rate pushes chance agreement to 0.782, leaving almost no headroom. We state
 this explicitly because the opposite reading is the natural one and we made it
 ourselves in an earlier draft of this section.
 
-**On the gate itself.** κ is depressed across the board by the skewed marginal,
-and that is noted rather than offered as a defence. We prespecified κ ≥ 0.75
-rather than a raw-agreement threshold precisely so an unbalanced task could not
-be presented as validity, and we do not get to discover the objection to our
-own gate on the day it fails.
+**On the gate itself.** The gate was κ ≥ 0.75. It failed at 0.537. That stands,
+and the diagnostics below explain the mechanism rather than soften the verdict.
+They were computed after the result and are labelled post-hoc; none was
+prespecified.
+
+| | agreement | κ | prevalence idx | bias idx | PABAK | Gwet AC1 |
+|---|---|---|---|---|---|---|
+| `fact_absent` | 0.818 | 0.166 | **0.773** | 0.182 | 0.636 | 0.772 |
+| `fact_applied` | 0.819 | 0.605 | 0.292 | 0.014 | 0.639 | 0.667 |
+| `scope_correct` | 0.794 | 0.561 | 0.324 | 0.206 | 0.588 | 0.627 |
+| **overall** | 0.813 | **0.537** | 0.440 | 0.000 | 0.627 | 0.687 |
+
+This is the kappa paradox: when one label dominates, κ penalizes residual
+disagreement disproportionately. `fact_absent` carries the highest prevalence
+index of the three at 0.773, and it is the one whose κ collapses while its raw
+agreement matches the others to within a point.
+
+Two things follow, and only the first is a defence of the measurement rather
+than of the result. Prevalence-adjusted statistics put the same data between
+0.59 and 0.77, so the disagreement is not the near-chance concordance a bare
+κ = 0.537 suggests. And we prespecified κ rather than raw agreement precisely so
+an unbalanced task could not be dressed up as validity, which means we do not
+now get to discover the objection to our own gate on the day it fails. Leading
+with AC1 = 0.687 and putting κ in a footnote would be the spin version of this
+paragraph, and a reader who knows the reliability literature would recognize the
+move immediately, because these are exactly the statistics people reach for when
+κ disappoints.
+
+The bias index is worth reading alongside §4.4's earlier finding. Overall it is
+**0.000**, a perfectly unbiased judge by that measure, while within kinds it is
+0.182 and 0.206 pointing in opposite directions. The aggregate figure is not
+evidence of an unbiased judge; it is the numerical signature of two biases
+cancelling, and it is the single clearest demonstration that per-kind reporting
+is not optional.
 
 #### Where the leniency lands, and why it matters more than its size
 

@@ -356,6 +356,40 @@ def test_committed_verdict_count_under_rubric_v2(draft: str):
     assert "5,398 criterion verdicts" in draft
 
 
+def test_kappa_paradox_diagnostics(draft: str):
+    """Post-hoc reliability diagnostics. The gate stays failed; these explain why
+    kappa collapses on a prevalence-skewed task."""
+    def stats(rs):
+        n = len(rs)
+        a = sum(1 for h, j, _ in rs if h and j)
+        b = sum(1 for h, j, _ in rs if h and not j)
+        c = sum(1 for h, j, _ in rs if not h and j)
+        d = sum(1 for h, j, _ in rs if not h and not j)
+        po = (a + d) / n
+        pa, pb = (a + b) / n, (a + c) / n
+        pe = pa * pb + (1 - pa) * (1 - pb)
+        pi = (pa + pb) / 2
+        peg = 2 * pi * (1 - pi)
+        return (round(po, 3), round((po - pe) / (1 - pe), 3), round(abs(a - d) / n, 3),
+                round(abs(b - c) / n, 3), round(2 * po - 1, 3),
+                round((po - peg) / (1 - peg), 3))
+
+    recs = [(h, j, k) for h, j, k, _ in _g4_records()]
+    assert stats([r for r in recs if r[2] == "fact_absent"]) == (
+        0.818, 0.166, 0.773, 0.182, 0.636, 0.772)
+    assert stats([r for r in recs if r[2] == "fact_applied"]) == (
+        0.819, 0.605, 0.292, 0.014, 0.639, 0.667)
+    assert stats([r for r in recs if r[2] == "scope_correct"]) == (
+        0.794, 0.561, 0.324, 0.206, 0.588, 0.627)
+    assert stats(recs) == (0.813, 0.537, 0.440, 0.000, 0.627, 0.687)
+
+    low = draft.lower()
+    assert "kappa paradox" in low
+    assert "post-hoc" in low, "the diagnostics must be labelled as not prespecified"
+    # the gate must still be presented as failed, and AC1 must not lead
+    assert low.index("0.537") < low.index("gwet ac1"), "kappa must precede AC1"
+
+
 def test_judge_decoy_audit(draft: str):
     audit = json.loads(
         (ROOT / "datasets/dev/screening/judge-decoys/audit.json").read_text())

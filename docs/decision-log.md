@@ -590,3 +590,32 @@ Contents:
 > re-measurement needs a held-out calibration set we do not have.
 >
 > Decision: no rubric change in v1. Recorded in `paper/draft.md` §4.4.
+
+### Follow-up 4 (2026-09-14) — kappa-paradox diagnostics, reported post-hoc
+
+> The gate was κ ≥ 0.75 and it FAILED at 0.537. That verdict is unchanged. The
+> following diagnostics explain the mechanism and were computed after the
+> result; none was prespecified, and they are labelled as such in the paper.
+>
+> | | agreement | κ | prevalence idx | bias idx | PABAK | Gwet AC1 |
+> |---|---|---|---|---|---|---|
+> | fact_absent | 0.818 | 0.166 | 0.773 | 0.182 | 0.636 | 0.772 |
+> | fact_applied | 0.819 | 0.605 | 0.292 | 0.014 | 0.639 | 0.667 |
+> | scope_correct | 0.794 | 0.561 | 0.324 | 0.206 | 0.588 | 0.627 |
+> | overall | 0.813 | 0.537 | 0.440 | 0.000 | 0.627 | 0.687 |
+>
+> Textbook kappa paradox: `fact_absent` has the highest prevalence index (0.773)
+> and is the kind whose κ collapses while its raw agreement matches the others.
+> Prevalence-adjusted statistics put the same data between 0.59 and 0.77.
+>
+> **Explicitly not a rescue.** Leading with AC1 = 0.687 and footnoting κ would
+> be spin, and recognizable as such to anyone who knows this literature, since
+> these are the statistics people reach for when κ disappoints. κ was
+> prespecified over raw agreement precisely so a skewed marginal could not be
+> presented as validity. A test asserts κ precedes AC1 in the prose.
+>
+> **The bias index sharpens the earlier cancellation finding.** Overall BI is
+> exactly 0.000, which reads as a perfectly unbiased judge, while within kinds
+> it is 0.182 and 0.206 in opposite directions. The aggregate zero is the
+> numerical signature of two biases cancelling, not evidence of no bias. This is
+> the clearest single demonstration that per-kind reporting is not optional.
