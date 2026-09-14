@@ -1,0 +1,204 @@
+{
+ "generated_by": "scripts/methods_verdict_kinds.py",
+ "prespecification": "docs/decision-log.md 2026-09-14 Track B carve-out",
+ "note": "Descriptive. Measures the judge's positive rate per criterion kind, not agreement with any reference standard.",
+ "n_verdicts_total": 5398,
+ "unmatched_total": 0,
+ "judges": {
+  "claude-sonnet-5-blinded-v2": 5398
+ },
+ "off_tag_verdicts": {},
+ "per_dir": [
+  {
+   "dir": "datasets/dev/screening/org-00001",
+   "n_verdicts": 1512,
+   "n_judged_runs": 486,
+   "judges": {
+    "claude-sonnet-5-blinded-v2": 1512
+   },
+   "by_kind": {
+    "fact_absent": {
+     "n": 468,
+     "n_true": 456,
+     "positive_rate": 0.974359
+    },
+    "fact_applied": {
+     "n": 720,
+     "n_true": 282,
+     "positive_rate": 0.391667
+    },
+    "scope_correct": {
+     "n": 324,
+     "n_true": 124,
+     "positive_rate": 0.382716
+    }
+   },
+   "fact_absent_by_checker": {
+    "semantic": {
+     "n": 468,
+     "n_true": 456,
+     "positive_rate": 0.974359
+    }
+   },
+   "unmatched": 0
+  },
+  {
+   "dir": "datasets/dev/screening/org-00002",
+   "n_verdicts": 1341,
+   "n_judged_runs": 486,
+   "judges": {
+    "claude-sonnet-5-blinded-v2": 1341
+   },
+   "by_kind": {
+    "fact_absent": {
+     "n": 369,
+     "n_true": 365,
+     "positive_rate": 0.98916
+    },
+    "fact_applied": {
+     "n": 648,
+     "n_true": 258,
+     "positive_rate": 0.398148
+    },
+    "scope_correct": {
+     "n": 324,
+     "n_true": 118,
+     "positive_rate": 0.364198
+    }
+   },
+   "fact_absent_by_checker": {
+    "semantic": {
+     "n": 369,
+     "n_true": 365,
+     "positive_rate": 0.98916
+    }
+   },
+   "unmatched": 0
+  },
+  {
+   "dir": "datasets/dev/screening/org-00003",
+   "n_verdicts": 1278,
+   "n_judged_runs": 486,
+   "judges": {
+    "claude-sonnet-5-blinded-v2": 1278
+   },
+   "by_kind": {
+    "fact_absent": {
+     "n": 279,
+     "n_true": 260,
+     "positive_rate": 0.9319
+    },
+    "fact_applied": {
+     "n": 675,
+     "n_true": 295,
+     "positive_rate": 0.437037
+    },
+    "scope_correct": {
+     "n": 324,
+     "n_true": 133,
+     "positive_rate": 0.410494
+    }
+   },
+   "fact_absent_by_checker": {
+    "semantic": {
+     "n": 279,
+     "n_true": 260,
+     "positive_rate": 0.9319
+    }
+   },
+   "unmatched": 0
+  },
+  {
+   "dir": "datasets/dev/screening/org-00004",
+   "n_verdicts": 897,
+   "n_judged_runs": 327,
+   "judges": {
+    "claude-sonnet-5-blinded-v2": 897
+   },
+   "by_kind": {
+    "fact_absent": {
+     "n": 243,
+     "n_true": 230,
+     "positive_rate": 0.946502
+    },
+    "fact_applied": {
+     "n": 438,
+     "n_true": 169,
+     "positive_rate": 0.385845
+    },
+    "scope_correct": {
+     "n": 216,
+     "n_true": 76,
+     "positive_rate": 0.351852
+    }
+   },
+   "fact_absent_by_checker": {
+    "semantic": {
+     "n": 243,
+     "n_true": 230,
+     "positive_rate": 0.946502
+    }
+   },
+   "unmatched": 0
+  },
+  {
+   "dir": "datasets/dev/pilot/nomemory/seed-1/score-k1",
+   "n_verdicts": 370,
+   "n_judged_runs": 250,
+   "judges": {
+    "claude-sonnet-5-blinded-v2": 370
+   },
+   "by_kind": {
+    "fact_absent": {
+     "n": 104,
+     "n_true": 100,
+     "positive_rate": 0.961538
+    },
+    "fact_applied": {
+     "n": 196,
+     "n_true": 39,
+     "positive_rate": 0.19898
+    },
+    "scope_correct": {
+     "n": 70,
+     "n_true": 13,
+     "positive_rate": 0.185714
+    }
+   },
+   "fact_absent_by_checker": {
+    "semantic": {
+     "n": 104,
+     "n_true": 100,
+     "positive_rate": 0.961538
+    }
+   },
+   "unmatched": 0
+  }
+ ],
+ "pooled": {
+  "by_kind": {
+   "fact_absent": {
+    "n": 1463,
+    "n_true": 1411,
+    "positive_rate": 0.964457
+   },
+   "fact_applied": {
+    "n": 2677,
+    "n_true": 1043,
+    "positive_rate": 0.389615
+   },
+   "scope_correct": {
+    "n": 1258,
+    "n_true": 464,
+    "positive_rate": 0.368839
+   }
+  },
+  "fact_absent_by_checker": {
+   "semantic": {
+    "n": 1463,
+    "n_true": 1411,
+    "positive_rate": 0.964457
+   }
+  }
+ }
+}
