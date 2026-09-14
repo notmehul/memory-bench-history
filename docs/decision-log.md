@@ -619,3 +619,26 @@ Contents:
 > it is 0.182 and 0.206 in opposite directions. The aggregate zero is the
 > numerical signature of two biases cancelling, not evidence of no bias. This is
 > the clearest single demonstration that per-kind reporting is not optional.
+
+## 2026-09-14 — second paper opened as a parallel track (Mehul, in-session)
+
+> **Decision.** Mehul opens a second study on benchmark methodology, to run in
+> parallel with the v1 dataset paper. Reason given: the second independent
+> rater on the 150-pair packet is happening but takes calendar time to arrange
+> (150 judgments a person has to actually make), and the project should not
+> idle waiting for it. The second rater is NOT cancelled; it is in flight.
+>
+> **Scope not yet set.** Mehul's framing was the data pipeline and "the models
+> working in a loop and us not being able to get the exact outcomes", with the
+> phrasing explicitly left open. Scoping happens in a fresh chat. Recorded here
+> so the decision is dated before any work on it, per the same discipline that
+> governs every other gate in this project.
+>
+> **Constraint carried into that conversation:** the dependency runs one way.
+> A methods paper stands alone with memory-bench as its case study; the dataset
+> paper cannot ship without §4, because without its validity evidence it is a
+> synthetic benchmark nobody has run. So the split is one self-contained methods
+> paper plus a dataset paper retaining a condensed §4 and citing it, never two
+> papers both claiming "we built memory-bench".
+>
+> Findings inventory and honest sizing: `docs/status.md` Track B.

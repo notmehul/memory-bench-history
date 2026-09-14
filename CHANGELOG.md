@@ -23,6 +23,13 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning: Se
   across org-00001 and org-00002.
 
 ### Added
+- Second paper opened as a parallel track (2026-09-14, Mehul): a methodology
+  study on the measurement failures that appear when both the worker and the
+  judge are language models. Scoping happens in a fresh chat; nothing written
+  yet. `docs/status.md` now carries both tracks with the findings inventory,
+  the one-way dependency constraint (methods paper stands alone; dataset paper
+  cannot ship without §4), and honest small-n sizing. Dated in
+  `docs/decision-log.md` before any work on it.
 - **Gate G4 measured 2026-09-14: FAIL.** Judge-human agreement on the blinded
   150-pair packet is κ = 0.537 against the prespecified κ ≥ 0.75 (raw 0.813,
   n=150). Per kind: fact_applied 0.605, scope_correct 0.561, fact_absent 0.166.
