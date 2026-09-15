@@ -45,8 +45,26 @@ entries dated.
   independent leak audit and after upload by a byte-for-byte round trip;
   anonymous access returns 401. Opens with the all-in-one release.
 - **Paper.** `paper/memory-bench.tex`, arXiv single-column, ~11.4k body words,
-  seven TikZ/pgfplots figures, compiles with tectonic. `paper/draft.md` remains
-  the working copy; the two are kept in step.
+  seven TikZ/pgfplots figures and four tables, 22 pages, compiles with tectonic.
+  `paper/draft.md` remains the working copy; the two are kept in step.
+- **Audit pass, 2026-09-15.** Mehul's 34-agent audit replaced the abstract,
+  added a boxed "How to read this paper" before §1, and added one sentence to
+  §1.3. Nothing else in either body changed: no gate, criterion, valid set,
+  number, or §7 disclosure moved. Two reader-aid tables were added on top of
+  that change list, the §2 benchmark landscape and the §3.3 capability ladder,
+  both restating prose that was already there and both guarded by tests. The
+  PDF date moved to 15 September 2026; the dataset freeze date stays
+  2026-08-15. Release-facing copy that has to match the abstract now lives in
+  `paper/release-copy.md`.
+- **Cut pass, 2026-09-15.** Second round of Mehul's audit: cut restatement and
+  protocol diary, never evidence. 12.9k to 10.8k words, 25 pages to 22. The
+  gate miss is told once (4.1) instead of five times; Table 1 replaced the
+  section 2 enumeration and Table 2 the rung map; 2.4's glosses went to the
+  bibliography, which keeps all 21 sources; the PABAK/AC1 table and the
+  four-row repair-arithmetic table left 4.4, which keeps the labels and the
+  0.688; the declined 28-criterion drop lives only in disclosure 9. Every
+  do-not-cut number is still present and still test-asserted. Four test
+  anchors moved with the prose, each dated in the test file.
 - **Guards in place:** `tests/test_paper_numbers.py` recomputes every headline
   number from its artifact and asserts the string is in the draft;
   `tests/test_paper_tex.py` does the same for the LaTeX figures, whose numbers

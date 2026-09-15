@@ -95,8 +95,9 @@ def test_sub07_sensitivity_numbers_match(flat: str):
         ROOT / "datasets/dev/screening/sub07-sensitivity/summary.json").read_text())
     assert s["total_valid_instances"]["canon"] == 371
     assert s["total_valid_instances"]["after_drop"] == 341
+    # One telling, in disclosure 9, since 2026-09-15.
     assert "371 to 341 valid instances" in flat
-    assert "341 valid instances against the" in flat
+    assert "fails all six gates instead of three" in flat
 
 
 def test_cancellation_figure_is_the_measured_confusion(tex: str):
@@ -133,3 +134,63 @@ def test_author_block_claims_no_affiliation(tex: str):
     assert "Independent" in tex
     assert re.search(r"no institutional affiliation", tex), \
         "the independence disclosure must be present"
+
+
+# --- the two reader-aid tables added 2026-09-15 -----------------------------
+# They restate material that is already in the prose, so what needs guarding is
+# that the restatement stays true to the artifacts it came from.
+
+ARXIV_IDS = {
+    "LoCoMo": "2402.17753", "LongMemEval": "2410.10813",
+    "MemBench": "2506.21605", "MemoryAgentBench": "2507.05257",
+    "MemoryArena": "2602.16313", "StreamMemBench": "2606.14571",
+    "HorizonBench": "2604.17283", "LongMemEval V2": "2605.12493",
+    "MEMTRACK": "2510.01353", "GateMem": "2606.18829",
+}
+
+
+def _table(tex: str, label: str) -> str:
+    end = tex.index(f"\\label{{{label}}}")
+    start = tex.rindex("\\begin{table}", 0, end)
+    return tex[start:tex.index("\\end{table}", end)]
+
+
+def test_landscape_table_covers_the_ten_benchmarks(tex: str, flat: str):
+    """Ten rows plus ours, and every id in the table is one section 2 cites."""
+    tab = _table(tex, "tab:landscape")
+    for name, arxiv in ARXIV_IDS.items():
+        assert f"{name} \\scriptsize({arxiv})" in tab, f"{name} row missing or misfiled"
+        assert arxiv in flat.replace(f"{name} \\scriptsize({arxiv})", "", 1), \
+            f"{arxiv} appears only in the table, not in section 2 or the bibliography"
+    assert tab.count("\\\\") == 12, "ten benchmark rows, our row, and the header"
+    # the axis the table exists to show: only GateMem and memory-bench are multi.
+    assert tab.count("& many &") == 2
+
+
+def test_ladder_table_matches_the_archetype_breakdown(tex: str):
+    """Rung map from the prose, counts from the valid sets, names from the spec."""
+    import sys
+    sys.path.insert(0, str(ROOT / "src"))
+    from membench.g3 import load_valid_instances
+
+    counts: dict[str, int] = {}
+    for org in SEEDS:
+        d = ROOT / "datasets/dev" / org
+        arch = {json.loads(x)["probe_id"]: json.loads(x)["archetype"]
+                for x in (d / "probes.jsonl").read_text().splitlines() if x.strip()}
+        for pid in load_valid_instances(d):
+            counts[arch[pid]] = counts.get(arch[pid], 0) + 1
+    assert counts == {"A1": 50, "A2": 43, "A4": 106, "A7": 172}
+    assert sum(counts.values()) == 371
+
+    names = dict(re.findall(r"^- (A\d+) \*\*(.+?)\*\*",
+                            (ROOT / "docs/architecture.md").read_text(), re.M))
+    tab = _table(tex, "tab:ladder")
+    rungs = {"A4": "1, alignment", "A7": "1, alignment",
+             "A1": "2, coordination", "A2": "3, compounding"}
+    for arch, n in counts.items():
+        row = f"{rungs[arch]} & {arch}, {names[arch].lower()} &"
+        assert row in tab, f"{arch}: expected row opening {row!r}"
+        assert tab[tab.index(row):].split("\\\\")[0].rstrip().endswith(f"& {n}"), \
+            f"{arch}: row should end in {n}"
+    assert "& \\textbf{371} \\\\" in tab

@@ -10,6 +10,7 @@ Scope is deliberately the numbers the paper asserts, not everything measured.
 """
 
 import json
+import re
 import sys
 from collections import Counter
 from pathlib import Path
@@ -116,11 +117,19 @@ def test_g4_judge_human_agreement(draft: str):
 
 
 def test_g4_failure_is_not_softened(draft: str):
-    """A failed gate is reported as failed, in the abstract and the disclosures."""
+    """A failed gate is reported as failed, in the abstract and the disclosures.
+
+    Anchors rewritten 2026-09-15 with the abstract. The old ones keyed on the
+    abstract's boldface, which the replacement abstract does not carry; these
+    key on the words instead, in both the abstract and the 4.4 table, so the
+    guard now covers two places rather than one.
+    """
     low = draft.lower()
-    assert "fails** our prespecified gate" in low or "**fails**" in low
+    assert "fails our prespecified gate" in low, "the abstract must name the failure"
+    assert "gate κ ≥ 0.75: fail" in low, "4.4 must table it as a FAIL"
     assert "g4 failed" in low
-    assert "28 criteria" in low
+    # 2026-09-15: the count moved to disclosure 9, which spells it out.
+    assert "twenty-eight criteria fall below" in low
 
 
 def test_g4_symmetry_is_reported_as_a_cancellation(draft: str):
@@ -234,7 +243,11 @@ def test_decoy_audit_never_exercised_an_absence_criterion(draft: str):
     assert seen["fact_applied"] == 30
     assert seen["scope_correct"] == 11
     assert seen["fact_absent"] == 0, "a decoy DID cover an absence criterion; rewrite 4.4"
-    assert "none of them were absence-phrased" in draft
+    # Anchored on 4.4 rather than the abstract, 2026-09-15: the replacement
+    # abstract states the cancellation and leaves the mechanism to 4.4.
+    assert "and none were `fact_absent`" in draft
+    assert "structurally incapable of detecting a failure on absence criteria" \
+        in draft
 
 
 def test_over_accepts_concentrate_on_the_counterfactual_side(draft: str):
@@ -243,7 +256,10 @@ def test_over_accepts_concentrate_on_the_counterfactual_side(draft: str):
     under = Counter(side for h, j, _, side in recs if h and not j)
     assert (over["twin"], over["base"]) == (11, 3)
     assert (under["twin"], under["base"]) == (7, 7)
-    assert "11 against" in draft and "counterfactual side" in draft
+    # Same move, 2026-09-15: 4.4 carries the split, the abstract carries the
+    # claim it supports.
+    assert "11 fall on twin-side criteria against 3 on base-side" in draft
+    assert "counterfactual side" in draft
 
 
 def test_absence_criterion_exposure_across_the_valid_set(draft: str):
@@ -383,11 +399,19 @@ def test_kappa_paradox_diagnostics(draft: str):
         0.794, 0.561, 0.324, 0.206, 0.588, 0.627)
     assert stats(recs) == (0.813, 0.537, 0.440, 0.000, 0.627, 0.687)
 
+    # 2026-09-15: the per-kind diagnostics table was cut as appendix material.
+    # What has to survive is the label and the range, so the adjusted figures
+    # can still be checked and still cannot be made to lead.
+    adjusted = [v for r in ("fact_absent", "fact_applied", "scope_correct")
+                for v in stats([x for x in recs if x[2] == r])[4:]]
+    assert (round(min(adjusted), 2), round(max(adjusted), 2)) == (0.59, 0.77)
+
     low = draft.lower()
     assert "kappa paradox" in low
     assert "post-hoc" in low, "the diagnostics must be labelled as not prespecified"
-    # the gate must still be presented as failed, and AC1 must not lead
-    assert low.index("0.537") < low.index("gwet ac1"), "kappa must precede AC1"
+    assert "between 0.59 and 0.77" in low
+    assert "we do not offer that as a defence" in low, \
+        "the adjusted figures must not be offered as a defence of the gate"
 
 
 def test_judge_decoy_audit(draft: str):
@@ -467,8 +491,9 @@ def test_sub07_sensitivity_matches_the_rescored_reports(sub07: dict):
 
 def test_sub07_sensitivity_numbers_are_in_the_draft(draft: str, sub07: dict):
     assert sub07["total_valid_instances"]["canon"] == 371
-    assert "341 valid instances against the frozen 371" in draft
+    # One telling, in disclosure 9, since 2026-09-15.
     assert "371 to 341 valid instances" in draft
+    assert "fails all six gates instead of three" in draft
 
 
 def test_canon_is_unchanged_by_the_declined_rule(g3: dict, sub07: dict):
@@ -486,3 +511,25 @@ def test_all_six_gates_fail_under_the_drop(sub07: dict):
     canon = [sub07["seeds"][o]["canon"] for o in SEEDS]
     assert sum(s["gate_clusters"] for s in canon) == 2
     assert not any(s["gate_instances"] for s in canon)
+
+
+def test_ladder_table_in_the_draft_matches_the_artifacts(draft: str):
+    """The 2026-09-15 reader-aid table restates 3.3 and 3.5 in one grid. Every
+    cell in it has to keep tracing to the same place the prose does."""
+    counts: Counter = Counter()
+    for org in SEEDS:
+        d = ROOT / "datasets/dev" / org
+        arch = {json.loads(x)["probe_id"]: json.loads(x)["archetype"]
+                for x in (d / "probes.jsonl").read_text().splitlines() if x.strip()}
+        counts.update(arch[pid] for pid in load_valid_instances(d))
+    names = dict(re.findall(r"^- (A\d+) \*\*(.+?)\*\*",
+                            (ROOT / "docs/architecture.md").read_text(), re.M))
+    rungs = {"A4": "1, alignment", "A7": "1, alignment",
+             "A1": "2, coordination", "A2": "3, compounding"}
+    for arch, n in counts.items():
+        row = f"| {rungs[arch]} | {arch}, {names[arch].lower()} |"
+        assert row in draft, f"{arch}: expected a ladder row opening {row!r}"
+        assert draft[draft.index(row):].split("|")[4].strip() != "", arch
+        assert f"| {n} |" in draft[draft.index(row):draft.index(row) + 300], \
+            f"{arch}: the row should carry {n} valid instances"
+    assert sum(counts.values()) == 371
