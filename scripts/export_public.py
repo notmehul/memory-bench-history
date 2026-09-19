@@ -35,7 +35,7 @@ PUBLIC_SCRIPTS = ("calibration", "calibration_sheet", "exploit_audit", "figures"
                   "score_sut", "screen_probes")
 
 INCLUDE = (
-    "LICENSE", "pyproject.toml", ".github/workflows/*",
+    "LICENSE", "pyproject.toml", "uv.lock", ".github/workflows/*",
     "src/membench/*",
     "prompts/typed-memory-extract.md",   # read at runtime by the typed-memory adapter
     *(f"scripts/{s}.py" for s in PUBLIC_SCRIPTS),
