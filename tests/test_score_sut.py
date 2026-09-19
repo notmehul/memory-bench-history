@@ -8,6 +8,8 @@ import sys
 from pathlib import Path
 from types import SimpleNamespace
 
+import pytest
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -126,3 +128,111 @@ def test_cluster_robust_se_inflates_with_intracluster_correlation():
     mean, se, n, k = cr({"a": [1.0, 1.0, 1.0], "b": [0.0, 0.0, 0.0]})
     _, se_iid, _, _ = cr({"a": [1.0, 0.0, 1.0], "b": [0.0, 1.0, 0.0]})
     assert mean == 0.5 and n == 6 and k == 2 and se > se_iid
+
+
+# --------------------------------------------------------------- Wilson interval
+# Added 2026-09-17 for `_wilson_cluster`, the post-hoc interval that replaces the
+# Wald one in reporting. The Wald field stays in the report for run_pilot.py and
+# tests/test_figures.py, so both must be emitted.
+
+def _wilson_width(report: dict) -> float:
+    lo, hi = report["ci95_wilson"]
+    return hi - lo
+
+
+def _pipeline_report(tmp_path):
+    """Run manifest -> blinded judge round-trip -> report and return the report."""
+    org, scr = _world(tmp_path)
+    work = tmp_path / "work"
+    score_sut.cmd_manifest(SimpleNamespace(
+        org_dir=org, screening_dir=scr, work_dir=work, sut_base=tmp_path / "base.jsonl",
+        sut_twin=tmp_path / "twin.jsonl", system="mock-system"))
+    screen_probes.cmd_judge_export(SimpleNamespace(work_dir=work, ids=None))
+    pending = json.loads((work / "pending-judge.json").read_text())
+    mapping = json.loads((work / "pending-judge.map.json").read_text())
+    good = {"P-0001-01:sut_base", "P-0001-01:sut_twin", "P-0001-02:sut_base",
+            "P-0002-01:sut_twin"}
+    verdicts = {row["id"]: {k: mapping[row["id"]]["run_id"] in good for k in row["criteria"]}
+                for row in pending}
+    vf = work / "v.json"
+    vf.write_text(json.dumps(verdicts))
+    screen_probes.cmd_judge_import(SimpleNamespace(work_dir=work, verdicts=vf, judge="t"))
+    out = tmp_path / "wilson-report.json"
+    score_sut.cmd_report(SimpleNamespace(org_dir=org, screening_dir=scr, work_dir=work,
+                                         out=out))
+    return json.loads(out.read_text())
+
+
+def test_wilson_is_finite_at_zero_successes():
+    """0 of 16 must not report [0, 0]. Hand-checked against the Wilson formula.
+
+    denom = 1 + 1.96^2/16 = 1.24010; centre = half = 0.09681, so the interval is
+    [0, 0.19361]. The Wald interval on the same data is [0, 0], which is the
+    degenerate case arXiv:2503.01747 warns about and the reason this exists.
+    """
+    got = score_sut._wilson_cluster({f"c{i}": [0.0] for i in range(16)})
+    lo, hi = got["ci95_wilson"]
+    assert lo == 0.0
+    assert hi == pytest.approx(0.1936, abs=1e-3)
+    assert got["n_eff"] == 16.0 and got["deff"] == 1.0
+    # the committed rung-3 floor result is exactly this case
+    assert hi > 0.0, "a zero-success rung must still carry an upper bound"
+
+
+def test_wilson_stays_inside_the_unit_interval_at_both_extremes():
+    none = score_sut._wilson_cluster({"a": [0.0] * 8, "b": [0.0] * 8})
+    every = score_sut._wilson_cluster({"a": [1.0] * 8, "b": [1.0] * 8})
+    for got in (none, every):
+        lo, hi = got["ci95_wilson"]
+        assert 0.0 <= lo <= hi <= 1.0, got
+    assert none["ci95_wilson"] == [0.0, pytest.approx(0.1936, abs=1e-3)]
+    assert every["ci95_wilson"] == [pytest.approx(0.8064, abs=1e-3), 1.0]
+
+
+def test_wilson_n_eff_is_n_over_deff_and_deff_never_below_one():
+    """deff = 1 + (m_bar - 1) * rho with rho floored at 0, so deff >= 1 always."""
+    cases = [
+        {"a": [1.0, 1.0, 1.0], "b": [0.0, 0.0, 0.0]},          # rho ~ 1
+        {"a": [1.0, 0.0, 1.0], "b": [0.0, 1.0, 0.0]},          # rho ~ 0
+        {"a": [1.0, 0.0], "b": [1.0, 0.0], "c": [0.0, 1.0]},
+        {"a": [0.0] * 5, "b": [0.0] * 5},                      # no variance
+        {"a": [1.0]},
+    ]
+    for values in cases:
+        got = score_sut._wilson_cluster(values)
+        n = sum(len(v) for v in values.values())
+        assert got["deff"] >= 1.0, (values, got)
+        assert got["n_eff"] == pytest.approx(n / got["deff"], abs=1e-2), (values, got)
+        assert got["n_eff"] <= n
+    # the homogeneous case is exact: m_bar 3, rho 1, deff 3, n_eff 6/3
+    homogeneous = score_sut._wilson_cluster({"a": [1.0, 1.0, 1.0], "b": [0.0, 0.0, 0.0]})
+    assert homogeneous["deff"] == pytest.approx(3.0, abs=1e-3)
+    assert homogeneous["n_eff"] == pytest.approx(2.0, abs=1e-3)
+
+
+def test_wilson_widens_with_intracluster_correlation():
+    """Same mean, same n: more correlation inside clusters buys fewer effective
+    observations and must buy a wider interval, not a narrower one."""
+    correlated = score_sut._wilson_cluster({"a": [1.0, 1.0, 1.0], "b": [0.0, 0.0, 0.0]})
+    independent = score_sut._wilson_cluster({"a": [1.0, 0.0, 1.0], "b": [0.0, 1.0, 0.0]})
+    assert correlated["n_eff"] < independent["n_eff"]
+    assert correlated["deff"] > independent["deff"]
+    assert _wilson_width(correlated) > _wilson_width(independent), (correlated, independent)
+
+
+def test_report_still_emits_the_wald_ci95_and_the_new_fields(tmp_path):
+    """run_pilot.py and tests/test_figures.py read `ci95`; it is kept alongside."""
+    rep = _pipeline_report(tmp_path)
+    groups = list(rep["by_rung"].values()) + list(rep["by_metric"].values())
+    assert groups
+    for v in groups:
+        assert set(v) >= {"pair_credit_mean", "se_cluster_robust", "ci95", "successes",
+                          "n_instances", "n_clusters", "ci95_wilson", "n_eff", "deff"}
+        mean, se = v["pair_credit_mean"], v["se_cluster_robust"]
+        assert v["ci95"] == [round(mean - score_sut.Z95 * se, 4),
+                             round(mean + score_sut.Z95 * se, 4)]
+        assert v["successes"] == round(mean * v["n_instances"])
+        assert 0.0 <= v["ci95_wilson"][0] <= v["ci95_wilson"][1] <= 1.0
+    rung1 = rep["by_rung"]["1"]
+    assert rung1["pair_credit_mean"] == 0.0 and rung1["successes"] == 0
+    assert rung1["ci95"] == [0.0, 0.0] and rung1["ci95_wilson"][1] > 0.0

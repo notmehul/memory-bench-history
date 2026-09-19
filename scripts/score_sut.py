@@ -156,6 +156,37 @@ def _cluster_robust(values: dict[str, list[float]]) -> tuple[float, float, int, 
     return mean, se, n, k
 
 
+def _wilson_cluster(values: dict[str, list[float]], z: float = Z95) -> dict:
+    """Wilson score interval on the cluster-adjusted effective sample size.
+
+    Added 2026-09-17, post-hoc, because the Wald interval beside it is wrong at
+    these counts and degenerate at zero: a rung with no successes gets [0, 0],
+    which claims infinite precision from 16 observations. That is the failure
+    arXiv:2503.01747 describes for evals below a few hundred datapoints. Wilson
+    keeps the interval inside [0, 1] and stays finite at 0 successes.
+
+    The clustering correction is preserved by deflating n rather than inflating
+    the SE: n_eff = n / deff, with deff the same design effect `_cluster_robust`
+    applies. Where the sample variance is zero the design effect is undefined
+    and is taken as 1.
+    """
+    mean, se, n, k = _cluster_robust(values)
+    if n == 0:
+        return {"ci95_wilson": [float("nan"), float("nan")], "n_eff": 0.0, "deff": 1.0}
+    xs = [v for vs in values.values() for v in vs]
+    var = sum((x - mean) ** 2 for x in xs) / max(n - 1, 1)
+    naive = math.sqrt(var / n)
+    deff = (se / naive) ** 2 if naive > 0 else 1.0
+    n_eff = n / deff
+    z2 = z * z
+    denom = 1 + z2 / n_eff
+    centre = (mean + z2 / (2 * n_eff)) / denom
+    half = (z / denom) * math.sqrt(mean * (1 - mean) / n_eff + z2 / (4 * n_eff * n_eff))
+    return {"ci95_wilson": [round(max(0.0, centre - half), 4),
+                            round(min(1.0, centre + half), 4)],
+            "n_eff": round(n_eff, 2), "deff": round(deff, 4)}
+
+
 def cmd_report(args) -> int:
     runs = _last(_jsonl(args.work_dir / "runs.jsonl"))
     results = _last(_jsonl(args.work_dir / "results.jsonl"))
@@ -203,7 +234,8 @@ def cmd_report(args) -> int:
             mean, se, n, k = _cluster_robust(clusters)
             out[key] = {"pair_credit_mean": round(mean, 4), "se_cluster_robust": round(se, 4),
                         "ci95": [round(mean - Z95 * se, 4), round(mean + Z95 * se, 4)],
-                        "n_instances": n, "n_clusters": k}
+                        "successes": int(round(mean * n)),
+                        "n_instances": n, "n_clusters": k, **_wilson_cluster(clusters)}
         return out
 
     report = {"system": manifest["system"], "org": manifest["org"],
@@ -224,7 +256,7 @@ def cmd_report(args) -> int:
           f"{report['n_empty_deliverables']} empty deliverables")
     for r, v in report["by_rung"].items():
         print(f"  rung {r}: pair credit {v['pair_credit_mean']:.3f} "
-              f"± {Z95 * v['se_cluster_robust']:.3f} "
+              f"Wilson95 {v['ci95_wilson']} "
               f"(n={v['n_instances']}, k={v['n_clusters']})")
     for m, v in report["by_metric"].items():
         print(f"  {m}: {v['pair_credit_mean']:.3f} ± {Z95 * v['se_cluster_robust']:.3f}")

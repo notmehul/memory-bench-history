@@ -38,6 +38,12 @@ from pathlib import Path
 REWRITE_THRESHOLD = 0.7
 CLUSTER_CAP = 2
 
+# Bootstrap settings for the kappa interval added 2026-09-17. Post-hoc: the G4
+# gate was prespecified and measured on the point estimate, and the interval
+# changes no verdict. Fixed seed so the interval is reproducible.
+BOOTSTRAP_B = 10000
+BOOTSTRAP_SEED = 20260917
+
 
 # --------------------------------------------------------------- shared
 
@@ -87,6 +93,43 @@ def _cohens_kappa(xs: list[bool], ys: list[bool]) -> tuple[float, float, bool]:
         # standard formula is 0/0. Perfect agreement on one class reports 1.0.
         return po, (1.0 if po >= 1.0 - 1e-12 else 0.0), True
     return po, (po - pe) / (1 - pe), False
+
+
+def _bootstrap_kappa_ci(rows: list[dict], b: int = BOOTSTRAP_B,
+                        seed: int = BOOTSTRAP_SEED) -> dict:
+    """Percentile CI for Cohen's kappa, resampling CLUSTERS rather than items.
+
+    The packet is stratified with a per-cluster cap, so criteria inside one
+    fact cluster are not independent and an item-level bootstrap would report
+    an interval narrower than the data support. Each replicate draws as many
+    clusters as the sample holds, with replacement, and pools their rows.
+
+    A replicate in which both raters used a single label has chance agreement 1
+    and no kappa; `_cohens_kappa` resolves it to 1.0 or 0.0 and those
+    replicates are counted in the report rather than dropped silently.
+
+    Added 2026-09-17, post-hoc. The point estimate and the gate verdict it was
+    measured against are untouched.
+    """
+    by_cluster: dict[tuple, list[dict]] = defaultdict(list)
+    for r in rows:
+        by_cluster[r["cluster"]].append(r)
+    clusters = sorted(by_cluster)
+    rng = random.Random(seed)
+    kappas: list[float] = []
+    degenerate = 0
+    for _ in range(b):
+        sample = [r for _ in clusters
+                  for r in by_cluster[clusters[rng.randrange(len(clusters))]]]
+        _, k, deg = _cohens_kappa([r["human"] for r in sample],
+                                  [r["judge"] for r in sample])
+        kappas.append(k)
+        degenerate += bool(deg)
+    kappas.sort()
+    return {"ci95": [round(kappas[int(0.025 * b)], 4),
+                     round(kappas[int(0.975 * b) - 1], 4)],
+            "replicates": b, "seed": seed, "n_clusters": len(clusters),
+            "degenerate_replicates": degenerate}
 
 
 # --------------------------------------------------------------- sample
@@ -250,7 +293,8 @@ def cmd_judge_agreement(args) -> int:
         sub = [r for r in rows if r["kind"] == kind]
         kpo, kk, kdeg = _cohens_kappa([r["human"] for r in sub], [r["judge"] for r in sub])
         per_kind[kind] = {"n": len(sub), "agreement": round(kpo, 4),
-                          "kappa": round(kk, 4), "degenerate_marginals": kdeg}
+                          "kappa": round(kk, 4), "degenerate_marginals": kdeg,
+                          "kappa_bootstrap": _bootstrap_kappa_ci(sub)}
 
     by_criterion: dict[tuple, list[dict]] = defaultdict(list)
     for r in rows:
@@ -268,11 +312,14 @@ def cmd_judge_agreement(args) -> int:
         "raw_agreement": round(po, 4),
         "kappa": round(kappa, 4),
         "degenerate_marginals": degenerate,
+        "kappa_bootstrap": _bootstrap_kappa_ci(rows),
         "gate_g4_overall": kappa >= 0.75,
         "per_kind": per_kind,
         "criteria_below_threshold": below,
     }
     (args.out_dir / "judge-agreement.json").write_text(json.dumps(report, indent=1))
+    ci = report["kappa_bootstrap"]["ci95"]
+    print(f"  kappa 95% CI (cluster bootstrap): [{ci[0]:.3f}, {ci[1]:.3f}]")
     print(f"judge vs human gold: n={len(rows)} agreement={po:.3f} kappa={kappa:.3f} "
           f"gate>=0.75: {'PASS' if report['gate_g4_overall'] else 'FAIL'}; "
           f"{len(below)} criteria below {REWRITE_THRESHOLD} -> judge-agreement.json")
