@@ -1,0 +1,21 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+
+# Paper builds; the deposited copies under paper/ are tracked on purpose
+paper/memory-bench.pdf
+paper/pipeline.pdf
+
+# The dataset lives on HuggingFace. Copy it into datasets/dev to run the
+# harness, but don't commit a second copy here.
+hf/
+datasets/dev/org-*/events.jsonl
+datasets/dev/org-*/probes.jsonl
+datasets/dev/org-*/org.json
+datasets/dev/org-*-twin/
+datasets/dev/*.json
+datasets/dev/*.md
+datasets/dev/LICENSE-DATA
+datasets/dev/CHECKSUMS.txt

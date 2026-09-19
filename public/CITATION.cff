@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use memory-bench, please cite the dataset and validity study."
+title: "memory-bench"
+authors:
+  - family-names: Srivastava
+    given-names: Mehul
+    orcid: "https://orcid.org/0009-0008-1031-304X"
+license: MIT
+repository-code: "https://github.com/notmehul/memory-bench"
+url: "https://huggingface.co/datasets/notmehul/memory-bench"
+preferred-citation:
+  type: article
+  title: "memory-bench: A Screened Benchmark Dataset and Validity Study for Organizational Memory in Agent Harnesses"
+  authors:
+    - family-names: Srivastava
+      given-names: Mehul
+      orcid: "https://orcid.org/0009-0008-1031-304X"
+  year: 2026
+  doi: "10.5281/zenodo.22838320"
+  publisher:
+    name: Zenodo
+references:
+  - type: article
+    title: "Constructing a Benchmark When Every Component Is a Language Model"
+    authors:
+      - family-names: Srivastava
+        given-names: Mehul
+        orcid: "https://orcid.org/0009-0008-1031-304X"
+    year: 2026
+    doi: "10.5281/zenodo.22838602"
+    publisher:
+      name: Zenodo
