@@ -10,6 +10,7 @@ Scope is deliberately the numbers the paper asserts, not everything measured.
 """
 
 import json
+import math
 import re
 import sys
 from collections import Counter
@@ -30,6 +31,27 @@ def draft() -> str:
     """The draft with whitespace collapsed: the prose is hard-wrapped, so a
     claim can straddle a newline. We assert on content, not on layout."""
     return " ".join((ROOT / "paper" / "draft.md").read_text().split())
+
+
+@pytest.fixture(scope="module")
+def tex() -> str:
+    """The LaTeX submission artifact, whitespace collapsed, same as the draft."""
+    return " ".join((ROOT / "paper" / "memory-bench.tex").read_text().split())
+
+
+@pytest.fixture(scope="module")
+def tex_raw() -> str:
+    return (ROOT / "paper" / "memory-bench.tex").read_text()
+
+
+def _wilson(successes: float, n: float, z: float = 1.959964) -> tuple[float, float]:
+    """Wilson score interval. Recomputed here rather than trusted from the
+    artifact, so a scorer bug and a prose typo cannot agree with each other."""
+    p = successes / n
+    d = 1 + z * z / n
+    centre = (p + z * z / (2 * n)) / d
+    half = z * math.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / d
+    return max(0.0, centre - half), min(1.0, centre + half)
 
 
 @pytest.fixture(scope="module")
@@ -91,14 +113,71 @@ def test_floor_run_numbers(draft: str):
         assert fragment in draft, f"missing {fragment!r}"
 
 
-def test_floor_is_indistinguishable_from_zero_on_every_rung(draft: str):
-    """The abstract's strongest claim — check it against the intervals."""
+def test_floor_is_reported_as_counts_and_wilson_bounds(draft: str, tex: str):
+    """Rewritten 2026-09-17. This used to assert the Wald interval and the claim
+    that every rung was statistically indistinguishable from zero. The Wald
+    interval is invalid at these counts and degenerate at rung 3's zero
+    successes, so the claim it licensed is retired; what the floor supports is a
+    magnitude, and that is what is guarded now."""
     report = json.loads(
         (ROOT / "datasets/dev/pilot/nomemory/seed-1/score-k1/report.json").read_text())
-    for rung, stats in report["by_rung"].items():
-        lo, hi = stats["ci95"]
-        assert lo <= 0.0 <= hi, f"rung {rung} CI {lo, hi} excludes zero"
-    assert "indistinguishable from zero on every capability rung" in draft
+    rungs = report["by_rung"]
+
+    expected = {"1": (2, 92, 1.8019, 51.06), "2": (2, 17, 1.8814, 9.04),
+                "3": (0, 16, 1.0, 16.0)}
+    for rung, (successes, n, deff, n_eff) in expected.items():
+        s = rungs[rung]
+        assert (s["successes"], s["n_instances"]) == (successes, n), rung
+        assert s["deff"] == deff and s["n_eff"] == n_eff, rung
+        # the scorer's interval, recomputed from the counts it reports
+        lo, hi = _wilson(s["pair_credit_mean"] * n_eff, n_eff)
+        assert [round(lo, 3), round(hi, 3)] == [round(x, 3) for x in s["ci95_wilson"]], rung
+
+    # only the zero-success rung is consistent with exactly zero
+    assert [r for r in rungs if rungs[r]["ci95_wilson"][0] == 0.0] == ["3"]
+
+    for fragment in ("2 successes of 92, 95% Wilson interval [0.004, 0.106]",
+                     "rung 2 0.118**, 2 of 17, [0.022, 0.441]",
+                     "rung 3 0.000**, 0 of 16, [0.000, 0.194]",
+                     "Only rung 3, with no successes at all, is consistent with "
+                     "exactly zero",
+                     "The interval method changed on 2026-09-17"):
+        assert fragment in draft, f"missing {fragment!r}"
+
+    # the magnitude claim that replaced the null test, in both formats
+    upper = "4 of 125 instances, with 95% upper bounds of 10.6%, 44.1% and 19.4%"
+    assert upper in draft
+    assert upper.replace("%", "\\%") in tex
+
+
+def test_the_retired_floor_claim_is_gone_everywhere(draft: str, tex: str):
+    """The Wald interval licensed two sentences the Wilson interval does not."""
+    release = (ROOT / "paper" / "release-copy.md").read_text()
+    for banned in ("indistinguishable from zero", "every interval includes zero",
+                   "near zero on every rung"):
+        for name, body in (("draft.md", draft), ("memory-bench.tex", tex),
+                           ("release-copy.md", release)):
+            assert banned not in body, f"{name} still carries {banned!r}"
+    # and the release copy's abstract still carries the replacement claim
+    flat = " ".join(release.split())
+    assert ("A memoryless worker earns pair credit on 4 of 125 instances, with 95% "
+            "upper bounds of 10.6%, 44.1% and 19.4% by capability rung.") in flat
+
+
+def test_floor_figure_draws_the_asymmetric_wilson_bars(tex_raw: str):
+    """A Wilson interval is not symmetric about the point estimate, so the
+    figure has to carry an explicit plus and minus per point."""
+    rungs = json.loads(
+        (ROOT / "datasets/dev/pilot/nomemory/seed-1/score-k1/report.json"
+         ).read_text())["by_rung"]
+    plotted = {"1": 3, "2": 2, "3": 1}      # rung -> y coordinate in the figure
+    for rung, y in plotted.items():
+        s = rungs[rung]
+        mean = round(s["pair_credit_mean"], 3)
+        lo, hi = s["ci95_wilson"]
+        coord = (f"({mean:.3f},{y}) += ({hi - mean:.3f},0) -= ({mean - lo:.3f},0)")
+        assert coord in tex_raw, f"rung {rung}: expected {coord!r}"
+    assert "+- (0.217,0)" not in tex_raw, "the symmetric Wald bars are still drawn"
 
 
 def test_g4_judge_human_agreement(draft: str):
@@ -114,6 +193,40 @@ def test_g4_judge_human_agreement(draft: str):
     assert round(per["fact_absent"]["kappa"], 3) == 0.166
     for fragment in ("0.537", "0.813", "0.166", "κ ≥ 0.75"):
         assert fragment in draft, f"missing {fragment!r}"
+
+
+def test_g4_kappa_confidence_intervals(draft: str, tex: str):
+    """Added 2026-09-17 with the bootstrap. Post-hoc, and the paper says so."""
+    r = json.loads(
+        (ROOT / "datasets/dev/calibration/judge-agreement.json").read_text())
+    boot = r["kappa_bootstrap"]
+    assert boot["replicates"] == 10000
+    assert boot["n_clusters"] == 89, "the bootstrap resamples clusters, not items"
+    assert boot["degenerate_replicates"] == 0
+    assert boot["seed"] == 20260917
+
+    def rendered(block) -> str:
+        lo, hi = block["kappa_bootstrap"]["ci95"]
+        return f"[{lo:.3f}, {hi:.3f}]"
+
+    assert rendered(r) == "[0.370, 0.688]"
+    for body in (draft, tex):
+        assert rendered(r) in body
+        for kind in ("fact_absent", "fact_applied", "scope_correct"):
+            assert rendered(r["per_kind"][kind]) in body, kind
+
+    # (a) the upper bound is below the gate, so the FAIL is not a point estimate
+    assert boot["ci95"][1] < 0.75
+    assert "The upper bound of the overall interval is 0.688, below the gate" in draft
+    # and it is labelled post-hoc, because the gate was prespecified on the point
+    low = draft.lower()
+    assert "post-hoc and were never prespecified" in low
+    # (b) the per-kind intervals overlap, and must not be read as more than that
+    kinds = [r["per_kind"][k]["kappa_bootstrap"]["ci95"]
+             for k in ("fact_absent", "fact_applied", "scope_correct")]
+    assert max(lo for lo, _ in kinds) < min(hi for _, hi in kinds), \
+        "the per-kind intervals no longer overlap; rewrite 4.4 before relaxing this"
+    assert ("establish nothing about whether κ differs by criterion kind" in draft)
 
 
 def test_g4_failure_is_not_softened(draft: str):
@@ -446,11 +559,157 @@ def test_harness_agreement(draft: str):
     assert "failed its own acceptance rule" in low
 
 
+def test_salience_check_is_reported_as_an_interval(draft: str, tex: str):
+    """Accepting a null at p = 0.067 on n = 100 is weak, so the paper leads with
+    the interval. Both intervals are recomputed here from the counts in the
+    validation report rather than read off the prose."""
+    report = (ROOT / "docs" / "validation-report.md").read_text()
+    agg = re.search(r"Aggregate: (\d+)/(\d+)", report)
+    seed3 = re.search(r"\((\d+)/(\d+) across the first three", report)
+    assert agg and seed3, "the validation report's counts moved"
+    assert (int(agg.group(1)), int(agg.group(2))) == (58, 100)
+    assert (int(seed3.group(1)), int(seed3.group(2))) == (42, 60)
+
+    def rendered(k: int, n: int) -> str:
+        lo, hi = _wilson(k, n)
+        return f"[{100 * lo:.1f}%, {100 * hi:.1f}%]"
+
+    assert rendered(58, 100) == "[48.2%, 67.2%]"
+    assert rendered(42, 60) == "[57.5%, 80.1%]"
+    for body, esc in ((draft, "%"), (tex, "\\%")):
+        assert rendered(58, 100).replace("%", esc) in body
+        assert rendered(42, 60).replace("%", esc) in body
+    assert "bounds discrimination rather than demonstrating flatness" in draft
+    assert "confirms it: raters told probed" not in draft, \
+        "the check bounds discrimination, it does not confirm flatness"
+
+    # G2's own bar, read from the plan, sits inside the interval
+    plan = (ROOT / "docs" / "dataset-plan.md").read_text()
+    bar = re.search(r"cannot beat (\d+)% accuracy", plan)
+    assert bar and bar.group(1) == "65", "G2's spot-check bar moved"
+    assert _wilson(58, 100)[1] * 100 > 65
+    assert f"G2 set the bar at a reviewer who cannot beat {bar.group(1)}% accuracy" \
+        in draft
+    assert "the comparison is approximate" in draft.lower(), \
+        "the aggregate and the per-spot-check bar are not the same quantity"
+    assert "is not re-litigated here" in draft, "G2's verdict does not move"
+
+    # seed 3, worded as the validation report words it
+    assert "scored 14/20 on four independent samples" in report
+    assert "seed 3 scored 14/20 on four independent samples" in draft
+
+
 def test_model_relativity(draft: str):
     """Sourced to the decision log; assert the paper and the log agree."""
     log = (ROOT / "docs" / "decision-log.md").read_text()
     assert "17/54" in log and "37/54" in log
     assert "37/54" in draft and "17/54" in draft
+
+
+def test_every_bibitem_is_cited(tex_raw: str):
+    """The bibliography rendered as an uncited list until 2026-09-17: 21 entries
+    and no \\cite anywhere. Every key must now be reachable from the body."""
+    keys = re.findall(r"\\bibitem\{([^}]+)\}", tex_raw)
+    assert len(keys) == len(set(keys)) == 22, f"{len(keys)} bibitems"
+    cited: set[str] = set()
+    for group in re.findall(r"\\cite\{([^}]+)\}", tex_raw):
+        cited |= {k.strip() for k in group.split(",")}
+    assert not set(keys) - cited, f"uncited bibitems: {sorted(set(keys) - cited)}"
+    assert not cited - set(keys), f"citations with no bibitem: {sorted(cited - set(keys))}"
+
+
+# Author lists and titles verified against the arXiv abstract pages on
+# 2026-09-17. That pass found seven entries with wrong given names and three
+# titles that abbreviated what the source spells out. These are the corrected
+# strings; an edit that reintroduces an old one fails here.
+BIB_CORRECTIONS = {
+    "membench": "Tan, H., Zhang, Z., Ma, C., Chen, X., Dai, Q., and Dong, Z.",
+    "memoryarena": "He, Z., Wang, Y., Zhi, C., Hu, Y., et al.",
+    "streammembench": "Liu, G., Ren, Y., Gu, H., Zhang, P., et al.",
+    "gatemem": "Ren, Z., Yang, Y., Chen, Y., Zhao, Z., et al.",
+    "longmemeval2": "Wu, D., Ji, Z., Kawatkar, A., Kwan, B., Gu, J.-C., Peng, N., "
+                    "and Chang, K.-W.",
+    "horizonbench": "Li, S. S., Paranjape, B., Oktar, K., et al.",
+    "abc": "Zhu, Y., Jin, T., Pruksachatkun, Y., et al.",
+    "construct": "Measuring what Matters: Construct Validity in Large Language "
+                 "Model Benchmarks",
+    "gsm1k": "A Careful Examination of Large Language Model Performance on Grade "
+             "School Arithmetic",
+    "miller": "Adding Error Bars to Evals: A Statistical Approach to Language "
+              "Model Evaluations",
+}
+
+# What the 2026-09-17 pass replaced. None of these may come back.
+BIB_RETIRED = (
+    "Tan, H., Zhang, Y., Ma, C., Chen, L., Dai, W., and Dong, Y.",
+    "He, Y., Wang, S., Zhi, R., Hu, J.",
+    "Liu, X., Ren, H., Gu, Y., Zhang, K.",
+    "Ren, S., Yang, Q., Chen, H., Zhao, L.",
+    "Li, J., Paranjape, B.",
+    "Zhu, Y., Jin, C., Pruksachatkun, Y.",
+    "Construct Validity in LLM Benchmarks",
+    "A Careful Examination of LLM Performance",
+    "Adding Error Bars to Evals}",
+)
+
+
+def test_bibliography_authors_and_titles_are_the_verified_ones(tex_raw: str):
+    """Ten entries were corrected on 2026-09-17 against the arXiv abstract pages."""
+    flat = " ".join(tex_raw.split())
+    for key, expected in BIB_CORRECTIONS.items():
+        assert f"\\bibitem{{{key}}}" in tex_raw, f"{key}: bibitem gone"
+        assert expected in flat, f"{key}: expected {expected!r}"
+    for retired in BIB_RETIRED:
+        assert retired not in flat, f"a corrected citation regressed: {retired!r}"
+
+
+def test_the_citation_note_says_what_each_pass_checked(draft: str, tex: str):
+    """The note is a claim about process, so it carries both passes and the
+    corrections the second one made, rather than fixing them quietly."""
+    for body in (draft, tex):
+        assert "2026-09-17" in body
+        assert "Author lists were not in that pass's scope" in body
+        assert "seven entries carrying wrong given names" in body
+        assert "abbreviated what the source spells out" in body
+
+
+def test_companion_paper_is_cited_where_it_is_used(tex_raw: str, draft: str):
+    """Track B reuses Track A's measurements and Track A leans on its judge-panel
+    result, so each has to name the other."""
+    assert "\\bibitem{pipeline}" in tex_raw
+    assert ("Constructing a Benchmark When Every\nComponent Is a Language Model"
+            in tex_raw)
+    assert tex_raw.count("\\cite{pipeline}") >= 4, \
+        "cite the companion in 1.4, 1.5, 4.4 and disclosure 2"
+
+    title = "Constructing a Benchmark When Every Component Is a Language Model"
+    flat_draft = draft
+    assert flat_draft.count(title) >= 2, "the draft needs the companion reference too"
+
+    # the judge-panel result 4.4 carries, against the artifact it came from
+    rep = json.loads(
+        (ROOT / "datasets/methods/judge-panel/report.json").read_text())
+    panel = [t for t in rep["vs_human_sampled"] if "committed v1" not in t]
+    assert len(panel) == 4, "four further blinded judges"
+    vs_human = [rep["vs_human_sampled"][t]["overall"]["kappa"] for t in panel]
+    vs_v1 = [rep["vs_v1_committed"][t]["overall"]["kappa"] for t in panel]
+    assert (round(min(vs_human), 3), round(max(vs_human), 3)) == (0.518, 0.563)
+    assert (round(min(vs_v1), 3), round(max(vs_v1), 3)) == (0.927, 0.966)
+    assert all(k < 0.75 for k in vs_human) and all(k > 0.75 for k in vs_v1), \
+        "the panel agrees with itself above the gate and with the rater below it"
+    for fragment in ("κ 0.927 to 0.966", "κ 0.518 to 0.563",
+                     "all four returned identical verdict vectors",
+                     "κ 0.537, 0.524 and 0.544, at or below the best single judge "
+                     "at 0.563"):
+        assert fragment in draft, f"missing {fragment!r}"
+
+
+def test_construct_validity_disclosure_is_present(draft: str, tex: str):
+    """Added 2026-09-17: probe difficulty has no human anchor anywhere."""
+    for body in (draft, tex):
+        assert "Nothing anchors probe difficulty to a human" in body
+        assert "no human performance baseline anywhere" in body
+    assert "argued from the design and never measured" in draft
 
 
 def test_no_comparative_system_claim(draft: str):
@@ -533,3 +792,105 @@ def test_ladder_table_in_the_draft_matches_the_artifacts(draft: str):
         assert f"| {n} |" in draft[draft.index(row):draft.index(row) + 300], \
             f"{arch}: the row should carry {n} valid instances"
     assert sum(counts.values()) == 371
+
+
+# --- front and back matter, added 2026-09-19 --------------------------------
+# Apparatus, not results. These guards exist because every one of them is a
+# statement about the author or about provenance that is cheap to widen by
+# accident and expensive to have widened in print.
+
+ORCID = "0009-0008-1031-304X"
+ORCID_SHAPED = re.compile(r"\b\d{4}-\d{4}-\d{4}-\d{3}[\dX]\b")
+
+# The two Zenodo records, minted 2026-09-19. This paper's own identifier and the
+# methodology paper's are the only two DOIs that exist in this project; any other
+# DOI-shaped token in these files is one nobody minted. arXiv DOIs in the
+# bibliography are other people's papers and are exempt.
+OWN_DOI = "10.5281/zenodo.22838321"
+COMPANION_DOI = "10.5281/zenodo.22838603"
+DOI_LIKE = re.compile(r"\b10\.\d{4,9}/[^\s,;)}\]\\]+")
+
+BACK_MATTER = (
+    "Acknowledgements",
+    "Author contributions",
+    "Competing interests and funding",
+    "Ethics",
+    "Data and code availability",
+    "Reproducibility",
+)
+
+
+@pytest.fixture(scope="module")
+def release_copy() -> str:
+    return " ".join((ROOT / "paper" / "release-copy.md").read_text().split())
+
+
+@pytest.fixture(scope="module")
+def draft_raw() -> str:
+    return (ROOT / "paper" / "draft.md").read_text()
+
+
+def test_orcid_is_the_authors_and_nothing_else(tex: str, draft: str, release_copy: str):
+    """The iD is the author's identity in the record. One value, three files."""
+    for body in (tex, draft, release_copy):
+        assert ORCID in body
+        found = set(ORCID_SHAPED.findall(body))
+        assert found == {ORCID}, f"unexpected ORCID-shaped ids: {found - {ORCID}}"
+    assert f"https://orcid.org/{ORCID}" in tex, "the .tex iD must resolve"
+
+
+def test_back_matter_sections_are_present(tex: str, draft_raw: str):
+    """The markdown heading is matched whole-line: a section renamed past its
+    contract ("Ethics notes") is a missing section, not a present one."""
+    for heading in BACK_MATTER:
+        assert f"\\section*{{{heading}}}" in tex, f"tex: missing {heading}"
+        assert re.search(rf"^## {re.escape(heading)}$", draft_raw, re.M), \
+            f"draft.md: missing {heading}"
+
+
+def test_acknowledgement_keeps_its_scope_qualifier(tex: str, draft: str):
+    """The reviewer read the measurement design and nothing else. If the thanks
+    ever widen past that, they misdescribe what he saw, so the qualifier is
+    guarded alongside the name."""
+    for body in (tex, draft):
+        assert "Harshit Agarwal" in body
+        assert "He reviewed the measurement design only" in body
+        assert ("he saw no seed content, no fact ledger and no results, and he is "
+                "not a rater in any measurement reported in this paper") in body
+
+
+
+@pytest.mark.parametrize("rel", ["paper/memory-bench.tex", "paper/draft.md",
+                                 "paper/release-copy.md"])
+def test_only_the_two_minted_dois_appear(rel: str):
+    """Two records exist. A third DOI-shaped token is one nobody minted, and a
+    digit dropped from either of these two points a reader at someone else's
+    record, so the exact strings are pinned rather than the shape."""
+    found = {d.rstrip(".").rstrip(")") for d in DOI_LIKE.findall((ROOT / rel).read_text())
+             if not d.startswith("10.48550/arXiv")}
+    assert found <= {OWN_DOI, COMPANION_DOI}, \
+        f"{rel}: unminted DOI: {sorted(found - {OWN_DOI, COMPANION_DOI})}"
+
+
+def test_the_tex_defines_both_record_identifiers(tex_raw: str):
+    """The .tex reaches its DOIs through two macros, so the value lives in one
+    place per paper. \\zenodoDOI is this paper; \\companionDOI is the other."""
+    assert f"\\newcommand{{\\zenodoDOI}}{{{OWN_DOI}}}" in tex_raw
+    assert f"\\newcommand{{\\companionDOI}}{{{COMPANION_DOI}}}" in tex_raw
+
+
+def test_the_record_identifier_is_on_page_one_and_resolvable(tex: str, draft: str):
+    """A printed DOI a reader cannot click is a string, not an identifier."""
+    assert "DOI: \\href{https://doi.org/\\zenodoDOI}{\\zenodoDOI}}" in tex
+    assert f"https://doi.org/{OWN_DOI}" in draft
+    assert f"https://doi.org/{COMPANION_DOI}" in draft
+
+
+def test_the_companion_citation_carries_the_companion_doi(tex: str, draft: str):
+    """The pair is only navigable if each paper names the other's record. The
+    companion is deposited now, so it is no longer described as unpublished."""
+    assert "DOI: \\href{https://doi.org/\\companionDOI}{\\companionDOI}" in tex
+    assert "Unpublished companion preprint" not in tex
+    assert COMPANION_DOI in draft
+
+

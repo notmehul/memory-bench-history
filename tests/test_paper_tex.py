@@ -78,15 +78,25 @@ def test_corpus_rates_in_prose_match_the_report(flat: str):
 
 
 def test_floor_figure_matches_the_scored_report(tex: str, flat: str):
+    """Rewritten 2026-09-17 with the figure. The bars were symmetric Wald
+    intervals; they are now asymmetric Wilson intervals, so each point carries an
+    explicit plus and minus rather than one half-width."""
     rep = json.loads((
         ROOT / "datasets/dev/pilot/nomemory/seed-1/score-k1/report.json").read_text())
     rungs = rep["by_rung"]
     assert [rungs[r]["n_instances"] for r in ("1", "2", "3")] == [92, 17, 16]
+    assert [rungs[r]["successes"] for r in ("1", "2", "3")] == [2, 2, 0]
     assert round(rungs["1"]["pair_credit_mean"], 3) == 0.022
     assert round(rungs["2"]["pair_credit_mean"], 3) == 0.118
     assert rungs["3"]["pair_credit_mean"] == 0.0
-    assert "(0.022,3) +- (0.040,0)" in tex
-    assert "(0.118,2) +- (0.217,0)" in tex
+    for rung, y in (("1", 3), ("2", 2), ("3", 1)):
+        mean = round(rungs[rung]["pair_credit_mean"], 3)
+        lo, hi = rungs[rung]["ci95_wilson"]
+        assert f"({mean:.3f},{y}) += ({hi - mean:.3f},0) -= ({mean - lo:.3f},0)" in tex
+    end = tex.index("\\label{fig:floor}")
+    figure = tex[tex.rindex("\\begin{figure}", 0, end):end]
+    assert "+= (" in figure and "-= (" in figure
+    assert "+-" not in figure, "a symmetric error bar survives in the floor figure"
     assert "rung 1 pair credit" in flat and "0.022" in flat
 
 

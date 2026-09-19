@@ -21,6 +21,7 @@ PUBLIC = [
     "paper/draft.md",
     "paper/memory-bench.tex",      # the submission artifact; added 2026-09-14
     "paper/checklist.md",
+    "paper/pipeline.tex",       # Track B submission artifact; added 2026-09-17
     "docs/vision.md",
     "docs/architecture.md",
     "scripts/release.py",          # its strings ship inside the release bundle
@@ -28,6 +29,10 @@ PUBLIC = [
 
 # An em dash inside a table cell marks an empty cell, not a sentence connector.
 EMPTY_CELL = re.compile(r"\|\s*—\s*\|")
+
+# LaTeX renders `---` as an em dash, so a .tex file could satisfy the U+2014 check
+# and still print one. Added 2026-09-19 after exactly that slipped through review.
+TEX_EMDASH = re.compile(r"---")
 
 AI_VOCABULARY = (
     "crucial", "delve", "enduring", "fostering", "garner", "interplay",
@@ -74,6 +79,13 @@ def test_no_em_dashes(rel: str):
     assert not lines, (
         f"{rel}: em dashes on lines {[i for i, _ in lines]}. End the sentence or "
         "use a comma; do not swap in parentheses or an en dash.")
+    if rel.endswith(".tex"):
+        tex = [(i, line) for i, line in enumerate(_text(rel).splitlines(), 1)
+               if TEX_EMDASH.search(line)]
+        assert not tex, (
+            f"{rel}: LaTeX em dash ligature (---) on lines "
+            f"{[i for i, _ in tex]}. It renders as an em dash, so the rule above "
+            "applies to it too.")
 
 
 @pytest.mark.parametrize("rel", PUBLIC)

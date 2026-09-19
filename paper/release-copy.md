@@ -1,4 +1,4 @@
-# Release copy, 2026-09-15
+# Release copy, 2026-09-17
 
 One source for the text that has to be identical in three places: the abstract
 in the PDF, the Zenodo abstract field, and the HuggingFace dataset card. Three
@@ -33,10 +33,10 @@ withheld unscreened as holdouts. All three released seeds miss the prespecified
 instance gate (125, 131, and 115 against 135). The misses are retained and
 marked rather than repaired.
 
-The validity study is the result. A memoryless worker's pair credit is
-statistically indistinguishable from zero on every capability rung. Probe
-validity is task-model-relative: under identical strict rules, 37/54 probe
-clusters survived the ceiling gate for one worker and 17/54 for a smaller
+The validity study is the result. A memoryless worker earns pair credit on 4 of
+125 instances, with 95% upper bounds of 10.6%, 44.1% and 19.4% by capability
+rung. Probe validity is task-model-relative: under identical strict rules, 37/54
+probe clusters survived the ceiling gate for one worker and 17/54 for a smaller
 sibling. Identical weights behind two agent harnesses agreed on only 65% of
 twin-ceiling outcomes, failing a prespecified 90% bar. Judge-human agreement on
 a blinded 150-pair packet reached 81.3% raw agreement at kappa = 0.537, which
@@ -57,11 +57,12 @@ is ASCII because Zenodo and HuggingFace fields are not typeset.
 | field | value |
 |---|---|
 | title | memory-bench: A Screened Benchmark Dataset and Validity Study for Organizational Memory in Agent Harnesses |
-| authors | Mehul Srivastava, Independent |
-| date | the date on the PDF first page, currently 15 September 2026 |
+| authors | Mehul Srivastava, Independent researcher, ORCID 0009-0008-1031-304X |
+| date | the date on the PDF first page, currently 19 September 2026 |
 | abstract | the block above, verbatim |
-| keywords | organizational memory, agent memory, benchmark validity, LLM-as-judge, counterfactual evaluation, agent harnesses |
+| keywords | agent memory, benchmark construction, construct validity, LLM-as-judge, counterfactual evaluation, organizational knowledge, reproducibility |
 | licence | data CC BY 4.0, code MIT |
+| DOI | 10.5281/zenodo.22838321 (this record); 10.5281/zenodo.22838603 is the methodology paper |
 
 Do not lead the record title with "LLM-as-a-Judge". The judge analysis is the
 paper's most quotable section and the least accurate summary of what it is.
@@ -71,8 +72,12 @@ Never the ledger, the generator, the rater keys, or the holdout seeds. The
 licence split on the record has to read the same as §8 does: data CC BY 4.0,
 code MIT, ledger and generator withheld.
 
-The DOI goes on the profile and the dataset card, not into this PDF, unless you
-are willing to cut a second PDF that cites itself.
+The paper carries its Zenodo DOI, 10.5281/zenodo.22838321, on page one, and
+cites the methodology paper's, 10.5281/zenodo.22838603, in its bibliography.
+It still carries no venue line: where it is hosted is the deposit page's
+statement to make, not the PDF's. Both identifiers were reserved on the
+deposit form and resolve only once the records are published. Publish both
+before circulating either PDF, or the printed DOIs 404.
 
 ## Profile blurb
 
@@ -87,7 +92,7 @@ guess from model priors earns nothing. The paper is the validity study for that
 instrument, including the gates that failed. No system ranking.
 ```
 
-Then the Zenodo DOI and the dataset URL.
+Then the Zenodo DOI (10.5281/zenodo.22838321) and the dataset URL.
 
 ## Still open: the HuggingFace card
 

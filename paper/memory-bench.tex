@@ -57,13 +57,22 @@
 
 \newcommand{\code}[1]{\texttt{\small #1}}
 
+% Zenodo deposit identifiers, minted 2026-09-19. \zenodoDOI is this paper's
+% record; \companionDOI is the methodology paper's. Both are pinned by
+% tests/test_paper_tex.py, which fails on anything that is not a well-formed
+% Zenodo DOI, so a mistyped or invented identifier cannot ship.
+\newcommand{\zenodoDOI}{10.5281/zenodo.22838321}
+\newcommand{\companionDOI}{10.5281/zenodo.22838603}
+
 \title{\textbf{memory-bench}\\[.3em]
 \large A Screened Benchmark Dataset and Validity Study for\\
 Organizational Memory in Agent Harnesses}
 
-\author{Mehul Srivastava\\\normalsize Independent}
+\author{Mehul Srivastava\\\normalsize Independent researcher\\
+\normalsize ORCID: \href{https://orcid.org/0009-0008-1031-304X}{0009-0008-1031-304X}}
 
-\date{15 September 2026}
+\date{19 September 2026\\[.45em]
+\normalsize DOI: \href{https://doi.org/\zenodoDOI}{\zenodoDOI}}
 
 \begin{document}
 \maketitle
@@ -91,11 +100,11 @@ withheld unscreened as holdouts. All three released seeds miss the prespecified
 instance gate (125, 131, and 115 against 135). The misses are retained and marked
 rather than repaired.
 
-The validity study is the result. A memoryless worker's pair credit is
-statistically indistinguishable from zero on every capability rung. Probe
-validity is \emph{task-model-relative}: under identical strict rules, 37/54 probe
-clusters survived the ceiling gate for one worker and 17/54 for a smaller
-sibling. Identical weights behind two agent harnesses agreed on only 65\% of
+The validity study is the result. A memoryless worker earns pair credit on 4 of
+125 instances, with 95\% upper bounds of 10.6\%, 44.1\% and 19.4\% by capability
+rung. Probe validity is \emph{task-model-relative}: under identical strict rules,
+37/54 probe clusters survived the ceiling gate for one worker and 17/54 for a
+smaller sibling. Identical weights behind two agent harnesses agreed on only 65\% of
 twin-ceiling outcomes, failing a prespecified 90\% bar. Judge--human agreement on
 a blinded 150-pair packet reached 81.3\% raw agreement at $\kappa = 0.537$, which
 fails our prespecified gate of $\kappa \geq 0.75$. Aggregate disagreement is
@@ -109,6 +118,14 @@ comparative system result is claimed anywhere in this paper.
 
 \begin{center}
 \begin{minipage}{0.93\textwidth}
+\footnotesize\noindent\textbf{Keywords:} agent memory; benchmark
+construction; construct validity; LLM-as-judge; counterfactual evaluation;
+organizational knowledge; reproducibility.
+\end{minipage}
+\end{center}
+
+\begin{center}
+\begin{minipage}{0.93\textwidth}
 \rule{\textwidth}{0.4pt}\\[0.55em]
 \small\noindent\textbf{How to read this paper.} This is an instrument and a
 validity study, not a leaderboard. Three claims: the released set measures
@@ -116,8 +133,8 @@ organizational memory behavior at rungs 1--3 under a stated worker pin; pair
 credit via counterfactual twins filters priors; screening anchors are properties
 of a worker and a harness, not of the items alone. Four prespecified bars failed:
 the instance gate on all three released seeds, the cluster gate on seed 3,
-harness equivalence, and judge--human $\kappa$. One clean positive result:
-memoryless pair credit near zero on every rung. No system ranking is reported.
+harness equivalence, and judge--human $\kappa$. Against them, one clean positive
+result: a memoryless worker earns pair credit on 4 of 125 instances (\S4.5).
 \\[0.55em]\rule{\textwidth}{0.4pt}
 \end{minipage}
 \end{center}
@@ -160,33 +177,25 @@ witnesses and per-principal visibility, facts carry tier and authority so that
 conflicts have correct rather than arbitrary resolutions, and facts are
 invalidated over time rather than merely accumulated.
 
-The gap is not only in coverage. Section~2 surveys the field's measurement
-failures, and they are the reason this paper spends most of its length on
-validity rather than on results.
-
 \subsection{What we claim, and what we do not}
 
 This paper claims an \emph{instrument}, not a leaderboard.
 
 We claim that the released dataset measures organizational memory behavior at
 rungs 1--3 of the ladder, for a two-team simulated software organization at
-L1--L2 scale, under a stated worker pin; and we report the measurements that support
-or qualify that claim, including the ones that qualify it. We do not claim that
-any memory system is better than another. This paper publishes no comparative
-system numbers. The instrument and the validity study are the same object: a
-benchmark that cannot say what it measures is not a benchmark, so the
-measurements that qualify the claim are the claim. We do not claim to measure
-``mini-AGI-ness,'' and the external-validity claim stops at the organization
-type instantiated. No result is ever reduced to a single aggregate score:
-results are grouped by capability rung, always.
+L1--L2 scale, under a stated worker pin, and we report the measurements that
+support that claim alongside the ones that qualify it. This paper publishes
+no comparative system numbers. A benchmark that cannot say what it measures is
+not a benchmark, so the measurements that qualify the claim are the claim. No
+result is ever reduced to a single aggregate score. Results are grouped by
+capability rung, always.
 
 Three constraints were fixed before the evidence they govern was produced, and
 each is corroborated by dated git history rather than by assertion: the gate
 criteria and scoring rules, the worker and judge pins, and the commitment to
 carry failed gates as failures rather than repairing the probes that failed them.
 That commitment has a visible price. Four prespecified bars failed, and the
-items behind them are retained and marked rather than topped up (\S4.1), because
-a gate that is relaxed once it binds was never a gate.
+items behind them are retained and marked rather than topped up (\S4.1).
 
 \subsection{Contributions}
 
@@ -200,7 +209,9 @@ corroborated by commit history.
 counterfactual twins; per-item floor and ceiling validity screening with a pinned
 worker; blinded judging with a versioned rubric where the judge model is never
 the worker model nor the family that authored the criteria; a five-gate pipeline;
-and a statistics protocol prespecified before any result existed.
+and a statistics protocol prespecified before any result existed. The measurement
+problems this pipeline raises in its own right are the subject of a companion
+methodology paper~\cite{pipeline}.
 
 \item \textbf{A validity study} (\S4): the measurements that test whether the
 instrument works: floor validation, the task-model-relativity of probe validity,
@@ -214,32 +225,45 @@ we documented what that costs and how to recover from it.
 
 \subsection{What this paper does not contain}
 
-It contains no system comparison. The pilot that would have produced one had
-completed the memoryless floor and partial rows for four further baselines when
-the pinned worker became unreachable (\S4.6), and because probe validity is
-worker-relative (\S4.2) a successor's results cannot be attached to anchors
-measured under the old one. The partial rows are released in \S6 as provenance,
-carrying no comparative claim.
+It contains no system comparison. The pilot that would have produced one was cut
+off when the pinned worker became unreachable (\S4.6), and because probe
+validity is worker-relative (\S4.2) a successor's results cannot be attached to
+anchors measured under the old worker. The partial rows are released in \S6 as
+provenance. It also contains no treatment of how a benchmark
+is validated when every component inside it is a language model; that is the
+companion paper's subject~\cite{pipeline}, and the one result from it this paper
+leans on is cited in \S4.4.
 
 \section{Related work}
 
-\noindent\textit{Citation note.} Every reference in this section was resolved
-against its primary source on 2026-09-14, because the section was first drafted
-from this project's own field audit rather than from the papers. All twenty
-arXiv identifiers resolve to a paper matching the name given, including the six
-that postdate the drafting model's knowledge, and a deliberate nonexistent
-identifier was checked to confirm that failures report as failures. Three
-descriptions were wrong and are corrected here, and one claim was refuted by its
-own source and rewritten rather than re-cited.
+\noindent\textit{Citation note.} These references were checked in two passes,
+because the section was first drafted from this project's own field audit rather
+than from the papers. On 2026-09-14 identifiers and titles were resolved against
+their primary sources. All twenty arXiv identifiers resolve to a paper matching
+the name given, including the six that postdate the drafting model's knowledge,
+and a deliberate nonexistent identifier was checked to confirm that failures
+report as failures. Three descriptions were wrong and are corrected here, and one
+claim was refuted by its own source and rewritten rather than re-cited. Author
+lists were not in that pass's scope. They were checked on 2026-09-17, which found
+seven entries carrying wrong given names and three titles that abbreviated what
+the source spells out; all ten are corrected in the bibliography below. That pass
+also read this section's substantive claims about its sources against the sources
+themselves. MEMTRACK's best model at 60\% correctness and the three LoCoMo scores
+quoted from Mem0's own Table~2 are as stated. One characterisation of BetterBench
+was not: it reports that most benchmarks give no statistical significance or
+uncertainty, which is weaker than calling that the criterion failed most often,
+and \S2.4 now says the former.
 
 \subsection{What memory benchmarks currently measure}
 
 Table~\ref{tab:landscape} places the ten benchmarks our audit covered. The
-established ones evaluate a single agent's recall across a long conversation.
+established ones evaluate a single agent's recall across a long
+conversation~\cite{locomo,longmemeval,membench}.
 That is rung 0 of the ladder this benchmark is organized around (\S3.3): recall
 on request, table stakes for a memory system, and saturated by long context. A
-second line moves toward agentic settings, and MemoryAgentBench (2507.05257)
-makes the argument that matters there, that pasting a conversation history into
+second line moves toward agentic
+settings~\cite{memoryarena,streammembench,horizonbench,longmemeval2}, and
+MemoryAgentBench (2507.05257)~\cite{memoryagentbench} makes the argument that matters there, that pasting a conversation history into
 context evaluates memory off-policy, since a deployed system writes its memory
 incrementally rather than receiving the whole history at once. Every one of them
 is single-principal.
@@ -247,7 +271,7 @@ is single-principal.
 Two works are close enough that the distinction has to be drawn precisely rather
 than by category.
 
-MEMTRACK (2510.01353) is the nearest neighbour on the organizational axis, and it
+MEMTRACK (2510.01353)~\cite{memtrack} is the nearest neighbour on the organizational axis, and it
 is not a conversational benchmark at all. It models realistic organizational
 workflows by interleaving asynchronous events across Slack, Linear, and Git, with
 noisy, conflicting, and cross-referring information, and it scores acquisition,
@@ -259,7 +283,7 @@ person and not another. It scores conflict resolution without tiered authority
 deciding which side of a conflict is correct, and without supersession as a
 distinct failure mode from retrieval.
 
-GateMem (2606.18829) is the nearest neighbour on the multi-principal axis,
+GateMem (2606.18829)~\cite{gatemem} is the nearest neighbour on the multi-principal axis,
 evaluating memory governance for shared-memory agents across utility, access
 control, and deletion. It shares our premise that a memory system serving several
 people is a different object from one serving a single user. It scores access
@@ -289,7 +313,7 @@ GateMem \scriptsize(2606.18829) & many & a shared memory store & utility, access
 \textbf{memory-bench} \scriptsize(this work) & many & a per-principal event stream, delivered event by event & scope, authority and freshness as behavior, credited per twin pair \\
 \bottomrule
 \end{tabular}
-\caption{The ten memory benchmarks the 2026-07-25 audit covered, on the two axes that decide whether organizational memory is in range: how many principals hold different views of the same history, and whether that history arrives as a stream the system has to write down for itself. The first three are the rung-0 recall benchmarks. MEMTRACK is the nearest neighbour on setting and GateMem on governance, and \S2.5 says which part of the claim each one leaves standing.}
+\caption{The ten memory benchmarks the 2026-07-25 audit covered, on the two axes that decide whether organizational memory is in range: how many principals hold different views of the same history, and whether that history arrives as a stream the system has to write down for itself. The first three are the rung-0 recall benchmarks. MEMTRACK is the nearest neighbour on setting and GateMem on governance (\S2.5). Nine of the ten are single-principal, and the tenth holds one shared store rather than a per-principal stream.}
 \label{tab:landscape}
 \end{table}
 
@@ -324,17 +348,17 @@ consuming it run on models the organization does not own.
 
 Most of this paper is validity evidence rather than results, and the reason is
 that this field's published numbers have repeatedly failed on measurement rather
-than on modeling. Four failure modes, each answered by a mechanism in \S3.
+than on modeling.
 
 \textbf{Ground truth that is wrong, and a judge that does not notice.} An
-independent audit of LoCoMo (Penfield Labs, 2026-04-08) found 99
+independent audit of LoCoMo~\cite{locomo} (Penfield Labs, 2026-04-08) found 99
 score-corrupting errors in 1{,}540 questions, a ceiling near 93.6\% that vendors
 were publishing above, and an LLM judge accepting topical but wrong answers at
 62.81\%. It is self-published, and its author discloses the same finding in a
 public issue thread, so the figure has two routes rather than one.
 
-\textbf{A corpus that does not need memory.} Mem0's own evaluation (2504.19413,
-Table 2) reports a full-context baseline at 72.90\% against Mem0's graph variant
+\textbf{A corpus that does not need memory.} Mem0's own evaluation
+(2504.19413, Table 2)~\cite{mem0} reports a full-context baseline at 72.90\% against Mem0's graph variant
 at 68.44\% and plain Mem0 at 66.88\%, and Letta separately reported a plain
 filesystem-and-grep agent at 74.0\%. When the no-memory baseline wins on a
 vendor's own table, the question is whether the corpus was measuring memory at
@@ -344,7 +368,7 @@ product should have to beat a directory of files.
 \textbf{Protocol loose enough to support a dispute.} One system was reported at
 84\%, then 75.14\%, then 58.44\% in a public exchange between Mem0 and Zep,
 depending on configuration and denominator, with neither party obviously acting
-in bad faith. MemDelta (2606.29914) sharpens the point: an embedding-only swap
+in bad faith. MemDelta (2606.29914)~\cite{memdelta} sharpens the point: an embedding-only swap
 moved accuracy 6.2 points ($p = 0.004$) while the architectural comparison it
 ran, verbatim RAG against full context, did not move (47.2 against 49.8, $p =
 0.34$). Our RAG-class baselines pin and report their embedding model.
@@ -352,7 +376,7 @@ ran, verbatim RAG against full context, did not move (47.2 against 49.8, $p =
 \textbf{Fitting the system to the test after seeing it.} A public teardown of
 MemPalace documents three patches hand-coded against three specific questions
 the system had failed, after which the result was reported as the first perfect
-score on LongMemEval; the reporter's reading is that the fixes were designed
+score on LongMemEval~\cite{longmemeval}; the reporter's reading is that the fixes were designed
 around the exact failure cases rather than found by analyzing general ones. The documented failure is test-set inspection followed by targeted repair, not
 benchmark content visible during ingestion, so what it argues for is a withheld
 ledger, regenerable holdout seeds, and a freeze that makes post-hoc repair
@@ -360,19 +384,22 @@ visible in git history.
 
 \subsection{Benchmark validity and benchmark decay}
 
-The standards this paper is written against are BetterBench (2411.12990), whose
-lifecycle assessment finds statistical reporting the most commonly failed
-criterion; the Agentic Benchmark Checklist (2507.02825), which requires auditing
-a scorer against degenerate strategies; the construct-validity audit of 445
-benchmarks (2511.04703); Miller (2411.00640) and 2503.01747 on error bars and
-small-sample intervals; 2306.05685 on measuring judge agreement rather than
-assuming it; and BenchBench (2407.13696) on agreement testing between
+The standards this paper is written against are BetterBench
+(2411.12990)~\cite{betterbench}, whose lifecycle assessment finds that most
+benchmarks report neither statistical significance nor uncertainty, 14 of the 24
+it assessed; the Agentic Benchmark Checklist
+(2507.02825)~\cite{abc}, which requires auditing a scorer against degenerate
+strategies; the construct-validity audit of 445 benchmarks
+(2511.04703)~\cite{construct}; Miller (2411.00640)~\cite{miller} and
+2503.01747~\cite{bowyer} on error bars and small-sample intervals;
+2306.05685~\cite{judge} on measuring judge agreement rather than assuming it; and
+BenchBench (2407.13696)~\cite{benchbench} on agreement testing between
 benchmarks.
 
 The decay literature treats the \emph{data} as the perishable part. GSM1k
-(2405.00332) regenerated a held-out equivalent of a saturated benchmark and
+(2405.00332)~\cite{gsm1k} regenerated a held-out equivalent of a saturated benchmark and
 found accuracy drops up to 8\% in some model families, and LiveBench
-(2406.19314) answers rot with continuous refresh; both inform the withheld
+(2406.19314)~\cite{livebench} answers rot with continuous refresh; both inform the withheld
 generator and unscreened seeds of \S8. What none of it covers is the failure
 \S4.6 reports. For an agentic benchmark the worker model used to establish which
 items are answerable is equally perishable, and it perishes on the provider's
@@ -381,10 +408,10 @@ on that choice (\S4.2) and then lived through the dependency.
 
 \subsection{Where this benchmark sits}
 
-Of the ten published memory benchmarks in our audit, none scores tiered scope,
-authority weighting, propagation across principals, and supersession together as
-behavioral properties of an organization. The claim is a conjunction, and \S2.1
-says which neighbour breaks which part of it.
+No benchmark in the audit scores tiered scope, authority weighting, propagation
+across principals, and supersession together as behavioral properties of an
+organization. The claim is a conjunction, and \S2.1 says which neighbour breaks
+which part of it.
 
 We state this as the result of a search rather than as a fact about the
 literature. The audit was compiled 2026-07-25 and names what it covered, the
@@ -465,11 +492,8 @@ contextual instead of a fixed hierarchy, and it is the mechanism the scope
 archetypes probe.
 
 $B$ is a pure function over (ledger, event index) and is the single scoring
-oracle. Two consequences matter for validity. Ambiguity in $B$ is a spec bug that blocks release rather than a judgement call
+oracle. Ambiguity in $B$ is a spec bug that blocks release rather than a judgement call
 resolved per item, and the two found this way were fixed before any screening.
-More importantly, no language model is anywhere in the ground-truth path.
-The models render events and author scoring criteria; they never decide what is
-true.
 
 \subsection{Streams, witnesses, and what the system under test sees}
 
@@ -505,14 +529,22 @@ win.
 Salience parity is achieved by construction and then tested. Distractor type,
 register, shape, length, and numeric form mirror the probed mix, and positions
 are assigned mechanically to class-stratified band centers rather than by
-re-rendering until a lint passes. A blinded discrimination check confirms it: raters told probed
-excerpts from distractor-only ones at 58/100, not significantly above
-chance (binomial $p = 0.067$; protocol, per-seed splits and the human runs in
-the validation report). One residual is
-documented rather than resolved: seed 3 repeatedly scores above the others
-(42/60 across three independent samples, $p \approx 0.001$), two targeted content
-passes failed to remove it, and it ships disclosed, with users of
-salience-sensitive analyses pointed at the other seeds.
+re-rendering until a lint passes. A blinded discrimination check bounds it rather than confirming
+it: raters told probed excerpts from distractor-only ones at 58/100, 58\% with a
+Wilson 95\% CI of [48.2\%, 67.2\%] (binomial $p = 0.067$; protocol, per-seed
+splits and the human runs in the validation report). G2 set the bar at a reviewer
+who cannot beat 65\% accuracy, and the interval's upper bound reaches above that,
+so the check bounds discrimination rather than demonstrating flatness: the data
+do not exclude a discrimination rate at the level the gate itself calls failure.
+The comparison is approximate, because G2's 65\% is worded per 20-excerpt
+spot-check while 58/100 aggregates five of them. G2 was read off the point
+estimate, passed on that basis, and is not re-litigated here. The check does
+detect discrimination when it is large, which is how the one documented residual
+was found: seed 3 scored 14/20 on four independent samples, including after two
+targeted content revisions that failed to remove it (42/60 across the first
+three, 70\% with a Wilson 95\% CI of [57.5\%, 80.1\%], $p \approx 0.001$), and it
+ships disclosed, with users of salience-sensitive analyses pointed at the other
+seeds.
 
 \begin{figure}[tb]
 \centering
@@ -576,7 +608,7 @@ rung & archetype & what the agent has to get right & instances \\
 & & valid paired instances, seeds 1 to 3 & \textbf{371} \\
 \bottomrule
 \end{tabular}
-\caption{The capability ladder as v1 instantiates it, and where the 371 valid paired instances sit on it. Rung 0, plain retention, has no row because it is implicit in every probe and never headlined. The archetype descriptions restate the generator's templates rather than adding anything to them.}
+\caption{The capability ladder as v1 instantiates it, and where the 371 valid paired instances sit on it. Rung 0, plain retention, has no row because it is implicit in every probe and never headlined. v1 is a vertical slice: no rung is covered by more than two archetypes, and the instance counts are what each rung's result rests on.}
 \label{tab:ladder}
 \end{table}
 
@@ -602,8 +634,8 @@ both. An instance is credited \textbf{only when both sides pass}: correct
 behavior on the base organization, and correctly \emph{different} behavior on the
 twin. Passing one side scores zero for the pair.
 
-This is the single most load-bearing design choice in the dataset, because it is
-what makes a plausible guess worthless. A fact invented by a language model often
+This is the most load-bearing design choice in the dataset. A fact invented by a
+language model often
 coincides with that model's own prior, whether a naming convention, a review
 threshold, or a default cadence, and a memoryless system can guess the base side
 at a rate that would flatter it badly. It cannot guess both sides, and \S4.5 reports what that buys.
@@ -630,7 +662,7 @@ relevant facts from $B(p,t)$, rendered canonically. \code{sut} gives whatever th
 system under test provides. A system's score is normalized as
 $(\mathrm{sut} - \mathrm{floor}) / (\mathrm{ceiling} - \mathrm{floor})$.
 
-The floor and ceiling conditions are not only a normalization; they are the
+The floor and ceiling conditions are the
 screen. An instance is valid when its ceiling passes, its twin ceiling passes,
 and its floor output fails at pair level. A ceiling that fails means the item
 measures reasoning rather than memory. The facts were supplied and the worker
@@ -671,18 +703,15 @@ all-instances counts are 33, 39 and 35. Construction produced 54 clusters
 $\times$ 3 instances $\times$ 5 organizations, 810 instances in total, of which
 seeds 4 and 5 are withheld unscreened as holdouts.
 
-The dataset was frozen on 2026-08-15 before any system was evaluated, and the
-freeze is corroborated by dated commits rather than by assertion.
+The dataset was frozen on 2026-08-15 before any system was evaluated, corroborated
+by dated commits rather than by assertion.
 
 \subsection{Worker and harness pinning}
 
 All screening ran under a single pinned worker: gpt-5.4 at medium reasoning
 effort behind codex-cli 0.144.5, with the binary pin enforced in code rather than
 by convention, because the system \code{codex} upgrades silently. The pin is not
-housekeeping. Section~4.2 shows that which items survive screening is a property
-of the worker, \S4.3 shows that the agent harness around identical weights
-changes outcomes enough to fail a prespecified equivalence bar, and \S4.6 reports
-what happened when the provider withdrew the pinned model mid-study.
+housekeeping: \S4.2, \S4.3 and \S4.6 are each a consequence of it.
 
 \section{Validity study: the results core}
 
@@ -748,6 +777,10 @@ at 40 surviving clusters against a floor of 45.
 
 \begin{table}[htb]
 \centering\small
+\caption{Gate G3 by seed, carried as measured. Every \textbf{FAIL} is a shortfall
+released rather than repaired: no failing probe was rewritten and no threshold
+moved once it bound.}
+\label{tab:gates}
 \begin{tabular}{lccll}
 \toprule
 seed & clusters surviving & valid instances & instance gate ($\geq$135) & cluster gate ($\geq$45)\\
@@ -848,8 +881,7 @@ two harnesses ran identical gpt-5.4 weights at identical effort; only the agent
 scaffold differed.
 
 The study failed its own acceptance rule (Figure~\ref{fig:harness}), and the
-second harness was confined to QA and non-protocol work on that evidence. Two
-things are worth drawing out.
+second harness was confined to QA and non-protocol work on that evidence.
 
 The disagreement is not uniform. It concentrates in the conditions that are
 hardest to satisfy. Where the task is easy to fail (the memoryless floor, at
@@ -895,17 +927,36 @@ downgrade, \S7 item 2) and scored against the committed judge verdicts.
 
 \begin{table}[htb]
 \centering\small
-\begin{tabular}{lccc}
+\caption{G4 judge--human agreement, overall and by criterion kind. The gate fails
+on the point estimate and on the upper bound of the interval, so the verdict does
+not turn on either. \code{fact\_absent} is where agreement collapses; the
+per-kind intervals overlap too heavily to rank the kinds against each other.}
+\label{tab:g4}
+\begin{tabular}{lcccl}
 \toprule
- & $n$ & raw agreement & $\kappa$\\
+ & $n$ & raw agreement & $\kappa$ & bootstrap 95\% CI\\
 \midrule
-\textbf{overall} & 150 & 0.813 & \textbf{0.537} (gate $\kappa \geq 0.75$: FAIL)\\
-\code{fact\_applied} & 72 & 0.819 & 0.605\\
-\code{scope\_correct} & 34 & 0.794 & 0.561\\
-\code{fact\_absent} & 44 & 0.818 & \textbf{0.166}\\
+\textbf{overall} & 150 & 0.813 & \textbf{0.537} & [0.370, 0.688] (gate $\kappa \geq 0.75$: FAIL)\\
+\code{fact\_applied} & 72 & 0.819 & 0.605 & [0.388, 0.782]\\
+\code{scope\_correct} & 34 & 0.794 & 0.561 & [0.298, 0.837]\\
+\code{fact\_absent} & 44 & 0.818 & \textbf{0.166} & [0.000, 0.493]\\
 \bottomrule
 \end{tabular}
 \end{table}
+
+The intervals are a percentile bootstrap over the 89 fact clusters the packet
+draws on rather than over the 150 items, because the packet is stratified with a
+per-cluster cap: 10{,}000 replicates, fixed seed, zero degenerate replicates.
+They were computed on 2026-09-17, after the gate was measured, so they are
+post-hoc and were never prespecified. G4 was prespecified and decided on the
+point estimate. The upper bound of the overall interval is 0.688, below the gate,
+so the failure does not depend on the point estimate.
+BetterBench~\cite{betterbench} finds that most benchmarks report no uncertainty
+on their results at all, and putting an interval on our own headline statistic is
+the standard we cited it for. The per-kind intervals overlap heavily and establish
+nothing about whether $\kappa$ differs by criterion kind. The kind-wise claim
+below rests on the one-sided error direction and on the corpus-scale positive
+rates, not on these intervals.
 
 \begin{figure}[tb]
 \centering
@@ -942,8 +993,7 @@ and 34 of the second. A different mix of criterion kinds would not cancel.}
 \label{fig:cancellation}
 \end{figure}
 
-Three things about this failure are worth stating precisely, because the headline
-number alone misleads in both directions.
+The headline number alone misleads in both directions.
 
 \textbf{The symmetry is a cancellation, not a property.} Aggregate disagreement
 splits 14 and 14, and both raters label 72.0\% of items positive, which invites
@@ -993,13 +1043,9 @@ under test.
 instances (58.8\%) carry at least one \code{fact\_absent} criterion: 199 on the
 base side, 207 on the twin side, 188 on both.
 
-Why the class behaves this way is mechanical rather than mysterious. ``The note
-does not present the 48h SLA as current'' is satisfied by a note that never
-mentions the SLA at all, so silence passes. The class has a degenerate pass mode,
-the judge sits at 97.7\% positive because of it, and $\kappa$ has almost no
-variance to track. This is therefore as much a criterion-design defect as a judge
-defect. An absence criterion carries little discriminative signal unless a
-positive criterion demanding the replacement value sits beside it.
+The mechanism is not mysterious. ``The note does not present the 48h SLA as
+current'' is satisfied by a note that never mentions the SLA at all, so silence
+passes. This is therefore as much a criterion-design defect as a judge defect.
 
 \begin{figure}[tb]
 \centering
@@ -1046,17 +1092,17 @@ positive criterion demanding the replacement value sits beside it.
 \caption{Judge positive rate per criterion kind (\%), screening conditions
 against the memoryless floor. Under a worker with no organizational context,
 \code{fact\_applied} and \code{scope\_correct} roughly halve, which is what a
-discriminating criterion does. \code{fact\_absent} does not move. Measured on all
-5{,}398 committed rubric-v2 verdicts, with no human labels involved.}
+discriminating criterion does. Measured on all 5{,}398 committed rubric-v2
+verdicts, with no human labels involved. \code{fact\_absent} does not move: a
+criterion class that ignores the removal of the knowledge under test is passing
+by construction.}
 \label{fig:slopegraph}
 \end{figure}
 
 \subsubsection*{The mechanism at corpus scale, without human labels}
 
-Everything above rests on 44 absence-phrased items in one 150-pair packet, which
-is a thin base for a claim about the instrument as a whole. The mechanism, a
-criterion class with a degenerate pass mode, can be measured without human labels
-at all, on every verdict the project has committed, and it was.
+The mechanism, a criterion class with a degenerate pass mode, can be measured
+without human labels at all, on every verdict the project has committed.
 
 Joining all \textbf{5{,}398} committed rubric-v2 criterion verdicts to their
 assertion kind gives the judge's positive rate per class (the join is
@@ -1090,8 +1136,8 @@ even one side on the judge's leniency.
 
 The floor run bears this out empirically. Under a memoryless worker, 4 of 125
 instances earned pair credit, which is the result reported in \S4.5. If twin-side
-leniency were letting ignorance through, the floor would be visibly above zero,
-and it is not. \textbf{The judge defect therefore does not explain away this
+leniency were letting ignorance through, the floor would sit well above 4 of 125
+and the rung-1 upper bound would not stop at 10.6\%. \textbf{The judge defect therefore does not explain away this
 paper's one positive result.}
 
 What it does affect is the size of any future number on absence-heavy archetypes.
@@ -1112,12 +1158,21 @@ scope criteria worse. Fixing both biases in opposite directions lands at 0.787, 
 hair over the line and assuming a precision no rubric edit delivers. The G4
 failure is therefore not attributable to the absence defect alone.
 
-There is a principle under the arithmetic. Even if the numbers worked, the
-criteria were frozen before this evidence existed, and rewriting them now is the
-practice \S2.3 condemns. The subtler trap is that iterating rubric versions
-until $\kappa$ clears 0.75 stops measuring judge quality and starts measuring
-how many attempts were taken, and an unbiased re-measurement needs a held-out
-calibration set we do not have.
+Even if the numbers worked, the criteria were frozen before this evidence
+existed, and rewriting them now is the practice \S2.3 condemns. The freeze that
+forbids this repair is what makes every other number here checkable against
+dated git history, and it cannot be spent selectively on the gates that fail.
+The subtler trap is that iterating rubric versions until $\kappa$ clears 0.75
+stops measuring judge quality and starts measuring how many attempts were taken,
+and an unbiased re-measurement needs a held-out calibration set we do not have.
+
+Repair also has a price in artifacts. All 5{,}398 criterion verdicts committed
+under rubric v2 would need re-judging, since a v3 verdict cannot be mixed with a
+v2 one. That is mechanically possible without the deprecated worker, because
+worker outputs are cached and re-judging is judge-side, but the 371-instance
+valid set is \emph{defined} by rubric-v2 verdicts, so a stricter judge moves the
+dataset itself. That is a v2 project with a new rubric and a fresh held-out
+calibration packet, not a patch.
 
 The prespecified v2 fix: pair every absence criterion with a positive criterion
 demanding the replacement value, so the class stops having a degenerate pass
@@ -1130,6 +1185,18 @@ floor run as a control. That the judge's permissiveness is \textbf{wrong on
 particular items} still rests on one rater, and with one rater we cannot separate
 judge error from rater error. A second independent rater would settle the second
 half and would not change the first.
+
+A judge panel is not that rater. The companion methodology
+paper~\cite{pipeline} had four further blinded judges re-judge this packet's
+semantic criteria. They agree with each other far above the gate, $\kappa$ 0.927
+to 0.966 against the committed v1 judge across 478 criteria, and with the human
+rater far below it, $\kappa$ 0.518 to 0.563 on the 150 sampled pairs. On the 44
+sampled absence criteria all four returned identical verdict vectors. Majority,
+unanimous-AND and unanimous-OR aggregation land at $\kappa$ 0.537, 0.524 and
+0.544, at or below the best single judge at 0.563. Those are that paper's
+numbers, and the consequence for this one is that more judges do not substitute
+for the second human rater of disclosure 2, because the judges' failure on that
+criterion class is perfectly correlated.
 
 \subsubsection*{The methodological point, which generalizes past this benchmark}
 
@@ -1147,27 +1214,31 @@ opposite directional failures that cancel.
 \begin{tikzpicture}
 \begin{axis}[
   tufte, width=.74\textwidth, height=4.0cm,
-  xmin=-0.12, xmax=0.40, ymin=0.4, ymax=3.6,
+  xmin=-0.02, xmax=0.48, ymin=0.4, ymax=3.6,
   ytick={1,2,3},
   yticklabels={rung 3 compounding ($n{=}16$), rung 2 coordination ($n{=}17$),
                rung 1 alignment ($n{=}92$)},
   yticklabel style={font=\footnotesize},
-  xlabel={pair credit under a memoryless worker, with 95\% CI},
-  xtick={0,0.1,0.2,0.3},
+  xlabel={pair credit under a memoryless worker, with 95\% Wilson interval},
+  xtick={0,0.1,0.2,0.3,0.4},
 ]
 \draw[draw=accent, line width=.6pt] (axis cs:0,0.4) -- (axis cs:0,3.6);
+% Wilson intervals are asymmetric, so each endpoint is given explicitly:
+% plus and minus are the distances from the point estimate to the true bounds.
 \addplot[only marks, mark=*, mark size=2.2pt, draw=ink, fill=ink,
          error bars/.cd, x dir=both, x explicit, error bar style={draw=mid}]
   coordinates {
-    (0.000,1) +- (0,0)
-    (0.118,2) +- (0.217,0)
-    (0.022,3) +- (0.040,0)
+    (0.000,1) += (0.194,0) -= (0.000,0)
+    (0.118,2) += (0.323,0) -= (0.096,0)
+    (0.022,3) += (0.084,0) -= (0.018,0)
   };
 \end{axis}
 \end{tikzpicture}
 \caption{Floor validation. A worker with no organizational context earns pair
-credit on 4 of 125 instances, and every interval includes zero. Rungs 2 and 3
-rest on 17 and 16 instances, so the intervals are wide and shown as such.}
+credit on 4 of 125 instances: 2 of 92, 2 of 17 and 0 of 16 by rung. Bars are
+Wilson score intervals on the cluster-adjusted effective sample size, so they are
+asymmetric and never run below zero. Only rung 3, at 0 successes, is consistent
+with exactly zero; rung 2 rests on 17 instances and its interval reaches 44.1\%.}
 \label{fig:floor}
 \end{figure}
 
@@ -1182,23 +1253,35 @@ each of the 125 valid instances on both the base and twin sides, and the 250
 resulting deliverables were judged blind through the same export and import path
 as everything else.
 
-Pair credit came out near zero on every capability rung
-(Figure~\ref{fig:floor}): \textbf{rung 1 pair credit 0.022} (95\% CI $\pm$0.040,
-$n=92$) for alignment, \textbf{rung 2 0.118} ($\pm$0.217, $n=17$) for
-coordination, and \textbf{rung 3 0.000} ($n=16$) for compounding. Four instances
-out of 125 earned credit in total, and every interval includes zero.
+Pair credit is small on every capability rung, and the counts are what carry it
+(Figure~\ref{fig:floor}): \textbf{rung 1 pair credit 0.022}, 2 successes of 92,
+95\% Wilson interval [0.004, 0.106], $n=92$, for alignment; \textbf{rung 2
+0.118}, 2 of 17, [0.022, 0.441], $n=17$, for coordination; and \textbf{rung 3
+0.000}, 0 of 16, [0.000, 0.194], $n=16$, for compounding. Four instances out of
+125 earned credit in total. Only rung 3, with no successes at all, is consistent
+with exactly zero, and rung 2's interval reaches 44.1\% on 17 instances, which
+constrains almost nothing.
 
-The mechanism is the twin. A memoryless worker can guess a base side at a rate
-well above zero, because a generated fact often matches the priors of a competent
-model, and a benchmark crediting single sides would read that as memory.
-Requiring the twin side as well removes it, because the twin's answer is the one
-those same priors argue against. The design predicted this and the floor measures
-it.
+The interval method changed on 2026-09-17. Earlier drafts reported the Wald
+normal approximation, which is invalid at these counts and degenerates to
+$[0,0]$ at rung 3's zero successes, the failure 2503.01747~\cite{bowyer} warns
+against and the reason this paper cites it. These are Wilson score intervals on
+the cluster-adjusted effective sample size $n_{\mathrm{eff}} = n/d_{\mathrm{eff}}$,
+where the design effect $d_{\mathrm{eff}}$ is 1.80, 1.88 and 1.00 by rung. This is
+a reporting correction and nothing more. No valid set moved.
+
+The mechanism is the twin (\S3.3). A memoryless worker can guess a base side at a
+rate well above zero, because a generated fact often matches the priors of a
+competent model, and a benchmark crediting single sides would read that as
+memory. The design predicted this and the floor measures it.
 
 Two honest qualifications. Rung 2 rests on 17 instances and rung 3 on 16, so the
 intervals are wide and the rung-level claim is weak even though the direction is
 not. And this is one seed, because the deprecation stopped the other two before
-they ran.
+they ran. What the result supports is a magnitude rather than a null test: a
+memoryless worker earns pair credit on 4 of 125 instances, with 95\% upper bounds
+of 10.6\%, 44.1\% and 19.4\% by rung. That is what the claim that the instrument
+does not reward priors or generic competence rests on, and no more.
 
 \subsection{Benchmark durability: the deprecation event and re-anchoring}
 
@@ -1269,9 +1352,7 @@ container tags per organization side and handle null timestamps.
 \textbf{One embedding model sits behind every RAG-class baseline},
 \code{gemini-embedding-001}, pinned in code with the pin asserted by tests, and a
 retriever constructed without one identifies itself as \code{UNPINNED} in the
-artifacts it writes. This follows directly from \S2.3: if swapping an embedding
-model moves results more than swapping the memory architecture, then an
-unreported embedding model makes a comparison meaningless.
+artifacts it writes, for the reason \S2.3 measures.
 
 \textbf{The scoring pipeline derives every number from artifacts.} Scoring joins
 the screening anchors, the frozen valid set, and the SUT rows into one manifest,
@@ -1301,6 +1382,10 @@ Everything below is seed 1 only; no seed-2 or seed-3 system rows exist.
 
 \begin{table}[htb]
 \centering\small
+\caption{Partial pilot rows, released as provenance. Only the memoryless floor is
+complete and judged; the others stop where the worker became unreachable, and no
+row here supports a comparative claim.}
+\label{tab:pilot}
 \begin{tabular}{lccccl}
 \toprule
 system & base rows & base non-empty & twin rows & twin non-empty & judged\\
@@ -1334,7 +1419,7 @@ Because probe validity is worker-relative (\S4.2), they cannot be completed by a
 successor worker and they cannot be mixed with one. No ranking, no ordering, and
 no per-system statement is derived from this table anywhere in this paper.
 
-\section{Limitations and disclosures}
+\section{Limitations}
 
 Everything a reader would need to discount this work is in this section,
 including the items that cost us the most. They are listed in rough order of how
@@ -1343,7 +1428,9 @@ much they should change your reading.
 \begin{enumerate}[leftmargin=*, itemsep=.3em]
 \item \textbf{G4 failed.} Judge--human agreement is $\kappa = 0.537$ against a
 prespecified gate of $\kappa \geq 0.75$ (81.3\% raw, $n=150$), and every semantic
-verdict in this dataset inherits that error. It is not uniform. The judge
+verdict in this dataset inherits that error. A post-hoc cluster bootstrap added
+2026-09-17 puts the 95\% interval at [0.370, 0.688], and its upper bound is below
+the gate, so the failure does not rest on the point estimate. It is not uniform. The judge
 over-accepts on absence-phrased criteria (8 of 8 errors, \textsc{false} on only 1
 of 44 items) and under-accepts on scope criteria (7 of 7), which cancel for this packet's mix of kinds and would not cancel for
 another. The over-accepts land 11-to-3 on the counterfactual side where pair
@@ -1358,7 +1445,11 @@ whether the judge is \emph{wrong} on specific items rests on one rater.
 \item \textbf{One rater, and not an independent one.} G4 was rated by a single
 author, who has read seed content, a disclosed downgrade from the two-rater design
 originally specified. There is therefore no inter-rater $\kappa$, and judge error cannot be separated
-from rater error. A second independent rater is the first thing a v2 should buy.
+from rater error. A second independent rater is the first thing a v2 should buy,
+and a judge panel is not a substitute for one: the companion
+paper~\cite{pipeline} reports four further blinded judges agreeing with each
+other far above the gate and with this rater far below it, with identical verdict
+vectors on the sampled absence criteria.
 
 \item \textbf{All three released seeds fail the instance gate}, at 125, 131, and
 115 against a prespecified 135, and seed 3 also fails the cluster gate at
@@ -1370,15 +1461,24 @@ manage.
 \item \textbf{The evaluation this dataset was built for did not happen.} The
 pinned worker was withdrawn by its provider mid-pilot (\S4.6), so there are no
 comparative system numbers here, and the partial rows in \S6 are provenance rather
-than results.
+than results. Worker billing and authentication changed during the study; the
+model and binary pin held until deprecation ended access entirely.
 
 \item \textbf{Simulated organizations, not real logs.} Three screened seeds, one
 organization type (a two-team software company at L1--L2 scale), one worker model.
 The external-validity claim stops there.
 
+\item \textbf{Nothing anchors probe difficulty to a human.} The ceiling condition
+is the pinned worker with the relevant facts injected, so a valid item is defined
+entirely relative to a model, and there is no human performance baseline anywhere
+on the probes. Section~4.2 reports that relativity as a finding. The separate
+point here is that construct validity against real organizational knowledge work
+is argued from the design and never measured.
+
 \item \textbf{Event streams carry no timestamps.} \code{sim\_time} is null
 throughout v1 and temporal order is positional, so no result here separates
-``knows the order'' from ``reads a date''.
+``knows the order'' from ``reads a date''. Screening anchors saw no timestamps
+either, so the condition is uniform.
 
 \item \textbf{The judge and the human rater saw the same rules through different
 instruments.} The judge scored every criterion for one output together; the human
@@ -1453,13 +1553,51 @@ produced a number here under MIT. At the time of writing the repository is
 private and opens with the paper; its bundle is the one this section describes,
 and its checksums match a byte-for-byte round trip through the host.
 
-\section*{Acknowledgements and disclosure}
+\section*{Acknowledgements}
+
+Harshit Agarwal reviewed an early draft of the gate criteria and the capability
+ladder. His work at Boston Consulting Group on organizational structure and how
+information moves through it informed the tier and authority model of \S3.1. He
+reviewed the measurement design only: he saw no seed content, no fact ledger and
+no results, and he is not a rater in any measurement reported in this paper.
+
+\section*{Author contributions}
+
+M.S. designed the benchmark, built the generator, screening and scoring
+pipelines, ran every measurement, and wrote the paper. The G4 calibration packet
+was rated by M.S. alone, which is the limitation disclosure 2 records and the one
+this work most needs repaired.
+
+\section*{Competing interests and funding}
 
 This is an independent study with no institutional affiliation and no funding from
 any vendor whose system appears in the inclusion criteria. No author-affiliated
 memory system is evaluated anywhere in this work, and no system was given advance
 access to the dataset or the screening pipeline. Every exclusion from the
 candidate set is reported with its reason.
+
+\section*{Ethics}
+
+The organizations, people and events in this dataset are synthetic; no real
+personal data was collected or processed. The only human-subject component is the
+author's own rating of the calibration packet.
+
+\section*{Data and code availability}
+
+The dataset is at
+\href{https://huggingface.co/datasets/notmehul/memory-bench}{huggingface.co/datasets/notmehul/memory-bench}
+under CC BY 4.0, private until the all-in-one release; the harness is MIT.
+Section~8 lists what ships and what is withheld, and the withholding is enforced
+by \code{scripts/release.py verify} rather than by care.
+
+\section*{Reproducibility}
+
+Every number in this paper derives from a committed artifact, and
+\code{tests/test\_paper\_numbers.py} asserts the mapping. One limit is structural
+rather than procedural: the pinned worker was withdrawn by its provider on
+2026-09-04 (\S4.6), so the screening anchors cannot be reproduced under the model
+that produced them. The re-anchoring procedure is specified in \S4.6 and ships
+with the release.
 
 \begin{thebibliography}{99}
 \footnotesize
@@ -1470,10 +1608,10 @@ arXiv:2402.17753.
 \bibitem{longmemeval} Wu, D., Wang, H., Yu, W., Zhang, Y., Chang, K.-W., and Yu, D.
 \emph{LongMemEval: Benchmarking Chat Assistants on Long-Term Interactive Memory}.
 arXiv:2410.10813.
-\bibitem{longmemeval2} Wu, D., Ji, H., Kawatkar, A., Kwan, W.-C., Gu, J., Peng, N.,
+\bibitem{longmemeval2} Wu, D., Ji, Z., Kawatkar, A., Kwan, B., Gu, J.-C., Peng, N.,
 and Chang, K.-W. \emph{LongMemEval-V2: Evaluating Long-Term Agent Memory Toward
 Experienced Colleagues}. arXiv:2605.12493.
-\bibitem{membench} Tan, H., Zhang, Y., Ma, C., Chen, L., Dai, W., and Dong, Y.
+\bibitem{membench} Tan, H., Zhang, Z., Ma, C., Chen, X., Dai, Q., and Dong, Z.
 \emph{MemBench: Towards More Comprehensive Evaluation on the Memory of LLM-based
 Agents}. arXiv:2506.21605.
 \bibitem{memtrack} Deshpande, D., Gangal, V., Mehta, H., Kannappan, A., Qian, R.,
@@ -1481,15 +1619,15 @@ and Wang, P. \emph{MEMTRACK: Evaluating Long-Term Memory and State Tracking in
 Multi-Platform Dynamic Agent Environments}. arXiv:2510.01353.
 \bibitem{memoryagentbench} Hu, Y., Wang, Y., and McAuley, J. \emph{Evaluating Memory
 in LLM Agents via Incremental Multi-Turn Interactions}. arXiv:2507.05257.
-\bibitem{memoryarena} He, Y., Wang, S., Zhi, R., Hu, J., et al. \emph{MemoryArena:
+\bibitem{memoryarena} He, Z., Wang, Y., Zhi, C., Hu, Y., et al. \emph{MemoryArena:
 Benchmarking Agent Memory in Interdependent Multi-Session Agentic Tasks}.
 arXiv:2602.16313.
-\bibitem{streammembench} Liu, X., Ren, H., Gu, Y., Zhang, K., et al.
+\bibitem{streammembench} Liu, G., Ren, Y., Gu, H., Zhang, P., et al.
 \emph{StreamMemBench: Streaming Evaluation of Agent Memory for Future-Oriented
 Assistance}. arXiv:2606.14571.
-\bibitem{horizonbench} Li, J., Paranjape, B., Oktar, K., et al. \emph{HorizonBench:
+\bibitem{horizonbench} Li, S. S., Paranjape, B., Oktar, K., et al. \emph{HorizonBench:
 Long-Horizon Personalization with Evolving Preferences}. arXiv:2604.17283.
-\bibitem{gatemem} Ren, S., Yang, Q., Chen, H., Zhao, L., et al. \emph{GateMem:
+\bibitem{gatemem} Ren, Z., Yang, Y., Chen, Y., Zhao, Z., et al. \emph{GateMem:
 Benchmarking Memory Governance in Multi-Principal Shared-Memory Agents}.
 arXiv:2606.18829.
 \bibitem{memdelta} Wang, K. \emph{MemDelta: Controlled Baselines and Hidden
@@ -1499,11 +1637,12 @@ with Scalable Long-Term Memory}. arXiv:2504.19413.
 \bibitem{betterbench} Reuel, A., Hardy, A., Smith, C., Lamparth, M., Hardy, M., and
 Kochenderfer, M. \emph{BetterBench: Assessing AI Benchmarks, Uncovering Issues, and
 Establishing Best Practices}. arXiv:2411.12990.
-\bibitem{abc} Zhu, Y., Jin, C., Pruksachatkun, Y., et al. \emph{Establishing Best
+\bibitem{abc} Zhu, Y., Jin, T., Pruksachatkun, Y., et al. \emph{Establishing Best
 Practices for Building Rigorous Agentic Benchmarks}. arXiv:2507.02825.
 \bibitem{construct} Bean, A., Kearns, R., Romanou, A., et al. \emph{Measuring what
-Matters: Construct Validity in LLM Benchmarks}. arXiv:2511.04703.
-\bibitem{miller} Miller, E. \emph{Adding Error Bars to Evals}. arXiv:2411.00640.
+Matters: Construct Validity in Large Language Model Benchmarks}. arXiv:2511.04703.
+\bibitem{miller} Miller, E. \emph{Adding Error Bars to Evals: A Statistical
+Approach to Language Model Evaluations}. arXiv:2411.00640.
 \bibitem{bowyer} Bowyer, S., Aitchison, L., and Ivanova, D. \emph{Position: Don't
 Use the CLT in LLM Evals With Fewer Than a Few Hundred Datapoints}.
 arXiv:2503.01747.
@@ -1512,9 +1651,12 @@ LLM-as-a-Judge with MT-Bench and Chatbot Arena}. arXiv:2306.05685.
 \bibitem{benchbench} Perlitz, Y., Gera, A., Arviv, O., et al. \emph{Do These LLM
 Benchmarks Agree? Fixing Benchmark Evaluation with BenchBench}. arXiv:2407.13696.
 \bibitem{gsm1k} Zhang, H., Da, J., Lee, D., et al. \emph{A Careful Examination of
-LLM Performance on Grade School Arithmetic}. arXiv:2405.00332.
+Large Language Model Performance on Grade School Arithmetic}. arXiv:2405.00332.
 \bibitem{livebench} White, C., Dooley, S., Roberts, M., et al. \emph{LiveBench: A
 Challenging, Contamination-Limited LLM Benchmark}. arXiv:2406.19314.
+\bibitem{pipeline} Srivastava, M. \emph{Constructing a Benchmark When Every
+Component Is a Language Model}. Companion preprint, Zenodo, 2026.
+DOI: \href{https://doi.org/\companionDOI}{\companionDOI}.
 \end{thebibliography}
 
 \end{document}

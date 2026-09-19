@@ -1,15 +1,8 @@
 # memory-bench: A Screened Benchmark Dataset and Validity Study for Organizational Memory in Agent Harnesses
 
-**Status, 2026-09-14.** All sections are drafted prose and §2's citations are
-verified against primary sources. Reframed from "pilot numbers" to "dataset +
-construction methodology + validity study" after the pinned worker (gpt-5.4)
-was deprecated provider-side mid-pilot (`docs/decision-log.md` §2026-09-14).
-Every factual claim carries its source so the prose can be checked line by
-line; `tests/test_paper_numbers.py` asserts the headline numbers still match
-the artifacts they came from. **All measured numbers are in: G4 came back
-2026-09-14 as a FAIL (κ = 0.537 against the prespecified κ ≥ 0.75), reported
-as such in the abstract, §4.4 and disclosure 1.** One item remains before
-submission: the voice pass has not run.
+Mehul Srivastava, independent researcher. ORCID: 0009-0008-1031-304X
+
+DOI: [10.5281/zenodo.22838321](https://doi.org/10.5281/zenodo.22838321). Companion methodology paper: [10.5281/zenodo.22838603](https://doi.org/10.5281/zenodo.22838603).
 
 ## Abstract
 
@@ -34,11 +27,11 @@ withheld unscreened as holdouts. All three released seeds miss the prespecified
 instance gate (125, 131, and 115 against 135). The misses are retained and
 marked rather than repaired.
 
-The validity study is the result. A memoryless worker's pair credit is
-statistically indistinguishable from zero on every capability rung. Probe
-validity is *task-model-relative*: under identical strict rules, 37/54 probe
-clusters survived the ceiling gate for one worker and 17/54 for a smaller
-sibling. Identical weights behind two agent harnesses agreed on only 65% of
+The validity study is the result. A memoryless worker earns pair credit on 4 of
+125 instances, with 95% upper bounds of 10.6%, 44.1% and 19.4% by capability
+rung. Probe validity is *task-model-relative*: under identical strict rules,
+37/54 probe clusters survived the ceiling gate for one worker and 17/54 for a
+smaller sibling. Identical weights behind two agent harnesses agreed on only 65% of
 twin-ceiling outcomes, failing a prespecified 90% bar. Judge-human agreement on
 a blinded 150-pair packet reached 81.3% raw agreement at κ = 0.537, which fails
 our prespecified gate of κ ≥ 0.75. Aggregate disagreement is symmetric, 14 items
@@ -49,14 +42,18 @@ the event, release the partial rows as provenance, and specify the re-anchoring
 procedure that lets the dataset outlive any single worker. No comparative system
 result is claimed anywhere in this paper.
 
+**Keywords:** agent memory; benchmark construction; construct validity;
+LLM-as-judge; counterfactual evaluation; organizational knowledge;
+reproducibility.
+
 > **How to read this paper.** This is an instrument and a validity study, not a
 > leaderboard. Three claims: the released set measures organizational memory
 > behavior at rungs 1–3 under a stated worker pin; pair credit via
 > counterfactual twins filters priors; screening anchors are properties of a
 > worker and a harness, not of the items alone. Four prespecified bars failed:
 > the instance gate on all three released seeds, the cluster gate on seed 3,
-> harness equivalence, and judge-human κ. One clean positive result: memoryless
-> pair credit near zero on every rung. No system ranking is reported.
+> harness equivalence, and judge-human κ. Against them, one clean positive
+> result: a memoryless worker earns pair credit on 4 of 125 instances (§4.5).
 
 ## 1. Introduction
 
@@ -98,26 +95,18 @@ and authority so that conflicts have correct rather than arbitrary
 resolutions, and facts are invalidated over time rather than merely
 accumulated.
 
-The gap is not only in coverage. §2 surveys the field's measurement failures,
-and they are the reason this paper spends most of its length on validity
-rather than on results.
-
 ### 1.3 What we claim, and what we do not
 
 This paper claims an *instrument*, not a leaderboard.
 
 We claim that the released dataset measures organizational memory behavior at
 rungs 1–3 of the ladder, for a two-team simulated software organization at L1–
-L2 scale, under a stated worker pin; and we report the measurements that
-support or qualify that claim, including the ones that qualify it. We do not
-claim that any memory system is better than another. This paper publishes no
+L2 scale, under a stated worker pin, and we report the measurements that
+support that claim alongside the ones that qualify it. This paper publishes no
 comparative system numbers. The instrument and the validity study are the same
 object: a benchmark that cannot say what it measures is not a benchmark, so
 the measurements that qualify the claim are the claim. We do not claim to
-measure "mini-AGI-ness," and the external-validity claim stops at the
-organization type instantiated; industry breadth enters a later version as a
-designed factor rather than by relabeling this one (`docs/vision.md` §5). No
-result is ever reduced to a single aggregate score. Results are grouped by
+measure "mini-AGI-ness." No result is ever reduced to a single aggregate score. Results are grouped by
 capability rung, always.
 
 Three constraints were fixed before the evidence they govern was produced, and
@@ -141,7 +130,10 @@ binds was never a gate.
    pinned worker; blinded judging with a versioned rubric where the judge model
    is never the worker model nor the family that authored the criteria; a
    five-gate pipeline; and a statistics protocol prespecified before any
-   result existed.
+   result existed. The measurement problems this pipeline raises in its own
+   right are the subject of a companion methodology paper (Srivastava,
+   *Constructing a Benchmark When Every Component Is a Language Model*, 2026,
+   DOI 10.5281/zenodo.22838603, `paper/pipeline.tex`).
 
 3. **A validity study** (§4): the measurements that test whether the instrument
    works: floor validation, the task-model-relativity of probe validity,
@@ -159,23 +151,37 @@ completed the memoryless floor and partial rows for four further baselines
 when the pinned worker became unreachable (§4.6), and because probe validity
 is worker-relative (§4.2) a successor's results cannot be attached to anchors
 measured under the old one. The partial rows are released in §6 as provenance,
-carrying no comparative claim.
+carrying no comparative claim. It also contains no treatment of how a benchmark
+is validated when every component inside it is a language model; that is the
+companion paper's subject (Srivastava, *Constructing a Benchmark When Every
+Component Is a Language Model*, 2026), and the one result from it this paper
+leans on is cited in §4.4.
 
 ## 2. Related work
 
-> **Citation verification, 2026-09-14.** Every reference in this section was
-> resolved against its primary source before submission, because the section was
-> first drafted from this project's own field audit
-> (`docs/standards-audit.md`, compiled 2026-07-25) rather than from the papers.
-> All twenty arXiv ids resolve to a paper matching the name given, including the
-> six that postdate the drafting model's knowledge, and a deliberate nonexistent
-> id was checked to confirm that failures report as failures. Three descriptions
-> were wrong and are corrected here: MEMTRACK is an organizational benchmark
-> rather than a conversational one, LongMemEval V2 is a web-agent benchmark
-> rather than a revision of the original, and the full-context-versus-Mem0
-> comparison comes from Mem0's own paper rather than from a third party. One
-> claim was refuted by its own source and has been rewritten rather than
-> re-cited: see the note on post-hoc tuning in §2.3.
+> **Citation verification, 2026-09-14 and 2026-09-17.** These references were
+> checked in two passes, because the section was first drafted from this
+> project's own field audit (`docs/standards-audit.md`, compiled 2026-07-25)
+> rather than from the papers. On 2026-09-14 ids and titles were resolved
+> against their primary sources. All twenty arXiv ids resolve to a paper
+> matching the name given, including the six that postdate the drafting model's
+> knowledge, and a deliberate nonexistent id was checked to confirm that
+> failures report as failures. Three descriptions were wrong and are corrected
+> here: MEMTRACK is an organizational benchmark rather than a conversational
+> one, LongMemEval V2 is a web-agent benchmark rather than a revision of the
+> original, and the full-context-versus-Mem0 comparison comes from Mem0's own
+> paper rather than from a third party. One claim was refuted by its own source
+> and has been rewritten rather than re-cited: see the note on post-hoc tuning
+> in §2.3. Author lists were not in that pass's scope. They were checked on
+> 2026-09-17, which found seven entries carrying wrong given names and three
+> titles that abbreviated what the source spells out; all ten are corrected in
+> the submission bibliography (`paper/memory-bench.tex`). That pass also read this
+> section's substantive claims about its sources against the sources themselves.
+> MEMTRACK's best model at 60% correctness and the three LoCoMo scores quoted from
+> Mem0's own Table 2 are as stated. One characterisation of BetterBench was not: it
+> reports that most benchmarks give no statistical significance or uncertainty,
+> which is weaker than calling that the criterion failed most often, and §2.4 now
+> says the former.
 
 ### 2.1 What memory benchmarks currently measure
 
@@ -265,8 +271,7 @@ agents consuming it run on models the organization does not own (§1.1).
 
 Most of this paper is validity evidence rather than results, and the reason is
 that this field's published numbers have repeatedly failed on measurement
-rather than on modeling. Four failure modes, each answered by a mechanism in
-§3.
+rather than on modeling.
 
 **Ground truth that is wrong, and a judge that does not notice.** An
 independent audit of LoCoMo (Penfield Labs, 2026-04-08) found 99
@@ -305,8 +310,8 @@ post-hoc repair visible in git history.
 ### 2.4 Benchmark validity and benchmark decay
 
 The standards this paper is written against are BetterBench (2411.12990), whose
-lifecycle assessment finds statistical reporting the most commonly failed
-criterion; the Agentic Benchmark Checklist (2507.02825), which requires
+lifecycle assessment finds that most benchmarks report neither statistical
+significance nor uncertainty, 14 of the 24 it assessed; the Agentic Benchmark Checklist (2507.02825), which requires
 auditing a scorer against degenerate strategies; the construct-validity audit
 of 445 benchmarks (2511.04703); Miller (2411.00640) and 2503.01747 on error
 bars and small-sample intervals; 2306.05685 on measuring judge agreement rather
@@ -325,9 +330,9 @@ on that choice (§4.2) and then lived through the dependency.
 
 ### 2.5 Where this benchmark sits
 
-Of the ten published memory benchmarks in our audit, none scores tiered scope,
-authority weighting, propagation across principals, and supersession together
-as behavioral properties of an organization. The claim is a conjunction, and
+No benchmark in the audit scores tiered scope, authority weighting, propagation
+across principals, and supersession together as behavioral properties of an
+organization. The claim is a conjunction, and
 §2.1 says which neighbour breaks which part of it.
 
 We state this as the result of a search rather than as a fact about the
@@ -368,9 +373,7 @@ archetypes probe.
 `B` is a pure function over (ledger, event index) and is the single scoring
 oracle. Two consequences matter for validity. Ambiguity in `B` is a spec bug
 that blocks release rather than a judgement call resolved per item, and the
-two found this way were fixed before any screening. More importantly, no
-language model is anywhere in the ground-truth path. The models render events
-and author scoring criteria; they never decide what is true.
+two found this way were fixed before any screening.
 
 ### 3.2 Streams, witnesses, and what the system under test sees
 
@@ -406,14 +409,22 @@ win.
 Salience parity is achieved by construction and then tested. Distractor type,
 register, shape, length, and numeric form mirror the probed mix, and positions
 are assigned mechanically to class-stratified band centers rather than by
-re-rendering until a lint passes. A blinded discrimination check confirms it:
-raters told probed excerpts from distractor-only ones at 58/100, not
-significantly above chance (binomial p = 0.067; protocol, per-seed splits and
-the human runs in the validation report). One residual is documented rather
-than resolved: seed 3 repeatedly scores above the others (42/60 across three
-independent samples, p ≈ 0.001), two targeted content passes failed to remove
-it, and it ships disclosed, with users of salience-sensitive analyses pointed
-at the other seeds.
+re-rendering until a lint passes. A blinded discrimination check bounds it rather than
+confirming it: raters told probed excerpts from distractor-only ones at 58/100,
+58% with a Wilson 95% CI of [48.2%, 67.2%] (binomial p = 0.067; protocol,
+per-seed splits and the human runs in `docs/validation-report.md`). G2 set the
+bar at a reviewer who cannot beat 65% accuracy (`docs/dataset-plan.md`, Gate
+G2), and the interval's upper bound reaches above that, so the check bounds
+discrimination rather than demonstrating flatness: the data do not exclude a
+discrimination rate at the level the gate itself calls failure. The comparison
+is approximate, because G2's 65% is worded per 20-excerpt spot-check while
+58/100 aggregates five of them. G2 was read off the point estimate, passed on
+that basis, and is not re-litigated here. The check does detect discrimination
+when it is large, which is how the one documented residual was found: seed 3
+scored 14/20 on four independent samples, including after two targeted content
+revisions that failed to remove it (42/60 across the first three, 70% with a
+Wilson 95% CI of [57.5%, 80.1%], p ≈ 0.001), and it ships disclosed, with users
+of salience-sensitive analyses pointed at the other seeds.
 
 ### 3.3 Probes are work, and every probe has a twin
 
@@ -449,9 +460,8 @@ credited **only when both sides pass**: correct behavior on the base
 organization, and correctly *different* behavior on the twin. Passing one side
 scores zero for the pair.
 
-This is the single most load-bearing design choice in the dataset, because it
-is what makes a plausible guess worthless. A fact invented by a language model
-often coincides with that model's own prior, whether a naming convention, a
+This is the most load-bearing design choice in the dataset. A fact invented by
+a language model often coincides with that model's own prior, whether a naming convention, a
 review threshold or a default cadence, and a memoryless system can guess the
 base side at a rate that would flatter it badly. It cannot guess both sides,
 because the twin's answer is the one its priors argue against, and §4.5
@@ -465,7 +475,7 @@ assertions written as regexes failed 39–42% of ceiling runs, because a
 deliverable paraphrases around any anchor; absence detectors failed 4% and
 semantic criteria 9–17%. Spec v0.3 therefore requires the semantic checker for
 applied content and reserves regex for absence detectors
-(`docs/specs/probe-spec.md` §3). Assertion text was LLM-authored under a fixed
+(`docs/specs/probe-spec.md` §3). Assertion text was model-authored under a fixed
 prompt and accepted only after mechanical validation, whose rules live with
 the spec (`docs/specs/probe-spec.md` §3) rather than here. One authoring rule
 came out of failure adjudication and changed scoring, so it belongs in the
@@ -481,7 +491,7 @@ facts from `B(principal, t)`, rendered canonically. `sut` gives whatever the
 system under test provides. A system's score is normalized as
 `(sut − floor) / (ceiling − floor)`.
 
-The floor and ceiling conditions are not only a normalization; they are the
+The floor and ceiling conditions are the
 screen. An instance is valid when its ceiling passes, its twin ceiling passes,
 and its floor output fails at pair level. A ceiling that fails means the item
 measures reasoning rather than memory. The facts were supplied and the worker
@@ -668,19 +678,32 @@ on absence criteria, and that is exactly where the failure turned out to be.
 #### G4 judge-human agreement: measured 2026-09-14, **FAIL**
 
 The blinded 150-pair packet was rated by the single author-rater (the disclosed
-downgrade, §7 item 1) and scored against the committed judge verdicts
+downgrade, §7 item 2) and scored against the committed judge verdicts
 (`datasets/dev/calibration/judge-agreement.json`, raw submission
 `rater-M-filled-2026-09-14.xlsx`).
 
-| | n | raw agreement | κ |
-|---|---|---|---|
-| **overall** | 150 | 0.813 | **0.537 (gate κ ≥ 0.75: FAIL)** |
-| `fact_applied` | 72 | 0.819 | 0.605 |
-| `scope_correct` | 34 | 0.794 | 0.561 |
-| `fact_absent` | 44 | 0.818 | **0.166** |
+| | n | raw agreement | κ | bootstrap 95% CI |
+|---|---|---|---|---|
+| **overall** | 150 | 0.813 | **0.537 (gate κ ≥ 0.75: FAIL)** | [0.370, 0.688] |
+| `fact_applied` | 72 | 0.819 | 0.605 | [0.388, 0.782] |
+| `scope_correct` | 34 | 0.794 | 0.561 | [0.298, 0.837] |
+| `fact_absent` | 44 | 0.818 | **0.166** | [0.000, 0.493] |
 
-Three things about this failure are worth stating precisely, because the
-headline number alone misleads in both directions.
+The intervals are a percentile bootstrap over the 89 fact clusters the packet
+draws on rather than over the 150 items, because the packet is stratified with a
+per-cluster cap: 10,000 replicates, fixed seed, zero degenerate replicates
+(`kappa_bootstrap` in `datasets/dev/calibration/judge-agreement.json`). They
+were computed on 2026-09-17, after the gate was measured, so they are post-hoc
+and were never prespecified. G4 was prespecified and decided on the point
+estimate. The upper bound of the overall interval is 0.688, below the gate, so
+the failure does not depend on the point estimate. BetterBench (2411.12990)
+finds that most benchmarks report no uncertainty on their results at all, and putting an
+interval on our own headline statistic is the standard we cited it for. The
+per-kind intervals overlap heavily and establish nothing about whether κ differs
+by criterion kind. The kind-wise claim below rests on the one-sided error
+direction and on the corpus-scale positive rates, not on these intervals.
+
+The headline number alone misleads in both directions.
 
 **The symmetry is a cancellation, not a property.** Aggregate disagreement
 splits 14 and 14, and both raters label 72.0% of items positive, which invites
@@ -726,9 +749,7 @@ defence. We prespecified κ rather than raw agreement precisely so an unbalanced
 task could not be dressed up as validity, and we do not get to discover the
 objection to our own gate on the day it fails.
 
-#### Where the leniency lands, and why it matters more than its size
-
-Two facts decide how far this propagates.
+#### Where the leniency lands
 
 **The over-accepts concentrate on the counterfactual side.** Of the judge's 14
 over-accepts, 11 fall on twin-side criteria against 3 on base-side; its
@@ -741,10 +762,9 @@ in the direction that flatters a system under test.
 
 **The exposed fraction of the dataset is not small.** 218 of the 371 valid
 instances (58.8%) carry at least one `fact_absent` criterion: 199 on the base
-side, 207 on the twin side, 188 on both. The criterion class where the judge is
-measurably lenient is scored on nearly three instances in five.
+side, 207 on the twin side, 188 on both.
 
-Why the class behaves this way is mechanical rather than mysterious. "The note
+The mechanism is not mysterious. "The note
 does not present the 48h SLA as current" is satisfied by a note that never
 mentions the SLA at all, so silence passes. The class has a degenerate pass
 mode, the judge sits at 97.7% positive because of it, and κ has almost no
@@ -757,10 +777,8 @@ it.
 
 #### The mechanism at corpus scale, without human labels
 
-Everything above rests on 44 absence-phrased items in one 150-pair packet, which
-is a thin base for a claim about the instrument as a whole. The mechanism,
-a criterion class with a degenerate pass mode, can be measured without human
-labels at all, on every verdict the project has committed, and it was.
+The mechanism, a criterion class with a degenerate pass mode, can be measured
+without human labels at all, on every verdict the project has committed.
 
 Joining all **5,398** committed rubric-v2 criterion verdicts to their assertion
 kind gives the judge's positive rate per class (the join is deterministic and
@@ -803,8 +821,8 @@ that same side still has to be satisfied.
 
 The floor run bears this out empirically. Under a memoryless worker, 4 of 125
 instances earned pair credit, which is the result reported in §4.5. If
-twin-side leniency were letting ignorance through, the floor would be visibly
-above zero, and it is not. **The judge defect therefore does not explain away
+twin-side leniency were letting ignorance through, the floor would sit well
+above 4 of 125 and the rung-1 upper bound would not stop at 10.6%. **The judge defect therefore does not explain away
 this paper's one positive result.**
 
 What it does affect is the size of any future number on absence-heavy
@@ -858,12 +876,25 @@ rests on one rater, and with one rater judge error and rater error cannot be
 separated. A second independent rater would settle the second half and would not
 change the first.
 
+A judge panel is not that rater. The companion methodology paper (Srivastava,
+*Constructing a Benchmark When Every Component Is a Language Model*, 2026) had
+four further blinded judges re-judge this packet's semantic criteria
+(`datasets/methods/judge-panel/report.json`). They agree with each other far
+above the gate, κ 0.927 to 0.966 against the committed v1 judge across 478
+criteria, and with the human rater far below it, κ 0.518 to 0.563 on the 150
+sampled pairs. On the 44 sampled absence criteria all four returned identical
+verdict vectors. Majority, unanimous-AND and unanimous-OR aggregation land at κ
+0.537, 0.524 and 0.544, at or below the best single judge at 0.563. Those are
+that paper's numbers, and the consequence for this one is that more judges do
+not substitute for the second human rater of disclosure 2, because the judges'
+failure on that criterion class is perfectly correlated.
+
 **The methodological point, which generalizes past this benchmark.** Two
 judge-validity checks, run on the same judge under the same rubric, returned
 opposite verdicts. The cheap automated one passed and could not have failed,
 because decoys are built by stating wrong values and therefore exercise only
 criteria that demand content. The expensive human one failed and localized a
-specific degenerate class. Anyone building an LLM-judged benchmark should
+specific degenerate class. Anyone building a benchmark judged by a language model should
 report judge agreement **per criterion type**: an aggregate false-accept rate,
 and even an aggregate over/under-accept balance, can conceal opposite
 directional failures that cancel.
@@ -879,12 +910,24 @@ each of the 125 valid instances on both the base and twin sides, and the 250
 resulting deliverables were judged blind through the same export and import path
 as everything else.
 
-Pair credit came out near zero on every capability rung: **rung 1 pair credit
-0.022** (95% CI ±0.040, n=92) for alignment, **rung 2 0.118** (±0.217, n=17) for
-coordination, and **rung 3 0.000** (n=16) for compounding. Four instances out of
-125 earned credit in total, and every interval includes zero.
+Pair credit is small on every capability rung, and the counts are what carry it:
+**rung 1 pair credit 0.022**, 2 successes of 92, 95% Wilson interval
+[0.004, 0.106], n=92, for alignment; **rung 2 0.118**, 2 of 17, [0.022, 0.441],
+n=17, for coordination; and **rung 3 0.000**, 0 of 16, [0.000, 0.194], n=16, for
+compounding. Four instances out of 125 earned credit in total. Only rung 3, with
+no successes at all, is consistent with exactly zero, and rung 2's interval
+reaches 44.1% on 17 instances, which constrains almost nothing.
 
-The mechanism is the twin. A memoryless worker can guess a base side at a rate
+The interval method changed on 2026-09-17. Earlier drafts reported the Wald
+normal approximation, which is invalid at these counts and degenerates to
+[0, 0] at rung 3's zero successes, the failure 2503.01747 warns against and the
+reason this paper cites it. These are Wilson score intervals on the
+cluster-adjusted effective sample size n_eff = n / deff, with deff 1.80, 1.88 and
+1.00 by rung (`ci95_wilson` in
+`datasets/dev/pilot/nomemory/seed-1/score-k1/report.json`). This is a reporting
+correction and nothing more. No valid set moved.
+
+The mechanism is the twin (§3.3). A memoryless worker can guess a base side at a rate
 well above zero, because a generated fact often matches the priors of a
 competent model, and a benchmark crediting single sides would read that as
 memory. Requiring the twin side as well removes it, because the twin's answer is
@@ -894,9 +937,11 @@ measures it.
 Two honest qualifications. Rung 2 rests on 17 instances and rung 3 on 16, so the
 intervals are wide and the rung-level claim is weak even though the direction is
 not. And this is one seed, because the deprecation stopped the other two before
-they ran. What the result supports is that the instrument does not reward prior
-knowledge or generic competence on seed 1, which is the claim it is offered for
-and no more.
+they ran. What the result supports is a magnitude rather than a null test: a
+memoryless worker earns pair credit on 4 of 125 instances, with 95% upper bounds
+of 10.6%, 44.1% and 19.4% by rung. That is what the claim that the instrument
+does not reward prior knowledge or generic competence on seed 1 rests on, and no
+more.
 
 ### 4.6 Benchmark durability: the deprecation event and re-anchoring
 
@@ -930,7 +975,7 @@ validity cannot be re-established outlives nothing.
 The dataset ships with the harness that runs it, because a benchmark whose
 evaluation code is a description rather than an artifact cannot be reproduced.
 
-**The adapter surface is deliberately tiny.** A system under test implements
+**The adapter surface is three methods.** A system under test implements
 three things: a counters dictionary, `ingest(principal, event)`, and
 `run_task(principal, task) -> str`. Memory internals are never inspected. What
 a system stores, how it indexes, when it consolidates: none of it is observed
@@ -946,7 +991,7 @@ a system cannot improve its score by failing.
 Four baselines (the memoryless floor, full-transcript long context, a
 filesystem-and-grep agent, embedding RAG), a lexical BM25 ablation of the RAG
 baseline, four market systems selected by published inclusion criteria, and a
-per-principal silo ablation of Mem0. The eleventh, a typed-memory reference
+per-principal silo ablation of one of them. The eleventh, a typed-memory reference
 implementation, is registered but deferred by the v1 freeze and never run. The
 grep baseline is there on principle (§2.3).
 
@@ -969,9 +1014,7 @@ container tags per organization side and handle null timestamps.
 **One embedding model sits behind every RAG-class baseline**,
 `gemini-embedding-001`, pinned in code with the pin asserted by tests, and a
 retriever constructed without one identifies itself as `UNPINNED` in the
-artifacts it writes. This follows directly from §2.3: if swapping an embedding
-model moves results more than swapping the memory architecture, then an
-unreported embedding model makes a comparison meaningless. Market systems reuse
+artifacts it writes, for the reason §2.3 measures. Market systems reuse
 the same model for their internal embeddings where configurable, at each
 system's own dimensionality.
 
@@ -1030,7 +1073,7 @@ Because probe validity is worker-relative (§4.2), they cannot be completed by a
 successor worker and they cannot be mixed with one. No ranking, no ordering, and
 no per-system statement is derived from this table anywhere in this paper.
 
-## 7. Limitations and disclosures
+## 7. Limitations
 
 Everything a reader would need to discount this work is in this
 section, including the items that cost us the most. They are listed in rough
@@ -1038,7 +1081,9 @@ order of how much they should change your reading.
 
 1. **G4 FAILED.** Judge-human agreement is κ = 0.537 against a prespecified
    gate of κ ≥ 0.75 (81.3% raw, n=150; §4.4), and every semantic verdict in
-   this dataset inherits that error. It is not uniform. The judge over-accepts
+   this dataset inherits that error. A post-hoc cluster bootstrap added
+   2026-09-17 puts the 95% interval at [0.370, 0.688], and its upper bound is
+   below the gate, so the failure does not rest on the point estimate. It is not uniform. The judge over-accepts
    on absence-phrased criteria (8 of 8 errors, FALSE on only 1 of 44 items)
    and under-accepts on scope criteria (7 of 7), which cancel for this
    packet's mix of kinds and would not cancel for another. The over-accepts
@@ -1056,7 +1101,10 @@ order of how much they should change your reading.
    who has read seed content, a disclosed downgrade from the two-rater design
    originally specified. There is therefore no inter-rater κ, and judge error
    cannot be separated from rater error. A second independent rater is the
-   first thing a v2 should buy.
+   first thing a v2 should buy, and a judge panel is not a substitute for one:
+   the companion paper reports four further blinded judges agreeing with each
+   other far above the gate and with this rater far below it, with identical
+   verdict vectors on the sampled absence criteria (§4.4).
 
 3. **All three released seeds fail the instance gate**, at 125, 131, and 115
    against a prespecified 135, and seed 3 also fails the cluster gate at 40/54
@@ -1076,12 +1124,19 @@ order of how much they should change your reading.
    organization type (a two-team software company at L1–L2 scale), one worker
    model. The external-validity claim stops there.
 
-6. **Event streams carry no timestamps.** `sim_time` is null throughout v1 and
+6. **Nothing anchors probe difficulty to a human.** The ceiling condition is
+   the pinned worker with the relevant facts injected, so a valid item is
+   defined entirely relative to a model, and there is no human performance
+   baseline anywhere on the probes. §4.2 reports that relativity as a finding.
+   The separate point here is that construct validity against real
+   organizational knowledge work is argued from the design and never measured.
+
+7. **Event streams carry no timestamps.** `sim_time` is null throughout v1 and
    order is positional, so no result here separates knowing the order from
    reading a date. Screening anchors saw none either, so the condition is
    uniform.
 
-7. **The judge and the human rater saw the same rules through different
+8. **The judge and the human rater saw the same rules through different
    instruments.** The judge scored every criterion for one output together;
    the human scored one criterion per row, independently, under a
    no-backtracking rule. The rule text is materially identical in all three
@@ -1089,14 +1144,14 @@ order of how much they should change your reading.
    been attributed between judge quality and presentation. We found this while
    preparing the paper and did not measure it.
 
-8. **Judge identity is procedural, not enforced.** The pipeline records the
+9. **Judge identity is procedural, not enforced.** The pipeline records the
    judging model as a free-text tag; nothing in code selects a model or
    verifies the tag against whatever actually produced the verdicts. The
    guarantee that the judge was never the worker model or the criterion-author
    family rests on protocol discipline and dated records, not on a mechanism.
    Anyone rebuilding on this harness should close that gap.
 
-9. **Scoring-rule disclosures.** The scorer-exploit audit reads FAIL as
+10. **Scoring-rule disclosures.** The scorer-exploit audit reads FAIL as
    literally prespecified and PASS when re-scoped to sides carrying at least
    one positive-content criterion; both lines are permanent in the report, and
    the re-scoping is post-hoc and labelled as such. The rank-direction
@@ -1111,14 +1166,14 @@ order of how much they should change your reading.
    numbers with their dates (`datasets/dev/screening/sub07-sensitivity/`), so
    a reader who thinks that was the wrong call can prefer the other one.
 
-10. **Released-harness configurations.** Market systems run their internal LLM
+11. **Released-harness configurations.** Market systems run their internal LLM
     on Gemini where configurable, with every deviation from vendor defaults
     listed (`docs/vendor-configs.md`). Shared-store configurations do not
     enforce per-principal visibility and v1 scores no leakage, so the silo
     ablation captures the benefit of sharing without its governance cost.
     These describe the released harness and support no claim in this paper.
 
-11. **Vendor right-of-reply was not triggered**, because it attaches to
+12. **Vendor right-of-reply was not triggered**, because it attaches to
     published vendor numbers and this paper publishes none. The procedure
     stays specified for any re-anchored evaluation.
 
@@ -1134,7 +1189,7 @@ mistake is not a policy.
   `LICENSE-DATA` (CC BY 4.0; code stays MIT), `MAINTENANCE.md`, checksums, and
   a manifest naming what was withheld and why.
 - **Withheld**: the ground-truth fact ledger (746 facts across the released
-  seeds. It records which facts are probed and which are planted
+  seeds, recording which facts are probed and which are planted
   distractors), probe plans, realization maps, annotated scoring streams, the
   generator, the two unscreened holdout seeds, and every rater key.
 - **Published on purpose**: the assertions. Scoring is impossible without
@@ -1146,14 +1201,59 @@ mistake is not a policy.
   runner to the full frozen valid set (125 base + 125 twin rows on seed 1).
 
 Hosting, decided 2026-09-14: HuggingFace, at
-`huggingface.co/datasets/notmehul/memory-bench`, CC BY 4.0, no DOI. The
+`huggingface.co/datasets/notmehul/memory-bench`, CC BY 4.0, and no dataset DOI. The two papers have Zenodo DOIs of their own, 10.5281/zenodo.22838321 for this
+one and 10.5281/zenodo.22838603 for the methodology paper, and neither of them
+identifies the dataset. The
 repository is private until the all-in-one release; the bundle in it was built
 and verified by `scripts/release.py` and round-trips through the host
 byte-for-byte. Nothing ships with a BLOCKING row open in the G5 tracker
 (`docs/standards-audit.md`).
 
-## Appendices (planned)
+## Acknowledgements
 
-A. Probe spec + rubric verbatim. B. Screening gate results by seed.
-C. Floor run detail + per-instance table. D. Re-anchoring procedure.
-E. Reproduction commands.
+Harshit Agarwal reviewed an early draft of the gate criteria and the capability
+ladder. His work at Boston Consulting Group on organizational structure and how
+information moves through it informed the tier and authority model of §3.1. He
+reviewed the measurement design only: he saw no seed content, no fact ledger and
+no results, and he is not a rater in any measurement reported in this paper.
+
+## Author contributions
+
+M.S. designed the benchmark, built the generator, screening and scoring
+pipelines, ran every measurement, and wrote the paper. The G4 calibration packet
+was rated by M.S. alone, which is the limitation disclosure 2 records and the one
+this work most needs repaired.
+
+## Competing interests and funding
+
+This is an independent study with no institutional affiliation and no funding
+from any vendor whose system appears in the inclusion criteria. No
+author-affiliated memory system is evaluated anywhere in this work, and no system
+was given advance access to the dataset or the screening pipeline. Every
+exclusion from the candidate set is reported with its reason.
+
+## Ethics
+
+The organizations, people and events in this dataset are synthetic; no real
+personal data was collected or processed. The only human-subject component is the
+author's own rating of the calibration packet.
+
+## Data and code availability
+
+The dataset is at `huggingface.co/datasets/notmehul/memory-bench` under CC BY
+4.0, private until the all-in-one release; the harness is MIT. The bundle ships
+the SUT-facing streams, the counterfactual twins, the probes with their scoring
+assertions, the frozen valid sets, Croissant 1.0 and RAI metadata, and checksums.
+The ground-truth ledger, probe plans, realization maps, annotated streams, the
+generator and the two unscreened holdout seeds are withheld because they contain
+the answers, and the withholding is enforced by `scripts/release.py verify`
+rather than by care.
+
+## Reproducibility
+
+Every number in this paper derives from a committed artifact, and
+`tests/test_paper_numbers.py` asserts the mapping. One limit is structural rather
+than procedural: the pinned worker was withdrawn by its provider on 2026-09-04
+(§4.6), so the screening anchors cannot be reproduced under the model that
+produced them. The re-anchoring procedure is specified in §4.6 and ships with the
+release.
