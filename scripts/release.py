@@ -56,16 +56,19 @@ WITHHELD_NAMES = (
 )
 
 VERSION = "1.0.0"
-# Hosting decided 2026-09-14 (Mehul): HuggingFace, no DOI. The dataset repo is
-# PRIVATE until the all-in-one release; the identifier below is the canonical
-# location either way.
+# Hosting decided 2026-09-14 (Mehul): HuggingFace. The dataset has no DOI of its
+# own; the two papers do (Zenodo, 2026-09-19), and the concept DOIs below always
+# resolve to each paper's latest version.
 DATASET_URL = "https://huggingface.co/datasets/notmehul/memory-bench"
-HOMEPAGE = "https://github.com/mehulsrivastava/memory-bench"
+HOMEPAGE = "https://github.com/notmehul/memory-bench"
+HISTORY_URL = "https://github.com/notmehul/memory-bench-history"
+PAPER_DOI = "10.5281/zenodo.22838320"
+METHODS_DOI = "10.5281/zenodo.22838602"
 
 CITE = (
     "Srivastava, M. (2026). memory-bench: A Screened Benchmark Dataset and "
-    "Validity Study for Organizational Memory in Agent Harnesses. Version "
-    f"{VERSION}."
+    "Validity Study for Organizational Memory in Agent Harnesses. Zenodo. "
+    f"https://doi.org/{PAPER_DOI}"
 )
 
 
@@ -426,6 +429,14 @@ identical rules. **The valid set shipped here is valid relative to that
 worker, not in the abstract.** Running a different worker without re-screening
 produces numbers that do not mean what they appear to mean. `MAINTENANCE.md`
 gives the procedure.
+
+## Papers and code
+
+- Dataset and validity study: [doi:{PAPER_DOI}](https://doi.org/{PAPER_DOI})
+- Construction methodology: [doi:{METHODS_DOI}](https://doi.org/{METHODS_DOI})
+- Harness, screening and scoring, and the evidence behind every number:
+  [{HOMEPAGE.removeprefix("https://")}]({HOMEPAGE})
+- Development record: [{HISTORY_URL.removeprefix("https://")}]({HISTORY_URL})
 
 ## Citation
 
