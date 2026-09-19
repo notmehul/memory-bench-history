@@ -627,16 +627,17 @@ def test_salience_check_is_reported_as_an_interval(prose: str, tex: str):
     assert "confirms it: raters told probed" not in prose, \
         "the check bounds discrimination, it does not confirm flatness"
 
-    # G2's own bar, read from the plan, sits inside the interval
-    plan = (ROOT / "docs" / "dataset-plan.md").read_text()
-    bar = re.search(r"cannot beat (\d+)% accuracy", plan)
-    assert bar and bar.group(1) == "65", "G2's spot-check bar moved"
+    # G2's own bar sits inside the interval
     assert _wilson(58, 100)[1] * 100 > 65
-    assert f"G2 set the bar at a reviewer who cannot beat {bar.group(1)}% accuracy" \
-        in prose
+    assert "G2 set the bar at a reviewer who cannot beat 65% accuracy" in prose
     assert "the comparison is approximate" in prose.lower(), \
         "the aggregate and the per-spot-check bar are not the same quantity"
     assert "is not re-litigated here" in prose, "G2's verdict does not move"
+
+    # and the 65 is the plan's, not a number chosen after the fact
+    plan = require("docs/dataset-plan.md", HISTORY).read_text()
+    bar = re.search(r"cannot beat (\d+)% accuracy", plan)
+    assert bar and bar.group(1) == "65", "G2's spot-check bar moved"
 
     # seed 3, worded as the validation report words it
     assert "scored 14/20 on four independent samples" in report
