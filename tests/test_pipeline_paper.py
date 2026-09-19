@@ -575,3 +575,11 @@ def test_no_sentence_is_left_dangling_in_the_availability_section(flat: str):
     compression edit matched one line late."""
     avail = flat.split("\\section*{Data and code availability}")[1].split("\\section*{")[0]
     assert "The generator, Section" not in avail
+
+
+def test_availability_says_where_the_code_and_record_are(flat: str):
+    """Written for the state v2 describes: dataset, code and history all public."""
+    avail = flat.split("\\section*{Data and code availability}")[1].split("\\section*{")[0]
+    assert "https://github.com/notmehul/memory-bench}" in avail
+    assert "https://github.com/notmehul/memory-bench-history}" in avail
+    assert "private until" not in avail
