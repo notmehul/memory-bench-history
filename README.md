@@ -1,147 +1,45 @@
-# memory-bench
+# memory-bench-history
 
-A benchmark for memory systems in organizations of agents, where every person
-has agents working under them and the memory layer must hold personal, team,
-and org-level knowledge with the right scope, authority, and freshness.
+The development record of memory-bench, from the first commit to publication.
+The maintained repository, with the harness, the evidence and both papers, is
+[github.com/notmehul/memory-bench](https://github.com/notmehul/memory-bench).
 
-## Thesis
+## Why this is public
 
-Continual learning for LLM agents is largely a harness problem, not a weights
-problem. Preferences, decisions, working rules, outcomes, and commitments can
-be learned, updated, superseded, and rolled back by a memory system that lives
-outside the weights. Of the eleven published memory benchmarks we could
-verify, none measures whether a memory system does this correctly across the
-tiers of an organization. This one is built to.
+Both papers claim that gates, thresholds and scoring rules were written down
+before the evidence they govern existed, and that dated git history, not
+assertion, is what shows it. This is that history, so the claim can be checked.
+Start with `docs/decision-log.md` (dated, append-only), `docs/dataset-plan.md`
+(the gates and the v1 freeze) and `docs/status.md` (the state at publication).
 
-Organizations are getting smaller while each person's agents live in different
-specialized harnesses. The memory layer is the only place organizational
-coherence can live, so the benchmark asks which memory system actually
-produces coherent behavior from a company of agents. The full claim structure
-is in `docs/vision.md`.
+## What was removed from every commit
 
-## What it measures
+On 2026-09-19 the history was rewritten with `git filter-repo` to remove what the
+release withholds, in every commit and not only the latest one:
 
-v1, frozen 2026-08-15, scores four probe archetypes. Results are grouped by
-capability-ladder rung (`docs/vision.md` §3) and never reduced to a single
-aggregate score:
+- the ground-truth fact ledgers (`org.json`, and the copies `org.prev.json` and
+  `org.partial.json`), probe plans, realization maps and annotated streams
+- the generator (`src/membench/generator/`, `generate.py`, `pipeline.py`,
+  `realize.py`) and its tests. It is a deterministic function of the seed and
+  rebuilds a holdout ledger's structure exactly
+- holdout seeds 4 and 5, everywhere they appeared, including their screening
+  runs and human-check packets
+- the G4 calibration ratings, agreement file and rater key, sealed until a
+  second independent rater has rated the packet, and the human-check answer keys
 
-| Rung | Archetype | Metric | Question it answers |
-|---|---|---|---|
-| 1, alignment | A4 | scope resolution | When facts conflict across tiers, does the right one win for this principal? |
-| 1, alignment | A7 | staleness, history retention | Do superseded facts stop driving behavior while staying retrievable? |
-| 2, coordination | A1 | propagation latency | Does a decision reach the agent of someone who wasn't in the room? |
-| 3, compounding | A2 | proactive application | Does the org apply its own history unprompted? |
+Commit messages, authors and dates are as originally made. Hashes changed, so
+`docs/commit-map.tsv` maps every original hash, as cited in the decision log and
+elsewhere, to its rewritten one. `scripts/leak_audit.py` checked every blob in
+every commit, and every message, against all 859 canonical fact strings from
+the five seeds and their twins before this was published.
 
-Rung 0 (plain recall) is where existing memory benchmarks live and where long
-context saturates trivially; this benchmark's claim territory is rungs 1–3.
-Rung names and archetype assignments follow `docs/vision.md` §3, which
-`scripts/score_sut.py` implements.
+## What does not run here
 
-Every instance is scored as pair credit: the probe passes only if the base
-task passes and its counterfactual-twin sibling passes. Knowledge the system
-could have answered from priors earns nothing. The wider dimensional design
-(leakage, propagation latency, rollback, conflict surfacing, experience
-utilization) is specified in `docs/architecture.md` and deferred to v2
-(`docs/deferred.md`). v1 claims none of it.
+With the generator and ledgers gone, the construction scripts and some tests no
+longer run in this repository. Nothing here is maintained; use
+[memory-bench](https://github.com/notmehul/memory-bench).
 
-## How it works
+## Licence
 
-1. A generator produces a synthetic organization from a seed: personas, teams,
-   policies, and a multi-week event timeline of meetings, DMs, docs, and PRs.
-2. Every fact in the timeline is tracked in a hidden ground-truth ledger with
-   six coordinates: type, tier, visibility, authority, temporality,
-   explicitness.
-3. The system under test ingests the event stream per principal, however it
-   wants: files, vectors, graphs, fine-tuning. The benchmark never inspects
-   internals.
-4. Behavioral probes, which are work tasks rather than quiz questions, are
-   injected at intervals and scored against the ledger with machine-checkable
-   assertions, counterfactual twins, and floor/ceiling normalization.
-
-## Repository layout
-
-- `docs/status.md`: current state and work queue (start here)
-- `docs/vision.md`: positioning, the capability ladder, the heterogeneity
-  thesis
-- `docs/standards-audit.md`: field-failure audit and pre-release tracker
-- `docs/architecture.md`: full benchmark design, dimensional model, scenario
-  archetypes, methodology, positioning vs. prior work
-- `docs/validation-report.md`: final v1 dataset validation numbers
-- `docs/specs/ledger-schema.md`: ground-truth fact ledger (contract #1)
-- `docs/specs/event-stream.md`: event stream format (contract #2)
-- `docs/specs/probe-spec.md`: probe + assertion + counterfactual format
-  (contract #3)
-- `prompts/`: content-generation contracts (event rendering, canonical
-  realization) used by whichever LLM renders prose
-- `docs/dataset-plan.md`: phases + gates; the v1 pilot FREEZE section at the
-  bottom governs. Dated history: `docs/decision-log.md`. Cut scope:
-  `docs/deferred.md`
-- `docs/vendor-survey.md` / `docs/vendor-configs.md`: market-system selection
-  (top-4 by GitHub stars, 2026-08-15) and the per-system configs frozen before
-  any run
-- `paper/`: preprint skeleton + checklist
-- `src/membench/sut_*.py`, `adapters.py`, `rag.py`: baseline + market-system
-  adapters; `scripts/run_pilot.py` / `score_sut.py` / `figures.py`: the run,
-  scoring, and results pipeline
-- `scripts/` (rest): dataset construction + screening tooling
-  (`screen_probes.py`, `author_probes.py`, `validation_sweep.py`, …), kept as
-  the provenance of the frozen dataset
-- `datasets/dev/org-0000N/`: released org. `org.json` (private ledger),
-  `plan.json` (probe plans), `realization-map.json` (template-to-prose
-  provenance), `events.jsonl` (SUT-facing stream), `events.annotated.jsonl`
-  (scoring stream), `g1-report.txt`
-- `datasets/dev/org-0000N-twin/`: counterfactual twin. `org.json`,
-  `events.jsonl`, `events.annotated.jsonl`
-
-## Status
-
-v1 frozen 2026-08-15; deliverable amended 2026-09-14 (`docs/dataset-plan.md`
-FREEZE section + amendment). **v1 ships as a dataset, a construction
-methodology, and a validity study, not a leaderboard.** The provider
-deprecated the pinned worker (gpt-5.4) mid-pilot, which ends comparative
-evaluation until a successor is pinned and the anchors re-screened; that
-re-anchoring procedure is documented and released as the maintenance contract.
-
-The evaluation dataset is seeds 1–3: 371 valid paired instances (A1 50, A2 43,
-A4 106, A7 172; per-seed 125/131/115; failed gates carried as explicit FAILs,
-never repaired) under probe-spec v0.4.3 and judge rubric v2, screened with the
-pinned worker (gpt-5.4, effort medium, codex-cli 0.144.5) and fully blinded
-judging. Seeds 4–5 are unscreened holdouts.
-
-The released harness registers ten system configs: no-memory, full-transcript,
-grep-agent, naive-RAG with and without a lexical ablation, the top-4 market
-systems by GitHub stars (Mem0, Cognee, Graphiti, Supermemory), and a Mem0 silo
-ablation. Every per-system config was frozen before any live run. Of these,
-only the no-memory floor completed on seed 1 before the deprecation; it is
-reported as instrument validation (4 of 125 instances credited, with rung-level
-95% upper bounds of 10.6%, 44.1% and 19.4%), and the partial rows for the other
-baselines are released as provenance carrying no comparative claim.
-
-The dataset is published at
-[`huggingface.co/datasets/notmehul/memory-bench`](https://huggingface.co/datasets/notmehul/memory-bench)
-under CC BY 4.0. **The repository is private until the all-in-one release**,
-which ships the dataset, the harness and the paper together. The bundle there
-is the output of `scripts/release.py build`, verified before upload and
-round-tripped byte-for-byte after it; the ground-truth ledger, probe plans,
-realization maps, annotated streams, the generator, both holdout seeds and
-every rater key are withheld, and `release.py verify` fails the release if any
-of them appears.
-
-There are two papers, both compiled with `tectonic -X compile <file>`:
-`paper/memory-bench.tex`, the dataset and validity study, and
-`paper/pipeline.tex`, the methodology paper on building a benchmark whose every
-component is a language model. See `paper/draft.md` for the working copy of the
-claims and `docs/status.md` for the live queue.
-
-## How to cite
-
-```
-Srivastava, M. (2026). memory-bench: A Screened Benchmark Dataset and Validity
-Study for Organizational Memory in Agent Harnesses.
-
-Srivastava, M. (2026). Constructing a Benchmark When Every Component Is a
-Language Model.
-```
-
-Author ORCID: [0009-0008-1031-304X](https://orcid.org/0009-0008-1031-304X).
-The dataset carries its own CC BY 4.0 licence (`LICENSE-DATA`); the code is MIT.
+Code MIT. Data CC BY 4.0, published at
+[huggingface.co/datasets/notmehul/memory-bench](https://huggingface.co/datasets/notmehul/memory-bench).

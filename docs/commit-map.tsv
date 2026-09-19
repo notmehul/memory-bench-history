@@ -1,0 +1,123 @@
+original	rewritten	date	subject
+016029b655c4f48b83c3bcd2cfa1568ad9fe6233	b66d790261f09041b16e17961484829fc79d40a7	2026-09-19	test: hold the numbers to the published .tex, and skip with a reason where material is withheld
+022fb11a8de567989e7c163ccb8074574899a1a7	d7b30cf11a506c33d1bd6ce7da64cb0b6d8e086e	2026-07-14	data: dev orgs seeds 1-5, seed 1 prose-realized (G1 green)
+038743f5fd2b277ae6f02fadb75f533dafbbf42c	49f14a598b0417e76789e310f6d2ff3aaf54e8e3	2026-08-15	data: seed 3 screened (40/54 FAIL carried, 115 inst) + R6 contested-attribute rule; seeds 1-3 re-scored
+08c78be0444f3fc40e5b8a664550dbad28160000	792d8ecf036c7dc01fcbd484e938e88e69784bea	2026-09-19	docs: status and decision log through the Zenodo publication
+0b7b330edb1501a9706d603e0ddf7acf2da4bc19	422f24079d126ae6eb059155d027a8c940ea2229	2026-09-14	docs(status): refresh to the current stage, pre-release with three items left
+0d3d8083a762fdfa34a8d1c803d66af54719efb0	71269c92d6654dd82367a077b0a1db1304d26f1e	2026-09-15	docs(paper): rewrite the abstract, add two tables, cut 3 pages of restatement
+1097c4e78d9136053e7d5ef0a99f14f454b67af0	273ec3f6a2daf04ed4a86d6192b5dc3427e25032	2026-08-22	docs: split shared rules into AGENTS.md (codex/cursor read it too); CLAUDE.md keeps Claude-specific orchestration notes
+13a9cd1736c4fac89ddd2fef21b633fd56275fc7	7cc9963fccf8a3b7e656af818db5b97ca6985365	2026-08-15	feat: judge decoy false-accept audit (2/41 as measured, 0/39 adjudicated) + typed-memory reference implementation
+1594c1d38d93eaec07ae40db98b70970e464ac2c	804942aa9c91c5140a8a0f022650d0f853cf3b0e	2026-08-06	data: cross-org co-valid lineage repairs; seed-1 re-scored to 46/54
+171f694bcea2037fd5ef4db13ced51d7ea71824b	351b3894586e963789cdae2623c05fe2794a65d7	2026-09-14	docs(paper): the judge defect is contained; state why it stays unfixed
+1ac3bd94822d4c941b25ddec3affbd3bc51fa691	22ac824c018a3f003b6e6239573a5447b54758c1	2026-09-14	docs(readme): name the dataset location and its private status
+1fee6e3dacff719b576832d5fbd74795079fb05a	ba7129d662a8ed7b21c565144716cc955b4b818b	2026-08-07	feat(spec-v0.4): commitment rule + cross-side detectors — mechanical layer
+2284119b7d98e1517395853960c568c8a3f8440c	349c3885c1b622c68943b14715e7626d2a4b3512	2026-07-18	chore: repository cleanup and content-contract consolidation
+236facf7b3110f32d661597dc5f26ff760e78671	683589a3125aafe75effd2976681234f71d94997	2026-07-14	chore: counterfactual realizations must match base word count
+246dfadf61829360ac463653fae9abb4fa10a74e	5e127f063ccd09e59237a81c9c9c51cf360c2aa4	2026-09-14	docs(status): seed-1 stall — gpt-5.4 gone from chatgpt-account codex, API key required
+255637b2ac9f667c988c7bf2c1b62f58277ec7bc	89b63a85c42146725afec5f4089131cb252c47fa	2026-09-14	docs(paper): finish section 4, so the whole draft is prose
+26343f684f58f223c63624d3c6d5302484332773	00afeaed889657c191eef4244f4a2b16a833e553	2026-07-25	docs: benchmark-standards audit — nine field learnings adopted as protocol
+26a96ea11f2f02edccf195784e9fa384990f5df7	3649299402ff9281a0d5b8147cf3531ace0ead3d	2026-07-25	data: harness-sensitivity study — worker pinned as (gpt-5.4, medium, codex-cli 0.144.5)
+270fadefcfcd8f4993b9790b42021701ee887d2c	1b84325eacdaec23ffaaa0e4d96ba6f2eb1ac240	2026-08-15	feat(adapters): naive RAG baseline (#3) with stdlib BM25 retriever + embedding seam
+278a3bfa304b60184f6cd2b1afd5becadd97a780	e480cada2868808dd94bbe890c2f6826cd1b20da	2026-09-02	fix(adapters): survive the timestamp-free frozen streams; Supermemory live-smoke fixes
+27b0f2a59085d05e1e0d11579490a6653a6d09f9	4e99a234ba6a557f4022b626ae807adf8e0c4ae2	2026-09-14	docs(paper): where the judge leniency lands, and why the decoy audit missed it
+28c5169f8cc0e6f4edf0bf279fb7a93a4dfc3507	27c007075850dc58765d78661247d61666f84b8e	2026-07-25	chore: G2 human-validation packets for all 5 seeds
+296ac70cc9b5356a2f3cf66ff850d6cdc0e9a553	ee3b6de80963c2f1e8b8cc956177386dceaceb22	2026-08-22	feat(pilot): only-valid (371 = valid ∩ surviving), resumable sides, cost columns, twin-from-base probes; run_pilot.py cross-seed orchestrator
+2b92b64e84001f058ec21cbb1a728b145994c718	8ea8d315b5462893e60252bf5417bc0167150cfa	2026-07-14	data: seed-1 base + twin event streams, lint green
+2da083a39577987290d19e3e223b6e3a2c9d6322	918af6347cdaba03380bcf57522b54d32ccfd61d	2026-09-14	docs: apply the prespecified sub-0.7 criterion drop, recorded before the re-score
+2e2847f8cc800a2364496a3de99209becac374aa	755f54d5434aa6cf89d0f5074c120ad37b2d3ca1	2026-08-27	feat(analysis): figures.py — radar by rung, results tables, 2/3-seed direction rule, paired H2 diff
+335deaa3e014b5451c0431a867d84e7f3bb1ebeb	78cc854dddc28197a5a50b97e3c67be0c9816553	2026-09-19	test: guard every read of withheld material, and resolve decoy kinds on seed 1 only
+354bad15eb1db5335861c39d7078e936a30babe6	ed21a1049c195965b06453885cb29d61f8fe3faf	2026-09-02	fix(pilot): namespace Supermemory container tags per org side
+379bd0ebeebdf733b5327290136bb7993f1bc0e0	4d5f3006d440c267c3ce06a1f0d60bf4ac51c3ad	2026-09-19	fix(leak-audit): catch a fact ledger under any file name
+394962385ad1ac63d25ab68ac41307bb0a729f63	df0006dd01307b1caaa96f69023d6cd6f76be68a	2026-08-28	docs(style): unslop pass on README + vision — prose only, no factual change
+3b6743a1a6416ca90aad8e60797d50babda3ac77	f98d2271945bb7443ed9e2512a0064ddeaeee69d	2026-08-15	fix(rag): stopword-filtered BM25 tokens (toy-corpus 'the' artefact)
+3ca1abf9d31abf7926590bb6b2cc3ed1a11344b0	23c3bd0f92c6f8a84591d474b6e3ab87431748bd	2026-07-15	data: all 5 seeds + 5 twins realigned, stream lint green
+40b150cda282d22050fe6510512f92e32a19754c	7c1b7836fb17b06bc6ea4cb4ab47199edf73f296	2026-08-27	docs(paper): draft skeleton with sourced sections + disclosure inventory; preprint checklist
+42b725e00311783f7974c2cea75f4d7ac886cfc5	e889fb6b259d2ff305a96ee322aa7e034830aa4f	2026-08-07	feat(spec-v0.4): R1-R5 refinements — mechanical layer is now pure anti-gaming
+43078d50f4a7bf7b88b7115cc7fbada4effba624	86410b2b813725f412221a8e56215a2704d04838	2026-07-14	fix: deep-audit hardening of oracle, gates, and render pipeline
+440d6d90a5e12d5033c61b8a674355153f472efd	7c258c3e0f10c48fbbae03a0a63baf74e896abdb	2026-08-05	data: seed-4 human spot-check PASS (50%); v2 industry matrix planned
+4523b2fedf2b14bdc573efb52f31b2b06369e19d	84bb9a3a378510a8ac810920c3c85a34a8c4c52d	2026-08-15	docs(freeze): silo ablation on Mem0, not full-transcript (identical context text)
+4919b518b391f9a63e973d09bf6f6c32df9a8ded	7a6ceaeb735b121ef4d52f7a110701e4ce79c7b0	2026-08-15	data(audit): rebuild exploit audit after R6 (verdicts reused; unchanged verdicts)
+49ad4cc46e853fe735da4a8899d435c3c1f625d4	4f43bc515eb7a7e263ad78793ad7f789fbd0f3c0	2026-09-14	docs(paper): a stricter rubric would not have rescued G4, and the arithmetic proves it
+4ae19ef1aa6b6e6c0a8236fe920018c660e97032	51ea095bc182897af675e2889f9b8642aa822cda	2026-09-14	docs: prespecify Track B's judge panel and corpus re-analysis before running them
+4b10fd8b1a9cf3233f5bcea99885590b9b8fd2ea	777bca4360c1a2d6ea392c64dc9d9bbc0f1621ac	2026-09-14	docs(paper): verify every citation against its primary source, and fix what that found
+4c864a4a5e00778baa5e36400c4ad00b2868c3b3	696e1b50d680b33643a4a0170119f73f8b309276	2026-08-07	docs: probe-spec v0.4 (PI-approved) + self-contained human-review handbook
+4f09888e5ad56d60f6fd5b119f1956251a5bb1f2	1975cf8b401d253433100a91e741e30d6bb52d40	2026-08-28	docs: backtest cleanup — re-point stale docs at the frozen v1 scope
+4f1174b1d17f904f3dc317c6a47016855fafb929	0b06c61c55a1063abab9e207278283a13208b735	2026-07-25	feat(runner): pilot runner core — adapter interface, witness routing, baselines
+50b9a2c5f5f43d73f0b019c1183faad5a0033f3c	3277f85154e615ec01ae4d9debce53f5f417ef63	2026-09-14	feat(methods): four blinded judges agree with each other and not with the human
+535b94b629f1f1c5a41b8e26362b0c7e72f3d760	1cdb155f25722b441df95f9545d1460ae3b3a53b	2026-09-14	docs(paper): report the sub-0.7 rule as measured and declined, with both numbers
+55106286cce102199f41ead10e8251d29b9aef6e	08dc29d7880432f02cce60202cd200dac6075bcc	2026-09-14	fix(paper): the G4 symmetry is a cancellation, not unbiased noise
+55b13243e6c2eea51c82c1dd5694f0f1206db8df	8cf06fcfbdb797a08fe18ac9a8d994902b6bae35	2026-09-19	data(exploit-audit): publish the first audit's report as its own file
+5959c26aa79eb1e7d59598bcce074b9600e56850	1658ca8cfecb885a37f1ae40f3cd67bf6aa8cc57	2026-09-14	data(pilot): seed-1 raw rows through 2026-09-04 — nomemory complete and judged
+5a2e1bd8080899baa1c03862b4e35df236e1cfec	a52d25e07e63d0705e88aa181daf0979cf88251a	2026-09-14	docs: record the HuggingFace publication, its pre- and post-upload checks
+5ae8db4b973ccc32808990f81afe86215275884d	9b04073ca6dd88c1c26f1409038bcba7754975ca	2026-08-22	docs(status): adapters + pilot CLI done; queue now starts at keys + live smokes
+5ebd4d39f95af61b8de1206983cfbcb8fab7317e	a0dab38a4a54e20050a2a83a75331f3c6b9920cd	2026-08-15	feat(spec-v0.4.3): semantic layer, judge rubric v2, S6 gate — seeds 1-2 re-scored
+60feb8e345f1cc15175da5ab5b98b350e5aa62b9	3d0b43030790b2a20d042cb5b2a424ed83855aad	2026-09-19	docs(paper): add Track B, the construction-methodology paper
+61178c12b6e6ca192ad135214ef3368089418306	1c77757b2cdd07672c3612ba6fcadc90f8cbda35	2026-08-27	feat(pilot): freeze per-system configs pre-run (docs/vendor-configs.md); wire Supermemory settle policy into registry
+62c0c52784030e8418ded2e0d0811ec45e59d48c	12deec11dee265a2a707748a78a6be2c3faf3652	2026-09-14	docs(paper): draft the abstract and introduction; fix the rung mapping and two stale numbers
+63bcd1f2706700424700a501378edcded16ed11a	fd93619445b6b2447e1fb9275416f1edc2ffcec3	2026-07-25	feat(screening): blinded judge export/import
+66aba6df70ee6b21baf95184e60570ca38bb90e3	96a2aadd63bf2828a893df84ad6bb3bf00cd3fa8	2026-08-15	data: seed 4 partial — 327/486 outputs cached and judged blind (rubric v2); codex quota hit
+6b929b16467ea40ed77ac6aeab277df244f2caad	eb77ef8c2a4869b4a451681e776c4eb62f599778	2026-08-06	data: seed-2 screened — cluster gate FAIL (43/54 post-repair), fully adjudicated
+6cd7fc7987eb06fad8be6eb0bb6a6e0baef685da	e53450142f0c1d8e8c68ae2e332e8ef717c46396	2026-08-15	docs: pre-pilot vendor survey candidate table (C8 draft, nothing run)
+6e2ed86c35141f92f3ab2199f6ef06720c590057	a184bade991f83fdcb64fdda5c1ab9b8c648fdee	2026-09-14	docs(paper): consolidate as dataset + validity study after gpt-5.4 deprecation
+704110aabbb26dca4836b06fad5192dd2c04e360	41515404d73542dd9f7643aca419b98b5c13a06a	2026-08-15	docs: G3 note + status for seed 3 and R6
+7aa85e34b45e4b488e62a9fdc48d8d5529faf460	120ffd372908586ef7e7eb1bedb8926b9394a6cc	2026-09-14	docs(paper): draft §2 related work, with its citations marked unverified
+7e3a36a27c2518863ae8ffd5b98371aa0bf4a3b5	58756b9154bf92d71d45ba39494cf30c9d452e1a	2026-07-14	feat: phase 1 — seeded org generator, fact planner, gate G1
+7ea193f34c1e03567d6cef9889b1c7852dd96b3e	8f7424d91ed3820ea9d77b1af7df3c3b89d5c700	2026-08-15	data(calibration): 150-pair blinded rater packet from seeds 1-2 (rubric v2)
+8173684719be567f40d2f3f1a461fb3b1b0ca422	3ab1d37f1752019e25b84fbbeaea6e6171a43d9c	2026-08-06	feat(audit): scorer-exploit harness + judge decoy set (C1 partial, C2 done)
+85109a7537fdc133853b22d59ac182843d3d173f	9e47a316e59c4f9801acb9661d6bb39bfd5ed434	2026-07-25	data: seed-1 blinded re-judge + co-valid repairs; meta-review remediations
+941da6809b37bc7299958cc79b993ece422281df	c7456f17c7b8820a2842024d6796115541497a43	2026-09-14	docs(status): save full state across both tracks; open the methodology paper as Track B
+999d79f4d2a41bb4a6307fb73cbdca4b4bfc02f9	e882c3a0676a6ae51d9b72da304778971f40450c	2026-09-14	docs(status): close the citation blocker and the prose queue for Track A
+99d150a2508e2f5adb706f7c8c1d8bb711d1d1b6	27ebf7b33d8fc2bd1eab822e455def06c6b34c5d	2026-08-15	fix(protocol): enforce codex-cli 0.144.5 pin in protocol paths
+99fa3d361301cb533c217f3663864d77f0671689	1969c80dcf1cd6e0f3dcc2903a6ea9121414441e	2026-08-15	docs(spec): typed-memory reference implementation — proposed spec (baseline #6)
+9b17b8d290f3108319ed678a200ab38ee0b4265e	2d6638c767ee40e304e56b83a813a189ab808d6d	2026-07-14	feat: phase 2 — event renderer, stream linter, twin orgs
+9e5c2dfb8e513f76f35cd8519ad71db54632c320	7125a3b92f292553a4f150c6fcc15363430f5103	2026-07-18	data: final v1 dev dataset — 5 orgs + 5 twins, all validation green
+a2adee90529be22f8f6766d39ae524bdcceefab1	f5c60b54fd5df4f47972966907dfb4018168a186	2026-09-19	docs(paper): Zenodo DOIs, a clutter pass, and captions on three orphan tables
+a5cbf8ae766400438b272ea6915a5f7eb46ad308	8ffd79ae7a1615a36f95ff3632d821022e9f5ed9	2026-08-15	feat(runner): grep-agent baseline adapter (#8) + files seam on the worker
+a792c274c819ea023af483e859c5d10833ecd650	30a413ed8175de60cc5ee50903e69259a0774e86	2026-07-25	docs: agent orientation (CLAUDE.md) + living work queue (docs/status.md)
+adc539165719961123a3357c45f8e203f7b65f59	523a3bc8e69d8e5e0ec084d0a56b6c2f0bd717f8	2026-09-19	test: check the salience interval publicly; cross-read G2's bar from the plan where it exists
+ae3783aae496c93d15223998dcf7a0724f041abc	3cf84bb2522725e92193c38bb2cd0113561f1031	2026-09-14	feat(screening): measure the sub-0.7 drop as a sensitivity; canon stays at 371
+b0c90ee889fabf4b3659e143f3ce356c35307847	89981e84cca69f8b04695d9bb5e21c421cd52f77	2026-07-14	chore: OSS scaffolding — license, lint, CI, lockfile
+b21cf8c556327ec1ad1487d4904d3c9d82ba3f09	016a36756c6399eed17db9a514f6f6049579110e	2026-08-06	data: scorer-exploit audit verdict — BAR FAIL, enumeration hole found
+b3f89dd5e232717392af5a01f10764c752a5d58d	39d05d60e5d326193eca7be932774201f61388d0	2026-09-14	data(g4): gate G4 measured — FAIL, kappa 0.537 against the prespecified 0.75
+b5f1f2364b627f4652c3fcfb110d9a265e4c0da0	b8cbcc56dce16f15b22ebc989fb51e6fbde191b8	2026-09-14	docs(style): unslop the public surfaces; guard them with tests
+b71f99429235e8c6b1c79ec4a72c353636ed2952	e08562220dc4372e57f5389e3227a830baec6a69	2026-09-02	fix(graphiti): make the frozen 0.29.3 embedded-Kuzu path actually run
+b772fbcf36ecf9e330d6d6e2240be049944af1e7	e55e4d880860c1a5b34c61f3719e5cce01152d61	2026-09-14	feat(methods): corpus-scale verdict rates confirm the absence defect at 33x the sample
+b7f5a4b419fc6566789c5c41b8c3734745e4b2ba	e1331b46bd39b5fd589731c659dfd32a5ce9a27d	2026-07-14	fix: deterministic char-space position enforcement, seed-keyed hints
+bb4f6f45119adf815ce4861e2594b85111f64818	a62fe3d29db3d43c1b4cfecfbfb875822e5d3946	2026-09-19	docs(paper): Track B v2 availability names the code and the development record
+bcc3d23ce7aba5ab0ef6878fdb127701b7a2dc34	4dd950c875ab910e4677af91d9dba4507bdc3f6c	2026-09-19	fix(release): point the dataset card and Croissant at the real repository, and cite the DOIs
+bcf641c11cd16c55cb916f38a09397139beff367	57e8e4276a0f22827b1177e457d534fae0d9bbea	2026-08-15	docs: consolidate for v1 freeze — short status/plan, dated history to decision-log, deferred list, vendor selection note
+befa1f60af72241369910b2e57a47f32f6c86024	fdc123572cf1206776996e1e80e7263df87db7d8	2026-07-14	docs: benchmark design, contracts, and gated dataset plan
+bf68f45b266d4d20d9b5ffbd0e58e6a7be5011e5	067c35e793f6bd14c5b005e875d5d04e3c470bbd	2026-07-14	feat: belief-state oracle B(principal,t) with G0 test suite
+c12fb25f442062b15b2a439c86899c06e5751073	d93e292ce8f17b9c3923c5c4176c806c0f188362	2026-09-14	feat(release): build and verify the public release bundle (standards-audit B9)
+c2031d8978a56e29a159880d74d43b608d665e28	1aca3df840bd8376c20979ad2f1ae182ec40af85	2026-08-06	feat(stats): pre-pilot power analysis — MDD grid, tie rule, sizing guidance
+c2a8b08341289b8aa045ee769e96196126c2b7ad	e819bf4a33c569b184fc72b13fd288c430bb036f	2026-08-15	feat(adapters): Supermemory adapter (hosted; documents.add / search.memories; settle wait) — not yet registered
+c2c819740e49811a850846bbc165bea040db5fb9	1b2fbd34311699f3ce95b49fb93801b67cfd043e	2026-09-14	docs(paper): kappa-paradox diagnostics for G4, reported post-hoc and not as a rescue
+c3e9daca29dca3d145bee6637e822ba6f951049e	386a27260eae4ad9e4dcd5afcf044c644c8ba6c8	2026-09-14	feat(paper): LaTeX submission draft with seven figures, compiled and verified
+c8391f78b2971e35dbea861d610d2b21f167420b	8c3bddf6a0c6224e8576640fc7b362be01e4e426	2026-09-19	build: publish the validation report as evidence; guard the judge-panel script test
+ca272391e5761341947d1bf70f6df1f3b041de33	165784c272313731d87071bf3cb20c0d6976732e	2026-08-15	docs: v1 pilot freeze + reduced design prespecified (seeds 1-3, 8 systems, top-4-stars rule)
+caff94deee293cfff783198a21ff4ea05d077b82	af0beb9de65a9e0a6d209e01c9e6c4743c5579a4	2026-07-25	feat(calibration): Phase 4 judge-calibration tooling
+ccb017a9a843f9d2ff8a13d7eeaf8b587660e7c6	5d54acc59c862276f040436d8829ab179d520452	2026-07-25	fix(data): seeds 2/3 filler contradicted probed facts; consistency passes for seeds 2-5
+ce87aedf0c70e6f1b2b3f1a148b9ac8ff7b1e6d9	9f14e4e2ae9a5fd025fad640dab0b1cd2734fd6b	2026-08-06	data: seed-5 human spot-check PASS (60%) — human-eligible G2 checks done
+cec504355fb4fb79964b5183491f72cc17f2e630	095cd05cb529756abb4d38f0bb86dc019f57c93f	2026-08-22	feat(adapters): Mem0, Cognee, Graphiti (Kuzu), Supermemory registered in the pilot registry; market extra (all four SDKs install together)
+cf462d6b1cfeb2dae7b448c999cf2213d7e6dd5b	9866ec94fb3ea5732dc86fdc8cf690210c2cb56e	2026-08-15	feat(pilot): SUT scoring pipeline + pilot CLI; docs
+d0820af9a4da094786ff4598058bef480e65864d	2f6196bb7667b5f0dcc3c2b0105dd94be42b575e	2026-08-15	docs: status header for the quota wait
+d0e1f7ea2ca26dde978be62f94c8aa32a2e47b27	96bec0882bff923f47089e4915f8a9f5b54b6352	2026-09-14	docs(paper): §4.3 was under-reporting the harness study, which also failed a prespecified bar
+d3fbaae5922f3f20feb124639eaba497c611f77a	b2d8256fec92ed0f452993a4c2323421de8f8ccf	2026-08-15	docs: status checkpoint 2026-08-07 — v0.4 mechanical layer landed, item-3 wave next
+dafd9d402738e1b5dca272ea20676500ccde7125	e4806623362cfe5a98718267427103c1edd5757b	2026-08-06	docs: human-review handbook — all reviewer tasks, materials, isolation rules
+dc15b431d57458959be9309b76511e06ee04d8fa	0430de2ac3d15d77994511892dbbc99f301f3bc9	2026-09-19	build: export the public repository from an allowlist, and audit it for leaks
+de7b820287ee51af7207a9a482e4e21ddb4419a1	917d58cd53ffb200b58067d343cc4f9182893039	2026-09-14	docs: close standards-audit row 9 and tick the release checks actually verified
+df5087c8af146d607666ebdafff3b6623087d581	5610831d412639bee4c9e54a38b7cf489da22a9e	2026-07-23	feat: probe-spec v0.3 — semantic-first assertions, instance-level G3 gates; seed 1 screened
+e099fbca11db8fc596e2b76df8495ba6bcf0a6a7	17b11d9aac444676cfe4a741935bfd4ad7ea81a3	2026-09-14	feat(calibration): G4 rater packet as a spreadsheet, validated back to JSON
+e39881abecf801e59d4e8cb03b6de6ed5b68680c	1de785e829eca52140f9eb06cf150f9cbfc1e469	2026-07-25	docs: independence protocol — no author-affiliated system in the study
+e916bab349d68d7ec70a935d60ee717643206958	72deeabe5450b21239f39289744fbb417a8c6e68	2026-09-14	docs(paper): write the remaining sections and fold in the corpus-scale verdict rates
+ecab0227ba4cbf8e0a1b762978e82a718fb59398	d1d3f6c6481ead7deadad45617297ed661b9fd3a	2026-09-14	docs(freeze): reconcile the freeze and the G4 procedure with the dataset-paper reframe
+ecdf7cd10f9e236ef345c40b87f101ebee8f6355	0be50bb4874929b772f267fcf1fbd143fcf355f1	2026-07-22	data: 810 validated probes for all 5 orgs; seed-1 screening evidence
+ee258eca426851e58728a443d7dc8f4144858880	53ad80808e8ef70b06446f4bf61a9e4ff90cee12	2026-07-25	docs: vision — capability ladder, heterogeneity thesis, prespecified pilot hypotheses
+efc5d75ee8e18286b1c18dafac47f60a586246af	7d4554dfc3c93ac9b50c3c9f251e2a38c175ffad	2026-09-14	docs(status): record the LaTeX paper, hosting decision, and the declined sub-0.7 rule
+f4a79d6866feb2dea8bb847cca225b018fe4f7b2	b169e49995f5c0e7989d518c391b50e59009e626	2026-09-19	feat(stats): Wilson intervals on cluster-adjusted n, and a cluster bootstrap for kappa
+f733793f2288eb6cd486b3661e800e74e3972518	c9a2b3cc5e588d91cff386cbfa4485c4287acd3a	2026-08-06	feat(runner): CodexWorker — the pinned worker behind the WorkerModel seam
+f7aeaad135f185dc52d82df9ee62c3e9b5b18d67	8eb381b77251feb3bd9b5d39e286878d980c41bd	2026-09-14	style(paper): unslop pass on the LaTeX and the draft, and put the .tex under the guard
+f984a22dbb313b1df6314b28dadceade7e0727bf	263c88f24f424c647f83c277353877d9df0e0f82	2026-07-22	feat: phase 3 probe constructor and validity-screening harness
+fb318b12c4c082dfbff2a4cacf018fb507c294c6	14ec82aef71d94758e2c384ffb219a103e53df9a	2026-08-15	feat(screening): cross-seed G3 summary (per-seed gates, per-archetype n>=30)
+ff1cb11977c505842d07c3a7c2808d14e6b2e334	07a7a347b6f0ad4ec37aed4c1a45130dde4295cc	2026-08-07	docs: status — v0.4 mechanical layer complete, residuals assigned to item-3 wave
+ff25380163ca85d2eedf9fd4de69c5bb8b5807e8	465f40497103dc2414d6644b67d5fe12762fbeb5	2026-08-15	feat(rag): Gemini embedding pin (gemini-embedding-001) behind the retriever seam + shared retrieval_prompt
