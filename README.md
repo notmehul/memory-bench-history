@@ -113,9 +113,9 @@ grep-agent, naive-RAG with and without a lexical ablation, the top-4 market
 systems by GitHub stars (Mem0, Cognee, Graphiti, Supermemory), and a Mem0 silo
 ablation. Every per-system config was frozen before any live run. Of these,
 only the no-memory floor completed on seed 1 before the deprecation; it is
-reported as instrument validation (pair credit ≈ 0 on every rung), and the
-partial rows for the other baselines are released as provenance carrying no
-comparative claim.
+reported as instrument validation (4 of 125 instances credited, with rung-level
+95% upper bounds of 10.6%, 44.1% and 19.4%), and the partial rows for the other
+baselines are released as provenance carrying no comparative claim.
 
 The dataset is published at
 [`huggingface.co/datasets/notmehul/memory-bench`](https://huggingface.co/datasets/notmehul/memory-bench)
@@ -127,6 +127,21 @@ realization maps, annotated streams, the generator, both holdout seeds and
 every rater key are withheld, and `release.py verify` fails the release if any
 of them appears.
 
-The paper is `paper/memory-bench.tex`, which compiles with
-`tectonic -X compile paper/memory-bench.tex`. See `paper/draft.md` for the
-working copy of the claims and `docs/status.md` for the live queue.
+There are two papers, both compiled with `tectonic -X compile <file>`:
+`paper/memory-bench.tex`, the dataset and validity study, and
+`paper/pipeline.tex`, the methodology paper on building a benchmark whose every
+component is a language model. See `paper/draft.md` for the working copy of the
+claims and `docs/status.md` for the live queue.
+
+## How to cite
+
+```
+Srivastava, M. (2026). memory-bench: A Screened Benchmark Dataset and Validity
+Study for Organizational Memory in Agent Harnesses.
+
+Srivastava, M. (2026). Constructing a Benchmark When Every Component Is a
+Language Model.
+```
+
+Author ORCID: [0009-0008-1031-304X](https://orcid.org/0009-0008-1031-304X).
+The dataset carries its own CC BY 4.0 licence (`LICENSE-DATA`); the code is MIT.

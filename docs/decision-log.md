@@ -880,3 +880,409 @@ files unchanged; re-verified after the second upload.
 **Still open before the public release.** The paper's voice pass, the
 verification gate in `paper/checklist.md` (repro from a clean clone), and the
 decision on whether the harness repository goes public at the same moment.
+
+## 2026-09-17 — post-hoc intervals on three reported statistics; one floor claim retired; scholarship corrections
+
+> **Everything in this entry is POST-HOC.** All three statistical additions were
+> computed after the evidence they describe already existed and were committed.
+> None is prespecified, and the word is not used for any of them anywhere in the
+> papers or the code. This repo reserves "prespecified" for commitments
+> corroborated by dated git history, and none of these has that history.
+
+**What prompted it.** Mehul asked for a review pass on the two drafts on
+2026-09-17. The pass ran across several agents and reviewers; the findings below
+are recorded by what was found, not by who found it, because the attribution is
+not reliable enough to publish and nothing turns on it.
+
+**What did not move.** No gate verdict, no criterion, no valid set, no
+threshold, no point estimate. No run was re-run, no output re-judged, no
+assertion re-authored, no task text touched. The 371-instance valid set, the
+five `judgements.jsonl` files, `ratings-M.json` and every `g3-report.json` are
+byte-identical. Both regenerated artifacts were diffed field by field: every
+pre-existing field is unchanged and only new keys were added.
+
+### 1. Cohen's kappa gets a cluster bootstrap CI (`scripts/calibration.py`)
+
+`_bootstrap_kappa_ci`: percentile bootstrap, 10,000 replicates, seed 20260917,
+resampling **fact clusters** rather than items. The G4 packet is stratified with
+a per-cluster cap, so criteria inside one cluster are not independent and an
+item-level bootstrap would report an interval narrower than the data support.
+Replicates in which both raters used a single label have no chance-corrected
+kappa; they are counted in the report rather than dropped.
+
+Overall: **κ = 0.537, 95% CI [0.370, 0.688]**, 89 clusters, 0 degenerate
+replicates. **G4 remains a FAIL, and the CI's upper bound is below the
+prespecified 0.75 gate**, so the failure is robust rather than marginal. That is
+the one thing the interval adds; it does not and cannot change the verdict,
+which is computed from the point estimate as it always was.
+
+Per kind: `fact_absent` 0.166 [0.000, 0.493], `fact_applied` 0.605
+[0.388, 0.782], `scope_correct` 0.561 [0.298, 0.837]. **These overlap heavily
+and do not separate the kinds.** Any reading that treats the per-kind κ ordering
+as established by this sample is unsupported, and the papers say so.
+
+Artifact: `datasets/dev/calibration/judge-agreement.json`, regenerated; only
+`kappa_bootstrap` fields added. Guarded by `tests/test_calibration.py`, which
+reproduces the committed interval from the same rows and seed, asserts the
+point estimates first (n=150, raw 0.8133, κ 0.537, gate False), proves the
+resampling unit is the cluster and not the item, and pins that the gate ignores
+the interval.
+
+### 2. Pair-credit rates get a cluster-adjusted Wilson interval (`scripts/score_sut.py`)
+
+`_wilson_cluster`: Wilson score interval on the effective sample size
+n_eff = n / deff, with deff the same design effect `_cluster_robust` already
+applies. The existing Wald `ci95` field is kept alongside it for
+`scripts/run_pilot.py` and `tests/test_figures.py`. A `successes` count is now
+emitted beside each rate.
+
+The reason is that the Wald interval is invalid at these counts and degenerate
+at zero successes: the rung-3 floor result took **[0, 0] from 16 observations**,
+which claims infinite precision. That is the failure arXiv:2503.01747 — already
+cited in the paper — describes for evals below a few hundred datapoints.
+
+Memoryless floor, seed 1 (`datasets/dev/pilot/nomemory/seed-1/score-k1/report.json`):
+
+| rung | credited | rate | deff | n_eff | Wilson 95% |
+|---|---|---|---|---|---|
+| 1 | 2 of 92 | 0.0217 | 1.8019 | 51.06 | [0.0041, 0.1063] |
+| 2 | 2 of 17 | 0.1176 | 1.8814 | 9.04 | [0.0220, 0.4414] |
+| 3 | 0 of 16 | 0.0000 | 1.0000 | 16.00 | [0.0000, 0.1936] |
+
+### 3. A claim is RETIRED, and the retirement is stated rather than absorbed
+
+**Old wording.** The memoryless floor was "statistically indistinguishable from
+zero on every capability rung", supported by "every interval includes zero".
+That support was the Wald interval, which includes zero on rungs 1 and 2 only
+because it is invalid there and is [0, 0] on rung 3 only because it is
+degenerate there.
+
+**New wording.** Exact counts and upper bounds: **4 of 125 instances credited;
+rung-level 95% upper bounds 10.6%, 44.1% and 19.4%.** Under a valid interval
+only rung 3, which has zero successes, is consistent with exactly zero. Rung 2
+in particular is consistent with a floor pass rate as high as 44%, on 17
+instances.
+
+This is a reporting correction, not a measurement change. The floor result is
+unchanged and remains the paper's one positive result; what changes is that the
+claim now matches what 125 observations can carry. A reader comparing drafts
+will see the sentence gone, so it is recorded here as retired rather than
+silently replaced.
+
+### 4. The salience parity check is reported as an interval, not as an accepted null
+
+G2's blinded-rater protocol measured **58/100** and was reported at p = 0.067,
+which reads as an accepted null. It is now reported as what it is: **58%, Wilson
+95% CI [48.2%, 67.2%]**. The interval spans chance and reaches above the 65%
+accuracy bar G2 names, so the check establishes that no large salience signal
+was detected, not that salience is flat. **G2's verdict does not move** — like
+every gate here it was measured on the point estimate — and the seed-3 residue
+already disclosed in `docs/validation-report.md` stands unchanged.
+
+### 5. Scholarship fixes — corrections to how the work is cited and described, not to what was measured
+
+- **Bibliographies with zero `\cite` commands.** Both papers carried reference
+  lists that nothing in the body cited. Citations are now placed in the text.
+- **No cross-citation between the two papers.** Track A and Track B each treat
+  the other as prior work and now say so; the dependency runs one way, as
+  recorded in the 2026-09-14 Track B entry.
+- **Rater count in Track B's judge-panel section.** The section said "four
+  judges" while reporting ten pairwise comparisons. Ten pairs requires five
+  raters: the committed v1 sonnet judge is the fifth. The count is corrected;
+  the κ range 0.927–0.970 over all ten pairs was already corrected in
+  `docs/status.md` the same day.
+- **"No language model in the ground-truth path."** Tightened to what the
+  architecture supports rather than the broader claim the sentence implied.
+- **New construct-validity disclosure, in both papers.** Nothing anchors probe
+  difficulty to a human. The ceiling condition is the pinned worker with the
+  facts injected, so "a valid probe" means one that model can answer when told
+  the answer. No human difficulty anchor exists for any probe in the dataset,
+  and no claim about human-relative difficulty is licensed by anything here.
+- **Ten bibliography entries were wrong and are corrected.** The 2026-09-14
+  citation pass resolved identifiers and titles; author lists were never in its
+  scope. Checked against the arXiv abstract pages on 2026-09-17, seven entries
+  carried invented given names with the surnames right — `membench`,
+  `memoryarena`, `streammembench`, `gatemem`, `longmemeval2`, `horizonbench`,
+  `abc` — and three titles abbreviated what the source spells out (`construct`,
+  `gsm1k`, `miller`). All ten are corrected in both papers and pinned by tests,
+  so a revert is caught by name rather than by absence. The remaining eleven
+  entries were checked and are correct. Every identifier resolves; none of this
+  was a fabricated citation, but seven were fabricated author lists.
+- **One claim about a cited source was an overclaim.** Both papers said
+  BetterBench finds statistical reporting the most commonly failed criterion.
+  Its full text does not support the superlative: implementation-stage criteria
+  score lowest overall (3.75 average on providing a replication script against
+  5.62 on reporting statistical significance), and what the paper does report is
+  that 14 of its 24 benchmarks give no significance or uncertainty at all. Both
+  papers now say the latter. Two other source claims were checked at the same
+  time and are correct as stated: MEMTRACK's best model at 60% correctness, and
+  the three LoCoMo scores quoted from Mem0's Table 2 (72.90 full context, 68.44
+  graph, 66.88 base), which is the table the argument in §2.3 turns on.
+  Citation *placements* elsewhere — that a given work supports the sentence it
+  is attached to — were not audited beyond these three.
+
+### What this entry does NOT authorize
+
+No re-screening, no re-judging, no criterion edits, no change to the 371, no
+gate threshold moves, and no new gate. Intervals are reporting only: no verdict
+anywhere in this project is computed from one. Seeds 4–5 remain unscreened
+holdouts. The second independent rater on the G4 packet remains outstanding and
+is not substituted for by any of this.
+
+## 2026-09-19 — preprint route, ORCID, an acknowledgement, and a candidate for Rater R
+
+> **Apparatus and attribution only.** No measured number, gate verdict, criterion,
+> valid set or disclosure moved in either paper. The freeze is untouched.
+
+**Publication route.** Both papers go to Zenodo as preprints now, and to arXiv
+(cs.CL) once an endorsement is in hand. Neither is peer reviewed and both say so
+on page one. DOIs are not yet minted: each paper carries `\zenodoDOI` and
+`\companionDOI` macros that render as `[pending]`, and the paper tests fail on any
+value that is not a well-formed Zenodo DOI (`10.5281/zenodo.<digits>`), so a
+fabricated or malformed identifier cannot ship while the author waits for the
+deposit. Author ORCID 0009-0008-1031-304X is now in both front matters.
+
+**Acknowledgement: Harshit Agarwal.** He reviewed an early draft of the gate
+criteria and the capability ladder, and his work at Boston Consulting Group on
+organizational structure and information flow informed the tier and authority
+model of §3.1. The acknowledgement states the scope explicitly — measurement
+design only, no seed content, no ledger, no results, not a rater in any reported
+measurement — and a test pins that qualifier so the scope cannot widen by later
+editing. This is a design contribution: it needs no artifact and closes no gate.
+
+**A recollection checked against the record and not adopted.** The initial ask
+was to credit Harshit with the manual reviews behind the first and second gates.
+The record does not support it and the papers were left alone:
+
+- G0 and G1 are machine gates (belief-oracle suite, schema, oracle cross-check,
+  ambiguity scan, interleaving). There is no human review there to attribute.
+- G2's human items are recorded as **still open** (`docs/validation-report.md`,
+  "The spec's HUMAN blinded spot-check and per-org read-throughs remain open
+  items for formal G2 closure"), and both papers report them as open.
+- The 58/100 salience discrimination check was run by **machine** raters — one
+  adversarial rater per seed, gpt-5.4 via codex — not by people.
+
+Crediting a human review of G1/G2 would therefore have contradicted a gate status
+the papers report, closed an open G2 item with no artifact, and put an undated
+claim into a paper whose credibility argument is that every claim traces to dated
+git history. The acknowledgement above says what is true and no more.
+
+**Rater R candidate, eligibility unconfirmed.** Harshit has not seen the seed
+content, the fact ledger or the repository, which is the condition
+`docs/human-review.md` sets for Rater R, so he is a plausible candidate for the
+second independent rating of the 150-pair G4 packet — the one open item that
+would most improve both papers. One caveat has to travel with that: he has seen
+the gate-criteria design, which is weaker exposure than seed content or answers
+but is not zero, and if he serves it must be disclosed alongside his rating
+rather than discovered later. The decision is the author's; nothing here assumes
+it.
+
+**Use of AI systems.** Both papers now carry a statement that language models are
+both the object of study and its instruments, and that they were also used in
+drafting the manuscripts and writing the harness under the author's direction,
+which the commit history already records through co-author trailers. The
+statement ends where the architecture does: no model decided what is true, what
+passed a gate, or what either paper claims.
+
+## 2026-09-19 (later) — the preprint status block is removed from both papers
+
+Reversing part of the entry above, the same day it was written. The papers now
+carry no venue line, no DOI, no "preprint, not peer reviewed" banner and no
+`\zenodoDOI` / `\companionDOI` macros. Mehul's call, and the reasoning is sound:
+where a paper is hosted is stated by the host's landing page and by the
+application it is attached to, not by the PDF, and a DOI cannot be printed
+inside a file that does not exist until the file is deposited. Zenodo can
+reserve a DOI before publishing, but reserving one to print it in the PDF solves
+a problem we created by putting it there.
+
+Also removed: the "Use of AI systems" section from both papers. Model use inside
+the pipeline is described at length in the method sections, where it is the
+subject; the removed text additionally disclosed model assistance in drafting the
+manuscripts, which no venue here requires and which the commit trailers already
+record. Nothing about the measurements changed.
+
+Kept, and worth stating plainly because the instruction that prompted this was to
+remove anything that could cost the paper credibility: every failed gate, every
+disclosure, the κ interval whose upper bound sits below its own gate, the retired
+floor claim and the single-rater limitation all stand exactly as measured. The
+dataset and this repository are public, so a claim softened here is a claim that
+contradicts a FAIL a reader can pull up in a browser. The failures are the reason
+the rest of the numbers are worth anything.
+
+**Structure, checked against current venue conventions the same day.** ACL
+Rolling Review — the shared pipeline for ACL, EACL, EMNLP and NAACL — requires a
+section titled exactly "Limitations", and a submission without one is desk
+rejected before review. Track B already had it. Track A's §7 was "Limitations and
+disclosures" and is now "Limitations"; its content is unchanged. Back-matter
+order (Acknowledgements, Author contributions, Competing interests and funding,
+Ethics, Data and code availability, Reproducibility) follows the common
+convention. One item is left open deliberately: ACL wants Limitations after the
+conclusion and immediately before the references, whereas Track A still has §8
+Release between them. Moving it renumbers every section and every cross-reference
+in the prose and the tests, so it waits for an actual ACL submission.
+
+## 2026-09-19 (later still) — the two Zenodo DOIs go into the papers
+
+> **Apparatus and attribution only.** No measured number, gate verdict,
+> criterion, valid set or disclosure moved in either paper. The freeze is
+> untouched.
+
+Reversing the removal two entries above, at Mehul's ask, because the thing that
+entry said did not exist now does. The records have been created on Zenodo and
+each paper prints its own identifier on page one and cites the other's in its
+bibliography:
+
+| paper | file | DOI |
+|---|---|---|
+| Track A, dataset and validity study | `paper/memory-bench.tex`, `paper/draft.md` | `10.5281/zenodo.22838321` |
+| Track B, construction methodology | `paper/pipeline.tex` | `10.5281/zenodo.22838603` |
+
+Each `.tex` reaches its identifiers through `\zenodoDOI` and `\companionDOI`, so
+each value is written once per file, and `tests/test_paper_numbers.py` and
+`tests/test_pipeline_paper.py` pin the exact strings rather than the shape: a
+dropped digit points a reader at somebody else's record and would otherwise
+render silently. The guard that previously asserted *no* DOI anywhere now
+asserts that no DOI other than these two appears, so an invented third
+identifier still cannot ship. Track A's bibliography no longer calls the
+companion "unpublished".
+
+What did **not** come back with them: the venue line and the "preprint, not peer
+reviewed" banner stay removed, on the earlier entry's reasoning, which the
+deposit does not affect. Neither did the "Use of AI systems" section.
+
+**Both identifiers were reserved, not registered.** Checked at the moment they
+were added: `https://doi.org/10.5281/zenodo.22838321` and `...22838603` both
+return HTTP 404, and the Zenodo API returns `"the persistent identifier is not
+registered"` for records 22838321 and 22838603. That is what a Zenodo draft with
+a reserved DOI looks like; a published-but-restricted record returns 403
+instead. Reserving before printing is the normal way to get an identifier into a
+PDF and is not a fabrication, but it carries an obligation the earlier entry was
+right to flag: **every PDF now prints a DOI that 404s until the records are
+published.** Publishing both is now a checklist line
+(`paper/checklist.md`). Nothing in the repository can verify resolution, so the
+tests verify shape and exact value only, and this paragraph is the disclosure of
+what they cannot check.
+
+## 2026-09-19 (later still) — clutter pass on both papers, and two files that had drifted apart
+
+> **Prose and captions only.** No measured number, gate verdict, criterion, valid
+> set or disclosure was removed from either paper. Verified mechanically: the
+> multiset of numeric tokens in all three files was diffed before and after, and
+> no number disappeared from any of them. The freeze is untouched.
+
+Sources read first, at Mehul's ask: the lossfunk letter on writing a first
+research paper, Neel Nanda's *Highly Opinionated Advice on How to Write ML
+Papers*, and Maxwell Forbes' *The PhD Metagame*. The Reddit guide Mehul also
+linked could not be fetched from this environment (403 from every route,
+including a text-extraction proxy), so the two primary sources the lossfunk
+letter cites were read in its place.
+
+One finding from those sources changed the brief. Nanda argues that repeating a
+complex idea in varied ways is deliberate and good, and that the abstract and
+introduction *should* both carry the narrative. So the triad of motivating
+properties in §1.1, §1.2 and §2.2 of Track A was left alone: each states it at a
+different resolution and for a different reader. What was cut is accidental
+restatement, not narrative reinforcement.
+
+**Cut.** Verbatim duplicates (the `fig:twin` caption's own sentence reappearing
+in §4.5; "a result reported without a scaffold version is unanchored" in both
+§6.2 and checklist item 3 of Track B), dead announcements that count the
+paragraphs after them, forward pointers that state their destination's
+conclusion before the reader has the evidence, and an availability section in
+each paper that restated its own Release section's ships-and-withheld lists.
+"No comparative claim" ran seven times in Track A and now runs five.
+
+**Added, and the larger of the two wins.** Three tables in Track A shipped with
+no caption and no label: the G3 gate grid, the G4 $\kappa$-by-criterion-kind
+table, and the partial pilot record. The second is arguably the paper's most
+important table and a skimmer got no sentence from it. All three now carry a
+takeaway caption and a label. Four further captions ended on a cross-reference,
+a provenance note or a number dump; their takeaways were moved to the end, on
+Forbes' rule that a caption should end with what the reader should conclude. One
+caption sentence drafted in that pass asserted that every benchmark in
+`tab:landscape` is single-principal; the table says nine of ten, GateMem being
+multi-principal on a shared store, and it was corrected before it shipped.
+
+**Restored to Track A from `paper/draft.md`.** The two-file split had drifted in
+both directions, and three things existed only in the working copy: the
+billing-and-authentication disclosure under limitation 4, the "screening anchors
+saw no timestamps either" clause that *narrows* limitation 7, and the entire
+"what repair would cost" argument. The draft announced two reasons for not
+repairing the judge defect; the .tex carried only the arithmetic, so the
+submission artifact's own argument was incomplete. A disclosure that lives in the
+working copy and not in the paper is drift in the wrong direction.
+
+**Fixed in `paper/draft.md`, and this one matters on its own.** The released
+configuration list named a market vendor as the subject of the per-principal silo
+ablation where the .tex says "one of them". `AGENTS.md` names `paper/draft.md` as
+the v1 deliverable, so the named version was the one the freeze pointed at. The
+draft now matches the .tex. Also removed from the draft: a repo status block
+sitting inside the paper, an unbuilt "Appendices (planned)" list, and a v2
+scope commitment about industry breadth that the .tex never carried and that
+`docs/vision.md` §5 already holds.
+
+**Not done, and left for Mehul.** Four things were identified and deliberately
+not acted on: retitling Track B or dropping its "five model dependencies" count;
+retiring `paper/draft.md` (it edits the freeze text, and 25 number-tracing tests
+point only at it); recasting either contributions list from artifacts to claims;
+and compressing the §2 citation note, whose own test docstring records that it
+deliberately carries both verification passes.
+
+**One number to settle.** Track B reports the enumerate-both-values hedge earning
+full pair credit on **18 of 45** pairs, which is exactly
+`datasets/dev/screening/exploit-audit/report-post-refinement.json`
+(`"pair": 18, "n": 45`). But `docs/specs/probe-spec.md` (line 133),
+`docs/decision-log.md` (2026-08-15 entry) and `docs/validation-report.md` (line
+147) all record **27 pairs** for what reads as the same measurement, the last of
+them as "27 pairs / 23 single sides at first audit" where 23 matches that same
+artifact's `b1`. Either the docs describe a pre-refinement audit whose artifact
+is not in that directory, or one of the two numbers is wrong. The paper was left
+at the artifact-backed figure and nothing was edited; this needs Mehul.
+
+## 2026-09-19 (evening) — both papers published on Zenodo; Track B v1 carries a wrong count
+
+**Published.** `10.5281/zenodo.22838321` (Track A) and `10.5281/zenodo.22838603`
+(Track B) both resolve, open access, CC BY 4.0, ORCID attached, typed Preprint.
+Each uploaded file's Zenodo md5 matches the local build byte for byte
+(`50c4523e…` and `19ea5ad8…`).
+
+**The "one number to settle" of the entry above is settled, and the paper was
+the one that was wrong.** Track B §5.2 v1 reads "Before cross-side absence
+detectors existed, the enumerate-both-values hedge earned full pair credit on
+18 of 45 pairs." The record says otherwise:
+
+| measurement | when | artifact | enumerate-both-values |
+|---|---|---|---|
+| first audit, no cross-side detectors | 2026-08-06 | `report.json` at `b21cf8c` | **27/45** pair-passes |
+| after mechanical detectors, R1–R5 | 2026-08-07 | `report-post-refinement.json` (`42b725e`) | 18/45 |
+| frozen canon | 2026-08-15 | `report.json` (current) | 0/46, every type |
+
+`probe-spec.md`, `validation-report.md` and the 2026-08-15 entry of this log were
+right all along. The paper put the intermediate number on the first condition,
+understating the size of the exploit before the fix; the direction of the claim
+is unaffected. The error is ours in two steps: the sentence was written that
+way, and in this session the agent matched 18 to an artifact without checking
+which condition that artifact measured, and told Mehul the artifact backed it
+before he uploaded. Track A never stated the number.
+
+Fixed in `paper/pipeline.tex` to state all three measurements on their own
+conditions, and `tests/test_pipeline_paper.py` now reads all three artifacts
+(the first from git history, skipping on a shallow clone) and pins each number
+to its condition, including a guard that the v1 wording cannot return. The test
+was written first and failed on the prose alone, with all four artifact
+assertions passing.
+
+Zenodo files are immutable once published, so the correction ships as **v2 of
+record 22838603**. v1 stays, as Zenodo keeps every version. v2's page one prints
+the concept DOI `10.5281/zenodo.22838602` rather than a version DOI, so a reader
+of the corrected PDF is never sent back to v1. Track A's bibliography cites
+v1's version DOI and stays as published: Zenodo marks v1 as superseded.
+
+**Track A's Zenodo abstract** is a plain-language rewrite rather than the
+canonical block in `paper/release-copy.md`. That is a legitimate choice, but two
+of its sentences say something the paper does not: "371 instances passed
+screening, although all fell below the prespecified threshold of 135" (135 is a
+per-seed gate; the seeds scored 125, 131 and 115) and "agreed on only 65% of
+outcomes" (65% is twin-ceiling outcomes; ceiling was 19/20 and floor 20/20). The
+record title also drops the "memory-bench:" prefix. All three are metadata and
+editable without a new version.

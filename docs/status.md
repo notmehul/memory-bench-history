@@ -1,14 +1,33 @@
 # Status & Work Queue
 
-Last updated: 2026-09-14. **Two tracks run in parallel from here.** Track A is
+Last updated: 2026-09-19. **Two tracks run in parallel from here.** Track A is
 the v1 dataset paper: the LaTeX submission draft is written and compiles, the
 dataset is uploaded to HuggingFace (private), and what remains is the voice
 pass and the clean-clone repro. Track B is a second paper on benchmark
-methodology, which now has two measured results of its own and needs a framing
-decision before it gets written.
+methodology; its framing was settled 2026-09-17 and `paper/pipeline.tex` is
+drafted, 13 pages, six figures and three tables.
 
-**Stage, in one line: Track A is feature-complete and pre-release. Track B has
-its evidence and no draft.**
+**Stage, in one line: both papers are drafted and audited; Track A is
+pre-release, and both go to Zenodo as preprints with arXiv to follow on
+endorsement.**
+
+**Publication route, decided 2026-09-19.** Zenodo first, arXiv (cs.CL) once an
+endorsement is in hand. The papers carry no venue line and no preprint banner:
+the host's landing page states that, not the PDF. They do now carry their Zenodo
+DOIs, added 2026-09-19 (later) once the two records were reserved:
+`10.5281/zenodo.22838321` for Track A and `10.5281/zenodo.22838603` for Track B,
+each paper printing its own on page one and citing the other's in its
+bibliography. **Both published 2026-09-19, open access, CC BY 4.0**; the
+uploaded files are byte-identical to the local builds (Zenodo md5 checked).
+**Track B needs a v2**: v1 misstated the §5.2 exploit count (see the decision
+log), the corrected PDF prints the concept DOI `10.5281/zenodo.22838602`, and it
+is built and waiting for upload as a new version of record 22838603. Author ORCID 0009-0008-1031-304X is in
+both front matters. Track A's §7 was retitled "Limitations" to match the ACL Rolling Review
+requirement for a section with exactly that name.
+
+**The one item no agent can close:** a **second independent human rater** on
+the G4 packet. It is the outstanding blocker on the judge-validity claim in
+both papers. See "What is left before the all-in-one release", item 4.
 
 Earlier history is in `docs/decision-log.md`, dated and append-only. The
 pre-freeze A/B/C queue tables were removed 2026-08-15 (`git show
@@ -39,14 +58,16 @@ entries dated.
   `score_sut.py` + `figures.py`; `scripts/release.py build|verify`;
   `scripts/calibration_sheet.py export|import`;
   `scripts/methods_verdict_kinds.py` and `methods_judge_panel.py` for Track B.
-  **314 tests, ruff clean.**
+  **349 tests as of the 2026-09-17 audit pass, ruff clean.**
 - **Released (private).** `huggingface.co/datasets/notmehul/memory-bench`,
   dataset repo, CC BY 4.0, 25 files, 1.7 MB. Verified before upload by an
   independent leak audit and after upload by a byte-for-byte round trip;
   anonymous access returns 401. Opens with the all-in-one release.
-- **Paper.** `paper/memory-bench.tex`, arXiv single-column, ~11.4k body words,
-  seven TikZ/pgfplots figures and four tables, 22 pages, compiles with tectonic.
-  `paper/draft.md` remains the working copy; the two are kept in step.
+- **Papers.** Track A: `paper/memory-bench.tex`, arXiv single-column, ~11.4k
+  body words, seven TikZ/pgfplots figures and four tables, 22 pages, compiles
+  with tectonic. `paper/draft.md` remains the working copy; the two are kept in
+  step. Track B: `paper/pipeline.tex`, 13 pages, six figures and three tables,
+  no markdown twin by design.
 - **Audit pass, 2026-09-15.** Mehul's 34-agent audit replaced the abstract,
   added a boxed "How to read this paper" before §1, and added one sentence to
   §1.3. Nothing else in either body changed: no gate, criterion, valid set,
@@ -65,6 +86,37 @@ entries dated.
   0.688; the declined 28-criterion drop lives only in disclosure 9. Every
   do-not-cut number is still present and still test-asserted. Four test
   anchors moved with the prose, each dated in the test file.
+- **Audit pass, 2026-09-17.** A review pass Mehul asked for, run across both
+  drafts. Three post-hoc intervals were added and one claim was retired; full
+  record in `docs/decision-log.md` §2026-09-17. **No gate verdict, criterion,
+  valid set, threshold or point estimate moved, and no run was re-run or
+  re-judged.** In short:
+  - G4's κ now carries a cluster bootstrap CI: **0.537, 95% CI [0.370, 0.688]**,
+    10,000 replicates, seed 20260917, resampling fact clusters because the
+    packet is capped per cluster. **G4 is still a FAIL and the interval's upper
+    bound is below the 0.75 gate**, which makes the failure robust rather than
+    marginal. Per kind the intervals overlap heavily and do **not** separate
+    `fact_absent` (0.166 [0.000, 0.493]) from the others.
+  - Pair-credit rates now carry a cluster-adjusted Wilson interval on
+    n_eff = n / deff, beside the Wald `ci95`, which is kept for
+    `run_pilot.py` and `tests/test_figures.py`.
+  - **One claim retired.** "Statistically indistinguishable from zero on every
+    capability rung" rested on the Wald interval, which is degenerate at zero
+    successes ([0, 0] from 16 observations on rung 3). Replaced by exact counts
+    and upper bounds: **4 of 125 credited; rung upper bounds 10.6%, 44.1%,
+    19.4%.** Only rung 3 is consistent with exactly zero.
+  - The G2 salience parity check is reported as **58%, Wilson 95%
+    [48.2%, 67.2%]** instead of an accepted null at p = 0.067. G2's verdict
+    does not move.
+  - Scholarship fixes: citations placed in both bodies (both bibliographies had
+    zero `\cite` commands), cross-citations added between the two papers, the
+    judge-panel rater count corrected to five, the "no language model in the
+    ground-truth path" claim tightened, and a new construct-validity disclosure
+    in both papers — **nothing anchors probe difficulty to a human**; the
+    ceiling is the pinned worker with the facts injected.
+  - Guarded by new tests in `tests/test_calibration.py` and
+    `tests/test_score_sut.py`: each re-derives the committed point estimates
+    before reporting an interval, and pins that no gate reads one.
 - **Guards in place:** `tests/test_paper_numbers.py` recomputes every headline
   number from its artifact and asserts the string is in the draft;
   `tests/test_paper_tex.py` does the same for the LaTeX figures, whose numbers
@@ -76,19 +128,50 @@ entries dated.
 
 ## What is left before the all-in-one release
 
-Three things, in the order they block each other:
+Four things. The first three block each other in order; the fourth blocks a
+claim rather than the release, and it is the only one no agent can close.
 
 1. **The voice pass.** `mehul-voice` on `paper/memory-bench.tex`, with Mehul,
    last. The prose is the agent's at the moment and reads like it. An `unslop`
-   pass ran 2026-09-14 and is guarded, but that removes tells rather than
-   adding a voice.
+   pass ran 2026-09-14 and is guarded, and a clutter-and-caption pass ran
+   2026-09-19 (`docs/decision-log.md`), but both remove things rather than
+   adding a voice. **Still open.**
 2. **Repro from a clean clone.** The last open line of the G5 verification
    gate: clone fresh, install, rebuild the release, and confirm the redacted
    bundle drives the Runner to the full 371.
 3. **Flip the HuggingFace repo public**, together with whatever the harness
    repository does. Mehul's call on whether they go at the same moment.
+4. **SECOND INDEPENDENT RATER on the G4 packet — OPEN, and no agent can close
+   it.** It needs a human who has not read this repository, doing 150 judgments
+   by hand. It is the outstanding blocker on the **judge-validity claim in both
+   papers**: with one rater, "the judge is degenerate on absence criteria" is
+   our best reading of a single person's single look, not a demonstrated fact,
+   and κ = 0.537 cannot be split into judge error and rater error.
 
-Nothing else gates the release. G4 is reported as a failure and stays one.
+   **More model judging does not substitute for it, and the judge panel
+   measured exactly why.** Five raters — four blinded judges plus the committed
+   v1 judge, and four distinct models, since one arm re-runs the scorer itself —
+   agreed with each other at κ 0.927–0.970 across all ten pairs, far above the
+   0.75 gate, and with the human at κ 0.518–0.563, far below it. On the 44 sampled `fact_absent`
+   criteria **all four produced byte-identical verdict vectors**. The failure is
+   perfectly correlated across models, so adding models adds no information
+   about it. The only instrument that measures rater variance is a second
+   rater.
+
+   **Candidate identified 2026-09-19, eligibility unconfirmed.** Harshit
+   Agarwal has not seen the seed content, the ledger or this repository, which is
+   the condition `docs/human-review.md` sets for Rater R. One caveat travels with
+   him: he reviewed an early draft of the gate criteria, which is weaker exposure
+   than seed content or answers but is not zero, and if he rates the packet that
+   prior exposure is disclosed alongside the rating rather than discovered later.
+
+   Mehul is recruiting; it takes calendar time. The release does not wait on it
+   and G4 stays a FAIL either way. Procedure: `docs/human-review.md` Task 3,
+   two-rater section. The packet and the export/import tooling already exist;
+   the rater needs `scripts/calibration_sheet.py export` run against
+   `datasets/dev/calibration` and nothing else.
+
+G4 is reported as a failure and stays one.
 
 ---
 
@@ -154,8 +237,9 @@ Nothing else gates the release. G4 is reported as a failure and stays one.
     `tests/test_paper_numbers.py`; comparative language is grepped by
     `tests/test_paper_tex.py`; the disclosures are present and now number 11
     consolidated items rather than 13. **Still open: repro from a clean clone.**
-12. **Hosting — DONE 2026-09-14.** HuggingFace (Mehul's decision), no DOI.
-    Dataset repo `notmehul/memory-bench` created **private** and uploaded:
+12. **Hosting — DONE 2026-09-14.** HuggingFace (Mehul's decision), no dataset
+    DOI; the papers' two Zenodo DOIs are separate identifiers and neither
+    identifies the dataset. Dataset repo `notmehul/memory-bench` created **private** and uploaded:
     25 files, 1.7 MB, CC BY 4.0, dataset card with YAML metadata.
     `DOI_PLACEHOLDER` removed from `scripts/release.py`; the Croissant
     `identifier` is the repository URL. Verified before upload (independent
@@ -177,19 +261,15 @@ Nothing else gates the release. G4 is reported as a failure and stays one.
     of three. Canon unchanged; published as a sensitivity with both numbers and
     the full sequence disclosed (`docs/decision-log.md`).
 
-### In flight, not blocking
+### In flight, not blocking the release
 
-15. **Second independent rater on the 150-pair packet.** Mehul is recruiting;
-    it takes calendar time because it is 150 judgments a person has to actually
-    make. Nothing in Track A waits on it. When it lands it gives an inter-rater
-    κ, the only thing that separates judge error from rater error, and would
-    upgrade "the judge is degenerate on absence criteria" from our best reading
-    to a demonstrated fact. It changes §4.4 and disclosures 1–2, and it is what
-    would turn Track B from a short paper into a full one.
-    Procedure: `docs/human-review.md` Task 3, two-rater section. The packet and
-    the export/import tooling already exist; the rater needs
-    `scripts/calibration_sheet.py export` run against
-    `datasets/dev/calibration` and nothing else.
+15. **Second independent rater on the 150-pair packet — promoted 2026-09-17 to
+    item 4 of the release list above, where the procedure now lives.** Nothing
+    in Track A's release path waits on it, which is why it sits here too; the
+    judge-validity claim in both papers does wait on it. When it lands it gives
+    an inter-rater κ, the only thing that separates judge error from rater
+    error. It changes §4.4 and disclosures 1–2, and it is what would turn
+    Track B from a short paper into a full one.
 
 ### Parked
 
@@ -202,8 +282,9 @@ Nothing else gates the release. G4 is reported as a failure and stays one.
 ## Track B — methodology paper (opened 2026-09-14, Mehul's proposal)
 
 Mehul's framing: a second study on the data pipeline and "the models working in
-a loop and us not being able to get the exact outcomes". **Next step is a
-scoping conversation in a fresh chat**; nothing is written yet.
+a loop and us not being able to get the exact outcomes". **Framing settled and
+the paper drafted 2026-09-17** — `paper/pipeline.tex`; see "Framing settled and
+drafted" below, which supersedes the scoping note this paragraph used to carry.
 
 **The subject that works.** Not "how we built the pipeline" — that is §3 of a
 dataset paper and no venue takes it standalone. The publishable subject is
@@ -257,8 +338,13 @@ spans, byte-identical batches, verbatim rubric v2.
 
 | | judge ↔ judge | judge ↔ human |
 |---|---|---|
-| overall κ | **0.927–0.966** (n=478) | **0.518–0.563** (n=150) |
+| overall κ | **0.927–0.970** (n=478) | **0.518–0.563** (n=150) |
 | pairwise identical verdicts | 0.964–0.985 | — |
+
+Corrected 2026-09-17: the κ range above is now all ten judge pairs. It
+previously read 0.927–0.966, which was each panel judge against the committed
+v1 sonnet (`vs_v1_committed`) rather than the panel pairs; the true maximum is
+0.970 (sonnet-5 × fable-5.1). The agreement range was already right.
 
 On the 44 sampled `fact_absent` criteria all four panel judges produced
 **byte-identical verdict vectors** (42 TRUE / 2 FALSE, same positions); v1
@@ -281,11 +367,64 @@ n=478 with a reproducing control (the scorer refuses to report unless the v1
 baseline recomputes to n=150 / 0.813 / κ 0.537). This is a full paper without
 the second rater; the second rater now corroborates rather than carries it.
 
-**Open for the scoping chat:** Q1 framing (absence-first vs coverage-first vs
-pipeline-first — recommendation: coverage-first, lead with the case), Q2 whether
-the construction pattern is a §3 contribution, Q4 venue/deadline, Q5 the
-undisclosed judge/human presentation asymmetry, and how much of §4 the dataset
-paper keeps versus cites. Q3 (freeze carve-out) is settled and dated.
+### Framing settled and drafted, 2026-09-17 (Mehul, in-session)
+
+**Q1 is closed: the pipeline paper.** Mehul chose the construction-engineering
+framing over the three options offered (absence-first, coverage-first,
+pipeline-first-as-survey), overriding the note above that steered away from
+"how we built the pipeline". The version that works, and that is drafted, is
+*how you construct a synthetic benchmark when a language model sits at every
+stage except one*. The organising rule is the architectural commitment: no
+model in the ground-truth path. Findings 1-6 are demoted from headline claims
+to §6, "five model dependencies we could not remove", which is what makes each
+design decision load-bearing rather than a chronicle.
+
+**`paper/pipeline.tex` is the canonical artifact**, 13 pages, six TikZ/pgfplots
+figures and three tables, compiles with tectonic, every figure inspected in the
+rendered PDF. There is deliberately no markdown twin: Track A's two-file split
+drifted, and one source of truth is the lesson taken from it. `paper/pipeline.pdf`
+is gitignored.
+
+**New result, post-hoc, computed 2026-09-17.** The panel report never aggregated
+its judges. Recomputed from the raw panel verdicts: majority vote κ = 0.544,
+unanimous-AND 0.525, unanimous-OR 0.544, against a best single judge (fable-5.1)
+at 0.563. **No aggregation rule beats the best single judge**, and on
+`fact_absent` every rule returns the identical κ = 0.3125 because all four
+judges produced the same vector. The panel is unanimous on 141 of 150 items and
+the human disagrees with that unanimous verdict on 24 of them (κ 0.575 on the
+unanimous subset, still a fail), one-sided in the same direction as before:
+absence 7/7 panel over-accepts, scope 6/6 under-accepts. This is a
+re-aggregation of prespecified measurements, not a new measurement, and is
+labelled post-hoc everywhere it appears. It lives only in the paper and
+`tests/test_pipeline_paper.py`, which recomputes it; `report.json` is untouched.
+
+**Unslop + clarity pass, 2026-09-17.** Cut the colon-as-connector habit, the
+`rather than` tic (17 occurrences in 250 sentences down to 8), and four
+passages that restated the sentence above them. The regex-vs-semantic result
+(39-42% against 9-17%) moved from a figure caption into the prose, so a reader
+who skips figures still gets it. Page count unchanged at 13.
+
+**Guarded.** `tests/test_pipeline_paper.py`, 11 tests, recomputes every figure
+coordinate and headline number from its artifact, carries the v1-baseline
+control (n=150 / 0.813 / κ 0.537) before reporting anything, and was
+mutation-tested by corrupting an ensemble coordinate, a slopegraph value and a
+gate-table count. `paper/pipeline.tex` is now on the `test_prose_style.py`
+public list.
+
+**Still open on Track B:** length and venue (13 pages as drafted; NeurIPS D&B
+or an eval-methods track undecided), Q2 (whether the construction pattern is
+also a §3 contribution of the dataset paper), Q5 the undisclosed judge/human
+presentation asymmetry, how much of §4 the dataset paper keeps versus cites,
+and the `mehul-voice` pass. Q3 (freeze carve-out) is settled and dated.
+
+**And the second rater, which Track B shares with Track A** (release list item
+4). Findings 5 and 6 mean this paper stands without it, but the judge-validity
+claim in it is still anchored to one human's 150 judgments. The panel result is
+the argument for why no amount of further model judging closes that gap.
+
+**Audited 2026-09-17** with Track A: κ intervals added, citations and
+cross-citations placed, the judge-panel rater count corrected to five, and a
+construct-validity disclosure added. `docs/decision-log.md` §2026-09-17.
 
 ---
 
