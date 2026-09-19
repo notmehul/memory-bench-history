@@ -525,17 +525,13 @@ def test_the_acknowledgement_scope_cannot_be_quietly_widened(flat: str):
 # ---------------------------------------------------------------------------
 
 EXPLOIT = ROOT / "datasets/dev/screening/exploit-audit"
-FIRST_AUDIT = "b21cf8c"  # 2026-08-06, before any cross-side detector existed
 
 
 def _first_audit_enumerate() -> dict:
-    import subprocess
-    try:
-        raw = subprocess.run(
-            ["git", "show", f"{FIRST_AUDIT}:datasets/dev/screening/exploit-audit/report.json"],
-            cwd=ROOT, capture_output=True, text=True, check=True).stdout
-    except (subprocess.CalledProcessError, FileNotFoundError):
-        pytest.skip("first-audit report lives only in git history; shallow clone?")
+    """The 2026-08-06 audit, run before any cross-side detector existed. Its
+    report was overwritten in place on 2026-08-15; this is the committed copy of
+    the original, extracted verbatim from commit b21cf8c of the history repo."""
+    raw = (EXPLOIT / "report-first-audit-2026-08-06.json").read_text()
     return json.loads(raw)["stats"]["enumerate_all"]
 
 
