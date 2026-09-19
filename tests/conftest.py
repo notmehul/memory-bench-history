@@ -17,8 +17,9 @@ ROOT = Path(__file__).resolve().parents[1]
 
 SEALED = ("the G4 calibration ratings and rater key stay sealed until a second "
           "independent rater has rated the packet")
-HOLDOUT = ("it reads screening runs from holdout seed 4, which stay private with "
-           "the seed")
+HOLDOUT = "it reads holdout-seed material, which stays private with the seeds"
+HISTORY = ("it reads the dated development record, which lives in "
+           "github.com/notmehul/memory-bench-history")
 LEDGER = "it needs the ground-truth ledger, which scripts/release.py withholds"
 DATASET = ("it needs the dataset; copy it into datasets/dev as the README's "
            "'Get the dataset' section shows")

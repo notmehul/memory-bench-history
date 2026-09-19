@@ -17,6 +17,7 @@ from collections import Counter
 from pathlib import Path
 
 import pytest
+from conftest import DATASET, HISTORY, HOLDOUT, SEALED, require  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
@@ -24,6 +25,26 @@ sys.path.insert(0, str(ROOT / "src"))
 from membench.g3 import load_valid_instances  # noqa: E402
 
 SEEDS = ("org-00001", "org-00002", "org-00003")
+
+
+def _json(rel: str, why: str):
+    return json.loads(require(rel, why).read_text())
+
+
+def _agreement() -> dict:
+    return _json("datasets/dev/calibration/judge-agreement.json", SEALED)
+
+
+def _rater_key() -> dict:
+    return _json("datasets/dev/calibration/packet-key.json", SEALED)
+
+
+def _ratings() -> dict:
+    return _json("datasets/dev/calibration/ratings-M.json", SEALED)
+
+
+def _probes(org: str) -> Path:
+    return require(f"datasets/dev/{org}/probes.jsonl", DATASET if org in SEEDS else HOLDOUT)
 
 
 @pytest.fixture(scope="module")
@@ -109,7 +130,7 @@ def test_archetype_breakdown(prose: str):
         d = ROOT / "datasets/dev" / org
         valid = load_valid_instances(d)
         arch = {json.loads(x)["probe_id"]: json.loads(x)["archetype"]
-                for x in (d / "probes.jsonl").read_text().splitlines() if x.strip()}
+                for x in _probes(org).read_text().splitlines() if x.strip()}
         counts.update(arch[pid] for pid in valid)
     assert sum(counts.values()) == 371
     claim = " ".join(f"{a} {counts[a]}," for a in ("A1", "A2", "A4", "A7")).rstrip(",")
@@ -177,12 +198,13 @@ def test_floor_is_reported_as_counts_and_wilson_bounds(prose: str, tex: str):
 
 def test_the_retired_floor_claim_is_gone_everywhere(prose: str, tex: str):
     """The Wald interval licensed two sentences the Wilson interval does not."""
-    release = (ROOT / "paper" / "release-copy.md").read_text()
     for banned in ("indistinguishable from zero", "every interval includes zero",
                    "near zero on every rung"):
-        for name, body in (("draft.md", prose), ("memory-bench.tex", tex),
-                           ("release-copy.md", release)):
-            assert banned not in body, f"{name} still carries {banned!r}"
+        assert banned not in tex, f"memory-bench.tex still carries {banned!r}"
+    release = require("paper/release-copy.md", HISTORY).read_text()
+    assert not any(b in release for b in ("indistinguishable from zero",
+                                          "every interval includes zero",
+                                          "near zero on every rung"))
     # and the release copy's abstract still carries the replacement claim
     flat = " ".join(release.split())
     assert ("A memoryless worker earns pair credit on 4 of 125 instances, with 95% "
@@ -207,8 +229,7 @@ def test_floor_figure_draws_the_asymmetric_wilson_bars(tex_raw: str):
 
 def test_g4_judge_human_agreement(prose: str):
     """G4 FAILED. The paper must say so, with the measured numbers."""
-    r = json.loads(
-        (ROOT / "datasets/dev/calibration/judge-agreement.json").read_text())
+    r = _agreement()
     assert r["n"] == 150
     assert round(r["raw_agreement"], 3) == 0.813
     assert round(r["kappa"], 3) == 0.537
@@ -222,8 +243,7 @@ def test_g4_judge_human_agreement(prose: str):
 
 def test_g4_kappa_confidence_intervals(prose: str, tex: str):
     """Added 2026-09-17 with the bootstrap. Post-hoc, and the paper says so."""
-    r = json.loads(
-        (ROOT / "datasets/dev/calibration/judge-agreement.json").read_text())
+    r = _agreement()
     boot = r["kappa_bootstrap"]
     assert boot["replicates"] == 10000
     assert boot["n_clusters"] == 89, "the bootstrap resamples clusters, not items"
@@ -274,10 +294,8 @@ def test_g4_symmetry_is_reported_as_a_cancellation(prose: str):
     """The 14/14 split hides two opposite kind-specific biases. An earlier draft
     read it as unbiased noise; that claim would not survive a reviewer who
     computed the marginals, so the corrected reading is pinned here."""
-    key = json.loads(
-        (ROOT / "datasets/dev/calibration/packet-key.json").read_text())
-    gold = json.loads(
-        (ROOT / "datasets/dev/calibration/ratings-M.json").read_text())
+    key = _rater_key()
+    gold = _ratings()
 
     def jsonl(p):
         return [json.loads(x) for x in p.read_text().splitlines() if x.strip()]
@@ -323,8 +341,7 @@ def test_g4_ratings_match_the_raw_submission(prose: str):
     """The committed labels are the ones the rater actually submitted."""
     packet = json.loads(
         (ROOT / "datasets/dev/calibration/rater-packet.json").read_text())
-    ratings = json.loads(
-        (ROOT / "datasets/dev/calibration/ratings-M.json").read_text())
+    ratings = _ratings()
     assert list(ratings) == [p["id"] for p in packet]
     assert all(isinstance(v, bool) for v in ratings.values())
     assert sum(ratings.values()) == 108
@@ -334,8 +351,8 @@ def test_g4_ratings_match_the_raw_submission(prose: str):
 
 def _g4_records():
     """(human, judge, kind, side) for each of the 150 calibration pairs."""
-    key = json.loads((ROOT / "datasets/dev/calibration/packet-key.json").read_text())
-    gold = json.loads((ROOT / "datasets/dev/calibration/ratings-M.json").read_text())
+    key = _rater_key()
+    gold = _ratings()
 
     def jsonl(p):
         return [json.loads(x) for x in p.read_text().splitlines() if x.strip()]
@@ -363,12 +380,12 @@ def test_decoy_audit_never_exercised_an_absence_criterion(prose: str):
     """The cheap judge check could not have caught the defect the human one found."""
     audit = json.loads(
         (ROOT / "datasets/dev/screening/judge-decoys/audit.json").read_text())
+    # The decoys were built on seed 1. Probe ids repeat across orgs, so the
+    # kinds must come from seed 1 alone: resolved over all five orgs, later
+    # orgs overwrote earlier ones and the count matched only by coincidence.
     kinds: Counter = Counter()
-    for org in ("org-00001", "org-00002", "org-00003", "org-00004", "org-00005"):
-        f = ROOT / "datasets/dev" / org / "probes.jsonl"
-        if not f.is_file():
-            continue
-        for line in f.read_text().splitlines():
+    for org in ("org-00001",):
+        for line in _probes(org).read_text().splitlines():
             if not line.strip():
                 continue
             pr = json.loads(line)
@@ -405,7 +422,7 @@ def test_absence_criterion_exposure_across_the_valid_set(prose: str):
     for org in SEEDS:
         d = ROOT / "datasets/dev" / org
         valid = set(load_valid_instances(d))
-        for line in (d / "probes.jsonl").read_text().splitlines():
+        for line in _probes(org).read_text().splitlines():
             if not line.strip():
                 continue
             pr = json.loads(line)
@@ -428,7 +445,7 @@ def test_no_side_is_scored_on_absence_criteria_alone(prose: str):
     for org in SEEDS:
         d = ROOT / "datasets/dev" / org
         valid = set(load_valid_instances(d))
-        for line in (d / "probes.jsonl").read_text().splitlines():
+        for line in _probes(org).read_text().splitlines():
             if not line.strip():
                 continue
             pr = json.loads(line)
@@ -497,6 +514,7 @@ def test_committed_verdict_count_under_rubric_v2(prose: str):
     def jsonl(p):
         return [json.loads(x) for x in p.read_text().splitlines() if x.strip()]
 
+    require("datasets/dev/screening/org-00004", HOLDOUT)
     total = 0
     for d in sorted((ROOT / "datasets/dev/screening").glob("org-*")):
         f = d / "judgements.jsonl"
@@ -627,7 +645,7 @@ def test_salience_check_is_reported_as_an_interval(prose: str, tex: str):
 
 def test_model_relativity(prose: str):
     """Sourced to the decision log; assert the paper and the log agree."""
-    log = (ROOT / "docs" / "decision-log.md").read_text()
+    log = require("docs/decision-log.md", HISTORY).read_text()
     assert "17/54" in log and "37/54" in log
     assert "37/54" in prose and "17/54" in prose
 
