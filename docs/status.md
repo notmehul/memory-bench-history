@@ -136,11 +136,12 @@ claim rather than the release, and it is the only one no agent can close.
    pass ran 2026-09-14 and is guarded, and a clutter-and-caption pass ran
    2026-09-19 (`docs/decision-log.md`), but both remove things rather than
    adding a voice. **Still open.**
-2. **Repro from a clean clone.** The last open line of the G5 verification
-   gate: clone fresh, install, rebuild the release, and confirm the redacted
-   bundle drives the Runner to the full 371.
-3. **Flip the HuggingFace repo public**, together with whatever the harness
-   repository does. Mehul's call on whether they go at the same moment.
+2. **Repro from a clean clone — DONE 2026-09-19.** Fresh clone of the public
+   repository, the README's dataset commands, 306 checks pass, and the redacted
+   bundle drives the runner to all 371 instances on seeds 1-3.
+3. **Public — DONE 2026-09-19.** The HuggingFace dataset,
+   `github.com/notmehul/memory-bench` and `github.com/notmehul/memory-bench-history`
+   went public together (`docs/decision-log.md`, 2026-09-19 night).
 4. **SECOND INDEPENDENT RATER on the G4 packet — OPEN, and no agent can close
    it.** It needs a human who has not read this repository, doing 150 judgments
    by hand. It is the outstanding blocker on the **judge-validity claim in both

@@ -1286,3 +1286,70 @@ per-seed gate; the seeds scored 125, 131 and 115) and "agreed on only 65% of
 outcomes" (65% is twin-ceiling outcomes; ceiling was 19/20 and floor 20/20). The
 record title also drops the "memory-bench:" prefix. All three are metadata and
 editable without a new version.
+
+## 2026-09-19 (night) — published: the code, the development record and the dataset
+
+> **Nothing measured moved.** Every change below is to what is public, how it
+> was checked, or a test that guards it. Decision trail for the run:
+> `.audit/publish-2026-09-19.tsv` (local, not committed).
+
+**What is public, all three checked anonymously after the flip.**
+
+| | where | what |
+|---|---|---|
+| code | `github.com/notmehul/memory-bench` | harness, screening and scoring, the evidence behind every number, both papers; 7 curated commits plus fixes |
+| history | `github.com/notmehul/memory-bench-history` | this repository's 122 commits, rewritten to remove withheld material, plus a front page and `docs/commit-map.tsv` |
+| dataset | `huggingface.co/datasets/notmehul/memory-bench` | unchanged data, corrected card and `croissant.json` |
+
+**How the public tree is made and checked.** `scripts/export_public.py` copies
+only git-tracked files that an allowlist names, so nothing lands in public by
+default. `scripts/leak_audit.py` checks a tree or a whole history against every
+canonical fact string from all five seeds and their twins (859 strings), plus
+withheld names, holdout paths, generator source and any fact ledger under any
+file name. Controls: it flags 283 problems in this repository's unpurged history
+and exactly the 10 real ledgers in its tree; it passes the export, the purged
+history, and both repositories as cloned back from GitHub.
+
+**The history purge** removed, from every commit: every fact ledger (`org.json`
+and the copies `org.prev.json`, `org.partial.json`, which the first pass missed
+and a strengthened audit caught), plans, realization maps, annotated streams,
+the generator and its tests, holdout seeds 4 and 5 including their screening
+runs and G2 human-check packets, the sealed G4 ratings, agreement file and rater
+key, and the human-check answer keys. Author and committer email were mapped to
+the GitHub noreply address, as on Mehul's other public repository. A Claude Code
+checkpoint ref (`refs/claude/checkpoint-b5c7d44b`, 2026-08-15) sits outside
+`main` and was not published.
+
+**Tests in public.** The number checks now read the published `.tex` rather
+than `paper/draft.md`, which is no longer guarded and survives here as a
+working copy. `tests/conftest.py` gives one way for a check that needs withheld
+material to skip and say which file and why. From a fresh GitHub clone: 301
+pass and 47 skip; after the README's two dataset commands, 306 pass and 42
+skip, and `run_pilot.py --dry-run` writes 125, 131 and 115 base and twin rows,
+the full 371. **G5's clean-clone repro is done.** CI is green on GitHub, which
+caught one latent bug no local run had: four adapter tests imported through a
+`tests` package that plain `pytest` cannot resolve.
+
+**Fixed on the way.**
+- `release.py` HOMEPAGE named `github.com/mehulsrivastava/memory-bench`, a 404
+  on another account, and it had shipped in `croissant.json`.
+- The decoy-audit check resolved criterion kinds over all five orgs, where
+  probe ids repeat, so later orgs overwrote earlier ones. Seed 1 alone, where
+  the decoys were built, gives exactly the published 30/11/0; the numbers were
+  right and the test was right only by coincidence.
+- The 27/45 first exploit audit was checkable only from git history; its report
+  is now a committed file.
+- Track B v1 on Zenodo carries a fragment ("the harness is MIT. The generator,
+  Section 9 lists ...") from a compression edit that matched one line late, and
+  says the generator ships. v2 fixes both and names the code and history
+  repositories; it is built and awaits upload as a new version of 22838603.
+
+**Open, for Mehul. Neither moves a number; both need wording.**
+1. **Seed 2's twin stream carries 24 of 123 facts in verbatim canonical form**,
+   15 of them probed; seed 3 and its twin carry one each. Track A §3.2 says facts
+   appear "never in ledger-canonical form". Verbatim copies are easier for
+   lexical baselines (grep, BM25) to find, on seed 2's twin side only.
+2. **The 5,398-verdict corpus rate pools 897 verdicts from holdout seed 4**,
+   which was partially screened (327 of 486 runs judged, never gated); seed 5's
+   runs were prepared and never judged. Both papers call seeds 4 and 5
+   "unscreened holdouts", which is true of gating and not of seed 4's judging.

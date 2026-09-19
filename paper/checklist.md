@@ -79,7 +79,8 @@ can no longer produce (decision-log 2026-09-14).
       two sentences misstate the paper: "371 instances ... all fell below the
       prespecified threshold of 135" (the 135 is per seed) and "65% of outcomes"
       (it is 65% of twin-ceiling outcomes). Metadata edit, no new version.
-- [ ] Reproduction commands tested from a clean clone
+- [x] Reproduction commands tested from a clean clone. DONE 2026-09-19 on a
+      fresh clone of the public repository with the dataset from HuggingFace.
       (`uv sync --extra adapters --extra market --extra figures`).
 
 Not gated (out of scope for this paper): pilot runs on the remaining
