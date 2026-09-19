@@ -18,14 +18,20 @@ ROOT = Path(__file__).resolve().parents[1]
 
 PUBLIC = [
     "README.md",
-    "paper/draft.md",
     "paper/memory-bench.tex",      # the submission artifact; added 2026-09-14
-    "paper/checklist.md",
-    "paper/pipeline.tex",       # Track B submission artifact; added 2026-09-17
+    "paper/pipeline.tex",          # Track B submission artifact; added 2026-09-17
     "docs/vision.md",
     "docs/architecture.md",
     "scripts/release.py",          # its strings ship inside the release bundle
 ]
+# The public README is written in the private repository and exported as
+# README.md; hold the source to the same rules. (2026-09-19)
+if (ROOT / "public" / "README.md").exists():
+    PUBLIC.append("public/README.md")
+# Not listed, deliberately: the frozen protocol documents that ship publicly
+# (docs/specs/, the judge rubric, the rater protocol, the vendor survey and
+# configs, the power analysis). They are the text the protocol was run under,
+# so they ship byte-identical to their frozen versions, like the dated records.
 
 # An em dash inside a table cell marks an empty cell, not a sentence connector.
 EMPTY_CELL = re.compile(r"\|\s*—\s*\|")

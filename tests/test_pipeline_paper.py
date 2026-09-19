@@ -25,6 +25,10 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 import methods_judge_panel as M  # noqa: E402
 from calibration import _cohens_kappa  # noqa: E402
+from conftest import SEALED, require  # noqa: E402
+
+AGREEMENT = "datasets/dev/calibration/judge-agreement.json"
+RATER_KEY = "datasets/dev/calibration/packet-key.json"
 
 PANEL = ("haiku-4.5", "sonnet-5", "opus-5", "fable-5.1")
 
@@ -48,7 +52,7 @@ def flat(tex: str) -> str:
 @pytest.fixture(scope="module")
 def anchor() -> dict:
     """The frozen human labels, keyed (org, run, assertion). Read-only."""
-    key = json.loads((M.CALIB / "packet-key.json").read_text())
+    key = json.loads(require(RATER_KEY, SEALED).read_text())
     raw = json.loads((M.CALIB / "ratings-M.json").read_text())
     pairs = {pid: (v["org"], v["run_id"], v["assertion_id"]) for pid, v in key.items()}
     return {pairs[pid]: bool(raw[pid]) for pid in pairs}
@@ -174,7 +178,7 @@ def test_figure_6_top_panel_plots_ten_pairs_and_five_human_comparisons(
 
 def test_kappa_bootstrap_intervals_match_the_committed_artifact(flat: str):
     """Post-hoc CIs added 2026-09-17. Strings must match the artifact."""
-    g4 = json.loads((M.CALIB / "judge-agreement.json").read_text())
+    g4 = json.loads(require(AGREEMENT, SEALED).read_text())
 
     def interval(block: dict) -> str:
         lo, hi = block["kappa_bootstrap"]["ci95"]
@@ -227,7 +231,7 @@ def test_the_by_kind_claim_rests_on_direction_not_on_three_kappas(
             "section does not rest on comparing them.") in flat
 
     # ...and the overlap claim is true of the committed intervals.
-    g4 = json.loads((M.CALIB / "judge-agreement.json").read_text())
+    g4 = json.loads(require(AGREEMENT, SEALED).read_text())
     cis = [g4["per_kind"][k]["kappa_bootstrap"]["ci95"]
            for k in ("fact_absent", "fact_applied", "scope_correct")]
     for (alo, ahi), (blo, bhi) in itertools.combinations(cis, 2):

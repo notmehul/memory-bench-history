@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 import pytest
+from conftest import require_ledger  # noqa: E402
 
 from membench.belief import belief_hist, belief_state
 from membench.ledger import load_event_index, load_ledger
@@ -22,7 +23,7 @@ ORG_DIR = Path(__file__).resolve().parents[1] / "datasets" / "dev" / "org-00001"
 
 @pytest.fixture(scope="module")
 def org():
-    return json.loads((ORG_DIR / "org.json").read_text())
+    return json.loads(require_ledger().read_text())
 
 
 @pytest.fixture(scope="module")

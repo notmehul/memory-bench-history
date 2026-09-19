@@ -17,6 +17,7 @@ import pytest
 REPO = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO / "scripts"))
 
+from conftest import SEALED, require  # noqa: E402
 from methods_judge_panel import (  # noqa: E402, I001
     CALIB,
     PANEL,
@@ -31,7 +32,7 @@ pytestmark = pytest.mark.skipif(
 
 
 def _anchor():
-    key = json.loads((CALIB / "packet-key.json").read_text())
+    key = json.loads(require("datasets/dev/calibration/packet-key.json", SEALED).read_text())
     human_raw = json.loads((CALIB / "ratings-M.json").read_text())
     orgs = {v["org"] for v in key.values()}
     human = {(v["org"], v["run_id"], v["assertion_id"]): bool(human_raw[pid])

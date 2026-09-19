@@ -11,6 +11,7 @@ import re
 from pathlib import Path
 
 import pytest
+from conftest import DATASET, require  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 TEX = ROOT / "paper" / "memory-bench.tex"
@@ -187,7 +188,8 @@ def test_ladder_table_matches_the_archetype_breakdown(tex: str):
     for org in SEEDS:
         d = ROOT / "datasets/dev" / org
         arch = {json.loads(x)["probe_id"]: json.loads(x)["archetype"]
-                for x in (d / "probes.jsonl").read_text().splitlines() if x.strip()}
+                for x in require(f"datasets/dev/{org}/probes.jsonl", DATASET).read_text()
+                .splitlines() if x.strip()}
         for pid in load_valid_instances(d):
             counts[arch[pid]] = counts.get(arch[pid], 0) + 1
     assert counts == {"A1": 50, "A2": 43, "A4": 106, "A7": 172}

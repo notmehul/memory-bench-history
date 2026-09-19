@@ -12,6 +12,9 @@ from pathlib import Path
 from types import SimpleNamespace
 
 import pytest
+from conftest import SEALED, require  # noqa: E402
+
+AGREEMENT = "datasets/dev/calibration/judge-agreement.json"
 
 _SPEC = importlib.util.spec_from_file_location(
     "calibration",
@@ -229,7 +232,7 @@ def test_g4_point_estimates_are_untouched_by_the_bootstrap():
     The bootstrap was added after G4 was measured. If it had perturbed the inputs
     or the kappa path, these four values would move, and the gate with them.
     """
-    committed = json.loads((CALIBRATION_DIR / "judge-agreement.json").read_text())
+    committed = json.loads(require(AGREEMENT, SEALED).read_text())
     rows = _g4_rows()
     po, kappa, degenerate = _kappa_of(rows)
     assert len(rows) == committed["n"] == 150
@@ -242,7 +245,7 @@ def test_g4_point_estimates_are_untouched_by_the_bootstrap():
 
 def test_bootstrap_ci_reproduces_the_committed_artifact():
     """The committed interval re-derives exactly from the same rows and seed."""
-    committed = json.loads((CALIBRATION_DIR / "judge-agreement.json").read_text())
+    committed = json.loads(require(AGREEMENT, SEALED).read_text())
     rows = _g4_rows()
     got = calibration._bootstrap_kappa_ci(rows)
     assert got == committed["kappa_bootstrap"]

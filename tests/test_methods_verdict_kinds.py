@@ -16,6 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 import methods_verdict_kinds as mvk  # noqa: E402
+from conftest import HOLDOUT, require  # noqa: E402
 
 PER_DIR_TOTALS = {
     "datasets/dev/screening/org-00001": 1512,
@@ -30,6 +31,7 @@ PER_KIND_TOTALS = {"fact_applied": 2677, "fact_absent": 1463, "scope_correct": 1
 
 @pytest.fixture(scope="module")
 def report() -> dict:
+    require("datasets/dev/screening/org-00004", HOLDOUT)
     return mvk.analyze()
 
 

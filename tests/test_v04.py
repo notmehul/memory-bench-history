@@ -16,8 +16,9 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def _load_script(name):
+    why = CONSTRUCTION if name == "add_cross_detectors" else "missing script"
     spec = importlib.util.spec_from_file_location(
-        name, ROOT / "scripts" / f"{name}.py")
+        name, require(f"scripts/{name}.py", why))
     mod = importlib.util.module_from_spec(spec)
     sys.modules[name] = mod
     spec.loader.exec_module(mod)
@@ -130,6 +131,7 @@ def test_add_detectors_idempotent_and_valid():
 def test_manifest_prompts_unchanged_by_v04(tmp_path):
     """Hedge fields are additive: prompts must stay byte-identical to the
     committed seed-1 manifest."""
+    require_ledger()
     sp = _load_script("screen_probes")
     from types import SimpleNamespace
     work = tmp_path / "wd"
@@ -158,6 +160,8 @@ def test_manifest_prompts_unchanged_by_v04(tmp_path):
 
 
 # ------------------------- v0.4 refinements R1-R5 (2026-08-07)
+
+from conftest import CONSTRUCTION, require, require_ledger  # noqa: E402
 
 from membench.probes import pattern_hits_unnegated  # noqa: E402
 
