@@ -13,7 +13,7 @@ where the answers live and nowhere else.
 Fails on:
   - a withheld filename (release.WITHHELD_NAMES), anywhere in the target
   - a holdout seed's directory (org-00004, org-00005 and their twins)
-  - an org.json that still carries facts
+  - a fact ledger under any file name (JSON whose `facts` are fact records)
   - generator source (release.py withholds it: it rebuilds holdout ledgers)
   - any HOLDOUT fact's canonical or counterfactual text, verbatim, anywhere.
 
@@ -65,14 +65,27 @@ def path_problems(path: str) -> list[str]:
     return found
 
 
+def is_ledger(text: str) -> bool:
+    """A fact ledger under any file name: JSON whose `facts` are fact records.
+
+    Hand-built test fixtures (`org_id` "fix-...") are exempt by name: they are
+    a few synthetic facts for the belief-oracle tests, not a seed's ledger.
+    """
+    try:
+        doc = json.loads(text)
+        facts = doc.get("facts")
+    except (json.JSONDecodeError, AttributeError):
+        return False
+    if str(doc.get("org_id", "")).startswith("fix-"):
+        return False
+    return bool(facts) and isinstance(facts, list) and isinstance(facts[0], dict) \
+        and {"fact_id", "canonical"} <= facts[0].keys()
+
+
 def content_problems(path: str, text: str, ledger: dict[str, str]) -> list[str]:
     found = []
-    if path.endswith("org.json"):
-        try:
-            if json.loads(text).get("facts"):
-                found.append("org.json carries facts")
-        except (json.JSONDecodeError, AttributeError):
-            pass
+    if path.endswith(".json") and is_ledger(text):
+        found.append("a fact ledger (JSON carrying fact records)")
     hits = {org for s, org in ledger.items() if s in text}
     held = sorted(h for h in hits if h.startswith(HOLDOUT_DIRS))
     if held:
