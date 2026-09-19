@@ -26,3 +26,7 @@ datasets/dev/screening/org-*/pending-judge.map.json
 
 # Compiled paper output; rebuild with: tectonic -X compile paper/memory-bench.tex
 paper/memory-bench.pdf
+paper/pipeline.pdf
+
+# Zenodo deposit copies; built from paper/*.tex by tectonic
+paper/srivastava-*.pdf
