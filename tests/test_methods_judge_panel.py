@@ -68,6 +68,7 @@ def test_panel_verdicts_cover_the_whole_batch():
 
 
 def test_script_runs_and_control_passes(tmp_path):
+    require("datasets/dev/calibration/packet-key.json", SEALED)
     r = subprocess.run(
         [sys.executable, str(REPO / "scripts/methods_judge_panel.py"), "--out", str(tmp_path)],
         capture_output=True, text=True, cwd=REPO)

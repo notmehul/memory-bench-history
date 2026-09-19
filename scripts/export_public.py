@@ -42,6 +42,7 @@ INCLUDE = (
     "tests/*",
     "docs/vision.md", "docs/architecture.md", "docs/power-analysis.md",
     "docs/human-review.md", "docs/vendor-configs.md", "docs/vendor-survey.md",
+    "docs/validation-report.md",
     "docs/specs/*",
     "paper/memory-bench.tex", "paper/pipeline.tex",
     "datasets/dev/org-0000[123]/g3-report.json",
