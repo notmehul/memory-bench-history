@@ -4,11 +4,12 @@ wait, and end-to-end through Runner with MockWorker."""
 
 from types import SimpleNamespace
 
+from test_runner import STREAM, _write_org
+
 from membench.adapters import MockWorker, _render_event
 from membench.rag import retrieval_prompt
 from membench.runner import Runner
 from membench.sut_supermemory import ORG_TAG, SupermemoryAdapter
-from tests.test_runner import STREAM, _write_org
 
 
 class FakeClient:

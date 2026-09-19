@@ -2,11 +2,12 @@
 mode, per-principal datasets in silo mode, lazy cognify (once per scope per
 dirty period), top_k, retrieval_prompt, end-to-end through the Runner."""
 
+from test_runner import _write_org
+
 from membench.adapters import MockWorker, _render_event
 from membench.rag import retrieval_prompt
 from membench.runner import Runner
 from membench.sut_cognee import ORG_DATASET, CogneeAdapter, _dataset_for, _flatten_texts
-from tests.test_runner import _write_org
 
 
 class FakeCognee:

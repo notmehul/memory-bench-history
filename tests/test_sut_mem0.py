@@ -1,11 +1,12 @@
 """Mem0 market adapter: fake client (no network / no mem0ai import), shared
 dedupe vs silo per-principal scopes, top_k, retrieval_prompt, Runner e2e."""
 
+from test_runner import _write_org
+
 from membench.adapters import MockWorker
 from membench.rag import retrieval_prompt
 from membench.runner import Runner
 from membench.sut_mem0 import ORG_SCOPE, Mem0Adapter
-from tests.test_runner import _write_org
 
 
 class FakeMem0:

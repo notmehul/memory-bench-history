@@ -4,11 +4,12 @@ end-to-end through the Runner."""
 
 from types import SimpleNamespace
 
+from test_runner import _write_org
+
 from membench.adapters import MockWorker, _render_event
 from membench.rag import retrieval_prompt
 from membench.runner import Runner
 from membench.sut_graphiti import ORG_GROUP, GraphitiAdapter, _group
-from tests.test_runner import _write_org
 
 
 class FakeGraphiti:
